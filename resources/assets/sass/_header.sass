@@ -1,0 +1,50 @@
+@import variables
+@import mixins
+
+header
+  @include grid(100)
+  margin-bottom: 15px
+  min-height: 60px;
+  line-height: 60px;
+  background-color: #2c3e50
+  border-bottom: 1px solid #dedede
+
+  .menus-container
+    @include grid_width(10/100)
+    @include md-device
+      @include grid_width(15/100)
+    @include sm-device
+      @include grid_width(65/100)
+      order: 2
+
+  .board-selector-container
+    @include grid_width(15/100)
+    @include md-device
+      @include grid_width(20/100)
+    @include sm-device
+      @include grid_width(35/100)
+      order: 1
+      margin-bottom: 5px
+
+  .title-container
+    @include grid_width(75/100)
+    @include md-device
+      @include grid_width(65/100)
+    @include sm-device
+      @include grid_width(1)
+      order: 3
+  a
+    color: #fff
+    &:focus, &:hover
+      color: #fff
+  h1
+    font-size: size('title')
+    color: #eee
+    .tooltip
+      opacity: 0.3
+      font-size: size('tiny')
+
+.web-notification-icon
+  color: alert-color('error')
+  &:focus, &:hover
+    color: alert-color('default')

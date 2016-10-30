@@ -1,0 +1,12 @@
+<phpunit stopOnError="true" stopOnFailure="true" colors="true">
+    <testsuites>
+        <testsuite name="Hiject">
+            <directory>integration</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <const name="BASE_URL" value="http://app/" />
+        <const name="API_URL" value="http://app/jsonrpc.php" />
+        <const name="API_KEY" value="test" />
+    </php>
+</phpunit>

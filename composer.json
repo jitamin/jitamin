@@ -1,0 +1,64 @@
+{
+    "name": "hiject/hiject",
+    "type": "project",
+    "description": "A web based project management system",
+    "license": "MIT",
+    "config": {
+        "preferred-install": "dist",
+        "optimize-autoloader": true,
+        "discard-changes": true
+    },
+    "require" : {
+        "php" : ">=5.3.9",
+        "ext-gd" : "*",
+        "ext-mbstring" : "*",
+        "ext-hash" : "*",
+        "ext-openssl" : "*",
+        "ext-json" : "*",
+        "ext-ctype" : "*",
+        "ext-filter" : "*",
+        "ext-session" : "*",
+        "christian-riesen/otp" : "1.4.3",
+        "eluceo/ical": "0.10.1",
+        "erusev/parsedown" : "1.6.0",
+        "fguillot/json-rpc" : "1.2.1",
+        "fguillot/picodb" : "1.0.14",
+        "fguillot/picofeed": "0.1.24",
+        "fguillot/simpleLogger" : "1.0.1",
+        "fguillot/simple-validator" : "1.0.1",
+        "fguillot/simple-queue" : "1.0.1",
+        "paragonie/random_compat": "2.0.2",
+        "pimple/pimple" : "3.0.2",
+        "ramsey/array_column": "1.1.3",
+        "swiftmailer/swiftmailer" : "5.4.2",
+        "symfony/console" : "2.8.7",
+        "symfony/event-dispatcher" : "2.7.14",
+        "gregwar/captcha": "1.1.1"
+    },
+    "autoload" : {
+        "classmap" : ["app/"],
+        "psr-4" : {
+            "Hiject\\" : "app/"
+        },
+        "files" : [
+            "app/helpers.php",
+            "app/Library/password.php"
+        ]
+    },
+    "require-dev" : {
+        "phpdocumentor/reflection-docblock": "2.0.4",
+        "block8/php-docblock-checker": "^1.0",
+        "squizlabs/php_codesniffer": "~2.5",
+        "symfony/yaml": "2.8.7",
+        "symfony/stopwatch" : "2.6.13",
+        "phpunit/phpunit" : "4.8.26",
+        "phpunit/phpunit-selenium": "2.0.2",
+        "friendsofphp/php-cs-fixer": "^1.11"
+    },
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}

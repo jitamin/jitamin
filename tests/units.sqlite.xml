@@ -1,0 +1,11 @@
+<phpunit stopOnError="true" stopOnFailure="true" colors="true">
+    <testsuites>
+        <testsuite name="Hiject">
+            <directory>units</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <const name="DB_DRIVER" value="sqlite" />
+        <const name="DB_FILENAME" value=":memory:" />
+    </php>
+</phpunit>
