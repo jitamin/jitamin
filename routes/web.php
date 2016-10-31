@@ -127,7 +127,8 @@ $container['route']->addRoute('ical/project/:token', 'ICalendarController', 'pro
 $container['route']->addRoute('ical/user/:token', 'ICalendarController', 'user');
 
 // Users
-$container['route']->addRoute('users', 'UserListController', 'show');
+$container['route']->addRoute('admin/users', 'UserListController', 'show');
+$container['route']->addRoute('admin/users/create', 'UserCreationController', 'show');
 $container['route']->addRoute('user/profile/:user_id', 'UserViewController', 'profile');
 $container['route']->addRoute('user/show/:user_id', 'UserViewController', 'show');
 $container['route']->addRoute('user/show/:user_id/timesheet', 'UserViewController', 'timesheet');
@@ -140,33 +141,34 @@ $container['route']->addRoute('user/:user_id/notifications', 'UserViewController
 $container['route']->addRoute('user/:user_id/accounts', 'UserViewController', 'external');
 $container['route']->addRoute('user/:user_id/integrations', 'UserViewController', 'integrations');
 $container['route']->addRoute('user/:user_id/authentication', 'UserCredentialController', 'changeAuthentication');
+
 $container['route']->addRoute('user/:user_id/2fa', 'TwoFactorController', 'index');
 $container['route']->addRoute('user/:user_id/avatar', 'AvatarFileController', 'show');
 
 // Groups
-$container['route']->addRoute('groups', 'GroupListController', 'index');
-$container['route']->addRoute('group/:group_id/members', 'GroupListController', 'users');
+$container['route']->addRoute('admin/groups', 'GroupListController', 'index');
+$container['route']->addRoute('admin/group/:group_id/members', 'GroupListController', 'users');
 
 // Config
-$container['route']->addRoute('settings', 'ConfigController', 'index');
-$container['route']->addRoute('settings/application', 'ConfigController', 'application');
-$container['route']->addRoute('settings/email', 'ConfigController', 'email');
-$container['route']->addRoute('settings/project', 'ConfigController', 'project');
-$container['route']->addRoute('settings/project', 'ConfigController', 'project');
-$container['route']->addRoute('settings/board', 'ConfigController', 'board');
-$container['route']->addRoute('settings/calendar', 'ConfigController', 'calendar');
-$container['route']->addRoute('settings/integrations', 'ConfigController', 'integrations');
-$container['route']->addRoute('settings/webhook', 'ConfigController', 'webhook');
-$container['route']->addRoute('settings/api', 'ConfigController', 'api');
-$container['route']->addRoute('settings/help', 'ConfigController', 'help');
-$container['route']->addRoute('settings/about', 'ConfigController', 'about');
-$container['route']->addRoute('settings/links', 'LinkController', 'index');
-$container['route']->addRoute('settings/currencies', 'CurrencyController', 'index');
-$container['route']->addRoute('settings/tags', 'TagController', 'index');
+$container['route']->addRoute('admin/settings', 'ConfigController', 'index');
+$container['route']->addRoute('admin/settings/application', 'ConfigController', 'application');
+$container['route']->addRoute('admin/settings/email', 'ConfigController', 'email');
+$container['route']->addRoute('admin/settings/project', 'ConfigController', 'project');
+$container['route']->addRoute('admin/settings/project', 'ConfigController', 'project');
+$container['route']->addRoute('admin/settings/board', 'ConfigController', 'board');
+$container['route']->addRoute('admin/settings/calendar', 'ConfigController', 'calendar');
+$container['route']->addRoute('admin/settings/integrations', 'ConfigController', 'integrations');
+$container['route']->addRoute('admin/settings/webhook', 'ConfigController', 'webhook');
+$container['route']->addRoute('admin/settings/api', 'ConfigController', 'api');
+$container['route']->addRoute('admin/settings/help', 'ConfigController', 'help');
+$container['route']->addRoute('admin/settings/about', 'ConfigController', 'about');
+$container['route']->addRoute('admin/settings/links', 'LinkController', 'index');
+$container['route']->addRoute('admin/settings/currencies', 'CurrencyController', 'index');
+$container['route']->addRoute('admin/settings/tags', 'TagController', 'index');
 
 // Plugins
-$container['route']->addRoute('extensions', 'PluginController', 'show');
-$container['route']->addRoute('extensions/directory', 'PluginController', 'directory');
+$container['route']->addRoute('admin/extensions', 'PluginController', 'show');
+$container['route']->addRoute('admin/extensions/directory', 'PluginController', 'directory');
 
 // Doc
 $container['route']->addRoute('documentation/:file', 'DocumentationController', 'show');
