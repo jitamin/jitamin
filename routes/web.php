@@ -80,6 +80,7 @@ $container['route']->addRoute('project/:project_id/task/:task_id', 'TaskViewCont
 $container['route']->addRoute('t/:task_id', 'TaskViewController', 'show');
 $container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController', 'readonly');
 
+$container['route']->addRoute('task/:project_id/create', 'TaskCreationController', 'show');
 $container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
 $container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
 $container['route']->addRoute('project/:project_id/task/:task_id/analytics', 'TaskViewController', 'analytics');
