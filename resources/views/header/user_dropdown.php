@@ -10,7 +10,7 @@
             <?= $this->url->link(t('My profile'), 'UserViewController', 'show', array('user_id' => $this->user->getId())) ?>
         </li>
         <li>
-            <i class="fa fa-cubes"></i>
+            <i class="fa fa-edit"></i>
             <?= $this->url->link(t('Edit profile'), 'UserModificationController', 'show', array('user_id' => $this->user->getId())) ?>
         </li>
 
