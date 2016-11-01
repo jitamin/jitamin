@@ -7,7 +7,7 @@
             <?= $this->url->button('fa-plus', t('Upload a file'), 'ProjectFileController', 'create', array('project_id' => $project['id']), 'btn-header btn-default popover') ?>
         <?php endif ?>
 
-        <?= $this->render('project_overview/images', array('project' => $project, 'images' => $images)) ?>
-        <?= $this->render('project_overview/files', array('project' => $project, 'files' => $files)) ?>
+        <?= $this->render('project_view/images', array('project' => $project, 'images' => $images)) ?>
+        <?= $this->render('project_view/files', array('project' => $project, 'files' => $files)) ?>
     </div>
 </section>
