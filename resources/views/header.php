@@ -6,6 +6,7 @@
 )) ?>
 
 <?php $_top_right_corner = implode('', array(
+        $this->render('header/admin_dropdown'),
         $this->render('header/user_notifications'),
         $this->render('header/creation_dropdown'),
         $this->render('header/user_dropdown')
