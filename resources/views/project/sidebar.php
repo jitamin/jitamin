@@ -1,7 +1,7 @@
 <div class="sidebar sidebar-icons">
     <ul>
-        <li <?= $this->app->checkMenuSelection('ProjectViewController', 'show') ?>>
-            <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'ProjectViewController', 'show', array('project_id' => $project['id'])) ?>
+        <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'show') ?>>
+            <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'ProjectSettingsController', 'show', array('project_id' => $project['id'])) ?>
         </li>
 
         <?php if ($this->user->hasProjectAccess('ProjectEditController', 'edit', $project['id'])): ?>
@@ -34,19 +34,19 @@
                 <i class="fa fa-filter"></i><?= $this->url->link(t('Custom filters'), 'CustomFilterController', 'index', array('project_id' => $project['id'])) ?>
             </li>
             <?php endif ?>
-            <li <?= $this->app->checkMenuSelection('ProjectViewController', 'share') ?>>
-                <i class="fa fa-external-link"></i><?= $this->url->link(t('Public access'), 'ProjectViewController', 'share', array('project_id' => $project['id'])) ?>
+            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'share') ?>>
+                <i class="fa fa-external-link"></i><?= $this->url->link(t('Public access'), 'ProjectSettingsController', 'share', array('project_id' => $project['id'])) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectViewController', 'notifications') ?>>
-                <i class="fa fa-bell"></i><?= $this->url->link(t('Notifications'), 'ProjectViewController', 'notifications', array('project_id' => $project['id'])) ?>
+            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'notifications') ?>>
+                <i class="fa fa-bell"></i><?= $this->url->link(t('Notifications'), 'ProjectSettingsController', 'notifications', array('project_id' => $project['id'])) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectViewController', 'integrations') ?>>
-                <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'ProjectViewController', 'integrations', array('project_id' => $project['id'])) ?>
+            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'integrations') ?>>
+                <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'ProjectSettingsController', 'integrations', array('project_id' => $project['id'])) ?>
             <li <?= $this->app->checkMenuSelection('ActionController') ?>>
                 <i class="fa fa-retweet"></i><?= $this->url->link(t('Automatic actions'), 'ActionController', 'index', array('project_id' => $project['id'])) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectViewController', 'duplicate') ?>>
-                <i class="fa fa-clone"></i><?= $this->url->link(t('Duplicate'), 'ProjectViewController', 'duplicate', array('project_id' => $project['id'])) ?>
+            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'duplicate') ?>>
+                <i class="fa fa-clone"></i><?= $this->url->link(t('Duplicate'), 'ProjectSettingsController', 'duplicate', array('project_id' => $project['id'])) ?>
             </li>
                 <?php if ($project['is_active']): ?>
                     <li>

@@ -37,7 +37,7 @@
         <?php if ($this->user->hasProjectAccess('ProjectEditController', 'edit', $project['id'])): ?>
             <li>
                 <i class="fa fa-cog"></i>
-                <?= $this->url->link(t('Settings'), 'ProjectViewController', 'show', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link(t('Settings'), 'ProjectSettingsController', 'show', array('project_id' => $project['id'])) ?>
             </li>
         <?php endif ?>
     </ul>

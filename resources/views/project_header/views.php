@@ -1,7 +1,7 @@
 <ul class="views">
-    <li <?= $this->app->checkMenuSelection('ProjectOverviewController') ?>>
+    <li <?= $this->app->checkMenuSelection('ProjectViewController') ?>>
         <i class="fa fa-eye"></i>
-        <?= $this->url->link(t('Overview'), 'ProjectOverviewController', 'show', array('project_id' => $project['id'], 'search' => $filters['search']), false, 'view-overview', t('Keyboard shortcut: "%s"', 'v o')) ?>
+        <?= $this->url->link(t('Overview'), 'ProjectViewController', 'show', array('project_id' => $project['id'], 'search' => $filters['search']), false, 'view-overview', t('Keyboard shortcut: "%s"', 'v o')) ?>
     </li>
     <li <?= $this->app->checkMenuSelection('BoardViewController') ?>>
         <i class="fa fa-columns"></i>

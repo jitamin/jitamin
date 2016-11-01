@@ -32,19 +32,19 @@ $container['route']->addRoute('project/save', 'ProjectCreationController', 'save
 
 // Project routes
 $container['route']->addRoute('projects', 'ProjectListController', 'show');
-$container['route']->addRoute('project/:project_id', 'ProjectViewController', 'show');
-$container['route']->addRoute('p/:project_id', 'ProjectViewController', 'show');
+$container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
+$container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('project/:project_id/customer-filters', 'CustomFilterController', 'index');
-$container['route']->addRoute('project/:project_id/share', 'ProjectViewController', 'share');
-$container['route']->addRoute('project/:project_id/notifications', 'ProjectViewController', 'notifications');
-$container['route']->addRoute('project/:project_id/integrations', 'ProjectViewController', 'integrations');
-$container['route']->addRoute('project/:project_id/duplicate', 'ProjectViewController', 'duplicate');
+$container['route']->addRoute('project/:project_id/share', 'ProjectSettingsController', 'share');
+$container['route']->addRoute('project/:project_id/notifications', 'ProjectSettingsController', 'notifications');
+$container['route']->addRoute('project/:project_id/integrations', 'ProjectSettingsController', 'integrations');
+$container['route']->addRoute('project/:project_id/duplicate', 'ProjectSettingsController', 'duplicate');
 $container['route']->addRoute('project/:project_id/permissions', 'ProjectPermissionController', 'index');
 $container['route']->addRoute('project/:project_id/activity', 'ActivityController', 'project');
 $container['route']->addRoute('project/:project_id/tags', 'ProjectTagController', 'index');
 
-// Project Overview
-$container['route']->addRoute('project/:project_id/overview', 'ProjectOverviewController', 'show');
+// Project View
+$container['route']->addRoute('project/:project_id', 'ProjectViewController', 'show');
 
 // ProjectEdit routes
 $container['route']->addRoute('project/:project_id/edit', 'ProjectEditController', 'edit');

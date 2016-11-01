@@ -10,6 +10,6 @@
     <div class="form-actions">
         <?= $this->url->link(t('Yes'), 'ProjectFileController', 'remove', array('project_id' => $project['id'], 'file_id' => $file['id']), true, 'btn btn-danger') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'ProjectOverviewController', 'show', array('project_id' => $project['id']), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'ProjectViewController', 'show', array('project_id' => $project['id']), false, 'close-popover') ?>
     </div>
 </div>

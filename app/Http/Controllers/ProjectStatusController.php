@@ -43,7 +43,7 @@ class ProjectStatusController extends BaseController
             $this->flash->failure(t('Unable to activate this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', array('project_id' => $project['id'])), true);
+        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', array('project_id' => $project['id'])), true);
     }
 
     /**
@@ -73,7 +73,7 @@ class ProjectStatusController extends BaseController
             $this->flash->failure(t('Unable to disable this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', array('project_id' => $project['id'])), true);
+        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', array('project_id' => $project['id'])), true);
     }
 
     /**
