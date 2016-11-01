@@ -1063,7 +1063,7 @@ return array(
     'Unable to disable this user.' => '无法禁用该用户。',
     'All files have been uploaded successfully.' => '所有文件已成功上传。',
     'View uploaded files' => '查看已上传文件',
-    'The maximum allowed file size is %sB.' => '最大上传尺寸 %sB',
+    'The maximum allowed file size is %sB.' => '请不要上传超过 %sB 的文件',
     'Choose files again' => '重新选择文件',
     'Drag and drop your files here' => '拖拽文件到这里',
     'choose files' => '选择文件',
