@@ -2,10 +2,6 @@
     <a href="#" class="dropdown-menu"><?= $this->avatar->currentUserSmall('avatar-inline') ?><?= $this->text->e($this->user->getFullname()) ?> <i class="fa fa-caret-down"></i></a>
     <ul>
         <li>
-            <i class="fa fa-dashboard"></i>
-            <?= $this->url->link(t('My dashboard'), 'DashboardController', 'show', array('user_id' => $this->user->getId())) ?>
-        </li>
-        <li>
             <i class="fa fa-vcard"></i>
             <?= $this->url->link(t('My profile'), 'UserViewController', 'show', array('user_id' => $this->user->getId())) ?>
         </li>
