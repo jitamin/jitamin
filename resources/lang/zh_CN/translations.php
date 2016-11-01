@@ -360,7 +360,7 @@ return array(
     'Change category' => '变更分类',
     '%s updated the task %s' => '%s 更新了任务 %s',
     '%s opened the task %s' => '%s 开启了任务 %s',
-    '%s moved the task %s to the position #%d in the column "%s"' => '%s 将任务 %s 移动到了(位置: #%d，栏目: "%s")',
+    '%s moved the task %s to the column "%s" at the position #%d' => '%s 将任务 %s 移动到了栏目"%s"的 #%d 位置)',
     '%s moved the task %s to the column "%s"' => '%s 移动任务 %s 到栏目 "%s"',
     '%s created the task %s' => '%s 创建了任务 %s',
     '%s closed the task %s' => '%s 关闭了任务 %s',
