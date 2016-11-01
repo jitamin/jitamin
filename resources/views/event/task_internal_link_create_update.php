@@ -10,7 +10,7 @@
         <?= e(
             'This task is now linked to the task %s with the relation "%s"',
             $this->url->link(t('#%d', $task_link['opposite_task_id']), 'TaskViewController', 'show', array('task_id' => $task_link['opposite_task_id'])),
-            $this->text->e($task_link['label'])
+            $this->text->e(t($task_link['label']))
         ) ?>
     </p>
 </div>
