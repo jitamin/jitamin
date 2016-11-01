@@ -60,6 +60,9 @@ $container['route']->addRoute('projects/tasks/:user_id/closed', 'ProjectUserOver
 $container['route']->addRoute('projects/managers', 'ProjectUserOverviewController', 'managers');
 $container['route']->addRoute('projects/gantt', 'ProjectGanttController', 'show');
 
+// ProjectFile routes
+$container['route']->addRoute('project/:project_id/file/upload', 'ProjectFileController', 'create');
+
 // Action routes
 $container['route']->addRoute('project/:project_id/actions', 'ActionController', 'index');
 

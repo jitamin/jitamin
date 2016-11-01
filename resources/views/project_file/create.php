@@ -21,7 +21,9 @@
     data-url="<?= $this->url->href('ProjectFileController', 'save', array('project_id' => $project['id'])) ?>">
     <div id="file-dropzone-inner">
         <?= t('Drag and drop your files here') ?> <?= t('or') ?> <a href="#" id="file-browser"><?= t('choose files') ?></a>
+        <p class="file-tooltip"><?= t('The maximum allowed file size is %sB.', $this->text->bytes($max_size)) ?></p>
     </div>
+
 </div>
 
 <input type="file" name="files[]" multiple style="display:none" id="file-form-element">
@@ -29,5 +31,5 @@
 <div class="form-actions">
     <input type="submit" value="<?= t('Upload files') ?>" class="btn btn-info" id="file-upload-button" disabled>
     <?= t('or') ?>
-    <?= $this->url->link(t('cancel'), 'ProjectViewController', 'show', array('project_id' => $project['id']), false, 'close-popover') ?>
+    <?= $this->url->link(t('cancel'), 'ProjectViewController', 'show', array('project_id' => $project['id']), false, 'btn btn-default close-popover') ?>
 </div>
