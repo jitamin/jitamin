@@ -69,6 +69,22 @@ $ chmod -R 0777 storage
 - **用户名:** hiject
 - **密码:** `hiject`
 
+## 开发相关
+
+代码里自带编译后的前端代码。如果你不想修改前端样式，不需要配置前端工具集，请直接忽略本环节。
+
+工具集：
+
+- Node.js
+- Bower
+- Gulp
+
+```shell
+npm install --global gulp
+bower install
+gulp
+```
+
 ## License
 
 Hiject is licensed under the license of MIT.  See the LICENSE for more details.
