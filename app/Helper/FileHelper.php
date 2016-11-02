@@ -34,34 +34,34 @@ class FileHelper extends Base
             case 'jpg':
             case 'png':
             case 'gif':
-                return 'fa-file-image-o';
+                return 'fa-file-image-o text-warning';
             case 'xls':
             case 'xlsx':
-                return 'fa-file-excel-o';
+                return 'fa-file-excel-o text-success';
             case 'doc':
             case 'docx':
-                return 'fa-file-word-o';
+                return 'fa-file-word-o text-info';
             case 'ppt':
             case 'pptx':
-                return 'fa-file-powerpoint-o';
+                return 'fa-file-powerpoint-o text-danger';
             case 'zip':
             case 'rar':
             case 'tar':
             case 'bz2':
             case 'xz':
             case 'gz':
-                return 'fa-file-archive-o';
+                return 'fa-file-archive-o text-success';
             case 'mp3':
-                return 'fa-file-audio-o';
+                return 'fa-file-audio-o text-primary';
             case 'avi':
             case 'mov':
-                return 'fa-file-video-o';
+                return 'fa-file-video-o text-primary';
             case 'php':
             case 'html':
             case 'css':
-                return 'fa-file-code-o';
+                return 'fa-file-code-o text-success';
             case 'pdf':
-                return 'fa-file-pdf-o';
+                return 'fa-file-pdf-o text-danger';
         }
 
         return 'fa-file-o';

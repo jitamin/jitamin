@@ -1,0 +1,18 @@
+@import variables
+@import mixins
+
+$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7
+$state-success-text:             #3c763d !default;
+$state-info-text:                #31708f !default;
+$state-warning-text:             #8a6d3b !default;
+$state-danger-text:              #a94442 !default;
+
+@include text-emphasis-variant('.text-primary', $brand-primary);
+
+@include text-emphasis-variant('.text-success', $state-success-text);
+
+@include text-emphasis-variant('.text-info', $state-info-text);
+
+@include text-emphasis-variant('.text-warning', $state-warning-text);
+
+@include text-emphasis-variant('.text-danger', $state-danger-text);
