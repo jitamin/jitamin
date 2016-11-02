@@ -21,7 +21,7 @@
 
             <ul class="nav navbar-nav">
                 <li <?= $this->app->checkMenuSelection('DashboardController', 'show') ?>>
-                    <?= $this->url->link(t('My dashboard'), 'DashboardController', 'show', array('user_id' => $this->user->getId())) ?>
+                    <?= $this->url->link(t('My'), 'DashboardController', 'show') ?>
                 </li>
                 <li <?= $this->app->checkMenuSelection('ProjectListController', 'show') ?>><?= $this->url->link(t('Project management'), 'ProjectListController', 'show') ?></li>
             </ul>

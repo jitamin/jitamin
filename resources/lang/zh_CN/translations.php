@@ -428,6 +428,7 @@ return array(
     'API' => 'API',
     'Create a comment from an external provider' => '从外部创建一个评论',
     'Project management' => '项目管理',
+    'My' => '我的',
     'My projects' => '我的项目',
     'Columns' => '栏目',
     'Task' => '任务',
