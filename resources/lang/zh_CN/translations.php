@@ -411,7 +411,7 @@ return array(
     'Application Name' => '应用名称',
     'Token regenerated.' => '重新生成令牌',
     'Date format' => '日期格式',
-    'ISO format is always accepted, example: "%s" and "%s"' => 'ISO 格式总是允许的，例如："%s" 和 "%s"',
+    'ISO format is always accepted, example: "%s" and "%s"' => '支持国际标准时间，如："%s" 和 "%s"',
     'New private project' => '创建私有项目',
     'This project is private' => '此项目为私有项目',
     'Add' => '添加',
