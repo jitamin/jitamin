@@ -43,7 +43,7 @@ class FileHelper extends Base
                 return 'fa-file-word-o text-info';
             case 'ppt':
             case 'pptx':
-                return 'fa-file-powerpoint-o text-danger';
+                return 'fa-file-powerpoint-o text-warning';
             case 'zip':
             case 'rar':
             case 'tar':
