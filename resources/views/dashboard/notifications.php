@@ -5,7 +5,7 @@
 </div>
 <p class="alert"><?= t('No new notifications.') ?></p>
 <?php else: ?>
-    <ul>
+    <ul class="pull-right">
         <li>
             <i class="fa fa-check-square-o fa-fw"></i>
             <?= $this->url->link(t('Mark all as read'), 'WebNotificationController', 'flush', array('user_id' => $user['id'])) ?>
