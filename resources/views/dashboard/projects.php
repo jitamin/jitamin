@@ -7,8 +7,8 @@
     <table class="table-striped table-small table-scrolling">
         <tr>
             <th class="column-5"><?= $paginator->order(t('Id'), \Hiject\Model\ProjectModel::TABLE.'.id') ?></th>
-            <th class="column-15"><?= $paginator->order(t('Project'), \Hiject\Model\ProjectModel::TABLE.'.name') ?></th>
-            <th class="column-25"><?= t('Tasks') ?></th>
+            <th class="column-30"><?= $paginator->order(t('Project'), \Hiject\Model\ProjectModel::TABLE.'.name') ?></th>
+            <th class="column-5"><?= t('Tasks') ?></th>
             <th class="column-8"><?= $paginator->order(t('Status'), \Hiject\Model\ProjectModel::TABLE.'.is_active') ?></th>
             <th><?= t('Columns') ?></th>
         </tr>

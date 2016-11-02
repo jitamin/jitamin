@@ -13,10 +13,10 @@
             <tr>
                 <th class="column-5"><?= $paginator->order(t('Id'), 'id') ?></th>
                 <th class="column-8"><?= $paginator->order(t('Status'), 'is_active') ?></th>
-                <th class="column-15"><?= $paginator->order(t('Project'), 'name') ?></th>
+                <th class="column-20"><?= $paginator->order(t('Project'), 'name') ?></th>
                 <th class="column-10"><?= $paginator->order(t('Start date'), 'start_date') ?></th>
                 <th class="column-10"><?= $paginator->order(t('End date'), 'end_date') ?></th>
-                <th class="column-15"><?= $paginator->order(t('Owner'), 'owner_id') ?></th>
+                <th class="column-10"><?= $paginator->order(t('Owner'), 'owner_id') ?></th>
                 <?php if ($this->user->hasAccess('ProjectUserOverviewController', 'managers')): ?>
                     <th class="column-10"><?= t('Users') ?></th>
                 <?php endif ?>
