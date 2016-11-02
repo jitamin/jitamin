@@ -356,13 +356,13 @@ class Paginator
 
         if ($this->offset > 0) {
             $html .= $this->container['helper']->url->link(
-                '&larr; '.t('Previous'),
+                '&laquo; '.t('Previous'),
                 $this->controller,
                 $this->action,
                 $this->getUrlParams($this->page - 1, $this->order, $this->direction)
             );
         } else {
-            $html .= '&larr; '.t('Previous');
+            $html .= '&laquo; '.t('Previous');
         }
 
         $html .= '</span>';
@@ -382,13 +382,13 @@ class Paginator
 
         if (($this->total - $this->offset) > $this->limit) {
             $html .= $this->container['helper']->url->link(
-                t('Next').' &rarr;',
+                t('Next').' &raquo;',
                 $this->controller,
                 $this->action,
                 $this->getUrlParams($this->page + 1, $this->order, $this->direction)
             );
         } else {
-            $html .= t('Next').' &rarr;';
+            $html .= t('Next').' &raquo;';
         }
 
         $html .= '</span>';
