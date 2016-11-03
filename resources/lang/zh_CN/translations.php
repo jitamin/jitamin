@@ -778,7 +778,7 @@ return array(
     'contributors' => '贡献者',
     'License:' => '授权许可:',
     'License' => '授权许可',
-    'Enter the text below' => '输入下方的文本',
+    'Enter the text below' => '请您填写验证码',
     'Sort by position' => '按位置排序',
     'Sort by date' => '按日期排序',
     'Add task' => '添加任务',
