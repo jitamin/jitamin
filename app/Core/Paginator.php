@@ -359,10 +359,12 @@ class Paginator
                 '&laquo; '.t('Previous'),
                 $this->controller,
                 $this->action,
-                $this->getUrlParams($this->page - 1, $this->order, $this->direction)
+                $this->getUrlParams($this->page - 1, $this->order, $this->direction),
+                false,
+                'btn btn-info'
             );
         } else {
-            $html .= '&laquo; '.t('Previous');
+            $html .= '<span class="btn btn-default">&laquo; '.t('Previous').'</span>';
         }
 
         $html .= '</span>';
@@ -385,10 +387,12 @@ class Paginator
                 t('Next').' &raquo;',
                 $this->controller,
                 $this->action,
-                $this->getUrlParams($this->page + 1, $this->order, $this->direction)
+                $this->getUrlParams($this->page + 1, $this->order, $this->direction),
+                false,
+                'btn btn-info'
             );
         } else {
-            $html .= t('Next').' &raquo;';
+            $html .= '<span class="btn btn-default">'.t('Next').' &raquo;</span>';
         }
 
         $html .= '</span>';
