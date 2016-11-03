@@ -803,7 +803,7 @@ return array(
     'Projects list' => '项目列表',
     'Gantt chart for this project' => '此项目的甘特图',
     'Project board' => '项目面板',
-    'End date:' => '结束日期',
+    'End date:' => '结束日期：',
     'There is no start date or end date for this project.' => '当前项目没有开始或结束日期',
     'Projects Gantt chart' => '项目甘特图',
     'Change task color when using a specific task link' => '当任务关联到指定任务时改变颜色',
