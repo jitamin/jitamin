@@ -13,7 +13,7 @@
             <?php if (isset($custom_filters_list) && ! empty($custom_filters_list)): ?>
             <div class="input-addon-item">
                 <div class="dropdown">
-                    <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('Custom filters') ?>"><i class="fa fa-hand-pointer-o"></i> <i class="fa fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('Custom filters') ?>"><i class="fa fa-anchor"></i> <i class="fa fa-caret-down"></i></a>
                     <ul>
                         <?php foreach ($custom_filters_list as $filter): ?>
                             <li><a href="#" class="filter-helper" data-<?php if ($filter['append']): ?><?= 'append-' ?><?php endif ?>filter='<?= $this->text->e($filter['filter']) ?>'><?= $this->text->e($filter['name']) ?></a></li>
@@ -26,7 +26,7 @@
             <?php if (isset($users_list)): ?>
             <div class="input-addon-item">
                 <div class="dropdown">
-                    <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('User filters') ?>"><i class="fa fa-users"></i> <i class="fa fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('User filters') ?>"><i class="fa fa-user"></i> <i class="fa fa-caret-down"></i></a>
                     <ul>
                         <li><a href="#" class="filter-helper" data-unique-filter="assignee:nobody"><?= t('Not assigned') ?></a></li>
                         <?php foreach ($users_list as $user): ?>
