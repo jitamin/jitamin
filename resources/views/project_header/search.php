@@ -5,7 +5,7 @@
         <?= $this->form->hidden('project_id', $filters) ?>
 
         <div class="input-addon">
-            <?= $this->form->text('search', $filters, array(), array('placeholder="'.t('Filter').'"'), 'input-addon-field') ?>
+            <?= $this->form->text('q', $filters, array(), array('placeholder="'.t('Filter').'"'), 'input-addon-field') ?>
             <div class="input-addon-item">
                 <?= $this->render('app/filters_helper', array('reset' => 'status:open', 'project' => $project)) ?>
             </div>

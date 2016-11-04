@@ -21,19 +21,19 @@ class SearchController extends BaseController
     public function index()
     {
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
-        $search = urldecode($this->request->getStringParam('search'));
+        $query = urldecode($this->request->getStringParam('q'));
         $nb_tasks = 0;
 
         $paginator = $this->paginator
-                ->setUrl('SearchController', 'index', array('search' => $search))
+                ->setUrl('SearchController', 'index', array('q' => $query))
                 ->setMax(30)
                 ->setOrder('tasks.id')
                 ->setDirection('DESC');
 
-        if ($search !== '' && ! empty($projects)) {
+        if ($query !== '' && ! empty($projects)) {
             $paginator
                 ->setQuery($this->taskLexer
-                    ->build($search)
+                    ->build($query)
                     ->withFilter(new TaskProjectsFilter(array_keys($projects)))
                     ->getQuery()
                 )
@@ -44,7 +44,7 @@ class SearchController extends BaseController
 
         $this->response->html($this->helper->layout->app('search/index', array(
             'values' => array(
-                'search' => $search,
+                'q' => $query,
                 'controller' => 'SearchController',
                 'action' => 'index',
             ),
@@ -55,13 +55,13 @@ class SearchController extends BaseController
 
     public function activity()
     {
-        $search = urldecode($this->request->getStringParam('search'));
-        $events = $this->helper->projectActivity->searchEvents($search);
+        $query = urldecode($this->request->getStringParam('q'));
+        $events = $this->helper->projectActivity->searchEvents($query);
         $nb_events = count($events);
 
         $this->response->html($this->helper->layout->app('search/activity', array(
             'values' => array(
-                'search' => $search,
+                'q' => $query,
                 'controller' => 'SearchController',
                 'action' => 'activity',
             ),

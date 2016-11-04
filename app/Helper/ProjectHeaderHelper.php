@@ -19,7 +19,7 @@ use Hiject\Core\Base;
 class ProjectHeaderHelper extends Base
 {
     /**
-     * Get current search query
+     * Get current query
      *
      * @access public
      * @param  array  $project
@@ -27,9 +27,9 @@ class ProjectHeaderHelper extends Base
      */
     public function getSearchQuery(array $project)
     {
-        $search = $this->request->getStringParam('search', $this->userSession->getFilters($project['id']));
-        $this->userSession->setFilters($project['id'], $search);
-        return urldecode($search);
+        $query = $this->request->getStringParam('q', $this->userSession->getFilters($project['id']));
+        $this->userSession->setFilters($project['id'], $query);
+        return urldecode($query);
     }
 
     /**
@@ -48,7 +48,7 @@ class ProjectHeaderHelper extends Base
             'controller' => $controller,
             'action' => $action,
             'project_id' => $project['id'],
-            'search' => $this->getSearchQuery($project),
+            'q' => $this->getSearchQuery($project),
         );
 
         return $this->template->render('project_header/header', array(

@@ -63,7 +63,7 @@ class BoardViewController extends BaseController
     public function show()
     {
         $project = $this->getProject();
-        $search = $this->helper->projectHeader->getSearchQuery($project);
+        $query = $this->helper->projectHeader->getSearchQuery($project);
 
         $this->response->html($this->helper->layout->app('board/view_private', array(
             'project' => $project,
@@ -72,7 +72,7 @@ class BoardViewController extends BaseController
             'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
             'board_highlight_period' => $this->configModel->get('board_highlight_period'),
             'swimlanes' => $this->taskLexer
-                ->build($search)
+                ->build($query)
                 ->format(BoardFormatter::getInstance($this->container)->withProjectId($project['id']))
         )));
     }

@@ -14,7 +14,7 @@
             <?= $this->form->hidden('action', $values) ?>
 
             <div class="input-addon">
-                <?= $this->form->text('search', $values, array(), array(empty($values['search']) ? 'autofocus' : '', 'placeholder="'.t('Search').'"'), 'input-addon-field') ?>
+                <?= $this->form->text('q', $values, array(), array(empty($values['q']) ? 'autofocus' : '', 'placeholder="'.t('Search').'"'), 'input-addon-field') ?>
                 <div class="input-addon-item">
                     <?= $this->render('app/filters_helper') ?>
                 </div>
@@ -22,7 +22,7 @@
         </form>
     </div>
 
-    <?php if (empty($values['search'])): ?>
+    <?php if (empty($values['q'])): ?>
         <div class="listing">
             <h3><?= t('Advanced search') ?></h3>
             <p><?= t('Example of query: ') ?><strong>project:"My project" assignee:me due:tomorrow</strong></p>
@@ -37,7 +37,7 @@
             </ul>
             <p><i class="fa fa-external-link fa-fw"></i><?= $this->url->doc(t('View advanced search syntax'), 'search') ?></p>
         </div>
-    <?php elseif (! empty($values['search']) && $paginator->isEmpty()): ?>
+    <?php elseif (! empty($values['q']) && $paginator->isEmpty()): ?>
         <p class="alert"><?= t('Nothing found.') ?></p>
     <?php elseif (! $paginator->isEmpty()): ?>
         <?= $this->render('search/results', array(

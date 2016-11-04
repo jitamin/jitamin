@@ -5,8 +5,8 @@ Hiject.Search = function(app) {
 Hiject.Search.prototype.focus = function() {
 
     // Place cursor at the end when focusing on the search box
-    $(document).on("focus", "#form-search", function() {
-        var input = $("#form-search");
+    $(document).on("focus", "#form-q", function() {
+        var input = $("#form-q");
 
         if (input[0].setSelectionRange) {
             var len = input.val().length * 2;
@@ -22,7 +22,7 @@ Hiject.Search.prototype.listen = function() {
         var filter = $(this).data("filter");
         var appendFilter = $(this).data("append-filter");
         var uniqueFilter = $(this).data("unique-filter");
-        var input = $("#form-search");
+        var input = $("#form-q");
 
         if (uniqueFilter) {
             var attribute = uniqueFilter.substr(0, uniqueFilter.indexOf(':'));
@@ -78,7 +78,7 @@ Hiject.Search.prototype.keyboardShortcuts = function() {
     // Focus to the search field
     Mousetrap.bind("f", function(e) {
         e.preventDefault();
-        var input = document.getElementById("form-search");
+        var input = document.getElementById("form-q");
 
         if (input) {
             input.focus();
@@ -89,7 +89,7 @@ Hiject.Search.prototype.keyboardShortcuts = function() {
     Mousetrap.bind("r", function(e) {
         e.preventDefault();
         var reset = $(".filter-reset").data("filter");
-        var input = $("#form-search");
+        var input = $("#form-q");
 
         input.val(reset);
         $("form.search").submit();
