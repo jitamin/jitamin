@@ -4,7 +4,7 @@
         <?= $this->form->hidden('action', array('action' => 'index')) ?>
 
         <div class="input-addon">
-            <?= $this->form->text('search', array(), array(), array('placeholder="'.t('Search').'"'), 'input-addon-field') ?>
+            <?= $this->form->text('q', array(), array(), array('placeholder="'.t('Search').'"'), 'input-addon-field') ?>
             <div class="input-addon-item">
                 <?= $this->render('app/filters_helper') ?>
             </div>
