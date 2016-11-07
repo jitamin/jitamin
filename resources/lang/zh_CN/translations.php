@@ -159,7 +159,7 @@ return array(
     'Complexity' => '复杂度',
     'Task limit' => '任务限制',
     'Task count' => '任务数',
-    'User' => '用户',
+    'User' => '普通用户',
     'Comments' => '评论',
     'Leave a comment' => '留言',
     'Comment is required' => '必须得有评论',
