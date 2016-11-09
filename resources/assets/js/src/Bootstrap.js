@@ -1,6 +1,6 @@
-var _KB = null;
+var _HJ = null;
 
 jQuery(document).ready(function() {
-    _KB = new Hiject.App();
-    _KB.execute();
+    _HJ = new Hiject.App();
+    _HJ.execute();
 });
