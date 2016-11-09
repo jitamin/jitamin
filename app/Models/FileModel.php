@@ -79,8 +79,7 @@ abstract class FileModel extends Base
                 UserModel::TABLE.'.username',
                 UserModel::TABLE.'.name as user_name'
             )
-            ->join(UserModel::TABLE, 'id', 'user_id')
-            ->asc($this->getTable().'.name');
+            ->join(UserModel::TABLE, 'id', 'user_id');
     }
 
     /**
@@ -104,7 +103,7 @@ abstract class FileModel extends Base
      */
     public function getAll($id)
     {
-        return $this->getQuery()->eq($this->getForeignKey(), $id)->findAll();
+        return $this->getQuery()->desc($this->getTable().'.id')->eq($this->getForeignKey(), $id)->findAll();
     }
 
     /**
@@ -116,7 +115,7 @@ abstract class FileModel extends Base
      */
     public function getAllImages($id)
     {
-        return $this->getQuery()->eq($this->getForeignKey(), $id)->eq('is_image', 1)->findAll();
+        return $this->getQuery()->desc($this->getTable().'.id')->eq($this->getForeignKey(), $id)->eq('is_image', 1)->findAll();
     }
 
     /**
@@ -128,7 +127,7 @@ abstract class FileModel extends Base
      */
     public function getAllDocuments($id)
     {
-        return $this->getQuery()->eq($this->getForeignKey(), $id)->eq('is_image', 0)->findAll();
+        return $this->getQuery()->desc($this->getTable().'.id')->eq($this->getForeignKey(), $id)->eq('is_image', 0)->findAll();
     }
 
     /**
