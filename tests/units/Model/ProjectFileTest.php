@@ -84,27 +84,27 @@ class ProjectFileTest extends Base
         $this->assertEquals(1, $fileModel->create(1, 'B.pdf', '/tmp/foo', 10));
         $this->assertEquals(2, $fileModel->create(1, 'A.png', '/tmp/foo', 10));
         $this->assertEquals(3, $fileModel->create(1, 'D.doc', '/tmp/foo', 10));
-        $this->assertEquals(4, $fileModel->create(1, 'C.JPG', '/tmp/foo', 10));
+        $this->assertEquals(4, $fileModel->create(1, 'C.jpg', '/tmp/foo', 10));
 
         $fileModeliles = $fileModel->getAll(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(4, $fileModeliles);
-        $this->assertEquals('A.png', $fileModeliles[0]['name']);
-        $this->assertEquals('B.pdf', $fileModeliles[1]['name']);
-        $this->assertEquals('C.JPG', $fileModeliles[2]['name']);
-        $this->assertEquals('D.doc', $fileModeliles[3]['name']);
+        $this->assertEquals('C.jpg', $fileModeliles[0]['name']);
+        $this->assertEquals('D.doc', $fileModeliles[1]['name']);
+        $this->assertEquals('A.png', $fileModeliles[2]['name']);
+        $this->assertEquals('B.pdf', $fileModeliles[3]['name']);
 
         $fileModeliles = $fileModel->getAllImages(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(2, $fileModeliles);
-        $this->assertEquals('A.png', $fileModeliles[0]['name']);
-        $this->assertEquals('C.JPG', $fileModeliles[1]['name']);
+        $this->assertEquals('C.jpg', $fileModeliles[0]['name']);
+        $this->assertEquals('A.png', $fileModeliles[1]['name']);
 
         $fileModeliles = $fileModel->getAllDocuments(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(2, $fileModeliles);
-        $this->assertEquals('B.pdf', $fileModeliles[0]['name']);
-        $this->assertEquals('D.doc', $fileModeliles[1]['name']);
+        $this->assertEquals('D.doc', $fileModeliles[0]['name']);
+        $this->assertEquals('B.pdf', $fileModeliles[1]['name']);
     }
 
     public function testGetThumbnailPath()
@@ -171,20 +171,20 @@ class ProjectFileTest extends Base
         $files = $fileModel->getAll(1);
         $this->assertCount(2, $files);
 
-        $this->assertEquals(1, $files[0]['id']);
-        $this->assertEquals('file1.png', $files[0]['name']);
-        $this->assertEquals(1, $files[0]['is_image']);
+        $this->assertEquals(2, $files[0]['id']);
+        $this->assertEquals('file2.doc', $files[0]['name']);
+        $this->assertEquals(0, $files[0]['is_image']);
         $this->assertEquals(1, $files[0]['project_id']);
         $this->assertEquals(0, $files[0]['user_id']);
-        $this->assertEquals(123, $files[0]['size']);
+        $this->assertEquals(456, $files[0]['size']);
         $this->assertEquals(time(), $files[0]['date'], '', 2);
 
-        $this->assertEquals(2, $files[1]['id']);
-        $this->assertEquals('file2.doc', $files[1]['name']);
-        $this->assertEquals(0, $files[1]['is_image']);
+        $this->assertEquals(1, $files[1]['id']);
+        $this->assertEquals('file1.png', $files[1]['name']);
+        $this->assertEquals(1, $files[1]['is_image']);
         $this->assertEquals(1, $files[1]['project_id']);
         $this->assertEquals(0, $files[1]['user_id']);
-        $this->assertEquals(456, $files[1]['size']);
+        $this->assertEquals(123, $files[1]['size']);
         $this->assertEquals(time(), $files[1]['date'], '', 2);
     }
 
