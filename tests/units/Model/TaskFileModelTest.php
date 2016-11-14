@@ -207,7 +207,7 @@ class TaskFileModelTest extends Base
         $this->assertEquals(time(), $files[0]['date'], '', 2);
 
         $this->assertEquals(1, $files[1]['id']);
-        $this->assertEquals('file1.png', $files[0]['name']);
+        $this->assertEquals('file1.png', $files[1]['name']);
         $this->assertEquals(1, $files[1]['is_image']);
         $this->assertEquals(1, $files[1]['task_id']);
         $this->assertEquals(0, $files[1]['user_id']);
