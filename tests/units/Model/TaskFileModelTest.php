@@ -99,22 +99,22 @@ class TaskFileModelTest extends Base
         $fileModeliles = $fileModel->getAll(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(4, $fileModeliles);
-        $this->assertEquals('A.png', $fileModeliles[0]['name']);
-        $this->assertEquals('B.pdf', $fileModeliles[1]['name']);
-        $this->assertEquals('C.JPG', $fileModeliles[2]['name']);
-        $this->assertEquals('D.doc', $fileModeliles[3]['name']);
+        $this->assertEquals('C.JPG', $fileModeliles[0]['name']);
+        $this->assertEquals('D.doc', $fileModeliles[1]['name']);
+        $this->assertEquals('A.png', $fileModeliles[2]['name']);
+        $this->assertEquals('B.pdf', $fileModeliles[3]['name']);
 
         $fileModeliles = $fileModel->getAllImages(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(2, $fileModeliles);
-        $this->assertEquals('A.png', $fileModeliles[0]['name']);
-        $this->assertEquals('C.JPG', $fileModeliles[1]['name']);
+        $this->assertEquals('C.JPG', $fileModeliles[0]['name']);
+        $this->assertEquals('A.png', $fileModeliles[1]['name']);
 
         $fileModeliles = $fileModel->getAllDocuments(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(2, $fileModeliles);
-        $this->assertEquals('B.pdf', $fileModeliles[0]['name']);
-        $this->assertEquals('D.doc', $fileModeliles[1]['name']);
+        $this->assertEquals('D.doc', $fileModeliles[0]['name']);
+        $this->assertEquals('B.pdf', $fileModeliles[1]['name']);
     }
 
     public function testIsImage()
