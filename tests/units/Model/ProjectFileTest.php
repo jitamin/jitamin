@@ -91,7 +91,7 @@ class ProjectFileTest extends Base
         $this->assertCount(4, $fileModeliles);
         $this->assertEquals('C.jpg', $fileModeliles[0]['name']);
         $this->assertEquals('D.doc', $fileModeliles[1]['name']);
-        $this->assertEquals('A.PNG', $fileModeliles[2]['name']);
+        $this->assertEquals('A.png', $fileModeliles[2]['name']);
         $this->assertEquals('B.pdf', $fileModeliles[3]['name']);
 
         $fileModeliles = $fileModel->getAllImages(1);
