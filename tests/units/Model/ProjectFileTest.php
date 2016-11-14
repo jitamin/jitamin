@@ -84,7 +84,7 @@ class ProjectFileTest extends Base
         $this->assertEquals(1, $fileModel->create(1, 'B.pdf', '/tmp/foo', 10));
         $this->assertEquals(2, $fileModel->create(1, 'A.png', '/tmp/foo', 10));
         $this->assertEquals(3, $fileModel->create(1, 'D.doc', '/tmp/foo', 10));
-        $this->assertEquals(4, $fileModel->create(1, 'C.JPG', '/tmp/foo', 10));
+        $this->assertEquals(4, $fileModel->create(1, 'C.jpg', '/tmp/foo', 10));
 
         $fileModeliles = $fileModel->getAll(1);
         $this->assertNotEmpty($fileModeliles);
