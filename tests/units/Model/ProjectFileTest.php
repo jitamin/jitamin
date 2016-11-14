@@ -97,14 +97,14 @@ class ProjectFileTest extends Base
         $fileModeliles = $fileModel->getAllImages(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(2, $fileModeliles);
-        $this->assertEquals('A.png', $fileModeliles[0]['name']);
-        $this->assertEquals('C.JPG', $fileModeliles[1]['name']);
+        $this->assertEquals('C.JPG', $fileModeliles[0]['name']);
+        $this->assertEquals('A.png', $fileModeliles[1]['name']);
 
         $fileModeliles = $fileModel->getAllDocuments(1);
         $this->assertNotEmpty($fileModeliles);
         $this->assertCount(2, $fileModeliles);
-        $this->assertEquals('B.pdf', $fileModeliles[0]['name']);
-        $this->assertEquals('D.doc', $fileModeliles[1]['name']);
+        $this->assertEquals('D.doc', $fileModeliles[0]['name']);
+        $this->assertEquals('B.pdf', $fileModeliles[1]['name']);
     }
 
     public function testGetThumbnailPath()
