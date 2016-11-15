@@ -862,16 +862,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594"
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/polyfill-mbstring/dff51f72b0706335131b00a7f49606168c582594.zip",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594",
+                "url": "https://packagist.phpcomposer.com/files/symfony/polyfill-mbstring/e79d363049d1c2128f133a2667e4f4190904f7f4.zip",
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
                 "shasum": ""
             },
             "require": {
@@ -883,7 +883,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -917,7 +917,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "zendframework/zendxml",
@@ -1075,16 +1075,16 @@
         },
         {
             "name": "friendsofphp/php-cs-fixer",
-            "version": "v1.12.2",
+            "version": "v1.12.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "baa7112bef3b86c65fcfaae9a7a50436e3902b41"
+                "reference": "78a820c16d13f593303511461eefa939502fb2de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/FriendsOfPHP/PHP-CS-Fixer/baa7112bef3b86c65fcfaae9a7a50436e3902b41.zip",
-                "reference": "baa7112bef3b86c65fcfaae9a7a50436e3902b41",
+                "url": "https://packagist.phpcomposer.com/files/FriendsOfPHP/PHP-CS-Fixer/78a820c16d13f593303511461eefa939502fb2de.zip",
+                "reference": "78a820c16d13f593303511461eefa939502fb2de",
                 "shasum": ""
             },
             "require": {
@@ -1129,7 +1129,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2016-09-27 07:57:59"
+            "time": "2016-10-30 12:07:10"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
