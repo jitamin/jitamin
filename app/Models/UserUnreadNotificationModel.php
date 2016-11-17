@@ -69,7 +69,7 @@ class UserUnreadNotificationModel extends Base
      */
     public function getAll($user_id)
     {
-        $events = $this->db->table(self::TABLE)->eq('user_id', $user_id)->asc('date_creation')->findAll();
+        $events = $this->db->table(self::TABLE)->eq('user_id', $user_id)->desc('date_creation')->findAll();
 
         foreach ($events as &$event) {
             $this->unserialize($event);
