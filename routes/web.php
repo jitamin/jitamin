@@ -130,9 +130,7 @@ $container['route']->addRoute('feed/user/:token', 'FeedController', 'user');
 $container['route']->addRoute('ical/project/:token', 'ICalendarController', 'project');
 $container['route']->addRoute('ical/user/:token', 'ICalendarController', 'user');
 
-// Users
-$container['route']->addRoute('admin/users', 'UserListController', 'show');
-$container['route']->addRoute('admin/users/create', 'UserCreationController', 'show');
+// Profile
 $container['route']->addRoute('user/profile/:user_id', 'UserViewController', 'profile');
 $container['route']->addRoute('user/show/:user_id', 'UserViewController', 'show');
 $container['route']->addRoute('user/show/:user_id/timesheet', 'UserViewController', 'timesheet');
@@ -149,11 +147,15 @@ $container['route']->addRoute('user/:user_id/authentication', 'UserCredentialCon
 $container['route']->addRoute('user/:user_id/2fa', 'TwoFactorController', 'index');
 $container['route']->addRoute('user/:user_id/avatar', 'AvatarFileController', 'show');
 
-// Groups
+// Users admin
+$container['route']->addRoute('admin/users', 'UserListController', 'show');
+$container['route']->addRoute('admin/users/create', 'UserCreationController', 'show');
+
+// Groups admin
 $container['route']->addRoute('admin/groups', 'GroupListController', 'index');
 $container['route']->addRoute('admin/group/:group_id/members', 'GroupListController', 'users');
 
-// Config
+// Config admin
 $container['route']->addRoute('admin/settings', 'ConfigController', 'index');
 $container['route']->addRoute('admin/settings/application', 'ConfigController', 'application');
 $container['route']->addRoute('admin/settings/email', 'ConfigController', 'email');
@@ -170,7 +172,7 @@ $container['route']->addRoute('admin/settings/links', 'LinkController', 'index')
 $container['route']->addRoute('admin/settings/currencies', 'CurrencyController', 'index');
 $container['route']->addRoute('admin/settings/tags', 'TagController', 'index');
 
-// Plugins
+// Plugins admin
 $container['route']->addRoute('admin/extensions', 'PluginController', 'show');
 $container['route']->addRoute('admin/extensions/directory', 'PluginController', 'directory');
 
