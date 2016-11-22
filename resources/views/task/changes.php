@@ -27,6 +27,9 @@
                 case 'score':
                     echo '<li>'.t('New complexity: %d', $task['score']).'</li>';
                     break;
+                case 'progress':
+                    echo '<li>'.t('New progress: %d', $task['progress']).'%</li>';
+                    break;
                 case 'date_due':
                     if (empty($task['date_due'])) {
                         echo '<li>'.t('The due date have been removed').'</li>';

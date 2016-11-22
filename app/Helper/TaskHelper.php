@@ -224,6 +224,19 @@ class TaskHelper extends Base
         return $this->helper->form->date(t('Due Date'), 'date_due', $values, $errors, $attributes);
     }
 
+    public function selectProgress(array $values, array $errors = array(), array $attributes = array())
+    {
+        $attributes = array_merge(array('tabindex="14"'), $attributes);
+
+        $html = $this->helper->form->label(t('Progress'), 'progress');
+        $html .= $this->helper->form->number('progress', $values, $errors, $attributes);
+
+        $html .= '&nbsp;';
+        $html .= '<small>%</small>';
+
+        return $html;
+    }
+
     public function formatPriority(array $project, array $task)
     {
         $html = '';

@@ -137,6 +137,8 @@ class TaskModel extends Base
             return 100;
         }
 
+        return $task['progress'] ?: 0;
+        /*
         $position = 0;
 
         foreach ($columns as $column_id => $column_title) {
@@ -148,5 +150,6 @@ class TaskModel extends Base
         }
 
         return round(($position * 100) / count($columns), 1);
+        */
     }
 }

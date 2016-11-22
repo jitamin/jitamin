@@ -44,6 +44,7 @@ class TaskFinderModel extends Base
                         TaskModel::TABLE.'.priority',
                         TaskModel::TABLE.'.time_spent',
                         TaskModel::TABLE.'.time_estimated',
+                        TaskModel::TABLE.'.progress',
                         ProjectModel::TABLE.'.name AS project_name',
                         ColumnModel::TABLE.'.title AS column_name',
                         UserModel::TABLE.'.username AS assignee_username',
@@ -80,6 +81,7 @@ class TaskFinderModel extends Base
                         TaskModel::TABLE.'.time_estimated',
                         TaskModel::TABLE.'.is_active',
                         TaskModel::TABLE.'.creator_id',
+                        TaskModel::TABLE.'.progress',
                         ProjectModel::TABLE.'.name AS project_name',
                         ColumnModel::TABLE.'.title AS column_title'
                     )
@@ -139,6 +141,7 @@ class TaskFinderModel extends Base
                 TaskModel::TABLE.'.recurrence_child',
                 TaskModel::TABLE.'.time_estimated',
                 TaskModel::TABLE.'.time_spent',
+                TaskModel::TABLE.'.progress',
                 UserModel::TABLE.'.username AS assignee_username',
                 UserModel::TABLE.'.name AS assignee_name',
                 UserModel::TABLE.'.email AS assignee_email',

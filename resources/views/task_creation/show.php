@@ -39,6 +39,7 @@
             <?= $this->task->selectTimeSpent($values, $errors) ?>
             <?= $this->task->selectStartDate($values, $errors) ?>
             <?= $this->task->selectDueDate($values, $errors) ?>
+            <?= $this->task->selectProgress($values, $errors) ?>
 
             <?= $this->hook->render('template:task:form:third-column', array('values' => $values, 'errors' => $errors)) ?>
         </div>

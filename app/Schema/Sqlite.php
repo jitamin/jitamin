@@ -15,7 +15,12 @@ use Hiject\Core\Security\Token;
 use Hiject\Core\Security\Role;
 use PDO;
 
-const VERSION = 106;
+const VERSION = 107;
+
+function version_107(PDO $pdo)
+{
+    $pdo->exec("ALTER TABLE tasks ADD COLUMN progress INTEGER DEFAULT 0");
+}
 
 function version_106(PDO $pdo)
 {
