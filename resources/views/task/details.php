@@ -18,6 +18,9 @@
                         </span>
                     </li>
                     <li>
+                        <?= t('Progress:') ?></strong> <span><?= $this->text->e($task['progress']) ?>%
+                    </li>
+                    <li>
                         <?= t('Priority:') ?></strong> <span><?= t('P'.$task['priority']) ?>
                     </li>
                     <?php if (! empty($task['reference'])): ?>
