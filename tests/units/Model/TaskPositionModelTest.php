@@ -34,19 +34,14 @@ class TaskPositionModelTest extends Base
 
         $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
         $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(0, $taskModel->getProgress($taskFinderModel->getById(1), $columnModel->getList(1)));
 
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 2, 1));
-        $this->assertEquals(25, $taskModel->getProgress($taskFinderModel->getById(1), $columnModel->getList(1)));
 
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 3, 1));
-        $this->assertEquals(50, $taskModel->getProgress($taskFinderModel->getById(1), $columnModel->getList(1)));
 
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 4, 1));
-        $this->assertEquals(75, $taskModel->getProgress($taskFinderModel->getById(1), $columnModel->getList(1)));
 
         $this->assertTrue($taskStatusModel->close(1));
-        $this->assertEquals(100, $taskModel->getProgress($taskFinderModel->getById(1), $columnModel->getList(1)));
     }
 
     public function testMoveTaskToWrongPosition()
