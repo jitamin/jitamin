@@ -35,6 +35,12 @@
             <?= $this->text->e($task['score']) ?>
         </span>
     <?php endif ?>
+    <?php if ($task['progress']): ?>
+        <span class="task-progress" title="<?= t('Progress') ?>">
+            <i class="fa fa-circle-o-notch"></i>
+            <?= $this->text->e($task['progress']) ?>%
+        </span>
+    <?php endif ?>
 
     <?php if (! empty($task['date_due'])): ?>
         <?php if (date('Y-m-d') == date('Y-m-d', $task['date_due'])): ?>
