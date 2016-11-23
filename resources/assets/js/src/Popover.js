@@ -149,4 +149,6 @@ Hiject.Popover.prototype.afterOpen = function() {
     new Vue({
         el: '#popover-container'
     });
+
+    HJ.render();
 };

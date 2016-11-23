@@ -7,10 +7,10 @@ var strip = require('gulp-strip-comments');
 
 var src = {
     js: [
-        'resources/assets/js/components/*.js',
         'resources/assets/js/src/Namespace.js',
         'resources/assets/js/src/!(Namespace|Bootstrap|BoardDragAndDrop)*.js',
         'resources/assets/js/src/BoardDragAndDrop.js',
+        'resources/assets/js/components/*.js',
         'resources/assets/js/src/Bootstrap.js'
     ]
 };
@@ -22,7 +22,6 @@ var vendor = {
         'vendor/bower_components/chosen/chosen.css',
         'vendor/bower_components/select2/dist/css/select2.min.css',
         'vendor/bower_components/fullcalendar/dist/fullcalendar.min.css',
-        'vendor/bower_components/simplemde/dist/simplemde.min.css',
         'vendor/bower_components/font-awesome/css/font-awesome.min.css',
         'vendor/bower_components/c3/c3.min.css'
     ],
@@ -49,10 +48,10 @@ var vendor = {
         'vendor/bower_components/fullcalendar/dist/lang-all.js',
         'vendor/bower_components/mousetrap/mousetrap.min.js',
         'vendor/bower_components/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js',
-        'vendor/bower_components/simplemde/dist/simplemde.min.js',
         'vendor/bower_components/d3/d3.min.js',
         'vendor/bower_components/c3/c3.min.js',
-        'vendor/bower_components/isMobile/isMobile.min.js'
+        'vendor/bower_components/isMobile/isMobile.min.js',
+        'vendor/bower_components/marked/marked.min.js'
     ]
 };
 

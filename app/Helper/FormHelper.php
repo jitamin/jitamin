@@ -188,6 +188,33 @@ class FormHelper extends Base
     }
 
     /**
+     * Display a markdown editor
+     *
+     * @access public
+     * @param  string  $name     Field name
+     * @param  array   $values   Form values
+     * @param  array   $errors   Form errors
+     * @param  array   $attributes
+     * @return string
+     */
+    public function textEditor($name, $values = array(), array $errors = array(), array $attributes = array())
+    {
+        $params = array(
+            'name' => $name,
+            'text' => isset($values[$name]) ? $this->helper->text->e($values[$name]) : '',
+            'css' => $this->errorClass($errors, $name),
+            'required' => isset($attributes['required']) && $attributes['required'],
+            'tabindex' => isset($attributes['tabindex']) ? $attributes['tabindex'] : '-1',
+            'labelPreview' => t('Preview'),
+            'labelWrite' => t('Write'),
+            'placeholder' => t('Write your text in Markdown'),
+        );
+        $html = '<div class="js-text-editor" data-params=\''.json_encode($params, JSON_HEX_APOS).'\'></div>';
+        $html .= $this->errorList($errors, $name);
+        return $html;
+    }
+
+    /**
      * Display file field
      *
      * @access public
