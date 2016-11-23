@@ -15,9 +15,9 @@
 
     <table class="table-striped table-scrolling table-small">
         <tr>
-            <th class="column-20"><?= t('Project') ?></th>
+            <th class="column-15"><?= t('Project') ?></th>
             <th><?= t('Notification') ?></th>
-            <th class="column-15"><?= t('Author') ?></th>
+            <th class="column-10"><?= t('Author') ?></th>
             <th class="column-15"><?= t('Date') ?></th>
             <th class="column-15"><?= t('Action') ?></th>
         </tr>
