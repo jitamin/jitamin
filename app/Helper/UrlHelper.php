@@ -102,6 +102,10 @@ class UrlHelper extends Base
      */
     public function href($controller, $action, array $params = array(), $csrf = false, $anchor = '', $absolute = false)
     {
+        if (isset($params['q']) && $params['q'] === 'status:open') {
+            unset($params['q']);
+        }
+
         return $this->build('&amp;', $controller, $action, $params, $csrf, $anchor, $absolute);
     }
 
