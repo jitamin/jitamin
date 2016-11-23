@@ -17,6 +17,7 @@
         <tr>
             <th class="column-20"><?= t('Project') ?></th>
             <th><?= t('Notification') ?></th>
+            <th class="column-15"><?= t('Author') ?></th>
             <th class="column-15"><?= t('Date') ?></th>
             <th class="column-15"><?= t('Action') ?></th>
         </tr>
@@ -55,6 +56,11 @@
                 <?php else: ?>
                     <?= $this->url->link($notification['title'], 'WebNotificationController', 'redirect', array('notification_id' => $notification['id'], 'user_id' => $user['id'])) ?>
                 <?php endif ?>
+            </td>
+            <td>
+            <?php if (isset($notification['event_data']['task']['project_name'])): ?>
+                <?= $notification['event_data']['task']['creator_name'] ?>
+            <?php endif ?>
             </td>
             <td>
                 <?= $this->dt->datetime($notification['date_creation']) ?>
