@@ -15,7 +15,8 @@
 
     <table class="table-striped table-scrolling table-small">
         <tr>
-            <th class="column-15"><?= t('Project') ?></th>
+            <th class="column-5">ID</th>
+            <th class="column-10"><?= t('Project') ?></th>
             <th><?= t('Notification') ?></th>
             <th class="column-10"><?= t('Author') ?></th>
             <th class="column-15"><?= t('Date') ?></th>
@@ -23,11 +24,12 @@
         </tr>
         <?php foreach ($notifications as $notification): ?>
         <tr>
+            <td><?= $notification['id'] ?></td>
             <td>
                 <?php if (isset($notification['event_data']['task']['project_name'])): ?>
                     <?= $this->url->link(
                             $this->text->e($notification['event_data']['task']['project_name']),
-                            'BoardViewController',
+                            'ProjectViewController',
                             'show',
                             array('project_id' => $notification['event_data']['task']['project_id'])
                         )
@@ -58,8 +60,8 @@
                 <?php endif ?>
             </td>
             <td>
-            <?php if (isset($notification['event_data']['task']['project_name'])): ?>
-                <?= $notification['event_data']['task']['creator_name'] ?>
+            <?php if (isset($notification['event_data']['task']['creator_username'])): ?>
+                <?= $notification['event_data']['task']['creator_username'] ?>
             <?php endif ?>
             </td>
             <td>
