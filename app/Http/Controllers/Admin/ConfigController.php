@@ -30,7 +30,7 @@ class ConfigController extends BaseController
             'date_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
             'datetime_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateTimeFormats()),
             'time_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
-            'title' => t('Settings').' &gt; '.t('Application settings'),
+            'title' => t('Settings').' &raquo; '.t('Application settings'),
         )));
     }
 
@@ -50,7 +50,7 @@ class ConfigController extends BaseController
         $this->response->html($this->helper->layout->config('config/email', array(
             'values' => $values,
             'mail_transports' => $this->emailClient->getAvailableTransports(),
-            'title' => t('Settings').' &gt; '.t('Email settings'),
+            'title' => t('Settings').' &raquo; '.t('Email settings'),
         )));
     }
 
@@ -64,7 +64,7 @@ class ConfigController extends BaseController
         $this->response->html($this->helper->layout->config('config/project', array(
             'colors' => $this->colorModel->getList(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
-            'title' => t('Settings').' &gt; '.t('Project settings'),
+            'title' => t('Settings').' &raquo; '.t('Project settings'),
         )));
     }
 
@@ -76,7 +76,7 @@ class ConfigController extends BaseController
     public function board()
     {
         $this->response->html($this->helper->layout->config('config/board', array(
-            'title' => t('Settings').' &gt; '.t('Board settings'),
+            'title' => t('Settings').' &raquo; '.t('Board settings'),
         )));
     }
 
@@ -88,7 +88,7 @@ class ConfigController extends BaseController
     public function calendar()
     {
         $this->response->html($this->helper->layout->config('config/calendar', array(
-            'title' => t('Settings').' &gt; '.t('Calendar settings'),
+            'title' => t('Settings').' &raquo; '.t('Calendar settings'),
         )));
     }
 
@@ -100,7 +100,7 @@ class ConfigController extends BaseController
     public function integrations()
     {
         $this->response->html($this->helper->layout->config('config/integrations', array(
-            'title' => t('Settings').' &gt; '.t('Integrations'),
+            'title' => t('Settings').' &raquo; '.t('Integrations'),
         )));
     }
 
@@ -112,7 +112,7 @@ class ConfigController extends BaseController
     public function webhook()
     {
         $this->response->html($this->helper->layout->config('config/webhook', array(
-            'title' => t('Settings').' &gt; '.t('Webhook settings'),
+            'title' => t('Settings').' &raquo; '.t('Webhook settings'),
         )));
     }
 
@@ -124,7 +124,7 @@ class ConfigController extends BaseController
     public function api()
     {
         $this->response->html($this->helper->layout->config('config/api', array(
-            'title' => t('Settings').' &gt; '.t('API'),
+            'title' => t('Settings').' &raquo; '.t('API'),
         )));
     }
 
@@ -139,7 +139,7 @@ class ConfigController extends BaseController
             'db_size' => $this->configModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title' => t('Settings').' &gt; '.t('About'),
+            'title' => t('Settings').' &raquo; '.t('About'),
         )));
     }
 
@@ -154,7 +154,7 @@ class ConfigController extends BaseController
             'db_size' => $this->configModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title' => t('Settings').' &gt; '.t('About'),
+            'title' => t('Settings').' &raquo; '.t('About'),
         )));
     }
 

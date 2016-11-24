@@ -22,7 +22,7 @@ class TagController extends BaseController
     {
         $this->response->html($this->helper->layout->config('tag/index', array(
             'tags' => $this->tagModel->getAllByProject(0),
-            'title' => t('Settings').' &gt; '.t('Global tags management'),
+            'title' => t('Settings').' &raquo; '.t('Global tags management'),
         )));
     }
 

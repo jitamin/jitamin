@@ -31,7 +31,7 @@ class CurrencyController extends BaseController
             'errors' => $errors,
             'rates' => $this->currencyModel->getAll(),
             'currencies' => $this->currencyModel->getCurrencies(),
-            'title' => t('Settings').' &gt; '.t('Currency rates'),
+            'title' => t('Settings').' &raquo; '.t('Currency rates'),
         )));
     }
 
