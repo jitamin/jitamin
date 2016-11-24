@@ -184,6 +184,7 @@ class CategoryModel extends Base
     {
         $results = array();
         $categories = explode(',', $this->configModel->get('project_categories'));
+        $position = 1;
 
         foreach ($categories as $category) {
             $category = trim($category);
@@ -192,7 +193,10 @@ class CategoryModel extends Base
                 $results[] = $this->db->table(self::TABLE)->insert(array(
                     'project_id' => $project_id,
                     'name' => $category,
+                    'position' => $position,
                 ));
+
+                $position++;
             }
         }
 
