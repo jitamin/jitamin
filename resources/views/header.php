@@ -14,13 +14,6 @@
 
         <div class="collapse navbar-collapse" id="nb-collapse">
 
-            <ul class="nav navbar-nav">
-                <li <?= $this->app->checkMenuSelection('DashboardController', 'show') ?>>
-                    <?= $this->url->link(t('My'), 'DashboardController', 'show') ?>
-                </li>
-                <li <?= $this->app->checkMenuSelection('ProjectListController', 'show') ?>><?= $this->url->link(t('Project management'), 'ProjectListController', 'show') ?></li>
-            </ul>
-
             <ul class="nav navbar-nav navbar-right">
                 <li <?= $this->app->checkMenuSelection('SearchController', 'index') ?>><?= $this->url->link('<i class="fa fa-search"></i> '.t('Search'), 'SearchController', 'index') ?></li>
                 <?= $_top_right_corner ?>
