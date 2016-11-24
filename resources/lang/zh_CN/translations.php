@@ -852,7 +852,7 @@ return array(
     'Task #%d is overdue' => '任务#%d已超期',
     'No new notifications.' => '没有新通知',
     'Mark all as read' => '标记所有为已读',
-    'Mark as read' => '标记为已读',
+    'Mark as read' => '标为已读',
     'Total number of tasks in this column across all swimlanes' => '此任务栏下的任务数（跨里程碑）',
     'Collapse swimlane' => '收起里程碑',
     'Expand swimlane' => '展开里程碑',

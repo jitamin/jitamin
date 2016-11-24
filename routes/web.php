@@ -146,6 +146,10 @@ $container['route']->addRoute('user/:user_id/authentication', 'UserCredentialCon
 
 $container['route']->addRoute('user/:user_id/2fa', 'TwoFactorController', 'index');
 $container['route']->addRoute('user/:user_id/avatar', 'AvatarFileController', 'show');
+$container['route']->addRoute('user/:user_id/avatar/:size/image', 'AvatarFileController', 'image');
+
+$container['route']->addRoute('user/ajax/status', 'UserAjaxController', 'status');
+
 
 // Users admin
 $container['route']->addRoute('admin/users', 'UserListController', 'show');
