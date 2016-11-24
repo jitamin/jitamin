@@ -184,6 +184,7 @@ class CategoryModel extends Base
     {
         $results = array();
         $categories = explode(',', $this->configModel->get('project_categories'));
+        $position = 1;
 
         foreach ($categories as $category) {
             $category = trim($category);
@@ -192,7 +193,10 @@ class CategoryModel extends Base
                 $results[] = $this->db->table(self::TABLE)->insert(array(
                     'project_id' => $project_id,
                     'name' => $category,
+                    'position' => $position,
                 ));
+
+                $position++;
             }
         }
 
@@ -208,7 +212,7 @@ class CategoryModel extends Base
      */
     public function create(array $values)
     {
-        $values['position'] = $this->getLastCategoryPosition($values['project_id']) + 1;
+        $values['position'] = isset($values['position']) ? $values['position'] : $this->getLastCategoryPosition($values['project_id']) + 1;
 
         return $this->db->table(self::TABLE)->persist($values);
     }
@@ -260,7 +264,7 @@ class CategoryModel extends Base
     {
         $categories = $this->db
             ->table(self::TABLE)
-            ->columns('name', 'description')
+            ->columns('name', 'description', 'position')
             ->eq('project_id', $src_project_id)
             ->asc('position')
             ->findAll();

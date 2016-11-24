@@ -218,9 +218,9 @@ class ProjectDuplicationModelTest extends Base
 
         $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
 
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1)));
-        $this->assertEquals(2, $categoryModel->create(array('name' => 'C2', 'project_id' => 1)));
-        $this->assertEquals(3, $categoryModel->create(array('name' => 'C3', 'project_id' => 1)));
+        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1, 'position' => 1)));
+        $this->assertEquals(2, $categoryModel->create(array('name' => 'C2', 'project_id' => 1, 'position' => 2)));
+        $this->assertEquals(3, $categoryModel->create(array('name' => 'C3', 'project_id' => 1, 'position' => 3)));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
