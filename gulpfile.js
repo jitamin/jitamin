@@ -25,7 +25,7 @@ var vendor = {
         'vendor/bower_components/font-awesome/css/font-awesome.min.css',
         'vendor/bower_components/c3/c3.min.css'
     ],
-    js: [
+    bootstrap: [
         'vendor/bower_components/jquery/dist/jquery.min.js',
         'vendor/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         'vendor/bower_components/jquery-ui/jquery-ui.min.js',
@@ -41,10 +41,14 @@ var vendor = {
         'vendor/bower_components/jqueryui-timepicker-addon/dist/jquery-ui-timepicker-addon.min.js',
         'vendor/bower_components/jqueryui-timepicker-addon/dist/i18n/jquery-ui-timepicker-addon-i18n.min.js',
         'vendor/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js',
-        'vendor/bower_components/chosen/chosen.jquery.js',
-        'vendor/bower_components/select2/dist/js/select2.min.js',
+    ],
+    base: [
         'vendor/bower_components/moment/min/moment-with-locales.min.js',
         'vendor/bower_components/fullcalendar/dist/fullcalendar.min.js',
+    ],
+    extra: [
+        'vendor/bower_components/chosen/chosen.jquery.js',
+        'vendor/bower_components/select2/dist/js/select2.min.js',
         'vendor/bower_components/fullcalendar/dist/lang-all.js',
         'vendor/bower_components/mousetrap/mousetrap.min.js',
         'vendor/bower_components/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js',
@@ -67,15 +71,26 @@ gulp.task('bower', function() {
 });
 
 gulp.task('vendor', function() {
+
+    gulp.src(vendor.bootstrap)
+        .pipe(concat('bootstrap.min.js'))
+        .pipe(gulp.dest(dist.js))
+    ;
+
     gulp.src('node_modules/vue/dist/vue.min.js')
         .pipe(strip({trim: true}))
         .pipe(gulp.dest('node_modules/vue/dist/'))
     ;
 
-    vendor.js.push('node_modules/vue/dist/vue.min.js');
+    vendor.base.push('node_modules/vue/dist/vue.min.js');
 
-    gulp.src(vendor.js)
-        .pipe(concat('vendor.min.js'))
+    gulp.src(vendor.base)
+        .pipe(concat('base.min.js'))
+        .pipe(gulp.dest(dist.js))
+    ;
+
+    gulp.src(vendor.extra)
+        .pipe(concat('extra.min.js'))
         .pipe(gulp.dest(dist.js))
     ;
 

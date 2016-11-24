@@ -18,7 +18,9 @@
         <?= $this->asset->customCss() ?>
 
         <?php if (! isset($not_editable)): ?>
-            <?= $this->asset->js('assets/js/vendor.min.js') ?>
+             <?= $this->asset->js('assets/js/bootrap.min.js') ?>
+            <?= $this->asset->js('assets/js/base.min.js') ?>
+            <?= $this->asset->js('assets/js/extra.min.js') ?>
             <?= $this->asset->js('assets/js/app.min.js') ?>
         <?php endif ?>
 
