@@ -53,13 +53,14 @@
         <?= $content_for_layout ?>
     <?php else: ?>
         <?= $this->hook->render('template:layout:top') ?>
-        <?= $this->render('header', array(
-            'title' => $title,
-            'description' => isset($description) ? $description : '',
-            'board_selector' => isset($board_selector) ? $board_selector : array(),
-            'project' => isset($project) ? $project : array(),
-        )) ?>
+        <?= $this->render('header') ?>
         <section class="page container">
+            <?= $this->render('breadcrumb', array(
+                    'project' => isset($project) ? $project : null,
+                    'task' => isset($task) ? $task : null,
+                    'description' => isset($description) ? $description : null,
+                    'title' => $title,
+            )) ?>
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>

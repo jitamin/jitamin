@@ -1,9 +1,4 @@
-<?php $_title = $this->render('header/title', array(
-    'project' => isset($project) ? $project : null,
-    'task' => isset($task) ? $task : null,
-    'description' => isset($description) ? $description : null,
-    'title' => $title,
-)) ?>
+<?php $_title = $this->render('header/title') ?>
 
 <?php $_top_right_corner = implode('', array(
         $this->render('header/admin_dropdown'),
