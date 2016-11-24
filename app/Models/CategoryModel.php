@@ -212,7 +212,7 @@ class CategoryModel extends Base
      */
     public function create(array $values)
     {
-        $values['position'] = $this->getLastCategoryPosition($values['project_id']) + 1;
+        $values['position'] = isset($values['position']) ? $values['position'] : $this->getLastCategoryPosition($values['project_id']) + 1;
 
         return $this->db->table(self::TABLE)->persist($values);
     }
