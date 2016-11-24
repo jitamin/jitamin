@@ -2,14 +2,21 @@
 <div class="page-header">
     <h2><?= t('Categories') ?></h2>
 </div>
-<table class="table-striped">
+<table  class="categories-table table-striped"
+        data-save-position-url="<?= $this->url->href('CategoryController', 'move', array('project_id' => $project['id'])) ?>">
+    <thead>
     <tr>
         <th><?= t('Category Name') ?></th>
         <th class="column-8"><?= t('Actions') ?></th>
     </tr>
+    </thead>
+    <tbody>
     <?php foreach ($categories as $category_id => $category_name): ?>
-    <tr>
-        <td><?= $this->text->e($category_name) ?></td>
+    <tr data-category-id="<?= $category_id ?>">
+        <td>
+            <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change category position') ?>"></i>
+            <?= $this->text->e($category_name) ?>
+        </td>
         <td>
             <div class="dropdown">
             <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog fa-fw"></i><i class="fa fa-caret-down"></i></a>
@@ -25,6 +32,7 @@
         </td>
     </tr>
     <?php endforeach ?>
+    </tbody>
 </table>
 <?php endif ?>
 

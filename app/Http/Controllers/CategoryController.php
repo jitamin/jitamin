@@ -127,6 +127,24 @@ class CategoryController extends BaseController
     }
 
     /**
+     * Move category position
+     *
+     * @access public
+     */
+    public function move()
+    {
+        $project = $this->getProject();
+        $values = $this->request->getJson();
+
+        if (! empty($values) && isset($values['category_id']) && isset($values['position'])) {
+            $result = $this->categoryModel->changePosition($project['id'], $values['category_id'], $values['position']);
+            $this->response->json(array('result' => $result));
+        } else {
+            throw new AccessForbiddenException();
+        }
+    }
+
+    /**
      * Confirmation dialog before removing a category
      *
      * @access public

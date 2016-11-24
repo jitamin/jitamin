@@ -74,6 +74,46 @@ class CategoryModel extends Base
     }
 
     /**
+     * Get the first category id for a given project
+     *
+     * @access public
+     * @param  integer  $project_id   Project id
+     * @return integer
+     */
+    public function getFirstCategoryId($project_id)
+    {
+        return $this->db->table(self::TABLE)->eq('project_id', $project_id)->asc('position')->findOneColumn('id');
+    }
+
+    /**
+     * Get the last category id for a given project
+     *
+     * @access public
+     * @param  integer  $project_id   Project id
+     * @return integer
+     */
+    public function getLastCategoryId($project_id)
+    {
+        return $this->db->table(self::TABLE)->eq('project_id', $project_id)->desc('position')->findOneColumn('id');
+    }
+
+    /**
+     * Get the position of the last category for a given project
+     *
+     * @access public
+     * @param  integer  $project_id   Project id
+     * @return integer
+     */
+    public function getLastCategoryPosition($project_id)
+    {
+        return (int) $this->db
+                        ->table(self::TABLE)
+                        ->eq('project_id', $project_id)
+                        ->desc('position')
+                        ->findOneColumn('position');
+    }
+
+    /**
      * Get a category id by the category name and project id
      *
      * @access public
@@ -102,7 +142,7 @@ class CategoryModel extends Base
     {
         $listing = $this->db->hashtable(self::TABLE)
             ->eq('project_id', $project_id)
-            ->asc('name')
+            ->asc('position')
             ->getAll('id', 'name');
 
         $prepend = array();
@@ -129,7 +169,7 @@ class CategoryModel extends Base
     {
         return $this->db->table(self::TABLE)
             ->eq('project_id', $project_id)
-            ->asc('name')
+            ->asc('position')
             ->findAll();
     }
 
@@ -168,6 +208,8 @@ class CategoryModel extends Base
      */
     public function create(array $values)
     {
+        $values['position'] = $this->getLastCategoryPosition($values['project_id']) + 1;
+
         return $this->db->table(self::TABLE)->persist($values);
     }
 
@@ -220,7 +262,7 @@ class CategoryModel extends Base
             ->table(self::TABLE)
             ->columns('name', 'description')
             ->eq('project_id', $src_project_id)
-            ->asc('name')
+            ->asc('position')
             ->findAll();
 
         foreach ($categories as $category) {
@@ -232,5 +274,38 @@ class CategoryModel extends Base
         }
 
         return true;
+    }
+
+    /**
+     * Change category position
+     *
+     * @access public
+     * @param  integer  $project_id
+     * @param  integer  $category_id
+     * @param  integer  $position
+     * @return boolean
+     */
+    public function changePosition($project_id, $category_id, $position)
+    {
+        if ($position < 1 || $position > $this->db->table(self::TABLE)->eq('project_id', $project_id)->count()) {
+            return false;
+        }
+
+        $category_ids = $this->db->table(self::TABLE)->eq('project_id', $project_id)->neq('id', $category_id)->asc('position')->findAllByColumn('id');
+        $offset = 1;
+        $results = array();
+
+        foreach ($category_ids as $current_category_id) {
+            if ($offset == $position) {
+                $offset++;
+            }
+
+            $results[] = $this->db->table(self::TABLE)->eq('id', $current_category_id)->update(array('position' => $offset));
+            $offset++;
+        }
+
+        $results[] = $this->db->table(self::TABLE)->eq('id', $category_id)->update(array('position' => $position));
+
+        return !in_array(false, $results, true);
     }
 }

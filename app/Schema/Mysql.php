@@ -15,7 +15,12 @@ use PDO;
 use Hiject\Core\Security\Token;
 use Hiject\Core\Security\Role;
 
-const VERSION = 116;
+const VERSION = 117;
+
+function version_117(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE project_has_categories ADD COLUMN position INT DEFAULT 0');
+}
 
 function version_116(PDO $pdo)
 {
