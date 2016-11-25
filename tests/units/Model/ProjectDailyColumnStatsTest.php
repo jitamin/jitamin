@@ -46,7 +46,7 @@ class ProjectDailyColumnStatsTest extends Base
                 'column_id' => 1,
                 'total' => 1,
                 'score' => 0,
-            ),
+            ],
         ];
 
         $this->assertEquals($expected, $stats);
