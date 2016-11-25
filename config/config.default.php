@@ -12,29 +12,32 @@
 /* Rename this file to config.php if you want to change the values */
 /*******************************************************************/
 
-// Data folder (must be writeable by the web server user)
-define('DATA_DIR', '../storage');
-
 // Enable/Disable debug
 define('DEBUG', false);
 
-// Available log drivers: syslog, stderr, stdout or file
-define('LOG_DRIVER', '');
+// Hiject folder
+define('HIJECT_DIR', __DIR__ . DIRECTORY_SEPARATOR . '..');
+
+// Data folder (must be writeable by the web server user)
+define('DATA_DIR', HIJECT_DIR . DIRECTORY_SEPARATOR . 'storage');
 
 // Log filename if the log driver is "file"
 define('LOG_FILE', DATA_DIR . DIRECTORY_SEPARATOR . 'debug.log');
-
-// Plugins directory
-define('PLUGINS_DIR', '../plugins');
-
-// Available cache drivers are "file" and "memory"
-define('CACHE_DRIVER', 'memory');
 
 // Cache folder to use if cache driver is "file" (must be writeable by the web server user)
 define('CACHE_DIR', DATA_DIR . DIRECTORY_SEPARATOR . 'cache');
 
 // Folder for uploaded files (must be writeable by the web server user)
 define('FILES_DIR', DATA_DIR . DIRECTORY_SEPARATOR . 'files');
+
+// Plugins directory
+define('PLUGINS_DIR', HIJECT_DIR . DIRECTORY_SEPARATOR . 'plugins');
+
+// Available log drivers: syslog, stderr, stdout or file
+define('LOG_DRIVER', '');
+
+// Available cache drivers are "file" and "memory"
+define('CACHE_DRIVER', 'memory');
 
 // E-mail address for the "From" header (notifications)
 define('MAIL_FROM', 'replace-me@hiject.local');
