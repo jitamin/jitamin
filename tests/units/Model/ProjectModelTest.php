@@ -313,7 +313,7 @@ class ProjectModelTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->assertEquals(2, $userModel->create(['username' => 'user1', 'name' => 'Me']));
-        $this->assertEquals(1, $projectModel->create(['name' => 'My project 1'), 2]);
+        $this->assertEquals(1, $projectModel->create(['name' => 'My project 1'], 2));
         $this->assertEquals(2, $projectModel->create(['name' => 'My project 2']));
 
         $project = $projectModel->getByIdWithOwner(1);
