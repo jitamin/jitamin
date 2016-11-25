@@ -523,7 +523,7 @@ class ProjectDuplicationModelTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'column_id' => 1, 'tags' => ['A']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'column_id' => 1, 'tags' => ['A']]));
         $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1, 'column_id' => 2, 'tags' => ['A', 'B']]));
         $this->assertEquals(3, $taskCreationModel->create(['title' => 'T3', 'project_id' => 1, 'column_id' => 3, 'tags' => ['C']]));
 
