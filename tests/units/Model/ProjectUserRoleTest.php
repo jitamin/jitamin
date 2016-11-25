@@ -119,7 +119,7 @@ class ProjectUserRoleTest extends Base
         $this->assertEquals(2, $userModel->create(['username' => 'user1', 'name' => 'User1']));
         $this->assertEquals(3, $userModel->create(['username' => 'user2', 'name' => 'User2']));
 
-        $this->assertEquals(1, $projectModel->create(['name' => 'Test'), 2, true]);
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test'], 2, true));
 
         $this->assertEquals(Role::PROJECT_MANAGER, $userRoleModel->getUserRole(1, 2));
         $this->assertEquals(null, $userRoleModel->getUserRole(1, 3));
