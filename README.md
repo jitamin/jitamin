@@ -47,7 +47,7 @@ $ composer install -o --no-dev
 三. 设置配置文件
 
 ```shell
-$ cp config/config{.default,}.php // 根据实际情况修改config.php相关配置，请注意shu
+$ cp config/config{.default,}.php // 根据实际情况修改config.php相关配置。
 ```
 
 三. 确保storage目录可写。
