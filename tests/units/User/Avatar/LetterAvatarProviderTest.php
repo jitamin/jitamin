@@ -25,7 +25,7 @@ class LetterAvatarProviderTest extends Base
     public function testIsActive()
     {
         $provider = new LetterAvatarProvider($this->container);
-        $this->assertTrue($provider->isActive([]);
+        $this->assertTrue($provider->isActive([]));
     }
 
     public function testRenderWithFullName()
