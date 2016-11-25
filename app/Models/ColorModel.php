@@ -24,88 +24,88 @@ class ColorModel extends Base
      * @access private
      * @var array
      */
-    private $default_colors = array(
-        'yellow' => array(
+    private $default_colors = [
+        'yellow' => [
             'name' => 'Yellow',
             'background' => 'rgb(245, 247, 196)',
             'border' => 'rgb(223, 227, 45)',
-        ),
-        'blue' => array(
+        ],
+        'blue' => [
             'name' => 'Blue',
             'background' => 'rgb(219, 235, 255)',
             'border' => 'rgb(168, 207, 255)',
-        ),
-        'green' => array(
+        ],
+        'green' => [
             'name' => 'Green',
             'background' => 'rgb(189, 244, 203)',
             'border' => 'rgb(74, 227, 113)',
-        ),
-        'purple' => array(
+        ],
+        'purple' => [
             'name' => 'Purple',
             'background' => 'rgb(223, 176, 255)',
             'border' => 'rgb(205, 133, 254)',
-        ),
-        'red' => array(
+        ],
+        'red' => [
             'name' => 'Red',
             'background' => 'rgb(255, 187, 187)',
             'border' => 'rgb(255, 151, 151)',
-        ),
-        'orange' => array(
+        ],
+        'orange' => [
             'name' => 'Orange',
             'background' => 'rgb(255, 215, 179)',
             'border' => 'rgb(255, 172, 98)',
-        ),
-        'grey' => array(
+        ],
+        'grey' => [
             'name' => 'Grey',
             'background' => 'rgb(238, 238, 238)',
             'border' => 'rgb(204, 204, 204)',
-        ),
-        'brown' => array(
+        ],
+        'brown' => [
             'name' => 'Brown',
             'background' => '#d7ccc8',
             'border' => '#4e342e',
-        ),
-        'deep_orange' => array(
+        ],
+        'deep_orange' => [
             'name' => 'Deep Orange',
             'background' => '#ffab91',
             'border' => '#e64a19',
-        ),
-        'dark_grey' => array(
+        ],
+        'dark_grey' => [
             'name' => 'Dark Grey',
             'background' => '#cfd8dc',
             'border' => '#455a64',
-        ),
-        'pink' => array(
+        ],
+        'pink' => [
             'name' => 'Pink',
             'background' => '#f48fb1',
             'border' => '#d81b60',
-        ),
-        'teal' => array(
+        ],
+        'teal' => [
             'name' => 'Teal',
             'background' => '#80cbc4',
             'border' => '#00695c',
-        ),
-        'cyan' => array(
+        ],
+        'cyan' => [
             'name' => 'Cyan',
             'background' => '#b2ebf2',
             'border' => '#00bcd4',
-        ),
-        'lime' => array(
+        ],
+        'lime' => [
             'name' => 'Lime',
             'background' => '#e6ee9c',
             'border' => '#afb42b',
-        ),
-        'light_green' => array(
+        ],
+        'light_green' => [
             'name' => 'Light Green',
             'background' => '#dcedc8',
             'border' => '#689f38',
-        ),
-        'amber' => array(
+        ],
+        'amber' => [
             'name' => 'Amber',
             'background' => '#ffe082',
             'border' => '#ffa000',
-        ),
-    );
+        ],
+    ];
 
     /**
      * Find a color id from the name or the id
@@ -154,7 +154,7 @@ class ColorModel extends Base
      */
     public function getList($prepend = false)
     {
-        $listing = $prepend ? array('' => t('All colors')) : array();
+        $listing = $prepend ? ['' => t('All colors')] : [];
 
         foreach ($this->default_colors as $color_id => $color) {
             $listing[$color_id] = t($color['name']);

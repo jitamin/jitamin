@@ -27,7 +27,7 @@ class TaskIdExclusionFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('exclude');
+        return ['exclude'];
     }
 
     /**

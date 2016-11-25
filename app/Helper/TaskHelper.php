@@ -24,7 +24,7 @@ class TaskHelper extends Base
      * @access private
      * @var array
      */
-    private $columns = array();
+    private $columns = [];
 
     public function getColors()
     {
@@ -49,18 +49,18 @@ class TaskHelper extends Base
     public function selectTitle(array $values, array $errors)
     {
         $html = $this->helper->form->label(t('Title'), 'title');
-        $html .= $this->helper->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="200"', 'tabindex="1"'), 'form-input-large');
+        $html .= $this->helper->form->text('title', $values, $errors, ['autofocus', 'required', 'maxlength="200"', 'tabindex="1"'], 'form-input-large');
         return $html;
     }
 
     public function selectDescription(array $values, array $errors)
     {
         $html = $this->helper->form->label(t('Description'), 'description');
-        $html .= $this->helper->form->textEditor('description', $values, $errors, array('tabindex' => 2));
+        $html .= $this->helper->form->textEditor('description', $values, $errors, ['tabindex' => 2]);
         return $html;
     }
 
-    public function selectTags(array $project, array $tags = array())
+    public function selectTags(array $project, array $tags = [])
     {
         $options = $this->tagModel->getAssignableList($project['id']);
 
@@ -86,13 +86,13 @@ class TaskHelper extends Base
     {
         $colors = $this->colorModel->getList();
         $html = $this->helper->form->label(t('Color'), 'color_id');
-        $html .= $this->helper->form->select('color_id', $colors, $values, array(), array(), 'color-picker');
+        $html .= $this->helper->form->select('color_id', $colors, $values, [], [], 'color-picker');
         return $html;
     }
 
-    public function selectAssignee(array $users, array $values, array $errors = array(), array $attributes = array())
+    public function selectAssignee(array $users, array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="3"'), $attributes);
+        $attributes = array_merge(['tabindex="3"'], $attributes);
 
         $html = $this->helper->form->label(t('Assignee'), 'owner_id');
         $html .= $this->helper->form->select('owner_id', $users, $values, $errors, $attributes);
@@ -104,9 +104,9 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectCategory(array $categories, array $values, array $errors = array(), array $attributes = array(), $allow_one_item = false)
+    public function selectCategory(array $categories, array $values, array $errors = [], array $attributes = [], $allow_one_item = false)
     {
-        $attributes = array_merge(array('tabindex="4"'), $attributes);
+        $attributes = array_merge(['tabindex="4"'], $attributes);
         $html = '';
 
         if (! (! $allow_one_item && count($categories) === 1 && key($categories) == 0)) {
@@ -117,9 +117,9 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectSwimlane(array $swimlanes, array $values, array $errors = array(), array $attributes = array())
+    public function selectSwimlane(array $swimlanes, array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="5"'), $attributes);
+        $attributes = array_merge(['tabindex="5"'], $attributes);
         $html = '';
 
         if (! (count($swimlanes) === 1 && key($swimlanes) == 0)) {
@@ -130,9 +130,9 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectColumn(array $columns, array $values, array $errors = array(), array $attributes = array())
+    public function selectColumn(array $columns, array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="6"'), $attributes);
+        $attributes = array_merge(['tabindex="6"'], $attributes);
 
         $html = $this->helper->form->label(t('Column'), 'column_id');
         $html .= $this->helper->form->select('column_id', $columns, $values, $errors, $attributes);
@@ -148,18 +148,18 @@ class TaskHelper extends Base
             $range = range($project['priority_end'], $project['priority_start']);
             $options = array_combine($range, $range);
             array_walk($options, create_function('&$val', '$val = t(\'P\'.$val);')); 
-            $values += array('priority' => $project['priority_default']);
+            $values += ['priority' => $project['priority_default']];
 
             $html .= $this->helper->form->label(t('Priority'), 'priority');
-            $html .= $this->helper->form->select('priority', $options, $values, array(), array('tabindex="7"'));
+            $html .= $this->helper->form->select('priority', $options, $values, [], ['tabindex="7"']);
         }
 
         return $html;
     }
 
-    public function selectScore(array $values, array $errors = array(), array $attributes = array())
+    public function selectScore(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="8"'), $attributes);
+        $attributes = array_merge(['tabindex="8"'], $attributes);
 
         $html = $this->helper->form->label(t('Complexity'), 'score');
         $html .= $this->helper->form->number('score', $values, $errors, $attributes);
@@ -167,9 +167,9 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectReference(array $values, array $errors = array(), array $attributes = array())
+    public function selectReference(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="9"'), $attributes);
+        $attributes = array_merge(['tabindex="9"'], $attributes);
 
         $html = $this->helper->form->label(t('Reference'), 'reference');
         $html .= $this->helper->form->text('reference', $values, $errors, $attributes, 'form-input-small');
@@ -177,9 +177,9 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectTimeEstimated(array $values, array $errors = array(), array $attributes = array())
+    public function selectTimeEstimated(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="10"'), $attributes);
+        $attributes = array_merge(['tabindex="10"'], $attributes);
 
         $html = $this->helper->form->label(t('Original estimate'), 'time_estimated');
         $html .= $this->helper->form->numeric('time_estimated', $values, $errors, $attributes);
@@ -188,9 +188,9 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectTimeSpent(array $values, array $errors = array(), array $attributes = array())
+    public function selectTimeSpent(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="11"'), $attributes);
+        $attributes = array_merge(['tabindex="11"'], $attributes);
 
         $html = $this->helper->form->label(t('Time spent'), 'time_spent');
         $html .= $this->helper->form->numeric('time_spent', $values, $errors, $attributes);
@@ -199,21 +199,21 @@ class TaskHelper extends Base
         return $html;
     }
 
-    public function selectStartDate(array $values, array $errors = array(), array $attributes = array())
+    public function selectStartDate(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="12"'), $attributes);
+        $attributes = array_merge(['tabindex="12"'], $attributes);
         return $this->helper->form->datetime(t('Start Date'), 'date_started', $values, $errors, $attributes);
     }
 
-    public function selectDueDate(array $values, array $errors = array(), array $attributes = array())
+    public function selectDueDate(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="13"'), $attributes);
+        $attributes = array_merge(['tabindex="13"'], $attributes);
         return $this->helper->form->date(t('Due Date'), 'date_due', $values, $errors, $attributes);
     }
 
-    public function selectProgress(array $values, array $errors = array(), array $attributes = array())
+    public function selectProgress(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="14"'), $attributes);
+        $attributes = array_merge(['tabindex="14"'], $attributes);
 
         $html = $this->helper->form->label(t('Progress'), 'progress');
         $html .= $this->helper->form->number('progress', $values, $errors, $attributes);

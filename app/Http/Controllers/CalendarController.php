@@ -30,12 +30,12 @@ class CalendarController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->app('calendar/show', array(
+        $this->response->html($this->helper->layout->app('calendar/show', [
             'project' => $project,
             'title' => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
             'check_interval' => $this->configModel->get('board_private_refresh_interval'),
-        )));
+        ]));
     }
 
     /**
@@ -54,11 +54,11 @@ class CalendarController extends BaseController
         $events = $this->helper->calendar->getTaskDateDueEvents(clone($queryBuilder), $start, $end);
         $events = array_merge($events, $this->helper->calendar->getTaskEvents(clone($queryBuilder), $start, $end));
 
-        $events = $this->hook->merge('controller:calendar:project:events', $events, array(
+        $events = $this->hook->merge('controller:calendar:project:events', $events, [
             'project_id' => $project_id,
             'start' => $start,
             'end' => $end,
-        ));
+        ]);
 
         $this->response->json($events);
     }
@@ -84,11 +84,11 @@ class CalendarController extends BaseController
             $events = array_merge($events, $this->helper->calendar->getSubtaskTimeTrackingEvents($user_id, $start, $end));
         }
 
-        $events = $this->hook->merge('controller:calendar:user:events', $events, array(
+        $events = $this->hook->merge('controller:calendar:user:events', $events, [
             'user_id' => $user_id,
             'start' => $start,
             'end' => $end,
-        ));
+        ]);
 
         $this->response->json($events);
     }
@@ -103,10 +103,10 @@ class CalendarController extends BaseController
         if ($this->request->isAjax() && $this->request->isPost()) {
             $values = $this->request->getJson();
 
-            $this->taskModificationModel->update(array(
+            $this->taskModificationModel->update([
                 'id' => $values['task_id'],
                 'date_due' => substr($values['date_due'], 0, 10),
-            ));
+            ]);
         }
     }
 }

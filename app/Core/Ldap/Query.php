@@ -30,7 +30,7 @@ class Query
      * @access protected
      * @var array
      */
-    protected $entries = array();
+    protected $entries = [];
 
     /**
      * Constructor

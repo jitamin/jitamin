@@ -107,12 +107,12 @@ class ColumnMoveRestrictionModel extends Base
     {
         return $this->db
             ->table(self::TABLE)
-            ->persist(array(
+            ->persist([
                 'project_id' => $project_id,
                 'role_id' => $role_id,
                 'src_column_id' => $src_column_id,
                 'dst_column_id' => $dst_column_id,
-            ));
+            ]);
     }
 
     /**

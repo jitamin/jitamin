@@ -37,9 +37,9 @@ class TaskAssignDueDateOnCreation extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_CREATE,
-        );
+        ];
     }
 
     /**
@@ -50,9 +50,9 @@ class TaskAssignDueDateOnCreation extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'duration' => t('Duration in days')
-        );
+        ];
     }
 
     /**
@@ -63,12 +63,12 @@ class TaskAssignDueDateOnCreation extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -80,10 +80,10 @@ class TaskAssignDueDateOnCreation extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'date_due' => strtotime('+'.$this->getParam('duration').'days'),
-        );
+        ];
 
         return $this->taskModificationModel->update($values, false);
     }

@@ -30,7 +30,7 @@ abstract class BaseProcedure extends Base
     protected function formatTask($task)
     {
         if (! empty($task)) {
-            $task['url'] = $this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), '', true);
+            $task['url'] = $this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], '', true);
             $task['color'] = $this->colorModel->getColorProperties($task['color_id']);
         }
 
@@ -51,11 +51,11 @@ abstract class BaseProcedure extends Base
     protected function formatProject($project)
     {
         if (! empty($project)) {
-            $project['url'] = array(
-                'board' => $this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id']), '', true),
-                'calendar' => $this->helper->url->to('CalendarController', 'show', array('project_id' => $project['id']), '', true),
-                'list' => $this->helper->url->to('TaskListController', 'show', array('project_id' => $project['id']), '', true),
-            );
+            $project['url'] = [
+                'board' => $this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']], '', true),
+                'calendar' => $this->helper->url->to('CalendarController', 'show', ['project_id' => $project['id']], '', true),
+                'list' => $this->helper->url->to('TaskListController', 'show', ['project_id' => $project['id']], '', true),
+            ];
         }
 
         return $project;

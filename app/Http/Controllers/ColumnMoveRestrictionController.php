@@ -25,19 +25,19 @@ class ColumnMoveRestrictionController extends BaseController
      * @param  array $errors
      * @throws AccessForbiddenException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $role_id = $this->request->getIntegerParam('role_id');
         $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
-        $this->response->html($this->template->render('column_move_restriction/create', array(
+        $this->response->html($this->template->render('column_move_restriction/create', [
             'project' => $project,
             'role' => $role,
             'columns' => $this->columnModel->getList($project['id']),
-            'values' => $values + array('project_id' => $project['id'], 'role_id' => $role['role_id']),
+            'values' => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
             'errors' => $errors,
-        )));
+        ]));
     }
 
     /**
@@ -64,7 +64,7 @@ class ColumnMoveRestrictionController extends BaseController
                 $this->flash->failure(t('Unable to create this column restriction.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->create($values, $errors);
         }
@@ -80,10 +80,10 @@ class ColumnMoveRestrictionController extends BaseController
         $project = $this->getProject();
         $restriction_id = $this->request->getIntegerParam('restriction_id');
 
-        $this->response->html($this->helper->layout->project('column_move_restriction/remove', array(
+        $this->response->html($this->helper->layout->project('column_move_restriction/remove', [
             'project' => $project,
             'restriction' => $this->columnMoveRestrictionModel->getById($project['id'], $restriction_id),
-        )));
+        ]));
     }
 
     /**
@@ -103,6 +103,6 @@ class ColumnMoveRestrictionController extends BaseController
             $this->flash->failure(t('Unable to remove this restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 }

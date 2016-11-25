@@ -43,10 +43,10 @@ class TwoFactorController extends UserViewController
         $this->checkCurrentUser($user);
         unset($this->sessionStorage->twoFactorSecret);
 
-        $this->response->html($this->helper->layout->user('twofactor/index', array(
+        $this->response->html($this->helper->layout->user('twofactor/index', [
             'user' => $user,
             'provider' => $this->authenticationManager->getPostAuthenticationProvider()->getName(),
-        )));
+        ]));
     }
 
     /**
@@ -70,12 +70,12 @@ class TwoFactorController extends UserViewController
             $provider->setSecret($this->sessionStorage->twoFactorSecret);
         }
 
-        $this->response->html($this->helper->layout->user('twofactor/show', array(
+        $this->response->html($this->helper->layout->user('twofactor/show', [
             'user' => $user,
             'secret' => $this->sessionStorage->twoFactorSecret,
             'qrcode_url' => $provider->getQrCodeUrl($label),
             'key_url' => $provider->getKeyUrl($label),
-        )));
+        ]));
     }
 
     /**
@@ -97,19 +97,19 @@ class TwoFactorController extends UserViewController
         if ($provider->authenticate()) {
             $this->flash->success(t('The two factor authentication code is valid.'));
 
-            $this->userModel->update(array(
+            $this->userModel->update([
                 'id' => $user['id'],
                 'twofactor_activated' => 1,
                 'twofactor_secret' => $this->authenticationManager->getPostAuthenticationProvider()->getSecret(),
-            ));
+            ]);
 
             unset($this->sessionStorage->twoFactorSecret);
             $this->userSession->disablePostAuthentication();
 
-            $this->response->redirect($this->helper->url->to('TwoFactorController', 'index', array('user_id' => $user['id'])));
+            $this->response->redirect($this->helper->url->to('TwoFactorController', 'index', ['user_id' => $user['id']]));
         } else {
             $this->flash->failure(t('The two factor authentication code is not valid.'));
-            $this->response->redirect($this->helper->url->to('TwoFactorController', 'show', array('user_id' => $user['id'])));
+            $this->response->redirect($this->helper->url->to('TwoFactorController', 'show', ['user_id' => $user['id']]));
         }
     }
 
@@ -123,17 +123,17 @@ class TwoFactorController extends UserViewController
         $user = $this->getUser();
         $this->checkCurrentUser($user);
 
-        $this->userModel->update(array(
+        $this->userModel->update([
             'id' => $user['id'],
             'twofactor_activated' => 0,
             'twofactor_secret' => '',
-        ));
+        ]);
 
         // Allow the user to test or disable the feature
         $this->userSession->disablePostAuthentication();
 
         $this->flash->success(t('User updated successfully.'));
-        $this->response->redirect($this->helper->url->to('TwoFactorController', 'index', array('user_id' => $user['id'])));
+        $this->response->redirect($this->helper->url->to('TwoFactorController', 'index', ['user_id' => $user['id']]));
     }
 
     /**
@@ -175,9 +175,9 @@ class TwoFactorController extends UserViewController
             $this->sessionStorage->twoFactorBeforeCodeCalled = true;
         }
 
-        $this->response->html($this->helper->layout->app('twofactor/check', array(
+        $this->response->html($this->helper->layout->app('twofactor/check', [
             'title' => t('Check two factor authentication code'),
-        )));
+        ]));
     }
 
     /**
@@ -192,17 +192,17 @@ class TwoFactorController extends UserViewController
         if ($this->request->getStringParam('disable') === 'yes') {
             $this->checkCSRFParam();
 
-            $this->userModel->update(array(
+            $this->userModel->update([
                 'id' => $user['id'],
                 'twofactor_activated' => 0,
                 'twofactor_secret' => '',
-            ));
+            ]);
 
-            return $this->response->redirect($this->helper->url->to('UserViewController', 'show', array('user_id' => $user['id'])));
+            return $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user['id']]));
         }
 
-        return $this->response->html($this->helper->layout->user('twofactor/disable', array(
+        return $this->response->html($this->helper->layout->user('twofactor/disable', [
             'user' => $user,
-        )));
+        ]));
     }
 }

@@ -22,7 +22,7 @@ class SessionStorage
      * @access private
      * @var array
      */
-    private $storage = array();
+    private $storage = [];
 
     /**
      * Set external storage

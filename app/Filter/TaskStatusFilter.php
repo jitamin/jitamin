@@ -27,7 +27,7 @@ class TaskStatusFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('status');
+        return ['status'];
     }
 
     /**

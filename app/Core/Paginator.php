@@ -81,7 +81,7 @@ class Paginator
      * @access private
      * @var array
      */
-    private $items = array();
+    private $items = [];
 
     /**
      * PicoDb Table instance
@@ -113,7 +113,7 @@ class Paginator
      * @access private
      * @var array
      */
-    private $params = array();
+    private $params = [];
 
     /**
      * Constructor
@@ -156,7 +156,7 @@ class Paginator
                         ->findAll();
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -168,7 +168,7 @@ class Paginator
      * @param  array       $params
      * @return Paginator
      */
-    public function setUrl($controller, $action, array $params = array())
+    public function setUrl($controller, $action, array $params = [])
     {
         $this->controller = $controller;
         $this->action = $action;
@@ -335,11 +335,11 @@ class Paginator
      */
     public function getUrlParams($page, $order, $direction)
     {
-        $params = array(
+        $params = [
             'page' => $page,
             'order' => $order,
             'direction' => $direction,
-        );
+        ];
 
         return array_merge($this->params, $params);
     }

@@ -27,7 +27,7 @@ class Loader extends \Hiject\Core\Base
      * @access protected
      * @var array
      */
-    protected $plugins = array();
+    protected $plugins = [];
 
     /**
      * Get list of loaded plugins
@@ -107,7 +107,7 @@ class Loader extends \Hiject\Core\Base
     public function initializePlugin($pluginName, Base $plugin)
     {
         if (method_exists($plugin, 'onStartup')) {
-            $this->dispatcher->addListener('app.bootstrap', array($plugin, 'onStartup'));
+            $this->dispatcher->addListener('app.bootstrap', [$plugin, 'onStartup']);
         }
 
         Tool::buildDIC($this->container, $plugin->getClasses());

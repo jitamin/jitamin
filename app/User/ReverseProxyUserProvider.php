@@ -33,7 +33,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      * @access protected
      * @var array
      */
-    private $userProfile = array();
+    private $userProfile = [];
 
     /**
      * Constructor
@@ -41,7 +41,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      * @access public
      * @param  string $username
      */
-    public function __construct($username, array $userProfile = array())
+    public function __construct($username, array $userProfile = [])
     {
         $this->username = $username;
         $this->userProfile = $userProfile;
@@ -151,7 +151,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getExternalGroupIds()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -162,9 +162,9 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getExtraAttributes()
     {
-        return array(
+        return [
             'is_ldap_user' => 1,
             'disable_login_form' => 1,
-        );
+        ];
     }
 }

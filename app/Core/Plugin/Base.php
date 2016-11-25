@@ -43,7 +43,7 @@ abstract class Base extends \Hiject\Core\Base
      */
     public function getClasses()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -54,7 +54,7 @@ abstract class Base extends \Hiject\Core\Base
      */
     public function getHelpers()
     {
-        return array();
+        return [];
     }
 
     /**

@@ -32,7 +32,7 @@ class Route extends Base
      * @access private
      * @var array
      */
-    private $paths = array();
+    private $paths = [];
 
     /**
      * Store routes for url lookup
@@ -40,7 +40,7 @@ class Route extends Base
      * @access private
      * @var array
      */
-    private $urls = array();
+    private $urls = [];
 
     /**
      * Enable routing table
@@ -71,19 +71,19 @@ class Route extends Base
             $items = explode('/', $path);
             $params = $this->findParams($items);
 
-            $this->paths[] = array(
+            $this->paths[] = [
                 'items' => $items,
                 'count' => count($items),
                 'controller' => $controller,
                 'action' => $action,
                 'plugin' => $plugin,
-            );
+            ];
 
-            $this->urls[$plugin][$controller][$action][] = array(
+            $this->urls[$plugin][$controller][$action][] = [
                 'path' => $path,
                 'params' => $params,
                 'count' => count($params),
-            );
+            ];
         }
 
         return $this;
@@ -103,7 +103,7 @@ class Route extends Base
 
         foreach ($this->paths as $route) {
             if ($count === $route['count']) {
-                $params = array();
+                $params = [];
 
                 for ($i = 0; $i < $count; $i++) {
                     if ($route['items'][$i]{0} === ':') {
@@ -115,20 +115,20 @@ class Route extends Base
 
                 if ($i === $count) {
                     $this->request->setParams($params);
-                    return array(
+                    return [
                         'controller' => $route['controller'],
                         'action' => $route['action'],
                         'plugin' => $route['plugin'],
-                    );
+                    ];
                 }
             }
         }
 
-        return array(
-            'controller' => 'DashboardController',
-            'action' => 'show',
-            'plugin' => '',
-        );
+        return [
+                'controller' => 'DashboardController',
+                'action' => 'show',
+                'plugin' => '',
+            ];
     }
 
     /**
@@ -141,7 +141,7 @@ class Route extends Base
      * @param  string   $plugin
      * @return string
      */
-    public function findUrl($controller, $action, array $params = array(), $plugin = '')
+    public function findUrl($controller, $action, array $params = [], $plugin = '')
     {
         if ($plugin === '' && isset($params['plugin'])) {
             $plugin = $params['plugin'];
@@ -153,7 +153,7 @@ class Route extends Base
         }
 
         foreach ($this->urls[$plugin][$controller][$action] as $route) {
-            if (array_diff_key($params, $route['params']) === array()) {
+            if (array_diff_key($params, $route['params']) === []) {
                 $url = $route['path'];
                 $i = 0;
 
@@ -180,7 +180,7 @@ class Route extends Base
      */
     public function findParams(array $items)
     {
-        $params = array();
+        $params = [];
 
         foreach ($items as $item) {
             if ($item !== '' && $item{0} === ':') {

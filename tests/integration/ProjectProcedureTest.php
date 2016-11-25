@@ -63,29 +63,29 @@ class ProjectProcedureTest extends BaseProcedureTest
 
     public function assertGetProjectsActivity()
     {
-        $activities = $this->app->getProjectActivities(array('project_ids' => array($this->projectId)));
+        $activities = $this->app->getProjectActivities(['project_ids' => [$this->projectId]]);
         $this->assertInternalType('array', $activities);
         $this->assertCount(0, $activities);
     }
 
     public function assertUpdateProject()
     {
-        $this->assertTrue($this->app->updateProject(array('project_id' => $this->projectId, 'name' => 'test', 'description' => 'test')));
+        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => 'test', 'description' => 'test')]);
 
         $project = $this->app->getProjectById($this->projectId);
         $this->assertNotNull($project);
         $this->assertEquals('test', $project['name']);
         $this->assertEquals('test', $project['description']);
 
-        $this->assertTrue($this->app->updateProject(array('project_id' => $this->projectId, 'name' => $this->projectName)));
+        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => $this->projectName)]);
     }
 
     public function assertUpdateProjectIdentifier()
     {
-        $this->assertTrue($this->app->updateProject(array(
+        $this->assertTrue($this->app->updateProject([
             'project_id' => $this->projectId,
             'identifier' => 'MYPROJECT',
-        )));
+        ]));
 
         $project = $this->app->getProjectById($this->projectId);
         $this->assertNotNull($project);
@@ -95,10 +95,10 @@ class ProjectProcedureTest extends BaseProcedureTest
 
     public function assertCreateProjectWithIdentifier()
     {
-        $projectId = $this->app->createProject(array(
+        $projectId = $this->app->createProject([
             'name' => 'My project with an identifier',
             'identifier' => 'MYPROJECTWITHIDENTIFIER',
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 

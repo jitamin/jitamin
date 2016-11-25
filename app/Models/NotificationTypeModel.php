@@ -33,7 +33,7 @@ abstract class NotificationTypeModel extends Base
      * @access private
      * @var array
      */
-    private $labels = array();
+    private $labels = [];
 
     /**
      * Hidden notification types
@@ -41,7 +41,7 @@ abstract class NotificationTypeModel extends Base
      * @access private
      * @var array
      */
-    private $hiddens = array();
+    private $hiddens = [];
 
     /**
      * Constructor

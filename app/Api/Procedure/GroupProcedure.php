@@ -23,11 +23,11 @@ class GroupProcedure extends BaseProcedure
 
     public function updateGroup($group_id, $name = null, $external_id = null)
     {
-        $values = array(
+        $values = [
             'id' => $group_id,
             'name' => $name,
             'external_id' => $external_id,
-        );
+        ];
 
         foreach ($values as $key => $value) {
             if (is_null($value)) {

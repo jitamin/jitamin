@@ -18,10 +18,10 @@ use Hiject\Core\Filter\FormatterInterface;
  */
 class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
 {
-    protected $swimlanes = array();
-    protected $columns = array();
-    protected $tasks = array();
-    protected $tags = array();
+    protected $swimlanes = [];
+    protected $columns = [];
+    protected $tasks = [];
+    protected $tags = [];
 
     /**
      * Set swimlanes

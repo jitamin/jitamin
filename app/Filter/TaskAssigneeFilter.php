@@ -49,7 +49,7 @@ class TaskAssigneeFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('assignee');
+        return ['assignee'];
     }
 
     /**

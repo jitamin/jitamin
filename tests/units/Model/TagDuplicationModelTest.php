@@ -23,8 +23,8 @@ class TagDuplicationModelTest extends Base
         $tagDuplicationModel = new TagDuplicationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'P2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'P2']));
 
         $this->assertEquals(1, $tagModel->create(0, 'Tag 1'));
         $this->assertEquals(2, $tagModel->create(1, 'Tag 2'));

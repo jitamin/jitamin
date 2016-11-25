@@ -28,7 +28,7 @@ class CommentEventJob extends BaseJob
      */
     public function withParams($commentId, $eventName)
     {
-        $this->jobParams = array($commentId, $eventName);
+        $this->jobParams = [$commentId, $eventName];
         return $this;
     }
 

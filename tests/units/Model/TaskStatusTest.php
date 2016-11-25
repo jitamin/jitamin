@@ -29,13 +29,13 @@ class TaskStatusTest extends Base
         $p = new ProjectModel($this->container);
         $s = new SwimlaneModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'test')));
-        $this->assertEquals(1, $s->create(array('name' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $tc->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(2, $tc->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(3, $tc->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2)));
-        $this->assertEquals(4, $tc->create(array('title' => 'test', 'project_id' => 1, 'swimlane_id' => 1)));
-        $this->assertEquals(5, $tc->create(array('title' => 'test', 'project_id' => 1, 'is_active' => 0, 'date_completed' => strtotime('2015-01-01'))));
+        $this->assertEquals(1, $p->create(['name' => 'test']));
+        $this->assertEquals(1, $s->create(['name' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(2, $tc->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(3, $tc->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2]));
+        $this->assertEquals(4, $tc->create(['title' => 'test', 'project_id' => 1, 'swimlane_id' => 1]));
+        $this->assertEquals(5, $tc->create(['title' => 'test', 'project_id' => 1, 'is_active' => 0, 'date_completed' => strtotime('2015-01-01')]));
 
         $taskBefore = $tf->getById(5);
 
@@ -70,8 +70,8 @@ class TaskStatusTest extends Base
         $ts = new TaskStatusModel($this->container);
         $p = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'test')));
-        $this->assertEquals(1, $tc->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $p->create(['name' => 'test']));
+        $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));
 
         // The task must be open
 
@@ -85,8 +85,8 @@ class TaskStatusTest extends Base
 
         // We close the task
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CLOSE, array($this, 'onTaskClose'));
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_OPEN, array($this, 'onTaskOpen'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CLOSE, [$this, 'onTaskClose']);
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_OPEN, [$this, 'onTaskOpen']);
 
         $this->assertTrue($ts->close(1));
         $this->assertTrue($ts->isClosed(1));
@@ -134,11 +134,11 @@ class TaskStatusTest extends Base
         $s = new SubtaskModel($this->container);
         $p = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'test1')));
-        $this->assertEquals(1, $tc->create(array('title' => 'test 1', 'project_id' => 1)));
+        $this->assertEquals(1, $p->create(['name' => 'test1']));
+        $this->assertEquals(1, $tc->create(['title' => 'test 1', 'project_id' => 1]));
 
-        $this->assertEquals(1, $s->create(array('title' => 'subtask #1', 'task_id' => 1)));
-        $this->assertEquals(2, $s->create(array('title' => 'subtask #2', 'task_id' => 1)));
+        $this->assertEquals(1, $s->create(['title' => 'subtask #1', 'task_id' => 1]));
+        $this->assertEquals(2, $s->create(['title' => 'subtask #2', 'task_id' => 1]));
 
         $this->assertTrue($ts->close(1));
 

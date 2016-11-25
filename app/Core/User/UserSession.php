@@ -40,7 +40,7 @@ class UserSession extends Base
      */
     public function initialize(array $user)
     {
-        foreach (array('password', 'is_admin', 'is_project_admin', 'twofactor_secret') as $column) {
+        foreach (['password', 'is_admin', 'is_project_admin', 'twofactor_secret'] as $column) {
             if (isset($user[$column])) {
                 unset($user[$column]);
             }

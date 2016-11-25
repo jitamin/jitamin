@@ -27,17 +27,17 @@ class CustomFilterController extends BaseController
      * @param  array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function index(array $values = array(), array $errors = array())
+    public function index(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('custom_filter/index', array(
-            'values' => $values + array('project_id' => $project['id']),
+        $this->response->html($this->helper->layout->project('custom_filter/index', [
+            'values' => $values + ['project_id' => $project['id']],
             'errors' => $errors,
             'project' => $project,
             'custom_filters' => $this->customFilterModel->getAll($project['id'], $this->userSession->getId()),
             'title' => t('Custom filters'),
-        )));
+        ]));
     }
 
     /**
@@ -57,7 +57,7 @@ class CustomFilterController extends BaseController
         if ($valid) {
             if ($this->customFilterModel->create($values) !== false) {
                 $this->flash->success(t('Your custom filter have been created successfully.'));
-                return $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to create your custom filter.'));
             }
@@ -76,11 +76,11 @@ class CustomFilterController extends BaseController
         $project = $this->getProject();
         $filter = $this->customFilterModel->getById($this->request->getIntegerParam('filter_id'));
 
-        $this->response->html($this->helper->layout->project('custom_filter/remove', array(
+        $this->response->html($this->helper->layout->project('custom_filter/remove', [
             'project' => $project,
             'filter' => $filter,
             'title' => t('Remove a custom filter')
-        )));
+        ]));
     }
 
     /**
@@ -102,7 +102,7 @@ class CustomFilterController extends BaseController
             $this->flash->failure(t('Unable to remove this custom filter.'));
         }
 
-        $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -114,20 +114,20 @@ class CustomFilterController extends BaseController
      * @throws AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $filter = $this->customFilterModel->getById($this->request->getIntegerParam('filter_id'));
 
         $this->checkPermission($project, $filter);
 
-        $this->response->html($this->helper->layout->project('custom_filter/edit', array(
+        $this->response->html($this->helper->layout->project('custom_filter/edit', [
             'values' => empty($values) ? $filter : $values,
             'errors' => $errors,
             'project' => $project,
             'filter' => $filter,
             'title' => t('Edit custom filter')
-        )));
+        ]));
     }
 
     /**
@@ -145,11 +145,11 @@ class CustomFilterController extends BaseController
         $values = $this->request->getValues();
 
         if (! isset($values['is_shared'])) {
-            $values += array('is_shared' => 0);
+            $values += ['is_shared' => 0];
         }
 
         if (! isset($values['append'])) {
-            $values += array('append' => 0);
+            $values += ['append' => 0];
         }
 
         list($valid, $errors) = $this->customFilterValidator->validateModification($values);
@@ -157,7 +157,7 @@ class CustomFilterController extends BaseController
         if ($valid) {
             if ($this->customFilterModel->update($values)) {
                 $this->flash->success(t('Your custom filter have been updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to update custom filter.'));
             }

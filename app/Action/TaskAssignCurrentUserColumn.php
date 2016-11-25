@@ -37,9 +37,9 @@ class TaskAssignCurrentUserColumn extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_MOVE_COLUMN,
-        );
+        ];
     }
 
     /**
@@ -50,9 +50,9 @@ class TaskAssignCurrentUserColumn extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'column_id' => t('Column'),
-        );
+        ];
     }
 
     /**
@@ -63,13 +63,13 @@ class TaskAssignCurrentUserColumn extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
                 'column_id',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -85,10 +85,10 @@ class TaskAssignCurrentUserColumn extends Base
             return false;
         }
 
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'owner_id' => $this->userSession->getId(),
-        );
+        ];
 
         return $this->taskModificationModel->update($values);
     }

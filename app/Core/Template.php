@@ -30,7 +30,7 @@ class Template
      * @access private
      * @var array
      */
-    private $overrides = array();
+    private $overrides = [];
 
     /**
      * Template constructor
@@ -67,7 +67,7 @@ class Template
      * @param  array    $__template_args   Key/Value map of template variables
      * @return string
      */
-    public function render($__template_name, array $__template_args = array())
+    public function render($__template_name, array $__template_args = [])
     {
         extract($__template_args);
         ob_start();
@@ -107,9 +107,9 @@ class Template
         }
 
         if ($plugin !== 'hiject' && $plugin !== '') {
-            return implode(DIRECTORY_SEPARATOR, array(PLUGINS_DIR, ucfirst($plugin), 'Template', $template.'.php'));
+            return implode(DIRECTORY_SEPARATOR, [PLUGINS_DIR, ucfirst($plugin), 'Template', $template.'.php']);
         }
 
-        return implode(DIRECTORY_SEPARATOR, array(__DIR__, '..', '..', 'resources', 'views', $template.'.php'));
+        return implode(DIRECTORY_SEPARATOR, [__DIR__, '..', '..', 'resources', 'views', $template.'.php']);
     }
 }

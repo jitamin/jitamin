@@ -26,10 +26,10 @@ class BoardTooltipController extends BaseController
     public function tasklinks()
     {
         $task = $this->getTask();
-        $this->response->html($this->template->render('board/tooltip_tasklinks', array(
+        $this->response->html($this->template->render('board/tooltip_tasklinks', [
             'links' => $this->taskLinkModel->getAllGroupedByLabel($task['id']),
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -40,10 +40,10 @@ class BoardTooltipController extends BaseController
     public function externallinks()
     {
         $task = $this->getTask();
-        $this->response->html($this->template->render('board/tooltip_external_links', array(
+        $this->response->html($this->template->render('board/tooltip_external_links', [
             'links' => $this->taskExternalLinkModel->getAll($task['id']),
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -54,10 +54,10 @@ class BoardTooltipController extends BaseController
     public function subtasks()
     {
         $task = $this->getTask();
-        $this->response->html($this->template->render('board/tooltip_subtasks', array(
+        $this->response->html($this->template->render('board/tooltip_subtasks', [
             'subtasks' => $this->subtaskModel->getAll($task['id']),
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -69,10 +69,10 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('board/tooltip_files', array(
+        $this->response->html($this->template->render('board/tooltip_files', [
             'files' => $this->taskFileModel->getAll($task['id']),
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -85,10 +85,10 @@ class BoardTooltipController extends BaseController
         $task = $this->getTask();
         $commentSortingDirection = $this->userMetadataCacheDecorator->get(UserMetadataModel::KEY_COMMENT_SORTING_DIRECTION, 'ASC');
 
-        $this->response->html($this->template->render('board/tooltip_comments', array(
+        $this->response->html($this->template->render('board/tooltip_comments', [
             'task' => $task,
             'comments' => $this->commentModel->getAll($task['id'], $commentSortingDirection)
-        )));
+        ]));
     }
 
     /**
@@ -100,9 +100,9 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('board/tooltip_description', array(
+        $this->response->html($this->template->render('board/tooltip_description', [
             'task' => $task
-        )));
+        ]));
     }
 
     /**
@@ -114,12 +114,12 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_recurrence/info', array(
+        $this->response->html($this->template->render('task_recurrence/info', [
             'task' => $task,
             'recurrence_trigger_list' => $this->taskRecurrenceModel->getRecurrenceTriggerList(),
             'recurrence_timeframe_list' => $this->taskRecurrenceModel->getRecurrenceTimeframeList(),
             'recurrence_basedate_list' => $this->taskRecurrenceModel->getRecurrenceBasedateList(),
-        )));
+        ]));
     }
 
     /**
@@ -131,6 +131,6 @@ class BoardTooltipController extends BaseController
     {
         $this->getProject();
         $swimlane = $this->swimlaneModel->getById($this->request->getIntegerParam('swimlane_id'));
-        $this->response->html($this->template->render('board/tooltip_description', array('task' => $swimlane)));
+        $this->response->html($this->template->render('board/tooltip_description', ['task' => $swimlane]));
     }
 }

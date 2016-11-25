@@ -28,7 +28,7 @@ class SubtaskController extends BaseController
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
 
@@ -36,12 +36,12 @@ class SubtaskController extends BaseController
             $values = $this->prepareValues($task);
         }
 
-        $this->response->html($this->template->render('subtask/create', array(
+        $this->response->html($this->template->render('subtask/create', [
             'values' => $values,
             'errors' => $errors,
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
             'task' => $task,
-        )));
+        ]));
     }
     
     /**
@@ -53,12 +53,12 @@ class SubtaskController extends BaseController
      */
     protected function prepareValues(array $task)
     {
-        $values = array(
+        $values = [
             'task_id' => $task['id'],
             'another_subtask' => $this->request->getIntegerParam('another_subtask', 0)
-        );
+        ];
 
-        $values = $this->hook->merge('controller:subtask:form:default', $values, array('default_values' => $values));
+        $values = $this->hook->merge('controller:subtask:form:default', $values, ['default_values' => $values]);
         return $values;
     }
 
@@ -85,7 +85,7 @@ class SubtaskController extends BaseController
                 return $this->create(array('project_id' => $task['project_id'], 'task_id' => $task['id'], 'another_subtask' => 1));
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $task['project_id'], 'task_id' => $task['id']), 'subtasks'), true);
+            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']], 'subtasks'), true);
         }
 
         return $this->create($values, $errors);
@@ -100,19 +100,19 @@ class SubtaskController extends BaseController
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask/edit', array(
+        $this->response->html($this->template->render('subtask/edit', [
             'values' => empty($values) ? $subtask : $values,
             'errors' => $errors,
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
             'status_list' => $this->subtaskModel->getStatusList(),
             'subtask' => $subtask,
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -135,7 +135,7 @@ class SubtaskController extends BaseController
                 $this->flash->failure(t('Unable to update your sub-task.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $task['project_id'], 'task_id' => $task['id'])), true);
+            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         }
 
         return $this->edit($values, $errors);
@@ -151,10 +151,10 @@ class SubtaskController extends BaseController
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask/remove', array(
+        $this->response->html($this->template->render('subtask/remove', [
             'subtask' => $subtask,
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -174,7 +174,7 @@ class SubtaskController extends BaseController
             $this->flash->failure(t('Unable to remove this sub-task.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $task['project_id'], 'task_id' => $task['id'])), true);
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
     }
 
     /**

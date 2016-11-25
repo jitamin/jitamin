@@ -25,7 +25,7 @@ class UserModificationController extends BaseController
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         $user = $this->getUser();
 
@@ -34,14 +34,14 @@ class UserModificationController extends BaseController
             unset($values['password']);
         }
 
-        return $this->response->html($this->helper->layout->user('user_modification/show', array(
+        return $this->response->html($this->helper->layout->user('user_modification/show', [
             'values' => $values,
             'errors' => $errors,
             'user' => $user,
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
             'roles' => $this->role->getApplicationRoles(),
-        )));
+        ]));
     }
 
     /**
@@ -67,7 +67,7 @@ class UserModificationController extends BaseController
                 $this->flash->failure(t('Unable to update your user.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('UserViewController', 'show', array('user_id' => $user['id'])));
+            return $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user['id']]));
         }
 
         return $this->show($values, $errors);

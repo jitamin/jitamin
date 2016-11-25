@@ -46,7 +46,7 @@ class ProjectPermissionController extends BaseController
      * @param array $errors
      * @throws AccessForbiddenException
      */
-    public function index(array $values = array(), array $errors = array())
+    public function index(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
@@ -54,7 +54,7 @@ class ProjectPermissionController extends BaseController
             $values['role'] = Role::PROJECT_MEMBER;
         }
 
-        $this->response->html($this->helper->layout->project('project_permission/index', array(
+        $this->response->html($this->helper->layout->project('project_permission/index', [
             'project' => $project,
             'users' => $this->projectUserRoleModel->getUsers($project['id']),
             'groups' => $this->projectGroupRoleModel->getGroups($project['id']),
@@ -62,7 +62,7 @@ class ProjectPermissionController extends BaseController
             'values' => $values,
             'errors' => $errors,
             'title' => t('Project Permissions'),
-        )));
+        ]));
     }
 
     /**
@@ -73,7 +73,7 @@ class ProjectPermissionController extends BaseController
     public function allowEverybody()
     {
         $project = $this->getProject();
-        $values = $this->request->getValues() + array('is_everybody_allowed' => 0);
+        $values = $this->request->getValues() + ['is_everybody_allowed' => 0];
 
         if ($this->projectModel->update($values)) {
             $this->flash->success(t('Project updated successfully.'));
@@ -81,7 +81,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -102,7 +102,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -122,7 +122,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -162,7 +162,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -182,7 +182,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**

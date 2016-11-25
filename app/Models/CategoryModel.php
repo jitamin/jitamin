@@ -145,7 +145,7 @@ class CategoryModel extends Base
             ->asc('position')
             ->getAll('id', 'name');
 
-        $prepend = array();
+        $prepend = [];
 
         if ($prepend_all) {
             $prepend[-1] = t('All categories');
@@ -182,7 +182,7 @@ class CategoryModel extends Base
      */
     public function createDefaultCategories($project_id)
     {
-        $results = array();
+        $results = [];
         $categories = explode(',', $this->configModel->get('project_categories'));
         $position = 1;
 
@@ -190,11 +190,11 @@ class CategoryModel extends Base
             $category = trim($category);
 
             if (! empty($category)) {
-                $results[] = $this->db->table(self::TABLE)->insert(array(
+                $results[] = $this->db->table(self::TABLE)->insert([
                     'project_id' => $project_id,
                     'name' => $category,
                     'position' => $position,
-                ));
+                ]);
 
                 $position++;
             }
@@ -240,7 +240,7 @@ class CategoryModel extends Base
     {
         $this->db->startTransaction();
 
-        $this->db->table(TaskModel::TABLE)->eq('category_id', $category_id)->update(array('category_id' => 0));
+        $this->db->table(TaskModel::TABLE)->eq('category_id', $category_id)->update(['category_id' => 0]);
 
         if (! $this->db->table(self::TABLE)->eq('id', $category_id)->remove()) {
             $this->db->cancelTransaction();
@@ -297,18 +297,18 @@ class CategoryModel extends Base
 
         $category_ids = $this->db->table(self::TABLE)->eq('project_id', $project_id)->neq('id', $category_id)->asc('position')->findAllByColumn('id');
         $offset = 1;
-        $results = array();
+        $results = [];
 
         foreach ($category_ids as $current_category_id) {
             if ($offset == $position) {
                 $offset++;
             }
 
-            $results[] = $this->db->table(self::TABLE)->eq('id', $current_category_id)->update(array('position' => $offset));
+            $results[] = $this->db->table(self::TABLE)->eq('id', $current_category_id)->update(['position' => $offset]);
             $offset++;
         }
 
-        $results[] = $this->db->table(self::TABLE)->eq('id', $category_id)->update(array('position' => $position));
+        $results[] = $this->db->table(self::TABLE)->eq('id', $category_id)->update(['position' => $position]);
 
         return !in_array(false, $results, true);
     }

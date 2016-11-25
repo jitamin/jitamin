@@ -126,7 +126,7 @@ class BoardAjaxController extends BaseController
         if ($this->request->isAjax()) {
             $this->response->html($this->renderBoard($project_id));
         } else {
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project_id)));
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project_id]));
         }
     }
 
@@ -139,13 +139,13 @@ class BoardAjaxController extends BaseController
      */
     protected function renderBoard($project_id)
     {
-        return $this->template->render('board/table_container', array(
+        return $this->template->render('board/table_container', [
             'project' => $this->projectModel->getById($project_id),
             'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
             'board_highlight_period' => $this->configModel->get('board_highlight_period'),
             'swimlanes' => $this->taskLexer
                 ->build($this->userSession->getFilters($project_id))
                 ->format(BoardFormatter::getInstance($this->container)->withProjectId($project_id))
-        ));
+        ]);
     }
 }

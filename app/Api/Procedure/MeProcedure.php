@@ -29,11 +29,11 @@ class MeProcedure extends BaseProcedure
         $projects = $this->projectModel->getQueryColumnStats($this->projectPermissionModel->getActiveProjectIds($user_id))->findAll();
         $tasks = $this->taskFinderModel->getUserQuery($user_id)->findAll();
 
-        return array(
+        return [
             'projects' => $this->formatProjects($projects),
             'tasks' => $this->formatTasks($tasks),
-            'subtasks' => $this->subtaskModel->getUserQuery($user_id, array(SubtaskModel::STATUS_TODO, SubtaskModel::STATUS_INPROGRESS))->findAll(),
-        );
+            'subtasks' => $this->subtaskModel->getUserQuery($user_id, [SubtaskModel::STATUS_TODO, SubtaskModel::STATUS_INPROGRESS])->findAll(),
+        ];
     }
 
     public function getMyActivityStream()
@@ -48,11 +48,11 @@ class MeProcedure extends BaseProcedure
             return false;
         }
 
-        $values = array(
+        $values = [
             'name' => $name,
             'description' => $description,
             'is_private' => 1,
-        );
+        ];
 
         list($valid, ) = $this->projectValidator->validateCreation($values);
         return $valid ? $this->projectModel->create($values, $this->userSession->getId(), true) : false;

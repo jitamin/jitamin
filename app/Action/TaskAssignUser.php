@@ -35,7 +35,7 @@ class TaskAssignUser extends Base
      */
     public function getCompatibleEvents()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -46,7 +46,7 @@ class TaskAssignUser extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -57,10 +57,10 @@ class TaskAssignUser extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
             'owner_id',
-        );
+        ];
     }
 
     /**
@@ -72,10 +72,10 @@ class TaskAssignUser extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'owner_id' => $data['owner_id'],
-        );
+        ];
 
         return $this->taskModificationModel->update($values);
     }

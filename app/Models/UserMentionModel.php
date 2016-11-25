@@ -28,7 +28,7 @@ class UserMentionModel extends Base
      */
     public function getMentionedUsers($content)
     {
-        $users = array();
+        $users = [];
 
         if (preg_match_all('/@([^\s]+)/', $content, $matches)) {
             $users = $this->db->table(UserModel::TABLE)

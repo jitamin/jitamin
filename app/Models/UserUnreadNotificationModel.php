@@ -35,12 +35,12 @@ class UserUnreadNotificationModel extends Base
      */
     public function create($user_id, $event_name, array $event_data)
     {
-        $this->db->table(self::TABLE)->insert(array(
+        $this->db->table(self::TABLE)->insert([
             'user_id' => $user_id,
             'date_creation' => time(),
             'event_name' => $event_name,
             'event_data' => json_encode($event_data),
-        ));
+        ]);
     }
 
     /**

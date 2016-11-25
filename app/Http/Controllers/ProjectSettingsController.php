@@ -25,11 +25,11 @@ class ProjectSettingsController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_settings/show', array(
+        $this->response->html($this->helper->layout->project('project_settings/show', [
             'project' => $project,
             'stats' => $this->projectModel->getTaskStats($project['id']),
             'title' => $project['name'],
-        )));
+        ]));
     }
 
     /**
@@ -41,10 +41,10 @@ class ProjectSettingsController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_settings/share', array(
+        $this->response->html($this->helper->layout->project('project_settings/share', [
             'project' => $project,
             'title' => t('Public access'),
-        )));
+        ]));
     }
 
     /**
@@ -65,7 +65,7 @@ class ProjectSettingsController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'share', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'share', ['project_id' => $project['id']]));
     }
 
     /**
@@ -77,13 +77,13 @@ class ProjectSettingsController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_settings/integrations', array(
+        $this->response->html($this->helper->layout->project('project_settings/integrations', [
             'project' => $project,
             'title' => t('Integrations'),
             'webhook_token' => $this->configModel->get('webhook_token'),
             'values' => $this->projectMetadataModel->getAll($project['id']),
-            'errors' => array(),
-        )));
+            'errors' => [],
+        ]));
     }
 
     /**
@@ -97,7 +97,7 @@ class ProjectSettingsController extends BaseController
 
         $this->projectMetadataModel->save($project['id'], $this->request->getValues());
         $this->flash->success(t('Project updated successfully.'));
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'integrations', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'integrations', ['project_id' => $project['id']]));
     }
 
     /**
@@ -109,12 +109,12 @@ class ProjectSettingsController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_settings/notifications', array(
+        $this->response->html($this->helper->layout->project('project_settings/notifications', [
             'notifications' => $this->projectNotificationModel->readSettings($project['id']),
             'types' => $this->projectNotificationTypeModel->getTypes(),
             'project' => $project,
             'title' => t('Notifications'),
-        )));
+        ]));
     }
 
     /**
@@ -129,7 +129,7 @@ class ProjectSettingsController extends BaseController
 
         $this->projectNotificationModel->saveSettings($project['id'], $values);
         $this->flash->success(t('Project updated successfully.'));
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'notifications', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'notifications', ['project_id' => $project['id']]));
     }
 
     /**
@@ -143,10 +143,10 @@ class ProjectSettingsController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_settings/duplicate', array(
+        $this->response->html($this->helper->layout->project('project_settings/duplicate', [
             'project' => $project,
             'title' => t('Clone this project')
-        )));
+        ]));
     }
 
     /**
@@ -163,6 +163,6 @@ class ProjectSettingsController extends BaseController
             $this->flash->failure(t('Unable to clone this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', array('project_id' => $project_id)));
+        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', ['project_id' => $project_id]));
     }
 }

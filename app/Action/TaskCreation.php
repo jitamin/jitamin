@@ -35,7 +35,7 @@ class TaskCreation extends Base
      */
     public function getCompatibleEvents()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -46,7 +46,7 @@ class TaskCreation extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -57,11 +57,11 @@ class TaskCreation extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'project_id',
             'reference',
             'title',
-        );
+        ];
     }
 
     /**
@@ -73,12 +73,12 @@ class TaskCreation extends Base
      */
     public function doAction(array $data)
     {
-        return (bool) $this->taskCreationModel->create(array(
+        return (bool) $this->taskCreationModel->create([
             'project_id' => $data['project_id'],
             'title' => $data['title'],
             'reference' => $data['reference'],
             'description' => isset($data['description']) ? $data['description'] : '',
-        ));
+        ]);
     }
 
     /**

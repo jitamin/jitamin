@@ -28,8 +28,8 @@ class Directory extends BaseCore
     public function getAvailablePlugins($url = PLUGIN_API_URL)
     {
         $plugins = $this->httpClient->getJson($url);
-        $plugins = array_filter($plugins, array($this, 'isCompatible'));
-        $plugins = array_filter($plugins, array($this, 'isInstallable'));
+        $plugins = array_filter($plugins, [$this, 'isCompatible']);
+        $plugins = array_filter($plugins, [$this, 'isInstallable']);
         return $plugins;
     }
 
@@ -46,7 +46,7 @@ class Directory extends BaseCore
             return true;
         }
 
-        foreach (array('>=', '>') as $operator) {
+        foreach (['>=', '>'] as $operator) {
             if (strpos($plugin['compatible_version'], $operator) === 0) {
                 $pluginVersion = substr($plugin['compatible_version'], strlen($operator));
                 return version_compare($appVersion, $pluginVersion, $operator);

@@ -25,15 +25,15 @@ class PasswordResetController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\BaseException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $this->checkActivation();
 
-        $this->response->html($this->helper->layout->app('password_reset/create', array(
+        $this->response->html($this->helper->layout->app('password_reset/create', [
             'errors' => $errors,
             'values' => $values,
             'no_layout' => true,
-        )));
+        ]));
     }
 
     /**
@@ -61,7 +61,7 @@ class PasswordResetController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\BaseException
      */
-    public function change(array $values = array(), array $errors = array())
+    public function change(array $values = [], array $errors = [])
     {
         $this->checkActivation();
 
@@ -69,12 +69,12 @@ class PasswordResetController extends BaseController
         $user_id = $this->passwordResetModel->getUserIdByToken($token);
 
         if ($user_id !== false) {
-            $this->response->html($this->helper->layout->app('password_reset/change', array(
+            $this->response->html($this->helper->layout->app('password_reset/change', [
                 'token' => $token,
                 'errors' => $errors,
                 'values' => $values,
                 'no_layout' => true,
-            )));
+            ]));
         } else {
             $this->response->redirect($this->helper->url->to('AuthController', 'login'));
         }
@@ -95,7 +95,7 @@ class PasswordResetController extends BaseController
             $user_id = $this->passwordResetModel->getUserIdByToken($token);
 
             if ($user_id !== false) {
-                $this->userModel->update(array('id' => $user_id, 'password' => $values['password']));
+                $this->userModel->update(['id' => $user_id, 'password' => $values['password']]);
                 $this->passwordResetModel->disable($user_id);
             }
 
@@ -121,7 +121,7 @@ class PasswordResetController extends BaseController
                 $user['email'],
                 $user['name'] ?: $user['username'],
                 t('Password Reset for Hiject'),
-                $this->template->render('password_reset/email', array('token' => $token))
+                $this->template->render('password_reset/email', ['token' => $token])
             );
         }
     }

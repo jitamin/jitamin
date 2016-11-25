@@ -66,14 +66,14 @@ class Markdown extends Parsedown
             $link = $this->buildTaskLink($matches[1]);
 
             if (! empty($link)) {
-                return array(
+                return [
                     'extent' => strlen($matches[0]),
-                    'element' => array(
+                    'element' => [
                         'name' => 'a',
                         'text' => $matches[0],
-                        'attributes' => array('href' => $link),
-                    ),
-                );
+                        'attributes' => ['href' => $link],
+                    ],
+                ];
             }
         }
 
@@ -95,16 +95,16 @@ class Markdown extends Parsedown
             $user_id = $this->container['userModel']->getIdByUsername($matches[1]);
 
             if (! empty($user_id)) {
-                $url = $this->container['helper']->url->href('UserViewController', 'profile', array('user_id' => $user_id));
+                $url = $this->container['helper']->url->href('UserViewController', 'profile', ['user_id' => $user_id]);
 
-                return array(
+                return [
                     'extent' => strlen($matches[0]),
-                    'element' => array(
+                    'element' => [
                         'name' => 'a',
                         'text' => $matches[0],
-                        'attributes' => array('href' => $url, 'class' => 'user-mention-link'),
-                    ),
-                );
+                        'attributes' => ['href' => $url, 'class' => 'user-mention-link'],
+                    ],
+                ];
             }
         }
 
@@ -127,10 +127,10 @@ class Markdown extends Parsedown
                 return $this->container['helper']->url->href(
                     'TaskViewController',
                     'readonly',
-                    array(
+                    [
                         'token' => $token,
                         'task_id' => $task_id,
-                    )
+                    ]
                 );
             }
 
@@ -140,7 +140,7 @@ class Markdown extends Parsedown
         return $this->container['helper']->url->href(
             'TaskViewController',
             'show',
-            array('task_id' => $task_id)
+            ['task_id' => $task_id]
         );
     }
 }

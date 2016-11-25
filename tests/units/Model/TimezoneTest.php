@@ -32,10 +32,10 @@ class TimezoneTest extends Base
         $timezoneModel = new TimezoneModel($this->container);
         $this->assertEquals('UTC', $timezoneModel->getCurrentTimezone());
 
-        $this->container['sessionStorage']->user = array('timezone' => 'Europe/Paris');
+        $this->container['sessionStorage']->user = ['timezone' => 'Europe/Paris'];
         $this->assertEquals('Europe/Paris', $timezoneModel->getCurrentTimezone());
 
-        $this->container['sessionStorage']->user = array('timezone' => 'Something');
+        $this->container['sessionStorage']->user = ['timezone' => 'Something'];
         $this->assertEquals('Something', $timezoneModel->getCurrentTimezone());
     }
 }

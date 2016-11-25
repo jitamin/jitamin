@@ -31,7 +31,7 @@ class UrlHelper extends Base
      */
     public function doc($label, $file)
     {
-        return $this->link($label, 'DocumentationController', 'show', array('file' => $file), false, '', '', true);
+        return $this->link($label, 'DocumentationController', 'show', ['file' => $file], false, '', '', true);
     }
 
     /**
@@ -46,7 +46,7 @@ class UrlHelper extends Base
      * @param  string  $class      CSS class attribute
      * @return string
      */
-    public function button($icon, $label, $controller, $action, array $params = array(), $class = '')
+    public function button($icon, $label, $controller, $action, array $params = [], $class = '')
     {
         $icon = '<i class="fa '.$icon.' fa-fw"></i> ';
         $class = 'btn '.$class;
@@ -69,7 +69,7 @@ class UrlHelper extends Base
      * @param  bool    $absolute
      * @return string
      */
-    public function link($label, $controller, $action, array $params = array(), $csrf = false, $class = '', $title = '', $new_tab = false, $anchor = '', $absolute = false)
+    public function link($label, $controller, $action, array $params = [], $csrf = false, $class = '', $title = '', $new_tab = false, $anchor = '', $absolute = false)
     {
         return '<a href="'.$this->href($controller, $action, $params, $csrf, $anchor, $absolute).'" class="'.$class.'" title=\''.$title.'\' '.($new_tab ? 'target="_blank"' : '').'>'.$label.'</a>';
     }
@@ -83,7 +83,7 @@ class UrlHelper extends Base
      * @param  array $params
      * @return string
      */
-    public function absoluteLink($label, $controller, $action, array $params = array())
+    public function absoluteLink($label, $controller, $action, array $params = [])
     {
         return $this->link($label, $controller, $action, $params, false, '', '', true, '', true);
     }
@@ -100,7 +100,7 @@ class UrlHelper extends Base
      * @param  boolean  $absolute    Absolute or relative link
      * @return string
      */
-    public function href($controller, $action, array $params = array(), $csrf = false, $anchor = '', $absolute = false)
+    public function href($controller, $action, array $params = [], $csrf = false, $anchor = '', $absolute = false)
     {
         if (isset($params['q']) && $params['q'] === 'status:open') {
             unset($params['q']);
@@ -120,7 +120,7 @@ class UrlHelper extends Base
      * @param  boolean  $absolute    Absolute or relative link
      * @return string
      */
-    public function to($controller, $action, array $params = array(), $anchor = '', $absolute = false)
+    public function to($controller, $action, array $params = [], $anchor = '', $absolute = false)
     {
         return $this->build('&', $controller, $action, $params, false, $anchor, $absolute);
     }
@@ -190,10 +190,10 @@ class UrlHelper extends Base
      * @param  boolean  $absolute    Absolute or relative link
      * @return string
      */
-    protected function build($separator, $controller, $action, array $params = array(), $csrf = false, $anchor = '', $absolute = false)
+    protected function build($separator, $controller, $action, array $params = [], $csrf = false, $anchor = '', $absolute = false)
     {
         $path = $this->route->findUrl($controller, $action, $params);
-        $qs = array();
+        $qs = [];
 
         if (empty($path)) {
             $qs['controller'] = $controller;

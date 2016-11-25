@@ -37,9 +37,9 @@ class TaskAssignColorPriority extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_CREATE_UPDATE,
-        );
+        ];
     }
 
     /**
@@ -50,10 +50,10 @@ class TaskAssignColorPriority extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'color_id' => t('Color'),
             'priority' => t('Priority'),
-        );
+        ];
     }
 
     /**
@@ -64,13 +64,13 @@ class TaskAssignColorPriority extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
                 'priority',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -82,10 +82,10 @@ class TaskAssignColorPriority extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'color_id' => $this->getParam('color_id'),
-        );
+        ];
 
         return $this->taskModificationModel->update($values, false);
     }

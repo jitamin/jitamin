@@ -24,9 +24,9 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 6));
 
         $taskLink = $taskLinkModel->getById(1);
@@ -54,10 +54,10 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'C')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'C']));
 
         $this->assertNotFalse($taskLinkModel->create(1, 2, 9));
         $this->assertNotFalse($taskLinkModel->create(1, 3, 9));
@@ -72,9 +72,9 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $links = $taskLinkModel->getAll(1);
@@ -114,9 +114,9 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $links = $taskLinkModel->getAll(1);
@@ -156,11 +156,11 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'C')));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'C']));
 
         $this->assertNotFalse($taskLinkModel->create(1, 2, 2));
         $this->assertNotFalse($taskLinkModel->create(1, 3, 2));
@@ -180,11 +180,11 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 2, 'title' => 'B')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'C')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 2, 'title' => 'B']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'C']));
 
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 5));
         $this->assertTrue($taskLinkModel->update(1, 1, 3, 11));
@@ -213,9 +213,9 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $links = $taskLinkModel->getAll(1);
@@ -237,9 +237,9 @@ class TaskLinkModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'A')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'B')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $this->assertEquals(1, $taskLinkModel->getProjectId(1));

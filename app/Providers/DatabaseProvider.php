@@ -83,10 +83,10 @@ class DatabaseProvider implements ServiceProviderInterface
     {
         require_once __DIR__.'/../Schema/Sqlite.php';
 
-        return new Database(array(
+        return new Database([
             'driver' => 'sqlite',
             'filename' => DB_FILENAME
-        ));
+        ]);
     }
 
     /**
@@ -99,7 +99,7 @@ class DatabaseProvider implements ServiceProviderInterface
     {
         require_once __DIR__.'/../Schema/Mysql.php';
 
-        return new Database(array(
+        return new Database([
             'driver'   => 'mysql',
             'hostname' => DB_HOSTNAME,
             'username' => DB_USERNAME,
@@ -110,7 +110,7 @@ class DatabaseProvider implements ServiceProviderInterface
             'ssl_key'  => DB_SSL_KEY,
             'ssl_ca'   => DB_SSL_CA,
             'ssl_cert' => DB_SSL_CERT,
-        ));
+        ]);
     }
 
     /**
@@ -123,13 +123,13 @@ class DatabaseProvider implements ServiceProviderInterface
     {
         require_once __DIR__.'/../Schema/Postgres.php';
 
-        return new Database(array(
+        return new Database([
             'driver'   => 'postgres',
             'hostname' => DB_HOSTNAME,
             'username' => DB_USERNAME,
             'password' => DB_PASSWORD,
             'database' => DB_NAME,
             'port'     => DB_PORT,
-        ));
+        ]);
     }
 }

@@ -25,11 +25,11 @@ class ActivityController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->app('activity/project', array(
+        $this->response->html($this->helper->layout->app('activity/project', [
             'events' => $this->helper->projectActivity->getProjectEvents($project['id']),
             'project' => $project,
             'title' => t('%s\'s activity', $project['name'])
-        )));
+        ]));
     }
 
     /**
@@ -41,12 +41,12 @@ class ActivityController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->helper->layout->task('activity/task', array(
+        $this->response->html($this->helper->layout->task('activity/task', [
             'title' => $task['title'],
             'task' => $task,
             'project' => $this->projectModel->getById($task['project_id']),
             'events' => $this->helper->projectActivity->getTaskEvents($task['id']),
             'tags' => $this->taskTagModel->getList($task['id']),
-        )));
+        ]));
     }
 }

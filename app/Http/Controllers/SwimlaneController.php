@@ -47,13 +47,13 @@ class SwimlaneController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('swimlane/index', array(
+        $this->response->html($this->helper->layout->project('swimlane/index', [
             'default_swimlane' => $this->swimlaneModel->getDefault($project['id']),
             'active_swimlanes' => $this->swimlaneModel->getAllByStatus($project['id'], SwimlaneModel::ACTIVE),
             'inactive_swimlanes' => $this->swimlaneModel->getAllByStatus($project['id'], SwimlaneModel::INACTIVE),
             'project' => $project,
             'title' => t('Swimlanes')
-        )));
+        ]));
     }
 
     /**
@@ -64,15 +64,15 @@ class SwimlaneController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('swimlane/create', array(
-            'values' => $values + array('project_id' => $project['id']),
+        $this->response->html($this->template->render('swimlane/create', [
+            'values' => $values + ['project_id' => $project['id']],
             'errors' => $errors,
             'project' => $project,
-        )));
+        ]));
     }
 
     /**
@@ -89,9 +89,9 @@ class SwimlaneController extends BaseController
         if ($valid) {
             if ($this->swimlaneModel->create($values) !== false) {
                 $this->flash->success(t('Your swimlane have been created successfully.'));
-                return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
             } else {
-                $errors = array('name' => array(t('Another swimlane with the same name exists in the project')));
+                $errors = ['name' => [t('Another swimlane with the same name exists in the project')]];
             }
         }
 
@@ -106,16 +106,16 @@ class SwimlaneController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function editDefault(array $values = array(), array $errors = array())
+    public function editDefault(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $swimlane = $this->swimlaneModel->getDefault($project['id']);
 
-        $this->response->html($this->helper->layout->project('swimlane/edit_default', array(
+        $this->response->html($this->helper->layout->project('swimlane/edit_default', [
             'values' => empty($values) ? $swimlane : $values,
             'errors' => $errors,
             'project' => $project,
-        )));
+        ]));
     }
 
     /**
@@ -127,13 +127,13 @@ class SwimlaneController extends BaseController
     {
         $project = $this->getProject();
 
-        $values = $this->request->getValues() + array('show_default_swimlane' => 0);
+        $values = $this->request->getValues() + ['show_default_swimlane' => 0];
         list($valid, $errors) = $this->swimlaneValidator->validateDefaultModification($values);
 
         if ($valid) {
             if ($this->swimlaneModel->updateDefault($values)) {
                 $this->flash->success(t('The default swimlane have been updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])), true);
+                return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]), true);
             } else {
                 $this->flash->failure(t('Unable to update this swimlane.'));
             }
@@ -150,16 +150,16 @@ class SwimlaneController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $swimlane = $this->getSwimlane();
 
-        $this->response->html($this->helper->layout->project('swimlane/edit', array(
+        $this->response->html($this->helper->layout->project('swimlane/edit', [
             'values' => empty($values) ? $swimlane : $values,
             'errors' => $errors,
             'project' => $project,
-        )));
+        ]));
     }
 
     /**
@@ -177,9 +177,9 @@ class SwimlaneController extends BaseController
         if ($valid) {
             if ($this->swimlaneModel->update($values)) {
                 $this->flash->success(t('Swimlane updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
             } else {
-                $errors = array('name' => array(t('Another swimlane with the same name exists in the project')));
+                $errors = ['name' => [t('Another swimlane with the same name exists in the project')]];
             }
         }
 
@@ -196,10 +196,10 @@ class SwimlaneController extends BaseController
         $project = $this->getProject();
         $swimlane = $this->getSwimlane();
 
-        $this->response->html($this->helper->layout->project('swimlane/remove', array(
+        $this->response->html($this->helper->layout->project('swimlane/remove', [
             'project' => $project,
             'swimlane' => $swimlane,
-        )));
+        ]));
     }
 
     /**
@@ -219,7 +219,7 @@ class SwimlaneController extends BaseController
             $this->flash->failure(t('Unable to remove this swimlane.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -239,7 +239,7 @@ class SwimlaneController extends BaseController
             $this->flash->failure(t('Unable to update this swimlane.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -258,7 +258,7 @@ class SwimlaneController extends BaseController
             $this->flash->failure(t('Unable to update this swimlane.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -278,7 +278,7 @@ class SwimlaneController extends BaseController
             $this->flash->failure(t('Unable to update this swimlane.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -297,7 +297,7 @@ class SwimlaneController extends BaseController
             $this->flash->failure(t('Unable to update this swimlane.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
     }
 
     /**

@@ -23,7 +23,7 @@ function array_merge_relation(array &$input, array &$relations, $relation, $colu
         if (isset($row[$column]) && isset($relations[$row[$column]])) {
             $row[$relation] = $relations[$row[$column]];
         } else {
-            $row[$relation] = array();
+            $row[$relation] = [];
         }
     }
 }
@@ -48,7 +48,7 @@ function array_merge_relation(array &$input, array &$relations, $relation, $colu
  */
 function array_column_index(array &$input, $column)
 {
-    $result = array();
+    $result = [];
 
     foreach ($input as &$row) {
         if (isset($row[$column])) {
@@ -102,7 +102,7 @@ function get_upload_max_size()
  */
 function t()
 {
-    return call_user_func_array(array(\Hiject\Core\Translator::getInstance(), 'translate'), func_get_args());
+    return call_user_func_array([\Hiject\Core\Translator::getInstance(), 'translate'], func_get_args());
 }
 
 /**
@@ -112,7 +112,7 @@ function t()
  */
 function e()
 {
-    return call_user_func_array(array(\Hiject\Core\Translator::getInstance(), 'translateNoEscaping'), func_get_args());
+    return call_user_func_array([\Hiject\Core\Translator::getInstance(), 'translateNoEscaping'], func_get_args());
 }
 
 /**

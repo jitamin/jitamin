@@ -34,16 +34,16 @@ class EstimatedTimeComparisonAnalytic extends Base
             ->groupBy('is_active')
             ->findAll();
 
-        $metrics = array(
-            'open' => array(
+        $metrics = [
+            'open' => [
                 'time_spent' => 0,
                 'time_estimated' => 0,
-            ),
-            'closed' => array(
+            ],
+            'closed' => [
                 'time_spent' => 0,
                 'time_estimated' => 0,
-            ),
-        );
+            ],
+        ];
 
         foreach ($rows as $row) {
             $key = $row['is_active'] == TaskModel::STATUS_OPEN ? 'open' : 'closed';

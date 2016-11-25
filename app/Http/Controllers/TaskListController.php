@@ -30,7 +30,7 @@ class TaskListController extends BaseController
         $search = $this->helper->projectHeader->getSearchQuery($project);
 
         $paginator = $this->paginator
-            ->setUrl('TaskListController', 'show', array('project_id' => $project['id']))
+            ->setUrl('TaskListController', 'show', ['project_id' => $project['id']])
             ->setMax(30)
             ->setOrder(TaskModel::TABLE.'.id')
             ->setDirection('DESC')
@@ -41,11 +41,11 @@ class TaskListController extends BaseController
             )
             ->calculate();
 
-        $this->response->html($this->helper->layout->app('task_list/show', array(
+        $this->response->html($this->helper->layout->app('task_list/show', [
             'project' => $project,
             'title' => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
             'paginator' => $paginator,
-        )));
+        ]));
     }
 }

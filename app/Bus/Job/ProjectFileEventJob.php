@@ -27,7 +27,7 @@ class ProjectFileEventJob extends BaseJob
      */
     public function withParams($fileId, $eventName)
     {
-        $this->jobParams = array($fileId, $eventName);
+        $this->jobParams = [$fileId, $eventName];
         return $this;
     }
 

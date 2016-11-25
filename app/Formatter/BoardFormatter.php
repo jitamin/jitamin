@@ -52,7 +52,7 @@ class BoardFormatter extends BaseFormatter implements FormatterInterface
         $columns = $this->columnModel->getAll($this->projectId);
 
         if (empty($swimlanes) || empty($columns)) {
-            return array();
+            return [];
         }
 
         $this->hook->reference('formatter:board:query', $this->query);

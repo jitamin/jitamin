@@ -25,10 +25,10 @@ class ProjectFileController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('project_file/create', array(
+        $this->response->html($this->template->render('project_file/create', [
             'project' => $project,
             'max_size' => $this->helper->text->phpToBytes(get_upload_max_size()),
-        )));
+        ]));
     }
 
     /**
@@ -44,7 +44,7 @@ class ProjectFileController extends BaseController
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', array('project_id' => $project['id'])), true);
+        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', ['project_id' => $project['id']]), true);
     }
 
     /**
@@ -64,7 +64,7 @@ class ProjectFileController extends BaseController
             $this->flash->failure(t('Unable to remove this file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', ['project_id' => $project['id']]));
     }
 
     /**
@@ -77,9 +77,9 @@ class ProjectFileController extends BaseController
         $project = $this->getProject();
         $file = $this->projectFileModel->getById($this->request->getIntegerParam('file_id'));
 
-        $this->response->html($this->template->render('project_file/remove', array(
+        $this->response->html($this->template->render('project_file/remove', [
             'project' => $project,
             'file' => $file,
-        )));
+        ]));
     }
 }

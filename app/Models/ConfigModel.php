@@ -74,7 +74,7 @@ class ConfigModel extends SettingModel
      */
     public function regenerateToken($option)
     {
-        return $this->save(array($option => Token::getToken()));
+        return $this->save([$option => Token::getToken()]);
     }
 
     /**

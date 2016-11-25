@@ -35,7 +35,7 @@ class RememberMeCookie extends Base
      */
     public function encode($token, $sequence)
     {
-        return implode('|', array($token, $sequence));
+        return implode('|', [$token, $sequence]);
     }
 
     /**
@@ -49,10 +49,10 @@ class RememberMeCookie extends Base
     {
         list($token, $sequence) = explode('|', $value);
 
-        return array(
+        return [
             'token' => $token,
             'sequence' => $sequence,
-        );
+        ];
     }
 
     /**

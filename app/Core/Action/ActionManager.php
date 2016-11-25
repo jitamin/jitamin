@@ -26,7 +26,7 @@ class ActionManager extends Base
      * @access private
      * @var ActionBase[]
      */
-    private $actions = array();
+    private $actions = [];
 
     /**
      * Register a new automatic action
@@ -65,7 +65,7 @@ class ActionManager extends Base
      */
     public function getAvailableActions()
     {
-        $actions = array();
+        $actions = [];
 
         foreach ($this->actions as $action) {
             if (count($action->getEvents()) > 0) {
@@ -87,7 +87,7 @@ class ActionManager extends Base
      */
     public function getAvailableParameters(array $actions)
     {
-        $params = array();
+        $params = [];
 
         foreach ($actions as $action) {
             $currentAction = $this->getAction($action['action_name']);
@@ -106,7 +106,7 @@ class ActionManager extends Base
      */
     public function getCompatibleEvents($name)
     {
-        $events = array();
+        $events = [];
         $actionEvents = $this->getAction($name)->getEvents();
 
         foreach ($this->eventManager->getAll() as $event => $description) {
@@ -140,7 +140,7 @@ class ActionManager extends Base
                 $listener->setParam($param_name, $param_value);
             }
 
-            $this->dispatcher->addListener($action['event_name'], array($listener, 'execute'));
+            $this->dispatcher->addListener($action['event_name'], [$listener, 'execute']);
         }
 
         return $this;

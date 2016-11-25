@@ -24,7 +24,7 @@ class TaskDuplicationModel extends Base
      * @access protected
      * @var string[]
      */
-    protected $fieldsToDuplicate = array(
+    protected $fieldsToDuplicate = [
         'title',
         'description',
         'date_due',
@@ -42,7 +42,7 @@ class TaskDuplicationModel extends Base
         'recurrence_factor',
         'recurrence_timeframe',
         'recurrence_basedate',
-    );
+    ];
 
     /**
      * Duplicate a task to the same project
@@ -121,7 +121,7 @@ class TaskDuplicationModel extends Base
     protected function copyFields($task_id)
     {
         $task = $this->taskFinderModel->getById($task_id);
-        $values = array();
+        $values = [];
 
         foreach ($this->fieldsToDuplicate as $field) {
             $values[$field] = $task[$field];

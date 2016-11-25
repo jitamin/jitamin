@@ -59,14 +59,14 @@ class UserProcedure extends BaseProcedure
 
     public function createUser($username, $password, $name = '', $email = '', $role = Role::APP_USER)
     {
-        $values = array(
+        $values = [
             'username' => $username,
             'password' => $password,
             'confirmation' => $password,
             'name' => $name,
             'email' => $email,
             'role' => $role,
-        );
+        ];
 
         list($valid, ) = $this->userValidator->validateCreation($values);
         return $valid ? $this->userModel->create($values) : false;
@@ -104,13 +104,13 @@ class UserProcedure extends BaseProcedure
                 throw new LogicException('Username not found in LDAP profile, check the parameter LDAP_USER_ATTRIBUTE_USERNAME');
             }
 
-            $values = array(
+            $values = [
                 'username' => $user->getUsername(),
                 'name' => $user->getName(),
                 'email' => $user->getEmail(),
                 'role' => $user->getRole(),
                 'is_ldap_user' => 1,
-            );
+            ];
 
             return $this->userModel->create($values);
         } catch (LdapException $e) {
@@ -121,13 +121,13 @@ class UserProcedure extends BaseProcedure
 
     public function updateUser($id, $username = null, $name = null, $email = null, $role = null)
     {
-        $values = $this->filterValues(array(
+        $values = $this->filterValues([
             'id' => $id,
             'username' => $username,
             'name' => $name,
             'email' => $email,
             'role' => $role,
-        ));
+        ]);
 
         list($valid, ) = $this->userValidator->validateApiModification($values);
         return $valid && $this->userModel->update($values);

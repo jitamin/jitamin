@@ -46,7 +46,7 @@ class SubtaskHelper extends Base
             return $this->getTitle($subtask);
         }
 
-        $params = array('task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id'], 'refresh-table' => (int) $refresh_table);
+        $params = ['task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id'], 'refresh-table' => (int) $refresh_table];
 
         if ($subtask['status'] == 0 && isset($this->sessionStorage->hasSubtaskInProgress) && $this->sessionStorage->hasSubtaskInProgress) {
             return $this->helper->url->link($this->getTitle($subtask), 'SubtaskRestrictionController', 'show', $params, false, 'popover');
@@ -56,9 +56,9 @@ class SubtaskHelper extends Base
         return $this->helper->url->link($this->getTitle($subtask), 'SubtaskStatusController', 'change', $params, false, $class);
     }
 
-    public function selectTitle(array $values, array $errors = array(), array $attributes = array())
+    public function selectTitle(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="1"', 'required', 'maxlength="255"'), $attributes);
+        $attributes = array_merge(['tabindex="1"', 'required', 'maxlength="255"'], $attributes);
 
         $html = $this->helper->form->label(t('Title'), 'title');
         $html .= $this->helper->form->text('title', $values, $errors, $attributes);
@@ -66,9 +66,9 @@ class SubtaskHelper extends Base
         return $html;
     }
 
-    public function selectAssignee(array $users, array $values, array $errors = array(), array $attributes = array())
+    public function selectAssignee(array $users, array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="2"'), $attributes);
+        $attributes = array_merge(['tabindex="2"'], $attributes);
 
         $html = $this->helper->form->label(t('Assignee'), 'user_id');
         $html .= $this->helper->form->select('user_id', $users, $values, $errors, $attributes);
@@ -80,9 +80,9 @@ class SubtaskHelper extends Base
         return $html;
     }
 
-    public function selectTimeEstimated(array $values, array $errors = array(), array $attributes = array())
+    public function selectTimeEstimated(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="3"'), $attributes);
+        $attributes = array_merge(['tabindex="3"'], $attributes);
 
         $html = $this->helper->form->label(t('Original estimate'), 'time_estimated');
         $html .= $this->helper->form->numeric('time_estimated', $values, $errors, $attributes);
@@ -91,9 +91,9 @@ class SubtaskHelper extends Base
         return $html;
     }
 
-    public function selectTimeSpent(array $values, array $errors = array(), array $attributes = array())
+    public function selectTimeSpent(array $values, array $errors = [], array $attributes = [])
     {
-        $attributes = array_merge(array('tabindex="4"'), $attributes);
+        $attributes = array_merge(['tabindex="4"'], $attributes);
 
         $html = $this->helper->form->label(t('Time spent'), 'time_spent');
         $html .= $this->helper->form->numeric('time_spent', $values, $errors, $attributes);

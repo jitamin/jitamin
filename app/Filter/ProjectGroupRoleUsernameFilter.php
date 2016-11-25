@@ -29,7 +29,7 @@ class ProjectGroupRoleUsernameFilter extends BaseFilter implements FilterInterfa
      */
     public function getAttributes()
     {
-        return array();
+        return [];
     }
 
     /**

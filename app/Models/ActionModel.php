@@ -35,7 +35,7 @@ class ActionModel extends Base
     public function getAllByUser($user_id)
     {
         $project_ids = $this->projectPermissionModel->getActiveProjectIds($user_id);
-        $actions = array();
+        $actions = [];
 
         if (! empty($project_ids)) {
             $actions = $this->db->table(self::TABLE)->in('project_id', $project_ids)->findAll();
@@ -114,7 +114,7 @@ class ActionModel extends Base
     private function attachParamsToActions(array &$actions, array &$params)
     {
         foreach ($actions as &$action) {
-            $action['params'] = isset($params[$action['id']]) ? $params[$action['id']] : array();
+            $action['params'] = isset($params[$action['id']]) ? $params[$action['id']] : [];
         }
 
         return $actions;
@@ -143,11 +143,11 @@ class ActionModel extends Base
     {
         $this->db->startTransaction();
 
-        $action = array(
+        $action = [
             'project_id' => $values['project_id'],
             'event_name' => $values['event_name'],
             'action_name' => $values['action_name'],
-        );
+        ];
 
         if (! $this->db->table(self::TABLE)->insert($action)) {
             $this->db->cancelTransaction();
@@ -181,11 +181,11 @@ class ActionModel extends Base
         foreach ($actions as $action) {
             $this->db->startTransaction();
 
-            $values = array(
+            $values = [
                 'project_id' => $dst_project_id,
                 'event_name' => $action['event_name'],
                 'action_name' => $action['action_name'],
-            );
+            ];
 
             if (! $this->db->table(self::TABLE)->insert($values)) {
                 $this->db->cancelTransaction();

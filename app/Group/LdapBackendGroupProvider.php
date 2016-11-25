@@ -37,7 +37,7 @@ class LdapBackendGroupProvider extends Base implements GroupBackendProviderInter
             return LdapGroup::getGroups($ldap, $this->getLdapGroupPattern($input));
         } catch (LdapException $e) {
             $this->logger->error($e->getMessage());
-            return array();
+            return [];
         }
     }
 

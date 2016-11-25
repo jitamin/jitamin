@@ -27,7 +27,7 @@ class TaskProjectsFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('projects');
+        return ['projects'];
     }
 
     /**

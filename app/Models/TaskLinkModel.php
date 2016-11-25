@@ -143,11 +143,11 @@ class TaskLinkModel extends Base
     public function getAllGroupedByLabel($task_id)
     {
         $links = $this->getAll($task_id);
-        $result = array();
+        $result = [];
 
         foreach ($links as $link) {
             if (! isset($result[$link['label']])) {
-                $result[$link['label']] = array();
+                $result[$link['label']] = [];
             }
 
             $result[$link['label']][] = $link;
@@ -179,7 +179,7 @@ class TaskLinkModel extends Base
         }
 
         $this->db->closeTransaction();
-        $this->fireEvents(array($task_link_id1, $task_link_id2), self::EVENT_CREATE_UPDATE);
+        $this->fireEvents([$task_link_id1, $task_link_id2], self::EVENT_CREATE_UPDATE);
 
         return $task_link_id1;
     }
@@ -211,7 +211,7 @@ class TaskLinkModel extends Base
         }
 
         $this->db->closeTransaction();
-        $this->fireEvents(array($task_link_id, $opposite_task_link['id']), self::EVENT_CREATE_UPDATE);
+        $this->fireEvents([$task_link_id, $opposite_task_link['id']], self::EVENT_CREATE_UPDATE);
 
         return true;
     }
@@ -279,11 +279,11 @@ class TaskLinkModel extends Base
      */
     protected function createTaskLink($task_id, $opposite_task_id, $link_id)
     {
-        return $this->db->table(self::TABLE)->persist(array(
+        return $this->db->table(self::TABLE)->persist([
             'task_id'          => $task_id,
             'opposite_task_id' => $opposite_task_id,
             'link_id'          => $link_id,
-        ));
+        ]);
     }
 
     /**
@@ -298,10 +298,10 @@ class TaskLinkModel extends Base
      */
     protected function updateTaskLink($task_link_id, $task_id, $opposite_task_id, $link_id)
     {
-        return $this->db->table(self::TABLE)->eq('id', $task_link_id)->update(array(
+        return $this->db->table(self::TABLE)->eq('id', $task_link_id)->update([
             'task_id' => $task_id,
             'opposite_task_id' => $opposite_task_id,
             'link_id' => $link_id,
-        ));
+        ]);
     }
 }

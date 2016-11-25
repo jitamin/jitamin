@@ -19,7 +19,7 @@ use Hiject\Core\Base;
  */
 class ProcedureAuthorization extends Base
 {
-    private $userSpecificProcedures = array(
+    private $userSpecificProcedures = [
         'getMe',
         'getMyDashboard',
         'getMyActivityStream',
@@ -27,7 +27,7 @@ class ProcedureAuthorization extends Base
         'getMyProjectsList',
         'getMyProjects',
         'getMyOverdueTasks',
-    );
+    ];
 
     public function check($procedure)
     {

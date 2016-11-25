@@ -27,7 +27,7 @@ class UserMentionTest extends Base
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
 
-        $this->assertNotFalse($userModel->create(array('username' => 'user1')));
+        $this->assertNotFalse($userModel->create(['username' => 'user1']));
         $this->assertEmpty($userMentionModel->getMentionedUsers('test'));
     }
 
@@ -36,7 +36,7 @@ class UserMentionTest extends Base
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
 
-        $this->assertNotFalse($userModel->create(array('username' => 'user1')));
+        $this->assertNotFalse($userModel->create(['username' => 'user1']));
         $this->assertEmpty($userMentionModel->getMentionedUsers('test @user1'));
     }
 
@@ -45,8 +45,8 @@ class UserMentionTest extends Base
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
 
-        $this->assertNotFalse($userModel->create(array('username' => 'user1')));
-        $this->assertNotFalse($userModel->create(array('username' => 'user2', 'name' => 'Foobar', 'notifications_enabled' => 1)));
+        $this->assertNotFalse($userModel->create(['username' => 'user1']));
+        $this->assertNotFalse($userModel->create(['username' => 'user2', 'name' => 'Foobar', 'notifications_enabled' => 1]));
 
         $users = $userMentionModel->getMentionedUsers('test @user2');
         $this->assertCount(1, $users);
@@ -58,12 +58,12 @@ class UserMentionTest extends Base
 
     public function testGetMentionedUsersWithNotficationEnabledAndUserLoggedIn()
     {
-        $this->container['sessionStorage']->user = array('id' => 3);
+        $this->container['sessionStorage']->user = ['id' => 3];
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
 
-        $this->assertNotFalse($userModel->create(array('username' => 'user1')));
-        $this->assertNotFalse($userModel->create(array('username' => 'user2', 'name' => 'Foobar', 'notifications_enabled' => 1)));
+        $this->assertNotFalse($userModel->create(['username' => 'user1']));
+        $this->assertNotFalse($userModel->create(['username' => 'user2', 'name' => 'Foobar', 'notifications_enabled' => 1]));
 
         $this->assertEmpty($userMentionModel->getMentionedUsers('test @user2'));
     }
@@ -74,15 +74,15 @@ class UserMentionTest extends Base
         $projectModel = new ProjectModel($this->container);
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
-        $event = new GenericEvent(array('project_id' => 1));
+        $event = new GenericEvent(['project_id' => 1]);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1', 'name' => 'User 1', 'notifications_enabled' => 1)));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2', 'name' => 'User 2', 'notifications_enabled' => 1)));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'name' => 'User 1', 'notifications_enabled' => 1]));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'name' => 'User 2', 'notifications_enabled' => 1]));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 3, Role::PROJECT_MEMBER));
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_USER_MENTION, array($this, 'onUserMention'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_USER_MENTION, [$this, 'onUserMention']);
 
         $userMentionModel->fireEvents('test @user1 @user2', TaskModel::EVENT_USER_MENTION, $event);
 
@@ -97,17 +97,17 @@ class UserMentionTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
-        $event = new GenericEvent(array('task_id' => 1));
+        $event = new GenericEvent(['task_id' => 1]);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1', 'name' => 'User 1', 'notifications_enabled' => 1)));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2', 'name' => 'User 2', 'notifications_enabled' => 1)));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'name' => 'User 1', 'notifications_enabled' => 1]));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'name' => 'User 2', 'notifications_enabled' => 1]));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 3, Role::PROJECT_MEMBER));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'Task 1')));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'Task 1']));
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_USER_MENTION, array($this, 'onUserMention'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_USER_MENTION, [$this, 'onUserMention']);
 
         $userMentionModel->fireEvents('test @user1 @user2', TaskModel::EVENT_USER_MENTION, $event);
 
@@ -118,6 +118,6 @@ class UserMentionTest extends Base
     public function onUserMention($event)
     {
         $this->assertInstanceOf('Hiject\Bus\Event\GenericEvent', $event);
-        $this->assertEquals(array('id' => '3', 'username' => 'user2', 'name' => 'User 2', 'email' => null, 'language' => null), $event['mention']);
+        $this->assertEquals(['id' => '3', 'username' => 'user2', 'name' => 'User 2', 'email' => null, 'language' => null], $event['mention']);
     }
 }

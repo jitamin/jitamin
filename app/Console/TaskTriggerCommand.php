@@ -44,7 +44,7 @@ class TaskTriggerCommand extends BaseCommand
     private function getProjectIds()
     {
         $listeners = $this->dispatcher->getListeners(TaskModel::EVENT_DAILY_CRONJOB);
-        $project_ids = array();
+        $project_ids = [];
 
         foreach ($listeners as $listener) {
             $project_ids[] = $listener[0]->getProjectId();
@@ -55,7 +55,7 @@ class TaskTriggerCommand extends BaseCommand
 
     private function sendEvent(array &$tasks, $project_id)
     {
-        $event = new TaskListEvent(array('project_id' => $project_id));
+        $event = new TaskListEvent(['project_id' => $project_id]);
         $event->setTasks($tasks);
 
         $this->dispatcher->dispatch(TaskModel::EVENT_DAILY_CRONJOB, $event);

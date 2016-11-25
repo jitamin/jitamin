@@ -32,7 +32,7 @@ class LocaleComparatorCommand extends BaseCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $strings = array();
+        $strings = [];
         $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator('app'));
         $it->rewind();
 
@@ -73,7 +73,7 @@ class LocaleComparatorCommand extends BaseCommand
     public function search($filename)
     {
         $content = file_get_contents($filename);
-        $strings = array();
+        $strings = [];
 
         if (preg_match_all('/\b[et]\((\'\K.*?\') *[\)\,]/', $content, $matches) && isset($matches[1])) {
             $strings = $matches[1];

@@ -14,7 +14,7 @@ require_once __DIR__.'/BaseProcedureTest.php';
 class ColumnProcedureTest extends BaseProcedureTest
 {
     protected $projectName = 'My project to test columns';
-    private $columns = array();
+    private $columns = [];
 
     public function testAll()
     {

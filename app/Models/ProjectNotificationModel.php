@@ -51,7 +51,7 @@ class ProjectNotificationModel extends Base
     {
         $this->db->startTransaction();
 
-        $types = empty($values['notification_types']) ? array() : array_keys($values['notification_types']);
+        $types = empty($values['notification_types']) ? [] : array_keys($values['notification_types']);
         $this->projectNotificationTypeModel->saveSelectedTypes($project_id, $types);
 
         $this->db->closeTransaction();
@@ -66,8 +66,8 @@ class ProjectNotificationModel extends Base
      */
     public function readSettings($project_id)
     {
-        return array(
+        return [
             'notification_types' => $this->projectNotificationTypeModel->getSelectedTypes($project_id),
-        );
+        ];
     }
 }

@@ -36,11 +36,11 @@ class MailNotificationTest extends Base
         $fileModel = new TaskFileModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $subtaskModel->create(array('title' => 'test', 'task_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('comment' => 'test', 'task_id' => 1, 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $subtaskModel->create(['title' => 'test', 'task_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['comment' => 'test', 'task_id' => 1, 'user_id' => 1]));
         $this->assertEquals(1, $fileModel->create(1, 'test', 'blah', 123));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
@@ -56,22 +56,22 @@ class MailNotificationTest extends Base
         $this->assertNotEmpty($file);
 
         foreach (NotificationSubscriber::getSubscribedEvents() as $eventName => $values) {
-            $eventData = array(
+            $eventData = [
                 'task' => $task,
                 'comment' => $comment,
                 'subtask' => $subtask,
                 'file' => $file,
                 'task_link' => $tasklink,
-                'changes' => array()
-            );
+                'changes' => []
+            ];
             $this->assertNotEmpty($mailNotification->getMailContent($eventName, $eventData));
             $this->assertStringStartsWith('[test] ', $mailNotification->getMailSubject($eventName, $eventData));
         }
 
-        $this->assertStringStartsWith('[Test1, Test2] ', $mailNotification->getMailSubject(TaskModel::EVENT_OVERDUE, array(
-            'tasks' => array(array('id' => 123), array('id' => 456)),
+        $this->assertStringStartsWith('[Test1, Test2] ', $mailNotification->getMailSubject(TaskModel::EVENT_OVERDUE, [
+            'tasks' => [['id' => 123], ['id' => 456]],
             'project_name' => 'Test1, Test2',
-        )));
+        ]));
     }
 
     public function testSendWithEmailAddress()
@@ -82,14 +82,14 @@ class MailNotificationTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertTrue($userModel->update(array('id' => 1, 'email' => 'test@localhost')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertTrue($userModel->update(['id' => 1, 'email' => 'test@localhost']));
 
         $this->container['emailClient'] = $this
             ->getMockBuilder('\Hiject\Core\Mail\Client')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('send'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['send'])
             ->getMock();
 
         $this->container['emailClient']
@@ -102,7 +102,7 @@ class MailNotificationTest extends Base
                 $this->stringContains('test')
             );
 
-        $mailNotification->notifyUser($userModel->getById(1), TaskModel::EVENT_CREATE, array('task' => $taskFinderModel->getDetails(1)));
+        $mailNotification->notifyUser($userModel->getById(1), TaskModel::EVENT_CREATE, ['task' => $taskFinderModel->getDetails(1)]);
     }
 
     public function testSendWithoutEmailAddress()
@@ -113,19 +113,19 @@ class MailNotificationTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $this->container['emailClient'] = $this
             ->getMockBuilder('\Hiject\Core\Mail\Client')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('send'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['send'])
             ->getMock();
 
         $this->container['emailClient']
             ->expects($this->never())
             ->method('send');
 
-        $mailNotification->notifyUser($userModel->getById(1), TaskModel::EVENT_CREATE, array('task' => $taskFinderModel->getDetails(1)));
+        $mailNotification->notifyUser($userModel->getById(1), TaskModel::EVENT_CREATE, ['task' => $taskFinderModel->getDetails(1)]);
     }
 }

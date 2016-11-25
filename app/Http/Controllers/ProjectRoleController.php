@@ -25,11 +25,11 @@ class ProjectRoleController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_role/show', array(
+        $this->response->html($this->helper->layout->project('project_role/show', [
             'project' => $project,
             'roles' => $this->projectRoleModel->getAllWithRestrictions($project['id']),
             'title' => t('Custom Project Roles'),
-        )));
+        ]));
     }
 
     /**
@@ -39,15 +39,15 @@ class ProjectRoleController extends BaseController
      * @param  array $errors
      * @throws AccessForbiddenException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('project_role/create', array(
+        $this->response->html($this->template->render('project_role/create', [
             'project' => $project,
-            'values' => $values + array('project_id' => $project['id']),
+            'values' => $values + ['project_id' => $project['id']],
             'errors' => $errors,
-        )));
+        ]));
     }
 
     /**
@@ -69,7 +69,7 @@ class ProjectRoleController extends BaseController
                 $this->flash->failure(t('Unable to create custom project role.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->create($values, $errors);
         }
@@ -82,7 +82,7 @@ class ProjectRoleController extends BaseController
      * @param  array $errors
      * @throws AccessForbiddenException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $role = $this->getRole($project['id']);
@@ -91,12 +91,12 @@ class ProjectRoleController extends BaseController
             $values = $role;
         }
 
-        $this->response->html($this->template->render('project_role/edit', array(
+        $this->response->html($this->template->render('project_role/edit', [
             'role' => $role,
             'project' => $project,
             'values' => $values,
             'errors' => $errors,
-        )));
+        ]));
     }
 
     /**
@@ -118,7 +118,7 @@ class ProjectRoleController extends BaseController
                 $this->flash->failure(t('Unable to update custom project role.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->edit($values, $errors);
         }
@@ -134,10 +134,10 @@ class ProjectRoleController extends BaseController
         $project = $this->getProject();
         $role = $this->getRole($project['id']);
 
-        $this->response->html($this->helper->layout->project('project_role/remove', array(
+        $this->response->html($this->helper->layout->project('project_role/remove', [
             'project' => $project,
             'role' => $role,
-        )));
+        ]));
     }
 
     /**
@@ -157,7 +157,7 @@ class ProjectRoleController extends BaseController
             $this->flash->failure(t('Unable to remove this project role.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 
     protected function getRole($project_id)

@@ -43,14 +43,14 @@ class LinkController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function index(array $values = array(), array $errors = array())
+    public function index(array $values = [], array $errors = [])
     {
-        $this->response->html($this->helper->layout->config('link/index', array(
+        $this->response->html($this->helper->layout->config('link/index', [
             'links' => $this->linkModel->getMergedList(),
             'values' => $values,
             'errors' => $errors,
             'title' => t('Settings').' &raquo; '.t('Task\'s links'),
-        )));
+        ]));
     }
 
     /**
@@ -83,18 +83,18 @@ class LinkController extends BaseController
      * @param array $errors
      * @throws PageNotFoundException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $link = $this->getLink();
         $link['label'] = t($link['label']);
 
-        $this->response->html($this->helper->layout->config('link/edit', array(
+        $this->response->html($this->helper->layout->config('link/edit', [
             'values' => $values ?: $link,
             'errors' => $errors,
             'labels' => $this->linkModel->getList($link['id']),
             'link' => $link,
             'title' => t('Link modification')
-        )));
+        ]));
     }
 
     /**
@@ -128,10 +128,10 @@ class LinkController extends BaseController
     {
         $link = $this->getLink();
 
-        $this->response->html($this->helper->layout->config('link/remove', array(
+        $this->response->html($this->helper->layout->config('link/remove', [
             'link' => $link,
             'title' => t('Remove a link')
-        )));
+        ]));
     }
 
     /**

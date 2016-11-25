@@ -53,10 +53,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testProjectManagerCanUpdateHisProject()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Team project can be updated',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
         $this->assertEquals('project-manager', $this->app->getProjectUserRole($projectId, $this->managerUserId));
@@ -76,10 +76,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testProjectAuthorizationGranted()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'A team project with members',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -89,14 +89,14 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testActionAuthorizationForbidden()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
-        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', array('column_id' => 1));
+        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
 
         $this->setExpectedException('JsonRPC\Exception\AccessDeniedException');
@@ -105,14 +105,14 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testActionAuthorizationForbiddenBecauseNotProjectManager()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
-        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', array('column_id' => 1));
+        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
 
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-member'));
@@ -123,14 +123,14 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testActionAuthorizationGranted()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
-        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', array('column_id' => 1));
+        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
 
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-manager'));
@@ -139,10 +139,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testCategoryAuthorizationForbidden()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -155,10 +155,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testCategoryAuthorizationForbiddenBecauseNotProjectManager()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -172,10 +172,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testCategoryAuthorizationGranted()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -188,10 +188,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testColumnAuthorizationForbidden()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -204,10 +204,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testColumnAuthorizationForbiddenBecauseNotProjectManager()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -221,10 +221,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testColumnAuthorizationGranted()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
 
@@ -237,10 +237,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testCommentAuthorizationForbidden()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-viewer'));
@@ -257,10 +257,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testCommentAuthorizationGranted()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-member'));
@@ -276,10 +276,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testSubtaskAuthorizationForbidden()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-viewer'));
@@ -296,10 +296,10 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
     public function testSubtaskAuthorizationGranted()
     {
-        $projectId = $this->manager->createProject(array(
+        $projectId = $this->manager->createProject([
             'name' => 'Test Project',
             'owner_id' => $this->managerUserId,
-        ));
+        ]);
 
         $this->assertNotFalse($projectId);
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-member'));

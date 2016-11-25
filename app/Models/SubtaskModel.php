@@ -68,11 +68,11 @@ class SubtaskModel extends Base
      */
     public function getStatusList()
     {
-        return array(
+        return [
             self::STATUS_TODO => t('Todo'),
             self::STATUS_INPROGRESS => t('In progress'),
             self::STATUS_DONE => t('Done'),
-        );
+        ];
     }
 
     /**
@@ -259,8 +259,8 @@ class SubtaskModel extends Base
      */
     protected function prepare(array &$values)
     {
-        $this->helper->model->removeFields($values, array('another_subtask'));
-        $this->helper->model->resetFields($values, array('time_estimated', 'time_spent'));
+        $this->helper->model->removeFields($values, ['another_subtask']);
+        $this->helper->model->resetFields($values, ['time_estimated', 'time_spent']);
         $this->hook->reference('model:subtask:modification:prepare', $values);
     }
 

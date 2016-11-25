@@ -27,7 +27,7 @@ class ProjectActivityTaskIdFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('task_id');
+        return ['task_id'];
     }
 
     /**

@@ -24,7 +24,7 @@ class ProjectViewController extends BaseController
         $project = $this->getProject();
         $this->projectModel->getColumnStats($project);
 
-        $this->response->html($this->helper->layout->app('project_view/show', array(
+        $this->response->html($this->helper->layout->app('project_view/show', [
             'project' => $project,
             'title' => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
@@ -33,6 +33,6 @@ class ProjectViewController extends BaseController
             'events' => $this->helper->projectActivity->getProjectEvents($project['id'], 10),
             'images' => $this->projectFileModel->getAllImages($project['id']),
             'files' => $this->projectFileModel->getAllDocuments($project['id']),
-        )));
+        ]));
     }
 }

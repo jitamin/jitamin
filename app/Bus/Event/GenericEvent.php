@@ -19,7 +19,7 @@ use Symfony\Component\EventDispatcher\Event as BaseEvent;
  */
 class GenericEvent extends BaseEvent implements ArrayAccess
 {
-    protected $container = array();
+    protected $container = [];
 
     /**
      * Constructor
@@ -27,7 +27,7 @@ class GenericEvent extends BaseEvent implements ArrayAccess
      * @access public
      * @param  array $values
      */
-    public function __construct(array $values = array())
+    public function __construct(array $values = [])
     {
         $this->container = $values;
     }

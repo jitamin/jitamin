@@ -28,17 +28,17 @@ class ColumnValidator extends BaseValidator
      */
     public function validateModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('This value is required')),
             new Validators\Integer('id', t('This value must be an integer')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -50,17 +50,17 @@ class ColumnValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('project_id', t('The project id is required')),
             new Validators\Integer('project_id', t('This value must be an integer')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -71,11 +71,11 @@ class ColumnValidator extends BaseValidator
      */
     private function commonValidationRules()
     {
-        return array(
+        return [
             new Validators\Integer('task_limit', t('This value must be an integer')),
             new Validators\GreaterThan('task_limit', t('This value must be greater than %d', -1), -1),
             new Validators\Required('title', t('The title is required')),
             new Validators\MaxLength('title', t('The maximum length is %d characters', 50), 50),
-        );
+        ];
     }
 }

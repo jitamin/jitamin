@@ -88,7 +88,7 @@ abstract class SettingModel extends Base
      */
     public function save(array $values)
     {
-        $results = array();
+        $results = [];
         $values = $this->prepare($values);
         $user_id = $this->userSession->getId();
         $timestamp = time();

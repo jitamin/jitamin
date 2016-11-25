@@ -50,7 +50,7 @@ class FlashMessage extends Base
     public function setMessage($key, $message)
     {
         if (! isset($this->sessionStorage->flash)) {
-            $this->sessionStorage->flash = array();
+            $this->sessionStorage->flash = [];
         }
 
         $this->sessionStorage->flash[$key] = $message;

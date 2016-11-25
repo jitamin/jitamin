@@ -23,16 +23,16 @@ class TransitionTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $transitionModel = new TransitionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $task_event = array(
+        $task_event = [
             'project_id' => 1,
             'task_id' => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
             'date_moved' => time() - 3600
-        );
+        ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));
 
@@ -53,33 +53,33 @@ class TransitionTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $transitionModel = new TransitionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $task_event = array(
+        $task_event = [
             'project_id' => 1,
             'task_id' => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
             'date_moved' => time() - 3600
-        );
+        ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));
 
-        $task_event = array(
+        $task_event = [
             'project_id' => 1,
             'task_id' => 1,
             'src_column_id' => 2,
             'dst_column_id' => 3,
             'date_moved' => time() - 1200
-        );
+        ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));
 
-        $expected = array(
+        $expected = [
             '1' => 3600,
             '2' => 1200,
-        );
+        ];
 
         $this->assertEquals($expected, $transitionModel->getTimeSpentByTask(1));
     }
@@ -90,29 +90,29 @@ class TransitionTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $transitionModel = new TransitionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
 
-        $task_event = array(
+        $task_event = [
             'project_id' => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
             'date_moved' => time() - 3600
-        );
+        ];
 
-        $this->assertTrue($transitionModel->save(1, array('task_id' => 1) + $task_event));
-        $this->assertTrue($transitionModel->save(1, array('task_id' => 2) + $task_event));
+        $this->assertTrue($transitionModel->save(1, ['task_id' => 1] + $task_event));
+        $this->assertTrue($transitionModel->save(1, ['task_id' => 2] + $task_event));
 
-        $task_event = array(
+        $task_event = [
             'project_id' => 1,
             'src_column_id' => 2,
             'dst_column_id' => 3,
             'date_moved' => time() - 1200
-        );
+        ];
 
-        $this->assertTrue($transitionModel->save(1, array('task_id' => 1) + $task_event));
-        $this->assertTrue($transitionModel->save(1, array('task_id' => 2) + $task_event));
+        $this->assertTrue($transitionModel->save(1, ['task_id' => 1] + $task_event));
+        $this->assertTrue($transitionModel->save(1, ['task_id' => 2] + $task_event));
 
         $transitions = $transitionModel->getAllByProjectAndDate(1, date('Y-m-d'), date('Y-m-d'));
         $this->assertCount(4, $transitions);

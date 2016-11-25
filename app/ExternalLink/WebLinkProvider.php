@@ -48,9 +48,9 @@ class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderIn
      */
     public function getDependencies()
     {
-        return array(
+        return [
             'related' => t('Related'),
-        );
+        ];
     }
 
     /**

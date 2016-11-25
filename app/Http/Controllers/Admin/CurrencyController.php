@@ -23,16 +23,16 @@ class CurrencyController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function index(array $values = array(), array $errors = array())
+    public function index(array $values = [], array $errors = [])
     {
-        $this->response->html($this->helper->layout->config('currency/index', array(
-            'config_values' => array('application_currency' => $this->configModel->get('application_currency')),
+        $this->response->html($this->helper->layout->config('currency/index', [
+            'config_values' => ['application_currency' => $this->configModel->get('application_currency')],
             'values' => $values,
             'errors' => $errors,
             'rates' => $this->currencyModel->getAll(),
             'currencies' => $this->currencyModel->getCurrencies(),
             'title' => t('Settings').' &raquo; '.t('Currency rates'),
-        )));
+        ]));
     }
 
     /**

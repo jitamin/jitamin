@@ -25,7 +25,7 @@ class EventManager
      * @access private
      * @var array
      */
-    private $events = array();
+    private $events = [];
 
     /**
      * Add new event
@@ -49,7 +49,7 @@ class EventManager
      */
     public function getAll()
     {
-        $events = array(
+        $events = [
             TaskLinkModel::EVENT_CREATE_UPDATE => t('Task link creation or modification'),
             TaskModel::EVENT_MOVE_COLUMN       => t('Move a task to another column'),
             TaskModel::EVENT_UPDATE            => t('Task modification'),
@@ -60,7 +60,7 @@ class EventManager
             TaskModel::EVENT_ASSIGNEE_CHANGE   => t('Task assignee change'),
             TaskModel::EVENT_DAILY_CRONJOB     => t('Daily background job for tasks'),
             TaskModel::EVENT_MOVE_SWIMLANE     => t('Move a task to another swimlane'),
-        );
+        ];
 
         $events = array_merge($events, $this->events);
         asort($events);

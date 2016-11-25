@@ -36,13 +36,13 @@ class TaskGanttController extends BaseController
             $filter->getQuery()->asc('column_position')->asc(TaskModel::TABLE.'.position');
         }
 
-        $this->response->html($this->helper->layout->app('task_gantt/show', array(
+        $this->response->html($this->helper->layout->app('task_gantt/show', [
             'project' => $project,
             'title' => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
             'sorting' => $sorting,
             'tasks' => $filter->format(new TaskGanttFormatter($this->container)),
-        )));
+        ]));
     }
 
     /**

@@ -29,7 +29,7 @@ class ProjectModificationDateSubscriber extends BaseSubscriber implements EventS
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_CREATE_UPDATE   => 'execute',
             TaskModel::EVENT_CLOSE           => 'execute',
             TaskModel::EVENT_OPEN            => 'execute',
@@ -38,7 +38,7 @@ class ProjectModificationDateSubscriber extends BaseSubscriber implements EventS
             TaskModel::EVENT_MOVE_POSITION   => 'execute',
             TaskModel::EVENT_MOVE_PROJECT    => 'execute',
             TaskModel::EVENT_ASSIGNEE_CHANGE => 'execute',
-        );
+        ];
     }
 
     /**

@@ -24,7 +24,7 @@ abstract class BaseJob extends Base
      * @access protected
      * @var array
      */
-    protected $jobParams = array();
+    protected $jobParams = [];
 
     /**
      * Get job parameters

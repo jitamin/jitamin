@@ -50,7 +50,7 @@ class TaskModificationModel extends Base
      */
     protected function fireEvents(array $task, array $changes)
     {
-        $events = array();
+        $events = [];
 
         if ($this->isAssigneeChanged($task, $changes)) {
             $events[] = TaskModel::EVENT_ASSIGNEE_CHANGE;
@@ -61,7 +61,7 @@ class TaskModificationModel extends Base
 
         if (! empty($events)) {
             $this->queueManager->push($this->taskEventJob
-                ->withParams($task['id'], $events, $changes, array(), $task)
+                ->withParams($task['id'], $events, $changes, [], $task)
             );
         }
     }
@@ -104,12 +104,12 @@ class TaskModificationModel extends Base
      */
     protected function prepare(array &$values)
     {
-        $values = $this->dateParser->convert($values, array('date_due'));
-        $values = $this->dateParser->convert($values, array('date_started'), true);
+        $values = $this->dateParser->convert($values, ['date_due']);
+        $values = $this->dateParser->convert($values, ['date_started'], true);
 
-        $this->helper->model->removeFields($values, array('id'));
-        $this->helper->model->resetFields($values, array('date_due', 'date_started', 'score', 'category_id', 'time_estimated', 'time_spent'));
-        $this->helper->model->convertIntegerFields($values, array('priority', 'is_active', 'recurrence_status', 'recurrence_trigger', 'recurrence_factor', 'recurrence_timeframe', 'recurrence_basedate'));
+        $this->helper->model->removeFields($values, ['id']);
+        $this->helper->model->resetFields($values, ['date_due', 'date_started', 'score', 'category_id', 'time_estimated', 'time_spent']);
+        $this->helper->model->convertIntegerFields($values, ['priority', 'is_active', 'recurrence_status', 'recurrence_trigger', 'recurrence_factor', 'recurrence_timeframe', 'recurrence_basedate']);
 
         $values['date_modification'] = time();
 

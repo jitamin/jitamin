@@ -28,17 +28,17 @@ class SwimlaneValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('project_id', t('The project id is required')),
             new Validators\Required('name', t('The name is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -50,17 +50,17 @@ class SwimlaneValidator extends BaseValidator
      */
     public function validateModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('The id is required')),
             new Validators\Required('name', t('The name is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -72,17 +72,17 @@ class SwimlaneValidator extends BaseValidator
      */
     public function validateDefaultModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('The id is required')),
             new Validators\Required('default_swimlane', t('The name is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -93,10 +93,10 @@ class SwimlaneValidator extends BaseValidator
      */
     private function commonValidationRules()
     {
-        return array(
+        return [
             new Validators\Integer('id', t('The id must be an integer')),
             new Validators\Integer('project_id', t('The project id must be an integer')),
             new Validators\MaxLength('name', t('The maximum length is %d characters', 50), 50)
-        );
+        ];
     }
 }

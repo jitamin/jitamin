@@ -171,7 +171,7 @@ class ProjectModel extends Base
     public function getAllByIds(array $project_ids)
     {
         if (empty($project_ids)) {
-            return array();
+            return [];
         }
 
         return $this->db->table(self::TABLE)->in('id', $project_ids)->asc('name')->findAll();
@@ -198,7 +198,7 @@ class ProjectModel extends Base
     public function getList($prepend = true)
     {
         if ($prepend) {
-            return array(t('None')) + $this->db->hashtable(self::TABLE)->asc('name')->getAll('id', 'name');
+            return [t('None')] + $this->db->hashtable(self::TABLE)->asc('name')->getAll('id', 'name');
         }
 
         return $this->db->hashtable(self::TABLE)->asc('name')->getAll('id', 'name');
@@ -260,7 +260,7 @@ class ProjectModel extends Base
      */
     public function getTaskStats($project_id)
     {
-        $stats = array();
+        $stats = [];
         $stats['nb_active_tasks'] = 0;
         $columns = $this->columnModel->getAll($project_id);
         $column_stats = $this->boardModel->getColumnStats($project_id);
@@ -332,7 +332,7 @@ class ProjectModel extends Base
                     ->columns(self::TABLE.'.*', UserModel::TABLE.'.username AS owner_username', UserModel::TABLE.'.name AS owner_name')
                     ->join(UserModel::TABLE, 'id', 'owner_id')
                     ->in(self::TABLE.'.id', $project_ids)
-                    ->callback(array($this, 'applyColumnStats'));
+                    ->callback([$this, 'applyColumnStats']);
     }
 
     /**
@@ -357,7 +357,7 @@ class ProjectModel extends Base
             $values['identifier'] = strtoupper($values['identifier']);
         }
 
-        $this->helper->model->convertIntegerFields($values, array('priority_default', 'priority_start', 'priority_end'));
+        $this->helper->model->convertIntegerFields($values, ['priority_default', 'priority_start', 'priority_end']);
 
         if (! $this->db->table(self::TABLE)->save($values)) {
             $this->db->cancelTransaction();
@@ -407,9 +407,9 @@ class ProjectModel extends Base
      */
     public function updateModificationDate($project_id)
     {
-        return $this->db->table(self::TABLE)->eq('id', $project_id)->update(array(
+        return $this->db->table(self::TABLE)->eq('id', $project_id)->update([
             'last_modified' => time()
-        ));
+        ]);
     }
 
     /**
@@ -433,7 +433,7 @@ class ProjectModel extends Base
             $values['end_date'] = $this->dateParser->getIsoDate($values['end_date']);
         }
 
-        $this->helper->model->convertIntegerFields($values, array('priority_default', 'priority_start', 'priority_end'));
+        $this->helper->model->convertIntegerFields($values, ['priority_default', 'priority_start', 'priority_end']);
 
         return $this->exists($values['id']) &&
                $this->db->table(self::TABLE)->eq('id', $values['id'])->save($values);
@@ -476,7 +476,7 @@ class ProjectModel extends Base
                $this->db
                     ->table(self::TABLE)
                     ->eq('id', $project_id)
-                    ->update(array('is_active' => 1));
+                    ->update(['is_active' => 1]);
     }
 
     /**
@@ -492,7 +492,7 @@ class ProjectModel extends Base
                $this->db
                     ->table(self::TABLE)
                     ->eq('id', $project_id)
-                    ->update(array('is_active' => 0));
+                    ->update(['is_active' => 0]);
     }
 
     /**
@@ -508,7 +508,7 @@ class ProjectModel extends Base
                $this->db
                     ->table(self::TABLE)
                     ->eq('id', $project_id)
-                    ->save(array('is_public' => 1, 'token' => Token::getToken()));
+                    ->save(['is_public' => 1, 'token' => Token::getToken()]);
     }
 
     /**
@@ -524,6 +524,6 @@ class ProjectModel extends Base
                $this->db
                     ->table(self::TABLE)
                     ->eq('id', $project_id)
-                    ->save(array('is_public' => 0, 'token' => ''));
+                    ->save(['is_public' => 0, 'token' => '']);
     }
 }

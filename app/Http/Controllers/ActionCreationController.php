@@ -25,11 +25,11 @@ class ActionCreationController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('action_creation/create', array(
+        $this->response->html($this->template->render('action_creation/create', [
             'project' => $project,
-            'values' => array('project_id' => $project['id']),
+            'values' => ['project_id' => $project['id']],
             'available_actions' => $this->actionManager->getAvailableActions(),
-        )));
+        ]));
     }
 
     /**
@@ -46,12 +46,12 @@ class ActionCreationController extends BaseController
             return $this->create();
         }
 
-        return $this->response->html($this->template->render('action_creation/event', array(
+        return $this->response->html($this->template->render('action_creation/event', [
             'values' => $values,
             'project' => $project,
             'available_actions' => $this->actionManager->getAvailableActions(),
             'events' => $this->actionManager->getCompatibleEvents($values['action_name']),
-        )));
+        ]));
     }
 
     /**
@@ -72,13 +72,13 @@ class ActionCreationController extends BaseController
         $action_params = $action->getActionRequiredParameters();
 
         if (empty($action_params)) {
-            $this->doCreation($project, $values + array('params' => array()));
+            $this->doCreation($project, $values + ['params' => []]);
         }
 
         $projects_list = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
         unset($projects_list[$project['id']]);
 
-        return $this->response->html($this->template->render('action_creation/params', array(
+        return $this->response->html($this->template->render('action_creation/params', [
             'values' => $values,
             'action_params' => $action_params,
             'columns_list' => $this->columnModel->getList($project['id']),
@@ -92,7 +92,7 @@ class ActionCreationController extends BaseController
             'available_actions' => $this->actionManager->getAvailableActions(),
             'swimlane_list' => $this->swimlaneModel->getList($project['id']),
             'events' => $this->actionManager->getCompatibleEvents($values['action_name']),
-        )));
+        ]));
     }
 
     /**
@@ -124,6 +124,6 @@ class ActionCreationController extends BaseController
             }
         }
 
-        $this->response->redirect($this->helper->url->to('ActionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
     }
 }

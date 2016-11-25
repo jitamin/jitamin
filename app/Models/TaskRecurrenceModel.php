@@ -27,10 +27,10 @@ class TaskRecurrenceModel extends TaskDuplicationModel
      */
     public function getRecurrenceStatusList()
     {
-        return array(
+        return [
             TaskModel::RECURRING_STATUS_NONE    => t('No'),
             TaskModel::RECURRING_STATUS_PENDING => t('Yes'),
-        );
+        ];
     }
 
     /**
@@ -41,11 +41,11 @@ class TaskRecurrenceModel extends TaskDuplicationModel
      */
     public function getRecurrenceTriggerList()
     {
-        return array(
+        return [
             TaskModel::RECURRING_TRIGGER_FIRST_COLUMN => t('When task is moved from first column'),
             TaskModel::RECURRING_TRIGGER_LAST_COLUMN  => t('When task is moved to last column'),
             TaskModel::RECURRING_TRIGGER_CLOSE        => t('When task is closed'),
-        );
+        ];
     }
 
     /**
@@ -56,10 +56,10 @@ class TaskRecurrenceModel extends TaskDuplicationModel
      */
     public function getRecurrenceBasedateList()
     {
-        return array(
+        return [
             TaskModel::RECURRING_BASEDATE_DUEDATE     => t('Existing due date'),
             TaskModel::RECURRING_BASEDATE_TRIGGERDATE => t('Action date'),
-        );
+        ];
     }
 
     /**
@@ -70,11 +70,11 @@ class TaskRecurrenceModel extends TaskDuplicationModel
      */
     public function getRecurrenceTimeframeList()
     {
-        return array(
+        return [
             TaskModel::RECURRING_TIMEFRAME_DAYS   => t('Day(s)'),
             TaskModel::RECURRING_TIMEFRAME_MONTHS => t('Month(s)'),
             TaskModel::RECURRING_TIMEFRAME_YEARS  => t('Year(s)'),
-        );
+        ];
     }
 
     /**
@@ -101,10 +101,10 @@ class TaskRecurrenceModel extends TaskDuplicationModel
                 $parent_update = $this->db
                     ->table(TaskModel::TABLE)
                     ->eq('id', $task_id)
-                    ->update(array(
+                    ->update([
                         'recurrence_status' => TaskModel::RECURRING_STATUS_PROCESSED,
                         'recurrence_child' => $recurring_task_id,
-                    ));
+                    ]);
 
                 if ($parent_update) {
                     return $recurring_task_id;

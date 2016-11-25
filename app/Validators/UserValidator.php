@@ -28,13 +28,13 @@ class UserValidator extends BaseValidator
      */
     protected function commonValidationRules()
     {
-        return array(
+        return [
             new Validators\MaxLength('role', t('The maximum length is %d characters', 25), 25),
             new Validators\MaxLength('username', t('The maximum length is %d characters', 50), 50),
             new Validators\Unique('username', t('The username must be unique'), $this->db->getConnection(), UserModel::TABLE, 'id'),
             new Validators\Email('email', t('Email address invalid')),
             new Validators\Integer('is_ldap_user', t('This value must be an integer')),
-        );
+        ];
     }
 
     /**
@@ -46,9 +46,9 @@ class UserValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('username', t('The username is required')),
-        );
+        ];
 
         if (isset($values['is_ldap_user']) && $values['is_ldap_user'] == 1) {
             $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
@@ -56,10 +56,10 @@ class UserValidator extends BaseValidator
             $v = new Validator($values, array_merge($rules, $this->commonValidationRules(), $this->commonPasswordValidationRules()));
         }
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -71,17 +71,17 @@ class UserValidator extends BaseValidator
      */
     public function validateModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('The user id is required')),
             new Validators\Required('username', t('The username is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -93,16 +93,16 @@ class UserValidator extends BaseValidator
      */
     public function validateApiModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('The user id is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -114,21 +114,21 @@ class UserValidator extends BaseValidator
      */
     public function validatePasswordModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('The user id is required')),
             new Validators\Required('current_password', t('The current password is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonPasswordValidationRules()));
 
         if ($v->execute()) {
             if ($this->authenticationManager->passwordAuthentication($this->userSession->getUsername(), $values['current_password'], false)) {
-                return array(true, array());
+                return [true, []];
             } else {
-                return array(false, array('current_password' => array(t('Wrong password'))));
+                return [false, ['current_password' => [t('Wrong password')]]];
             }
         }
 
-        return array(false, $v->getErrors());
+        return [false, $v->getErrors()];
     }
 }

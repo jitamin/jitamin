@@ -73,7 +73,7 @@ class TaskSubtaskAssigneeFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('subtask:assignee');
+        return ['subtask:assignee'];
     }
 
     /**

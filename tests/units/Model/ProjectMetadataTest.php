@@ -21,13 +21,13 @@ class ProjectMetadataTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectMetadataModel = new ProjectMetadataModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'project #1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'project #2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'project #1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'project #2']));
 
-        $this->assertTrue($projectMetadataModel->save(1, array('key1' => 'value1')));
-        $this->assertTrue($projectMetadataModel->save(1, array('key1' => 'value2')));
-        $this->assertTrue($projectMetadataModel->save(2, array('key1' => 'value1')));
-        $this->assertTrue($projectMetadataModel->save(2, array('key2' => 'value2')));
+        $this->assertTrue($projectMetadataModel->save(1, ['key1' => 'value1']));
+        $this->assertTrue($projectMetadataModel->save(1, ['key1' => 'value2']));
+        $this->assertTrue($projectMetadataModel->save(2, ['key1' => 'value1']));
+        $this->assertTrue($projectMetadataModel->save(2, ['key2' => 'value2']));
 
         $this->assertEquals('value2', $projectMetadataModel->get(1, 'key1'));
         $this->assertEquals('value1', $projectMetadataModel->get(2, 'key1'));
@@ -37,13 +37,13 @@ class ProjectMetadataTest extends Base
         $this->assertTrue($projectMetadataModel->exists(2, 'key1'));
         $this->assertFalse($projectMetadataModel->exists(2, 'key3'));
 
-        $this->assertEquals(array('key1' => 'value2'), $projectMetadataModel->getAll(1));
-        $this->assertEquals(array('key1' => 'value1', 'key2' => 'value2'), $projectMetadataModel->getAll(2));
+        $this->assertEquals(['key1' => 'value2'], $projectMetadataModel->getAll(1));
+        $this->assertEquals(['key1' => 'value1', 'key2' => 'value2'], $projectMetadataModel->getAll(2));
 
         $this->assertTrue($projectMetadataModel->remove(2, 'key1'));
         $this->assertFalse($projectMetadataModel->remove(2, 'key1'));
 
-        $this->assertEquals(array('key2' => 'value2'), $projectMetadataModel->getAll(2));
+        $this->assertEquals(['key2' => 'value2'], $projectMetadataModel->getAll(2));
     }
 
     public function testAutomaticRemove()
@@ -51,8 +51,8 @@ class ProjectMetadataTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectMetadataModel = new ProjectMetadataModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'project #1')));
-        $this->assertTrue($projectMetadataModel->save(1, array('key1' => 'value1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'project #1']));
+        $this->assertTrue($projectMetadataModel->save(1, ['key1' => 'value1']));
 
         $this->assertTrue($projectMetadataModel->exists(1, 'key1'));
         $this->assertTrue($projectModel->remove(1));
@@ -64,12 +64,12 @@ class ProjectMetadataTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectMetadataModel = new ProjectMetadataModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'project #1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'project #2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'project #1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'project #2']));
 
-        $this->assertTrue($projectMetadataModel->save(1, array('key1' => 'value1', 'key2' => 'value2')));
+        $this->assertTrue($projectMetadataModel->save(1, ['key1' => 'value1', 'key2' => 'value2']));
         $this->assertTrue($projectMetadataModel->duplicate(1, 2));
 
-        $this->assertEquals(array('key1' => 'value1', 'key2' => 'value2'), $projectMetadataModel->getAll(2));
+        $this->assertEquals(['key1' => 'value1', 'key2' => 'value2'], $projectMetadataModel->getAll(2));
     }
 }

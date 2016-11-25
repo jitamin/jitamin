@@ -51,11 +51,11 @@ class ProjectNotificationTypeModel extends NotificationTypeModel
      */
     public function saveSelectedTypes($project_id, array $types)
     {
-        $results = array();
+        $results = [];
         $this->db->table(self::TABLE)->eq('project_id', $project_id)->remove();
 
         foreach ($types as $type) {
-            $results[] = $this->db->table(self::TABLE)->insert(array('project_id' => $project_id, 'notification_type' => $type));
+            $results[] = $this->db->table(self::TABLE)->insert(['project_id' => $project_id, 'notification_type' => $type]);
         }
 
         return ! in_array(false, $results, true);

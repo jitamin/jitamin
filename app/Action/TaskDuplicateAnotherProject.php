@@ -37,11 +37,11 @@ class TaskDuplicateAnotherProject extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_MOVE_COLUMN,
             TaskModel::EVENT_CLOSE,
             TaskModel::EVENT_CREATE,
-        );
+        ];
     }
 
     /**
@@ -52,10 +52,10 @@ class TaskDuplicateAnotherProject extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'column_id' => t('Column'),
             'project_id' => t('Project'),
-        );
+        ];
     }
 
     /**
@@ -66,13 +66,13 @@ class TaskDuplicateAnotherProject extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
                 'column_id',
-            )
-        );
+            ]
+        ];
     }
 
     /**

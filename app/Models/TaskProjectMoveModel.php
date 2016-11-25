@@ -37,7 +37,7 @@ class TaskProjectMoveModel extends TaskDuplicationModel
         $this->tagDuplicationModel->syncTaskTagsToAnotherProject($task_id, $project_id);
 
         if ($this->db->table(TaskModel::TABLE)->eq('id', $task_id)->update($values)) {
-            $this->queueManager->push($this->taskEventJob->withParams($task_id, array(TaskModel::EVENT_MOVE_PROJECT), $values));
+            $this->queueManager->push($this->taskEventJob->withParams($task_id, [TaskModel::EVENT_MOVE_PROJECT], $values));
         }
 
         return true;
@@ -57,7 +57,7 @@ class TaskProjectMoveModel extends TaskDuplicationModel
      */
     protected function prepare($project_id, $swimlane_id, $column_id, $category_id, $owner_id, array $task)
     {
-        $values = array();
+        $values = [];
         $values['is_active'] = 1;
         $values['project_id'] = $project_id;
         $values['column_id'] = $column_id !== null ? $column_id : $task['column_id'];

@@ -142,7 +142,7 @@ abstract class FileModel extends Base
      */
     public function create($foreign_key_id, $name, $path, $size)
     {
-        $values = array(
+        $values = [
             $this->getForeignKey() => $foreign_key_id,
             'name' => substr($name, 0, 255),
             'path' => $path,
@@ -150,7 +150,7 @@ abstract class FileModel extends Base
             'size' => $size,
             'user_id' => $this->userSession->getId() ?: 0,
             'date' => time(),
-        );
+        ];
 
         $result = $this->db->table($this->getTable())->insert($values);
 
@@ -173,7 +173,7 @@ abstract class FileModel extends Base
     public function removeAll($id)
     {
         $file_ids = $this->db->table($this->getTable())->eq($this->getForeignKey(), $id)->asc('id')->findAllByColumn('id');
-        $results = array();
+        $results = [];
 
         foreach ($file_ids as $file_id) {
             $results[] = $this->remove($file_id);
@@ -269,12 +269,12 @@ abstract class FileModel extends Base
             }
 
             foreach (array_keys($files['error']) as $key) {
-                $file = array(
+                $file = [
                     'name' => $files['name'][$key],
                     'tmp_name' => $files['tmp_name'][$key],
                     'size' => $files['size'][$key],
                     'error' => $files['error'][$key],
-                );
+                ];
 
                 $this->uploadFile($id, $file);
             }

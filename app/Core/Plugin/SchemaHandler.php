@@ -119,9 +119,9 @@ class SchemaHandler extends \Hiject\Core\Base
      */
     public function setSchemaVersion($plugin, $version)
     {
-        $dictionary = array(
+        $dictionary = [
             strtolower($plugin) => $version
-        );
+        ];
 
         return $this->db->getDriver()->upsert(self::TABLE_SCHEMA, 'plugin', 'version', $dictionary);
     }

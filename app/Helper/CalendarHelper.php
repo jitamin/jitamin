@@ -38,7 +38,7 @@ class CalendarHelper extends Base
         $formatter->setColumns('date_due');
 
         return $queryBuilder
-            ->withFilter(new TaskDueDateRangeFilter(array($start, $end)))
+            ->withFilter(new TaskDueDateRangeFilter([$start, $end]))
             ->format($formatter);
     }
 
@@ -107,11 +107,11 @@ class CalendarHelper extends Base
         $start_column = $this->db->escapeIdentifier($start_column);
         $end_column = $this->db->escapeIdentifier($end_column);
 
-        $conditions = array(
+        $conditions = [
             "($start_column >= '$start_time' AND $start_column <= '$end_time')",
             "($start_column <= '$start_time' AND $end_column >= '$start_time')",
             "($start_column <= '$start_time' AND ($end_column = '0' OR $end_column IS NULL))",
-        );
+        ];
 
         return $start_column.' IS NOT NULL AND '.$start_column.' > 0 AND ('.implode(' OR ', $conditions).')';
     }

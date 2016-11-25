@@ -45,7 +45,7 @@ class TaskImport extends Base
      */
     public function getColumnMapping()
     {
-        return array(
+        return [
             'reference'         => 'Reference',
             'title'             => 'Title',
             'description'       => 'Description',
@@ -60,7 +60,7 @@ class TaskImport extends Base
             'time_spent'        => 'Time Spent',
             'date_due'          => 'Due Date',
             'is_active'         => 'Closed',
-        );
+        ];
     }
 
     /**
@@ -95,7 +95,7 @@ class TaskImport extends Base
      */
     public function prepare(array $row)
     {
-        $values = array();
+        $values = [];
         $values['project_id'] = $this->projectId;
         $values['reference'] = $row['reference'];
         $values['title'] = $row['title'];
@@ -135,7 +135,7 @@ class TaskImport extends Base
 
         $this->helper->model->removeEmptyFields(
             $values,
-            array('owner_id', 'creator_id', 'color_id', 'column_id', 'category_id', 'swimlane_id', 'date_due')
+            ['owner_id', 'creator_id', 'color_id', 'column_id', 'category_id', 'swimlane_id', 'date_due']
         );
 
         return $values;
@@ -150,13 +150,13 @@ class TaskImport extends Base
      */
     public function validateCreation(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\Integer('project_id', t('This value must be an integer')),
             new Validators\Required('project_id', t('The project is required')),
             new Validators\Required('title', t('The title is required')),
             new Validators\MaxLength('title', t('The maximum length is %d characters', 200), 200),
             new Validators\MaxLength('reference', t('The maximum length is %d characters', 50), 50),
-        ));
+        ]);
 
         return $v->execute();
     }

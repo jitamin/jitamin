@@ -46,14 +46,14 @@ class ProjectActivityModel extends Base
      */
     public function createEvent($project_id, $task_id, $creator_id, $event_name, array $data)
     {
-        $values = array(
+        $values = [
             'project_id' => $project_id,
             'task_id' => $task_id,
             'creator_id' => $creator_id,
             'event_name' => $event_name,
             'date_creation' => time(),
             'data' => json_encode($data),
-        );
+        ];
 
         $this->cleanup(self::MAX_EVENTS - 1);
         return $this->db->table(self::TABLE)->insert($values);

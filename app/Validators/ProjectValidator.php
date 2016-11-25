@@ -28,7 +28,7 @@ class ProjectValidator extends BaseValidator
      */
     private function commonValidationRules()
     {
-        return array(
+        return [
             new Validators\Integer('id', t('This value must be an integer')),
             new Validators\Integer('priority_default', t('This value must be an integer')),
             new Validators\Integer('priority_start', t('This value must be an integer')),
@@ -41,7 +41,7 @@ class ProjectValidator extends BaseValidator
             new Validators\MaxLength('end_date', t('The maximum length is %d characters', 10), 10),
             new Validators\AlphaNumeric('identifier', t('This value must be alphanumeric')) ,
             new Validators\Unique('identifier', t('The identifier must be unique'), $this->db->getConnection(), ProjectModel::TABLE),
-        );
+        ];
     }
 
     /**
@@ -53,9 +53,9 @@ class ProjectValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('name', t('The project name is required')),
-        );
+        ];
 
         if (! empty($values['identifier'])) {
             $values['identifier'] = strtoupper($values['identifier']);
@@ -63,10 +63,10 @@ class ProjectValidator extends BaseValidator
 
         $v = new Validator($values, array_merge($this->commonValidationRules(), $rules));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -82,15 +82,15 @@ class ProjectValidator extends BaseValidator
             $values['identifier'] = strtoupper($values['identifier']);
         }
 
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('This value is required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 }

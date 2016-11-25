@@ -27,7 +27,7 @@ class ProjectDuplicationModel extends Base
      */
     public function getOptionalSelection()
     {
-        return array(
+        return [
             'categoryModel',
             'projectPermissionModel',
             'actionModel',
@@ -35,7 +35,7 @@ class ProjectDuplicationModel extends Base
             'tagDuplicationModel',
             'projectMetadataModel',
             'projectTaskDuplicationModel',
-        );
+        ];
     }
 
     /**
@@ -46,7 +46,7 @@ class ProjectDuplicationModel extends Base
      */
     public function getPossibleSelection()
     {
-        return array(
+        return [
             'boardModel',
             'categoryModel',
             'projectPermissionModel',
@@ -55,7 +55,7 @@ class ProjectDuplicationModel extends Base
             'tagDuplicationModel',
             'projectMetadataModel',
             'projectTaskDuplicationModel',
-        );
+        ];
     }
 
     /**
@@ -87,7 +87,7 @@ class ProjectDuplicationModel extends Base
      * @param  boolean    $private              Force the project to be private
      * @return integer                          Cloned Project Id
      */
-    public function duplicate($src_project_id, $selection = array('projectPermissionModel', 'categoryModel', 'actionModel'), $owner_id = 0, $name = null, $private = null)
+    public function duplicate($src_project_id, $selection = ['projectPermissionModel', 'categoryModel', 'actionModel'], $owner_id = 0, $name = null, $private = null)
     {
         $this->db->startTransaction();
 
@@ -143,7 +143,7 @@ class ProjectDuplicationModel extends Base
         $project = $this->projectModel->getById($src_project_id);
         $is_private = empty($project['is_private']) ? 0 : 1;
 
-        $values = array(
+        $values = [
             'name' => $name ?: $this->getClonedProjectName($project['name']),
             'is_active' => 1,
             'last_modified' => time(),
@@ -154,7 +154,7 @@ class ProjectDuplicationModel extends Base
             'priority_default' => $project['priority_default'],
             'priority_start' => $project['priority_start'],
             'priority_end' => $project['priority_end'],
-        );
+        ];
 
         if (! $this->db->table(ProjectModel::TABLE)->save($values)) {
             return false;

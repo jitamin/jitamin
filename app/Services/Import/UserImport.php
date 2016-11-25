@@ -39,7 +39,7 @@ class UserImport extends Base
      */
     public function getColumnMapping()
     {
-        return array(
+        return [
             'username'         => 'Username',
             'password'         => 'Password',
             'email'            => 'Email',
@@ -47,7 +47,7 @@ class UserImport extends Base
             'is_admin'         => 'Administrator',
             'is_manager'       => 'Manager',
             'is_ldap_user'     => 'Remote User',
-        );
+        ];
     }
 
     /**
@@ -84,7 +84,7 @@ class UserImport extends Base
     {
         $row['username'] = strtolower($row['username']);
 
-        foreach (array('is_admin', 'is_manager', 'is_ldap_user') as $field) {
+        foreach (['is_admin', 'is_manager', 'is_ldap_user'] as $field) {
             $row[$field] = Csv::getBooleanValue($row[$field]);
         }
 
@@ -99,7 +99,7 @@ class UserImport extends Base
         unset($row['is_admin']);
         unset($row['is_manager']);
 
-        $this->helper->model->removeEmptyFields($row, array('password', 'email', 'name'));
+        $this->helper->model->removeEmptyFields($row, ['password', 'email', 'name']);
 
         return $row;
     }
@@ -113,13 +113,13 @@ class UserImport extends Base
      */
     public function validateCreation(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\MaxLength('username', t('The maximum length is %d characters', 50), 50),
             new Validators\Unique('username', t('The username must be unique'), $this->db->getConnection(), UserModel::TABLE, 'id'),
             new Validators\MinLength('password', t('The minimum length is %d characters', 6), 6),
             new Validators\Email('email', t('Email address invalid')),
             new Validators\Integer('is_ldap_user', t('This value must be an integer')),
-        ));
+        ]);
 
         return $v->execute();
     }

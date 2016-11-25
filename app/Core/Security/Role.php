@@ -33,11 +33,11 @@ class Role
      */
     public function getApplicationRoles()
     {
-        return array(
+        return [
             self::APP_ADMIN => t('Administrator'),
             self::APP_MANAGER => t('Manager'),
             self::APP_USER => t('User'),
-        );
+        ];
     }
 
     /**
@@ -48,11 +48,11 @@ class Role
      */
     public function getProjectRoles()
     {
-        return array(
+        return [
             self::PROJECT_MANAGER => t('Project Manager'),
             self::PROJECT_MEMBER => t('Project Member'),
             self::PROJECT_VIEWER => t('Project Viewer'),
-        );
+        ];
     }
 
     /**

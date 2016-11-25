@@ -26,7 +26,7 @@ class TaskCreationController extends BaseController
      * @param  array $errors
      * @throws PageNotFoundException
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $swimlanes_list = $this->swimlaneModel->getList($project['id'], false, true);
@@ -35,18 +35,18 @@ class TaskCreationController extends BaseController
             $values = $this->prepareValues($swimlanes_list);
         }
 
-        $values = $this->hook->merge('controller:task:form:default', $values, array('default_values' => $values));
-        $values = $this->hook->merge('controller:task-creation:form:default', $values, array('default_values' => $values));
+        $values = $this->hook->merge('controller:task:form:default', $values, ['default_values' => $values]);
+        $values = $this->hook->merge('controller:task-creation:form:default', $values, ['default_values' => $values]);
 
-        $this->response->html($this->template->render('task_creation/show', array(
+        $this->response->html($this->template->render('task_creation/show', [
             'project' => $project,
             'errors' => $errors,
-            'values' => $values + array('project_id' => $project['id']),
+            'values' => $values + ['project_id' => $project['id']],
             'columns_list' => $this->columnModel->getList($project['id']),
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
             'categories_list' => $this->categoryModel->getList($project['id']),
             'swimlanes_list' => $swimlanes_list,
-        )));
+        ]));
     }
 
     /**
@@ -66,7 +66,7 @@ class TaskCreationController extends BaseController
             $this->show($values, $errors);
         } elseif (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
             $this->flash->failure(t('You cannot create tasks in this column.'));
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
         } else {
             $task_id = $this->taskCreationModel->create($values);
             $this->flash->success(t('Task created successfully.'));
@@ -90,7 +90,7 @@ class TaskCreationController extends BaseController
             }
         }
 
-        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
     }
 
     /**
@@ -114,7 +114,7 @@ class TaskCreationController extends BaseController
                 'another_task' => 1,
             ));
         } else {
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
         }
     }
 
@@ -127,12 +127,12 @@ class TaskCreationController extends BaseController
      */
     protected function prepareValues(array $swimlanes_list)
     {
-        $values = array(
+        $values = [
             'swimlane_id' => $this->request->getIntegerParam('swimlane_id', key($swimlanes_list)),
             'column_id'   => $this->request->getIntegerParam('column_id'),
             'color_id'    => $this->colorModel->getDefaultColor(),
             'owner_id'    => $this->userSession->getId(),
-        );
+        ];
 
         return $values;
     }
@@ -149,11 +149,11 @@ class TaskCreationController extends BaseController
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
         unset($projects[$project['id']]);
 
-        $this->response->html($this->template->render('task_creation/duplicate_projects', array(
+        $this->response->html($this->template->render('task_creation/duplicate_projects', [
             'project' => $project,
             'task' => $task,
             'projects_list' => $projects,
-            'values' => array('task_id' => $task['id'])
-        )));
+            'values' => ['task_id' => $task['id']]
+        ]));
     }
 }

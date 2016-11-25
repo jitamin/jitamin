@@ -28,8 +28,8 @@ class TaskDuplicationModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -37,7 +37,7 @@ class TaskDuplicationModelTest extends Base
         $this->assertEquals(1, $task['project_id']);
         $this->assertEquals(0, $task['creator_id']);
 
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
         // We duplicate our task
         $this->assertEquals(2, $taskDuplicationModel->duplicate(1));
@@ -57,22 +57,22 @@ class TaskDuplicationModelTest extends Base
         $categoryModel = new CategoryModel($this->container);
 
         // We create a task and a project
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
         // Some categories
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #1', 'project_id' => 1)));
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #2', 'project_id' => 1)));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #2', 'project_id' => 1]));
         $this->assertTrue($categoryModel->exists(1));
         $this->assertTrue($categoryModel->exists(2));
 
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'column_id' => 3,
             'owner_id' => 1,
             'category_id' => 2,
             'time_spent' => 4.4
-        )));
+        ]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -113,12 +113,12 @@ class TaskDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
-            'tags' => array('T1', 'T2')
-        )));
+            'tags' => ['T1', 'T2']
+        ]));
 
         $this->assertEquals(2, $taskDuplicationModel->duplicate(1));
 
@@ -135,12 +135,12 @@ class TaskDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'priority' => 2
-        )));
+        ]));
 
         $this->assertEquals(2, $taskDuplicationModel->duplicate(1));
 

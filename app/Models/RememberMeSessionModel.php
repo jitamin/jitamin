@@ -88,7 +88,7 @@ class RememberMeSessionModel extends Base
         $this
             ->db
             ->table(self::TABLE)
-            ->insert(array(
+            ->insert([
                 'user_id' => $user_id,
                 'ip' => $ip,
                 'user_agent' => $user_agent,
@@ -96,13 +96,13 @@ class RememberMeSessionModel extends Base
                 'sequence' => $sequence,
                 'expiration' => $expiration,
                 'date_creation' => time(),
-            ));
+            ]);
 
-        return array(
+        return [
             'token' => $token,
             'sequence' => $sequence,
             'expiration' => $expiration,
-        );
+        ];
     }
 
     /**

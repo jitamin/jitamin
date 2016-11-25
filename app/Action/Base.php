@@ -24,7 +24,7 @@ abstract class Base extends \Hiject\Core\Base
      * @access private
      * @var array
      */
-    private $compatibleEvents = array();
+    private $compatibleEvents = [];
 
     /**
      * Flag for called listener
@@ -48,7 +48,7 @@ abstract class Base extends \Hiject\Core\Base
      * @access private
      * @var array
      */
-    private $params = array();
+    private $params = [];
 
     /**
      * Get automatic action name
@@ -125,7 +125,7 @@ abstract class Base extends \Hiject\Core\Base
      */
     public function __toString()
     {
-        $params = array();
+        $params = [];
 
         foreach ($this->params as $key => $value) {
             $params[] = $key.'='.var_export($value, true);
@@ -233,7 +233,7 @@ abstract class Base extends \Hiject\Core\Base
      * @param  array   $data   Event data dictionary
      * @return bool            True if all keys are there
      */
-    public function hasRequiredParameters(array $data, array $parameters = array())
+    public function hasRequiredParameters(array $data, array $parameters = [])
     {
         $parameters = $parameters ?: $this->getEventRequiredParameters();
 

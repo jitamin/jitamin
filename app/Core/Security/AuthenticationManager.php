@@ -35,7 +35,7 @@ class AuthenticationManager extends Base
      * @access private
      * @var array
      */
-    private $providers = array();
+    private $providers = [];
 
     /**
      * Register a new authentication provider

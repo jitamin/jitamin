@@ -55,7 +55,7 @@ class TaskAnalyticModel extends Base
      */
     public function getTimeSpentByColumn(array $task)
     {
-        $result = array();
+        $result = [];
         $columns = $this->columnModel->getList($task['project_id']);
         $sums = $this->transitionModel->getTimeSpentByTask($task['id']);
 
@@ -66,11 +66,11 @@ class TaskAnalyticModel extends Base
                 $time_spent += ($task['date_completed'] ?: time()) - $task['date_moved'];
             }
 
-            $result[] = array(
+            $result[] = [
                 'id' => $column_id,
                 'title' => $column_title,
                 'time_spent' => $time_spent,
-            );
+            ];
         }
 
         return $result;

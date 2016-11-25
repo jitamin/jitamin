@@ -27,7 +27,7 @@ class TaskCreationDateFilter extends BaseDateFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('created');
+        return ['created'];
     }
 
     /**

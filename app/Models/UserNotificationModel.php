@@ -78,7 +78,7 @@ class UserNotificationModel extends Base
             return $this->getEverybodyWithNotificationEnabled($exclude_user_id);
         }
 
-        $users = array();
+        $users = [];
         $members = $this->getProjectUserMembersWithNotificationEnabled($project_id, $exclude_user_id);
         $groups = $this->getProjectGroupMembersWithNotificationEnabled($project_id, $exclude_user_id);
 
@@ -100,7 +100,7 @@ class UserNotificationModel extends Base
      */
     public function enableNotification($user_id)
     {
-        return $this->db->table(UserModel::TABLE)->eq('id', $user_id)->update(array('notifications_enabled' => 1));
+        return $this->db->table(UserModel::TABLE)->eq('id', $user_id)->update(['notifications_enabled' => 1]);
     }
 
     /**
@@ -112,7 +112,7 @@ class UserNotificationModel extends Base
      */
     public function disableNotification($user_id)
     {
-        return $this->db->table(UserModel::TABLE)->eq('id', $user_id)->update(array('notifications_enabled' => 0));
+        return $this->db->table(UserModel::TABLE)->eq('id', $user_id)->update(['notifications_enabled' => 0]);
     }
 
     /**
@@ -124,7 +124,7 @@ class UserNotificationModel extends Base
      */
     public function saveSettings($user_id, array $values)
     {
-        $types = empty($values['notification_types']) ? array() : array_keys($values['notification_types']);
+        $types = empty($values['notification_types']) ? [] : array_keys($values['notification_types']);
 
         if (! empty($types)) {
             $this->enableNotification($user_id);
@@ -133,7 +133,7 @@ class UserNotificationModel extends Base
         }
 
         $filter = empty($values['notifications_filter']) ? UserNotificationFilterModel::FILTER_BOTH : $values['notifications_filter'];
-        $project_ids = empty($values['notification_projects']) ? array() : array_keys($values['notification_projects']);
+        $project_ids = empty($values['notification_projects']) ? [] : array_keys($values['notification_projects']);
 
         $this->userNotificationFilterModel->saveFilter($user_id, $filter);
         $this->userNotificationFilterModel->saveSelectedProjects($user_id, $project_ids);

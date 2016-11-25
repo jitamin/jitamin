@@ -25,8 +25,8 @@ class ProjectNotificationTypeTest extends Base
         $nt->setType('bar', 'Bar', 'Something2');
         $nt->setType('baz', 'Baz', 'Something3', true);
 
-        $this->assertEquals(array('bar' => 'Bar', 'foo' => 'Foo'), $nt->getTypes());
-        $this->assertEquals(array('baz'), $nt->getHiddenTypes());
+        $this->assertEquals(['bar' => 'Bar', 'foo' => 'Foo'], $nt->getTypes());
+        $this->assertEquals(['baz'], $nt->getHiddenTypes());
     }
 
     public function testGetSelectedTypes()
@@ -34,7 +34,7 @@ class ProjectNotificationTypeTest extends Base
         $nt = new ProjectNotificationTypeModel($this->container);
         $p = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $p->create(['name' => 'UnitTest']));
 
         // No type defined
         $this->assertEmpty($nt->getSelectedTypes(1));
@@ -44,12 +44,12 @@ class ProjectNotificationTypeTest extends Base
         $this->assertEmpty($nt->getSelectedTypes(1));
 
         // User defined types but not registered
-        $this->assertTrue($nt->saveSelectedTypes(1, array('foo', 'bar')));
+        $this->assertTrue($nt->saveSelectedTypes(1, ['foo', 'bar']));
         $this->assertEmpty($nt->getSelectedTypes(1));
 
         // User defined types and registered
         $nt->setType('bar', 'Bar', 'Something4');
         $nt->setType('foo', 'Foo', 'Something3');
-        $this->assertEquals(array('bar', 'foo'), $nt->getSelectedTypes(1));
+        $this->assertEquals(['bar', 'foo'], $nt->getSelectedTypes(1));
     }
 }

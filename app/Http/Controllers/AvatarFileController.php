@@ -26,9 +26,9 @@ class AvatarFileController extends BaseController
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->user('avatar_file/show', array(
+        $this->response->html($this->helper->layout->user('avatar_file/show', [
             'user' => $user,
-        )));
+        ]));
     }
 
     /**
@@ -42,7 +42,7 @@ class AvatarFileController extends BaseController
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('AvatarFileController', 'show', array('user_id' => $user['id'])));
+        $this->response->redirect($this->helper->url->to('AvatarFileController', 'show', ['user_id' => $user['id']]));
     }
 
     /**
@@ -54,7 +54,7 @@ class AvatarFileController extends BaseController
         $user = $this->getUser();
         $this->avatarFileModel->remove($user['id']);
         $this->userSession->refresh($user['id']);
-        $this->response->redirect($this->helper->url->to('AvatarFileController', 'show', array('user_id' => $user['id'])));
+        $this->response->redirect($this->helper->url->to('AvatarFileController', 'show', ['user_id' => $user['id']]));
     }
 
     /**

@@ -34,7 +34,7 @@ class ProjectGroupRoleModel extends Base
      * @param  array    $status
      * @return array
      */
-    public function getProjectsByUser($user_id, $status = array(ProjectModel::ACTIVE, ProjectModel::INACTIVE))
+    public function getProjectsByUser($user_id, $status = [ProjectModel::ACTIVE, ProjectModel::INACTIVE])
     {
         return $this->db
             ->hashtable(ProjectModel::TABLE)
@@ -114,7 +114,7 @@ class ProjectGroupRoleModel extends Base
             ->join(self::TABLE, 'group_id', 'group_id', GroupMemberModel::TABLE)
             ->eq(self::TABLE.'.project_id', $project_id)
             ->eq(UserModel::TABLE.'.is_active', 1)
-            ->in(self::TABLE.'.role', array(Role::PROJECT_MANAGER, Role::PROJECT_MEMBER))
+            ->in(self::TABLE.'.role', [Role::PROJECT_MANAGER, Role::PROJECT_MEMBER])
             ->asc(UserModel::TABLE.'.username')
             ->findAll();
     }
@@ -130,11 +130,11 @@ class ProjectGroupRoleModel extends Base
      */
     public function addGroup($project_id, $group_id, $role)
     {
-        return $this->db->table(self::TABLE)->insert(array(
+        return $this->db->table(self::TABLE)->insert([
             'group_id' => $group_id,
             'project_id' => $project_id,
             'role' => $role,
-        ));
+        ]);
     }
 
     /**
@@ -164,9 +164,9 @@ class ProjectGroupRoleModel extends Base
         return $this->db->table(self::TABLE)
             ->eq('group_id', $group_id)
             ->eq('project_id', $project_id)
-            ->update(array(
+            ->update([
                 'role' => $role,
-            ));
+            ]);
     }
 
     /**
@@ -181,11 +181,11 @@ class ProjectGroupRoleModel extends Base
         $rows = $this->db->table(self::TABLE)->eq('project_id', $project_src_id)->findAll();
 
         foreach ($rows as $row) {
-            $result = $this->db->table(self::TABLE)->save(array(
+            $result = $this->db->table(self::TABLE)->save([
                 'project_id' => $project_dst_id,
                 'group_id' => $row['group_id'],
                 'role' => $row['role'],
-            ));
+            ]);
 
             if (! $result) {
                 return false;

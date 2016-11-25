@@ -23,7 +23,7 @@ class ConfigController extends BaseController
      */
     public function index()
     {
-        $this->response->html($this->helper->layout->config('config/application', array(
+        $this->response->html($this->helper->layout->config('config/application', [
             'mail_transports' => $this->emailClient->getAvailableTransports(),
             'languages' => $this->languageModel->getLanguages(),
             'timezones' => $this->timezoneModel->getTimezones(),
@@ -31,7 +31,7 @@ class ConfigController extends BaseController
             'datetime_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateTimeFormats()),
             'time_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
             'title' => t('Settings').' &raquo; '.t('Application settings'),
-        )));
+        ]));
     }
 
     /**
@@ -47,11 +47,11 @@ class ConfigController extends BaseController
             $values['mail_transport'] = MAIL_TRANSPORT;
         }
 
-        $this->response->html($this->helper->layout->config('config/email', array(
+        $this->response->html($this->helper->layout->config('config/email', [
             'values' => $values,
             'mail_transports' => $this->emailClient->getAvailableTransports(),
             'title' => t('Settings').' &raquo; '.t('Email settings'),
-        )));
+        ]));
     }
 
     /**
@@ -61,11 +61,11 @@ class ConfigController extends BaseController
      */
     public function project()
     {
-        $this->response->html($this->helper->layout->config('config/project', array(
+        $this->response->html($this->helper->layout->config('config/project', [
             'colors' => $this->colorModel->getList(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
             'title' => t('Settings').' &raquo; '.t('Project settings'),
-        )));
+        ]));
     }
 
     /**
@@ -75,9 +75,9 @@ class ConfigController extends BaseController
      */
     public function board()
     {
-        $this->response->html($this->helper->layout->config('config/board', array(
+        $this->response->html($this->helper->layout->config('config/board', [
             'title' => t('Settings').' &raquo; '.t('Board settings'),
-        )));
+        ]));
     }
 
     /**
@@ -87,9 +87,9 @@ class ConfigController extends BaseController
      */
     public function calendar()
     {
-        $this->response->html($this->helper->layout->config('config/calendar', array(
+        $this->response->html($this->helper->layout->config('config/calendar', [
             'title' => t('Settings').' &raquo; '.t('Calendar settings'),
-        )));
+        ]));
     }
 
     /**
@@ -99,9 +99,9 @@ class ConfigController extends BaseController
      */
     public function integrations()
     {
-        $this->response->html($this->helper->layout->config('config/integrations', array(
+        $this->response->html($this->helper->layout->config('config/integrations', [
             'title' => t('Settings').' &raquo; '.t('Integrations'),
-        )));
+        ]));
     }
 
     /**
@@ -111,9 +111,9 @@ class ConfigController extends BaseController
      */
     public function webhook()
     {
-        $this->response->html($this->helper->layout->config('config/webhook', array(
+        $this->response->html($this->helper->layout->config('config/webhook', [
             'title' => t('Settings').' &raquo; '.t('Webhook settings'),
-        )));
+        ]));
     }
 
     /**
@@ -123,9 +123,9 @@ class ConfigController extends BaseController
      */
     public function api()
     {
-        $this->response->html($this->helper->layout->config('config/api', array(
+        $this->response->html($this->helper->layout->config('config/api', [
             'title' => t('Settings').' &raquo; '.t('API'),
-        )));
+        ]));
     }
 
     /**
@@ -135,12 +135,12 @@ class ConfigController extends BaseController
      */
     public function help()
     {
-        $this->response->html($this->helper->layout->config('config/help', array(
+        $this->response->html($this->helper->layout->config('config/help', [
             'db_size' => $this->configModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title' => t('Settings').' &raquo; '.t('About'),
-        )));
+        ]));
     }
 
     /**
@@ -150,12 +150,12 @@ class ConfigController extends BaseController
      */
     public function about()
     {
-        $this->response->html($this->helper->layout->config('config/about', array(
+        $this->response->html($this->helper->layout->config('config/about', [
             'db_size' => $this->configModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title' => t('Settings').' &raquo; '.t('About'),
-        )));
+        ]));
     }
 
     /**
@@ -169,21 +169,21 @@ class ConfigController extends BaseController
 
         switch ($redirect) {
             case 'index':
-                $values += array('password_reset' => 0);
+                $values += ['password_reset' => 0];
                 break;
             case 'project':
-                $values += array(
+                $values += [
                     'subtask_restriction' => 0,
                     'subtask_time_tracking' => 0,
                     'cfd_include_closed_tasks' => 0,
                     'disable_private_project' => 0,
-                );
+                ];
                 break;
             case 'integrations':
-                $values += array('integration_gravatar' => 0);
+                $values += ['integration_gravatar' => 0];
                 break;
             case 'calendar':
-                $values += array('calendar_user_subtasks_time_tracking' => 0);
+                $values += ['calendar_user_subtasks_time_tracking' => 0];
                 break;
         }
 

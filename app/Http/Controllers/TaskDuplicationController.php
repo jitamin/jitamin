@@ -31,16 +31,16 @@ class TaskDuplicationController extends BaseController
 
             if ($task_id > 0) {
                 $this->flash->success(t('Task created successfully.'));
-                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $task['project_id'], 'task_id' => $task_id)));
+                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task_id]));
             } else {
                 $this->flash->failure(t('Unable to create this task.'));
-                return $this->response->redirect($this->helper->url->to('TaskDuplicationController', 'duplicate', array('project_id' => $task['project_id'], 'task_id' => $task['id'])), true);
+                return $this->response->redirect($this->helper->url->to('TaskDuplicationController', 'duplicate', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
             }
         }
 
-        return $this->response->html($this->template->render('task_duplication/duplicate', array(
+        return $this->response->html($this->template->render('task_duplication/duplicate', [
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -63,7 +63,7 @@ class TaskDuplicationController extends BaseController
                                                                 $values['category_id'],
                                                                 $values['owner_id'])) {
                 $this->flash->success(t('Task updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $values['project_id'], 'task_id' => $task['id'])));
+                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task['id']]));
             }
 
             $this->flash->failure(t('Unable to update your task.'));
@@ -93,7 +93,7 @@ class TaskDuplicationController extends BaseController
 
                 if ($task_id > 0) {
                     $this->flash->success(t('Task created successfully.'));
-                    return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $values['project_id'], 'task_id' => $task_id)));
+                    return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task_id]));
                 }
             }
 
@@ -112,7 +112,7 @@ class TaskDuplicationController extends BaseController
      */
     private function chooseDestination(array $task, $template)
     {
-        $values = array();
+        $values = [];
         $projects_list = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
 
         unset($projects_list[$task['project_id']]);
@@ -128,13 +128,13 @@ class TaskDuplicationController extends BaseController
             $values = $this->taskDuplicationModel->checkDestinationProjectValues($task);
             $values['project_id'] = $dst_project_id;
         } else {
-            $swimlanes_list = array();
-            $columns_list = array();
-            $categories_list = array();
-            $users_list = array();
+            $swimlanes_list = [];
+            $columns_list = [];
+            $categories_list = [];
+            $users_list = [];
         }
 
-        $this->response->html($this->template->render($template, array(
+        $this->response->html($this->template->render($template, [
             'values' => $values,
             'task' => $task,
             'projects_list' => $projects_list,
@@ -142,6 +142,6 @@ class TaskDuplicationController extends BaseController
             'columns_list' => $columns_list,
             'categories_list' => $categories_list,
             'users_list' => $users_list,
-        )));
+        ]));
     }
 }

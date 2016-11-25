@@ -35,11 +35,11 @@ class SubtaskProcedureTest extends BaseProcedureTest
 
     public function assertUpdateSubtask()
     {
-        $this->assertTrue($this->app->execute('updateSubtask', array(
+        $this->assertTrue($this->app->execute('updateSubtask', [
             'id' => $this->subtaskId,
             'task_id' => $this->taskId,
             'title' => 'test',
-        )));
+        ]));
 
         $subtask = $this->app->getSubtask($this->subtaskId);
         $this->assertEquals('test', $subtask['title']);

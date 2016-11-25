@@ -39,7 +39,7 @@ class Token extends Base
     public function getCSRFToken()
     {
         if (! isset($this->sessionStorage->csrf)) {
-            $this->sessionStorage->csrf = array();
+            $this->sessionStorage->csrf = [];
         }
 
         $nonce = self::getToken();

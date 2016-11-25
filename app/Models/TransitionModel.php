@@ -37,7 +37,7 @@ class TransitionModel extends Base
     {
         $time = time();
 
-        return $this->db->table(self::TABLE)->insert(array(
+        return $this->db->table(self::TABLE)->insert([
             'user_id' => $user_id,
             'project_id' => $task_event['project_id'],
             'task_id' => $task_event['task_id'],
@@ -45,7 +45,7 @@ class TransitionModel extends Base
             'dst_column_id' => $task_event['dst_column_id'],
             'date' => $time,
             'time_spent' => $time - $task_event['date_moved']
-        ));
+        ]);
     }
 
     /**

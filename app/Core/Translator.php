@@ -30,7 +30,7 @@ class Translator
      * @access private
      * @var array
      */
-    private static $locales = array();
+    private static $locales = [];
 
     /**
      * Instance
@@ -194,6 +194,6 @@ class Translator
      */
     public static function unload()
     {
-        self::$locales = array();
+        self::$locales = [];
     }
 }
