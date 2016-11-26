@@ -35,7 +35,7 @@ class RequestTest extends Base
         $request = new Request($this->container, [], [], [], [], []);
         $this->assertEquals(5, $request->getIntegerParam('myvar', 5));
 
-        $request = new Request($this->container, [], ['myvar' => 'myvalue'], [], []], []);
+        $request = new Request($this->container, [], ['myvar' => 'myvalue'], [], [], []);
         $this->assertEquals(0, $request->getIntegerParam('myvar'));
 
         $request = new Request($this->container, [], ['myvar' => '123'], [], [], []);
