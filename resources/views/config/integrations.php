@@ -2,9 +2,9 @@
     <h2><?= t('Integration with third-party services') ?></h2>
 </div>
 
-<form method="post" action="<?= $this->url->href('ConfigController', 'save', array('redirect' => 'integrations')) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('ConfigController', 'save', ['redirect' => 'integrations']) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
-    <?= $this->hook->render('template:config:integrations', array('values' => $values)) ?>
+    <?= $this->hook->render('template:config:integrations', ['values' => $values]) ?>
 
     <h3><img src="<?= $this->url->dir() ?>assets/img/gravatar-icon.png"/>&nbsp;<?= t('Gravatar') ?></h3>
     <div class="listing">

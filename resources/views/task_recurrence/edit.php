@@ -4,18 +4,18 @@
 
 <?php if ($task['recurrence_status'] != \Hiject\Model\TaskModel::RECURRING_STATUS_NONE): ?>
 <div class="listing">
-    <?= $this->render('task_recurrence/info', array(
+    <?= $this->render('task_recurrence/info', [
         'task' => $task,
         'recurrence_trigger_list' => $recurrence_trigger_list,
         'recurrence_timeframe_list' => $recurrence_timeframe_list,
         'recurrence_basedate_list' => $recurrence_basedate_list,
-    )) ?>
+    ]) ?>
 </div>
 <?php endif ?>
 
 <?php if ($task['recurrence_status'] != \Hiject\Model\TaskModel::RECURRING_STATUS_PROCESSED): ?>
 
-    <form class="popover-form" method="post" action="<?= $this->url->href('TaskRecurrenceController', 'update', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('TaskRecurrenceController', 'update', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
 
         <?= $this->form->csrf() ?>
 
@@ -40,7 +40,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
         </div>
     </form>
 

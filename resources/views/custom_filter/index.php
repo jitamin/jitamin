@@ -36,8 +36,8 @@
                     <div class="dropdown">
                     <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog fa-fw"></i><i class="fa fa-caret-down"></i></a>
                     <ul>
-                        <li><?= $this->url->link(t('Remove'), 'CustomFilterController', 'confirm', array('project_id' => $filter['project_id'], 'filter_id' => $filter['id']), false, 'popover') ?></li>
-                        <li><?= $this->url->link(t('Edit'), 'CustomFilterController', 'edit', array('project_id' => $filter['project_id'], 'filter_id' => $filter['id']), false, 'popover') ?></li>
+                        <li><?= $this->url->link(t('Remove'), 'CustomFilterController', 'confirm', ['project_id' => $filter['project_id'], 'filter_id' => $filter['id']], false, 'popover') ?></li>
+                        <li><?= $this->url->link(t('Edit'), 'CustomFilterController', 'edit', ['project_id' => $filter['project_id'], 'filter_id' => $filter['id']], false, 'popover') ?></li>
                     </ul>
                     </div>
                 <?php endif ?>
@@ -48,4 +48,4 @@
 </div>
 <?php endif ?>
 
-<?= $this->render('custom_filter/add', array('project' => $project, 'values' => $values, 'errors' => $errors)) ?>
+<?= $this->render('custom_filter/add', ['project' => $project, 'values' => $values, 'errors' => $errors]) ?>

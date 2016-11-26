@@ -2,24 +2,24 @@
     <h2><?= t('Calendar settings') ?></h2>
 </div>
 <section>
-<form method="post" action="<?= $this->url->href('ConfigController', 'save', array('redirect' => 'calendar')) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('ConfigController', 'save', ['redirect' => 'calendar']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
     <div class="listing">
         <h3><?= t('Project calendar view') ?></h3>
-        <?= $this->form->radios('calendar_project_tasks', array(
+        <?= $this->form->radios('calendar_project_tasks', [
                 'date_creation' => t('Show tasks based on the creation date'),
                 'date_started' => t('Show tasks based on the start date'),
-            ), $values) ?>
+            ], $values) ?>
     </div>
 
     <div class="listing">
         <h3><?= t('User calendar view') ?></h3>
-        <?= $this->form->radios('calendar_user_tasks', array(
+        <?= $this->form->radios('calendar_user_tasks', [
                 'date_creation' => t('Show tasks based on the creation date'),
                 'date_started' => t('Show tasks based on the start date'),
-            ), $values) ?>
+            ], $values) ?>
     </div>
 
     <div class="listing">

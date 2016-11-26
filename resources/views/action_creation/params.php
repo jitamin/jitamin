@@ -2,7 +2,7 @@
     <h2><?= t('Define action parameters') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('ActionCreationController', 'save', array('project_id' => $project['id'])) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('ActionCreationController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
@@ -11,10 +11,10 @@
     <?= $this->form->hidden('action_name', $values) ?>
 
     <?= $this->form->label(t('Action'), 'action_name') ?>
-    <?= $this->form->select('action_name', $available_actions, $values, array(), array('disabled')) ?>
+    <?= $this->form->select('action_name', $available_actions, $values, [], ['disabled']) ?>
 
     <?= $this->form->label(t('Event'), 'event_name') ?>
-    <?= $this->form->select('event_name', $events, $values, array(), array('disabled')) ?>
+    <?= $this->form->select('event_name', $events, $values, [], ['disabled']) ?>
 
     <?php foreach ($action_params as $param_name => $param_desc): ?>
         <?php if ($this->text->contains($param_name, 'column_id')): ?>
@@ -53,6 +53,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'ActionController', 'index', array('project_id' => $project['id']), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'ActionController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </form>

@@ -7,13 +7,13 @@
         <ul>
             <?php if ($has_project_creation_access): ?>
                 <li><i class="fa fa-cube"></i>
-                    <?= $this->url->link(t('New project'), 'ProjectCreationController', 'create', array(), false, 'popover') ?>
+                    <?= $this->url->link(t('New project'), 'ProjectCreationController', 'create', [], false, 'popover') ?>
                 </li>
             <?php endif ?>
             <?php if ($is_private_project_enabled): ?>
                 <li>
                     <i class="fa fa-lock"></i>
-                    <?= $this->url->link(t('New private project'), 'ProjectCreationController', 'createPrivate', array(), false, 'popover') ?>
+                    <?= $this->url->link(t('New private project'), 'ProjectCreationController', 'createPrivate', [], false, 'popover') ?>
                 </li>
             <?php endif ?>
             <?= $this->hook->render('template:header:creation-dropdown') ?>

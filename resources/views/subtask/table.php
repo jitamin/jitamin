@@ -1,7 +1,7 @@
 <?php if (! empty($subtasks)): ?>
     <table
         class="subtasks-table table-striped table-scrolling"
-        data-save-position-url="<?= $this->url->href('SubtaskController', 'movePosition', array('project_id' => $task['project_id'], 'task_id' => $task['id'])) ?>"
+        data-save-position-url="<?= $this->url->href('SubtaskController', 'movePosition', ['project_id' => $task['project_id'], 'task_id' => $task['id']]) ?>"
     >
     <thead>
         <tr>
@@ -30,7 +30,7 @@
                     <?= $this->text->e($subtask['name'] ?: $subtask['username']) ?>
                 <?php endif ?>
             </td>
-            <?= $this->hook->render('template:subtask:table:rows', array('subtask' => $subtask)) ?>
+            <?= $this->hook->render('template:subtask:table:rows', ['subtask' => $subtask]) ?>
             <td>
                 <ul class="no-bullet">
                     <li>
@@ -46,11 +46,11 @@
                     <li>
                         <?php if ($subtask['is_timer_started']): ?>
                             <i class="fa fa-pause"></i>
-                            <?= $this->url->link(t('Stop timer'), 'SubtaskStatusController', 'timer', array('timer' => 'stop', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']), false, 'subtask-toggle-timer') ?>
+                            <?= $this->url->link(t('Stop timer'), 'SubtaskStatusController', 'timer', ['timer' => 'stop', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']], false, 'subtask-toggle-timer') ?>
                             (<?= $this->dt->age($subtask['timer_start_date']) ?>)
                         <?php else: ?>
                             <i class="fa fa-play-circle-o"></i>
-                            <?= $this->url->link(t('Start timer'), 'SubtaskStatusController', 'timer', array('timer' => 'start', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']), false, 'subtask-toggle-timer') ?>
+                            <?= $this->url->link(t('Start timer'), 'SubtaskStatusController', 'timer', ['timer' => 'start', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']], false, 'subtask-toggle-timer') ?>
                         <?php endif ?>
                     </li>
                     <?php endif ?>
@@ -58,10 +58,10 @@
             </td>
             <?php if ($editable): ?>
                 <td>
-                    <?= $this->render('subtask/menu', array(
+                    <?= $this->render('subtask/menu', [
                         'task' => $task,
                         'subtask' => $subtask,
-                    )) ?>
+                    ]) ?>
                 </td>
             <?php endif ?>
         </tr>

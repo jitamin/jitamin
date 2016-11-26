@@ -19,7 +19,7 @@
             <tr>
                 <td class="task-table color-<?= $task['color_id'] ?>">
                     <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
-                        <?= $this->render('task/dropdown', array('task' => $task)) ?>
+                        <?= $this->render('task/dropdown', ['task' => $task]) ?>
                     <?php else: ?>
                         #<?= $task['id'] ?>
                     <?php endif ?>
@@ -34,7 +34,7 @@
                     <?= $this->text->e($task['category_name']) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', t('View this task')) ?>
+                    <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
                 </td>
                 <td>
                     <?php if ($task['assignee_username']): ?>

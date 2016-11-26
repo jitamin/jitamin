@@ -4,11 +4,11 @@
         <?= $this->form->csrf() ?>
 
         <?= $this->form->label(t('Username'), 'username') ?>
-        <?= $this->form->text('username', $values, $errors, array('autofocus', 'required')) ?>
+        <?= $this->form->text('username', $values, $errors, ['autofocus', 'required']) ?>
 
         <?= $this->form->label(t('Enter the text below'), 'captcha') ?>
         <img src="<?= $this->url->href('CaptchaController', 'image') ?>" alt="Captcha">
-        <?= $this->form->text('captcha', array(), $errors, array('required')) ?>
+        <?= $this->form->text('captcha', [], $errors, ['required']) ?>
 
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Change Password') ?></button>

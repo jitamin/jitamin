@@ -2,9 +2,9 @@
     <div class="page-header">
         <?php if ($this->user->hasAccess('UserCreationController', 'show')): ?>
         <ul>
-            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'UserCreationController', 'show', array(), false, 'popover') ?></li>
-            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'UserCreationController', 'show', array('remote' => 1), false, 'popover') ?></li>
-            <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'UserImportController', 'show', array(), false, 'popover') ?></li>
+            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'UserCreationController', 'show', [], false, 'popover') ?></li>
+            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'UserCreationController', 'show', ['remote' => 1], false, 'popover') ?></li>
+            <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'UserImportController', 'show', [], false, 'popover') ?></li>
             <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'GroupListController', 'index') ?></li>
         </ul>
         <?php endif ?>
@@ -30,7 +30,7 @@
                     <?= '#'.$user['id'] ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($user['username']), 'UserViewController', 'show', array('user_id' => $user['id'])) ?>
+                    <?= $this->url->link($this->text->e($user['username']), 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
                 </td>
                 <td>
                     <?= $this->text->e($user['name']) ?>
@@ -55,7 +55,7 @@
                     <?php endif ?>
                 </td>
                 <td>
-                    <?= $this->render('user_list/dropdown', array('user' => $user)) ?>
+                    <?= $this->render('user_list/dropdown', ['user' => $user]) ?>
                 </td>
             </tr>
             <?php endforeach ?>

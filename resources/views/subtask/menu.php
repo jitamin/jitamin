@@ -3,15 +3,15 @@
     <ul>
         <li>
             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-            <?= $this->url->link(t('Edit'), 'SubtaskController', 'edit', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']), false, 'popover') ?>
+            <?= $this->url->link(t('Edit'), 'SubtaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-trash-o" aria-hidden="true"></i>
-            <?= $this->url->link(t('Remove'), 'SubtaskController', 'confirm', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']), false, 'popover') ?>
+            <?= $this->url->link(t('Remove'), 'SubtaskController', 'confirm', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-clone" aria-hidden="true"></i>
-            <?= $this->url->link(t('Convert to task'), 'SubtaskConverterController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']), false, 'popover') ?>
+            <?= $this->url->link(t('Convert to task'), 'SubtaskConverterController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], false, 'popover') ?>
         </li>
     </ul>
 </div>

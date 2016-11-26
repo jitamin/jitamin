@@ -1,14 +1,14 @@
 <div class="page-header">
     <h2><?= t('Add a new column') ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('ColumnController', 'save', array('project_id' => $project['id'])) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('ColumnController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
     <?= $this->form->hidden('project_id', $values) ?>
 
     <?= $this->form->label(t('Title'), 'title') ?>
-    <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="50"')) ?>
+    <?= $this->form->text('title', $values, $errors, ['autofocus', 'required', 'maxlength="50"']) ?>
 
     <?= $this->form->label(t('Task limit'), 'task_limit') ?>
     <?= $this->form->number('task_limit', $values, $errors) ?>
@@ -21,6 +21,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'column', 'index', array('project_id' => $project['id']), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'column', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </form>

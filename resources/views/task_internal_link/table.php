@@ -26,7 +26,7 @@
                         $this->text->e('#'.$link['task_id'].' '.$link['title']),
                         'TaskViewController',
                         'readonly',
-                        array('task_id' => $link['task_id'], 'token' => $project['token']),
+                        ['task_id' => $link['task_id'], 'token' => $project['token']],
                         false,
                         $link['is_active'] ? '' : 'task-link-closed'
                     ) ?>
@@ -35,7 +35,7 @@
                         $this->text->e('#'.$link['task_id'].' '.$link['title']),
                         'TaskViewController',
                         'show',
-                        array('task_id' => $link['task_id'], 'project_id' => $link['project_id']),
+                        ['task_id' => $link['task_id'], 'project_id' => $link['project_id']],
                         false,
                         $link['is_active'] ? '' : 'task-link-closed'
                     ) ?>
@@ -52,7 +52,7 @@
             <td>
                 <?php if (! empty($link['task_assignee_username'])): ?>
                     <?php if ($editable): ?>
-                        <?= $this->url->link($this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']), 'UserViewController', 'show', array('user_id' => $link['task_assignee_id'])) ?>
+                        <?= $this->url->link($this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']), 'UserViewController', 'show', ['user_id' => $link['task_assignee_id']]) ?>
                     <?php else: ?>
                         <?= $this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']) ?>
                     <?php endif ?>
@@ -74,11 +74,11 @@
                 <ul>
                     <li>
                         <i class="fa fa-edit fa-fw"></i>
-                        <?= $this->url->link(t('Edit'), 'TaskInternalLinkController', 'edit', array('link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'popover') ?>
+                        <?= $this->url->link(t('Edit'), 'TaskInternalLinkController', 'edit', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                     </li>
                     <li>
                         <i class="fa fa-trash-o fa-fw"></i>
-                        <?= $this->url->link(t('Remove'), 'TaskInternalLinkController', 'confirm', array('link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'popover') ?>
+                        <?= $this->url->link(t('Remove'), 'TaskInternalLinkController', 'confirm', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                     </li>
                 </ul>
                 </div>

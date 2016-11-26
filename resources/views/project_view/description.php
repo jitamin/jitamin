@@ -4,7 +4,7 @@
     </div>
     <div class="accordion-content">
         <?php if ($this->user->hasProjectAccess('ProjectEditController', 'description', $project['id'])): ?>
-            <?= $this->url->button('fa-edit', t('Edit description'), 'ProjectEditController', 'description', array('project_id' => $project['id']), 'btn-header btn-default popover') ?>
+            <?= $this->url->button('fa-edit', t('Edit description'), 'ProjectEditController', 'description', ['project_id' => $project['id']], 'btn-header btn-default popover') ?>
         <?php endif ?>
         <article class="markdown">
             <?= $this->text->markdown($project['description']) ?>

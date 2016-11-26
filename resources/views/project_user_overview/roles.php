@@ -13,9 +13,9 @@
                 <?= $this->text->e($this->user->getFullname($project)) ?>
             </td>
             <td>
-                <?= $this->url->link('<i class="fa fa-columns"></i>', 'BoardViewController', 'show', array('project_id' => $project['id']), false, 'dashboard-table-link', t('Board')) ?>
-                <?= $this->url->link('<i class="fa fa-sliders"></i>', 'TaskGanttController', 'show', array('project_id' => $project['id']), false, 'dashboard-table-link', t('Gantt chart')) ?>
-                <?= $this->url->link('<i class="fa fa-cog"></i>', 'ProjectSettingsController', 'show', array('project_id' => $project['id']), false, 'dashboard-table-link', t('Project settings')) ?>
+                <?= $this->url->link('<i class="fa fa-columns"></i>', 'BoardViewController', 'show', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Board')) ?>
+                <?= $this->url->link('<i class="fa fa-sliders"></i>', 'TaskGanttController', 'show', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Gantt chart')) ?>
+                <?= $this->url->link('<i class="fa fa-cog"></i>', 'ProjectSettingsController', 'show', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Project settings')) ?>
 
                 <?= $this->text->e($project['project_name']) ?>
             </td>

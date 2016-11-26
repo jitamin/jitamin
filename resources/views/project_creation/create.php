@@ -13,7 +13,7 @@
         <?= $this->form->hidden('is_private', $values) ?>
 
         <?= $this->form->label(t('Name'), 'name') ?>
-        <?= $this->form->text('name', $values, $errors, array('autofocus', 'required', 'maxlength="50"')) ?>
+        <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="50"']) ?>
 
         <?php if (count($projects_list) > 1): ?>
             <?= $this->form->label(t('Create from another project'), 'src_project_id') ?>
@@ -37,7 +37,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'ProjectListController', 'show', array(), false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'ProjectListController', 'show', [], false, 'close-popover') ?>
         </div>
     </form>
     

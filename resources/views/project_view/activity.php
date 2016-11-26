@@ -3,6 +3,6 @@
         <h3><a href="#" class="fa accordion-toggle"></a> <?= t('Last activity') ?></h3>
     </div>
     <div class="accordion-content">
-        <?= $this->render('event/events', array('events' => $events)) ?>
+        <?= $this->render('event/events', ['events' => $events]) ?>
     </div>
 </section>

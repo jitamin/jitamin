@@ -7,7 +7,7 @@
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Label'), 'label') ?>
-    <?= $this->form->text('label', $values, $errors, array('required')) ?>
+    <?= $this->form->text('label', $values, $errors, ['required']) ?>
 
     <?= $this->form->label(t('Opposite label'), 'opposite_label') ?>
     <?= $this->form->text('opposite_label', $values, $errors) ?>

@@ -34,11 +34,11 @@
                         <ul>
                             <li>
                                 <i class="fa fa-edit fa-fw"></i>
-                                <?= $this->url->link(t('Edit'), 'TaskExternalLinkController', 'edit', array('link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'popover') ?>
+                                <?= $this->url->link(t('Edit'), 'TaskExternalLinkController', 'edit', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                             </li>
                             <li>
                                 <i class="fa fa-trash-o fa-fw"></i>
-                                <?= $this->url->link(t('Remove'), 'TaskExternalLinkController', 'confirm', array('link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'popover') ?>
+                                <?= $this->url->link(t('Remove'), 'TaskExternalLinkController', 'confirm', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                             </li>
                         </ul>
                     </div>

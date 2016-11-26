@@ -46,7 +46,7 @@
     <?= $this->form->select('currency', $currencies, $values, $errors) ?>
 
     <?= $this->form->label(t('Rate'), 'rate') ?>
-    <?= $this->form->text('rate', $values, $errors, array(), 'form-numeric') ?>
+    <?= $this->form->text('rate', $values, $errors, [], 'form-numeric') ?>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>

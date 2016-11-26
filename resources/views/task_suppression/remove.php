@@ -8,8 +8,8 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'TaskSuppressionController', 'remove', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'redirect' => $redirect), true, 'btn btn-danger popover-link') ?>
+        <?= $this->url->link(t('Yes'), 'TaskSuppressionController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'redirect' => $redirect], true, 'btn btn-danger popover-link') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>
 </div>

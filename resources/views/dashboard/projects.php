@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h3><?= $this->url->link(t('My projects'), 'DashboardController', 'projects', array('user_id' => $user['id'])) ?> (<?= $paginator->getTotal() ?>)</h3>
+    <h3><?= $this->url->link(t('My projects'), 'DashboardController', 'projects', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
 </div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('Your are not member of any project.') ?></p>
@@ -15,10 +15,10 @@
         <?php foreach ($paginator->getCollection() as $project): ?>
         <tr>
             <td>
-                <?= $this->render('project/dropdown', array('project' => $project)) ?>
+                <?= $this->render('project/dropdown', ['project' => $project]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($project['name']), 'ProjectViewController', 'show', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link($this->text->e($project['name']), 'ProjectViewController', 'show', ['project_id' => $project['id']]) ?>
                 <?php if ($project['is_private']): ?>
                     <i class="fa fa-lock" title="<?= t('Private project') ?>"></i>
                 <?php endif ?>

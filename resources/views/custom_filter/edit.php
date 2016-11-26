@@ -2,7 +2,7 @@
     <h2><?= t('Edit custom filter') ?></h2>
 </div>
 
-<form class="form-popover" method="post" action="<?= $this->url->href('CustomFilterController', 'update', array('project_id' => $filter['project_id'], 'filter_id' => $filter['id'])) ?>" autocomplete="off">
+<form class="form-popover" method="post" action="<?= $this->url->href('CustomFilterController', 'update', ['project_id' => $filter['project_id'], 'filter_id' => $filter['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
@@ -11,10 +11,10 @@
     <?= $this->form->hidden('project_id', $values) ?>
 
     <?= $this->form->label(t('Name'), 'name') ?>
-    <?= $this->form->text('name', $values, $errors, array('autofocus', 'required', 'maxlength="100"')) ?>
+    <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="100"']) ?>
 
     <?= $this->form->label(t('Filter'), 'filter') ?>
-    <?= $this->form->text('filter', $values, $errors, array('required', 'maxlength="100"')) ?>
+    <?= $this->form->text('filter', $values, $errors, ['required', 'maxlength="100"']) ?>
 
     <?php if ($this->user->hasProjectAccess('ProjectEditController', 'edit', $project['id'])): ?>
         <?= $this->form->checkbox('is_shared', t('Share with all project members'), 1, $values['is_shared'] == 1) ?>
@@ -27,6 +27,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'CustomFilterController', 'index', array('project_id' => $project['id']), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'CustomFilterController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </form>

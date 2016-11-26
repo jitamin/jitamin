@@ -5,11 +5,11 @@
 <?php if (empty($projects_list)): ?>
     <p class="alert"><?= t('There is no destination project available.') ?></p>
     <div class="form-actions">
-        <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'close-popover btn') ?>
+        <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover btn') ?>
     </div>
 <?php else: ?>
 
-    <form class="popover-form" method="post" action="<?= $this->url->href('TaskDuplicationController', 'copy', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('TaskDuplicationController', 'copy', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
 
         <?= $this->form->csrf() ?>
         <?= $this->form->hidden('id', $values) ?>
@@ -19,8 +19,8 @@
             'project_id',
             $projects_list,
             $values,
-            array(),
-            array('data-redirect="'.$this->url->href('TaskDuplicationController', 'copy', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'dst_project_id' => 'PROJECT_ID')).'"'),
+            [],
+            ['data-redirect="'.$this->url->href('TaskDuplicationController', 'copy', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'dst_project_id' => 'PROJECT_ID']).'"'],
             'task-reload-project-destination'
         ) ?>
         <span class="loading-icon" style="display: none">&nbsp;<i class="fa fa-spinner fa-spin"></i></span>
@@ -44,7 +44,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
         </div>
     </form>
 <?php endif ?>

@@ -20,7 +20,7 @@
         <li><?= t('Account locked until:') ?> <?= $this->dt->datetime($user['lock_expiration_date']) ?></li>
         <?php if ($this->user->isAdmin()): ?>
             <li>
-                <?= $this->url->link(t('Unlock this user'), 'UserCredentialController', 'unlock', array('user_id' => $user['id']), true) ?>
+                <?= $this->url->link(t('Unlock this user'), 'UserCredentialController', 'unlock', ['user_id' => $user['id']], true) ?>
             </li>
         <?php endif ?>
     <?php endif ?>
@@ -42,8 +42,8 @@
 
     <div class="listing">
         <ul class="no-bullet">
-            <li><i class="fa fa-rss-square"></i> <?= $this->url->link(t('RSS feed'), 'FeedController', 'user', array('token' => $user['token']), false, '', '', true) ?></li>
-            <li><i class="fa fa-calendar"></i> <?= $this->url->link(t('iCal feed'), 'ICalendarController', 'user', array('token' => $user['token']), false, '', '', true) ?></li>
+            <li><i class="fa fa-rss-square"></i> <?= $this->url->link(t('RSS feed'), 'FeedController', 'user', ['token' => $user['token']], false, '', '', true) ?></li>
+            <li><i class="fa fa-calendar"></i> <?= $this->url->link(t('iCal feed'), 'ICalendarController', 'user', ['token' => $user['token']], false, '', '', true) ?></li>
         </ul>
     </div>
 <?php endif ?>

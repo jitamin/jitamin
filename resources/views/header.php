@@ -1,11 +1,11 @@
 <?php $_title = $this->render('header/title') ?>
 
-<?php $_top_right_corner = implode('', array(
+<?php $_top_right_corner = implode('', [
         $this->render('header/admin_dropdown'),
         $this->render('header/user_notifications'),
         $this->render('header/creation_dropdown'),
         $this->render('header/user_dropdown')
-    )) ?>
+    ]) ?>
 <div class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -20,7 +20,7 @@
             </ul>
 
             <?php if (! empty($board_selector)): ?>
-            <?= $this->render('header/board_selector', array('board_selector' => $board_selector)) ?>
+            <?= $this->render('header/board_selector', ['board_selector' => $board_selector]) ?>
             <?php endif ?>
 
         </div>
