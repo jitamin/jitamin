@@ -21,7 +21,7 @@ class ProjectFileTest extends Base
         $projectModel = new ProjectModel($this->container);
         $fileModel = new ProjectFileModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', '/tmp/foo', 10));
 
         $file = $fileModel->getById(1);
@@ -46,7 +46,7 @@ class ProjectFileTest extends Base
         $projectModel = new ProjectModel($this->container);
         $fileModel = new ProjectFileModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->assertNotFalse($fileModel->create(1, 'test', '/tmp/foo', 10));
         $this->assertNotFalse($fileModel->create(1, str_repeat('a', 1000), '/tmp/foo', 10));
@@ -61,12 +61,12 @@ class ProjectFileTest extends Base
 
     public function testCreationWithSessionOpen()
     {
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
         $projectModel = new ProjectModel($this->container);
         $fileModel = new ProjectFileModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', '/tmp/foo', 10));
 
         $file = $fileModel->getById(1);
@@ -79,7 +79,7 @@ class ProjectFileTest extends Base
         $projectModel = new ProjectModel($this->container);
         $fileModel = new ProjectFileModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->assertEquals(1, $fileModel->create(1, 'B.pdf', '/tmp/foo', 10));
         $this->assertEquals(2, $fileModel->create(1, 'A.png', '/tmp/foo', 10));
@@ -125,32 +125,32 @@ class ProjectFileTest extends Base
     {
         $fileModel = $this
             ->getMockBuilder('\Hiject\Model\ProjectFileModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('generateThumbnailFromFile'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
-        $files = array(
-            'name' => array(
+        $files = [
+            'name' => [
                 'file1.png',
                 'file2.doc',
-            ),
-            'tmp_name' => array(
+            ],
+            'tmp_name' => [
                 '/tmp/phpYzdqkD',
                 '/tmp/phpeEwEWG',
-            ),
-            'error' => array(
+            ],
+            'error' => [
                 UPLOAD_ERR_OK,
                 UPLOAD_ERR_OK,
-            ),
-            'size' => array(
+            ],
+            'size' => [
                 123,
                 456,
-            ),
-        );
+            ],
+        ];
 
         $fileModel
             ->expects($this->once())
@@ -191,29 +191,29 @@ class ProjectFileTest extends Base
     public function testUploadFilesWithEmptyFiles()
     {
         $fileModel = new ProjectFileModel($this->container);
-        $this->assertFalse($fileModel->uploadFiles(1, array()));
+        $this->assertFalse($fileModel->uploadFiles(1, []));
     }
 
     public function testUploadFilesWithUploadError()
     {
-        $files = array(
-            'name' => array(
+        $files = [
+            'name' => [
                 'file1.png',
                 'file2.doc',
-            ),
-            'tmp_name' => array(
+            ],
+            'tmp_name' => [
                 '',
                 '/tmp/phpeEwEWG',
-            ),
-            'error' => array(
+            ],
+            'error' => [
                 UPLOAD_ERR_CANT_WRITE,
                 UPLOAD_ERR_OK,
-            ),
-            'size' => array(
+            ],
+            'size' => [
                 123,
                 456,
-            ),
-        );
+            ],
+        ];
 
         $fileModel = new ProjectFileModel($this->container);
         $this->assertFalse($fileModel->uploadFiles(1, $files));
@@ -221,24 +221,24 @@ class ProjectFileTest extends Base
 
     public function testUploadFilesWithObjectStorageError()
     {
-        $files = array(
-            'name' => array(
+        $files = [
+            'name' => [
                 'file1.csv',
                 'file2.doc',
-            ),
-            'tmp_name' => array(
+            ],
+            'tmp_name' => [
                 '/tmp/phpYzdqkD',
                 '/tmp/phpeEwEWG',
-            ),
-            'error' => array(
+            ],
+            'error' => [
                 UPLOAD_ERR_OK,
                 UPLOAD_ERR_OK,
-            ),
-            'size' => array(
+            ],
+            'size' => [
                 123,
                 456,
-            ),
-        );
+            ],
+        ];
 
         $this->container['objectStorage']
             ->expects($this->at(0))
@@ -254,14 +254,14 @@ class ProjectFileTest extends Base
     {
         $fileModel = $this
             ->getMockBuilder('\Hiject\Model\ProjectFileModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('generateThumbnailFromFile'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
         $data = 'test';
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->container['objectStorage']
             ->expects($this->once())
@@ -286,14 +286,14 @@ class ProjectFileTest extends Base
     {
         $fileModel = $this
             ->getMockBuilder('\Hiject\Model\ProjectFileModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('generateThumbnailFromData'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['generateThumbnailFromData'])
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
         $data = 'test';
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $fileModel
             ->expects($this->once())

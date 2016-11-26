@@ -50,7 +50,7 @@ class MemoryCacheTest extends Base
 
         $class = $this
             ->getMockBuilder('stdClass')
-            ->setMethods(array('doSomething'))
+            ->setMethods(['doSomething'])
             ->getMock();
 
         $class

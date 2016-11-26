@@ -33,7 +33,7 @@ class NotificationSubscriber extends BaseSubscriber implements EventSubscriberIn
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_USER_MENTION    => 'handleEvent',
             TaskModel::EVENT_CREATE          => 'handleEvent',
             TaskModel::EVENT_UPDATE          => 'handleEvent',
@@ -53,7 +53,7 @@ class NotificationSubscriber extends BaseSubscriber implements EventSubscriberIn
             TaskFileModel::EVENT_CREATE      => 'handleEvent',
             TaskLinkModel::EVENT_CREATE_UPDATE      => 'handleEvent',
             TaskLinkModel::EVENT_DELETE             => 'handleEvent',
-        );
+        ];
     }
 
     /**

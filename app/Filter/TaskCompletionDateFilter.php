@@ -27,7 +27,7 @@ class TaskCompletionDateFilter extends BaseDateFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('completed');
+        return ['completed'];
     }
 
     /**

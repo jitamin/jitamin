@@ -23,9 +23,9 @@ class TextHelperTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertTrue($projectModel->enablePublicAccess(1));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
         $project = $projectModel->getById(1);
 
         $this->assertEquals('<p>Test</p>', $helper->markdown('Test'));
@@ -87,7 +87,7 @@ class TextHelperTest extends Base
     public function testInList()
     {
         $h = new TextHelper($this->container);
-        $this->assertEquals('?', $h->in('a', array('b' => 'c')));
-        $this->assertEquals('c', $h->in('b', array('b' => 'c')));
+        $this->assertEquals('?', $h->in('a', ['b' => 'c']));
+        $this->assertEquals('c', $h->in('b', ['b' => 'c']));
     }
 }

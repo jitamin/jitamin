@@ -55,7 +55,7 @@ class ProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Public')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Public']));
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
         $project = $projectModel->getById(2);
@@ -74,7 +74,7 @@ class ProjectDuplicationModelTest extends Base
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Private', 'is_private' => 1), 1, true));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Private', 'is_private' => 1], 1, true));
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
         $project = $projectModel->getById(2);
@@ -94,8 +94,8 @@ class ProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Shared')));
-        $this->assertTrue($projectModel->update(array('id' => 1, 'is_public' => 1, 'token' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Shared']));
+        $this->assertTrue($projectModel->update(['id' => 1, 'is_public' => 1, 'token' => 'test']));
 
         $project = $projectModel->getById(1);
         $this->assertEquals('test', $project['token']);
@@ -115,8 +115,8 @@ class ProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Inactive')));
-        $this->assertTrue($projectModel->update(array('id' => 1, 'is_active' => 0)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Inactive']));
+        $this->assertTrue($projectModel->update(['id' => 1, 'is_active' => 0]));
 
         $project = $projectModel->getById(1);
         $this->assertEquals(0, $project['is_active']);
@@ -135,12 +135,12 @@ class ProjectDuplicationModelTest extends Base
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Owner')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Owner']));
 
         $project = $projectModel->getById(1);
         $this->assertEquals(0, $project['owner_id']);
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('projectPermissionModel'), 1));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['projectPermissionModel'], 1));
 
         $project = $projectModel->getById(2);
         $this->assertNotEmpty($project);
@@ -155,12 +155,12 @@ class ProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array(
+        $this->assertEquals(1, $projectModel->create([
             'name' => 'My project',
             'priority_default' => 2,
             'priority_start' => -2,
             'priority_end' => 8,
-        )));
+        ]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
@@ -177,12 +177,12 @@ class ProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Owner')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Owner']));
 
         $project = $projectModel->getById(1);
         $this->assertEquals(0, $project['owner_id']);
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('projectPermissionModel'), 1, 'Foobar'));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['projectPermissionModel'], 1, 'Foobar'));
 
         $project = $projectModel->getById(2);
         $this->assertNotEmpty($project);
@@ -195,13 +195,13 @@ class ProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Owner')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Owner']));
 
         $project = $projectModel->getById(1);
         $this->assertEquals(0, $project['owner_id']);
         $this->assertEquals(0, $project['is_private']);
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('projectPermissionModel'), 1, 'Foobar', true));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['projectPermissionModel'], 1, 'Foobar', true));
 
         $project = $projectModel->getById(2);
         $this->assertNotEmpty($project);
@@ -216,11 +216,11 @@ class ProjectDuplicationModelTest extends Base
         $categoryModel = new CategoryModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1, 'position' => 1)));
-        $this->assertEquals(2, $categoryModel->create(array('name' => 'C2', 'project_id' => 1, 'position' => 2)));
-        $this->assertEquals(3, $categoryModel->create(array('name' => 'C3', 'project_id' => 1, 'position' => 3)));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1, 'position' => 1]));
+        $this->assertEquals(2, $categoryModel->create(['name' => 'C2', 'project_id' => 1, 'position' => 2]));
+        $this->assertEquals(3, $categoryModel->create(['name' => 'C3', 'project_id' => 1, 'position' => 3]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
@@ -242,11 +242,11 @@ class ProjectDuplicationModelTest extends Base
         $userModel = new UserModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user3')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user3']));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MANAGER));
         $this->assertTrue($projectUserRoleModel->addUser(1, 3, Role::PROJECT_MEMBER));
@@ -267,8 +267,8 @@ class ProjectDuplicationModelTest extends Base
         $userModel = new UserModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1'), 2));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1'], 2));
 
         $project = $projectModel->getById(1);
         $this->assertEquals(2, $project['owner_id']);
@@ -276,7 +276,7 @@ class ProjectDuplicationModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MANAGER));
         $this->assertTrue($projectUserRoleModel->addUser(1, 1, Role::PROJECT_MEMBER));
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('projectPermissionModel'), 1));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['projectPermissionModel'], 1));
 
         $this->assertCount(2, $projectUserRoleModel->getUsers(2));
         $this->assertEquals(Role::PROJECT_MANAGER, $projectUserRoleModel->getUserRole(2, 2));
@@ -293,9 +293,9 @@ class ProjectDuplicationModelTest extends Base
         $userModel = new UserModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2')));
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1'), 2));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1'], 2));
 
         $project = $projectModel->getById(1);
         $this->assertEquals(2, $project['owner_id']);
@@ -304,7 +304,7 @@ class ProjectDuplicationModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MANAGER));
         $this->assertTrue($projectUserRoleModel->addUser(1, 1, Role::PROJECT_MEMBER));
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('projectPermissionModel'), 3, 'My private project', true));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['projectPermissionModel'], 3, 'My private project', true));
 
         $this->assertCount(1, $projectUserRoleModel->getUsers(2));
         $this->assertEquals(Role::PROJECT_MANAGER, $projectUserRoleModel->getUserRole(2, 3));
@@ -324,15 +324,15 @@ class ProjectDuplicationModelTest extends Base
         $projectGroupRoleModel = new ProjectGroupRoleModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
         $this->assertEquals(1, $groupModel->create('G1'));
         $this->assertEquals(2, $groupModel->create('G2'));
         $this->assertEquals(3, $groupModel->create('G3'));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user3')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user3']));
 
         $this->assertTrue($groupMemberModel->addUser(1, 2));
         $this->assertTrue($groupMemberModel->addUser(2, 3));
@@ -356,14 +356,14 @@ class ProjectDuplicationModelTest extends Base
         $actionModel = new ActionModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $actionModel->create(array(
+        $this->assertEquals(1, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => 'TaskAssignCurrentUser',
-            'params' => array('column_id' => 2),
-        )));
+            'params' => ['column_id' => 2],
+        ]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
@@ -382,18 +382,18 @@ class ProjectDuplicationModelTest extends Base
         $categoryModel = new CategoryModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1)));
-        $this->assertEquals(2, $categoryModel->create(array('name' => 'C2', 'project_id' => 1)));
-        $this->assertEquals(3, $categoryModel->create(array('name' => 'C3', 'project_id' => 1)));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
+        $this->assertEquals(2, $categoryModel->create(['name' => 'C2', 'project_id' => 1]));
+        $this->assertEquals(3, $categoryModel->create(['name' => 'C3', 'project_id' => 1]));
 
-        $this->assertEquals(1, $actionModel->create(array(
+        $this->assertEquals(1, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_CREATE_UPDATE,
             'action_name' => 'TaskAssignColorCategory',
-            'params' => array('color_id' => 'blue', 'category_id' => 2),
-        )));
+            'params' => ['color_id' => 'blue', 'category_id' => 2],
+        ]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
 
@@ -414,20 +414,20 @@ class ProjectDuplicationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1', 'default_swimlane' => 'New Default')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1', 'default_swimlane' => 'New Default']));
 
         // create initial swimlanes
-        $this->assertEquals(1, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S1')));
-        $this->assertEquals(2, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S2')));
-        $this->assertEquals(3, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S3')));
+        $this->assertEquals(1, $swimlaneModel->create(['project_id' => 1, 'name' => 'S1']));
+        $this->assertEquals(2, $swimlaneModel->create(['project_id' => 1, 'name' => 'S2']));
+        $this->assertEquals(3, $swimlaneModel->create(['project_id' => 1, 'name' => 'S3']));
 
         // create initial tasks
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T0', 'project_id' => 1, 'swimlane_id' => 0)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1, 'swimlane_id' => 1)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1, 'swimlane_id' => 2)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'T3', 'project_id' => 1, 'swimlane_id' => 3)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T0', 'project_id' => 1, 'swimlane_id' => 0]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'swimlane_id' => 1]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1, 'swimlane_id' => 2]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'T3', 'project_id' => 1, 'swimlane_id' => 3]));
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('categoryModel', 'swimlaneModel')));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['categoryModel', 'swimlaneModel']));
 
         $swimlanes = $swimlaneModel->getAll(2);
         $this->assertCount(3, $swimlanes);
@@ -452,14 +452,14 @@ class ProjectDuplicationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
         // create initial tasks
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1, 'column_id' => 2)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'T3', 'project_id' => 1, 'column_id' => 3)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1, 'column_id' => 2]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'T3', 'project_id' => 1, 'column_id' => 3]));
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('categoryModel', 'actionModel', 'projectTaskDuplicationModel')));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['categoryModel', 'actionModel', 'projectTaskDuplicationModel']));
 
         // Check if Tasks have been duplicated
         $tasks = $taskFinderModel->getAll(2);
@@ -477,19 +477,19 @@ class ProjectDuplicationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1', 'default_swimlane' => 'New Default')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1', 'default_swimlane' => 'New Default']));
 
         // create initial swimlanes
-        $this->assertEquals(1, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S1')));
-        $this->assertEquals(2, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S2')));
-        $this->assertEquals(3, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S3')));
+        $this->assertEquals(1, $swimlaneModel->create(['project_id' => 1, 'name' => 'S1']));
+        $this->assertEquals(2, $swimlaneModel->create(['project_id' => 1, 'name' => 'S2']));
+        $this->assertEquals(3, $swimlaneModel->create(['project_id' => 1, 'name' => 'S3']));
 
         // create initial tasks
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'T3', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'T3', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('projectPermissionModel', 'swimlaneModel', 'projectTaskDuplicationModel')));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['projectPermissionModel', 'swimlaneModel', 'projectTaskDuplicationModel']));
 
         // Check if Swimlanes have been duplicated
         $swimlanes = $swimlaneModel->getAll(2);
@@ -522,12 +522,12 @@ class ProjectDuplicationModelTest extends Base
         $tagModel = new TagModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1, 'column_id' => 1, 'tags' => array('A'))));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1, 'column_id' => 2, 'tags' => array('A', 'B'))));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'T3', 'project_id' => 1, 'column_id' => 3, 'tags' => array('C'))));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'column_id' => 1, 'tags' => ['A']]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1, 'column_id' => 2, 'tags' => ['A', 'B']]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'T3', 'project_id' => 1, 'column_id' => 3, 'tags' => ['C']]));
 
-        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, array('categoryModel', 'actionModel', 'tagDuplicationModel', 'projectTaskDuplicationModel')));
+        $this->assertEquals(2, $projectDuplicationModel->duplicate(1, ['categoryModel', 'actionModel', 'tagDuplicationModel', 'projectTaskDuplicationModel']));
 
         $tasks = $taskFinderModel->getAll(2);
         $this->assertCount(3, $tasks);

@@ -59,13 +59,13 @@ class TaskExternalLinkProcedure extends BaseProcedure
 
             $link = $provider->getLink();
 
-            $values = array(
+            $values = [
                 'task_id' => $task_id,
                 'title' => $title ?: $link->getTitle(),
                 'url' => $link->getUrl(),
                 'link_type' => $provider->getType(),
                 'dependency' => $dependency,
-            );
+            ];
 
             list($valid, $errors) = $this->externalLinkValidator->validateCreation($values);
 
@@ -87,11 +87,11 @@ class TaskExternalLinkProcedure extends BaseProcedure
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'updateExternalTaskLink', $task_id);
 
         $link = $this->taskExternalLinkModel->getById($link_id);
-        $values = $this->filterValues(array(
+        $values = $this->filterValues([
             'title' => $title,
             'url' => $url,
             'dependency' => $dependency,
-        ));
+        ]);
 
         $values = array_merge($link, $values);
         list($valid, $errors) = $this->externalLinkValidator->validateModification($values);

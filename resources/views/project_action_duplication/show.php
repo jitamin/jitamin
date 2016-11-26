@@ -4,7 +4,7 @@
 <?php if (empty($projects_list)): ?>
     <p class="alert"><?= t('There is no available project.') ?></p>
 <?php else: ?>
-    <form class="popover-form" method="post" action="<?= $this->url->href('ProjectActionDuplicationController', 'save', array('project_id' => $project['id'])) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('ProjectActionDuplicationController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
         <?= $this->form->csrf() ?>
 
         <?= $this->form->label(t('Create from another project'), 'src_project_id') ?>
@@ -13,7 +13,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'Action', 'index', array(), false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'Action', 'index', [], false, 'close-popover') ?>
         </div>
     </form>
 <?php endif ?>

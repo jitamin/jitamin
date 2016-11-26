@@ -49,7 +49,7 @@ class ActionProcedureTest extends BaseProcedureTest
 
     public function assertCreateAction()
     {
-        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', array('column_id' => 1));
+        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
         $this->assertTrue($actionId > 0);
     }
@@ -69,7 +69,7 @@ class ActionProcedureTest extends BaseProcedureTest
 
     public function assertRemoveAction()
     {
-        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', array('column_id' => 1));
+        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertTrue($this->app->removeAction($actionId));
     }
 }

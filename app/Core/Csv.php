@@ -40,7 +40,7 @@ class Csv
      * @access private
      * @var array
      */
-    private $columns = array();
+    private $columns = [];
 
     /**
      * Constructor
@@ -64,12 +64,12 @@ class Csv
      */
     public static function getDelimiters()
     {
-        return array(
+        return [
             ',' => t('Comma'),
             ';' => t('Semi-colon'),
             '\t' => t('Tab'),
             '|' => t('Vertical bar'),
-        );
+        ];
     }
 
     /**
@@ -81,11 +81,11 @@ class Csv
      */
     public static function getEnclosures()
     {
-        return array(
+        return [
             '"' => t('Double Quote'),
             "'" => t('Single Quote'),
             '' => t('None'),
-        );
+        ];
     }
 
     /**
@@ -153,7 +153,7 @@ class Csv
             $row = $this->filterRow($row);
 
             if (! empty($row) && $line_number > 0) {
-                call_user_func_array($callback, array($this->associateColumns($row), $line_number));
+                call_user_func_array($callback, [$this->associateColumns($row), $line_number]);
             }
 
             $line_number++;
@@ -194,7 +194,7 @@ class Csv
      */
     private function associateColumns(array $row)
     {
-        $line = array();
+        $line = [];
         $index = 0;
 
         foreach ($this->columns as $sql_name => $csv_name) {

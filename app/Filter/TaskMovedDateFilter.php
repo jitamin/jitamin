@@ -27,7 +27,7 @@ class TaskMovedDateFilter extends BaseDateFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('moved');
+        return ['moved'];
     }
 
     /**

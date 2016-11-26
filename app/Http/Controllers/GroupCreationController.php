@@ -23,12 +23,12 @@ class GroupCreationController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
-        $this->response->html($this->template->render('group_creation/show', array(
+        $this->response->html($this->template->render('group_creation/show', [
             'errors' => $errors,
             'values' => $values,
-        )));
+        ]));
     }
 
     /**

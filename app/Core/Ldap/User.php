@@ -96,7 +96,7 @@ class User
      */
     protected function getGroups(Entry $entry, $username)
     {
-        $groupIds = array();
+        $groupIds = [];
 
         if (! empty($username) && $this->group !== null && $this->hasGroupUserFilter()) {
             $groups = $this->group->find(sprintf($this->getGroupUserFilter(), $username));
@@ -173,14 +173,14 @@ class User
      */
     public function getAttributes()
     {
-        return array_values(array_filter(array(
+        return array_values(array_filter([
             $this->getAttributeUsername(),
             $this->getAttributeName(),
             $this->getAttributeEmail(),
             $this->getAttributeGroup(),
             $this->getAttributePhoto(),
             $this->getAttributeLanguage(),
-        )));
+        ]));
     }
 
     /**

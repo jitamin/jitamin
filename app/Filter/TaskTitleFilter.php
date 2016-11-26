@@ -27,7 +27,7 @@ class TaskTitleFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('title');
+        return ['title'];
     }
 
     /**

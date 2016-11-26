@@ -37,10 +37,10 @@ class TaskMoveColumnUnAssigned extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_ASSIGNEE_CHANGE,
             TaskModel::EVENT_UPDATE,
-        );
+        ];
     }
 
     /**
@@ -51,10 +51,10 @@ class TaskMoveColumnUnAssigned extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'src_column_id' => t('Source column'),
             'dest_column_id' => t('Destination column')
-        );
+        ];
     }
 
     /**
@@ -65,16 +65,16 @@ class TaskMoveColumnUnAssigned extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
                 'column_id',
                 'owner_id',
                 'position',
                 'swimlane_id',
-            )
-        );
+            ]
+        ];
     }
 
     /**

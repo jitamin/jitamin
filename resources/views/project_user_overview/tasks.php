@@ -14,16 +14,16 @@
         <?php foreach ($paginator->getCollection() as $task): ?>
         <tr>
             <td class="task-table color-<?= $task['color_id'] ?>">
-                <?= $this->url->link('#'.$this->text->e($task['id']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', t('View this task')) ?>
+                <?= $this->url->link('#'.$this->text->e($task['id']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['project_name']), 'BoardViewController', 'show', array('project_id' => $task['project_id'])) ?>
+                <?= $this->url->link($this->text->e($task['project_name']), 'BoardViewController', 'show', ['project_id' => $task['project_id']]) ?>
             </td>
             <td>
                 <?= $this->text->e($task['column_name']) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), false, '', t('View this task')) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </td>
             <td>
                 <?php if ($task['assignee_username']): ?>

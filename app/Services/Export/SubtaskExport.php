@@ -27,7 +27,7 @@ class SubtaskExport extends Base
      * @access private
      * @var array
      */
-    private $subtask_status = array();
+    private $subtask_status = [];
 
     /**
      * Fetch subtasks and return the prepared CSV
@@ -42,7 +42,7 @@ class SubtaskExport extends Base
     {
         $this->subtask_status = $this->subtaskModel->getStatusList();
         $subtasks = $this->getSubtasks($project_id, $from, $to);
-        $results = array($this->getColumns());
+        $results = [$this->getColumns()];
 
         foreach ($subtasks as $subtask) {
             $results[] = $this->format($subtask);
@@ -59,7 +59,7 @@ class SubtaskExport extends Base
      */
     public function getColumns()
     {
-        return array(
+        return [
             e('Subtask Id'),
             e('Title'),
             e('Status'),
@@ -68,7 +68,7 @@ class SubtaskExport extends Base
             e('Time spent'),
             e('Task Id'),
             e('Task Title'),
-        );
+        ];
     }
 
     /**
@@ -80,7 +80,7 @@ class SubtaskExport extends Base
      */
     public function format(array $subtask)
     {
-        $values = array();
+        $values = [];
         $values[] = $subtask['id'];
         $values[] = $subtask['title'];
         $values[] = $this->subtask_status[$subtask['status']];

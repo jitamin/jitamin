@@ -1,11 +1,11 @@
-<?= $this->render('task/details', array(
+<?= $this->render('task/details', [
     'task' => $task,
     'tags' => $tags,
     'project' => $project,
     'editable' => false,
-)) ?>
+]) ?>
 
-<?= $this->render('task/time_tracking_summary', array('task' => $task)) ?>
+<?= $this->render('task/time_tracking_summary', ['task' => $task]) ?>
 
 <h3><?= t('Subtask timesheet') ?></h3>
 <?php if ($subtask_paginator->isEmpty()): ?>
@@ -21,7 +21,7 @@
         </tr>
         <?php foreach ($subtask_paginator->getCollection() as $record): ?>
         <tr>
-            <td><?= $this->url->link($this->text->e($record['user_fullname'] ?: $record['username']), 'UserViewController', 'show', array('user_id' => $record['user_id'])) ?></td>
+            <td><?= $this->url->link($this->text->e($record['user_fullname'] ?: $record['username']), 'UserViewController', 'show', ['user_id' => $record['user_id']]) ?></td>
             <td><?= t($record['subtask_title']) ?></td>
             <td><?= $this->dt->datetime($record['start']) ?></td>
             <td><?= $this->dt->datetime($record['end']) ?></td>

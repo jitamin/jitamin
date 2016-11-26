@@ -25,7 +25,7 @@ class SearchController extends BaseController
         $nb_tasks = 0;
 
         $paginator = $this->paginator
-                ->setUrl('SearchController', 'index', array('q' => $query))
+                ->setUrl('SearchController', 'index', ['q' => $query])
                 ->setMax(30)
                 ->setOrder('tasks.id')
                 ->setDirection('DESC');
@@ -42,15 +42,15 @@ class SearchController extends BaseController
             $nb_tasks = $paginator->getTotal();
         }
 
-        $this->response->html($this->helper->layout->app('search/index', array(
-            'values' => array(
+        $this->response->html($this->helper->layout->app('search/index', [
+            'values' => [
                 'q' => $query,
                 'controller' => 'SearchController',
                 'action' => 'index',
-            ),
+            ],
             'paginator' => $paginator,
             'title' => t('Search tasks').($nb_tasks > 0 ? ' ('.$nb_tasks.')' : '')
-        )));
+        ]));
     }
 
     public function activity()
@@ -59,15 +59,15 @@ class SearchController extends BaseController
         $events = $this->helper->projectActivity->searchEvents($query);
         $nb_events = count($events);
 
-        $this->response->html($this->helper->layout->app('search/activity', array(
-            'values' => array(
+        $this->response->html($this->helper->layout->app('search/activity', [
+            'values' => [
                 'q' => $query,
                 'controller' => 'SearchController',
                 'action' => 'activity',
-            ),
+            ],
             'title' => t('Search in activity stream').($nb_events > 0 ? ' ('.$nb_events.')' : ''),
             'nb_events' => $nb_events,
             'events' => $events,
-        )));
+        ]));
     }
 }

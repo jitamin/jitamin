@@ -34,20 +34,20 @@ class TaskProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #1', 'project_id' => 1)));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
         $this->assertTrue($categoryModel->exists(1));
 
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'column_id' => 2,
             'owner_id' => 1,
             'category_id' => 1,
             'priority' => 3,
-        )));
+        ]));
 
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {});
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, function () {});
@@ -81,16 +81,16 @@ class TaskProjectDuplicationModelTest extends Base
         $categoryModel = new CategoryModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #1', 'project_id' => 1)));
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #1', 'project_id' => 2)));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #1', 'project_id' => 2]));
         $this->assertTrue($categoryModel->exists(1));
         $this->assertTrue($categoryModel->exists(2));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'category_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'category_id' => 1]));
 
         // We duplicate our task to the 2nd project
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2));
@@ -116,18 +116,18 @@ class TaskProjectDuplicationModelTest extends Base
         $categoryModel = new CategoryModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #1', 'project_id' => 1)));
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #1', 'project_id' => 2)));
-        $this->assertNotFalse($categoryModel->create(array('name' => 'Category #2', 'project_id' => 2)));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #1', 'project_id' => 2]));
+        $this->assertNotFalse($categoryModel->create(['name' => 'Category #2', 'project_id' => 2]));
         $this->assertTrue($categoryModel->exists(1));
         $this->assertTrue($categoryModel->exists(2));
         $this->assertTrue($categoryModel->exists(3));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'category_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'category_id' => 1]));
 
         // We duplicate our task to the 2nd project with no category
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2, null, null, 0));
@@ -155,14 +155,14 @@ class TaskProjectDuplicationModelTest extends Base
         $swimlaneModel = new SwimlaneModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 1, 'name' => 'Swimlane #1')));
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 2, 'name' => 'Swimlane #1')));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 1, 'name' => 'Swimlane #1']));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 2, 'name' => 'Swimlane #1']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
 
         // We duplicate our task to the 2nd project
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2));
@@ -188,14 +188,14 @@ class TaskProjectDuplicationModelTest extends Base
         $swimlaneModel = new SwimlaneModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 1, 'name' => 'Swimlane #1')));
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 2, 'name' => 'Swimlane #2')));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 1, 'name' => 'Swimlane #1']));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 2, 'name' => 'Swimlane #2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
 
         // We duplicate our task to the 2nd project
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2));
@@ -221,15 +221,15 @@ class TaskProjectDuplicationModelTest extends Base
         $swimlaneModel = new SwimlaneModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 1, 'name' => 'Swimlane #1')));
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 2, 'name' => 'Swimlane #1')));
-        $this->assertNotFalse($swimlaneModel->create(array('project_id' => 2, 'name' => 'Swimlane #2')));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 1, 'name' => 'Swimlane #1']));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 2, 'name' => 'Swimlane #1']));
+        $this->assertNotFalse($swimlaneModel->create(['project_id' => 2, 'name' => 'Swimlane #2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
 
         // We duplicate our task to the 2nd project
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2, 3));
@@ -248,11 +248,11 @@ class TaskProjectDuplicationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2]));
 
         // We duplicate our task to the 2nd project with a different column
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2, null, 7));
@@ -272,11 +272,11 @@ class TaskProjectDuplicationModelTest extends Base
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 2)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 2]));
 
         // We duplicate our task to the 2nd project
         $this->assertEquals(2, $taskProjectDuplicationModel->duplicateToProject(1, 2));
@@ -292,7 +292,7 @@ class TaskProjectDuplicationModelTest extends Base
 
         // We create a new user for our project
         $user = new UserModel($this->container);
-        $this->assertNotFalse($user->create(array('username' => 'unittest#1', 'password' => 'unittest')));
+        $this->assertNotFalse($user->create(['username' => 'unittest#1', 'password' => 'unittest']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 
@@ -308,7 +308,7 @@ class TaskProjectDuplicationModelTest extends Base
         $this->assertEquals(2, $task['project_id']);
 
         // We duplicate a task with a not allowed user
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 3)));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 3]));
         $this->assertEquals(5, $taskProjectDuplicationModel->duplicateToProject(4, 2));
 
         $task = $taskFinderModel->getById(5);
@@ -328,11 +328,11 @@ class TaskProjectDuplicationModelTest extends Base
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 2)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 2]));
         $this->assertTrue($projectUserRoleModel->addUser(2, 1, Role::PROJECT_MEMBER));
 
         // We duplicate our task to the 2nd project
@@ -354,8 +354,8 @@ class TaskProjectDuplicationModelTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
 
         // We create 2 projects
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create our tags for each projects
         $this->assertEquals(1, $tagModel->create(1, 'T1'));
@@ -366,7 +366,7 @@ class TaskProjectDuplicationModelTest extends Base
         $this->assertEquals(6, $tagModel->create(0, 'T5'));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'tags' => array('T1', 'T2', 'T5'))));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'tags' => ['T1', 'T2', 'T5']]));
 
         // We move our task to the 2nd project
         $this->assertEquals(2, $taskProjectMoveModel->duplicateToProject(1, 2));

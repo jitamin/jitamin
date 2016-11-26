@@ -40,4 +40,4 @@
     <?= $this->text->markdown($task['description']) ?>
 <?php endif ?>
 
-<?= $this->render('notification/footer', array('task' => $task, 'application_url' => $application_url)) ?>
+<?= $this->render('notification/footer', ['task' => $task, 'application_url' => $application_url]) ?>

@@ -21,7 +21,7 @@ class TagModelTest extends Base
         $tagModel = new TagModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $tagModel->create(0, 'Tag 1'));
         $this->assertEquals(2, $tagModel->create(1, 'Tag 1'));
         $this->assertEquals(3, $tagModel->create(1, 'Tag 2'));
@@ -47,7 +47,7 @@ class TagModelTest extends Base
         $tagModel = new TagModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $tagModel->create(0, 'Tag 1'));
         $this->assertEquals(2, $tagModel->create(1, 'Tag 2'));
 
@@ -65,7 +65,7 @@ class TagModelTest extends Base
         $tagModel = new TagModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $tagModel->create(0, 'Tag 1'));
         $this->assertEquals(2, $tagModel->create(1, 'B'));
         $this->assertEquals(3, $tagModel->create(1, 'A'));
@@ -84,7 +84,7 @@ class TagModelTest extends Base
         $tagModel = new TagModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $tagModel->create(0, 'Tag 1'));
         $this->assertEquals(2, $tagModel->create(1, 'Tag 1'));
         $this->assertEquals(3, $tagModel->create(1, 'Tag 3'));
@@ -99,7 +99,7 @@ class TagModelTest extends Base
         $tagModel = new TagModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $tagModel->create(0, 'Tag 1'));
 
         $this->assertEquals(2, $tagModel->findOrCreateTag(1, 'Tag 2'));

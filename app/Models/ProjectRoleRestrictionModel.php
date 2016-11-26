@@ -31,11 +31,11 @@ class ProjectRoleRestrictionModel extends Base
      */
     public function getRules()
     {
-        return array(
+        return [
             self::RULE_TASK_CREATION    => t('Task creation is not permitted'),
             self::RULE_TASK_OPEN_CLOSE  => t('Closing or opening a task is not permitted'),
             self::RULE_TASK_MOVE        => t('Moving a task is not permitted'),
-        );
+        ];
     }
 
     /**
@@ -116,11 +116,11 @@ class ProjectRoleRestrictionModel extends Base
     public function create($project_id, $role_id, $rule)
     {
         return $this->db->table(self::TABLE)
-            ->persist(array(
+            ->persist([
                 'project_id' => $project_id,
                 'role_id' => $role_id,
                 'rule' => $rule,
-            ));
+            ]);
     }
 
     /**

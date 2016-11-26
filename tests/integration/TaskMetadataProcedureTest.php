@@ -28,7 +28,7 @@ class TaskMetadataProcedureTest extends BaseProcedureTest
 
     public function assertSaveTaskMetadata()
     {
-        $this->assertTrue($this->app->saveTaskMetadata($this->taskId, array($this->metaKey => 'metaValue1')));
+        $this->assertTrue($this->app->saveTaskMetadata($this->taskId, [$this->metaKey => 'metaValue1']));
     }
 
     public function assertGetTaskMetadata()

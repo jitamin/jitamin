@@ -24,7 +24,7 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
      * @access private
      * @var array
      */
-    private $columns = array();
+    private $columns = [];
     
     /**
      * Apply formatter
@@ -34,7 +34,7 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
      */
     public function format()
     {
-        $bars = array();
+        $bars = [];
 
         foreach ($this->query->findAll() as $task) {
             $bars[] = $this->formatTask($task);
@@ -59,26 +59,26 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
         $start = $task['date_started'] ?: time();
         $end = $task['date_due'] ?: $start;
 
-        return array(
+        return [
             'type' => 'task',
             'id' => $task['id'],
             'title' => $task['title'],
-            'start' => array(
+            'start' => [
                 (int) date('Y', $start),
                 (int) date('n', $start),
                 (int) date('j', $start),
-            ),
-            'end' => array(
+            ],
+            'end' => [
                 (int) date('Y', $end),
                 (int) date('n', $end),
                 (int) date('j', $end),
-            ),
+            ],
             'column_title' => $task['column_name'],
             'assignee' => $task['assignee_name'] ?: $task['assignee_username'],
             'progress' => $this->taskModel->getProgress($task, $this->columns[$task['project_id']]).'%',
-            'link' => $this->helper->url->href('TaskViewController', 'show', array('project_id' => $task['project_id'], 'task_id' => $task['id'])),
+            'link' => $this->helper->url->href('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]),
             'color' => $this->colorModel->getColorProperties($task['color_id']),
             'not_defined' => empty($task['date_due']) || empty($task['date_started']),
-        );
+        ];
     }
 }

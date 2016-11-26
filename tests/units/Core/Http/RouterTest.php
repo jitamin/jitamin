@@ -33,37 +33,37 @@ class RouterTest extends Base
     public function testGetPathWithFolder()
     {
         $router = new Router($this->container);
-        $this->container['request'] = new Request($this->container, array('PHP_SELF' => '/index.php', 'REQUEST_URI' => '/a/b/c', 'REQUEST_METHOD' => 'GET'));
+        $this->container['request'] = new Request($this->container, ['PHP_SELF' => '/index.php', 'REQUEST_URI' => '/a/b/c', 'REQUEST_METHOD' => 'GET']);
         $this->assertEquals('a/b/c', $router->getPath());
     }
 
     public function testGetPathWithQueryString()
     {
         $router = new Router($this->container);
-        $this->container['request'] = new Request($this->container, array('PHP_SELF' => '/index.php', 'REQUEST_URI' => '/a/b/something?test=a', 'QUERY_STRING' => 'test=a', 'REQUEST_METHOD' => 'GET'));
+        $this->container['request'] = new Request($this->container, ['PHP_SELF' => '/index.php', 'REQUEST_URI' => '/a/b/something?test=a', 'QUERY_STRING' => 'test=a', 'REQUEST_METHOD' => 'GET']);
         $this->assertEquals('a/b/something', $router->getPath());
     }
 
     public function testGetPathWithSubFolderAndQueryString()
     {
         $router = new Router($this->container);
-        $this->container['request'] = new Request($this->container, array('PHP_SELF' => '/a/index.php', 'REQUEST_URI' => '/a/b/something?test=a', 'QUERY_STRING' => 'test=a', 'REQUEST_METHOD' => 'GET'));
+        $this->container['request'] = new Request($this->container, ['PHP_SELF' => '/a/index.php', 'REQUEST_URI' => '/a/b/something?test=a', 'QUERY_STRING' => 'test=a', 'REQUEST_METHOD' => 'GET']);
         $this->assertEquals('b/something', $router->getPath());
     }
 
     public function testDispatcherWithNoUrlRewrite()
     {
-        $this->container['request'] = new Request($this->container, array(
+        $this->container['request'] = new Request($this->container, [
                 'PHP_SELF' => '/hiject/index.php',
                 'REQUEST_URI' => '/hiject/?controller=FakeController&action=myAction&myvar=value1',
                 'QUERY_STRING' => 'controller=FakeController&action=myAction&myvar=value1',
                 'REQUEST_METHOD' => 'GET'
-            ),
-            array(
+            ],
+            [
                 'controller' => 'FakeController',
                 'action' => 'myAction',
                 'myvar' => 'value1',
-            )
+            ]
         );
 
         $dispatcher = new Router($this->container);
@@ -77,18 +77,18 @@ class RouterTest extends Base
 
     public function testDispatcherWithNoUrlRewriteAndPlugin()
     {
-        $this->container['request'] = new Request($this->container, array(
+        $this->container['request'] = new Request($this->container, [
                 'PHP_SELF' => '/hiject/index.php',
                 'REQUEST_URI' => '/hiject/?controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
                 'QUERY_STRING' => 'controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
                 'REQUEST_METHOD' => 'GET'
-            ),
-            array(
+            ],
+            [
                 'controller' => 'FakeController',
                 'action' => 'myAction',
                 'myvar' => 'value1',
                 'plugin' => 'myplugin',
-            )
+            ]
         );
 
         $dispatcher = new Router($this->container);
@@ -102,15 +102,15 @@ class RouterTest extends Base
 
     public function testDispatcherWithUrlRewrite()
     {
-        $this->container['request'] = new Request($this->container, array(
+        $this->container['request'] = new Request($this->container, [
                 'PHP_SELF' => '/hiject/index.php',
                 'REQUEST_URI' => '/hiject/my/route/123?myvar=value1',
                 'QUERY_STRING' => 'myvar=value1',
                 'REQUEST_METHOD' => 'GET'
-            ),
-            array(
+            ],
+            [
                 'myvar' => 'value1',
-            )
+            ]
         );
 
         $this->container['route'] = new Route($this->container);
@@ -129,15 +129,15 @@ class RouterTest extends Base
 
     public function testDispatcherWithUrlRewriteWithPlugin()
     {
-        $this->container['request'] = new Request($this->container, array(
+        $this->container['request'] = new Request($this->container, [
                 'PHP_SELF' => '/hiject/index.php',
                 'REQUEST_URI' => '/hiject/my/plugin/route/123?myvar=value1',
                 'QUERY_STRING' => 'myvar=value1',
                 'REQUEST_METHOD' => 'GET'
-            ),
-            array(
+            ],
+            [
                 'myvar' => 'value1',
-            )
+            ]
         );
 
         $this->container['route'] = new Route($this->container);

@@ -24,7 +24,7 @@ class TaskMovePositionController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_move_position/show', array(
+        $this->response->html($this->template->render('task_move_position/show', [
             'task' => $task,
             'board' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($task['project_id'])
@@ -33,7 +33,7 @@ class TaskMovePositionController extends BaseController
                     ->neq(TaskModel::TABLE.'.id', $task['id'])
                 )
                 ->format()
-        )));
+        ]));
     }
 
     public function save()

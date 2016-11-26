@@ -1,9 +1,9 @@
-<?= $this->render('task/details', array(
+<?= $this->render('task/details', [
     'task' => $task,
     'tags' => $tags,
     'project' => $project,
     'editable' => false,
-)) ?>
+]) ?>
 
 <div class="page-header">
     <h2><?= t('Analytics') ?></h2>

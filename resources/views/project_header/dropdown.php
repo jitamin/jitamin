@@ -5,11 +5,11 @@
         <li>
             <span class="filter-display-mode" <?= $this->board->isCollapsed($project['id']) ? '' : 'style="display: none;"' ?>>
                 <i class="fa fa-expand"></i>
-                <?= $this->url->link(t('Expand tasks'), 'BoardAjaxController', 'expand', array('project_id' => $project['id']), false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
+                <?= $this->url->link(t('Expand tasks'), 'BoardAjaxController', 'expand', ['project_id' => $project['id']], false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
             </span>
             <span class="filter-display-mode" <?= $this->board->isCollapsed($project['id']) ? 'style="display: none;"' : '' ?>>
                 <i class="fa fa-compress"></i>
-                <?= $this->url->link(t('Collapse tasks'), 'BoardAjaxController', 'collapse', array('project_id' => $project['id']), false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
+                <?= $this->url->link(t('Collapse tasks'), 'BoardAjaxController', 'collapse', ['project_id' => $project['id']], false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
             </span>
         </li>
         <li>
@@ -25,56 +25,56 @@
         <?php if ($this->user->hasProjectAccess('TaskCreationController', 'show', $project['id'])): ?>
             <li>
                 <i class="fa fa-plus"></i>
-                <?= $this->url->link(t('Add a new task'), 'TaskCreationController', 'show', array('project_id' => $project['id']), false, 'popover') ?>
+                <?= $this->url->link(t('Add a new task'), 'TaskCreationController', 'show', ['project_id' => $project['id']], false, 'popover') ?>
             </li>
         <?php endif ?>
 
         <li>
             <i class="fa fa-dashboard"></i>
-            <?= $this->url->link(t('Activity'), 'ActivityController', 'project', array('project_id' => $project['id'])) ?>
+            <?= $this->url->link(t('Activity'), 'ActivityController', 'project', ['project_id' => $project['id']]) ?>
         </li>
 
         <?php if ($this->user->hasProjectAccess('CustomFilterController', 'index', $project['id'])): ?>
             <li>
                 <i class="fa fa-filter"></i>
-                <?= $this->url->link(t('Custom filters'), 'CustomFilterController', 'index', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link(t('Custom filters'), 'CustomFilterController', 'index', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
         <?php if ($project['is_public']): ?>
             <li>
                 <i class="fa fa-share-alt"></i>
-                <?= $this->url->link(t('Public link'), 'BoardViewController', 'readonly', array('token' => $project['token']), false, '', '', true) ?>
+                <?= $this->url->link(t('Public link'), 'BoardViewController', 'readonly', ['token' => $project['token']], false, '', '', true) ?>
             </li>
         <?php endif ?>
 
-        <?= $this->hook->render('template:project:dropdown', array('project' => $project)) ?>
+        <?= $this->hook->render('template:project:dropdown', ['project' => $project]) ?>
 
         <?php if ($this->user->hasProjectAccess('AnalyticController', 'taskDistribution', $project['id'])): ?>
             <li>
                 <i class="fa fa-line-chart"></i>
-                <?= $this->url->link(t('Analytics'), 'AnalyticController', 'taskDistribution', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link(t('Analytics'), 'AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
         <?php if ($this->user->hasProjectAccess('ExportController', 'tasks', $project['id'])): ?>
             <li>
                 <i class="fa fa-upload"></i>
-                <?= $this->url->link(t('Exports'), 'ExportController', 'tasks', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link(t('Exports'), 'ExportController', 'tasks', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
         <?php if ($this->user->hasProjectAccess('TaskImportController', 'tasks', $project['id'])): ?>
             <li>
                 <i class="fa fa-download"></i>
-                <?= $this->url->link(t('Imports'), 'TaskImportController', 'show', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link(t('Imports'), 'TaskImportController', 'show', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
         <?php if ($this->user->hasProjectAccess('ProjectEditController', 'edit', $project['id'])): ?>
             <li>
                 <i class="fa fa-cog"></i>
-                <?= $this->url->link(t('Settings'), 'ProjectSettingsController', 'show', array('project_id' => $project['id'])) ?>
+                <?= $this->url->link(t('Settings'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
     </ul>

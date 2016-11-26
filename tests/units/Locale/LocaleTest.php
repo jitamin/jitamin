@@ -27,7 +27,7 @@ class LocaleTest extends Base
                     continue;
                 }
 
-                foreach (array('%s', '%d') as $placeholder) {
+                foreach (['%s', '%d'] as $placeholder) {
                     $this->assertEquals(
                         substr_count($k, $placeholder),
                         substr_count($v, $placeholder),

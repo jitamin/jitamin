@@ -137,7 +137,7 @@ class ColumnModel extends Base
     public function getList($project_id, $prepend = false)
     {
         $listing = $this->db->hashtable(self::TABLE)->eq('project_id', $project_id)->asc('position')->getAll('id', 'title');
-        return $prepend ? array(-1 => t('All columns')) + $listing : $listing;
+        return $prepend ? [-1 => t('All columns')] + $listing : $listing;
     }
 
     /**
@@ -153,14 +153,14 @@ class ColumnModel extends Base
      */
     public function create($project_id, $title, $task_limit = 0, $description = '', $hide_in_dashboard = 0)
     {
-        $values = array(
+        $values = [
             'project_id' => $project_id,
             'title' => $title,
             'task_limit' => intval($task_limit),
             'position' => $this->getLastColumnPosition($project_id) + 1,
             'hide_in_dashboard' => $hide_in_dashboard,
             'description' => $description,
-        );
+        ];
 
         return $this->db->table(self::TABLE)->persist($values);
     }
@@ -178,12 +178,12 @@ class ColumnModel extends Base
      */
     public function update($column_id, $title, $task_limit = 0, $description = '', $hide_in_dashboard = 0)
     {
-        return $this->db->table(self::TABLE)->eq('id', $column_id)->update(array(
+        return $this->db->table(self::TABLE)->eq('id', $column_id)->update([
             'title' => $title,
             'task_limit' => intval($task_limit),
             'hide_in_dashboard' => $hide_in_dashboard,
             'description' => $description,
-        ));
+        ]);
     }
 
     /**
@@ -215,18 +215,18 @@ class ColumnModel extends Base
 
         $column_ids = $this->db->table(self::TABLE)->eq('project_id', $project_id)->neq('id', $column_id)->asc('position')->findAllByColumn('id');
         $offset = 1;
-        $results = array();
+        $results = [];
 
         foreach ($column_ids as $current_column_id) {
             if ($offset == $position) {
                 $offset++;
             }
 
-            $results[] = $this->db->table(self::TABLE)->eq('id', $current_column_id)->update(array('position' => $offset));
+            $results[] = $this->db->table(self::TABLE)->eq('id', $current_column_id)->update(['position' => $offset]);
             $offset++;
         }
 
-        $results[] = $this->db->table(self::TABLE)->eq('id', $column_id)->update(array('position' => $position));
+        $results[] = $this->db->table(self::TABLE)->eq('id', $column_id)->update(['position' => $position]);
 
         return !in_array(false, $results, true);
     }

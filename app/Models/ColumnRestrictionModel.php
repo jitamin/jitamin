@@ -32,12 +32,12 @@ class ColumnRestrictionModel extends Base
      */
     public function getRules()
     {
-        return array(
+        return [
             self::RULE_ALLOW_TASK_CREATION    => t('Task creation is permitted for this column'),
             self::RULE_ALLOW_TASK_OPEN_CLOSE  => t('Closing or opening a task is permitted for this column'),
             self::RULE_BLOCK_TASK_CREATION    => t('Task creation is blocked for this column'),
             self::RULE_BLOCK_TASK_OPEN_CLOSE  => t('Closing or opening a task is blocked for this column'),
-        );
+        ];
     }
 
     /**
@@ -137,12 +137,12 @@ class ColumnRestrictionModel extends Base
     {
         return $this->db
             ->table(self::TABLE)
-            ->persist(array(
+            ->persist([
                 'project_id' => $project_id,
                 'role_id' => $role_id,
                 'column_id' => $column_id,
                 'rule' => $rule,
-            ));
+            ]);
     }
 
     /**

@@ -31,11 +31,11 @@ class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             AuthenticationManager::EVENT_SUCCESS => 'afterLogin',
             AuthenticationManager::EVENT_FAILURE => 'onLoginFailure',
             SessionManager::EVENT_DESTROY => 'afterLogout',
-        );
+        ];
     }
 
     /**

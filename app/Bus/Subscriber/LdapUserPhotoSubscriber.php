@@ -29,9 +29,9 @@ class LdapUserPhotoSubscriber extends BaseSubscriber implements EventSubscriberI
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             UserProfile::EVENT_USER_PROFILE_AFTER_SYNC => 'syncUserPhoto',
-        );
+        ];
     }
 
     /**

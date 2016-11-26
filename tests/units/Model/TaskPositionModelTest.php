@@ -32,8 +32,8 @@ class TaskPositionModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
 
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 2, 1));
 
@@ -51,10 +51,10 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
 
         // We move the task 2 to the position 0
         $this->assertFalse($taskPositionModel->movePosition(1, 1, 3, 0));
@@ -78,10 +78,10 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
 
         // We move the task 2 to the position 42
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 1, 42));
@@ -105,10 +105,10 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
 
         // We move the task 1 to the column 3
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 3, 1));
@@ -132,16 +132,16 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'Task #3', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'Task #4', 'project_id' => 1, 'column_id' => 2)));
-        $this->assertEquals(5, $taskCreationModel->create(array('title' => 'Task #5', 'project_id' => 1, 'column_id' => 2)));
-        $this->assertEquals(6, $taskCreationModel->create(array('title' => 'Task #6', 'project_id' => 1, 'column_id' => 2)));
-        $this->assertEquals(7, $taskCreationModel->create(array('title' => 'Task #7', 'project_id' => 1, 'column_id' => 3)));
-        $this->assertEquals(8, $taskCreationModel->create(array('title' => 'Task #8', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #4', 'project_id' => 1, 'column_id' => 2]));
+        $this->assertEquals(5, $taskCreationModel->create(['title' => 'Task #5', 'project_id' => 1, 'column_id' => 2]));
+        $this->assertEquals(6, $taskCreationModel->create(['title' => 'Task #6', 'project_id' => 1, 'column_id' => 2]));
+        $this->assertEquals(7, $taskCreationModel->create(['title' => 'Task #7', 'project_id' => 1, 'column_id' => 3]));
+        $this->assertEquals(8, $taskCreationModel->create(['title' => 'Task #8', 'project_id' => 1, 'column_id' => 1]));
 
         // We move the task 3 to the column 3
         $this->assertTrue($taskPositionModel->movePosition(1, 3, 3, 2));
@@ -195,11 +195,11 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'Task #3', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'Task #4', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #4', 'project_id' => 1, 'column_id' => 1]));
 
         // Move the last task to the top
         $this->assertTrue($taskPositionModel->movePosition(1, 4, 1, 1));
@@ -233,11 +233,11 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'Task #3', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'Task #4', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #4', 'project_id' => 1, 'column_id' => 1]));
 
         // Move the first task to the bottom
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 1, 4));
@@ -271,18 +271,18 @@ class TaskPositionModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $counter = 1;
         $task_per_column = 5;
 
-        foreach (array(1, 2, 3, 4) as $column_id) {
+        foreach ([1, 2, 3, 4] as $column_id) {
             for ($i = 1; $i <= $task_per_column; $i++, $counter++) {
-                $task = array(
+                $task = [
                     'title' => 'Task #'.$i.'-'.$column_id,
                     'project_id' => 1,
                     'column_id' => $column_id,
                     'owner_id' => 0,
-                );
+                ];
 
                 $this->assertEquals($counter, $taskCreationModel->create($task));
 
@@ -425,13 +425,13 @@ class TaskPositionModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
-        $this->assertEquals(1, $swimlaneModel->create(array('project_id' => 1, 'name' => 'test 1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'Task #3', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'Task #4', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(5, $taskCreationModel->create(array('title' => 'Task #5', 'project_id' => 1, 'column_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
+        $this->assertEquals(1, $swimlaneModel->create(['project_id' => 1, 'name' => 'test 1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #4', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(5, $taskCreationModel->create(['title' => 'Task #5', 'project_id' => 1, 'column_id' => 1]));
 
         // Move the task to the swimlane
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 2, 1, 1));
@@ -532,15 +532,15 @@ class TaskPositionModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
-        $this->assertEquals(1, $swimlaneModel->create(array('project_id' => 1, 'name' => 'test 1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
+        $this->assertEquals(1, $swimlaneModel->create(['project_id' => 1, 'name' => 'test 1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 2)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 2]));
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_COLUMN, array($this, 'onMoveColumn'));
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_POSITION, array($this, 'onMovePosition'));
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_SWIMLANE, array($this, 'onMoveSwimlane'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_COLUMN, [$this, 'onMoveColumn']);
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_POSITION, [$this, 'onMovePosition']);
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_SWIMLANE, [$this, 'onMoveSwimlane']);
 
         // We move the task 1 to the column 2
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 2, 1));

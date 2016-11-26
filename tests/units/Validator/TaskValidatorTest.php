@@ -19,13 +19,13 @@ class TaskValidatorTest extends Base
     {
         $taskValidator = new TaskValidator($this->container);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1, 'title' => 'test'));
+        $result = $taskValidator->validateCreation(['project_id' => 1, 'title' => 'test']);
         $this->assertTrue($result[0]);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1));
+        $result = $taskValidator->validateCreation(['project_id' => 1]);
         $this->assertFalse($result[0]);
 
-        $result = $taskValidator->validateCreation(array('title' => 'test'));
+        $result = $taskValidator->validateCreation(['title' => 'test']);
         $this->assertFalse($result[0]);
     }
 
@@ -33,19 +33,19 @@ class TaskValidatorTest extends Base
     {
         $taskValidator = new TaskValidator($this->container);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1, 'title' => 'test', 'score' => 2147483647));
+        $result = $taskValidator->validateCreation(['project_id' => 1, 'title' => 'test', 'score' => 2147483647]);
         $this->assertTrue($result[0]);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1, 'title' => 'test', 'score' => -2147483647));
+        $result = $taskValidator->validateCreation(['project_id' => 1, 'title' => 'test', 'score' => -2147483647]);
         $this->assertTrue($result[0]);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1, 'title' => 'test', 'score' => 0));
+        $result = $taskValidator->validateCreation(['project_id' => 1, 'title' => 'test', 'score' => 0]);
         $this->assertTrue($result[0]);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1, 'title' => 'test', 'score' => 2147483648));
+        $result = $taskValidator->validateCreation(['project_id' => 1, 'title' => 'test', 'score' => 2147483648]);
         $this->assertFalse($result[0]);
 
-        $result = $taskValidator->validateCreation(array('project_id' => 1, 'title' => 'test', 'score' => -2147483648));
+        $result = $taskValidator->validateCreation(['project_id' => 1, 'title' => 'test', 'score' => -2147483648]);
         $this->assertFalse($result[0]);
     }
 }

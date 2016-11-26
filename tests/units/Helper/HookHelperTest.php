@@ -19,8 +19,8 @@ class HookHelperTest extends Base
     {
         $this->container['template'] = $this
             ->getMockBuilder('\Hiject\Core\Template')
-            ->setConstructorArgs(array($this->container['helper']))
-            ->setMethods(array('render'))
+            ->setConstructorArgs([$this->container['helper']])
+            ->setMethods(['render'])
             ->getMock();
 
         $this->container['template']
@@ -28,26 +28,26 @@ class HookHelperTest extends Base
             ->method('render')
             ->with(
                 $this->equalTo('tpl1'),
-                $this->equalTo(array('k0' => 'v0', 'k1' => 'v1'))
+                $this->equalTo(['k0' => 'v0', 'k1' => 'v1'])
             )
             ->will($this->returnValue('tpl1_content'));
 
         $hookHelper = new HookHelper($this->container);
         $hookHelper->attachCallable('test', 'tpl1', function () {
-            return array(
+            return [
                 'k1' => 'v1',
-            );
+            ];
         });
 
-        $this->assertEquals('tpl1_content', $hookHelper->render('test', array('k0' => 'v0')));
+        $this->assertEquals('tpl1_content', $hookHelper->render('test', ['k0' => 'v0']));
     }
 
     public function testAttachCallableWithNoResult()
     {
         $this->container['template'] = $this
             ->getMockBuilder('\Hiject\Core\Template')
-            ->setConstructorArgs(array($this->container['helper']))
-            ->setMethods(array('render'))
+            ->setConstructorArgs([$this->container['helper']])
+            ->setMethods(['render'])
             ->getMock();
 
         $this->container['template']
@@ -55,7 +55,7 @@ class HookHelperTest extends Base
             ->method('render')
             ->with(
                 $this->equalTo('tpl1'),
-                $this->equalTo(array('k0' => 'v0'))
+                $this->equalTo(['k0' => 'v0'])
             )
             ->will($this->returnValue('tpl1_content'));
 
@@ -63,15 +63,15 @@ class HookHelperTest extends Base
         $hookHelper->attachCallable('test', 'tpl1', function () {
         });
 
-        $this->assertEquals('tpl1_content', $hookHelper->render('test', array('k0' => 'v0')));
+        $this->assertEquals('tpl1_content', $hookHelper->render('test', ['k0' => 'v0']));
     }
 
     public function testAttachLocalVariables()
     {
         $this->container['template'] = $this
             ->getMockBuilder('\Hiject\Core\Template')
-            ->setConstructorArgs(array($this->container['helper']))
-            ->setMethods(array('render'))
+            ->setConstructorArgs([$this->container['helper']])
+            ->setMethods(['render'])
             ->getMock();
 
         $this->container['template']
@@ -79,21 +79,21 @@ class HookHelperTest extends Base
             ->method('render')
             ->with(
                 $this->equalTo('tpl1'),
-                $this->equalTo(array('k0' => 'v0', 'k1' => 'v1'))
+                $this->equalTo(['k0' => 'v0', 'k1' => 'v1'])
             )
             ->will($this->returnValue('tpl1_content'));
 
         $hookHelper = new HookHelper($this->container);
-        $hookHelper->attach('test', 'tpl1', array('k1' => 'v1'));
-        $this->assertEquals('tpl1_content', $hookHelper->render('test', array('k0' => 'v0')));
+        $hookHelper->attach('test', 'tpl1', ['k1' => 'v1']);
+        $this->assertEquals('tpl1_content', $hookHelper->render('test', ['k0' => 'v0']));
     }
 
     public function testMultipleHooks()
     {
         $this->container['template'] = $this
             ->getMockBuilder('\Hiject\Core\Template')
-            ->setConstructorArgs(array($this->container['helper']))
-            ->setMethods(array('render'))
+            ->setConstructorArgs([$this->container['helper']])
+            ->setMethods(['render'])
             ->getMock();
 
         $this->container['template']
@@ -101,7 +101,7 @@ class HookHelperTest extends Base
             ->method('render')
             ->with(
                 $this->equalTo('tpl1'),
-                $this->equalTo(array())
+                $this->equalTo([])
             )
             ->will($this->returnValue('tpl1_content'));
 
@@ -110,7 +110,7 @@ class HookHelperTest extends Base
             ->method('render')
             ->with(
                 $this->equalTo('tpl2'),
-                $this->equalTo(array())
+                $this->equalTo([])
             )
             ->will($this->returnValue('tpl2_content'));
 
@@ -124,8 +124,8 @@ class HookHelperTest extends Base
     {
         $this->container['helper']->asset = $this
             ->getMockBuilder('\Hiject\Helper\AssetHelper')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('css', 'js'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['css', 'js'])
             ->getMock();
 
         $this->container['helper']

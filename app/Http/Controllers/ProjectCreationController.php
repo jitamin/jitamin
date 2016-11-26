@@ -23,18 +23,18 @@ class ProjectCreationController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $is_private = isset($values['is_private']) && $values['is_private'] == 1;
-        $projects_list = array(0 => t('Do not duplicate anything')) + $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
+        $projects_list = [0 => t('Do not duplicate anything')] + $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
 
-        $this->response->html($this->helper->layout->app('project_creation/create', array(
+        $this->response->html($this->helper->layout->app('project_creation/create', [
             'values' => $values,
             'errors' => $errors,
             'is_private' => $is_private,
             'projects_list' => $projects_list,
             'title' => $is_private ? t('New private project') : t('New project'),
-        )));
+        ]));
     }
 
     /**
@@ -44,7 +44,7 @@ class ProjectCreationController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function createPrivate(array $values = array(), array $errors = array())
+    public function createPrivate(array $values = [], array $errors = [])
     {
         $values['is_private'] = 1;
         $this->create($values, $errors);
@@ -65,7 +65,7 @@ class ProjectCreationController extends BaseController
 
             if ($project_id > 0) {
                 $this->flash->success(t('Your project have been created successfully.'));
-                return $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', array('project_id' => $project_id)));
+                return $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', ['project_id' => $project_id]));
             }
 
             $this->flash->failure(t('Unable to create your project.'));
@@ -99,10 +99,10 @@ class ProjectCreationController extends BaseController
      */
     private function createNewProject(array $values)
     {
-        $project = array(
+        $project = [
             'name' => $values['name'],
             'is_private' => $values['is_private'],
-        );
+        ];
 
         return $this->projectModel->create($project, $this->userSession->getId(), true);
     }
@@ -116,7 +116,7 @@ class ProjectCreationController extends BaseController
      */
     private function duplicateNewProject(array $values)
     {
-        $selection = array();
+        $selection = [];
 
         foreach ($this->projectDuplicationModel->getOptionalSelection() as $item) {
             if (isset($values[$item]) && $values[$item] == 1) {

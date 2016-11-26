@@ -38,8 +38,8 @@ class TaskCreationModelTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {});
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, function () {});
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.closure', $called);
@@ -59,10 +59,10 @@ class TaskCreationModelTest extends Base
         $finderModel = new TaskFinderModel($this->container);
 
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {});
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, array($this, 'onCreate'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, [$this, 'onCreate']);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.closure', $called);
@@ -104,8 +104,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'color_id' => 'blue')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'color_id' => 'blue']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -120,8 +120,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'owner_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -136,8 +136,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'category_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'category_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -152,8 +152,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'creator_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'creator_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -168,10 +168,10 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -186,8 +186,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'column_id' => 2)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -203,8 +203,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'column_id' => 2)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -213,7 +213,7 @@ class TaskCreationModelTest extends Base
         $this->assertEquals(2, $task['column_id']);
         $this->assertEquals(1, $task['position']);
 
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'column_id' => 2)));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
 
         $task = $taskFinderModel->getById(2);
         $this->assertNotEmpty($task);
@@ -229,8 +229,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'description' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'description' => 'test']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -245,8 +245,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'reference' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'reference' => 'test']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -263,10 +263,10 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_due' => $date)));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_due' => $timestamp)));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_due' => '')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_due' => $date]));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_due' => $timestamp]));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_due' => '']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -289,34 +289,34 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         // Set only a date
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_started' => '2014-11-24')));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_started' => '2014-11-24']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('2014-11-24 '.date('H:i'), date('Y-m-d H:i', $task['date_started']));
 
         // Set a datetime
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_started' => '2014-11-24 16:25')));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_started' => '2014-11-24 16:25']));
 
         $task = $taskFinderModel->getById(2);
         $this->assertEquals('2014-11-24 16:25', date('Y-m-d H:i', $task['date_started']));
 
         // Set a datetime
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_started' => '11/24/2014 18:25')));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_started' => '11/24/2014 18:25']));
 
         $task = $taskFinderModel->getById(3);
         $this->assertEquals('2014-11-24 18:25', date('Y-m-d H:i', $task['date_started']));
 
         // Set a timestamp
-        $this->assertEquals(4, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_started' => time())));
+        $this->assertEquals(4, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_started' => time()]));
 
         $task = $taskFinderModel->getById(4);
         $this->assertEquals(time(), $task['date_started'], '', 1);
 
         // Set empty string
-        $this->assertEquals(5, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_started' => '')));
+        $this->assertEquals(5, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_started' => '']));
         $task = $taskFinderModel->getById(5);
         $this->assertEquals(0, $task['date_started']);
     }
@@ -327,9 +327,9 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'time_estimated' => 1.5, 'time_spent' => 2.3)));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'time_estimated' => '', 'time_spent' => '')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.5, 'time_spent' => 2.3]));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => '', 'time_spent' => '']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -350,8 +350,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'another_task' => '1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'another_task' => '1']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -363,8 +363,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'score' => '3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'score' => '3']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -379,17 +379,17 @@ class TaskCreationModelTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $configModel = new ConfigModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
         $this->assertEquals('yellow', $task['color_id']);
 
-        $this->assertTrue($configModel->save(array('default_color' => 'orange')));
+        $this->assertTrue($configModel->save(['default_color' => 'orange']));
         $this->container['memoryCache']->flush();
 
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2')));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
 
         $task = $taskFinderModel->getById(2);
         $this->assertNotEmpty($task);
@@ -402,8 +402,8 @@ class TaskCreationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'date_due' => strtotime('2050-01-10 12:30'))));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'date_due' => strtotime('2050-01-10 12:30')]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);

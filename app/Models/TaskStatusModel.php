@@ -118,14 +118,14 @@ class TaskStatusModel extends Base
         $result = $this->db
                         ->table(TaskModel::TABLE)
                         ->eq('id', $task_id)
-                        ->update(array(
+                        ->update([
                             'is_active' => $status,
                             'date_completed' => $date_completed,
                             'date_modification' => time(),
-                        ));
+                        ]);
 
         if ($result) {
-            $this->queueManager->push($this->taskEventJob->withParams($task_id, array($event_name)));
+            $this->queueManager->push($this->taskEventJob->withParams($task_id, [$event_name]));
         }
 
         return $result;

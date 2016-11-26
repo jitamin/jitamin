@@ -27,7 +27,7 @@ class TaskModificationDateFilter extends BaseDateFilter implements FilterInterfa
      */
     public function getAttributes()
     {
-        return array('updated', 'modified');
+        return ['updated', 'modified'];
     }
 
     /**

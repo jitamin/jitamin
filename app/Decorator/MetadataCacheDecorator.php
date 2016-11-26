@@ -82,9 +82,9 @@ class MetadataCacheDecorator
      */
     public function set($key, $value)
     {
-        $this->metadataModel->save($this->entityId, array(
+        $this->metadataModel->save($this->entityId, [
             $key => $value,
-        ));
+        ]);
 
         $metadata = $this->metadataModel->getAll($this->entityId);
         $this->cache->set($this->getCacheKey(), $metadata);

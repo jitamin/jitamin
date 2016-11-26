@@ -25,11 +25,11 @@ class TaskImportController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('task_import/show', array(
+        $this->response->html($this->helper->layout->project('task_import/show', [
             'project' => $project,
             'values' => $values,
             'errors' => $errors,
@@ -37,7 +37,7 @@ class TaskImportController extends BaseController
             'delimiters' => Csv::getDelimiters(),
             'enclosures' => Csv::getEnclosures(),
             'title' => t('Import tasks from CSV file'),
-        ), 'task_import/sidebar'));
+        ], 'task_import/sidebar'));
     }
 
     /**
@@ -50,13 +50,13 @@ class TaskImportController extends BaseController
         $filename = $this->request->getFilePath('file');
 
         if (! file_exists($filename)) {
-            $this->show($values, array('file' => array(t('Unable to read your file'))));
+            $this->show($values, ['file' => [t('Unable to read your file')]]);
         } else {
             $this->taskImport->projectId = $project['id'];
 
             $csv = new Csv($values['delimiter'], $values['enclosure']);
             $csv->setColumnMapping($this->taskImport->getColumnMapping());
-            $csv->read($filename, array($this->taskImport, 'import'));
+            $csv->read($filename, [$this->taskImport, 'import']);
 
             if ($this->taskImport->counter > 0) {
                 $this->flash->success(t('%d task(s) have been imported successfully.', $this->taskImport->counter));
@@ -64,7 +64,7 @@ class TaskImportController extends BaseController
                 $this->flash->failure(t('Nothing have been imported!'));
             }
 
-            $this->response->redirect($this->helper->url->to('TaskImportController', 'show', array('project_id' => $project['id'])));
+            $this->response->redirect($this->helper->url->to('TaskImportController', 'show', ['project_id' => $project['id']]));
         }
     }
 

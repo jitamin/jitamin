@@ -34,10 +34,10 @@ class TagValidator extends BaseValidator
 
         if ($result && $this->tagModel->exists($values['project_id'], $values['name'])) {
             $result = false;
-            $errors = array('name' => array(t('The name must be unique')));
+            $errors = ['name' => [t('The name must be unique')]];
         }
 
-        return array($result, $errors);
+        return [$result, $errors];
     }
 
     /**
@@ -49,9 +49,9 @@ class TagValidator extends BaseValidator
      */
     public function validateModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('Field required')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
         $result = $v->execute();
@@ -59,10 +59,10 @@ class TagValidator extends BaseValidator
 
         if ($result && $this->tagModel->exists($values['project_id'], $values['name'], $values['id'])) {
             $result = false;
-            $errors = array('name' => array(t('The name must be unique')));
+            $errors = ['name' => [t('The name must be unique')]];
         }
 
-        return array($result, $errors);
+        return [$result, $errors];
     }
 
     /**
@@ -73,10 +73,10 @@ class TagValidator extends BaseValidator
      */
     protected function commonValidationRules()
     {
-        return array(
+        return [
             new Validators\Required('project_id', t('Field required')),
             new Validators\Required('name', t('Field required')),
             new Validators\MaxLength('name', t('The maximum length is %d characters', 255), 255),
-        );
+        ];
     }
 }

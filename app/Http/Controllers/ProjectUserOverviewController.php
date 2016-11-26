@@ -30,7 +30,7 @@ class ProjectUserOverviewController extends BaseController
             $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
         }
 
-        return array($user_id, $project_ids, $this->userModel->getActiveUsersList(true));
+        return [$user_id, $project_ids, $this->userModel->getActiveUsersList(true)];
     }
 
     private function role($role, $action, $title, $title_user)
@@ -45,18 +45,18 @@ class ProjectUserOverviewController extends BaseController
         }
 
         $paginator = $this->paginator
-            ->setUrl('ProjectUserOverviewController', $action, array('user_id' => $user_id))
+            ->setUrl('ProjectUserOverviewController', $action, ['user_id' => $user_id])
             ->setMax(30)
             ->setOrder('projects.name')
             ->setQuery($query)
             ->calculate();
 
-        $this->response->html($this->helper->layout->projectUser('project_user_overview/roles', array(
+        $this->response->html($this->helper->layout->projectUser('project_user_overview/roles', [
             'paginator' => $paginator,
             'title' => $title,
             'user_id' => $user_id,
             'users' => $users,
-        )));
+        ]));
     }
 
     private function tasks($is_active, $action, $title, $title_user)
@@ -71,18 +71,18 @@ class ProjectUserOverviewController extends BaseController
         }
 
         $paginator = $this->paginator
-            ->setUrl('ProjectUserOverviewController', $action, array('user_id' => $user_id))
+            ->setUrl('ProjectUserOverviewController', $action, ['user_id' => $user_id])
             ->setMax(50)
             ->setOrder(TaskModel::TABLE.'.id')
             ->setQuery($query)
             ->calculate();
 
-        $this->response->html($this->helper->layout->projectUser('project_user_overview/tasks', array(
+        $this->response->html($this->helper->layout->projectUser('project_user_overview/tasks', [
             'paginator' => $paginator,
             'title' => $title,
             'user_id' => $user_id,
             'users' => $users,
-        )));
+        ]));
     }
 
     /**
@@ -128,9 +128,9 @@ class ProjectUserOverviewController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('project_user_overview/tooltip_users', array(
+        $this->response->html($this->template->render('project_user_overview/tooltip_users', [
             'users' => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
             'roles' => $this->projectRoleModel->getList($project['id']),
-        )));
+        ]));
     }
 }

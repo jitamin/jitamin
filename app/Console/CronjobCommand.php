@@ -21,11 +21,11 @@ use Symfony\Component\Console\Output\NullOutput;
  */
 class CronjobCommand extends BaseCommand
 {
-    private $commands = array(
+    private $commands = [
         'projects:daily-stats',
         'notification:overdue-tasks',
         'trigger:tasks',
-    );
+    ];
 
     protected function configure()
     {
@@ -38,7 +38,7 @@ class CronjobCommand extends BaseCommand
     {
         foreach ($this->commands as $command) {
             $job = $this->getApplication()->find($command);
-            $job->run(new ArrayInput(array('command' => $command)), new NullOutput());
+            $job->run(new ArrayInput(['command' => $command]), new NullOutput());
         }
     }
 }

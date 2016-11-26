@@ -32,11 +32,11 @@ class SubtaskPagination extends Base
      */
     public function getDashboardPaginator($user_id, $method, $max)
     {
-        $query = $this->subtaskModel->getUserQuery($user_id, array(SubtaskModel::STATUS_TODO, SubtaskModel::STATUS_INPROGRESS));
+        $query = $this->subtaskModel->getUserQuery($user_id, [SubtaskModel::STATUS_TODO, SubtaskModel::STATUS_INPROGRESS]);
         $this->hook->reference('pagination:dashboard:subtask:query', $query);
 
         return $this->paginator
-            ->setUrl('DashboardController', $method, array('pagination' => 'subtasks', 'user_id' => $user_id))
+            ->setUrl('DashboardController', $method, ['pagination' => 'subtasks', 'user_id' => $user_id])
             ->setMax($max)
             ->setOrder(TaskModel::TABLE.'.id')
             ->setQuery($query)

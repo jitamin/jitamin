@@ -28,19 +28,19 @@ class ColorTest extends Base
     public function testGetColorProperties()
     {
         $colorModel = new ColorModel($this->container);
-        $expected = array(
+        $expected = [
             'name' => 'Light Green',
             'background' => '#dcedc8',
             'border' => '#689f38',
-        );
+        ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('light_green'));
 
-        $expected = array(
+        $expected = [
             'name' => 'Yellow',
             'background' => 'rgb(245, 247, 196)',
             'border' => 'rgb(223, 227, 45)',
-        );
+        ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('foobar'));
     }
@@ -67,7 +67,7 @@ class ColorTest extends Base
         $this->assertEquals('yellow', $colorModel->getDefaultColor());
 
         $this->container['memoryCache']->flush();
-        $this->assertTrue($configModel->save(array('default_color' => 'red')));
+        $this->assertTrue($configModel->save(['default_color' => 'red']));
         $this->assertEquals('red', $colorModel->getDefaultColor());
     }
 

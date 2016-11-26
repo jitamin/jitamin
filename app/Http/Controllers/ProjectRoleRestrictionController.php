@@ -25,19 +25,19 @@ class ProjectRoleRestrictionController extends BaseController
      * @param  array $errors
      * @throws AccessForbiddenException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $role_id = $this->request->getIntegerParam('role_id');
         $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
-        $this->response->html($this->template->render('project_role_restriction/create', array(
+        $this->response->html($this->template->render('project_role_restriction/create', [
             'project' => $project,
             'role' => $role,
-            'values' => $values + array('project_id' => $project['id'], 'role_id' => $role['role_id']),
+            'values' => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
             'errors' => $errors,
             'restrictions' => $this->projectRoleRestrictionModel->getRules(),
-        )));
+        ]));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProjectRoleRestrictionController extends BaseController
             $this->flash->failure(t('Unable to create this project restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 
     /**
@@ -73,11 +73,11 @@ class ProjectRoleRestrictionController extends BaseController
         $project = $this->getProject();
         $restriction_id = $this->request->getIntegerParam('restriction_id');
 
-        $this->response->html($this->helper->layout->project('project_role_restriction/remove', array(
+        $this->response->html($this->helper->layout->project('project_role_restriction/remove', [
             'project' => $project,
             'restriction' => $this->projectRoleRestrictionModel->getById($project['id'], $restriction_id),
             'restrictions' => $this->projectRoleRestrictionModel->getRules(),
-        )));
+        ]));
     }
 
     /**
@@ -97,6 +97,6 @@ class ProjectRoleRestrictionController extends BaseController
             $this->flash->failure(t('Unable to remove this restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 }

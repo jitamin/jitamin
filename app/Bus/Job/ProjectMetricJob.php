@@ -25,7 +25,7 @@ class ProjectMetricJob extends BaseJob
      */
     public function withParams($projectId)
     {
-        $this->jobParams = array($projectId);
+        $this->jobParams = [$projectId];
         return $this;
     }
 

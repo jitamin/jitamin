@@ -27,7 +27,7 @@ class TaskDescriptionFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('description', 'desc');
+        return ['description', 'desc'];
     }
 
     /**

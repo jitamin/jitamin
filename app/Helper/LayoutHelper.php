@@ -26,7 +26,7 @@ class LayoutHelper extends Base
      * @param  array  $params   Template parameters
      * @return string
      */
-    public function app($template, array $params = array())
+    public function app($template, array $params = [])
     {
         if ($this->request->isAjax()) {
             return $this->template->render($template, $params);
@@ -101,7 +101,7 @@ class LayoutHelper extends Base
      */
     public function projectUser($template, array $params)
     {
-        $params['filter'] = array('user_id' => $params['user_id']);
+        $params['filter'] = ['user_id' => $params['user_id']];
         return $this->subLayout('project_user_overview/layout', 'project_user_overview/sidebar', $template, $params);
     }
 
@@ -120,7 +120,7 @@ class LayoutHelper extends Base
         }
 
         if (! isset($params['errors'])) {
-            $params['errors'] = array();
+            $params['errors'] = [];
         }
 
         return $this->subLayout('config/layout', 'config/sidebar', $template, $params);
@@ -178,11 +178,11 @@ class LayoutHelper extends Base
      * @param  string   $layout     Layout name
      * @return string
      */
-    public function pageLayout($template, array $params = array(), $layout = 'layout')
+    public function pageLayout($template, array $params = [], $layout = 'layout')
     {
         return $this->template->render(
             $layout,
-            $params + array('content_for_layout' => $this->template->render($template, $params))
+            $params + ['content_for_layout' => $this->template->render($template, $params)]
         );
     }
 
@@ -196,7 +196,7 @@ class LayoutHelper extends Base
      * @param  array  $params
      * @return string
      */
-    public function subLayout($sublayout, $sidebar, $template, array $params = array())
+    public function subLayout($sublayout, $sidebar, $template, array $params = [])
     {
         $content = $this->template->render($template, $params);
 

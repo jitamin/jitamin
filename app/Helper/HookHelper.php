@@ -46,7 +46,7 @@ class HookHelper extends Base
      * @param  array   $variables
      * @return string
      */
-    public function render($hook, array $variables = array())
+    public function render($hook, array $variables = [])
     {
         $buffer = '';
 
@@ -76,12 +76,12 @@ class HookHelper extends Base
      * @param  array  $variables
      * @return $this
      */
-    public function attach($hook, $template, array $variables = array())
+    public function attach($hook, $template, array $variables = [])
     {
-        $this->hook->on($hook, array(
+        $this->hook->on($hook, [
             'template' => $template,
             'variables' => $variables,
-        ));
+        ]);
 
         return $this;
     }
@@ -99,10 +99,10 @@ class HookHelper extends Base
      */
     public function attachCallable($hook, $template, Closure $callable)
     {
-        $this->hook->on($hook, array(
+        $this->hook->on($hook, [
             'template' => $template,
             'callable' => $callable,
-        ));
+        ]);
 
         return $this;
     }

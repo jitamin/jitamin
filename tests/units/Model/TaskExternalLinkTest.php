@@ -25,9 +25,9 @@ class TaskExternalLinkTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskExternalLinkModel = new TaskExternalLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $taskExternalLinkModel->create(array('task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $link = $taskExternalLinkModel->getById(1);
         $this->assertNotEmpty($link);
@@ -42,15 +42,15 @@ class TaskExternalLinkTest extends Base
 
     public function testCreateWithUserSession()
     {
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskExternalLinkModel = new TaskExternalLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $taskExternalLinkModel->create(array('task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $link = $taskExternalLinkModel->getById(1);
         $this->assertNotEmpty($link);
@@ -69,13 +69,13 @@ class TaskExternalLinkTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskExternalLinkModel = new TaskExternalLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $taskExternalLinkModel->create(array('task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         sleep(1);
 
-        $this->assertTrue($taskExternalLinkModel->update(array('id' => 1, 'url' => 'https://hiject.net/')));
+        $this->assertTrue($taskExternalLinkModel->update(['id' => 1, 'url' => 'https://hiject.net/']));
 
         $link = $taskExternalLinkModel->getById(1);
         $this->assertNotEmpty($link);
@@ -89,9 +89,9 @@ class TaskExternalLinkTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskExternalLinkModel = new TaskExternalLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $taskExternalLinkModel->create(array('task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $this->assertTrue($taskExternalLinkModel->remove(1));
         $this->assertFalse($taskExternalLinkModel->remove(1));
@@ -101,7 +101,7 @@ class TaskExternalLinkTest extends Base
 
     public function testGetAll()
     {
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
         $this->container['externalLinkManager'] = new ExternalLinkManager($this->container);
 
         $projectModel = new ProjectModel($this->container);
@@ -111,10 +111,10 @@ class TaskExternalLinkTest extends Base
 
         $this->container['externalLinkManager']->register($webLinkProvider);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $taskExternalLinkModel->create(array('task_id' => 1, 'url' => 'https://miniflux.net/', 'title' => 'MX', 'link_type' => 'weblink', 'dependency' => 'related')));
-        $this->assertEquals(2, $taskExternalLinkModel->create(array('task_id' => 1, 'url' => 'https://hiject.net/', 'title' => 'KB', 'link_type' => 'weblink', 'dependency' => 'related')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'url' => 'https://miniflux.net/', 'title' => 'MX', 'link_type' => 'weblink', 'dependency' => 'related']));
+        $this->assertEquals(2, $taskExternalLinkModel->create(['task_id' => 1, 'url' => 'https://hiject.net/', 'title' => 'KB', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $links = $taskExternalLinkModel->getAll(1);
         $this->assertCount(2, $links);

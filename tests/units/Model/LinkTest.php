@@ -61,7 +61,7 @@ class LinkTest extends Base
     {
         $l = new LinkModel($this->container);
 
-        $this->assertTrue($l->update(array('id' => 2, 'label' => 'test', 'opposite_id' => 0)));
+        $this->assertTrue($l->update(['id' => 2, 'label' => 'test', 'opposite_id' => 0]));
 
         $link = $l->getById(2);
         $this->assertNotEmpty($link);

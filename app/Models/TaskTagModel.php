@@ -37,7 +37,7 @@ class TaskTagModel extends Base
     {
         return $this->db->table(TagModel::TABLE)
             ->eq(self::TABLE.'.task_id', $task_id)
-            ->notIn(TagModel::TABLE.'.project_id', array(0, $project_id))
+            ->notIn(TagModel::TABLE.'.project_id', [0, $project_id])
             ->join(self::TABLE, 'tag_id', 'id')
             ->findAllByColumn(TagModel::TABLE.'.id');
     }
@@ -68,7 +68,7 @@ class TaskTagModel extends Base
     public function getTagsByTasks($task_ids)
     {
         if (empty($task_ids)) {
-            return array();
+            return [];
         }
 
         $tags = $this->db->table(TagModel::TABLE)

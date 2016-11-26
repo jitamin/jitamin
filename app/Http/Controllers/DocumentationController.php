@@ -48,15 +48,15 @@ class DocumentationController extends BaseController
     private function render($filename)
     {
         $data = file_get_contents($filename);
-        $content = preg_replace_callback('/\((.*.markdown)\)/', array($this, 'replaceMarkdownUrl'), $data);
-        $content = preg_replace_callback('/\((screenshots.*\.png)\)/', array($this, 'replaceImageUrl'), $content);
+        $content = preg_replace_callback('/\((.*.markdown)\)/', [$this, 'replaceMarkdownUrl'], $data);
+        $content = preg_replace_callback('/\((screenshots.*\.png)\)/', [$this, 'replaceImageUrl'], $content);
 
         list($title, ) = explode("\n", $data, 2);
 
-        return array(
+        return [
             'content' => Parsedown::instance()->text($content),
             'title' => $title !== 'Documentation' ? t('Documentation: %s', $title) : $title,
-        );
+        ];
     }
 
     /**
@@ -68,7 +68,7 @@ class DocumentationController extends BaseController
      */
     public function replaceMarkdownUrl(array $matches)
     {
-        return '('.$this->helper->url->to('DocumentationController', 'show', array('file' => str_replace('.markdown', '', $matches[1]))).')';
+        return '('.$this->helper->url->to('DocumentationController', 'show', ['file' => str_replace('.markdown', '', $matches[1])]).')';
     }
 
     /**
@@ -93,7 +93,7 @@ class DocumentationController extends BaseController
     private function getPageFilename($page)
     {
         return $this->getFileLocation($page . '.markdown') ?:
-            implode(DIRECTORY_SEPARATOR, array(ROOT_DIR, 'doc', 'index.markdown'));
+            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', 'index.markdown']);
     }
 
     /**
@@ -109,9 +109,9 @@ class DocumentationController extends BaseController
         $path = $this->getFileLocation($filename);
 
         if (strpos($path, $language) !== false) {
-            $url = implode('/', array('doc', $language, $filename));
+            $url = implode('/', ['doc', $language, $filename]);
         } else {
-            $url = implode('/', array('doc', $filename));
+            $url = implode('/', ['doc', $filename]);
         }
 
         return $this->helper->url->base().$url;
@@ -126,10 +126,10 @@ class DocumentationController extends BaseController
      */
     private function getFileLocation($filename)
     {
-        $files = array(
-            implode(DIRECTORY_SEPARATOR, array(ROOT_DIR, 'doc', $this->languageModel->getCurrentLanguage(), $filename)),
-            implode(DIRECTORY_SEPARATOR, array(ROOT_DIR, 'doc', $filename)),
-        );
+        $files = [
+            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', $this->languageModel->getCurrentLanguage(), $filename]),
+            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', $filename]),
+        ];
 
         foreach ($files as $filename) {
             if (file_exists($filename)) {

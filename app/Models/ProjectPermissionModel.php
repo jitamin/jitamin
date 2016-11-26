@@ -34,7 +34,7 @@ class ProjectPermissionModel extends Base
     public function getQueryByRole(array $project_ids, $role)
     {
         if (empty($project_ids)) {
-            $project_ids = array(-1);
+            $project_ids = [-1];
         }
 
         return $this
@@ -114,7 +114,7 @@ class ProjectPermissionModel extends Base
 
         return in_array(
             $this->projectUserRoleModel->getUserRole($project_id, $user_id),
-            array(Role::PROJECT_MANAGER, Role::PROJECT_MEMBER, Role::PROJECT_VIEWER)
+            [Role::PROJECT_MANAGER, Role::PROJECT_MEMBER, Role::PROJECT_VIEWER]
         );
     }
 
@@ -147,7 +147,7 @@ class ProjectPermissionModel extends Base
      */
     public function isMember($project_id, $user_id)
     {
-        return in_array($this->projectUserRoleModel->getUserRole($project_id, $user_id), array(Role::PROJECT_MEMBER, Role::PROJECT_MANAGER, Role::PROJECT_VIEWER));
+        return in_array($this->projectUserRoleModel->getUserRole($project_id, $user_id), [Role::PROJECT_MEMBER, Role::PROJECT_MANAGER, Role::PROJECT_VIEWER]);
     }
 
     /**

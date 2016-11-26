@@ -22,11 +22,11 @@ class LdapUserPhotoSubscriberTest extends Base
 {
     public function testWhenTheProviderIsNotLdap()
     {
-        $userProvider = new DatabaseUserProvider(array());
+        $userProvider = new DatabaseUserProvider([]);
         $subscriber = new LdapUserPhotoSubscriber($this->container);
         $userModel = new UserModel($this->container);
 
-        $userModel->update(array('id' => 1, 'avatar_path' => 'my avatar'));
+        $userModel->update(['id' => 1, 'avatar_path' => 'my avatar']);
         $user = $userModel->getById(1);
 
         $subscriber->syncUserPhoto(new UserProfileSyncEvent($user, $userProvider));
@@ -37,7 +37,7 @@ class LdapUserPhotoSubscriberTest extends Base
 
     public function testWhenTheUserHaveLdapPhoto()
     {
-        $userProvider = new LdapUserProvider('dn', 'admin', 'Admin', 'admin@localhost', Role::APP_ADMIN, array(), 'my photo');
+        $userProvider = new LdapUserProvider('dn', 'admin', 'Admin', 'admin@localhost', Role::APP_ADMIN, [], 'my photo');
         $subscriber = new LdapUserPhotoSubscriber($this->container);
         $userModel = new UserModel($this->container);
         $user = $userModel->getById(1);
@@ -56,7 +56,7 @@ class LdapUserPhotoSubscriberTest extends Base
 
     public function testWhenTheUserDoNotHaveLdapPhoto()
     {
-        $userProvider = new LdapUserProvider('dn', 'admin', 'Admin', 'admin@localhost', Role::APP_ADMIN, array());
+        $userProvider = new LdapUserProvider('dn', 'admin', 'Admin', 'admin@localhost', Role::APP_ADMIN, []);
         $subscriber = new LdapUserPhotoSubscriber($this->container);
         $userModel = new UserModel($this->container);
         $user = $userModel->getById(1);
@@ -73,11 +73,11 @@ class LdapUserPhotoSubscriberTest extends Base
 
     public function testWhenTheUserAlreadyHaveAvatar()
     {
-        $userProvider = new LdapUserProvider('dn', 'admin', 'Admin', 'admin@localhost', Role::APP_ADMIN, array(), 'my photo');
+        $userProvider = new LdapUserProvider('dn', 'admin', 'Admin', 'admin@localhost', Role::APP_ADMIN, [], 'my photo');
         $subscriber = new LdapUserPhotoSubscriber($this->container);
         $userModel = new UserModel($this->container);
 
-        $userModel->update(array('id' => 1, 'avatar_path' => 'my avatar'));
+        $userModel->update(['id' => 1, 'avatar_path' => 'my avatar']);
         $user = $userModel->getById(1);
 
         $this->container['objectStorage']

@@ -31,7 +31,7 @@ class GroupSyncTest extends Base
         $this->assertTrue($groupMember->isMember(1, 1));
         $this->assertFalse($groupMember->isMember(2, 1));
 
-        $groupSync->synchronize(1, array('externalId1', 'externalId2', 'externalId3'));
+        $groupSync->synchronize(1, ['externalId1', 'externalId2', 'externalId3']);
 
         $this->assertTrue($groupMember->isMember(1, 1));
         $this->assertTrue($groupMember->isMember(2, 1));
@@ -51,7 +51,7 @@ class GroupSyncTest extends Base
         $this->assertTrue($groupMember->isMember(1, 1));
         $this->assertFalse($groupMember->isMember(2, 1));
 
-        $groupSync->synchronize(1, array('externalId3'));
+        $groupSync->synchronize(1, ['externalId3']);
 
         $this->assertFalse($groupMember->isMember(1, 1));
         $this->assertFalse($groupMember->isMember(2, 1));
@@ -74,7 +74,7 @@ class GroupSyncTest extends Base
         $this->assertTrue($groupMember->isMember(2, 1));
         $this->assertFalse($groupMember->isMember(3, 1));
 
-        $groupSync->synchronize(1, array('externalId1', 'externalId3'));
+        $groupSync->synchronize(1, ['externalId1', 'externalId3']);
 
         $this->assertTrue($groupMember->isMember(1, 1));
         $this->assertFalse($groupMember->isMember(2, 1));
@@ -91,7 +91,7 @@ class GroupSyncTest extends Base
         $this->assertTrue($groupMember->addUser(1, 1));
         $this->assertTrue($groupMember->isMember(1, 1));
 
-        $groupSync->synchronize(1, array('externalId3'));
+        $groupSync->synchronize(1, ['externalId3']);
 
         $this->assertTrue($groupMember->isMember(1, 1));
     }

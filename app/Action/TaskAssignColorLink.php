@@ -37,9 +37,9 @@ class TaskAssignColorLink extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskLinkModel::EVENT_CREATE_UPDATE,
-        );
+        ];
     }
 
     /**
@@ -50,10 +50,10 @@ class TaskAssignColorLink extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'color_id' => t('Color'),
             'link_id' => t('Link type'),
-        );
+        ];
     }
 
     /**
@@ -64,12 +64,12 @@ class TaskAssignColorLink extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
-            'task_link' => array(
+        return [
+            'task_link' => [
                 'task_id',
                 'link_id',
-            )
-        );
+            ]
+        ];
     }
 
     /**
@@ -81,10 +81,10 @@ class TaskAssignColorLink extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_link']['task_id'],
             'color_id' => $this->getParam('color_id'),
-        );
+        ];
 
         return $this->taskModificationModel->update($values, false);
     }

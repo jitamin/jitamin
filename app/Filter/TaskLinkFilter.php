@@ -52,7 +52,7 @@ class TaskLinkFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('link');
+        return ['link'];
     }
 
     /**

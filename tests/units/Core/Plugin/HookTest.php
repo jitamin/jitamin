@@ -23,7 +23,7 @@ class HookTest extends Base
         $hook->on('myhook', 'A');
         $hook->on('myhook', 'B');
 
-        $this->assertEquals(array('A', 'B'), $hook->getListeners('myhook'));
+        $this->assertEquals(['A', 'B'], $hook->getListeners('myhook'));
     }
 
     public function testExists()
@@ -39,27 +39,27 @@ class HookTest extends Base
     public function testMergeWithNoBinding()
     {
         $hook = new Hook;
-        $values = array('A', 'B');
+        $values = ['A', 'B'];
 
-        $result = $hook->merge('myhook', $values, array('p' => 'c'));
+        $result = $hook->merge('myhook', $values, ['p' => 'c']);
         $this->assertEquals($values, $result);
     }
 
     public function testMergeWithBindings()
     {
         $hook = new Hook;
-        $values = array('A', 'B');
-        $expected = array('A', 'B', 'c', 'D');
+        $values = ['A', 'B'];
+        $expected = ['A', 'B', 'c', 'D'];
 
         $hook->on('myhook', function ($p) {
-            return array($p);
+            return [$p];
         });
 
         $hook->on('myhook', function () {
-            return array('D');
+            return ['D'];
         });
 
-        $result = $hook->merge('myhook', $values, array('p' => 'c'));
+        $result = $hook->merge('myhook', $values, ['p' => 'c']);
         $this->assertEquals($expected, $result);
         $this->assertEquals($expected, $values);
     }
@@ -67,8 +67,8 @@ class HookTest extends Base
     public function testMergeWithBindingButReturningBadData()
     {
         $hook = new Hook;
-        $values = array('A', 'B');
-        $expected = array('A', 'B');
+        $values = ['A', 'B'];
+        $expected = ['A', 'B'];
 
         $hook->on('myhook', function () {
             return 'string';
@@ -83,7 +83,7 @@ class HookTest extends Base
     {
         $hook = new Hook;
 
-        $result = $hook->first('myhook', array('p' => 2));
+        $result = $hook->first('myhook', ['p' => 2]);
         $this->assertEquals(null, $result);
     }
 
@@ -99,7 +99,7 @@ class HookTest extends Base
             return $p;
         });
 
-        $result = $hook->first('myhook', array('p' => 3));
+        $result = $hook->first('myhook', ['p' => 3]);
         $this->assertEquals(4, $result);
     }
 

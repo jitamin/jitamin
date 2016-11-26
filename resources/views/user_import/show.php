@@ -36,6 +36,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Import') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'UserListController', 'show', array(), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'UserListController', 'show', [], false, 'close-popover') ?>
     </div>
 </form>

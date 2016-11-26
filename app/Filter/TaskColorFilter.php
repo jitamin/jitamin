@@ -49,7 +49,7 @@ class TaskColorFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('color', 'colour');
+        return ['color', 'colour'];
     }
 
     /**

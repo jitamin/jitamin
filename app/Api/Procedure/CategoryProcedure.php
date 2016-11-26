@@ -41,10 +41,10 @@ class CategoryProcedure extends BaseProcedure
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'createCategory', $project_id);
 
-        $values = array(
+        $values = [
             'project_id' => $project_id,
             'name' => $name,
-        );
+        ];
 
         list($valid, ) = $this->categoryValidator->validateCreation($values);
         return $valid ? $this->categoryModel->create($values) : false;
@@ -54,10 +54,10 @@ class CategoryProcedure extends BaseProcedure
     {
         CategoryAuthorization::getInstance($this->container)->check($this->getClassName(), 'updateCategory', $id);
 
-        $values = array(
+        $values = [
             'id' => $id,
             'name' => $name,
-        );
+        ];
 
         list($valid, ) = $this->categoryValidator->validateModification($values);
         return $valid && $this->categoryModel->update($values);

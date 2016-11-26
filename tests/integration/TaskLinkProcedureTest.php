@@ -22,8 +22,8 @@ class TaskLinkProcedureTest extends BaseProcedureTest
     {
         $this->assertCreateTeamProject();
 
-        $this->taskId1 = $this->app->createTask(array('project_id' => $this->projectId, 'title' => 'Task 1'));
-        $this->taskId2 = $this->app->createTask(array('project_id' => $this->projectId, 'title' => 'Task 2'));
+        $this->taskId1 = $this->app->createTask(['project_id' => $this->projectId, 'title' => 'Task 1']);
+        $this->taskId2 = $this->app->createTask(['project_id' => $this->projectId, 'title' => 'Task 2']);
 
         $this->assertNotFalse($this->taskId1);
         $this->assertNotFalse($this->taskId2);

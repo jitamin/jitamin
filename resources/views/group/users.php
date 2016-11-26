@@ -2,7 +2,7 @@
     <div class="page-header">
         <ul>
             <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'GroupListController', 'index') ?></li>
-            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('Add group member'), 'GroupListController', 'associate', array('group_id' => $group['id']), false, 'popover') ?></li>
+            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('Add group member'), 'GroupListController', 'associate', ['group_id' => $group['id']], false, 'popover') ?></li>
         </ul>
     </div>
     <?php if ($paginator->isEmpty()): ?>
@@ -19,10 +19,10 @@
             <?php foreach ($paginator->getCollection() as $user): ?>
             <tr>
                 <td>
-                    <?= $this->url->link('#'.$user['id'], 'UserViewController', 'show', array('user_id' => $user['id'])) ?>
+                    <?= $this->url->link('#'.$user['id'], 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($user['username']), 'UserViewController', 'show', array('user_id' => $user['id'])) ?>
+                    <?= $this->url->link($this->text->e($user['username']), 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
                 </td>
                 <td>
                     <?= $this->text->e($user['name']) ?>
@@ -32,7 +32,7 @@
                 </td>
                 <td>
                     <i class="fa fa-times fa-fw" aria-hidden="true"></i>
-                    <?= $this->url->link(t('Remove this user'), 'GroupListController', 'dissociate', array('group_id' => $group['id'], 'user_id' => $user['id']), false, 'popover') ?>
+                    <?= $this->url->link(t('Remove this user'), 'GroupListController', 'dissociate', ['group_id' => $group['id'], 'user_id' => $user['id']], false, 'popover') ?>
                 </td>
             </tr>
             <?php endforeach ?>

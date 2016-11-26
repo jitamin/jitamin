@@ -27,7 +27,7 @@ class TaskStartDateFilter extends BaseDateFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('started');
+        return ['started'];
     }
 
     /**

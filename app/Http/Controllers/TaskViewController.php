@@ -43,7 +43,7 @@ class TaskViewController extends BaseController
             throw AccessForbiddenException::getInstance()->withoutLayout();
         }
 
-        $this->response->html($this->helper->layout->app('task/public', array(
+        $this->response->html($this->helper->layout->app('task/public', [
             'project' => $project,
             'comments' => $this->commentModel->getAll($task['id']),
             'subtasks' => $this->subtaskModel->getAll($task['id']),
@@ -56,7 +56,7 @@ class TaskViewController extends BaseController
             'no_layout' => true,
             'auto_refresh' => true,
             'not_editable' => true,
-        )));
+        ]));
     }
 
     /**
@@ -70,7 +70,7 @@ class TaskViewController extends BaseController
         $subtasks = $this->subtaskModel->getAll($task['id']);
         $commentSortingDirection = $this->userMetadataCacheDecorator->get(UserMetadataModel::KEY_COMMENT_SORTING_DIRECTION, 'ASC');
 
-        $this->response->html($this->helper->layout->task('task/show', array(
+        $this->response->html($this->helper->layout->task('task/show', [
             'task' => $task,
             'project' => $this->projectModel->getById($task['project_id']),
             'files' => $this->taskFileModel->getAllDocuments($task['id']),
@@ -81,7 +81,7 @@ class TaskViewController extends BaseController
             'external_links' => $this->taskExternalLinkModel->getAll($task['id']),
             'link_label_list' => $this->linkModel->getList(0, false),
             'tags' => $this->taskTagModel->getList($task['id']),
-        )));
+        ]));
     }
 
     /**
@@ -93,14 +93,14 @@ class TaskViewController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->helper->layout->task('task/analytics', array(
+        $this->response->html($this->helper->layout->task('task/analytics', [
             'task' => $task,
             'project' => $this->projectModel->getById($task['project_id']),
             'lead_time' => $this->taskAnalyticModel->getLeadTime($task),
             'cycle_time' => $this->taskAnalyticModel->getCycleTime($task),
             'time_spent_columns' => $this->taskAnalyticModel->getTimeSpentByColumn($task),
             'tags' => $this->taskTagModel->getList($task['id']),
-        )));
+        ]));
     }
 
     /**
@@ -113,19 +113,19 @@ class TaskViewController extends BaseController
         $task = $this->getTask();
 
         $subtask_paginator = $this->paginator
-            ->setUrl('TaskViewController', 'timetracking', array('task_id' => $task['id'], 'project_id' => $task['project_id'], 'pagination' => 'subtasks'))
+            ->setUrl('TaskViewController', 'timetracking', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'pagination' => 'subtasks'])
             ->setMax(15)
             ->setOrder('start')
             ->setDirection('DESC')
             ->setQuery($this->subtaskTimeTrackingModel->getTaskQuery($task['id']))
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
 
-        $this->response->html($this->helper->layout->task('task/time_tracking_details', array(
+        $this->response->html($this->helper->layout->task('task/time_tracking_details', [
             'task' => $task,
             'project' => $this->projectModel->getById($task['project_id']),
             'subtask_paginator' => $subtask_paginator,
             'tags' => $this->taskTagModel->getList($task['id']),
-        )));
+        ]));
     }
 
     /**
@@ -137,11 +137,11 @@ class TaskViewController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->helper->layout->task('task/transitions', array(
+        $this->response->html($this->helper->layout->task('task/transitions', [
             'task' => $task,
             'project' => $this->projectModel->getById($task['project_id']),
             'transitions' => $this->transitionModel->getAllByTask($task['id']),
             'tags' => $this->taskTagModel->getList($task['id']),
-        )));
+        ]));
     }
 }

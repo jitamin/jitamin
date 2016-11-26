@@ -28,15 +28,15 @@ class CurrencyValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\Required('currency', t('Field required')),
             new Validators\Required('rate', t('Field required')),
             new Validators\Numeric('rate', t('This value must be numeric')),
-        ));
+        ]);
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 }

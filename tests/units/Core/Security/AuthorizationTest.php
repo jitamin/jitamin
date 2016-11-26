@@ -21,8 +21,8 @@ class AuthorizationTest extends Base
     {
         $acl = new AccessMap;
         $acl->setDefaultRole(Role::APP_USER);
-        $acl->setRoleHierarchy(Role::APP_ADMIN, array(Role::APP_MANAGER, Role::APP_USER));
-        $acl->setRoleHierarchy(Role::APP_MANAGER, array(Role::APP_USER));
+        $acl->setRoleHierarchy(Role::APP_ADMIN, [Role::APP_MANAGER, Role::APP_USER]);
+        $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER]);
 
         $acl->add('MyController', 'myAction1', Role::APP_MANAGER);
         $acl->add('MyController', 'myAction2', Role::APP_ADMIN);

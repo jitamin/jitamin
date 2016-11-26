@@ -26,9 +26,9 @@ class SubtaskEventJob extends BaseJob
      * @param  array   $values
      * @return $this
      */
-    public function withParams($subtaskId, $eventName, array $values = array())
+    public function withParams($subtaskId, $eventName, array $values = [])
     {
-        $this->jobParams = array($subtaskId, $eventName, $values);
+        $this->jobParams = [$subtaskId, $eventName, $values];
         return $this;
     }
 
@@ -40,7 +40,7 @@ class SubtaskEventJob extends BaseJob
      * @param  array  $values
      * @return $this
      */
-    public function execute($subtaskId, $eventName, array $values = array())
+    public function execute($subtaskId, $eventName, array $values = [])
     {
         $event = SubtaskEventBuilder::getInstance($this->container)
             ->withSubtaskId($subtaskId)

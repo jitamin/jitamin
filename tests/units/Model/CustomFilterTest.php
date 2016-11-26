@@ -22,9 +22,9 @@ class CustomFilterTest extends Base
         $p = new ProjectModel($this->container);
         $cf = new CustomFilterModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'UnitTest')));
-        $this->assertEquals(1, $cf->create(array('name' => 'My filter 1', 'filter' => 'status:open color:blue', 'project_id' => 1, 'user_id' => 1)));
-        $this->assertEquals(2, $cf->create(array('name' => 'My filter 2', 'filter' => 'status:open color:red', 'project_id' => 1, 'user_id' => 1, 'is_shared' => 1)));
+        $this->assertEquals(1, $p->create(['name' => 'UnitTest']));
+        $this->assertEquals(1, $cf->create(['name' => 'My filter 1', 'filter' => 'status:open color:blue', 'project_id' => 1, 'user_id' => 1]));
+        $this->assertEquals(2, $cf->create(['name' => 'My filter 2', 'filter' => 'status:open color:red', 'project_id' => 1, 'user_id' => 1, 'is_shared' => 1]));
 
         $filter = $cf->getById(1);
         $this->assertNotEmpty($filter);
@@ -48,9 +48,9 @@ class CustomFilterTest extends Base
         $p = new ProjectModel($this->container);
         $cf = new CustomFilterModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'UnitTest')));
-        $this->assertEquals(1, $cf->create(array('name' => 'My filter 1', 'filter' => 'status:open color:blue', 'project_id' => 1, 'user_id' => 1)));
-        $this->assertTrue($cf->update(array('id' => 1, 'filter' => 'color:red', 'is_shared' => 1)));
+        $this->assertEquals(1, $p->create(['name' => 'UnitTest']));
+        $this->assertEquals(1, $cf->create(['name' => 'My filter 1', 'filter' => 'status:open color:blue', 'project_id' => 1, 'user_id' => 1]));
+        $this->assertTrue($cf->update(['id' => 1, 'filter' => 'color:red', 'is_shared' => 1]));
 
         $filter = $cf->getById(1);
         $this->assertNotEmpty($filter);
@@ -67,16 +67,16 @@ class CustomFilterTest extends Base
         $p = new ProjectModel($this->container);
         $cf = new CustomFilterModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'UnitTest 1')));
-        $this->assertEquals(2, $p->create(array('name' => 'UnitTest 2')));
+        $this->assertEquals(1, $p->create(['name' => 'UnitTest 1']));
+        $this->assertEquals(2, $p->create(['name' => 'UnitTest 2']));
 
-        $this->assertEquals(2, $u->create(array('username' => 'user 2')));
+        $this->assertEquals(2, $u->create(['username' => 'user 2']));
 
-        $this->assertEquals(1, $cf->create(array('name' => 'My filter 1', 'filter' => 'color:blue', 'project_id' => 1, 'user_id' => 1)));
-        $this->assertEquals(2, $cf->create(array('name' => 'My filter 2', 'filter' => 'color:red', 'project_id' => 1, 'user_id' => 1, 'is_shared' => 1)));
-        $this->assertEquals(3, $cf->create(array('name' => 'My filter 3', 'filter' => 'color:green', 'project_id' => 1, 'user_id' => 2, 'is_shared' => 1)));
-        $this->assertEquals(4, $cf->create(array('name' => 'My filter 4', 'filter' => 'color:brown', 'project_id' => 1, 'user_id' => 2, 'is_shared' => 0)));
-        $this->assertEquals(5, $cf->create(array('name' => 'My filter 5', 'filter' => 'color:grey', 'project_id' => 2, 'user_id' => 2)));
+        $this->assertEquals(1, $cf->create(['name' => 'My filter 1', 'filter' => 'color:blue', 'project_id' => 1, 'user_id' => 1]));
+        $this->assertEquals(2, $cf->create(['name' => 'My filter 2', 'filter' => 'color:red', 'project_id' => 1, 'user_id' => 1, 'is_shared' => 1]));
+        $this->assertEquals(3, $cf->create(['name' => 'My filter 3', 'filter' => 'color:green', 'project_id' => 1, 'user_id' => 2, 'is_shared' => 1]));
+        $this->assertEquals(4, $cf->create(['name' => 'My filter 4', 'filter' => 'color:brown', 'project_id' => 1, 'user_id' => 2, 'is_shared' => 0]));
+        $this->assertEquals(5, $cf->create(['name' => 'My filter 5', 'filter' => 'color:grey', 'project_id' => 2, 'user_id' => 2]));
 
         // Get filters for the project 1 and user 1
         $filters = $cf->getAll(1, 1);
@@ -140,8 +140,8 @@ class CustomFilterTest extends Base
         $p = new ProjectModel($this->container);
         $cf = new CustomFilterModel($this->container);
 
-        $this->assertEquals(1, $p->create(array('name' => 'UnitTest')));
-        $this->assertEquals(1, $cf->create(array('name' => 'My filter 1', 'filter' => 'status:open color:blue', 'project_id' => 1, 'user_id' => 1)));
+        $this->assertEquals(1, $p->create(['name' => 'UnitTest']));
+        $this->assertEquals(1, $cf->create(['name' => 'My filter 1', 'filter' => 'status:open color:blue', 'project_id' => 1, 'user_id' => 1]));
 
         $filters = $cf->getAll(1, 1);
         $this->assertNotEmpty($filters);

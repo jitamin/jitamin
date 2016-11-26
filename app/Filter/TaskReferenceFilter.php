@@ -27,7 +27,7 @@ class TaskReferenceFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('reference', 'ref');
+        return ['reference', 'ref'];
     }
 
     /**

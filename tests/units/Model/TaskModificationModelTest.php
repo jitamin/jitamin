@@ -57,13 +57,13 @@ class TaskModificationModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskModificationModel = new TaskModificationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, array($this, 'onCreateUpdate'));
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_UPDATE, array($this, 'onUpdate'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, [$this, 'onCreateUpdate']);
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_UPDATE, [$this, 'onUpdate']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'title' => 'test')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'title' => 'test']));
 
         $this->assertEmpty($this->container['dispatcher']->getCalledListeners());
     }
@@ -75,13 +75,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Before', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Before', 'project_id' => 1]));
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, array($this, 'onCreateUpdate'));
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_UPDATE, array($this, 'onUpdate'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, [$this, 'onCreateUpdate']);
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_UPDATE, [$this, 'onUpdate']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'title' => 'After')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'title' => 'After']));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.TaskModificationModelTest::onCreateUpdate', $called);
@@ -98,15 +98,15 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['owner_id']);
 
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_ASSIGNEE_CHANGE, array($this, 'onAssigneeChange'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_ASSIGNEE_CHANGE, [$this, 'onAssigneeChange']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'owner_id' => 1)));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'owner_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_ASSIGNEE_CHANGE.'.TaskModificationModelTest::onAssigneeChange', $called);
@@ -122,13 +122,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('', $task['description']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'description' => 'test')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'description' => 'test']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('test', $task['description']);
@@ -141,13 +141,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['category_id']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'category_id' => 1)));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'category_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(1, $task['category_id']);
@@ -160,13 +160,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('yellow', $task['color_id']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'color_id' => 'blue')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'color_id' => 'blue']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('blue', $task['color_id']);
@@ -179,13 +179,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['score']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'score' => 13)));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'score' => 13]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(13, $task['score']);
@@ -198,18 +198,18 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['date_due']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'date_due' => '2014-11-24')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'date_due' => '2014-11-24']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('2014-11-24', date('Y-m-d', $task['date_due']));
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'date_due' => time())));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'date_due' => time()]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(date('Y-m-d'), date('Y-m-d', $task['date_due']));
@@ -222,32 +222,32 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['date_started']);
 
         // Set only a date
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'date_started' => '2014-11-24')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'date_started' => '2014-11-24']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('2014-11-24 '.date('H:i'), date('Y-m-d H:i', $task['date_started']));
 
         // Set a datetime
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'date_started' => '2014-11-24 16:25')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'date_started' => '2014-11-24 16:25']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('2014-11-24 16:25', date('Y-m-d H:i', $task['date_started']));
 
         // Set a datetime
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'date_started' => '11/24/2014 18:25')));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'date_started' => '11/24/2014 18:25']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals('2014-11-24 18:25', date('Y-m-d H:i', $task['date_started']));
 
         // Set a timestamp
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'date_started' => time())));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'date_started' => time()]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(time(), $task['date_started'], '', 1);
@@ -260,13 +260,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['time_estimated']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'time_estimated' => 13.3)));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'time_estimated' => 13.3]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(13.3, $task['time_estimated']);
@@ -279,13 +279,13 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(0, $task['time_spent']);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'time_spent' => 13.3)));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'time_spent' => 13.3]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(13.3, $task['time_spent']);
@@ -298,12 +298,12 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'tags' => array('tag1', 'tag2'))));
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'tags' => array('tag2'))));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'tags' => ['tag1', 'tag2']]));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'tags' => ['tag2']]));
 
         $tags = $taskTagModel->getList(1);
-        $this->assertEquals(array(2 => 'tag2'), $tags);
+        $this->assertEquals([2 => 'tag2'], $tags);
     }
 
     public function testRemoveAllTags()
@@ -313,20 +313,20 @@ class TaskModificationModelTest extends Base
         $taskModificationModel = new TaskModificationModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test1', 'project_id' => 1, 'tags' => array('tag1', 'tag2'))));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'test2', 'project_id' => 1, 'tags' => array('tag1', 'tag2'))));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test1', 'project_id' => 1, 'tags' => ['tag1', 'tag2']]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'test2', 'project_id' => 1, 'tags' => ['tag1', 'tag2']]));
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1)));
+        $this->assertTrue($taskModificationModel->update(['id' => 1]));
         $tags = $taskTagModel->getList(1);
-        $this->assertEquals(array(1 => 'tag1', 2 => 'tag2'), $tags);
+        $this->assertEquals([1 => 'tag1', 2 => 'tag2'], $tags);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 1, 'tags' => array())));
+        $this->assertTrue($taskModificationModel->update(['id' => 1, 'tags' => []]));
         $tags = $taskTagModel->getList(1);
-        $this->assertEquals(array(), $tags);
+        $this->assertEquals([], $tags);
 
-        $this->assertTrue($taskModificationModel->update(array('id' => 2, 'tags' => array(''))));
+        $this->assertTrue($taskModificationModel->update(['id' => 2, 'tags' => ['']]));
         $tags = $taskTagModel->getList(2);
-        $this->assertEquals(array(), $tags);
+        $this->assertEquals([], $tags);
     }
 }

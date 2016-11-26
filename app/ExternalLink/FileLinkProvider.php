@@ -18,10 +18,10 @@ use Hiject\Core\ExternalLink\ExternalLinkProviderInterface;
  */
 class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderInterface
 {
-    protected $excludedPrefixes= array(
+    protected $excludedPrefixes= [
         'http',
         'ftp',
-    );
+    ];
 
     /**
      * Get provider name
@@ -53,9 +53,9 @@ class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderI
      */
     public function getDependencies()
     {
-        return array(
+        return [
             'related' => t('Related'),
-        );
+        ];
     }
 
     /**

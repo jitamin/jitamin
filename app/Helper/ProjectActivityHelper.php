@@ -33,7 +33,7 @@ class ProjectActivityHelper extends Base
     public function searchEvents($search)
     {
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
-        $events = array();
+        $events = [];
 
         if ($search !== '') {
             $queryBuilder = $this->projectActivityLexer->build($search);

@@ -7,7 +7,7 @@
     <div class="form-columns">
         <div class="form-column">
             <?= $this->form->label(t('Username'), 'username') ?>
-            <?= $this->form->text('username', $values, $errors, array('autofocus', 'required', 'maxlength="50"')) ?>
+            <?= $this->form->text('username', $values, $errors, ['autofocus', 'required', 'maxlength="50"']) ?>
 
             <?= $this->form->label(t('Name'), 'name') ?>
             <?= $this->form->text('name', $values, $errors) ?>
@@ -16,10 +16,10 @@
             <?= $this->form->email('email', $values, $errors) ?>
 
             <?= $this->form->label(t('Password'), 'password') ?>
-            <?= $this->form->password('password', $values, $errors, array('required')) ?>
+            <?= $this->form->password('password', $values, $errors, ['required']) ?>
 
             <?= $this->form->label(t('Confirmation'), 'confirmation') ?>
-            <?= $this->form->password('confirmation', $values, $errors, array('required')) ?>
+            <?= $this->form->password('confirmation', $values, $errors, ['required']) ?>
         </div>
 
         <div class="form-column">
@@ -42,6 +42,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'UserListController', 'show', array(), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'UserListController', 'show', [], false, 'close-popover') ?>
     </div>
 </form>

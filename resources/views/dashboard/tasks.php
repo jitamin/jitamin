@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h3><?= $this->url->link(t('My tasks'), 'DashboardController', 'tasks', array('user_id' => $user['id'])) ?> (<?= $paginator->getTotal() ?>)</h3>
+    <h3><?= $this->url->link(t('My tasks'), 'DashboardController', 'tasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
 </div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('There is nothing assigned to you.') ?></p>
@@ -18,13 +18,13 @@
         <?php foreach ($paginator->getCollection() as $task): ?>
         <tr>
             <td class="task-table color-<?= $task['color_id'] ?>">
-                <?= $this->render('task/dropdown', array('task' => $task)) ?>
+                <?= $this->render('task/dropdown', ['task' => $task]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['project_name']), 'BoardViewController', 'show', array('project_id' => $task['project_id'])) ?>
+                <?= $this->url->link($this->text->e($task['project_name']), 'BoardViewController', 'show', ['project_id' => $task['project_id']]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
             </td>
             <td>
                 <?php if ($task['priority'] != null): ?>

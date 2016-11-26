@@ -34,7 +34,7 @@ class SubtaskEventBuilder extends BaseEventBuilder
      * @access protected
      * @var array
      */
-    protected $values = array();
+    protected $values = [];
 
     /**
      * Set SubtaskId
@@ -68,7 +68,7 @@ class SubtaskEventBuilder extends BaseEventBuilder
      */
     public function buildEvent()
     {
-        $eventData = array();
+        $eventData = [];
         $eventData['subtask'] = $this->subtaskModel->getById($this->subtaskId, true);
 
         if (empty($eventData['subtask'])) {

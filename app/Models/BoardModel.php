@@ -26,7 +26,7 @@ class BoardModel extends Base
      */
     public function getDefaultColumns()
     {
-        return array(t('Backlog'), t('Ready'), t('Work in progress'), t('Done'));
+        return [t('Backlog'), t('Ready'), t('Work in progress'), t('Done')];
     }
 
     /**
@@ -38,13 +38,13 @@ class BoardModel extends Base
     public function getUserColumns()
     {
         $column_names = explode(',', $this->configModel->get('board_columns', implode(',', $this->getDefaultColumns())));
-        $columns = array();
+        $columns = [];
 
         foreach ($column_names as $column_name) {
             $column_name = trim($column_name);
 
             if (! empty($column_name)) {
-                $columns[] = array('title' => $column_name, 'task_limit' => 0, 'description' => '');
+                $columns[] = ['title' => $column_name, 'task_limit' => 0, 'description' => ''];
             }
         }
 
@@ -64,13 +64,13 @@ class BoardModel extends Base
         $position = 0;
 
         foreach ($columns as $column) {
-            $values = array(
+            $values = [
                 'title' => $column['title'],
                 'position' => ++$position,
                 'project_id' => $project_id,
                 'task_limit' => $column['task_limit'],
                 'description' => $column['description'],
-            );
+            ];
 
             if (! $this->db->table(ColumnModel::TABLE)->save($values)) {
                 return false;
@@ -116,6 +116,6 @@ class BoardModel extends Base
                         ->groupBy('column_id')
                         ->getAll('column_id', 'COUNT(*) AS total');
 
-        return $prepend ? array(-1 => t('All columns')) + $listing : $listing;
+        return $prepend ? [-1 => t('All columns')] + $listing : $listing;
     }
 }

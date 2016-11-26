@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
     'number.decimals_separator' => '.',
     'number.thousands_separator' => ',',
     'None' => '无',
@@ -1298,4 +1298,4 @@ return array(
     // 'Moving a task is not permitted' => '',
     // 'This value must be in the range %d to %d' => '',
     // 'You are not allowed to move this task.' => '',
-);
+];

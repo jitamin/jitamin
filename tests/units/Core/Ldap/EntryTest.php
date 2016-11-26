@@ -15,35 +15,34 @@ use Hiject\Core\Ldap\Entry;
 
 class EntryTest extends Base
 {
-    private $entry = array(
+    private $entry = [
         'count' => 2,
         'dn' => 'uid=my_user,ou=People,dc=hiject,dc=local',
-        'displayname' => array(
+        'displayname' => [
             'count' => 1,
             0 => 'My LDAP user',
-        ),
-        'broken' => array(
-        ),
-        'mail' => array(
+        ],
+        'broken' => [],
+        'mail' => [
             'count' => 2,
             0 => 'user1@localhost',
             1 => 'user2@localhost',
-        ),
-        'samaccountname' => array(
+        ],
+        'samaccountname' => [
             'count' => 1,
             0 => 'my_ldap_user',
-        ),
+        ],
         0 => 'displayname',
         1 => 'mail',
         2 => 'samaccountname',
-    );
+    ];
 
     public function testGetAll()
     {
-        $expected = array(
+        $expected = [
             'user1@localhost',
             'user2@localhost',
-        );
+        ];
 
         $entry = new Entry($this->entry);
         $this->assertEquals($expected, $entry->getAll('mail'));
@@ -65,7 +64,7 @@ class EntryTest extends Base
         $entry = new Entry($this->entry);
         $this->assertEquals('uid=my_user,ou=People,dc=hiject,dc=local', $entry->getDn());
 
-        $entry = new Entry(array());
+        $entry = new Entry([]);
         $this->assertEquals('', $entry->getDn());
     }
 

@@ -10,7 +10,7 @@
             <td>
                 <?= $this->subtask->toggleStatus($subtask, $task['project_id']) ?>
             </td>
-            <?= $this->hook->render('template:board:tooltip:subtasks:rows', array('subtask' => $subtask)) ?>
+            <?= $this->hook->render('template:board:tooltip:subtasks:rows', ['subtask' => $subtask]) ?>
             <td>
                 <?php if (! empty($subtask['username'])): ?>
                     <?= $this->text->e($subtask['name'] ?: $subtask['username']) ?>

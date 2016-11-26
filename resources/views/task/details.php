@@ -1,7 +1,7 @@
 <section id="task-summary">
     <h2><?= $this->text->e($task['title']) ?></h2>
 
-    <?= $this->hook->render('template:task:details:top', array('task' => $task)) ?>
+    <?= $this->hook->render('template:task:details:top', ['task' => $task]) ?>
 
     <div class="task-summary-container color-<?= $task['color_id'] ?>">
         <div class="task-summary-columns">
@@ -37,7 +37,7 @@
                     <li>
                         <small>
                             <i class="fa fa-external-link"></i>
-                            <?= $this->url->link(t('Public link'), 'TaskViewController', 'readonly', array('task_id' => $task['id'], 'token' => $project['token']), false, '', '', true) ?>
+                            <?= $this->url->link(t('Public link'), 'TaskViewController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token']], false, '', '', true) ?>
                         </small>
                     </li>
                     <?php endif ?>
@@ -45,12 +45,12 @@
                     <li>
                         <small>
                             <i class="fa fa-columns"></i>
-                            <?= $this->url->link(t('Back to the board'), 'BoardViewController', 'readonly', array('token' => $project['token'])) ?>
+                            <?= $this->url->link(t('Back to the board'), 'BoardViewController', 'readonly', ['token' => $project['token']]) ?>
                         </small>
                     </li>
                     <?php endif ?>
 
-                    <?= $this->hook->render('template:task:details:first-column', array('task' => $task)) ?>
+                    <?= $this->hook->render('template:task:details:first-column', ['task' => $task]) ?>
                 </ul>
             </div>
             <div class="task-summary-column">
@@ -76,7 +76,7 @@
                         <span><?= $task['position'] ?></span>
                     </li>
 
-                    <?= $this->hook->render('template:task:details:second-column', array('task' => $task)) ?>
+                    <?= $this->hook->render('template:task:details:second-column', ['task' => $task]) ?>
                 </ul>
             </div>
             <div class="task-summary-column">
@@ -116,7 +116,7 @@
                     </li>
                     <?php endif ?>
 
-                    <?= $this->hook->render('template:task:details:third-column', array('task' => $task)) ?>
+                    <?= $this->hook->render('template:task:details:third-column', ['task' => $task]) ?>
                 </ul>
             </div>
             <div class="task-summary-column">
@@ -148,7 +148,7 @@
                     </li>
                     <?php endif ?>
 
-                    <?= $this->hook->render('template:task:details:fourth-column', array('task' => $task)) ?>
+                    <?= $this->hook->render('template:task:details:fourth-column', ['task' => $task]) ?>
                 </ul>
             </div>
         </div>
@@ -164,8 +164,8 @@
     </div>
 
     <?php if ($editable && empty($task['date_started'])): ?>
-        <?= $this->url->button('fa-play', t('Set start date'), 'TaskModificationController', 'start', array('task_id' => $task['id'], 'project_id' => $task['project_id']), 'btn-default btn-header') ?>
+        <?= $this->url->button('fa-play', t('Set start date'), 'TaskModificationController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-default btn-header') ?>
     <?php endif ?>
 
-    <?= $this->hook->render('template:task:details:bottom', array('task' => $task)) ?>
+    <?= $this->hook->render('template:task:details:bottom', ['task' => $task]) ?>
 </section>

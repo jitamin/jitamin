@@ -27,7 +27,7 @@ class TaskDueDateFilter extends BaseDateFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('due');
+        return ['due'];
     }
 
     /**

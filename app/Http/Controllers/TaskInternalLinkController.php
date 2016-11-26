@@ -45,16 +45,16 @@ class TaskInternalLinkController extends BaseController
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_internal_link/create', array(
+        $this->response->html($this->template->render('task_internal_link/create', [
             'values' => $values,
             'errors' => $errors,
             'task' => $task,
             'labels' => $this->linkModel->getList(0, false),
-        )));
+        ]));
     }
 
     /**
@@ -72,10 +72,10 @@ class TaskInternalLinkController extends BaseController
         if ($valid) {
             if ($this->taskLinkModel->create($values['task_id'], $values['opposite_task_id'], $values['link_id'])) {
                 $this->flash->success(t('Link added successfully.'));
-                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])), true);
+                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
             }
 
-            $errors = array('title' => array(t('The exact same link already exists')));
+            $errors = ['title' => [t('The exact same link already exists')]];
             $this->flash->failure(t('Unable to create your link.'));
         }
 
@@ -91,7 +91,7 @@ class TaskInternalLinkController extends BaseController
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
         $task_link = $this->getTaskLink();
@@ -102,13 +102,13 @@ class TaskInternalLinkController extends BaseController
             $values['title'] = '#'.$opposite_task['id'].' - '.$opposite_task['title'];
         }
 
-        $this->response->html($this->template->render('task_internal_link/edit', array(
+        $this->response->html($this->template->render('task_internal_link/edit', [
             'values' => $values,
             'errors' => $errors,
             'task_link' => $task_link,
             'task' => $task,
             'labels' => $this->linkModel->getList(0, false)
-        )));
+        ]));
     }
 
     /**
@@ -126,7 +126,7 @@ class TaskInternalLinkController extends BaseController
         if ($valid) {
             if ($this->taskLinkModel->update($values['id'], $values['task_id'], $values['opposite_task_id'], $values['link_id'])) {
                 $this->flash->success(t('Link updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])).'#links');
+                return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]).'#links');
             }
 
             $this->flash->failure(t('Unable to update your link.'));
@@ -145,10 +145,10 @@ class TaskInternalLinkController extends BaseController
         $task = $this->getTask();
         $link = $this->getTaskLink();
 
-        $this->response->html($this->template->render('task_internal_link/remove', array(
+        $this->response->html($this->template->render('task_internal_link/remove', [
             'link' => $link,
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -167,6 +167,6 @@ class TaskInternalLinkController extends BaseController
             $this->flash->failure(t('Unable to remove this link.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])));
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
     }
 }

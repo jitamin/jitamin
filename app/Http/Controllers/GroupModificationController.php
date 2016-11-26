@@ -23,16 +23,16 @@ class GroupModificationController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         if (empty($values)) {
             $values = $this->groupModel->getById($this->request->getIntegerParam('group_id'));
         }
 
-        $this->response->html($this->template->render('group_modification/show', array(
+        $this->response->html($this->template->render('group_modification/show', [
             'errors' => $errors,
             'values' => $values,
-        )));
+        ]));
     }
 
     /**

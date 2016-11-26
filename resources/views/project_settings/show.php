@@ -13,9 +13,9 @@
     <?php endif ?>
 
     <?php if ($project['is_public']): ?>
-        <li><i class="fa fa-share-alt"></i> <?= $this->url->link(t('Public link'), 'BoardViewController', 'readonly', array('token' => $project['token']), false, '', '', true) ?></li>
-        <li><i class="fa fa-rss-square"></i> <?= $this->url->link(t('RSS feed'), 'FeedController', 'project', array('token' => $project['token']), false, '', '', true) ?></li>
-        <li><i class="fa fa-calendar"></i> <?= $this->url->link(t('iCal feed'), 'ICalendarController', 'project', array('token' => $project['token'])) ?></li>
+        <li><i class="fa fa-share-alt"></i> <?= $this->url->link(t('Public link'), 'BoardViewController', 'readonly', ['token' => $project['token']], false, '', '', true) ?></li>
+        <li><i class="fa fa-rss-square"></i> <?= $this->url->link(t('RSS feed'), 'FeedController', 'project', ['token' => $project['token']], false, '', '', true) ?></li>
+        <li><i class="fa fa-calendar"></i> <?= $this->url->link(t('iCal feed'), 'ICalendarController', 'project', ['token' => $project['token']]) ?></li>
     <?php else: ?>
         <li><?= t('Public access disabled') ?></li>
     <?php endif ?>
@@ -35,11 +35,11 @@
     <?php if ($stats['nb_tasks'] > 0): ?>
 
         <?php if ($stats['nb_active_tasks'] > 0): ?>
-            <li><?= $this->url->link(t('%d tasks on the board', $stats['nb_active_tasks']), 'BoardViewController', 'show', array('project_id' => $project['id'], 'search' => 'status:open')) ?></li>
+            <li><?= $this->url->link(t('%d tasks on the board', $stats['nb_active_tasks']), 'BoardViewController', 'show', ['project_id' => $project['id'], 'search' => 'status:open']) ?></li>
         <?php endif ?>
 
         <?php if ($stats['nb_inactive_tasks'] > 0): ?>
-            <li><?= $this->url->link(t('%d closed tasks', $stats['nb_inactive_tasks']), 'TaskListController', 'show', array('project_id' => $project['id'], 'search' => 'status:closed')) ?></li>
+            <li><?= $this->url->link(t('%d closed tasks', $stats['nb_inactive_tasks']), 'TaskListController', 'show', ['project_id' => $project['id'], 'search' => 'status:closed']) ?></li>
         <?php endif ?>
 
         <li><?= t('%d tasks in total', $stats['nb_tasks']) ?></li>

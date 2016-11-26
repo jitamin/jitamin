@@ -4,7 +4,7 @@
     </div>
     <section class="sidebar-container">
 
-        <?= $this->render($sidebar_template, array('users' => $users, 'filter' => $filter)) ?>
+        <?= $this->render($sidebar_template, ['users' => $users, 'filter' => $filter]) ?>
 
         <div class="sidebar-content">
             <div class="page-header">

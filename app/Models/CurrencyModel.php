@@ -33,7 +33,7 @@ class CurrencyModel extends Base
      */
     public function getCurrencies()
     {
-        return array(
+        return [
             'USD' => t('USD - US Dollar'),
             'EUR' => t('EUR - Euro'),
             'GBP' => t('GBP - British Pound'),
@@ -48,7 +48,7 @@ class CurrencyModel extends Base
             'NOK' => t('NOK - Norwegian Krone'),
             'BAM' => t('BAM - Konvertible Mark'),
             'RUB' => t('RUB - Russian Ruble'),
-        );
+        ];
     }
 
     /**
@@ -99,7 +99,7 @@ class CurrencyModel extends Base
             return $this->update($currency, $rate);
         }
 
-        return $this->db->table(self::TABLE)->insert(array('currency' => $currency, 'rate' => $rate));
+        return $this->db->table(self::TABLE)->insert(['currency' => $currency, 'rate' => $rate]);
     }
 
     /**
@@ -112,6 +112,6 @@ class CurrencyModel extends Base
      */
     public function update($currency, $rate)
     {
-        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(array('rate' => $rate));
+        return $this->db->table(self::TABLE)->eq('currency', $currency)->update(['rate' => $rate]);
     }
 }

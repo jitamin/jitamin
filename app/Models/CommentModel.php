@@ -154,7 +154,7 @@ class CommentModel extends Base
         $result = $this->db
                     ->table(self::TABLE)
                     ->eq('id', $values['id'])
-                    ->update(array('comment' => $values['comment']));
+                    ->update(['comment' => $values['comment']]);
 
         if ($result) {
             $this->queueManager->push($this->commentEventJob->withParams($values['id'], self::EVENT_UPDATE));

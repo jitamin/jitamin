@@ -30,10 +30,10 @@ class GroupListController extends BaseController
             ->setQuery($this->groupModel->getQuery())
             ->calculate();
 
-        $this->response->html($this->helper->layout->app('group/index', array(
+        $this->response->html($this->helper->layout->app('group/index', [
             'title' => t('Groups').' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
-        )));
+        ]));
     }
 
     /**
@@ -47,17 +47,17 @@ class GroupListController extends BaseController
         $group = $this->groupModel->getById($group_id);
 
         $paginator = $this->paginator
-            ->setUrl('GroupListController', 'users', array('group_id' => $group_id))
+            ->setUrl('GroupListController', 'users', ['group_id' => $group_id])
             ->setMax(30)
             ->setOrder('username')
             ->setQuery($this->groupMemberModel->getQuery($group_id))
             ->calculate();
 
-        $this->response->html($this->helper->layout->app('group/users', array(
+        $this->response->html($this->helper->layout->app('group/users', [
             'title' => t('Members of %s', $group['name']).' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
             'group' => $group,
-        )));
+        ]));
     }
 
     /**
@@ -67,7 +67,7 @@ class GroupListController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function associate(array $values = array(), array $errors = array())
+    public function associate(array $values = [], array $errors = [])
     {
         $group_id = $this->request->getIntegerParam('group_id');
         $group = $this->groupModel->getById($group_id);
@@ -76,12 +76,12 @@ class GroupListController extends BaseController
             $values['group_id'] = $group_id;
         }
 
-        $this->response->html($this->template->render('group/associate', array(
+        $this->response->html($this->template->render('group/associate', [
             'users' => $this->userModel->prepareList($this->groupMemberModel->getNotMembers($group_id)),
             'group' => $group,
             'errors' => $errors,
             'values' => $values,
-        )));
+        ]));
     }
 
     /**
@@ -96,7 +96,7 @@ class GroupListController extends BaseController
         if (isset($values['group_id']) && isset($values['user_id'])) {
             if ($this->groupMemberModel->addUser($values['group_id'], $values['user_id'])) {
                 $this->flash->success(t('Group member added successfully.'));
-                return $this->response->redirect($this->helper->url->to('GroupListController', 'users', array('group_id' => $values['group_id'])), true);
+                return $this->response->redirect($this->helper->url->to('GroupListController', 'users', ['group_id' => $values['group_id']]), true);
             } else {
                 $this->flash->failure(t('Unable to add group member.'));
             }
@@ -117,10 +117,10 @@ class GroupListController extends BaseController
         $group = $this->groupModel->getById($group_id);
         $user = $this->userModel->getById($user_id);
 
-        $this->response->html($this->template->render('group/dissociate', array(
+        $this->response->html($this->template->render('group/dissociate', [
             'group' => $group,
             'user' => $user,
-        )));
+        ]));
     }
 
     /**
@@ -140,7 +140,7 @@ class GroupListController extends BaseController
             $this->flash->failure(t('Unable to remove this user from the group.'));
         }
 
-        $this->response->redirect($this->helper->url->to('GroupListController', 'users', array('group_id' => $group_id)), true);
+        $this->response->redirect($this->helper->url->to('GroupListController', 'users', ['group_id' => $group_id]), true);
     }
 
     /**
@@ -153,9 +153,9 @@ class GroupListController extends BaseController
         $group_id = $this->request->getIntegerParam('group_id');
         $group = $this->groupModel->getById($group_id);
 
-        $this->response->html($this->template->render('group/remove', array(
+        $this->response->html($this->template->render('group/remove', [
             'group' => $group,
-        )));
+        ]));
     }
 
     /**

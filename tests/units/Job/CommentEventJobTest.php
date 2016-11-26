@@ -23,7 +23,7 @@ class CommentEventJobTest extends Base
         $commentEventJob = new CommentEventJob($this->container);
         $commentEventJob->withParams(123, 'foobar');
 
-        $this->assertSame(array(123, 'foobar'), $commentEventJob->getJobParams());
+        $this->assertSame([123, 'foobar'], $commentEventJob->getJobParams());
     }
 
     public function testWithMissingComment()
@@ -47,10 +47,10 @@ class CommentEventJobTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'foobar', 'user_id' => 1)));
-        $this->assertTrue($commentModel->update(array('id' => 1, 'comment' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'foobar', 'user_id' => 1]));
+        $this->assertTrue($commentModel->update(['id' => 1, 'comment' => 'test']));
         $this->assertTrue($commentModel->remove(1));
 
         $called = $this->container['dispatcher']->getCalledListeners();

@@ -48,10 +48,10 @@ class ProjectFileEventBuilder extends BaseEventBuilder
             return null;
         }
 
-        return new ProjectFileEvent(array(
+        return new ProjectFileEvent([
             'file' => $file,
             'project' => $this->projectModel->getById($file['project_id']),
-        ));
+        ]);
     }
 
     /**

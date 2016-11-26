@@ -31,12 +31,12 @@ class TaskExternalLinkProcedureTest extends BaseProcedureTest
 
     public function assertGetExternalTaskLinkTypes()
     {
-        $expected = array(
+        $expected = [
             'auto' => 'Auto',
             'attachment' => 'Attachment',
             'file' => 'Local File',
             'weblink' => 'Web Link',
-        );
+        ];
 
         $types = $this->app->getExternalTaskLinkTypes();
         $this->assertEquals($expected, $types);
@@ -44,9 +44,9 @@ class TaskExternalLinkProcedureTest extends BaseProcedureTest
 
     public function assertGetExternalTaskLinkProviderDependencies()
     {
-        $expected = array(
+        $expected = [
             'related' => 'Related',
-        );
+        ];
 
         $dependencies = $this->app->getExternalTaskLinkProviderDependencies('weblink');
 
@@ -75,11 +75,11 @@ class TaskExternalLinkProcedureTest extends BaseProcedureTest
 
     public function assertUpdateExternalTaskLink()
     {
-        $this->assertTrue($this->app->updateExternalTaskLink(array(
+        $this->assertTrue($this->app->updateExternalTaskLink([
             'task_id' => $this->taskId,
             'link_id' => $this->linkId,
             'title' => 'New title',
-        )));
+        ]));
 
         $link = $this->app->getExternalTaskLinkById($this->taskId, $this->linkId);
         $this->assertEquals($this->linkId, $link['id']);

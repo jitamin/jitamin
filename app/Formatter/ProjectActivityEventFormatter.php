@@ -53,7 +53,7 @@ class ProjectActivityEventFormatter extends BaseFormatter implements FormatterIn
             return unserialize($data);
         }
 
-        return json_decode($data, true) ?: array();
+        return json_decode($data, true) ?: [];
     }
 
     /**

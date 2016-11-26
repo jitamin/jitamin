@@ -26,12 +26,12 @@ class SubtaskTimeTrackingCalendarFormatter extends BaseFormatter implements Form
      */
     public function format()
     {
-        $events = array();
+        $events = [];
 
         foreach ($this->query->findAll() as $row) {
             $user = isset($row['username']) ? ' ('.($row['user_fullname'] ?: $row['username']).')' : '';
 
-            $events[] = array(
+            $events[] = [
                 'id' => $row['id'],
                 'subtask_id' => $row['subtask_id'],
                 'title' => t('#%d', $row['task_id']).' '.$row['subtask_title'].$user,
@@ -40,9 +40,9 @@ class SubtaskTimeTrackingCalendarFormatter extends BaseFormatter implements Form
                 'backgroundColor' => $this->colorModel->getBackgroundColor($row['color_id']),
                 'borderColor' => $this->colorModel->getBorderColor($row['color_id']),
                 'textColor' => 'black',
-                'url' => $this->helper->url->to('TaskViewController', 'show', array('task_id' => $row['task_id'], 'project_id' => $row['project_id'])),
+                'url' => $this->helper->url->to('TaskViewController', 'show', ['task_id' => $row['task_id'], 'project_id' => $row['project_id']]),
                 'editable' => false,
-            );
+            ];
         }
 
         return $events;

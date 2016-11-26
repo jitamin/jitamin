@@ -29,7 +29,7 @@ class ProjectModelTest extends Base
         foreach ($this->container['languageModel']->getLanguages() as $locale => $language) {
             Translator::unload();
             Translator::load($locale);
-            $this->assertNotFalse($projectModel->create(array('name' => 'UnitTest '.$locale)), 'Unable to create project with '.$locale.':'.$language);
+            $this->assertNotFalse($projectModel->create(['name' => 'UnitTest '.$locale]), 'Unable to create project with '.$locale.':'.$language);
         }
 
         Translator::unload();
@@ -39,7 +39,7 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -56,12 +56,12 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
-        $this->assertTrue($projectModel->update(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
+        $this->assertTrue($projectModel->update([
             'id' => 1,
             'start_date' => '2016-08-31',
             'end_date' => '08/31/2016',
-        )));
+        ]));
 
         $project = $projectModel->getById(1);
         $this->assertEquals('2016-08-31', $project['start_date']);
@@ -72,15 +72,15 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'UnitTest']));
     }
 
     public function testCreationWithStartAndDate()
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest', 'start_date' => '2015-01-01', 'end_date' => '2015-12-31')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest', 'start_date' => '2015-01-01', 'end_date' => '2015-12-31']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -96,8 +96,8 @@ class ProjectModelTest extends Base
 
         // Multiple categories correctly formatted
 
-        $this->assertTrue($configModel->save(array('project_categories' => 'Test1, Test2')));
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest1')));
+        $this->assertTrue($configModel->save(['project_categories' => 'Test1, Test2']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest1']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -110,9 +110,9 @@ class ProjectModelTest extends Base
 
         // Single category
 
-        $this->assertTrue($configModel->save(array('project_categories' => 'Test1')));
+        $this->assertTrue($configModel->save(['project_categories' => 'Test1']));
         $this->container['memoryCache']->flush();
-        $this->assertEquals(2, $projectModel->create(array('name' => 'UnitTest2')));
+        $this->assertEquals(2, $projectModel->create(['name' => 'UnitTest2']));
 
         $project = $projectModel->getById(2);
         $this->assertNotEmpty($project);
@@ -124,9 +124,9 @@ class ProjectModelTest extends Base
 
         // Multiple categories badly formatted
 
-        $this->assertTrue($configModel->save(array('project_categories' => 'ABC, , DEF 3,  ')));
+        $this->assertTrue($configModel->save(['project_categories' => 'ABC, , DEF 3,  ']));
         $this->container['memoryCache']->flush();
-        $this->assertEquals(3, $projectModel->create(array('name' => 'UnitTest3')));
+        $this->assertEquals(3, $projectModel->create(['name' => 'UnitTest3']));
 
         $project = $projectModel->getById(3);
         $this->assertNotEmpty($project);
@@ -138,9 +138,9 @@ class ProjectModelTest extends Base
         $this->assertEquals('DEF 3', $categories[1]['name']);
 
         // No default categories
-        $this->assertTrue($configModel->save(array('project_categories' => '  ')));
+        $this->assertTrue($configModel->save(['project_categories' => '  ']));
         $this->container['memoryCache']->flush();
-        $this->assertEquals(4, $projectModel->create(array('name' => 'UnitTest4')));
+        $this->assertEquals(4, $projectModel->create(['name' => 'UnitTest4']));
 
         $project = $projectModel->getById(4);
         $this->assertNotEmpty($project);
@@ -152,7 +152,7 @@ class ProjectModelTest extends Base
     public function testUpdateLastModifiedDate()
     {
         $projectModel = new ProjectModel($this->container);
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $now = time();
 
@@ -172,11 +172,11 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
-        $this->assertEmpty($projectModel->getAllByIds(array()));
-        $this->assertNotEmpty($projectModel->getAllByIds(array(1, 2)));
-        $this->assertCount(1, $projectModel->getAllByIds(array(1)));
+        $this->assertEmpty($projectModel->getAllByIds([]));
+        $this->assertNotEmpty($projectModel->getAllByIds([1, 2]));
+        $this->assertCount(1, $projectModel->getAllByIds([1]));
     }
 
     public function testIsLastModified()
@@ -186,7 +186,7 @@ class ProjectModelTest extends Base
 
         $now = time();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -195,9 +195,9 @@ class ProjectModelTest extends Base
         sleep(1);
 
         $listener = new ProjectModificationDateSubscriber($this->container);
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, array($listener, 'execute'));
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, [$listener, 'execute']);
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.Hiject\Bus\Subscriber\ProjectModificationDateSubscriber::execute', $called);
@@ -211,7 +211,7 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($projectModel->remove(1));
         $this->assertFalse($projectModel->remove(1234));
     }
@@ -220,7 +220,7 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($projectModel->disable(1));
 
         $project = $projectModel->getById(1);
@@ -234,7 +234,7 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($projectModel->disable(1));
         $this->assertTrue($projectModel->enable(1));
 
@@ -249,7 +249,7 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($projectModel->enablePublicAccess(1));
 
         $project = $projectModel->getById(1);
@@ -264,7 +264,7 @@ class ProjectModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($projectModel->enablePublicAccess(1));
         $this->assertTrue($projectModel->disablePublicAccess(1));
 
@@ -281,8 +281,8 @@ class ProjectModelTest extends Base
         $projectModel = new ProjectModel($this->container);
 
         // Creation
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest1', 'identifier' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'UnitTest2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest1', 'identifier' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'UnitTest2']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -293,7 +293,7 @@ class ProjectModelTest extends Base
         $this->assertEquals('', $project['identifier']);
 
         // Update
-        $this->assertTrue($projectModel->update(array('id' => '2', 'identifier' => 'test2')));
+        $this->assertTrue($projectModel->update(['id' => '2', 'identifier' => 'test2']));
 
         $project = $projectModel->getById(2);
         $this->assertNotEmpty($project);
@@ -312,9 +312,9 @@ class ProjectModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1', 'name' => 'Me')));
-        $this->assertEquals(1, $projectModel->create(array('name' => 'My project 1'), 2));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'My project 2')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'name' => 'Me']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'My project 1'], 2));
+        $this->assertEquals(2, $projectModel->create(['name' => 'My project 2']));
 
         $project = $projectModel->getByIdWithOwner(1);
         $this->assertNotEmpty($project);

@@ -28,7 +28,7 @@ class TaskColumnFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('column');
+        return ['column'];
     }
 
     /**

@@ -29,16 +29,16 @@ class LinkValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\Required('label', t('Field required')),
             new Validators\Unique('label', t('This label must be unique'), $this->db->getConnection(), LinkModel::TABLE),
             new Validators\NotEquals('label', 'opposite_label', t('The labels must be different')),
-        ));
+        ]);
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -50,16 +50,16 @@ class LinkValidator extends BaseValidator
      */
     public function validateModification(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\Required('id', t('Field required')),
             new Validators\Required('opposite_id', t('Field required')),
             new Validators\Required('label', t('Field required')),
             new Validators\Unique('label', t('This label must be unique'), $this->db->getConnection(), LinkModel::TABLE),
-        ));
+        ]);
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 }

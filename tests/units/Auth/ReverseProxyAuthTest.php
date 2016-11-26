@@ -23,8 +23,8 @@ class ReverseProxyAuthTest extends Base
 
         $this->container['request'] = $this
             ->getMockBuilder('\Hiject\Core\Http\Request')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('getRemoteUser'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['getRemoteUser'])
             ->getMock();
     }
 
@@ -63,9 +63,9 @@ class ReverseProxyAuthTest extends Base
             ->method('getRemoteUser')
             ->will($this->returnValue('admin'));
 
-        $this->container['sessionStorage']->user = array(
+        $this->container['sessionStorage']->user = [
             'username' => 'admin'
-        );
+        ];
 
         $provider = new ReverseProxyAuth($this->container);
         $this->assertTrue($provider->isValidSession());
@@ -78,9 +78,9 @@ class ReverseProxyAuthTest extends Base
             ->method('getRemoteUser')
             ->will($this->returnValue('foobar'));
 
-        $this->container['sessionStorage']->user = array(
+        $this->container['sessionStorage']->user = [
             'username' => 'admin'
-        );
+        ];
 
         $provider = new ReverseProxyAuth($this->container);
         $this->assertFalse($provider->isValidSession());
@@ -110,7 +110,7 @@ class ReverseProxyAuthTest extends Base
         $provider = new ReverseProxyAuth($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'someone', 'role' => Role::APP_MANAGER)));
+        $this->assertEquals(2, $userModel->create(['username' => 'someone', 'role' => Role::APP_MANAGER]));
 
         $this->assertTrue($provider->authenticate());
 

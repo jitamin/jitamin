@@ -37,7 +37,7 @@ class FormHelper extends Base
      * @param  array   $values  Form values
      * @return string
      */
-    public function hidden($name, array $values = array())
+    public function hidden($name, array $values = [])
     {
         return '<input type="hidden" name="'.$name.'" id="form-'.$name.'" '.$this->formValue($values, $name).'/>';
     }
@@ -54,7 +54,7 @@ class FormHelper extends Base
      * @param  string $class CSS class
      * @return string
      */
-    public function select($name, array $options, array $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function select($name, array $options, array $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         $html = '<select name="'.$name.'" id="form-'.$name.'" class="'.$class.'" '.implode(' ', $attributes).'>';
 
@@ -86,7 +86,7 @@ class FormHelper extends Base
      * @param  array   $values   Form values
      * @return string
      */
-    public function radios($name, array $options, array $values = array())
+    public function radios($name, array $options, array $values = [])
     {
         $html = '';
 
@@ -122,7 +122,7 @@ class FormHelper extends Base
      * @param  array   $values   Form values
      * @return string
      */
-    public function checkboxes($name, array $options, array $values = array())
+    public function checkboxes($name, array $options, array $values = [])
     {
         $html = '';
 
@@ -158,7 +158,7 @@ class FormHelper extends Base
      * @param  array   $attributes  HTML attributes
      * @return string
      */
-    public function label($label, $name, array $attributes = array())
+    public function label($label, $name, array $attributes = [])
     {
         return '<label for="form-'.$name.'" '.implode(' ', $attributes).'>'.$this->helper->text->e($label).'</label>';
     }
@@ -174,7 +174,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function textarea($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function textarea($name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         $class .= $this->errorClass($errors, $name);
 
@@ -197,9 +197,9 @@ class FormHelper extends Base
      * @param  array   $attributes
      * @return string
      */
-    public function textEditor($name, $values = array(), array $errors = array(), array $attributes = array())
+    public function textEditor($name, $values = [], array $errors = [], array $attributes = [])
     {
-        $params = array(
+        $params = [
             'name' => $name,
             'text' => isset($values[$name]) ? $this->helper->text->e($values[$name]) : '',
             'css' => $this->errorClass($errors, $name),
@@ -208,7 +208,7 @@ class FormHelper extends Base
             'labelPreview' => t('Preview'),
             'labelWrite' => t('Write'),
             'placeholder' => t('Write your text in Markdown'),
-        );
+        ];
         $html = '<div class="js-text-editor" data-params=\''.json_encode($params, JSON_HEX_APOS).'\'></div>';
         $html .= $this->errorList($errors, $name);
         return $html;
@@ -223,7 +223,7 @@ class FormHelper extends Base
      * @param  boolean $multiple
      * @return string
      */
-    public function file($name, array $errors = array(), $multiple = false)
+    public function file($name, array $errors = [], $multiple = false)
     {
         $html = '<input type="file" name="'.$name.'" id="form-'.$name.'" '.($multiple ? 'multiple' : '').'>';
         $html .= $this->errorList($errors, $name);
@@ -243,7 +243,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function input($type, $name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function input($type, $name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         $class .= $this->errorClass($errors, $name);
 
@@ -270,7 +270,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function text($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function text($name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         return $this->input('text', $name, $values, $errors, $attributes, $class);
     }
@@ -286,7 +286,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function password($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function password($name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         return $this->input('password', $name, $values, $errors, $attributes, $class);
     }
@@ -302,7 +302,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function email($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function email($name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         return $this->input('email', $name, $values, $errors, $attributes, $class);
     }
@@ -318,7 +318,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function number($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function number($name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         return $this->input('number', $name, $values, $errors, $attributes, $class);
     }
@@ -334,7 +334,7 @@ class FormHelper extends Base
      * @param  string  $class       CSS class
      * @return string
      */
-    public function numeric($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '')
+    public function numeric($name, $values = [], array $errors = [], array $attributes = [], $class = '')
     {
         return $this->input('text', $name, $values, $errors, $attributes, $class.' form-numeric');
     }
@@ -350,11 +350,11 @@ class FormHelper extends Base
      * @param  array  $attributes
      * @return string
      */
-    public function date($label, $name, array $values, array $errors = array(), array $attributes = array())
+    public function date($label, $name, array $values, array $errors = [], array $attributes = [])
     {
         $userFormat = $this->dateParser->getUserDateFormat();
-        $values = $this->dateParser->format($values, array($name), $userFormat);
-        $attributes = array_merge(array('placeholder="'.date($userFormat).'"'), $attributes);
+        $values = $this->dateParser->format($values, [$name], $userFormat);
+        $attributes = array_merge(['placeholder="'.date($userFormat).'"'], $attributes);
 
         return $this->helper->form->label($label, $name) .
             $this->helper->form->text($name, $values, $errors, $attributes, 'form-date');
@@ -371,11 +371,11 @@ class FormHelper extends Base
      * @param  array  $attributes
      * @return string
      */
-    public function datetime($label, $name, array $values, array $errors = array(), array $attributes = array())
+    public function datetime($label, $name, array $values, array $errors = [], array $attributes = [])
     {
         $userFormat = $this->dateParser->getUserDateTimeFormat();
-        $values = $this->dateParser->format($values, array($name), $userFormat);
-        $attributes = array_merge(array('placeholder="'.date($userFormat).'"'), $attributes);
+        $values = $this->dateParser->format($values, [$name], $userFormat);
+        $attributes = array_merge(['placeholder="'.date($userFormat).'"'], $attributes);
 
         return $this->helper->form->label($label, $name) .
             $this->helper->form->text($name, $values, $errors, $attributes, 'form-datetime');

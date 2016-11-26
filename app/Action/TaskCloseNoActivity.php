@@ -37,7 +37,7 @@ class TaskCloseNoActivity extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(TaskModel::EVENT_DAILY_CRONJOB);
+        return [TaskModel::EVENT_DAILY_CRONJOB];
     }
 
     /**
@@ -48,9 +48,9 @@ class TaskCloseNoActivity extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'duration' => t('Duration in days')
-        );
+        ];
     }
 
     /**
@@ -61,7 +61,7 @@ class TaskCloseNoActivity extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array('tasks');
+        return ['tasks'];
     }
 
     /**
@@ -73,7 +73,7 @@ class TaskCloseNoActivity extends Base
      */
     public function doAction(array $data)
     {
-        $results = array();
+        $results = [];
         $max = $this->getParam('duration') * 86400;
 
         foreach ($data['tasks'] as $task) {

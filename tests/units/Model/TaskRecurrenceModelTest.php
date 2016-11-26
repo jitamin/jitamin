@@ -53,35 +53,35 @@ class TaskRecurrenceModelTest extends Base
     {
         $taskRecurrenceModel = new TaskRecurrenceModel($this->container);
 
-        $values = array('date_due' => 0);
+        $values = ['date_due' => 0];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(0, $values['date_due']);
 
-        $values = array('date_due' => 0, 'recurrence_factor' => 0, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS);
+        $values = ['date_due' => 0, 'recurrence_factor' => 0, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(0, $values['date_due']);
 
-        $values = array('date_due' => 1431291376, 'recurrence_factor' => 1, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS);
+        $values = ['date_due' => 1431291376, 'recurrence_factor' => 1, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(time() + 86400, $values['date_due'], '', 1);
 
-        $values = array('date_due' => 1431291376, 'recurrence_factor' => -2, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS);
+        $values = ['date_due' => 1431291376, 'recurrence_factor' => -2, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(time() - 2 * 86400, $values['date_due'], '', 1);
 
-        $values = array('date_due' => 1431291376, 'recurrence_factor' => 1, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS);
+        $values = ['date_due' => 1431291376, 'recurrence_factor' => 1, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(1431291376 + 86400, $values['date_due'], '', 1);
 
-        $values = array('date_due' => 1431291376, 'recurrence_factor' => -1, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS);
+        $values = ['date_due' => 1431291376, 'recurrence_factor' => -1, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(1431291376 - 86400, $values['date_due'], '', 1);
 
-        $values = array('date_due' => 1431291376, 'recurrence_factor' => 2, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_MONTHS);
+        $values = ['date_due' => 1431291376, 'recurrence_factor' => 2, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_MONTHS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(1436561776, $values['date_due'], '', 1);
 
-        $values = array('date_due' => 1431291376, 'recurrence_factor' => 2, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_YEARS);
+        $values = ['date_due' => 1431291376, 'recurrence_factor' => 2, 'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_DUEDATE, 'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_YEARS];
         $taskRecurrenceModel->calculateRecurringTaskDueDate($values);
         $this->assertEquals(1494449776, $values['date_due'], '', 1);
     }
@@ -95,9 +95,9 @@ class TaskRecurrenceModelTest extends Base
         $dateParser = new DateParser($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'date_due' => 1436561776,
@@ -106,8 +106,8 @@ class TaskRecurrenceModelTest extends Base
             'recurrence_factor' => 2,
             'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS,
             'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE,
-            'tags' => array('T1', 'T2'),
-        )));
+            'tags' => ['T1', 'T2'],
+        ]));
 
         $this->assertEquals(2, $taskRecurrenceModel->duplicateRecurringTask(1));
 

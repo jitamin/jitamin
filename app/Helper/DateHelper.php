@@ -120,10 +120,10 @@ class DateHelper extends Base
      */
     public function getDayHours()
     {
-        $values = array();
+        $values = [];
 
         foreach (range(0, 23) as $hour) {
-            foreach (array(0, 30) as $minute) {
+            foreach ([0, 30] as $minute) {
                 $time = sprintf('%02d:%02d', $hour, $minute);
                 $values[$time] = $time;
             }
@@ -140,7 +140,7 @@ class DateHelper extends Base
      */
     public function getWeekDays()
     {
-        $values = array();
+        $values = [];
 
         foreach (range(1, 7) as $day) {
             $values[$day] = $this->getWeekDay($day);

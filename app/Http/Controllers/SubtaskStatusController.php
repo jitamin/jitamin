@@ -68,10 +68,10 @@ class SubtaskStatusController extends BaseController
      */
     private function renderTable(array $task)
     {
-        return $this->template->render('subtask/table', array(
+        return $this->template->render('subtask/table', [
             'task' => $task,
             'subtasks' => $this->subtaskModel->getAll($task['id']),
             'editable' => true,
-        ));
+        ]);
     }
 }

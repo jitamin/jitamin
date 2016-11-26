@@ -126,13 +126,13 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
         $vEvent->setSummary(t('#%d', $task['id']).' '.$task['title']);
         $vEvent->setDescription($task['description']);
         $vEvent->setDescriptionHTML($this->helper->text->markdown($task['description']));
-        $vEvent->setUrl($this->helper->url->base().$this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])));
+        $vEvent->setUrl($this->helper->url->base().$this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
 
         if (! empty($task['owner_id'])) {
             $attendees = new Attendees;
             $attendees->add(
                 'MAILTO:'.($task['assignee_email'] ?: $task['assignee_username'].'@hiject.local'),
-                array('CN' => $task['assignee_name'] ?: $task['assignee_username'])
+                ['CN' => $task['assignee_name'] ?: $task['assignee_username']]
             );
             $vEvent->setAttendees($attendees);
         }
@@ -140,7 +140,7 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
         if (! empty($task['creator_id'])) {
             $vEvent->setOrganizer(new Organizer(
                 'MAILTO:' . $task['creator_email'] ?: $task['creator_username'].'@hiject.local',
-                array('CN' => $task['creator_name'] ?: $task['creator_username'])
+                ['CN' => $task['creator_name'] ?: $task['creator_username']]
             ));
         }
 

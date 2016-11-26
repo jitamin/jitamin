@@ -28,34 +28,34 @@ class ProjectGanttFormatter extends BaseFormatter implements FormatterInterface
     {
         $projects = $this->query->findAll();
         $colors = $this->colorModel->getDefaultColors();
-        $bars = array();
+        $bars = [];
 
         foreach ($projects as $project) {
             $start = empty($project['start_date']) ? time() : strtotime($project['start_date']);
             $end = empty($project['end_date']) ? $start : strtotime($project['end_date']);
             $color = next($colors) ?: reset($colors);
 
-            $bars[] = array(
+            $bars[] = [
                 'type' => 'project',
                 'id' => $project['id'],
                 'title' => $project['name'],
-                'start' => array(
+                'start' => [
                     (int) date('Y', $start),
                     (int) date('n', $start),
                     (int) date('j', $start),
-                ),
-                'end' => array(
+                ],
+                'end' => [
                     (int) date('Y', $end),
                     (int) date('n', $end),
                     (int) date('j', $end),
-                ),
-                'link' => $this->helper->url->href('ProjectSettingsController', 'show', array('project_id' => $project['id'])),
-                'board_link' => $this->helper->url->href('BoardViewController', 'show', array('project_id' => $project['id'])),
-                'gantt_link' => $this->helper->url->href('TaskGanttController', 'show', array('project_id' => $project['id'])),
+                ],
+                'link' => $this->helper->url->href('ProjectSettingsController', 'show', ['project_id' => $project['id']]),
+                'board_link' => $this->helper->url->href('BoardViewController', 'show', ['project_id' => $project['id']]),
+                'gantt_link' => $this->helper->url->href('TaskGanttController', 'show', ['project_id' => $project['id']]),
                 'color' => $color,
                 'not_defined' => empty($project['start_date']) || empty($project['end_date']),
                 'users' => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
-            );
+            ];
         }
 
         return $bars;

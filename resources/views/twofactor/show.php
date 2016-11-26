@@ -19,11 +19,11 @@
 <?php endif ?>
 
 <h3><?= t('Test your device') ?></h3>
-<form method="post" action="<?= $this->url->href('TwoFactorController', 'test', array('user_id' => $user['id'])) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('TwoFactorController', 'test', ['user_id' => $user['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->label(t('Code'), 'code') ?>
-    <?= $this->form->text('code', array(), array(), array('placeholder="123456"', 'autofocus'), 'form-numeric') ?>
+    <?= $this->form->text('code', [], [], ['placeholder="123456"', 'autofocus'], 'form-numeric') ?>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Check my code') ?></button>

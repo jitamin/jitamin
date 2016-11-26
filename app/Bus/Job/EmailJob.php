@@ -29,7 +29,7 @@ class EmailJob extends BaseJob
      */
     public function withParams($email, $name, $subject, $html, $author)
     {
-        $this->jobParams = array($email, $name, $subject, $html, $author);
+        $this->jobParams = [$email, $name, $subject, $html, $author];
         return $this;
     }
 

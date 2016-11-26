@@ -27,11 +27,11 @@ class TaskAssignCategoryLabelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'c1', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
 
-        $event = new GenericEvent(array('project_id' => 1, 'task_id' => 1, 'label' => 'foobar'));
+        $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'label' => 'foobar']);
 
         $action = new TaskAssignCategoryLabel($this->container);
         $action->setProjectId(1);
@@ -52,11 +52,11 @@ class TaskAssignCategoryLabelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'c1', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
 
-        $event = new GenericEvent(array('project_id' => 1, 'task_id' => 1, 'label' => 'something'));
+        $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'label' => 'something']);
 
         $action = new TaskAssignCategoryLabel($this->container);
         $action->setProjectId(1);
@@ -73,13 +73,13 @@ class TaskAssignCategoryLabelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'c1', 'project_id' => 1)));
-        $this->assertEquals(2, $categoryModel->create(array('name' => 'c2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
+        $this->assertEquals(2, $categoryModel->create(['name' => 'c2', 'project_id' => 1]));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'category_id' => 2)));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'category_id' => 2]));
 
-        $event = new GenericEvent(array('project_id' => 1, 'task_id' => 1, 'label' => 'foobar', 'category_id' => 2));
+        $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'label' => 'foobar', 'category_id' => 2]);
 
         $action = new TaskAssignCategoryLabel($this->container);
         $action->setProjectId(1);

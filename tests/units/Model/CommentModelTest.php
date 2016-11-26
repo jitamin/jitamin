@@ -23,10 +23,10 @@ class CommentModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'bla bla', 'user_id' => 1)));
-        $this->assertEquals(2, $commentModel->create(array('task_id' => 1, 'comment' => 'bla bla')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'bla bla', 'user_id' => 1]));
+        $this->assertEquals(2, $commentModel->create(['task_id' => 1, 'comment' => 'bla bla']));
 
         $comment = $commentModel->getById(1);
         $this->assertNotEmpty($comment);
@@ -51,11 +51,11 @@ class CommentModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'c1', 'user_id' => 1)));
-        $this->assertEquals(2, $commentModel->create(array('task_id' => 1, 'comment' => 'c2', 'user_id' => 1)));
-        $this->assertEquals(3, $commentModel->create(array('task_id' => 1, 'comment' => 'c3', 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
+        $this->assertEquals(2, $commentModel->create(['task_id' => 1, 'comment' => 'c2', 'user_id' => 1]));
+        $this->assertEquals(3, $commentModel->create(['task_id' => 1, 'comment' => 'c3', 'user_id' => 1]));
 
         $comments = $commentModel->getAll(1);
 
@@ -74,10 +74,10 @@ class CommentModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'c1', 'user_id' => 1)));
-        $this->assertTrue($commentModel->update(array('id' => 1, 'comment' => 'bla')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
+        $this->assertTrue($commentModel->update(['id' => 1, 'comment' => 'bla']));
 
         $comment = $commentModel->getById(1);
         $this->assertNotEmpty($comment);
@@ -90,9 +90,9 @@ class CommentModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'c1', 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
 
         $this->assertTrue($commentModel->remove(1));
         $this->assertFalse($commentModel->remove(1));
@@ -105,9 +105,9 @@ class CommentModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'c1', 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
 
         $this->assertEquals(1, $commentModel->getProjectId(1));
         $this->assertSame(0, $commentModel->getProjectId(2));

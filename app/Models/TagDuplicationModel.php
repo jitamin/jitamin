@@ -29,7 +29,7 @@ class TagDuplicationModel extends Base
     public function duplicate($src_project_id, $dst_project_id)
     {
         $tags = $this->tagModel->getAllByProject($src_project_id);
-        $results = array();
+        $results = [];
 
         foreach ($tags as $tag) {
             $results[] = $this->tagModel->create($dst_project_id, $tag['name']);

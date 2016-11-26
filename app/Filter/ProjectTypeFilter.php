@@ -27,7 +27,7 @@ class ProjectTypeFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('type');
+        return ['type'];
     }
 
     /**

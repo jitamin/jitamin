@@ -26,19 +26,19 @@ class UserCreationController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         $isRemote = $this->request->getIntegerParam('remote') == 1 || (isset($values['is_ldap_user']) && $values['is_ldap_user'] == 1);
         $template = $isRemote ? 'user_creation/remote' : 'user_creation/local';
 
-        $this->response->html($this->template->render($template, array(
+        $this->response->html($this->template->render($template, [
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
             'roles' => $this->role->getApplicationRoles(),
             'projects' => $this->projectModel->getList(),
             'errors' => $errors,
-            'values' => $values + array('role' => Role::APP_USER),
-        )));
+            'values' => $values + ['role' => Role::APP_USER],
+        ]));
     }
 
     /**
@@ -76,11 +76,11 @@ class UserCreationController extends BaseController
             }
 
             if (! empty($values['notifications_enabled'])) {
-                $this->userNotificationTypeModel->saveSelectedTypes($user_id, array(MailNotification::TYPE));
+                $this->userNotificationTypeModel->saveSelectedTypes($user_id, [MailNotification::TYPE]);
             }
 
             $this->flash->success(t('User created successfully.'));
-            $this->response->redirect($this->helper->url->to('UserViewController', 'show', array('user_id' => $user_id)));
+            $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user_id]));
         } else {
             $this->flash->failure(t('Unable to create your user.'));
             $this->response->redirect($this->helper->url->to('UserListController', 'show'));

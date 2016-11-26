@@ -28,11 +28,11 @@ class CommentProcedureTest extends BaseProcedureTest
 
     public function assertCreateComment()
     {
-        $this->commentId = $this->app->execute('createComment', array(
+        $this->commentId = $this->app->execute('createComment', [
             'task_id' => $this->taskId,
             'user_id' => 1,
             'content' => 'foobar',
-        ));
+        ]);
 
         $this->assertNotFalse($this->commentId);
     }
@@ -48,10 +48,10 @@ class CommentProcedureTest extends BaseProcedureTest
 
     public function assertUpdateComment()
     {
-        $this->assertTrue($this->app->execute('updateComment', array(
+        $this->assertTrue($this->app->execute('updateComment', [
             'id' => $this->commentId,
             'content' => 'test',
-        )));
+        ]));
 
         $comment = $this->app->getComment($this->commentId);
         $this->assertEquals('test', $comment['comment']);

@@ -22,7 +22,7 @@ class Entry
      * @access protected
      * @var array
      */
-    protected $entry = array();
+    protected $entry = [];
 
     /**
      * Constructor
@@ -44,7 +44,7 @@ class Entry
      */
     public function getAll($attribute)
     {
-        $attributes = array();
+        $attributes = [];
 
         if (! isset($this->entry[$attribute]['count'])) {
             return $attributes;

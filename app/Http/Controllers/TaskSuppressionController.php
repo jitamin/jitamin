@@ -29,10 +29,10 @@ class TaskSuppressionController extends BaseController
             throw new AccessForbiddenException();
         }
 
-        $this->response->html($this->template->render('task_suppression/remove', array(
+        $this->response->html($this->template->render('task_suppression/remove', [
             'task' => $task,
             'redirect' => $this->request->getStringParam('redirect'),
-        )));
+        ]));
     }
 
     /**
@@ -54,6 +54,6 @@ class TaskSuppressionController extends BaseController
         }
 
         $redirect = $this->request->getStringParam('redirect') === '';
-        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $task['project_id'])), $redirect);
+        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $task['project_id']]), $redirect);
     }
 }

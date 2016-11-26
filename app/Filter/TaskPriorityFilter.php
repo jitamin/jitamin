@@ -27,7 +27,7 @@ class TaskPriorityFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('priority');
+        return ['priority'];
     }
 
     /**

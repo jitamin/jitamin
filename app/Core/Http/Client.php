@@ -48,7 +48,7 @@ class Client extends Base
      * @param  string[]   $headers
      * @return string
      */
-    public function get($url, array $headers = array())
+    public function get($url, array $headers = [])
     {
         return $this->doRequest('GET', $url, '', $headers);
     }
@@ -61,10 +61,10 @@ class Client extends Base
      * @param  string[]   $headers
      * @return array
      */
-    public function getJson($url, array $headers = array())
+    public function getJson($url, array $headers = [])
     {
-        $response = $this->doRequest('GET', $url, '', array_merge(array('Accept: application/json'), $headers));
-        return json_decode($response, true) ?: array();
+        $response = $this->doRequest('GET', $url, '', array_merge(['Accept: application/json'], $headers));
+        return json_decode($response, true) ?: [];
     }
 
     /**
@@ -76,13 +76,13 @@ class Client extends Base
      * @param  string[]   $headers
      * @return string
      */
-    public function postJson($url, array $data, array $headers = array())
+    public function postJson($url, array $data, array $headers = [])
     {
         return $this->doRequest(
             'POST',
             $url,
             json_encode($data),
-            array_merge(array('Content-type: application/json'), $headers)
+            array_merge(['Content-type: application/json'], $headers)
         );
     }
 
@@ -94,13 +94,13 @@ class Client extends Base
      * @param  array      $data
      * @param  string[]   $headers
      */
-    public function postJsonAsync($url, array $data, array $headers = array())
+    public function postJsonAsync($url, array $data, array $headers = [])
     {
         $this->queueManager->push(HttpAsyncJob::getInstance($this->container)->withParams(
             'POST',
             $url,
             json_encode($data),
-            array_merge(array('Content-type: application/json'), $headers)
+            array_merge(['Content-type: application/json'], $headers)
         ));
     }
 
@@ -113,13 +113,13 @@ class Client extends Base
      * @param  string[]   $headers
      * @return string
      */
-    public function postForm($url, array $data, array $headers = array())
+    public function postForm($url, array $data, array $headers = [])
     {
         return $this->doRequest(
             'POST',
             $url,
             http_build_query($data),
-            array_merge(array('Content-type: application/x-www-form-urlencoded'), $headers)
+            array_merge(['Content-type: application/x-www-form-urlencoded'], $headers)
         );
     }
 
@@ -131,13 +131,13 @@ class Client extends Base
      * @param  array      $data
      * @param  string[]   $headers
      */
-    public function postFormAsync($url, array $data, array $headers = array())
+    public function postFormAsync($url, array $data, array $headers = [])
     {
         $this->queueManager->push(HttpAsyncJob::getInstance($this->container)->withParams(
             'POST',
             $url,
             http_build_query($data),
-            array_merge(array('Content-type: application/x-www-form-urlencoded'), $headers)
+            array_merge(['Content-type: application/x-www-form-urlencoded'], $headers)
         ));
     }
 
@@ -190,10 +190,10 @@ class Client extends Base
      */
     private function getContext($method, $content, array $headers)
     {
-        $default_headers = array(
+        $default_headers = [
             'User-Agent: '.self::HTTP_USER_AGENT,
             'Connection: close',
-        );
+        ];
 
         if (HTTP_PROXY_USERNAME) {
             $default_headers[] = 'Proxy-Authorization: Basic '.base64_encode(HTTP_PROXY_USERNAME.':'.HTTP_PROXY_PASSWORD);
@@ -201,16 +201,16 @@ class Client extends Base
 
         $headers = array_merge($default_headers, $headers);
 
-        $context = array(
-            'http' => array(
+        $context = [
+            'http' => [
                 'method' => $method,
                 'protocol_version' => 1.1,
                 'timeout' => self::HTTP_TIMEOUT,
                 'max_redirects' => self::HTTP_MAX_REDIRECTS,
                 'header' => implode("\r\n", $headers),
                 'content' => $content,
-            )
-        );
+            ]
+        ];
 
         if (HTTP_PROXY_HOSTNAME) {
             $context['http']['proxy'] = 'tcp://'.HTTP_PROXY_HOSTNAME.':'.HTTP_PROXY_PORT;
@@ -218,11 +218,11 @@ class Client extends Base
         }
 
         if (HTTP_VERIFY_SSL_CERTIFICATE === false) {
-            $context['ssl'] = array(
+            $context['ssl'] = [
                 'verify_peer' => false,
                 'verify_peer_name' => false,
                 'allow_self_signed' => true,
-            );
+            ];
         }
 
         return $context;

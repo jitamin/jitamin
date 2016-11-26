@@ -49,10 +49,10 @@ class TaskFileEventBuilder extends BaseEventBuilder
             return null;
         }
 
-        return new TaskFileEvent(array(
+        return new TaskFileEvent([
             'file' => $file,
             'task' => $this->taskFinderModel->getDetails($file['task_id']),
-        ));
+        ]);
     }
 
     /**

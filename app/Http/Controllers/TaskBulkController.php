@@ -22,26 +22,26 @@ class TaskBulkController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
         if (empty($values)) {
-            $values = array(
+            $values = [
                 'swimlane_id' => $this->request->getIntegerParam('swimlane_id'),
                 'column_id' => $this->request->getIntegerParam('column_id'),
                 'project_id' => $project['id'],
-            );
+            ];
         }
 
-        $this->response->html($this->template->render('task_bulk/show', array(
+        $this->response->html($this->template->render('task_bulk/show', [
             'project' => $project,
             'values' => $values,
             'errors' => $errors,
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
             'colors_list' => $this->colorModel->getList(),
             'categories_list' => $this->categoryModel->getList($project['id']),
-        )));
+        ]));
     }
 
     /**
@@ -57,13 +57,13 @@ class TaskBulkController extends BaseController
             $this->show($values, $errors);
         } elseif (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
             $this->flash->failure(t('You cannot create tasks in this column.'));
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', array('project_id' => $project['id'])), true);
+            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
         } else {
             $this->createTasks($project, $values);
             $this->response->redirect($this->helper->url->to(
                 'BoardViewController',
                 'show',
-                array('project_id' => $project['id']),
+                ['project_id' => $project['id']],
                 'swimlane-'. $values['swimlane_id']
             ), true);
         }
@@ -83,7 +83,7 @@ class TaskBulkController extends BaseController
             $title = trim($title);
 
             if (! empty($title)) {
-                $this->taskCreationModel->create(array(
+                $this->taskCreationModel->create([
                     'title' => $title,
                     'column_id' => $values['column_id'],
                     'swimlane_id' => $values['swimlane_id'],
@@ -91,7 +91,7 @@ class TaskBulkController extends BaseController
                     'owner_id' => empty($values['owner_id']) ? 0 : $values['owner_id'],
                     'color_id' => $values['color_id'],
                     'project_id' => $project['id'],
-                ));
+                ]);
             }
         }
     }

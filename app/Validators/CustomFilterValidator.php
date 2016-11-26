@@ -27,7 +27,7 @@ class CustomFilterValidator extends BaseValidator
      */
     private function commonValidationRules()
     {
-        return array(
+        return [
             new Validators\Required('project_id', t('Field required')),
             new Validators\Required('user_id', t('Field required')),
             new Validators\Required('name', t('Field required')),
@@ -36,7 +36,7 @@ class CustomFilterValidator extends BaseValidator
             new Validators\Integer('project_id', t('This value must be an integer')),
             new Validators\MaxLength('name', t('The maximum length is %d characters', 100), 100),
             new Validators\MaxLength('filter', t('The maximum length is %d characters', 100), 100)
-        );
+        ];
     }
 
     /**
@@ -50,10 +50,10 @@ class CustomFilterValidator extends BaseValidator
     {
         $v = new Validator($values, $this->commonValidationRules());
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 
     /**
@@ -65,16 +65,16 @@ class CustomFilterValidator extends BaseValidator
      */
     public function validateModification(array $values)
     {
-        $rules = array(
+        $rules = [
             new Validators\Required('id', t('Field required')),
             new Validators\Integer('id', t('This value must be an integer')),
-        );
+        ];
 
         $v = new Validator($values, array_merge($rules, $this->commonValidationRules()));
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 }

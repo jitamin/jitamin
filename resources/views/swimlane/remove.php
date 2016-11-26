@@ -9,9 +9,9 @@
         </p>
 
         <div class="form-actions">
-            <?= $this->url->link(t('Yes'), 'SwimlaneController', 'remove', array('project_id' => $project['id'], 'swimlane_id' => $swimlane['id']), true, 'btn btn-danger') ?>
+            <?= $this->url->link(t('Yes'), 'SwimlaneController', 'remove', ['project_id' => $project['id'], 'swimlane_id' => $swimlane['id']], true, 'btn btn-danger') ?>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'SwimlaneController', 'index', array('project_id' => $project['id']), false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'SwimlaneController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
         </div>
     </div>
 </section>

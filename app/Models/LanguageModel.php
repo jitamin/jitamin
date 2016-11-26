@@ -28,10 +28,10 @@ class LanguageModel extends Base
      */
     public static function getCodes()
     {
-        return array(
+        return [
             'en_US',
             'zh_CN',
-        );
+        ];
     }
 
     /**
@@ -58,13 +58,13 @@ class LanguageModel extends Base
     public function getLanguages($prepend = false)
     {
         // Sorted by value
-        $languages = array(
+        $languages = [
             'en_US' => 'English',
             'zh_CN' => '中文(简体)',
-        );
+        ];
 
         if ($prepend) {
-            return array('' => t('Application default')) + $languages;
+            return ['' => t('Application default')] + $languages;
         }
 
         return $languages;
@@ -78,10 +78,10 @@ class LanguageModel extends Base
      */
     public function getJsLanguageCode()
     {
-        $languages = array(
+        $languages = [
             'en_US' => 'en',
             'zh_CN' => 'zh-cn',
-        );
+        ];
 
         $lang = $this->getCurrentLanguage();
 

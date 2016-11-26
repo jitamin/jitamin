@@ -18,8 +18,8 @@ use Hiject\Core\Filter\FormatterInterface;
  */
 class BoardTaskFormatter extends BaseFormatter implements FormatterInterface
 {
-    protected $tasks = array();
-    protected $tags = array();
+    protected $tasks = [];
+    protected $tags = [];
     protected $columnId = 0;
     protected $swimlaneId = 0;
 
@@ -83,7 +83,7 @@ class BoardTaskFormatter extends BaseFormatter implements FormatterInterface
      */
     public function format()
     {
-        $tasks = array_values(array_filter($this->tasks, array($this, 'filterTasks')));
+        $tasks = array_values(array_filter($this->tasks, [$this, 'filterTasks']));
         array_merge_relation($tasks, $this->tags, 'tags', 'id');
 
         foreach ($tasks as &$task) {

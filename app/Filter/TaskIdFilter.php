@@ -27,7 +27,7 @@ class TaskIdFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('id');
+        return ['id'];
     }
 
     /**

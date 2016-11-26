@@ -23,7 +23,7 @@ class AssetHelperTest extends Base
 
         $this->assertEmpty($h->customCss());
 
-        $this->assertTrue($c->save(array('application_stylesheet' => 'p { color: red }')));
+        $this->assertTrue($c->save(['application_stylesheet' => 'p { color: red }']));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('<style>p { color: red }</style>', $h->customCss());

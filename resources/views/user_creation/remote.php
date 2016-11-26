@@ -3,12 +3,12 @@
 </div>
 <form class="popover-form" method="post" action="<?= $this->url->href('UserCreationController', 'save') ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
-    <?= $this->form->hidden('is_ldap_user', array('is_ldap_user' => 1)) ?>
+    <?= $this->form->hidden('is_ldap_user', ['is_ldap_user' => 1]) ?>
 
     <div class="form-columns">
         <div class="form-column">
             <?= $this->form->label(t('Username'), 'username') ?>
-            <?= $this->form->text('username', $values, $errors, array('autofocus', 'required', 'maxlength="50"')) ?>
+            <?= $this->form->text('username', $values, $errors, ['autofocus', 'required', 'maxlength="50"']) ?>
     
             <?= $this->form->label(t('Name'), 'name') ?>
             <?= $this->form->text('name', $values, $errors) ?>
@@ -16,7 +16,7 @@
             <?= $this->form->label(t('Email'), 'email') ?>
             <?= $this->form->email('email', $values, $errors) ?>
 
-            <?= $this->hook->render('template:user:create-remote:form', array('values' => $values, 'errors' => $errors)) ?>
+            <?= $this->hook->render('template:user:create-remote:form', ['values' => $values, 'errors' => $errors]) ?>
         </div>
 
         <div class="form-column">
@@ -40,7 +40,7 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'UserListController', 'show', array(), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'UserListController', 'show', [], false, 'close-popover') ?>
     </div>
 </form>
 <div class="alert alert-info">

@@ -26,8 +26,8 @@ class ActionController extends BaseController
         $project = $this->getProject();
         $actions = $this->actionModel->getAllByProject($project['id']);
 
-        $this->response->html($this->helper->layout->project('action/index', array(
-            'values' => array('project_id' => $project['id']),
+        $this->response->html($this->helper->layout->project('action/index', [
+            'values' => ['project_id' => $project['id']],
             'project' => $project,
             'actions' => $actions,
             'available_actions' => $this->actionManager->getAvailableActions(),
@@ -41,7 +41,7 @@ class ActionController extends BaseController
             'links_list' => $this->linkModel->getList(0, false),
             'swimlane_list' => $this->swimlaneModel->getList($project['id']),
             'title' => t('Automatic actions')
-        )));
+        ]));
     }
 
     /**
@@ -53,13 +53,13 @@ class ActionController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('action/remove', array(
+        $this->response->html($this->helper->layout->project('action/remove', [
             'action' => $this->actionModel->getById($this->request->getIntegerParam('action_id')),
             'available_events' => $this->eventManager->getAll(),
             'available_actions' => $this->actionManager->getAvailableActions(),
             'project' => $project,
             'title' => t('Remove an action')
-        )));
+        ]));
     }
 
     /**
@@ -79,6 +79,6 @@ class ActionController extends BaseController
             $this->flash->failure(t('Unable to remove this action.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ActionController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
     }
 }

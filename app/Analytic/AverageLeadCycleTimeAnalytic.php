@@ -28,13 +28,13 @@ class AverageLeadCycleTimeAnalytic extends Base
      */
     public function build($project_id)
     {
-        $stats = array(
+        $stats = [
             'count' => 0,
             'total_lead_time' => 0,
             'total_cycle_time' => 0,
             'avg_lead_time' => 0,
             'avg_cycle_time' => 0,
-        );
+        ];
 
         $tasks = $this->getTasks($project_id);
 

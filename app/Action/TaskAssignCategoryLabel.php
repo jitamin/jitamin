@@ -35,7 +35,7 @@ class TaskAssignCategoryLabel extends Base
      */
     public function getCompatibleEvents()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -46,10 +46,10 @@ class TaskAssignCategoryLabel extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'label' => t('Label'),
             'category_id' => t('Category'),
-        );
+        ];
     }
 
     /**
@@ -60,10 +60,10 @@ class TaskAssignCategoryLabel extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
             'label',
-        );
+        ];
     }
 
     /**
@@ -75,10 +75,10 @@ class TaskAssignCategoryLabel extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'category_id' => $this->getParam('category_id'),
-        );
+        ];
 
         return $this->taskModificationModel->update($values);
     }

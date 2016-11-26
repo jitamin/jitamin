@@ -1,4 +1,4 @@
-<?= $this->hook->render('template:app:filters-helper:before', isset($project) ? array('project' => $project) : array()) ?>
+<?= $this->hook->render('template:app:filters-helper:before', isset($project) ? ['project' => $project] : []) ?>
 <div class="dropdown">
     <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('Default filters') ?>"><i class="fa fa-filter"></i> <i class="fa fa-caret-down"></i></a>
     <ul>
@@ -17,4 +17,4 @@
         </li>
     </ul>
 </div>
-<?= $this->hook->render('template:app:filters-helper:after', isset($project) ? array('project' => $project) : array()) ?>
+<?= $this->hook->render('template:app:filters-helper:after', isset($project) ? ['project' => $project] : []) ?>

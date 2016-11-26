@@ -19,7 +19,7 @@ use Iterator;
 class EventIteratorBuilder implements Iterator
 {
     private $position = 0;
-    private $builders = array();
+    private $builders = [];
 
     /**
      * Set builder

@@ -27,7 +27,7 @@ class NotificationJob extends BaseJob
      */
     public function withParams(GenericEvent $event, $eventName)
     {
-        $this->jobParams = array($event->getAll(), $eventName);
+        $this->jobParams = [$event->getAll(), $eventName];
         return $this;
     }
 

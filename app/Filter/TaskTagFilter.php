@@ -38,7 +38,7 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('tag');
+        return ['tag'];
     }
 
     /**
@@ -69,7 +69,7 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
         }
 
         if (empty($task_ids)) {
-            $task_ids = array(-1);
+            $task_ids = [-1];
         }
 
         $this->query->in(TaskModel::TABLE.'.id', $task_ids);

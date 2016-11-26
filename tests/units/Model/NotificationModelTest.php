@@ -35,11 +35,11 @@ class NotificationModelTest extends Base
         $taskFileModel = new TaskFileModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $subtaskModel->create(array('title' => 'test', 'task_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('comment' => 'test', 'task_id' => 1, 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $subtaskModel->create(['title' => 'test', 'task_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['comment' => 'test', 'task_id' => 1, 'user_id' => 1]));
         $this->assertEquals(1, $taskFileModel->create(1, 'test', 'blah', 123));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
@@ -50,21 +50,21 @@ class NotificationModelTest extends Base
         $tasklink = $taskLinkModel->getById(1);
 
         foreach (NotificationSubscriber::getSubscribedEvents() as $eventName => $values) {
-            $eventData = array(
+            $eventData = [
                 'task' => $task,
                 'comment' => $comment,
                 'subtask' => $subtask,
                 'file' => $file,
                 'task_link' => $tasklink,
-                'changes' => array()
-            );
+                'changes' => []
+            ];
 
             $this->assertNotEmpty($notificationModel->getTitleWithoutAuthor($eventName, $eventData));
             $this->assertNotEmpty($notificationModel->getTitleWithAuthor('Foobar', $eventName, $eventData));
         }
 
-        $this->assertNotEmpty($notificationModel->getTitleWithoutAuthor(TaskModel::EVENT_OVERDUE, array('tasks' => array(array('id' => 1)))));
-        $this->assertNotEmpty($notificationModel->getTitleWithoutAuthor('unknown', array()));
+        $this->assertNotEmpty($notificationModel->getTitleWithoutAuthor(TaskModel::EVENT_OVERDUE, ['tasks' => [['id' => 1]]]));
+        $this->assertNotEmpty($notificationModel->getTitleWithoutAuthor('unknown', []));
     }
 
     public function testGetTaskIdFromEvent()
@@ -78,10 +78,10 @@ class NotificationModelTest extends Base
         $taskFileModel = new TaskFileModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $subtaskModel->create(array('title' => 'test', 'task_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('comment' => 'test', 'task_id' => 1, 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $subtaskModel->create(['title' => 'test', 'task_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['comment' => 'test', 'task_id' => 1, 'user_id' => 1]));
         $this->assertEquals(1, $taskFileModel->create(1, 'test', 'blah', 123));
 
         $task = $taskFinderModel->getDetails(1);
@@ -96,18 +96,18 @@ class NotificationModelTest extends Base
         $this->assertNotEmpty($file);
 
         foreach (NotificationSubscriber::getSubscribedEvents() as $eventName => $values) {
-            $task_id = $notificationModel->getTaskIdFromEvent($eventName, array(
+            $task_id = $notificationModel->getTaskIdFromEvent($eventName, [
                 'task'    => $task,
                 'comment' => $comment,
                 'subtask' => $subtask,
                 'file'    => $file,
                 'task_link' => $tasklink,
-                'changes' => array()
-            ));
+                'changes' => []
+            ]);
 
             $this->assertEquals($task_id, $task['id']);
         }
 
-        $this->assertEquals(1, $notificationModel->getTaskIdFromEvent(TaskModel::EVENT_OVERDUE, array('tasks' => array(array('id' => 1)))));
+        $this->assertEquals(1, $notificationModel->getTaskIdFromEvent(TaskModel::EVENT_OVERDUE, ['tasks' => [['id' => 1]]]));
     }
 }

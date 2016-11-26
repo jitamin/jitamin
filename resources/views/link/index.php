@@ -18,9 +18,9 @@
         </td>
         <td>
             <ul>
-                <?= $this->url->link(t('Edit'), 'LinkController', 'edit', array('link_id' => $link['id'])) ?>
+                <?= $this->url->link(t('Edit'), 'LinkController', 'edit', ['link_id' => $link['id']]) ?>
                 <?= t('or') ?>
-                <?= $this->url->link(t('Remove'), 'LinkController', 'confirm', array('link_id' => $link['id'])) ?>
+                <?= $this->url->link(t('Remove'), 'LinkController', 'confirm', ['link_id' => $link['id']]) ?>
             </ul>
         </td>
     </tr>
@@ -30,4 +30,4 @@
     <?= t('There is no link.') ?>
 <?php endif ?>
 
-<?= $this->render('link/create', array('values' => $values, 'errors' => $errors)) ?>
+<?= $this->render('link/create', ['values' => $values, 'errors' => $errors]) ?>

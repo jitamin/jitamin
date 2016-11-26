@@ -30,11 +30,11 @@ class JobHandler extends Base
      */
     public function serializeJob(BaseJob $job)
     {
-        return new Job(array(
+        return new Job([
             'class' => get_class($job),
             'params' => $job->getJobParams(),
             'user_id' => $this->userSession->getId(),
-        ));
+        ]);
     }
 
     /**
@@ -58,7 +58,7 @@ class JobHandler extends Base
             }
 
             $worker = new $className($this->container);
-            call_user_func_array(array($worker, 'execute'), $payload['params']);
+            call_user_func_array([$worker, 'execute'], $payload['params']);
         } catch (Exception $e) {
             $this->logger->error(__METHOD__.': Error during job execution: '.$e->getMessage());
             $this->logger->error(__METHOD__ .' => '.json_encode($payload));
@@ -73,7 +73,7 @@ class JobHandler extends Base
      */
     protected function prepareJobSession($user_id)
     {
-        $session = array();
+        $session = [];
         $this->sessionStorage->setStorage($session);
 
         if ($user_id > 0) {

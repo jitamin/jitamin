@@ -27,7 +27,7 @@ class ProjectActivityCreationDateFilter extends BaseDateFilter implements Filter
      */
     public function getAttributes()
     {
-        return array('created');
+        return ['created'];
     }
 
     /**

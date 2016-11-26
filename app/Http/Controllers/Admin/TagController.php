@@ -20,22 +20,22 @@ class TagController extends BaseController
 {
     public function index()
     {
-        $this->response->html($this->helper->layout->config('tag/index', array(
+        $this->response->html($this->helper->layout->config('tag/index', [
             'tags' => $this->tagModel->getAllByProject(0),
             'title' => t('Settings').' &raquo; '.t('Global tags management'),
-        )));
+        ]));
     }
 
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         if (empty($values)) {
             $values['project_id'] = 0;
         }
 
-        $this->response->html($this->template->render('tag/create', array(
+        $this->response->html($this->template->render('tag/create', [
             'values' => $values,
             'errors' => $errors,
-        )));
+        ]));
     }
 
     public function save()
@@ -56,7 +56,7 @@ class TagController extends BaseController
         }
     }
 
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $tag_id = $this->request->getIntegerParam('tag_id');
         $tag = $this->tagModel->getById($tag_id);
@@ -65,11 +65,11 @@ class TagController extends BaseController
             $values = $tag;
         }
 
-        $this->response->html($this->template->render('tag/edit', array(
+        $this->response->html($this->template->render('tag/edit', [
             'tag' => $tag,
             'values' => $values,
             'errors' => $errors,
-        )));
+        ]));
     }
 
     public function update()
@@ -101,9 +101,9 @@ class TagController extends BaseController
         $tag_id = $this->request->getIntegerParam('tag_id');
         $tag = $this->tagModel->getById($tag_id);
 
-        $this->response->html($this->template->render('tag/remove', array(
+        $this->response->html($this->template->render('tag/remove', [
             'tag' => $tag,
-        )));
+        ]));
     }
 
     public function remove()

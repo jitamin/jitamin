@@ -107,7 +107,7 @@ class TaskProcedure extends BaseProcedure
             $creator_id = $this->userSession->getId();
         }
 
-        $values = array(
+        $values = [
             'title' => $title,
             'project_id' => $project_id,
             'color_id' => $color_id,
@@ -126,7 +126,7 @@ class TaskProcedure extends BaseProcedure
             'recurrence_basedate' => $recurrence_basedate,
             'reference' => $reference,
             'priority' => $priority,
-        );
+        ];
 
         list($valid, ) = $this->taskValidator->validateCreation($values);
 
@@ -149,7 +149,7 @@ class TaskProcedure extends BaseProcedure
             return false;
         }
 
-        $values = $this->filterValues(array(
+        $values = $this->filterValues([
             'id' => $id,
             'title' => $title,
             'color_id' => $color_id,
@@ -165,7 +165,7 @@ class TaskProcedure extends BaseProcedure
             'recurrence_basedate' => $recurrence_basedate,
             'reference' => $reference,
             'priority' => $priority,
-        ));
+        ]);
 
         list($valid) = $this->taskValidator->validateApiModification($values);
         return $valid && $this->taskModificationModel->update($values);

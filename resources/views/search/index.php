@@ -14,7 +14,7 @@
             <?= $this->form->hidden('action', $values) ?>
 
             <div class="input-addon">
-                <?= $this->form->text('q', $values, array(), array(empty($values['q']) ? 'autofocus' : '', 'placeholder="'.t('Search').'"'), 'input-addon-field') ?>
+                <?= $this->form->text('q', $values, [], [empty($values['q']) ? 'autofocus' : '', 'placeholder="'.t('Search').'"'], 'input-addon-field') ?>
                 <div class="input-addon-item">
                     <?= $this->render('app/filters_helper') ?>
                 </div>
@@ -40,9 +40,9 @@
     <?php elseif (! empty($values['q']) && $paginator->isEmpty()): ?>
         <p class="alert"><?= t('Nothing found.') ?></p>
     <?php elseif (! $paginator->isEmpty()): ?>
-        <?= $this->render('search/results', array(
+        <?= $this->render('search/results', [
             'paginator' => $paginator,
-        )) ?>
+        ]) ?>
     <?php endif ?>
 
 </section>

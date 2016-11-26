@@ -28,11 +28,11 @@ class ColumnController extends BaseController
         $project = $this->getProject();
         $columns = $this->columnModel->getAll($project['id']);
 
-        $this->response->html($this->helper->layout->project('column/index', array(
+        $this->response->html($this->helper->layout->project('column/index', [
             'columns' => $columns,
             'project' => $project,
             'title' => t('Edit columns')
-        )));
+        ]));
     }
 
     /**
@@ -43,19 +43,19 @@ class ColumnController extends BaseController
      * @param array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
         if (empty($values)) {
-            $values = array('project_id' => $project['id']);
+            $values = ['project_id' => $project['id']];
         }
 
-        $this->response->html($this->template->render('column/create', array(
+        $this->response->html($this->template->render('column/create', [
             'values' => $values,
             'errors' => $errors,
             'project' => $project,
-        )));
+        ]));
     }
 
     /**
@@ -81,9 +81,9 @@ class ColumnController extends BaseController
 
             if ($result !== false) {
                 $this->flash->success(t('Column created successfully.'));
-                return $this->response->redirect($this->helper->url->to('ColumnController', 'index', array('project_id' => $project['id'])), true);
+                return $this->response->redirect($this->helper->url->to('ColumnController', 'index', ['project_id' => $project['id']]), true);
             } else {
-                $errors['title'] = array(t('Another column with the same name exists in the project'));
+                $errors['title'] = [t('Another column with the same name exists in the project')];
             }
         }
 
@@ -97,17 +97,17 @@ class ColumnController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $column = $this->columnModel->getById($this->request->getIntegerParam('column_id'));
 
-        $this->response->html($this->helper->layout->project('column/edit', array(
+        $this->response->html($this->helper->layout->project('column/edit', [
             'errors' => $errors,
             'values' => $values ?: $column,
             'project' => $project,
             'column' => $column,
-        )));
+        ]));
     }
 
     /**
@@ -133,7 +133,7 @@ class ColumnController extends BaseController
 
             if ($result) {
                 $this->flash->success(t('Board updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('ColumnController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('ColumnController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to update this board.'));
             }
@@ -169,10 +169,10 @@ class ColumnController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('column/remove', array(
+        $this->response->html($this->helper->layout->project('column/remove', [
             'column' => $this->columnModel->getById($this->request->getIntegerParam('column_id')),
             'project' => $project,
-        )));
+        ]));
     }
 
     /**
@@ -192,6 +192,6 @@ class ColumnController extends BaseController
             $this->flash->failure(t('Unable to remove this column.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ColumnController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('ColumnController', 'index', ['project_id' => $project['id']]));
     }
 }

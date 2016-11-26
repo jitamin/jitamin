@@ -25,8 +25,8 @@ class ProjectDailyColumnStatsTest extends Base
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $projectDailyColumnStats->updateTotals(1, '2016-01-16');
 
@@ -39,15 +39,15 @@ class ProjectDailyColumnStatsTest extends Base
             ->columns('day', 'project_id', 'column_id', 'total', 'score')
             ->findAll();
 
-        $expected = array(
-            array(
+        $expected = [
+            [
                 'day' => '2016-01-16',
                 'project_id' => 1,
                 'column_id' => 1,
                 'total' => 1,
                 'score' => 0,
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $stats);
     }
@@ -56,7 +56,7 @@ class ProjectDailyColumnStatsTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $this->createTasks(1, 2, 1);
         $this->createTasks(1, 3, 0);
@@ -83,43 +83,43 @@ class ProjectDailyColumnStatsTest extends Base
             ->columns('day', 'project_id', 'column_id', 'total', 'score')
             ->findAll();
 
-        $expected = array(
-            array(
+        $expected = [
+            [
                 'day' => '2016-01-16',
                 'project_id' => 1,
                 'column_id' => 1,
                 'total' => 4,
                 'score' => 11,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-16',
                 'project_id' => 1,
                 'column_id' => 2,
                 'total' => 4,
                 'score' => 13,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-17',
                 'project_id' => 1,
                 'column_id' => 1,
                 'total' => 4,
                 'score' => 11,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-17',
                 'project_id' => 1,
                 'column_id' => 2,
                 'total' => 4,
                 'score' => 13,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-17',
                 'project_id' => 1,
                 'column_id' => 3,
                 'total' => 1,
                 'score' => 0,
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $stats);
     }
@@ -130,8 +130,8 @@ class ProjectDailyColumnStatsTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
-        $this->assertTrue($configModel->save(array('cfd_include_closed_tasks' => 0)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
+        $this->assertTrue($configModel->save(['cfd_include_closed_tasks' => 0]));
         $this->container['memoryCache']->flush();
 
         $this->createTasks(1, 2, 1);
@@ -159,43 +159,43 @@ class ProjectDailyColumnStatsTest extends Base
             ->columns('day', 'project_id', 'column_id', 'total', 'score')
             ->findAll();
 
-        $expected = array(
-            array(
+        $expected = [
+            [
                 'day' => '2016-01-16',
                 'project_id' => 1,
                 'column_id' => 1,
                 'total' => 2,
                 'score' => 11,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-16',
                 'project_id' => 1,
                 'column_id' => 2,
                 'total' => 2,
                 'score' => 13,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-17',
                 'project_id' => 1,
                 'column_id' => 1,
                 'total' => 2,
                 'score' => 11,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-17',
                 'project_id' => 1,
                 'column_id' => 2,
                 'total' => 2,
                 'score' => 13,
-            ),
-            array(
+            ],
+            [
                 'day' => '2016-01-17',
                 'project_id' => 1,
                 'column_id' => 3,
                 'total' => 1,
                 'score' => 0,
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $stats);
     }
@@ -205,7 +205,7 @@ class ProjectDailyColumnStatsTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $this->createTasks(1, 2, 1);
         $projectDailyColumnStats->updateTotals(1, '2016-01-16');
@@ -219,7 +219,7 @@ class ProjectDailyColumnStatsTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $this->createTasks(1, 2, 1);
         $this->createTasks(1, 3, 0);
@@ -246,21 +246,21 @@ class ProjectDailyColumnStatsTest extends Base
 
         $projectDailyColumnStats->updateTotals(1, '2016-01-18');
 
-        $expected = array(
-            array('Date', 'Backlog', 'Ready', 'Work in progress', 'Done'),
-            array('2016-01-16', 4, 4, 0, 0),
-            array('2016-01-17', 4, 4, 1, 0),
-            array('2016-01-18', 4, 5, 3, 0),
-        );
+        $expected = [
+            ['Date', 'Backlog', 'Ready', 'Work in progress', 'Done'],
+            ['2016-01-16', 4, 4, 0, 0],
+            ['2016-01-17', 4, 4, 1, 0],
+            ['2016-01-18', 4, 5, 3, 0],
+        ];
 
         $this->assertSame($expected, $projectDailyColumnStats->getAggregatedMetrics(1, '2016-01-16', '2016-01-18'));
 
-        $expected = array(
-            array('Date', 'Backlog', 'Ready', 'Work in progress', 'Done'),
-            array('2016-01-16', 11, 13, 0, 0),
-            array('2016-01-17', 11, 13, 0, 0),
-            array('2016-01-18', 11, 14, 1, 0),
-        );
+        $expected = [
+            ['Date', 'Backlog', 'Ready', 'Work in progress', 'Done'],
+            ['2016-01-16', 11, 13, 0, 0],
+            ['2016-01-17', 11, 13, 0, 0],
+            ['2016-01-18', 11, 14, 1, 0],
+        ];
 
         $this->assertSame($expected, $projectDailyColumnStats->getAggregatedMetrics(1, '2016-01-16', '2016-01-18', 'score'));
     }
@@ -268,6 +268,6 @@ class ProjectDailyColumnStatsTest extends Base
     private function createTasks($column_id, $score, $is_active)
     {
         $taskCreationModel = new TaskCreationModel($this->container);
-        $this->assertNotFalse($taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'score' => $score, 'is_active' => $is_active)));
+        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'score' => $score, 'is_active' => $is_active]));
     }
 }

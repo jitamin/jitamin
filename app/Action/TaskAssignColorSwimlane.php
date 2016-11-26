@@ -37,10 +37,10 @@ class TaskAssignColorSwimlane extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_CREATE,
             TaskModel::EVENT_MOVE_SWIMLANE,
-        );
+        ];
     }
 
     /**
@@ -51,10 +51,10 @@ class TaskAssignColorSwimlane extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'swimlane_id' => t('Swimlane'),
             'color_id' => t('Color'),
-        );
+        ];
     }
 
     /**
@@ -65,13 +65,13 @@ class TaskAssignColorSwimlane extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
                 'swimlane_id',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -83,10 +83,10 @@ class TaskAssignColorSwimlane extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'color_id' => $this->getParam('color_id'),
-        );
+        ];
 
         return $this->taskModificationModel->update($values, false);
     }

@@ -26,14 +26,14 @@ class TaskCloseNoActivityTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(array('date_modification' => strtotime('-10days')));
+        $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(['date_modification' => strtotime('-10days')]);
 
         $tasks = $taskFinderModel->getAll(1);
-        $event = new TaskListEvent(array('tasks' => $tasks, 'project_id' => 1));
+        $event = new TaskListEvent(['tasks' => $tasks, 'project_id' => 1]);
 
         $action = new TaskCloseNoActivity($this->container);
         $action->setProjectId(1);

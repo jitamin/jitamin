@@ -61,11 +61,11 @@ class SubtaskStatusModel extends Base
         $subtask = $this->subtaskModel->getById($subtask_id);
         $status = ($subtask['status'] + 1) % 3;
 
-        $values = array(
+        $values = [
             'id' => $subtask['id'],
             'status' => $status,
             'task_id' => $subtask['task_id'],
-        );
+        ];
 
         if (empty($subtask['user_id']) && $this->userSession->isLogged()) {
             $values['user_id'] = $this->userSession->getId();

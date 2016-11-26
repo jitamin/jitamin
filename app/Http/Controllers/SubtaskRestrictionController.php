@@ -28,15 +28,15 @@ class SubtaskRestrictionController extends BaseController
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask_restriction/show', array(
-            'status_list' => array(
+        $this->response->html($this->template->render('subtask_restriction/show', [
+            'status_list' => [
                 SubtaskModel::STATUS_TODO => t('Todo'),
                 SubtaskModel::STATUS_DONE => t('Done'),
-            ),
+            ],
             'subtask_inprogress' => $this->subtaskStatusModel->getSubtaskInProgress($this->userSession->getId()),
             'subtask' => $subtask,
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -62,6 +62,6 @@ class SubtaskRestrictionController extends BaseController
             'status' => SubtaskModel::STATUS_INPROGRESS,
         ));
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('project_id' => $task['project_id'], 'task_id' => $task['id'])), true);
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
     }
 }

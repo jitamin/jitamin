@@ -3,8 +3,8 @@
             'user_id',
             $users,
             $filter,
-            array(),
-            array('data-redirect-url="'.$this->url->href('ProjectUserOverviewController', $this->app->getRouterAction(), array('user_id' => 'USER_ID')).'"', 'data-redirect-regex="USER_ID"'),
+            [],
+            ['data-redirect-url="'.$this->url->href('ProjectUserOverviewController', $this->app->getRouterAction(), ['user_id' => 'USER_ID']).'"', 'data-redirect-regex="USER_ID"'],
             'chosen-select select-auto-redirect'
         ) ?>
     <ul>

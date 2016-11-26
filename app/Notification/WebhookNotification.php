@@ -51,10 +51,10 @@ class WebhookNotification extends Base implements NotificationInterface
                 $url .= '?token='.$token;
             }
 
-            $payload = array(
+            $payload = [
                 'event_name' => $event_name,
                 'event_data' => $event_data,
-            );
+            ];
 
             $this->httpClient->postJson($url, $payload);
         }

@@ -34,17 +34,17 @@ class QueryTest extends \Base
 
         self::$functions = $this
             ->getMockBuilder('stdClass')
-            ->setMethods(array(
+            ->setMethods([
                 'ldap_search',
                 'ldap_get_entries',
-            ))
+            ])
             ->getMock();
 
         $this->client = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Client')
-            ->setMethods(array(
+            ->setMethods([
                 'getConnection',
-            ))
+            ])
             ->getMock();
     }
 
@@ -56,24 +56,24 @@ class QueryTest extends \Base
 
     public function testExecuteQuerySuccessfully()
     {
-        $entries = array(
+        $entries = [
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_user,ou=People,dc=hiject,dc=local',
-                'displayname' => array(
+                'displayname' => [
                     'count' => 1,
                     0 => 'My user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
+                ],
                 0 => 'displayname',
                 1 => 'mail',
-            )
-        );
+            ]
+        ];
 
         $this->client
             ->expects($this->any())
@@ -87,7 +87,7 @@ class QueryTest extends \Base
                 $this->equalTo('my_ldap_resource'),
                 $this->equalTo('ou=People,dc=hiject,dc=local'),
                 $this->equalTo('uid=my_user'),
-                $this->equalTo(array('displayname'))
+                $this->equalTo(['displayname'])
             )
             ->will($this->returnValue('search_resource'));
 
@@ -101,7 +101,7 @@ class QueryTest extends \Base
             ->will($this->returnValue($entries));
 
         $query = new Query($this->client);
-        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', array('displayname'));
+        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', ['displayname']);
         $this->assertTrue($query->hasResult());
 
         $this->assertEquals('My user', $query->getEntries()->getFirstEntry()->getFirstValue('displayname'));
@@ -126,7 +126,7 @@ class QueryTest extends \Base
                 $this->equalTo('my_ldap_resource'),
                 $this->equalTo('ou=People,dc=hiject,dc=local'),
                 $this->equalTo('uid=my_user'),
-                $this->equalTo(array('displayname'))
+                $this->equalTo(['displayname'])
             )
             ->will($this->returnValue('search_resource'));
 
@@ -137,10 +137,10 @@ class QueryTest extends \Base
                 $this->equalTo('my_ldap_resource'),
                 $this->equalTo('search_resource')
             )
-            ->will($this->returnValue(array()));
+            ->will($this->returnValue([]));
 
         $query = new Query($this->client);
-        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', array('displayname'));
+        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', ['displayname']);
         $this->assertFalse($query->hasResult());
     }
 
@@ -158,12 +158,12 @@ class QueryTest extends \Base
                 $this->equalTo('my_ldap_resource'),
                 $this->equalTo('ou=People,dc=hiject,dc=local'),
                 $this->equalTo('uid=my_user'),
-                $this->equalTo(array('displayname'))
+                $this->equalTo(['displayname'])
             )
             ->will($this->returnValue(false));
 
         $query = new Query($this->client);
-        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', array('displayname'));
+        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', ['displayname']);
         $this->assertFalse($query->hasResult());
     }
 }

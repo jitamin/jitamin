@@ -27,7 +27,7 @@ class ProjectGroupRoleTest extends Base
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
         $groupMemberModel = new GroupMemberModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $groupModel->create('Group A'));
 
         $this->assertTrue($groupMemberModel->addUser(1, 1));
@@ -43,7 +43,7 @@ class ProjectGroupRoleTest extends Base
         $groupModel = new GroupModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $groupModel->create('Test'));
 
         $this->assertTrue($groupRoleModel->addGroup(1, 1, Role::PROJECT_VIEWER));
@@ -62,7 +62,7 @@ class ProjectGroupRoleTest extends Base
         $groupModel = new GroupModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $groupModel->create('Test'));
 
         $this->assertTrue($groupRoleModel->addGroup(1, 1, Role::PROJECT_MEMBER));
@@ -78,7 +78,7 @@ class ProjectGroupRoleTest extends Base
         $groupModel = new GroupModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $groupModel->create('Test'));
 
         $this->assertTrue($groupRoleModel->addGroup(1, 1, Role::PROJECT_VIEWER));
@@ -97,7 +97,7 @@ class ProjectGroupRoleTest extends Base
         $groupModel = new GroupModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $groupModel->create('Group C'));
         $this->assertEquals(2, $groupModel->create('Group B'));
         $this->assertEquals(3, $groupModel->create('Group A'));
@@ -130,12 +130,12 @@ class ProjectGroupRoleTest extends Base
         $groupMemberModel = new GroupMemberModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
         $this->assertEquals(2, $groupModel->create('Group B'));
@@ -179,12 +179,12 @@ class ProjectGroupRoleTest extends Base
         $groupMemberModel = new GroupMemberModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
         $this->assertEquals(2, $groupModel->create('Group B'));
@@ -221,12 +221,12 @@ class ProjectGroupRoleTest extends Base
         $groupMemberModel = new GroupMemberModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2', 'is_active' => 0)));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'is_active' => 0]));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
         $this->assertEquals(2, $groupModel->create('Group B'));
@@ -259,13 +259,13 @@ class ProjectGroupRoleTest extends Base
         $groupMemberModel = new GroupMemberModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
         $this->assertEquals(1, $groupModel->create('Group C'));
         $this->assertEquals(2, $groupModel->create('Group B'));
@@ -305,13 +305,13 @@ class ProjectGroupRoleTest extends Base
         $groupMemberModel = new GroupMemberModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1', 'is_active' => 0)));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1', 'is_active' => 0]));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
         $this->assertEquals(1, $groupModel->create('Group C'));
         $this->assertEquals(2, $groupModel->create('Group B'));
@@ -326,16 +326,16 @@ class ProjectGroupRoleTest extends Base
         $this->assertTrue($groupRoleModel->addGroup(2, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($groupRoleModel->addGroup(1, 3, Role::PROJECT_MANAGER));
 
-        $projects = $groupRoleModel->getProjectsByUser(2, array(ProjectModel::ACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(2, [ProjectModel::ACTIVE]);
         $this->assertCount(0, $projects);
 
-        $projects = $groupRoleModel->getProjectsByUser(3, array(ProjectModel::ACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(3, [ProjectModel::ACTIVE]);
         $this->assertCount(0, $projects);
 
-        $projects = $groupRoleModel->getProjectsByUser(4, array(ProjectModel::ACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(4, [ProjectModel::ACTIVE]);
         $this->assertCount(0, $projects);
 
-        $projects = $groupRoleModel->getProjectsByUser(5, array(ProjectModel::ACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(5, [ProjectModel::ACTIVE]);
         $this->assertCount(1, $projects);
         $this->assertEquals('Project 2', $projects[2]);
     }
@@ -348,13 +348,13 @@ class ProjectGroupRoleTest extends Base
         $groupMemberModel = new GroupMemberModel($this->container);
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1', 'is_active' => 0)));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1', 'is_active' => 0]));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
         $this->assertEquals(1, $groupModel->create('Group C'));
         $this->assertEquals(2, $groupModel->create('Group B'));
@@ -369,19 +369,19 @@ class ProjectGroupRoleTest extends Base
         $this->assertTrue($groupRoleModel->addGroup(2, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($groupRoleModel->addGroup(1, 3, Role::PROJECT_MANAGER));
 
-        $projects = $groupRoleModel->getProjectsByUser(2, array(ProjectModel::INACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(2, [ProjectModel::INACTIVE]);
         $this->assertCount(1, $projects);
         $this->assertEquals('Project 1', $projects[1]);
 
-        $projects = $groupRoleModel->getProjectsByUser(3, array(ProjectModel::INACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(3, [ProjectModel::INACTIVE]);
         $this->assertCount(1, $projects);
         $this->assertEquals('Project 1', $projects[1]);
 
-        $projects = $groupRoleModel->getProjectsByUser(4, array(ProjectModel::INACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(4, [ProjectModel::INACTIVE]);
         $this->assertCount(1, $projects);
         $this->assertEquals('Project 1', $projects[1]);
 
-        $projects = $groupRoleModel->getProjectsByUser(5, array(ProjectModel::INACTIVE));
+        $projects = $groupRoleModel->getProjectsByUser(5, [ProjectModel::INACTIVE]);
         $this->assertCount(0, $projects);
     }
 
@@ -393,8 +393,8 @@ class ProjectGroupRoleTest extends Base
         $groupRoleModel = new ProjectGroupRoleModel($this->container);
         $groupMemberModel = new GroupMemberModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(2, $userModel->create(array('username' => 'My user')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(2, $userModel->create(['username' => 'My user']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
         $this->assertEquals(2, $groupModel->create('Group B'));

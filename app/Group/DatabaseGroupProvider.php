@@ -24,7 +24,7 @@ class DatabaseGroupProvider implements GroupProviderInterface
      * @access private
      * @var array
      */
-    private $group = array();
+    private $group = [];
 
     /**
      * Constructor

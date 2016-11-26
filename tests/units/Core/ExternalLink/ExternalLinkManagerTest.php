@@ -44,13 +44,13 @@ class ExternalLinkManagerTest extends Base
         $webLinkProvider = new WebLinkProvider($this->container);
         $attachmentLinkProvider = new AttachmentLinkProvider($this->container);
 
-        $this->assertEquals(array(ExternalLinkManager::TYPE_AUTO => 'Auto'), $externalLinkManager->getTypes());
+        $this->assertEquals([ExternalLinkManager::TYPE_AUTO => 'Auto'], $externalLinkManager->getTypes());
 
         $externalLinkManager->register($webLinkProvider);
         $externalLinkManager->register($attachmentLinkProvider);
 
         $this->assertEquals(
-            array(ExternalLinkManager::TYPE_AUTO => 'Auto', 'attachment' => 'Attachment', 'weblink' => 'Web Link'),
+            [ExternalLinkManager::TYPE_AUTO => 'Auto', 'attachment' => 'Attachment', 'weblink' => 'Web Link'],
             $externalLinkManager->getTypes()
         );
     }
@@ -90,10 +90,10 @@ class ExternalLinkManagerTest extends Base
         $externalLinkManager->register($webLinkProvider);
         $externalLinkManager->register($attachmentLinkProvider);
 
-        $externalLinkManager->setUserInput(array('text' => 'https://google.com/', 'type' => ExternalLinkManager::TYPE_AUTO));
+        $externalLinkManager->setUserInput(['text' => 'https://google.com/', 'type' => ExternalLinkManager::TYPE_AUTO]);
         $this->assertSame($webLinkProvider, $externalLinkManager->find());
 
-        $externalLinkManager->setUserInput(array('text' => 'https://google.com/file.pdf', 'type' => ExternalLinkManager::TYPE_AUTO));
+        $externalLinkManager->setUserInput(['text' => 'https://google.com/file.pdf', 'type' => ExternalLinkManager::TYPE_AUTO]);
         $this->assertSame($attachmentLinkProvider, $externalLinkManager->find());
     }
 
@@ -106,10 +106,10 @@ class ExternalLinkManagerTest extends Base
         $externalLinkManager->register($webLinkProvider);
         $externalLinkManager->register($attachmentLinkProvider);
 
-        $externalLinkManager->setUserInput(array('text' => 'https://google.com/', 'type' => $webLinkProvider->getType()));
+        $externalLinkManager->setUserInput(['text' => 'https://google.com/', 'type' => $webLinkProvider->getType()]);
         $this->assertSame($webLinkProvider, $externalLinkManager->find());
 
-        $externalLinkManager->setUserInput(array('text' => 'https://google.com/file.pdf', 'type' => $attachmentLinkProvider->getType()));
+        $externalLinkManager->setUserInput(['text' => 'https://google.com/file.pdf', 'type' => $attachmentLinkProvider->getType()]);
         $this->assertSame($attachmentLinkProvider, $externalLinkManager->find());
     }
 
@@ -123,7 +123,7 @@ class ExternalLinkManagerTest extends Base
         $externalLinkManager->register($attachmentLinkProvider);
 
         $this->setExpectedException('\Hiject\Core\ExternalLink\ExternalLinkProviderNotFound');
-        $externalLinkManager->setUserInput(array('text' => 'https://google.com/', 'type' => 'not found'));
+        $externalLinkManager->setUserInput(['text' => 'https://google.com/', 'type' => 'not found']);
         $externalLinkManager->find();
     }
 }

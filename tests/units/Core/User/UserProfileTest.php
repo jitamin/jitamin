@@ -21,7 +21,7 @@ class UserProfileTest extends Base
     public function testInitializeLocalUser()
     {
         $userProfile = new UserProfile($this->container);
-        $user = new DatabaseUserProvider(array('id' => 1));
+        $user = new DatabaseUserProvider(['id' => 1]);
 
         $this->assertTrue($userProfile->initialize($user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);
@@ -31,7 +31,7 @@ class UserProfileTest extends Base
     public function testInitializeLocalUserNotFound()
     {
         $userProfile = new UserProfile($this->container);
-        $user = new DatabaseUserProvider(array('id' => 2));
+        $user = new DatabaseUserProvider(['id' => 2]);
 
         $this->assertFalse($userProfile->initialize($user));
         $this->assertFalse(isset($this->container['sessionStorage']->user));
@@ -40,7 +40,7 @@ class UserProfileTest extends Base
     public function testInitializeRemoteUser()
     {
         $userProfile = new UserProfile($this->container);
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, array());
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
 
         $this->assertTrue($userProfile->initialize($user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);
@@ -48,7 +48,7 @@ class UserProfileTest extends Base
         $this->assertEquals('bob', $this->container['sessionStorage']->user['username']);
         $this->assertEquals(Role::APP_MANAGER, $this->container['sessionStorage']->user['role']);
 
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, array());
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
 
         $this->assertTrue($userProfile->initialize($user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);
@@ -59,7 +59,7 @@ class UserProfileTest extends Base
     public function testAssignRemoteUser()
     {
         $userProfile = new UserProfile($this->container);
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, array());
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
 
         $this->assertTrue($userProfile->assign(1, $user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);

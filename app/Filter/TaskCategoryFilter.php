@@ -28,7 +28,7 @@ class TaskCategoryFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('category');
+        return ['category'];
     }
 
     /**

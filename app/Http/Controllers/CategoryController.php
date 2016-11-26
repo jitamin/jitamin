@@ -44,17 +44,17 @@ class CategoryController extends BaseController
      * @param  array $errors
      * @throws PageNotFoundException
      */
-    public function index(array $values = array(), array $errors = array())
+    public function index(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('category/index', array(
+        $this->response->html($this->helper->layout->project('category/index', [
             'categories' => $this->categoryModel->getList($project['id'], false),
-            'values' => $values + array('project_id' => $project['id']),
+            'values' => $values + ['project_id' => $project['id']],
             'errors' => $errors,
             'project' => $project,
             'title' => t('Categories')
-        )));
+        ]));
     }
 
     /**
@@ -72,7 +72,7 @@ class CategoryController extends BaseController
         if ($valid) {
             if ($this->categoryModel->create($values) !== false) {
                 $this->flash->success(t('Your category have been created successfully.'));
-                return $this->response->redirect($this->helper->url->to('CategoryController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('CategoryController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to create your category.'));
             }
@@ -89,17 +89,17 @@ class CategoryController extends BaseController
      * @param  array $errors
      * @throws PageNotFoundException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $category = $this->getCategory();
 
-        $this->response->html($this->helper->layout->project('category/edit', array(
+        $this->response->html($this->helper->layout->project('category/edit', [
             'values' => empty($values) ? $category : $values,
             'errors' => $errors,
             'project' => $project,
             'title' => t('Categories')
-        )));
+        ]));
     }
 
     /**
@@ -117,7 +117,7 @@ class CategoryController extends BaseController
         if ($valid) {
             if ($this->categoryModel->update($values)) {
                 $this->flash->success(t('Your category have been updated successfully.'));
-                return $this->response->redirect($this->helper->url->to('CategoryController', 'index', array('project_id' => $project['id'])));
+                return $this->response->redirect($this->helper->url->to('CategoryController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to update your category.'));
             }
@@ -138,7 +138,7 @@ class CategoryController extends BaseController
 
         if (! empty($values) && isset($values['category_id']) && isset($values['position'])) {
             $result = $this->categoryModel->changePosition($project['id'], $values['category_id'], $values['position']);
-            $this->response->json(array('result' => $result));
+            $this->response->json(['result' => $result]);
         } else {
             throw new AccessForbiddenException();
         }
@@ -154,11 +154,11 @@ class CategoryController extends BaseController
         $project = $this->getProject();
         $category = $this->getCategory();
 
-        $this->response->html($this->helper->layout->project('category/remove', array(
+        $this->response->html($this->helper->layout->project('category/remove', [
             'project' => $project,
             'category' => $category,
             'title' => t('Remove a category')
-        )));
+        ]));
     }
 
     /**
@@ -178,6 +178,6 @@ class CategoryController extends BaseController
             $this->flash->failure(t('Unable to remove this category.'));
         }
 
-        $this->response->redirect($this->helper->url->to('CategoryController', 'index', array('project_id' => $project['id'])));
+        $this->response->redirect($this->helper->url->to('CategoryController', 'index', ['project_id' => $project['id']]));
     }
 }

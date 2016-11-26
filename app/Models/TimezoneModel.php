@@ -31,7 +31,7 @@ class TimezoneModel extends Base
         $listing = array_combine(array_values($timezones), $timezones);
 
         if ($prepend) {
-            return array('' => t('Application default')) + $listing;
+            return ['' => t('Application default')] + $listing;
         }
 
         return $listing;

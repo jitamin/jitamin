@@ -53,7 +53,7 @@ class UserHelper extends Base
      * @param  array    $user   User properties
      * @return string
      */
-    public function getFullname(array $user = array())
+    public function getFullname(array $user = [])
     {
         $user = empty($user) ? $this->userSession->getAll() : $user;
         return $user['name'] ?: $user['username'];

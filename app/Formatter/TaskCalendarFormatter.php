@@ -46,22 +46,22 @@ class TaskCalendarFormatter extends BaseTaskCalendarFormatter implements Formatt
      */
     public function format()
     {
-        $events = array();
+        $events = [];
 
         foreach ($this->query->findAll() as $task) {
-            $events[] = array(
+            $events[] = [
                 'timezoneParam' => $this->timezoneModel->getCurrentTimezone(),
                 'id' => $task['id'],
                 'title' => t('#%d', $task['id']).' '.$task['title'],
                 'backgroundColor' => $this->colorModel->getBackgroundColor($task['color_id']),
                 'borderColor' => $this->colorModel->getBorderColor($task['color_id']),
                 'textColor' => 'black',
-                'url' => $this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])),
+                'url' => $this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
                 'start' => date($this->getDateTimeFormat(), $task[$this->startColumn]),
                 'end' => date($this->getDateTimeFormat(), $task[$this->endColumn] ?: time()),
                 'editable' => $this->fullDay,
                 'allday' => $this->fullDay,
-            );
+            ];
         }
 
         return $events;

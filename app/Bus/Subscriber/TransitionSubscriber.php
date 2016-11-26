@@ -29,9 +29,9 @@ class TransitionSubscriber extends BaseSubscriber implements EventSubscriberInte
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_MOVE_COLUMN => 'execute',
-        );
+        ];
     }
 
     /**

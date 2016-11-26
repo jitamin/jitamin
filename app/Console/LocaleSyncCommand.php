@@ -49,7 +49,7 @@ class LocaleSyncCommand extends BaseCommand
         $outdated = include $outdated_file;
 
         $output = '<?php'.PHP_EOL.PHP_EOL;
-        $output .= 'return array('.PHP_EOL;
+        $output .= 'return ['.PHP_EOL;
 
         foreach ($reference as $key => $value) {
             if (! empty($outdated[$key])) {
@@ -59,7 +59,7 @@ class LocaleSyncCommand extends BaseCommand
             }
         }
 
-        $output .= ");\n";
+        $output .= "];\n";
         return $output;
     }
 }

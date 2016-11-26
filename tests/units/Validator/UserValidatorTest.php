@@ -20,31 +20,31 @@ class UserValidatorTest extends Base
     {
         $userValidator = new UserValidator($this->container);
 
-        $this->container['sessionStorage']->user = array(
+        $this->container['sessionStorage']->user = [
             'id' => 1,
             'role' => Role::APP_ADMIN,
             'username' => 'admin',
-        );
+        ];
 
-        $result = $userValidator->validatePasswordModification(array());
+        $result = $userValidator->validatePasswordModification([]);
         $this->assertFalse($result[0]);
 
-        $result = $userValidator->validatePasswordModification(array('id' => 1));
+        $result = $userValidator->validatePasswordModification(['id' => 1]);
         $this->assertFalse($result[0]);
 
-        $result = $userValidator->validatePasswordModification(array('id' => 1, 'password' => '123456'));
+        $result = $userValidator->validatePasswordModification(['id' => 1, 'password' => '123456']);
         $this->assertFalse($result[0]);
 
-        $result = $userValidator->validatePasswordModification(array('id' => 1, 'password' => '123456', 'confirmation' => 'wrong'));
+        $result = $userValidator->validatePasswordModification(['id' => 1, 'password' => '123456', 'confirmation' => 'wrong']);
         $this->assertFalse($result[0]);
 
-        $result = $userValidator->validatePasswordModification(array('id' => 1, 'password' => '123456', 'confirmation' => '123456'));
+        $result = $userValidator->validatePasswordModification(['id' => 1, 'password' => '123456', 'confirmation' => '123456']);
         $this->assertFalse($result[0]);
 
-        $result = $userValidator->validatePasswordModification(array('id' => 1, 'password' => '123456', 'confirmation' => '123456', 'current_password' => 'wrong'));
+        $result = $userValidator->validatePasswordModification(['id' => 1, 'password' => '123456', 'confirmation' => '123456', 'current_password' => 'wrong']);
         $this->assertFalse($result[0]);
 
-        $result = $userValidator->validatePasswordModification(array('id' => 1, 'password' => '123456', 'confirmation' => '123456', 'current_password' => 'admin'));
+        $result = $userValidator->validatePasswordModification(['id' => 1, 'password' => '123456', 'confirmation' => '123456', 'current_password' => 'admin']);
         $this->assertTrue($result[0]);
     }
 }

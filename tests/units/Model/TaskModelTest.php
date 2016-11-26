@@ -23,8 +23,8 @@ class TaskModelTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
 
         $this->assertTrue($taskModel->remove(1));
         $this->assertFalse($taskModel->remove(1234));

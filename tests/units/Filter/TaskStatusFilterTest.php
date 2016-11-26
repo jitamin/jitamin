@@ -26,9 +26,9 @@ class TaskStatusFilterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED]));
 
         $filter = new TaskStatusFilter();
         $filter->withQuery($query);
@@ -47,9 +47,9 @@ class TaskStatusFilterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED]));
 
         $filter = new TaskStatusFilter();
         $filter->withQuery($query);
@@ -68,9 +68,9 @@ class TaskStatusFilterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED]));
 
         $filter = new TaskStatusFilter();
         $filter->withQuery($query);
@@ -89,9 +89,9 @@ class TaskStatusFilterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED]));
 
         $filter = new TaskStatusFilter();
         $filter->withQuery($query);
@@ -110,9 +110,9 @@ class TaskStatusFilterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'is_active' => TaskModel::STATUS_CLOSED]));
 
         $filter = new TaskStatusFilter();
         $filter->withQuery($query);

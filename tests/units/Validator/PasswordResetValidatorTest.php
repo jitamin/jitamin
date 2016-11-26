@@ -18,21 +18,21 @@ class PasswordResetValidatorTest extends Base
     public function testValidateModification()
     {
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateModification(array('password' => 'test123', 'confirmation' => 'test123'));
+        list($valid, ) = $passwordResetValidator->validateModification(['password' => 'test123', 'confirmation' => 'test123']);
         $this->assertTrue($valid);
     }
 
     public function testValidateModificationWithWrongPasswords()
     {
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateModification(array('password' => 'test123', 'confirmation' => 'test456'));
+        list($valid, ) = $passwordResetValidator->validateModification(['password' => 'test123', 'confirmation' => 'test456']);
         $this->assertFalse($valid);
     }
 
     public function testValidateModificationWithPasswordTooShort()
     {
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateModification(array('password' => 'test', 'confirmation' => 'test'));
+        list($valid, ) = $passwordResetValidator->validateModification(['password' => 'test', 'confirmation' => 'test']);
         $this->assertFalse($valid);
     }
 
@@ -41,7 +41,7 @@ class PasswordResetValidatorTest extends Base
         $this->container['sessionStorage']->captcha = 'test';
 
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateCreation(array('username' => 'foobar', 'captcha' => 'test'));
+        list($valid, ) = $passwordResetValidator->validateCreation(['username' => 'foobar', 'captcha' => 'test']);
         $this->assertTrue($valid);
     }
 
@@ -50,7 +50,7 @@ class PasswordResetValidatorTest extends Base
         $this->container['sessionStorage']->captcha = 'test';
 
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateCreation(array('captcha' => 'test'));
+        list($valid, ) = $passwordResetValidator->validateCreation(['captcha' => 'test']);
         $this->assertFalse($valid);
     }
 
@@ -59,14 +59,14 @@ class PasswordResetValidatorTest extends Base
         $this->container['sessionStorage']->captcha = 'test123';
 
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateCreation(array('username' => 'foobar', 'captcha' => 'test'));
+        list($valid, ) = $passwordResetValidator->validateCreation(['username' => 'foobar', 'captcha' => 'test']);
         $this->assertFalse($valid);
     }
 
     public function testValidateCreationWithMissingCaptcha()
     {
         $passwordResetValidator = new PasswordResetValidator($this->container);
-        list($valid, ) = $passwordResetValidator->validateCreation(array('username' => 'foobar', 'captcha' => 'test'));
+        list($valid, ) = $passwordResetValidator->validateCreation(['username' => 'foobar', 'captcha' => 'test']);
         $this->assertFalse($valid);
     }
 }

@@ -21,7 +21,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $column = $columnModel->getById(3);
         $this->assertNotEmpty($column);
@@ -36,7 +36,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertEquals(1, $columnModel->getFirstColumnId(1));
     }
 
@@ -45,7 +45,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertEquals(4, $columnModel->getLastColumnId(1));
     }
 
@@ -54,7 +54,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertEquals(4, $columnModel->getLastColumnPosition(1));
     }
 
@@ -63,7 +63,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertEquals(2, $columnModel->getColumnIdByTitle(1, 'Ready'));
     }
 
@@ -72,7 +72,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertEquals('Work in progress', $columnModel->getColumnTitleById(3));
     }
 
@@ -81,7 +81,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $columns = $columnModel->getAll(1);
         $this->assertCount(4, $columns);
@@ -108,7 +108,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $columns = $columnModel->getList(1);
         $this->assertCount(4, $columns);
@@ -131,7 +131,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertNotFalse($columnModel->create(1, 'another column'));
         $this->assertNotFalse($columnModel->create(1, 'one more', 3, 'one more description'));
 
@@ -154,7 +154,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
 
         $this->assertTrue($columnModel->update(3, 'blah', 5));
         $this->assertTrue($columnModel->update(2, 'boo'));
@@ -175,7 +175,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($columnModel->remove(3));
         $this->assertFalse($columnModel->remove(322));
 
@@ -189,7 +189,7 @@ class ColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
         $columns = $columnModel->getAll(1);
         $this->assertEquals(1, $columns[0]['position']);

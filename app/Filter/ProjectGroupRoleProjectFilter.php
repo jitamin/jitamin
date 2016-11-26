@@ -27,7 +27,7 @@ class ProjectGroupRoleProjectFilter extends BaseFilter implements FilterInterfac
      */
     public function getAttributes()
     {
-        return array();
+        return [];
     }
 
     /**

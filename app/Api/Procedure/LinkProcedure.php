@@ -73,10 +73,10 @@ class LinkProcedure extends BaseProcedure
      */
     public function createLink($label, $opposite_label = '')
     {
-        $values = array(
+        $values = [
             'label' => $label,
             'opposite_label' => $opposite_label,
-        );
+        ];
 
         list($valid, ) = $this->linkValidator->validateCreation($values);
         return $valid ? $this->linkModel->create($label, $opposite_label) : false;
@@ -93,11 +93,11 @@ class LinkProcedure extends BaseProcedure
      */
     public function updateLink($link_id, $opposite_link_id, $label)
     {
-        $values = array(
+        $values = [
             'id' => $link_id,
             'opposite_id' => $opposite_link_id,
             'label' => $label,
-        );
+        ];
 
         list($valid, ) = $this->linkValidator->validateModification($values);
         return $valid && $this->linkModel->update($values);

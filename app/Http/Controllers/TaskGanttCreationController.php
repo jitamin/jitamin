@@ -24,27 +24,27 @@ class TaskGanttCreationController extends BaseController
      * @param  array $errors
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function show(array $values = array(), array $errors = array())
+    public function show(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
 
-        $values = $values + array(
+        $values = $values + [
             'project_id' => $project['id'],
             'column_id' => $this->columnModel->getFirstColumnId($project['id']),
             'position' => 1
-        );
+        ];
 
-        $values = $this->hook->merge('controller:task:form:default', $values, array('default_values' => $values));
-        $values = $this->hook->merge('controller:gantt:task:form:default', $values, array('default_values' => $values));
+        $values = $this->hook->merge('controller:task:form:default', $values, ['default_values' => $values]);
+        $values = $this->hook->merge('controller:gantt:task:form:default', $values, ['default_values' => $values]);
 
-        $this->response->html($this->template->render('task_gantt_creation/show', array(
+        $this->response->html($this->template->render('task_gantt_creation/show', [
             'project' => $project,
             'errors' => $errors,
             'values' => $values,
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
             'categories_list' => $this->categoryModel->getList($project['id']),
             'swimlanes_list' => $this->swimlaneModel->getList($project['id'], false, true),
-        )));
+        ]));
     }
 
     /**
@@ -61,7 +61,7 @@ class TaskGanttCreationController extends BaseController
 
         if ($valid && $this->taskCreationModel->create($values)) {
             $this->flash->success(t('Task created successfully.'));
-            $this->response->redirect($this->helper->url->to('TaskGanttController', 'show', array('project_id' => $project['id'])));
+            $this->response->redirect($this->helper->url->to('TaskGanttController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->flash->failure(t('Unable to create your task.'));
             $this->show($values, $errors);

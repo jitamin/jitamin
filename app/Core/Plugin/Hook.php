@@ -22,7 +22,7 @@ class Hook
      * @access private
      * @var array
      */
-    private $hooks = array();
+    private $hooks = [];
 
     /**
      * Bind something on a hook
@@ -34,7 +34,7 @@ class Hook
     public function on($hook, $value)
     {
         if (! isset($this->hooks[$hook])) {
-            $this->hooks[$hook] = array();
+            $this->hooks[$hook] = [];
         }
 
         $this->hooks[$hook][] = $value;
@@ -49,7 +49,7 @@ class Hook
      */
     public function getListeners($hook)
     {
-        return isset($this->hooks[$hook]) ? $this->hooks[$hook] : array();
+        return isset($this->hooks[$hook]) ? $this->hooks[$hook] : [];
     }
 
     /**
@@ -73,7 +73,7 @@ class Hook
      * @param  array   $params
      * @return array
      */
-    public function merge($hook, array &$values, array $params = array())
+    public function merge($hook, array &$values, array $params = [])
     {
         foreach ($this->getListeners($hook) as $listener) {
             $result = call_user_func_array($listener, $params);
@@ -94,7 +94,7 @@ class Hook
      * @param  array   $params
      * @return mixed
      */
-    public function first($hook, array $params = array())
+    public function first($hook, array $params = [])
     {
         foreach ($this->getListeners($hook) as $listener) {
             return call_user_func_array($listener, $params);

@@ -28,7 +28,7 @@ class TaskProcedureTest extends BaseProcedureTest
 
     public function assertUpdateTask()
     {
-        $this->assertTrue($this->app->updateTask(array('id' => $this->taskId, 'color_id' => 'red')));
+        $this->assertTrue($this->app->updateTask(['id' => $this->taskId, 'color_id' => 'red']));
     }
 
     public function assertGetTaskById()
@@ -41,7 +41,7 @@ class TaskProcedureTest extends BaseProcedureTest
 
     public function assertGetTaskByReference()
     {
-        $taskId = $this->app->createTask(array('title' => 'task with reference', 'project_id' => $this->projectId, 'reference' => 'test'));
+        $taskId = $this->app->createTask(['title' => 'task with reference', 'project_id' => $this->projectId, 'reference' => 'test']);
         $this->assertNotFalse($taskId);
 
         $task = $this->app->getTaskByReference($this->projectId, 'test');

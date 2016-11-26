@@ -18,8 +18,8 @@ class SessionStorageTest extends Base
     public function testNotPersistentStorage()
     {
         $storage = new SessionStorage();
-        $storage->something = array('a' => 'b');
-        $this->assertEquals(array('a' => 'b'), $storage->something);
+        $storage->something = ['a' => 'b'];
+        $this->assertEquals(['a' => 'b'], $storage->something);
         $this->assertTrue(isset($storage->something));
         $this->assertFalse(isset($storage->something->x));
         $this->assertFalse(isset($storage->notFound));
@@ -29,31 +29,31 @@ class SessionStorageTest extends Base
 
     public function testPersistentStorage()
     {
-        $session = array('d' => 'e');
+        $session = ['d' => 'e'];
 
         $storage = new SessionStorage();
         $storage->setStorage($session);
-        $storage->something = array('a' => 'b');
+        $storage->something = ['a' => 'b'];
 
-        $this->assertEquals(array('a' => 'b'), $storage->something);
+        $this->assertEquals(['a' => 'b'], $storage->something);
         $this->assertEquals('e', $storage->d);
 
         $storage->something['a'] = 'c';
         $this->assertEquals('c', $storage->something['a']);
 
         $storage = null;
-        $this->assertEquals(array('something' => array('a' => 'c'), 'd' => 'e'), $session);
+        $this->assertEquals(['something' => ['a' => 'c'], 'd' => 'e'], $session);
     }
 
     public function testFlush()
     {
-        $session = array('d' => 'e');
+        $session = ['d' => 'e'];
 
         $storage = new SessionStorage();
         $storage->setStorage($session);
-        $storage->something = array('a' => 'b');
+        $storage->something = ['a' => 'b'];
 
-        $this->assertEquals(array('a' => 'b'), $storage->something);
+        $this->assertEquals(['a' => 'b'], $storage->something);
         $this->assertEquals('e', $storage->d);
 
         $storage->flush();
@@ -64,6 +64,6 @@ class SessionStorageTest extends Base
         $storage->foo = 'bar';
 
         $storage = null;
-        $this->assertEquals(array('foo' => 'bar'), $session);
+        $this->assertEquals(['foo' => 'bar'], $session);
     }
 }

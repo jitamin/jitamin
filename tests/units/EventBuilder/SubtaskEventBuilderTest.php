@@ -32,9 +32,9 @@ class SubtaskEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $subtaskEventBuilder = new SubtaskEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $subtaskModel->create(array('task_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $subtaskModel->create(['task_id' => 1, 'title' => 'test']));
 
         $event = $subtaskEventBuilder->withSubtaskId(1)->buildEvent();
 
@@ -51,13 +51,13 @@ class SubtaskEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $subtaskEventBuilder = new SubtaskEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $subtaskModel->create(array('task_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $subtaskModel->create(['task_id' => 1, 'title' => 'test']));
 
         $event = $subtaskEventBuilder
             ->withSubtaskId(1)
-            ->withValues(array('title' => 'new title', 'user_id' => 1))
+            ->withValues(['title' => 'new title', 'user_id' => 1])
             ->buildEvent();
 
         $this->assertInstanceOf('Hiject\Bus\Event\SubtaskEvent', $event);

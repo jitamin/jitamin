@@ -35,7 +35,7 @@ class TaskOpen extends Base
      */
     public function getCompatibleEvents()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -46,7 +46,7 @@ class TaskOpen extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -57,7 +57,7 @@ class TaskOpen extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array('task_id');
+        return ['task_id'];
     }
 
     /**

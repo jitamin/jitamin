@@ -3,7 +3,7 @@
     <h2><?= t('Categories') ?></h2>
 </div>
 <table  class="categories-table table-striped"
-        data-save-position-url="<?= $this->url->href('CategoryController', 'move', array('project_id' => $project['id'])) ?>">
+        data-save-position-url="<?= $this->url->href('CategoryController', 'move', ['project_id' => $project['id']]) ?>">
     <thead>
     <tr>
         <th><?= t('Category Name') ?></th>
@@ -22,10 +22,10 @@
             <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog fa-fw"></i><i class="fa fa-caret-down"></i></a>
             <ul>
                 <li>
-                    <?= $this->url->link(t('Edit'), 'CategoryController', 'edit', array('project_id' => $project['id'], 'category_id' => $category_id), false, 'popover') ?>
+                    <?= $this->url->link(t('Edit'), 'CategoryController', 'edit', ['project_id' => $project['id'], 'category_id' => $category_id], false, 'popover') ?>
                 </li>
                 <li>
-                    <?= $this->url->link(t('Remove'), 'CategoryController', 'confirm', array('project_id' => $project['id'], 'category_id' => $category_id), false, 'popover') ?>
+                    <?= $this->url->link(t('Remove'), 'CategoryController', 'confirm', ['project_id' => $project['id'], 'category_id' => $category_id], false, 'popover') ?>
                 </li>
             </ul>
             </div>
@@ -39,13 +39,13 @@
 <div class="page-header">
     <h2><?= t('Add a new category') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('CategoryController', 'save', array('project_id' => $project['id'])) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('CategoryController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('project_id', $values) ?>
 
     <?= $this->form->label(t('Category Name'), 'name') ?>
-    <?= $this->form->text('name', $values, $errors, array('autofocus', 'required', 'maxlength="50"')) ?>
+    <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="50"']) ?>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>

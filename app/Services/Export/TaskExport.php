@@ -38,7 +38,7 @@ class TaskExport extends Base
         $tasks = $this->getTasks($project_id, $from, $to);
         $colors = $this->colorModel->getList();
         $defaultSwimlane = $this->swimlaneModel->getDefault($project_id);
-        $results = array($this->getColumns());
+        $results = [$this->getColumns()];
 
         foreach ($tasks as &$task) {
             $task = $this->format($task, $defaultSwimlane['default_swimlane'], $colors);
@@ -123,7 +123,7 @@ class TaskExport extends Base
 
         $task = $this->dateParser->format(
             $task,
-            array('date_due', 'date_modification', 'date_creation', 'date_started', 'date_completed'),
+            ['date_due', 'date_modification', 'date_creation', 'date_started', 'date_completed'],
             $this->dateParser->getUserDateTimeFormat()
         );
 
@@ -138,7 +138,7 @@ class TaskExport extends Base
      */
     protected function getColumns()
     {
-        return array(
+        return [
             e('Task Id'),
             e('Reference'),
             e('Project'),
@@ -161,6 +161,6 @@ class TaskExport extends Base
             e('Start date'),
             e('Time estimated'),
             e('Time spent'),
-        );
+        ];
     }
 }

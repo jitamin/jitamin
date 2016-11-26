@@ -28,16 +28,16 @@ class TaskExternalLinkController extends BaseController
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
-    public function find(array $values = array(), array $errors = array())
+    public function find(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_external_link/find', array(
+        $this->response->html($this->template->render('task_external_link/find', [
             'values' => $values,
             'errors' => $errors,
             'task' => $task,
             'types' => $this->externalLinkManager->getTypes(),
-        )));
+        ]));
     }
 
     /**
@@ -54,18 +54,18 @@ class TaskExternalLinkController extends BaseController
             $provider = $this->externalLinkManager->setUserInput($values)->find();
             $link = $provider->getLink();
 
-            $this->response->html($this->template->render('task_external_link/create', array(
-                'values' => array(
+            $this->response->html($this->template->render('task_external_link/create', [
+                'values' => [
                     'title' => $link->getTitle(),
                     'url' => $link->getUrl(),
                     'link_type' => $provider->getType(),
-                ),
+                ],
                 'dependencies' => $provider->getDependencies(),
-                'errors' => array(),
+                'errors' => [],
                 'task' => $task,
-            )));
+            ]));
         } catch (ExternalLinkProviderNotFound $e) {
-            $errors = array('text' => array(t('Unable to fetch link information.')));
+            $errors = ['text' => [t('Unable to fetch link information.')]];
             $this->find($values, $errors);
         }
     }
@@ -83,7 +83,7 @@ class TaskExternalLinkController extends BaseController
 
         if ($valid && $this->taskExternalLinkModel->create($values) !== false) {
             $this->flash->success(t('Link added successfully.'));
-            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])), true);
+            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
         return $this->edit($values, $errors);
@@ -99,7 +99,7 @@ class TaskExternalLinkController extends BaseController
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
         $link_id = $this->request->getIntegerParam('link_id');
@@ -114,12 +114,12 @@ class TaskExternalLinkController extends BaseController
 
         $provider = $this->externalLinkManager->getProvider($values['link_type']);
 
-        $this->response->html($this->template->render('task_external_link/edit', array(
+        $this->response->html($this->template->render('task_external_link/edit', [
             'values' => $values,
             'errors' => $errors,
             'task' => $task,
             'dependencies' => $provider->getDependencies(),
-        )));
+        ]));
     }
 
     /**
@@ -135,7 +135,7 @@ class TaskExternalLinkController extends BaseController
 
         if ($valid && $this->taskExternalLinkModel->update($values)) {
             $this->flash->success(t('Link updated successfully.'));
-            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])), true);
+            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
         return $this->edit($values, $errors);
@@ -156,10 +156,10 @@ class TaskExternalLinkController extends BaseController
             throw new PageNotFoundException();
         }
 
-        $this->response->html($this->template->render('task_external_link/remove', array(
+        $this->response->html($this->template->render('task_external_link/remove', [
             'link' => $link,
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -178,6 +178,6 @@ class TaskExternalLinkController extends BaseController
             $this->flash->failure(t('Unable to remove this link.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])));
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
     }
 }

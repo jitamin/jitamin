@@ -21,8 +21,8 @@ class ProjectValidatorTest extends Base
         $projectValidator = new ProjectValidator($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest1', 'identifier' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'UnitTest2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest1', 'identifier' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'UnitTest2']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -32,16 +32,16 @@ class ProjectValidatorTest extends Base
         $this->assertNotEmpty($project);
         $this->assertEquals('', $project['identifier']);
 
-        $r = $projectValidator->validateCreation(array('name' => 'test', 'identifier' => 'TEST1'));
+        $r = $projectValidator->validateCreation(['name' => 'test', 'identifier' => 'TEST1']);
         $this->assertFalse($r[0]);
 
-        $r = $projectValidator->validateCreation(array('name' => 'test', 'identifier' => 'test1'));
+        $r = $projectValidator->validateCreation(['name' => 'test', 'identifier' => 'test1']);
         $this->assertFalse($r[0]);
 
-        $r = $projectValidator->validateCreation(array('name' => 'test', 'identifier' => 'a-b-c'));
+        $r = $projectValidator->validateCreation(['name' => 'test', 'identifier' => 'a-b-c']);
         $this->assertFalse($r[0]);
 
-        $r = $projectValidator->validateCreation(array('name' => 'test', 'identifier' => 'test 123'));
+        $r = $projectValidator->validateCreation(['name' => 'test', 'identifier' => 'test 123']);
         $this->assertFalse($r[0]);
     }
 
@@ -50,8 +50,8 @@ class ProjectValidatorTest extends Base
         $projectValidator = new ProjectValidator($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'UnitTest1', 'identifier' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'UnitTest2', 'identifier' => 'TEST2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest1', 'identifier' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'UnitTest2', 'identifier' => 'TEST2']));
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);
@@ -61,22 +61,22 @@ class ProjectValidatorTest extends Base
         $this->assertNotEmpty($project);
         $this->assertEquals('TEST2', $project['identifier']);
 
-        $r = $projectValidator->validateModification(array('id' => 1, 'name' => 'test', 'identifier' => 'TEST1'));
+        $r = $projectValidator->validateModification(['id' => 1, 'name' => 'test', 'identifier' => 'TEST1']);
         $this->assertTrue($r[0]);
 
-        $r = $projectValidator->validateModification(array('id' => 1, 'identifier' => 'test3'));
+        $r = $projectValidator->validateModification(['id' => 1, 'identifier' => 'test3']);
         $this->assertTrue($r[0]);
 
-        $r = $projectValidator->validateModification(array('id' => 1, 'identifier' => ''));
+        $r = $projectValidator->validateModification(['id' => 1, 'identifier' => '']);
         $this->assertTrue($r[0]);
 
-        $r = $projectValidator->validateModification(array('id' => 1, 'identifier' => 'TEST2'));
+        $r = $projectValidator->validateModification(['id' => 1, 'identifier' => 'TEST2']);
         $this->assertFalse($r[0]);
 
-        $r = $projectValidator->validateModification(array('id' => 1, 'name' => ''));
+        $r = $projectValidator->validateModification(['id' => 1, 'name' => '']);
         $this->assertFalse($r[0]);
 
-        $r = $projectValidator->validateModification(array('id' => 1, 'name' => null));
+        $r = $projectValidator->validateModification(['id' => 1, 'name' => null]);
         $this->assertFalse($r[0]);
     }
 }

@@ -203,7 +203,7 @@ class SwimlaneModel extends Base
                 $defaultSwimlane = t($defaultSwimlane);
             }
 
-            array_unshift($swimlanes, array('id' => 0, 'name' => $defaultSwimlane));
+            array_unshift($swimlanes, ['id' => 0, 'name' => $defaultSwimlane]);
         }
 
         return $swimlanes;
@@ -220,7 +220,7 @@ class SwimlaneModel extends Base
      */
     public function getList($project_id, $prepend = false, $only_active = false)
     {
-        $swimlanes = array();
+        $swimlanes = [];
         $default = $this->db->table(ProjectModel::TABLE)->eq('id', $project_id)->eq('show_default_swimlane', 1)->findOneColumn('default_swimlane');
 
         if ($prepend) {
@@ -234,7 +234,7 @@ class SwimlaneModel extends Base
         return $swimlanes + $this->db
             ->hashtable(self::TABLE)
             ->eq('project_id', $project_id)
-            ->in('is_active', $only_active ? array(self::ACTIVE) : array(self::ACTIVE, self::INACTIVE))
+            ->in('is_active', $only_active ? [self::ACTIVE] : [self::ACTIVE, self::INACTIVE])
             ->orderBy('position', 'asc')
             ->getAll('id', 'name');
     }
@@ -466,7 +466,7 @@ class SwimlaneModel extends Base
             ->findAllByColumn('id');
 
         $offset = 1;
-        $results = array();
+        $results = [];
 
         foreach ($swimlane_ids as $current_swimlane_id) {
             if ($offset == $position) {

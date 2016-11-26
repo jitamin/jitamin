@@ -17,7 +17,7 @@ class DatabaseUserProviderTest extends Base
 {
     public function testGetInternalId()
     {
-        $provider = new DatabaseUserProvider(array('id' => 123));
+        $provider = new DatabaseUserProvider(['id' => 123]);
         $this->assertEquals(123, $provider->getInternalId());
     }
 }

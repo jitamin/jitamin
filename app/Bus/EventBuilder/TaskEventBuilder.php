@@ -33,7 +33,7 @@ class TaskEventBuilder extends BaseEventBuilder
      * @access protected
      * @var array
      */
-    protected $task = array();
+    protected $task = [];
 
     /**
      * Extra values
@@ -41,7 +41,7 @@ class TaskEventBuilder extends BaseEventBuilder
      * @access protected
      * @var array
      */
-    protected $values = array();
+    protected $values = [];
 
     /**
      * Changed values
@@ -49,7 +49,7 @@ class TaskEventBuilder extends BaseEventBuilder
      * @access protected
      * @var array
      */
-    protected $changes = array();
+    protected $changes = [];
 
     /**
      * Set TaskId
@@ -107,7 +107,7 @@ class TaskEventBuilder extends BaseEventBuilder
      */
     public function buildEvent()
     {
-        $eventData = array();
+        $eventData = [];
         $eventData['task_id'] = $this->taskId;
         $eventData['task'] = $this->taskFinderModel->getDetails($this->taskId);
 

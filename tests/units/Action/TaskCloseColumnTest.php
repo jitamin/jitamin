@@ -26,16 +26,16 @@ class TaskCloseColumnTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
-            'task' => array(
+            'task' => [
                 'project_id' => 1,
                 'column_id' => 2,
-            )
-        ));
+            ]
+        ]);
 
         $action = new TaskCloseColumn($this->container);
         $action->setProjectId(1);
@@ -53,16 +53,16 @@ class TaskCloseColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
-            'task' => array(
+            'task' => [
                 'project_id' => 1,
                 'column_id' => 3,
-            )
-        ));
+            ]
+        ]);
 
         $action = new TaskCloseColumn($this->container);
         $action->setProjectId(1);

@@ -29,7 +29,7 @@ class TaskSwimlaneFilter extends BaseFilter implements FilterInterface
      */
     public function getAttributes()
     {
-        return array('swimlane');
+        return ['swimlane'];
     }
 
     /**

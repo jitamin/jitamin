@@ -20,7 +20,7 @@ use Hiject\Core\Csv;
 class Response extends Base
 {
     private $httpStatusCode = 200;
-    private $httpHeaders = array();
+    private $httpHeaders = [];
     private $httpBody = '';
     private $responseSent = false;
 
@@ -95,7 +95,7 @@ class Response extends Base
      * @param  array  $policies
      * @return $this
      */
-    public function withContentSecurityPolicy(array $policies = array())
+    public function withContentSecurityPolicy(array $policies = [])
     {
         $values = '';
 

@@ -30,7 +30,7 @@ class Lexer
      * @access private
      * @var array
      */
-    private $tokenMap = array(
+    private $tokenMap = [
         '/^(\s+)/'                                       => 'T_WHITESPACE',
         '/^([<=>]{0,2}[0-9]{4}-[0-9]{2}-[0-9]{2})/'      => 'T_STRING',
         '/^([<=>]{1,2}\w+)/u'                            => 'T_STRING',
@@ -38,7 +38,7 @@ class Lexer
         '/^("(.+)")/'                                    => 'T_STRING',
         '/^(\S+)/u'                                      => 'T_STRING',
         '/^(#\d+)/'                                      => 'T_STRING',
-    );
+    ];
 
     /**
      * Default token
@@ -58,7 +58,7 @@ class Lexer
      */
     public function addToken($regex, $token)
     {
-        $this->tokenMap = array($regex => $token) + $this->tokenMap;
+        $this->tokenMap = [$regex => $token] + $this->tokenMap;
         return $this;
     }
 
@@ -84,7 +84,7 @@ class Lexer
      */
     public function tokenize($input)
     {
-        $tokens = array();
+        $tokens = [];
         $this->offset = 0;
         $input_length = mb_strlen($input, 'UTF-8');
 
@@ -92,7 +92,7 @@ class Lexer
             $result = $this->match(mb_substr($input, $this->offset, $input_length, 'UTF-8'));
 
             if ($result === false) {
-                return array();
+                return [];
             }
 
             $tokens[] = $result;
@@ -114,10 +114,10 @@ class Lexer
             if (preg_match($pattern, $string, $matches)) {
                 $this->offset += mb_strlen($matches[1], 'UTF-8');
 
-                return array(
+                return [
                     'match' => str_replace('"', '', $matches[1]),
                     'token' => $name,
-                );
+                ];
             }
         }
 
@@ -133,7 +133,7 @@ class Lexer
      */
     protected function map(array $tokens)
     {
-        $map = array();
+        $map = [];
         $leftOver = '';
 
         while (false !== ($token = current($tokens))) {
@@ -153,7 +153,7 @@ class Lexer
         $leftOver = trim($leftOver);
 
         if ($this->defaultToken !== '' && $leftOver !== '') {
-            $map[$this->defaultToken] = array($leftOver);
+            $map[$this->defaultToken] = [$leftOver];
         }
 
         return $map;

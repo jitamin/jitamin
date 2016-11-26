@@ -27,9 +27,9 @@ class TaskCommentFilterTest extends Base
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'user_id' => 1, 'comment' => 'This is a test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'user_id' => 1, 'comment' => 'This is a test']));
 
         $filter = new TaskCommentFilter();
         $filter->withQuery($query);
@@ -47,9 +47,9 @@ class TaskCommentFilterTest extends Base
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'user_id' => 1, 'comment' => 'This is a test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'user_id' => 1, 'comment' => 'This is a test']));
 
         $filter = new TaskCommentFilter();
         $filter->withQuery($query);

@@ -46,11 +46,11 @@ class UserNotificationTypeModel extends NotificationTypeModel
      */
     public function saveSelectedTypes($user_id, array $types)
     {
-        $results = array();
+        $results = [];
         $this->db->table(self::TABLE)->eq('user_id', $user_id)->remove();
 
         foreach ($types as $type) {
-            $results[] = $this->db->table(self::TABLE)->insert(array('user_id' => $user_id, 'notification_type' => $type));
+            $results[] = $this->db->table(self::TABLE)->insert(['user_id' => $user_id, 'notification_type' => $type]);
         }
 
         return ! in_array(false, $results, true);

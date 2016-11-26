@@ -28,7 +28,7 @@ class ColumnRestrictionValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\Required('project_id', t('This field is required')),
             new Validators\Integer('project_id', t('This value must be an integer')),
             new Validators\Required('role_id', t('This field is required')),
@@ -36,11 +36,11 @@ class ColumnRestrictionValidator extends BaseValidator
             new Validators\Required('rule', t('This field is required')),
             new Validators\Required('column_id', t('This field is required')),
             new Validators\Integer('column_id', t('This value must be an integer')),
-        ));
+        ]);
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 }

@@ -8,11 +8,11 @@
     <?= $this->form->hidden('external_id', $values) ?>
 
     <?= $this->form->label(t('Name'), 'name') ?>
-    <?= $this->form->text('name', $values, $errors, array('autofocus', 'required', 'maxlength="100"')) ?>
+    <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="100"']) ?>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'GroupListController', 'index', array(), false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'GroupListController', 'index', [], false, 'close-popover') ?>
     </div>
 </form>

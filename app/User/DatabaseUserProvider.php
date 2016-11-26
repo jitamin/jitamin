@@ -24,7 +24,7 @@ class DatabaseUserProvider implements UserProviderInterface
      * @access protected
      * @var array
      */
-    protected $user = array();
+    protected $user = [];
 
     /**
      * Constructor
@@ -133,7 +133,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getExternalGroupIds()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -144,6 +144,6 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getExtraAttributes()
     {
-        return array();
+        return [];
     }
 }

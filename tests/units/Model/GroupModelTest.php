@@ -52,7 +52,7 @@ class GroupModelTest extends Base
     {
         $groupModel = new GroupModel($this->container);
         $this->assertEquals(1, $groupModel->create('Test'));
-        $this->assertTrue($groupModel->update(array('id' => 1, 'name' => 'My group', 'external_id' => 'test')));
+        $this->assertTrue($groupModel->update(['id' => 1, 'name' => 'My group', 'external_id' => 'test']));
 
         $group = $groupModel->getById(1);
         $this->assertEquals('My group', $group['name']);

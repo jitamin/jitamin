@@ -16,7 +16,7 @@ namespace Hiject\Core;
  */
 class Thumbnail
 {
-    protected $metadata = array();
+    protected $metadata = [];
     protected $srcImage;
     protected $dstImage;
 

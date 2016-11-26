@@ -38,18 +38,18 @@ class ExportController extends BaseController
             $this->response->withFileDownload($filename.'.csv');
             $this->response->csv($data);
         } else {
-            $this->response->html($this->helper->layout->project('export/'.$action, array(
-                'values' => array(
+            $this->response->html($this->helper->layout->project('export/'.$action, [
+                'values' => [
                     'controller' => 'ExportController',
                     'action' => $action,
                     'project_id' => $project['id'],
                     'from' => $from,
                     'to' => $to,
-                ),
-                'errors' => array(),
+                ],
+                'errors' => [],
                 'project' => $project,
                 'title' => $page_title,
-            ), 'export/sidebar'));
+            ], 'export/sidebar'));
         }
     }
 

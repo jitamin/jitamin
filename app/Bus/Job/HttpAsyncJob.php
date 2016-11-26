@@ -28,7 +28,7 @@ class HttpAsyncJob extends BaseJob
      */
     public function withParams($method, $url, $content, array $headers)
     {
-        $this->jobParams = array($method, $url, $content, $headers);
+        $this->jobParams = [$method, $url, $content, $headers];
         return $this;
     }
 

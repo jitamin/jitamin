@@ -44,21 +44,21 @@ class ProjectHeaderHelper extends Base
      */
     public function render(array $project, $controller, $action, $boardView = false)
     {
-        $filters = array(
+        $filters = [
             'controller' => $controller,
             'action' => $action,
             'project_id' => $project['id'],
             'q' => $this->getSearchQuery($project),
-        );
+        ];
 
-        return $this->template->render('project_header/header', array(
+        return $this->template->render('project_header/header', [
             'project' => $project,
             'filters' => $filters,
             'categories_list' => $this->categoryModel->getList($project['id'], false),
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], false),
             'custom_filters_list' => $this->customFilterModel->getAll($project['id'], $this->userSession->getId()),
             'board_view' => $boardView,
-        ));
+        ]);
     }
 
     /**

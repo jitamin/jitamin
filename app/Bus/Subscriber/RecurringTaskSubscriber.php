@@ -29,10 +29,10 @@ class RecurringTaskSubscriber extends BaseSubscriber implements EventSubscriberI
      */
     public static function getSubscribedEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_MOVE_COLUMN => 'onMove',
             TaskModel::EVENT_CLOSE       => 'onClose',
-        );
+        ];
     }
 
     /**

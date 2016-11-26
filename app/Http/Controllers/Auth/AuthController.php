@@ -23,18 +23,18 @@ class AuthController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function login(array $values = array(), array $errors = array())
+    public function login(array $values = [], array $errors = [])
     {
         if ($this->userSession->isLogged()) {
             $this->response->redirect($this->helper->url->to('DashboardController', 'show'));
         } else {
-            $this->response->html($this->helper->layout->app('auth/index', array(
+            $this->response->html($this->helper->layout->app('auth/index', [
                 'captcha' => ! empty($values['username']) && $this->userLockingModel->hasCaptcha($values['username']),
                 'errors' => $errors,
                 'values' => $values,
                 'no_layout' => true,
                 'title' => t('Login')
-            )));
+            ]));
         }
     }
 

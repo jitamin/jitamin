@@ -52,22 +52,22 @@ class CommentController extends BaseController
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
-    public function create(array $values = array(), array $errors = array())
+    public function create(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
 
         if (empty($values)) {
-            $values = array(
+            $values = [
                 'user_id' => $this->userSession->getId(),
                 'task_id' => $task['id'],
-            );
+            ];
         }
 
-        $this->response->html($this->template->render('comment/create', array(
+        $this->response->html($this->template->render('comment/create', [
             'values' => $values,
             'errors' => $errors,
             'task' => $task,
-        )));
+        ]));
     }
 
     /**
@@ -89,7 +89,7 @@ class CommentController extends BaseController
                 $this->flash->failure(t('Unable to create your comment.'));
             }
 
-            $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), 'comments'), true);
+            $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'comments'), true);
         } else {
             $this->create($values, $errors);
         }
@@ -104,18 +104,18 @@ class CommentController extends BaseController
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
-    public function edit(array $values = array(), array $errors = array())
+    public function edit(array $values = [], array $errors = [])
     {
         $task = $this->getTask();
         $comment = $this->getComment();
 
-        $this->response->html($this->template->render('comment/edit', array(
+        $this->response->html($this->template->render('comment/edit', [
             'values' => empty($values) ? $comment : $values,
             'errors' => $errors,
             'comment' => $comment,
             'task' => $task,
             'title' => t('Edit a comment')
-        )));
+        ]));
     }
 
     /**
@@ -138,7 +138,7 @@ class CommentController extends BaseController
                 $this->flash->failure(t('Unable to update your comment.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])), false);
+            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), false);
         }
 
         return $this->edit($values, $errors);
@@ -154,11 +154,11 @@ class CommentController extends BaseController
         $task = $this->getTask();
         $comment = $this->getComment();
 
-        $this->response->html($this->template->render('comment/remove', array(
+        $this->response->html($this->template->render('comment/remove', [
             'comment' => $comment,
             'task' => $task,
             'title' => t('Remove a comment')
-        )));
+        ]));
     }
 
     /**
@@ -178,7 +178,7 @@ class CommentController extends BaseController
             $this->flash->failure(t('Unable to remove this comment.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id']), 'comments'));
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'comments'));
     }
 
     /**
@@ -198,7 +198,7 @@ class CommentController extends BaseController
         $this->response->redirect($this->helper->url->to(
             'TaskViewController',
             'show',
-            array('task_id' => $task['id'], 'project_id' => $task['project_id']),
+            ['task_id' => $task['id'], 'project_id' => $task['project_id']],
             'comments'
         ));
     }

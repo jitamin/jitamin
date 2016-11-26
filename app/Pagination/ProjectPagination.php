@@ -32,7 +32,7 @@ class ProjectPagination extends Base
     public function getDashboardPaginator($user_id, $method, $max)
     {
         return $this->paginator
-            ->setUrl('DashboardController', $method, array('pagination' => 'projects', 'user_id' => $user_id))
+            ->setUrl('DashboardController', $method, ['pagination' => 'projects', 'user_id' => $user_id])
             ->setMax($max)
             ->setOrder(ProjectModel::TABLE.'.name')
             ->setQuery($this->projectModel->getQueryColumnStats($this->projectPermissionModel->getActiveProjectIds($user_id)))

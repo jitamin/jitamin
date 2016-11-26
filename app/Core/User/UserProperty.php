@@ -26,17 +26,17 @@ class UserProperty
      */
     public static function getProperties(UserProviderInterface $user)
     {
-        $properties = array(
+        $properties = [
             'username' => $user->getUsername(),
             'name' => $user->getName(),
             'email' => $user->getEmail(),
             'role' => $user->getRole(),
             $user->getExternalIdColumn() => $user->getExternalId(),
-        );
+        ];
 
         $properties = array_merge($properties, $user->getExtraAttributes());
 
-        return array_filter($properties, array(__NAMESPACE__.'\UserProperty', 'isNotEmptyValue'));
+        return array_filter($properties, [__NAMESPACE__.'\UserProperty', 'isNotEmptyValue']);
     }
 
     /**
@@ -50,8 +50,8 @@ class UserProperty
      */
     public static function filterProperties(array $profile, array $properties)
     {
-        $excludedProperties = array('username');
-        $values = array();
+        $excludedProperties = ['username'];
+        $values = [];
 
         foreach ($properties as $property => $value) {
             if (self::isNotEmptyValue($value) &&

@@ -189,10 +189,10 @@ class TaskPositionModel extends Base
     {
         $now = time();
 
-        return $this->db->table(TaskModel::TABLE)->eq('id', $task_id)->update(array(
+        return $this->db->table(TaskModel::TABLE)->eq('id', $task_id)->update([
             'date_moved' => $now,
             'date_modification' => $now,
-        ));
+        ]);
     }
 
     /**
@@ -207,11 +207,11 @@ class TaskPositionModel extends Base
      */
     private function saveTaskPosition($task_id, $position, $column_id, $swimlane_id)
     {
-        $result = $this->db->table(TaskModel::TABLE)->eq('id', $task_id)->update(array(
+        $result = $this->db->table(TaskModel::TABLE)->eq('id', $task_id)->update([
             'position' => $position,
             'column_id' => $column_id,
             'swimlane_id' => $swimlane_id,
-        ));
+        ]);
 
         if (! $result) {
             $this->db->cancelTransaction();
@@ -232,7 +232,7 @@ class TaskPositionModel extends Base
      */
     private function fireEvents(array $task, $new_column_id, $new_position, $new_swimlane_id)
     {
-        $changes = array(
+        $changes = [
             'project_id' => $task['project_id'],
             'position' => $new_position,
             'column_id' => $new_column_id,
@@ -242,26 +242,26 @@ class TaskPositionModel extends Base
             'date_moved' => $task['date_moved'],
             'recurrence_status' => $task['recurrence_status'],
             'recurrence_trigger' => $task['recurrence_trigger'],
-        );
+        ];
 
         if ($task['swimlane_id'] != $new_swimlane_id) {
             $this->queueManager->push($this->taskEventJob->withParams(
                 $task['id'],
-                array(TaskModel::EVENT_MOVE_SWIMLANE),
+                [TaskModel::EVENT_MOVE_SWIMLANE],
                 $changes,
                 $changes
             ));
         } elseif ($task['column_id'] != $new_column_id) {
             $this->queueManager->push($this->taskEventJob->withParams(
                 $task['id'],
-                array(TaskModel::EVENT_MOVE_COLUMN),
+                [TaskModel::EVENT_MOVE_COLUMN],
                 $changes,
                 $changes
             ));
         } elseif ($task['position'] != $new_position) {
             $this->queueManager->push($this->taskEventJob->withParams(
                 $task['id'],
-                array(TaskModel::EVENT_MOVE_POSITION),
+                [TaskModel::EVENT_MOVE_POSITION],
                 $changes,
                 $changes
             ));

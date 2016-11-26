@@ -1,16 +1,16 @@
 <div class="page-header">
     <h2><?= t('Application settings') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('ConfigController', 'save', array('redirect' => 'index')) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('ConfigController', 'save', ['redirect' => 'index']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Application URL'), 'application_url') ?>
-    <?= $this->form->text('application_url', $values, $errors, array('placeholder="http://example.hiject.com/"')) ?>
+    <?= $this->form->text('application_url', $values, $errors, ['placeholder="http://example.hiject.com/"']) ?>
     <p class="form-help"><?= t('Example: http://example.hiject.com/ (used to generate absolute URLs)') ?></p>
 
     <?= $this->form->label(t('Application Name'), 'application_name') ?>
-    <?= $this->form->text('application_name', $values, $errors, array('placeholder="Hiject"')) ?>
+    <?= $this->form->text('application_name', $values, $errors, ['placeholder="Hiject"']) ?>
     <p class="form-help"><?= t('Example: Hiject (used to show on the navbar)') ?></p>
 
     <?= $this->form->label(t('Language'), 'application_language') ?>
@@ -34,7 +34,7 @@
     <?= $this->form->label(t('Custom Stylesheet'), 'application_stylesheet') ?>
     <?= $this->form->textarea('application_stylesheet', $values, $errors) ?>
 
-    <?= $this->hook->render('template:config:application', array('values' => $values, 'errors' => $errors)) ?>
+    <?= $this->hook->render('template:config:application', ['values' => $values, 'errors' => $errors]) ?>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>

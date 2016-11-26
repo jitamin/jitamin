@@ -126,16 +126,16 @@ abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
 
     public function assertCreateTask()
     {
-        $this->taskId = $this->app->createTask(array('title' => $this->taskTitle, 'project_id' => $this->projectId));
+        $this->taskId = $this->app->createTask(['title' => $this->taskTitle, 'project_id' => $this->projectId]);
         $this->assertNotFalse($this->taskId);
     }
 
     public function assertCreateSubtask()
     {
-        $this->subtaskId = $this->app->createSubtask(array(
+        $this->subtaskId = $this->app->createSubtask([
             'task_id' => $this->taskId,
             'title' => 'subtask #1',
-        ));
+        ]);
 
         $this->assertNotFalse($this->subtaskId);
     }

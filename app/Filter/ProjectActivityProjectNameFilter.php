@@ -27,7 +27,7 @@ class ProjectActivityProjectNameFilter extends BaseFilter implements FilterInter
      */
     public function getAttributes()
     {
-        return array('project');
+        return ['project'];
     }
 
     /**

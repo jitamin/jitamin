@@ -28,17 +28,17 @@ class ActionValidator extends BaseValidator
      */
     public function validateCreation(array $values)
     {
-        $v = new Validator($values, array(
+        $v = new Validator($values, [
             new Validators\Required('project_id', t('The project id is required')),
             new Validators\Integer('project_id', t('This value must be an integer')),
             new Validators\Required('event_name', t('This value is required')),
             new Validators\Required('action_name', t('This value is required')),
             new Validators\Required('params', t('This value is required')),
-        ));
+        ]);
 
-        return array(
+        return [
             $v->execute(),
             $v->getErrors()
-        );
+        ];
     }
 }

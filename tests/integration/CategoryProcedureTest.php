@@ -29,20 +29,20 @@ class CategoryProcedureTest extends BaseProcedureTest
 
     public function assertCreateCategory()
     {
-        $this->categoryId = $this->app->createCategory(array(
+        $this->categoryId = $this->app->createCategory([
             'name' => 'Category',
             'project_id' => $this->projectId,
-        ));
+        ]);
 
         $this->assertNotFalse($this->categoryId);
     }
 
     public function assertThatCategoriesAreUnique()
     {
-        $this->assertFalse($this->app->execute('createCategory', array(
+        $this->assertFalse($this->app->execute('createCategory', [
             'name' => 'Category',
             'project_id' => $this->projectId,
-        )));
+        ]));
     }
 
     public function assertGetCategory()
@@ -67,10 +67,10 @@ class CategoryProcedureTest extends BaseProcedureTest
 
     public function assertCategoryUpdate()
     {
-        $this->assertTrue($this->app->execute('updateCategory', array(
+        $this->assertTrue($this->app->execute('updateCategory', [
             'id' => $this->categoryId,
             'name' => 'Renamed category',
-        )));
+        ]));
 
         $category = $this->app->getCategory($this->categoryId);
         $this->assertEquals('Renamed category', $category['name']);

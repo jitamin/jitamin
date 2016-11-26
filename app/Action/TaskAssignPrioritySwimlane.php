@@ -37,10 +37,10 @@ class TaskAssignPrioritySwimlane extends Base
      */
     public function getCompatibleEvents()
     {
-        return array(
+        return [
             TaskModel::EVENT_CREATE,
             TaskModel::EVENT_MOVE_SWIMLANE,
-        );
+        ];
     }
 
     /**
@@ -51,10 +51,10 @@ class TaskAssignPrioritySwimlane extends Base
      */
     public function getActionRequiredParameters()
     {
-        return array(
+        return [
             'swimlane_id' => t('Swimlane'),
             'priority' => t('Priority'),
-        );
+        ];
     }
 
     /**
@@ -65,13 +65,13 @@ class TaskAssignPrioritySwimlane extends Base
      */
     public function getEventRequiredParameters()
     {
-        return array(
+        return [
             'task_id',
-            'task' => array(
+            'task' => [
                 'project_id',
                 'swimlane_id',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -83,10 +83,10 @@ class TaskAssignPrioritySwimlane extends Base
      */
     public function doAction(array $data)
     {
-        $values = array(
+        $values = [
             'id' => $data['task_id'],
             'priority' => $this->getParam('priority'),
-        );
+        ];
 
         return $this->taskModificationModel->update($values);
     }

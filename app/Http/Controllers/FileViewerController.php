@@ -49,18 +49,18 @@ class FileViewerController extends BaseController
     {
         $file = $this->getFile();
         $type = $this->helper->file->getPreviewType($file['name']);
-        $params = array('file_id' => $file['id'], 'project_id' => $this->request->getIntegerParam('project_id'));
+        $params = ['file_id' => $file['id'], 'project_id' => $this->request->getIntegerParam('project_id')];
 
         if ($file['model'] === 'taskFileModel') {
             $params['task_id'] = $file['task_id'];
         }
 
-        $this->response->html($this->template->render('file_viewer/show', array(
+        $this->response->html($this->template->render('file_viewer/show', [
             'file' => $file,
             'params' => $params,
             'type' => $type,
             'content' => $this->getFileContent($file),
-        )));
+        ]));
     }
 
     /**

@@ -22,7 +22,7 @@ class MemoryCache extends BaseCache
      * @access private
      * @var array
      */
-    private $storage = array();
+    private $storage = [];
 
     /**
      * Store an item in the cache
@@ -55,7 +55,7 @@ class MemoryCache extends BaseCache
      */
     public function flush()
     {
-        $this->storage = array();
+        $this->storage = [];
     }
 
     /**

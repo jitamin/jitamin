@@ -35,7 +35,7 @@ class ProjectUserRoleModel extends Base
      */
     public function getActiveProjectsByUser($user_id)
     {
-        return $this->getProjectsByUser($user_id, array(ProjectModel::ACTIVE));
+        return $this->getProjectsByUser($user_id, [ProjectModel::ACTIVE]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ProjectUserRoleModel extends Base
      * @param  array    $status
      * @return array
      */
-    public function getProjectsByUser($user_id, $status = array(ProjectModel::ACTIVE, ProjectModel::INACTIVE))
+    public function getProjectsByUser($user_id, $status = [ProjectModel::ACTIVE, ProjectModel::INACTIVE])
     {
         $userProjects = $this->db
             ->hashtable(ProjectModel::TABLE)
@@ -137,7 +137,7 @@ class ProjectUserRoleModel extends Base
      */
     public function getAllUsersGroupedByRole($project_id)
     {
-        $users = array();
+        $users = [];
 
         $userMembers = $this->getUsers($project_id);
         $groupMembers = $this->projectGroupRoleModel->getUsers($project_id);
@@ -145,7 +145,7 @@ class ProjectUserRoleModel extends Base
 
         foreach ($members as $user) {
             if (! isset($users[$user['role']])) {
-                $users[$user['role']] = array();
+                $users[$user['role']] = [];
             }
 
             $users[$user['role']][$user['id']] = $user['name'] ?: $user['username'];
@@ -200,11 +200,11 @@ class ProjectUserRoleModel extends Base
         }
 
         if ($unassigned) {
-            $users = array(t('Unassigned')) + $users;
+            $users = [t('Unassigned')] + $users;
         }
 
         if ($everybody) {
-            $users = array(UserModel::EVERYBODY_ID => t('Everybody')) + $users;
+            $users = [UserModel::EVERYBODY_ID => t('Everybody')] + $users;
         }
 
         return $users;
@@ -221,11 +221,11 @@ class ProjectUserRoleModel extends Base
      */
     public function addUser($project_id, $user_id, $role)
     {
-        return $this->db->table(self::TABLE)->insert(array(
+        return $this->db->table(self::TABLE)->insert([
             'user_id' => $user_id,
             'project_id' => $project_id,
             'role' => $role,
-        ));
+        ]);
     }
 
     /**
@@ -255,9 +255,9 @@ class ProjectUserRoleModel extends Base
         return $this->db->table(self::TABLE)
             ->eq('user_id', $user_id)
             ->eq('project_id', $project_id)
-            ->update(array(
+            ->update([
                 'role' => $role,
-            ));
+            ]);
     }
 
     /**
@@ -272,11 +272,11 @@ class ProjectUserRoleModel extends Base
         $rows = $this->db->table(self::TABLE)->eq('project_id', $project_src_id)->findAll();
 
         foreach ($rows as $row) {
-            $result = $this->db->table(self::TABLE)->save(array(
+            $result = $this->db->table(self::TABLE)->save([
                 'project_id' => $project_dst_id,
                 'user_id' => $row['user_id'],
                 'role' => $row['role'],
-            ));
+            ]);
 
             if (! $result) {
                 return false;

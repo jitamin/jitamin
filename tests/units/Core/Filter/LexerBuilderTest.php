@@ -28,8 +28,8 @@ class LexerBuilderTest extends Base
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $project->create(array('name' => 'Project')));
-        $this->assertNotFalse($taskCreation->create(array('project_id' => 1, 'title' => 'Test')));
+        $this->assertEquals(1, $project->create(['name' => 'Project']));
+        $this->assertNotFalse($taskCreation->create(['project_id' => 1, 'title' => 'Test']));
 
         $builder = new LexerBuilder();
         $builder->withFilter(new TaskAssigneeFilter());
@@ -48,8 +48,8 @@ class LexerBuilderTest extends Base
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $project->create(array('name' => 'Project')));
-        $this->assertNotFalse($taskCreation->create(array('project_id' => 1, 'title' => 'Test')));
+        $this->assertEquals(1, $project->create(['name' => 'Project']));
+        $this->assertNotFalse($taskCreation->create(['project_id' => 1, 'title' => 'Test']));
 
         $builder = new LexerBuilder();
         $builder->withFilter(new TaskAssigneeFilter());
@@ -67,8 +67,8 @@ class LexerBuilderTest extends Base
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $project->create(array('name' => 'Project')));
-        $this->assertNotFalse($taskCreation->create(array('project_id' => 1, 'title' => 'Test')));
+        $this->assertEquals(1, $project->create(['name' => 'Project']));
+        $this->assertNotFalse($taskCreation->create(['project_id' => 1, 'title' => 'Test']));
 
         $builder = new LexerBuilder();
         $builder->withFilter(new TaskAssigneeFilter());
@@ -86,9 +86,9 @@ class LexerBuilderTest extends Base
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $project->create(array('name' => 'Project')));
-        $this->assertNotFalse($taskCreation->create(array('project_id' => 1, 'title' => 'ABC', 'owner_id' => 1)));
-        $this->assertNotFalse($taskCreation->create(array('project_id' => 1, 'title' => 'DEF')));
+        $this->assertEquals(1, $project->create(['name' => 'Project']));
+        $this->assertNotFalse($taskCreation->create(['project_id' => 1, 'title' => 'ABC', 'owner_id' => 1]));
+        $this->assertNotFalse($taskCreation->create(['project_id' => 1, 'title' => 'DEF']));
 
         $builder = new LexerBuilder();
         $builder->withFilter(new TaskAssigneeFilter());
@@ -121,8 +121,8 @@ class LexerBuilderTest extends Base
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(1, $project->create(array('name' => 'Project')));
-        $this->assertNotFalse($taskCreation->create(array('project_id' => 1, 'title' => 'Test')));
+        $this->assertEquals(1, $project->create(['name' => 'Project']));
+        $this->assertNotFalse($taskCreation->create(['project_id' => 1, 'title' => 'Test']));
 
         $builder = new LexerBuilder();
         $builder->withFilter(new TaskAssigneeFilter());
@@ -142,11 +142,11 @@ class LexerBuilderTest extends Base
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'foobar', 'name' => 'Foo Bar')));
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test 1', 'project_id' => 1, 'owner_id' => 2)));
-        $this->assertEquals(2, $taskCreation->create(array('title' => 'Test 2', 'project_id' => 1, 'owner_id' => 1)));
-        $this->assertEquals(3, $taskCreation->create(array('title' => 'Test 3', 'project_id' => 1, 'owner_id' => 0)));
+        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'name' => 'Foo Bar']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test 1', 'project_id' => 1, 'owner_id' => 2]));
+        $this->assertEquals(2, $taskCreation->create(['title' => 'Test 2', 'project_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(3, $taskCreation->create(['title' => 'Test 3', 'project_id' => 1, 'owner_id' => 0]));
 
         $builder = new LexerBuilder();
         $builder->withFilter(new TaskAssigneeFilter());

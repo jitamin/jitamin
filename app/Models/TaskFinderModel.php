@@ -29,7 +29,7 @@ class TaskFinderModel extends Base
     public function getProjectUserOverviewQuery(array $project_ids, $is_active)
     {
         if (empty($project_ids)) {
-            $project_ids = array(-1);
+            $project_ids = [-1];
         }
 
         return $this->db
@@ -188,7 +188,7 @@ class TaskFinderModel extends Base
      * @param  array     $status
      * @return array
      */
-    public function getAllIds($project_id, array $status = array(TaskModel::STATUS_OPEN))
+    public function getAllIds($project_id, array $status = [TaskModel::STATUS_OPEN])
     {
         return $this->db
                     ->table(TaskModel::TABLE)
@@ -363,7 +363,7 @@ class TaskFinderModel extends Base
      * @param  array     $status       List of status id
      * @return integer
      */
-    public function countByProjectId($project_id, array $status = array(TaskModel::STATUS_OPEN, TaskModel::STATUS_CLOSED))
+    public function countByProjectId($project_id, array $status = [TaskModel::STATUS_OPEN, TaskModel::STATUS_CLOSED])
     {
         return $this->db
                     ->table(TaskModel::TABLE)

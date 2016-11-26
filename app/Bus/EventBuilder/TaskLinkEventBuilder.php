@@ -48,10 +48,10 @@ class TaskLinkEventBuilder extends BaseEventBuilder
             return null;
         }
 
-        return new TaskLinkEvent(array(
+        return new TaskLinkEvent([
             'task_link' => $taskLink,
             'task' => $this->taskFinderModel->getDetails($taskLink['task_id']),
-        ));
+        ]);
     }
 
     /**

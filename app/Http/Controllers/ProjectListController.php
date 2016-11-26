@@ -38,10 +38,10 @@ class ProjectListController extends BaseController
             ->setQuery($this->projectModel->getQueryColumnStats($project_ids))
             ->calculate();
 
-        $this->response->html($this->helper->layout->app('project_list/show', array(
+        $this->response->html($this->helper->layout->app('project_list/show', [
             'paginator' => $paginator,
             'nb_projects' => $nb_projects,
             'title' => t('Projects').' ('.$nb_projects.')'
-        )));
+        ]));
     }
 }

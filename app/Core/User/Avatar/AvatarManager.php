@@ -22,7 +22,7 @@ class AvatarManager
      * @access private
      * @var AvatarProviderInterface[]
      */
-    private $providers = array();
+    private $providers = [];
 
     /**
      * Register a new Avatar provider
@@ -51,13 +51,13 @@ class AvatarManager
      */
     public function render($user_id, $username, $name, $email, $avatar_path, $size)
     {
-        $user = array(
+        $user = [
             'id' => $user_id,
             'username' => $username,
             'name' => $name,
             'email' => $email,
             'avatar_path' => $avatar_path,
-        );
+        ];
 
         krsort($this->providers);
 
@@ -83,13 +83,13 @@ class AvatarManager
             ksort($this->providers);
             $provider = current($this->providers);
 
-            $user = array(
+            $user = [
                 'id' => 0,
                 'username' => '',
                 'name' => '?',
                 'email' => '',
                 'avatar_path' => '',
-            );
+            ];
 
             return $provider->render($user, $size);
         }

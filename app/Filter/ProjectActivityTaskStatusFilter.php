@@ -27,7 +27,7 @@ class ProjectActivityTaskStatusFilter extends BaseFilter implements FilterInterf
      */
     public function getAttributes()
     {
-        return array('status');
+        return ['status'];
     }
 
     /**

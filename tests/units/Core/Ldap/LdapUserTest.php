@@ -30,33 +30,33 @@ class LdapUserTest extends Base
 
         $this->client = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Client')
-            ->setMethods(array(
+            ->setMethods([
                 'getConnection',
-            ))
+            ])
             ->getMock();
 
         $this->query = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Query')
-            ->setConstructorArgs(array($this->client))
-            ->setMethods(array(
+            ->setConstructorArgs([$this->client])
+            ->setMethods([
                 'execute',
                 'hasResult',
                 'getEntries',
-            ))
+            ])
             ->getMock();
 
         $this->group = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Group')
-            ->setConstructorArgs(array(new Query($this->client)))
-            ->setMethods(array(
+            ->setConstructorArgs([new Query($this->client)])
+            ->setMethods([
                 'find',
-            ))
+            ])
             ->getMock();
 
         $this->user = $this
             ->getMockBuilder('\Hiject\Core\Ldap\User')
-            ->setConstructorArgs(array($this->query, $this->group))
-            ->setMethods(array(
+            ->setConstructorArgs([$this->query, $this->group])
+            ->setMethods([
                 'getAttributeUsername',
                 'getAttributeEmail',
                 'getAttributeName',
@@ -66,35 +66,35 @@ class LdapUserTest extends Base
                 'getGroupAdminDn',
                 'getGroupManagerDn',
                 'getBasDn',
-            ))
+            ])
             ->getMock();
     }
 
     public function testGetUserWithNoGroupConfigured()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
-                'displayname' => array(
+                'displayname' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'samaccountname' => array(
+                ],
+                'samaccountname' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
+                ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
-            )
-        ));
+            ]
+        ]);
 
         $this->client
             ->expects($this->any())
@@ -147,39 +147,39 @@ class LdapUserTest extends Base
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(null, $user->getRole());
         $this->assertSame('', $user->getPhoto());
-        $this->assertEquals(array(), $user->getExternalGroupIds());
-        $this->assertEquals(array('is_ldap_user' => 1), $user->getExtraAttributes());
+        $this->assertEquals([], $user->getExternalGroupIds());
+        $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
     public function testGetUserWithPhoto()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
-                'displayname' => array(
+                'displayname' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'samaccountname' => array(
+                ],
+                'samaccountname' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
-                'jpegPhoto' => array(
+                ],
+                'jpegPhoto' => [
                     'count' => 1,
                     0 => 'my photo',
-                ),
+                ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
-            )
-        ));
+            ]
+        ]);
 
         $this->client
             ->expects($this->any())
@@ -221,34 +221,34 @@ class LdapUserTest extends Base
 
     public function testGetUserWithAdminRole()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
-                'displayname' => array(
+                'displayname' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'samaccountname' => array(
+                ],
+                'samaccountname' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
-                'memberof' => array(
+                ],
+                'memberof' => [
                     'count' => 1,
                     0 => 'CN=Hiject-Admins,CN=Users,DC=hiject,DC=local',
-                ),
+                ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
                 3 => 'memberof',
-            )
-        ));
+            ]
+        ]);
 
         $this->client
             ->expects($this->any())
@@ -310,41 +310,41 @@ class LdapUserTest extends Base
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(Role::APP_ADMIN, $user->getRole());
-        $this->assertEquals(array('CN=Hiject-Admins,CN=Users,DC=hiject,DC=local'), $user->getExternalGroupIds());
-        $this->assertEquals(array('is_ldap_user' => 1), $user->getExtraAttributes());
+        $this->assertEquals(['CN=Hiject-Admins,CN=Users,DC=hiject,DC=local'], $user->getExternalGroupIds());
+        $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
     public function testGetUserWithManagerRole()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
-                'displayname' => array(
+                'displayname' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'samaccountname' => array(
+                ],
+                'samaccountname' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
-                'memberof' => array(
+                ],
+                'memberof' => [
                     'count' => 2,
                     0 => 'CN=Hiject-Users,CN=Users,DC=hiject,DC=local',
                     1 => 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local',
-                ),
+                ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
                 3 => 'memberof',
-            )
-        ));
+            ]
+        ]);
 
         $this->client
             ->expects($this->any())
@@ -406,8 +406,8 @@ class LdapUserTest extends Base
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(Role::APP_MANAGER, $user->getRole());
-        $this->assertEquals(array('CN=Hiject-Users,CN=Users,DC=hiject,DC=local', 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local'), $user->getExternalGroupIds());
-        $this->assertEquals(array('is_ldap_user' => 1), $user->getExtraAttributes());
+        $this->assertEquals(['CN=Hiject-Users,CN=Users,DC=hiject,DC=local', 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local'], $user->getExternalGroupIds());
+        $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
     public function testGetUserNotFound()
@@ -460,33 +460,33 @@ class LdapUserTest extends Base
 
     public function testGetUserWithAdminRoleAndPosixGroups()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
-                'cn' => array(
+                'cn' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'uid' => array(
+                ],
+                'uid' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
+                ],
                 0 => 'cn',
                 1 => 'mail',
                 2 => 'uid',
-            )
-        ));
+            ]
+        ]);
 
-        $groups = array(
+        $groups = [
             new LdapGroupProvider('CN=Hiject Admins,OU=Groups,DC=hiject,DC=local', 'Hiject Admins')
-        );
+        ];
 
         $this->client
             ->expects($this->any())
@@ -558,41 +558,41 @@ class LdapUserTest extends Base
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
-        $this->assertEquals(array('CN=Hiject Admins,OU=Groups,DC=hiject,DC=local'), $user->getExternalGroupIds());
+        $this->assertEquals(['CN=Hiject Admins,OU=Groups,DC=hiject,DC=local'], $user->getExternalGroupIds());
         $this->assertEquals(Role::APP_ADMIN, $user->getRole());
-        $this->assertEquals(array('is_ldap_user' => 1), $user->getExtraAttributes());
+        $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
     public function testGetUserWithManagerRoleAndPosixGroups()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
-                'cn' => array(
+                'cn' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'uid' => array(
+                ],
+                'uid' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
+                ],
                 0 => 'cn',
                 1 => 'mail',
                 2 => 'uid',
-            )
-        ));
+            ]
+        ]);
 
-        $groups = array(
+        $groups = [
             new LdapGroupProvider('CN=Hiject Users,OU=Groups,DC=hiject,DC=local', 'Hiject Users'),
             new LdapGroupProvider('CN=Hiject Managers,OU=Groups,DC=hiject,DC=local', 'Hiject Managers'),
-        );
+        ];
 
         $this->client
             ->expects($this->any())
@@ -665,45 +665,45 @@ class LdapUserTest extends Base
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(
-            array(
+            [
                 'CN=Hiject Users,OU=Groups,DC=hiject,DC=local',
                 'CN=Hiject Managers,OU=Groups,DC=hiject,DC=local',
-            ),
+            ],
             $user->getExternalGroupIds()
         );
         $this->assertEquals(Role::APP_MANAGER, $user->getRole());
-        $this->assertEquals(array('is_ldap_user' => 1), $user->getExtraAttributes());
+        $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
     public function testGetUserWithUserRoleAndPosixGroups()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 1,
-            0 => array(
+            0 => [
                 'count' => 2,
                 'dn' => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
-                'cn' => array(
+                'cn' => [
                     'count' => 1,
                     0 => 'My LDAP user',
-                ),
-                'mail' => array(
+                ],
+                'mail' => [
                     'count' => 2,
                     0 => 'user1@localhost',
                     1 => 'user2@localhost',
-                ),
-                'uid' => array(
+                ],
+                'uid' => [
                     'count' => 1,
                     0 => 'my_ldap_user',
-                ),
+                ],
                 0 => 'cn',
                 1 => 'mail',
                 2 => 'uid',
-            )
-        ));
+            ]
+        ]);
 
-        $groups = array(
+        $groups = [
             new LdapGroupProvider('CN=Hiject Users,OU=Groups,DC=hiject,DC=local', 'Hiject Users'),
-        );
+        ];
 
         $this->client
             ->expects($this->any())
@@ -776,13 +776,13 @@ class LdapUserTest extends Base
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(
-            array(
+            [
                 'CN=Hiject Users,OU=Groups,DC=hiject,DC=local',
-            ),
+            ],
             $user->getExternalGroupIds()
         );
         $this->assertEquals(Role::APP_USER, $user->getRole());
-        $this->assertEquals(array('is_ldap_user' => 1), $user->getExtraAttributes());
+        $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
     public function testGetBaseDnNotConfigured()

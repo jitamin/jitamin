@@ -42,13 +42,13 @@ class ProjectDailyColumnStatsModel extends Base
         $this->db->table(self::TABLE)->eq('project_id', $project_id)->eq('day', $date)->remove();
 
         foreach ($this->getStatsByColumns($project_id) as $column_id => $column) {
-            $this->db->table(self::TABLE)->insert(array(
+            $this->db->table(self::TABLE)->insert([
                 'day' => $date,
                 'project_id' => $project_id,
                 'column_id' => $column_id,
                 'total' => $column['total'],
                 'score' => $column['score'],
-            ));
+            ]);
         }
 
         $this->db->closeTransaction();
@@ -129,7 +129,7 @@ class ProjectDailyColumnStatsModel extends Base
     {
         $column_ids = array_keys($columns);
         $days = array_unique(array_column($metrics, 'day'));
-        $rows = array(array_merge(array(e('Date')), array_values($columns)));
+        $rows = [array_merge([e('Date')], array_values($columns))];
 
         foreach ($days as $day) {
             $rows[] = $this->buildRowAggregate($metrics, $column_ids, $day, $field);
@@ -150,7 +150,7 @@ class ProjectDailyColumnStatsModel extends Base
      */
     private function buildRowAggregate(array &$metrics, array &$column_ids, $day, $field)
     {
-        $row = array($day);
+        $row = [$day];
 
         foreach ($column_ids as $column_id) {
             $row[] = $this->findValueInMetrics($metrics, $day, $column_id, $field);
@@ -191,10 +191,10 @@ class ProjectDailyColumnStatsModel extends Base
     {
         $totals = $this->getTotalByColumns($project_id);
         $scores = $this->getScoreByColumns($project_id);
-        $columns = array();
+        $columns = [];
 
         foreach ($totals as $column_id => $total) {
-            $columns[$column_id] = array('total' => $total, 'score' => 0);
+            $columns[$column_id] = ['total' => $total, 'score' => 0];
         }
 
         foreach ($scores as $column_id => $score) {
@@ -252,9 +252,9 @@ class ProjectDailyColumnStatsModel extends Base
     private function getTaskStatusConfig()
     {
         if ($this->configModel->get('cfd_include_closed_tasks') == 1) {
-            return array(TaskModel::STATUS_OPEN, TaskModel::STATUS_CLOSED);
+            return [TaskModel::STATUS_OPEN, TaskModel::STATUS_CLOSED];
         }
 
-        return array(TaskModel::STATUS_OPEN);
+        return [TaskModel::STATUS_OPEN];
     }
 }

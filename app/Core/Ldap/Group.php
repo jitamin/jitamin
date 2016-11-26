@@ -63,7 +63,7 @@ class Group
     public function find($query)
     {
         $this->query->execute($this->getBasDn(), $query, $this->getAttributes());
-        $groups = array();
+        $groups = [];
 
         if ($this->query->hasResult()) {
             $groups = $this->build();
@@ -80,7 +80,7 @@ class Group
      */
     protected function build()
     {
-        $groups = array();
+        $groups = [];
 
         foreach ($this->query->getEntries()->getAll() as $entry) {
             $groups[] = new LdapGroupProvider($entry->getDn(), $entry->getFirstValue($this->getAttributeName()));
@@ -99,9 +99,9 @@ class Group
      */
     public function getAttributes()
     {
-        return array_values(array_filter(array(
+        return array_values(array_filter([
             $this->getAttributeName(),
-        )));
+        ]));
     }
 
     /**

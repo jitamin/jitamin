@@ -25,7 +25,7 @@
             <?php foreach ($paginator->getCollection() as $project): ?>
             <tr>
                 <td>
-                    <?= $this->render('project/dropdown', array('project' => $project)) ?>
+                    <?= $this->render('project/dropdown', ['project' => $project]) ?>
                 </td>
                 <td>
                     <?php if ($project['is_active']): ?>
@@ -35,7 +35,7 @@
                     <?php endif ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($project['name']), 'ProjectViewController', 'show', array('project_id' => $project['id'])) ?>
+                    <?= $this->url->link($this->text->e($project['name']), 'ProjectViewController', 'show', ['project_id' => $project['id']]) ?>
                     <?php if ($project['is_public']): ?>
                         <i class="fa fa-share-alt" title="<?= t('Shared project') ?>"></i>
                     <?php endif ?>
@@ -62,7 +62,7 @@
                 <?php if ($this->user->hasAccess('ProjectUserOverviewController', 'managers')): ?>
                     <td>
                         <i class="fa fa-users"></i>
-                        <a class="tooltip" title="<?= t('Members') ?>" data-href="<?= $this->url->href('ProjectUserOverviewController', 'users', array('project_id' => $project['id'])) ?>"><?= t('Members') ?></a>
+                        <a class="tooltip" title="<?= t('Members') ?>" data-href="<?= $this->url->href('ProjectUserOverviewController', 'users', ['project_id' => $project['id']]) ?>"><?= t('Members') ?></a>
                     </td>
                 <?php endif ?>
                 <td class="dashboard-project-stats">

@@ -258,11 +258,11 @@ class SubtaskTimeTrackingModel extends Base
         $start->setTimestamp($start_time);
 
         if ($this->hook->exists($hook)) {
-            return $this->hook->first($hook, array(
+            return $this->hook->first($hook, [
                 'user_id' => $user_id,
                 'start' => $start,
                 'end' => $end,
-            ));
+            ]);
         }
 
         return $this->dateParser->getHours($start, $end);
