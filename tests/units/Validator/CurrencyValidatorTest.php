@@ -24,7 +24,7 @@ class CurrencyValidatorTest extends Base
         $result = $currencyValidator->validateCreation(['currency' => 'EUR']);
         $this->assertFalse($result[0]);
 
-        $result = $currencyValidator->validateCreation(['rate' => 1.9));
+        $result = $currencyValidator->validateCreation(['rate' => 1.9]);
         $this->assertFalse($result[0]);
 
         $result = $currencyValidator->validateCreation(['currency' => 'EUR', 'rate' => 'foobar']);
