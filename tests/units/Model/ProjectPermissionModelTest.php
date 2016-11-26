@@ -44,7 +44,7 @@ class ProjectPermissionModelTest extends Base
         $this->assertTrue($groupRoleModel->addGroup(1, 1, Role::PROJECT_MEMBER));
         $this->assertTrue($userRoleModel->addUser(1, 3, Role::PROJECT_MANAGER));
 
-        $this->assertEquals(['user1', 'user2'), $projectPermissionModel->findUsernames(1, 'us'));
+        $this->assertEquals(['user1', 'user2'], $projectPermissionModel->findUsernames(1, 'us'));
         $this->assertEmpty($projectPermissionModel->findUsernames(1, 'a'));
         $this->assertEmpty($projectPermissionModel->findUsernames(2, 'user'));
     }
