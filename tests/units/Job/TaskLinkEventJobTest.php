@@ -23,7 +23,7 @@ class TaskLinkEventJobTest extends Base
         $taskLinkEventJob = new TaskLinkEventJob($this->container);
         $taskLinkEventJob->withParams(123, 'foobar');
 
-        $this->assertSame(array(123, 'foobar'), $taskLinkEventJob->getJobParams());
+        $this->assertSame([123, 'foobar'], $taskLinkEventJob->getJobParams());
     }
 
     public function testWithMissingLink()
@@ -45,9 +45,9 @@ class TaskLinkEventJobTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'task 1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'task 2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'task 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'task 2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $called = $this->container['dispatcher']->getCalledListeners();
@@ -62,9 +62,9 @@ class TaskLinkEventJobTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'task 1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'task 2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'task 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'task 2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
         $this->assertTrue($taskLinkModel->remove(1));
 

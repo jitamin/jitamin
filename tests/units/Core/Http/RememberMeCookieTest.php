@@ -28,9 +28,9 @@ class RememberMeCookieTest extends \Base
 
         self::$functions = $this
             ->getMockBuilder('stdClass')
-            ->setMethods(array(
+            ->setMethods([
                 'setcookie',
-            ))
+            ])
             ->getMock();
     }
 
@@ -49,17 +49,17 @@ class RememberMeCookieTest extends \Base
     public function testDecode()
     {
         $cookie = new RememberMeCookie($this->container);
-        $this->assertEquals(array('token' => 'a', 'sequence' => 'b'), $cookie->decode('a|b'));
+        $this->assertEquals(['token' => 'a', 'sequence' => 'b'], $cookie->decode('a|b'));
     }
 
     public function testHasCookie()
     {
-        $this->container['request'] = new Request($this->container, array(), array(), array(), array(), array());
+        $this->container['request'] = new Request($this->container, [], [], [], [], []);
 
         $cookie = new RememberMeCookie($this->container);
         $this->assertFalse($cookie->hasCookie());
 
-        $this->container['request'] = new Request($this->container, array(), array(), array(), array(), array(RememberMeCookie::COOKIE_NAME => 'miam'));
+        $this->container['request'] = new Request($this->container, [], [], [], [], [RememberMeCookie::COOKIE_NAME => 'miam']);
         $this->assertTrue($cookie->hasCookie());
     }
 
@@ -85,14 +85,14 @@ class RememberMeCookieTest extends \Base
 
     public function testRead()
     {
-        $this->container['request'] = new Request($this->container, array(), array(), array(), array(), array());
+        $this->container['request'] = new Request($this->container, [], [], [], [], []);
 
         $cookie = new RememberMeCookie($this->container);
         $this->assertFalse($cookie->read());
 
-        $this->container['request'] = new Request($this->container, array(), array(), array(), array(), array(RememberMeCookie::COOKIE_NAME => 'T|S'));
+        $this->container['request'] = new Request($this->container, [], [], [], [], [RememberMeCookie::COOKIE_NAME => 'T|S']);
 
-        $this->assertEquals(array('token' => 'T', 'sequence' => 'S'), $cookie->read());
+        $this->assertEquals(['token' => 'T', 'sequence' => 'S'], $cookie->read());
     }
 
     public function testRemove()

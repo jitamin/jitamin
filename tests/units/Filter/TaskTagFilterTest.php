@@ -28,13 +28,13 @@ class TaskTagFilterTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test3']));
 
-        $this->assertTrue($taskTagModel->save(1, 1, array('My tag 1', 'My tag 2', 'My tag 3')));
-        $this->assertTrue($taskTagModel->save(1, 2, array('My tag 3')));
+        $this->assertTrue($taskTagModel->save(1, 1, ['My tag 1', 'My tag 2', 'My tag 3']));
+        $this->assertTrue($taskTagModel->save(1, 2, ['My tag 3']));
 
         $filter = new TaskTagFilter();
         $filter->setDatabase($this->container['db']);
@@ -56,13 +56,13 @@ class TaskTagFilterTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test3']));
 
-        $this->assertTrue($taskTagModel->save(1, 1, array('My tag 1', 'My tag 2', 'My tag 3')));
-        $this->assertTrue($taskTagModel->save(1, 2, array('My tag 3')));
+        $this->assertTrue($taskTagModel->save(1, 1, ['My tag 1', 'My tag 2', 'My tag 3']));
+        $this->assertTrue($taskTagModel->save(1, 2, ['My tag 3']));
 
         $filter = new TaskTagFilter();
         $filter->setDatabase($this->container['db']);
@@ -83,13 +83,13 @@ class TaskTagFilterTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test3']));
 
-        $this->assertTrue($taskTagModel->save(1, 1, array('My tag 1', 'My tag 2', 'My tag 3')));
-        $this->assertTrue($taskTagModel->save(1, 2, array('My tag 3')));
+        $this->assertTrue($taskTagModel->save(1, 1, ['My tag 1', 'My tag 2', 'My tag 3']));
+        $this->assertTrue($taskTagModel->save(1, 2, ['My tag 3']));
 
         $filter = new TaskTagFilter();
         $filter->setDatabase($this->container['db']);
@@ -109,13 +109,13 @@ class TaskTagFilterTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 2, 'title' => 'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 2, 'title' => 'test2']));
 
-        $this->assertTrue($taskTagModel->save(1, 1, array('My tag')));
-        $this->assertTrue($taskTagModel->save(2, 2, array('My tag')));
+        $this->assertTrue($taskTagModel->save(1, 1, ['My tag']));
+        $this->assertTrue($taskTagModel->save(2, 2, ['My tag']));
 
         $filter = new TaskTagFilter();
         $filter->setDatabase($this->container['db']);
@@ -137,13 +137,13 @@ class TaskTagFilterTest extends Base
         $taskTagModel = new TaskTagModel($this->container);
         $query = $taskFinderModel->getExtendedQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2')));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test3']));
 
-        $this->assertTrue($taskTagModel->save(1, 1, array('My tag 1', 'My tag 2', 'My tag 3')));
-        $this->assertTrue($taskTagModel->save(1, 2, array('My tag 3')));
+        $this->assertTrue($taskTagModel->save(1, 1, ['My tag 1', 'My tag 2', 'My tag 3']));
+        $this->assertTrue($taskTagModel->save(1, 2, ['My tag 3']));
 
         $filter = new TaskTagFilter();
         $filter->setDatabase($this->container['db']);

@@ -19,17 +19,17 @@ class UserSyncTest extends Base
 {
     public function testSynchronizeNewUser()
     {
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, array());
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
         $userSync = new UserSync($this->container);
 
-        $profile = array(
+        $profile = [
             'id' => 2,
             'username' => 'bob',
             'name' => 'Bob',
             'email' => '',
             'role' => Role::APP_MANAGER,
             'is_ldap_user' => 1,
-        );
+        ];
 
         $this->assertArraySubset($profile, $userSync->synchronize($user));
     }
@@ -37,27 +37,27 @@ class UserSyncTest extends Base
     public function testSynchronizeExistingUser()
     {
         $userSync = new UserSync($this->container);
-        $user = new LdapUserProvider('ldapId', 'admin', 'Admin', 'email@localhost', Role::APP_MANAGER, array());
+        $user = new LdapUserProvider('ldapId', 'admin', 'Admin', 'email@localhost', Role::APP_MANAGER, []);
 
-        $profile = array(
+        $profile = [
             'id' => 1,
             'username' => 'admin',
             'name' => 'Admin',
             'email' => 'email@localhost',
             'role' => Role::APP_MANAGER,
-        );
+        ];
 
         $this->assertArraySubset($profile, $userSync->synchronize($user));
 
-        $user = new LdapUserProvider('ldapId', 'admin', '', '', Role::APP_ADMIN, array());
+        $user = new LdapUserProvider('ldapId', 'admin', '', '', Role::APP_ADMIN, []);
 
-        $profile = array(
+        $profile = [
             'id' => 1,
             'username' => 'admin',
             'name' => 'Admin',
             'email' => 'email@localhost',
             'role' => Role::APP_ADMIN,
-        );
+        ];
 
         $this->assertArraySubset($profile, $userSync->synchronize($user));
     }

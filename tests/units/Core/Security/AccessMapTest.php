@@ -18,45 +18,45 @@ class AccessMapTest extends Base
     public function testRoleHierarchy()
     {
         $acl = new AccessMap;
-        $acl->setRoleHierarchy('admin', array('manager', 'user'));
-        $acl->setRoleHierarchy('manager', array('user'));
+        $acl->setRoleHierarchy('admin', ['manager', 'user']);
+        $acl->setRoleHierarchy('manager', ['user']);
 
-        $this->assertEquals(array('admin'), $acl->getRoleHierarchy('admin'));
-        $this->assertEquals(array('manager', 'admin'), $acl->getRoleHierarchy('manager'));
-        $this->assertEquals(array('user', 'admin', 'manager'), $acl->getRoleHierarchy('user'));
+        $this->assertEquals(['admin'], $acl->getRoleHierarchy('admin'));
+        $this->assertEquals(['manager', 'admin'], $acl->getRoleHierarchy('manager'));
+        $this->assertEquals(['user', 'admin', 'manager'], $acl->getRoleHierarchy('user'));
     }
 
     public function testGetHighestRole()
     {
         $acl = new AccessMap;
-        $acl->setRoleHierarchy('manager', array('member', 'viewer'));
-        $acl->setRoleHierarchy('member', array('viewer'));
+        $acl->setRoleHierarchy('manager', ['member', 'viewer']);
+        $acl->setRoleHierarchy('member', ['viewer']);
 
-        $this->assertEquals('manager', $acl->getHighestRole(array('viewer', 'manager', 'member')));
-        $this->assertEquals('manager', $acl->getHighestRole(array('viewer', 'manager')));
-        $this->assertEquals('manager', $acl->getHighestRole(array('manager', 'member')));
-        $this->assertEquals('member', $acl->getHighestRole(array('viewer', 'member')));
-        $this->assertEquals('member', $acl->getHighestRole(array('member')));
-        $this->assertEquals('viewer', $acl->getHighestRole(array('viewer')));
+        $this->assertEquals('manager', $acl->getHighestRole(['viewer', 'manager', 'member']));
+        $this->assertEquals('manager', $acl->getHighestRole(['viewer', 'manager']));
+        $this->assertEquals('manager', $acl->getHighestRole(['manager', 'member']));
+        $this->assertEquals('member', $acl->getHighestRole(['viewer', 'member']));
+        $this->assertEquals('member', $acl->getHighestRole(['member']));
+        $this->assertEquals('viewer', $acl->getHighestRole(['viewer']));
     }
 
     public function testAddRulesAndGetRoles()
     {
         $acl = new AccessMap;
         $acl->setDefaultRole('role3');
-        $acl->setRoleHierarchy('role2', array('role1'));
+        $acl->setRoleHierarchy('role2', ['role1']);
 
         $acl->add('MyController', 'myAction1', 'role2');
         $acl->add('MyController', 'myAction2', 'role1');
         $acl->add('MyAdminController', '*', 'role2');
-        $acl->add('SomethingElse', array('actionA', 'actionB'), 'role2');
+        $acl->add('SomethingElse', ['actionA', 'actionB'], 'role2');
 
-        $this->assertEquals(array('role2'), $acl->getRoles('mycontroller', 'MyAction1'));
-        $this->assertEquals(array('role1', 'role2'), $acl->getRoles('mycontroller', 'MyAction2'));
-        $this->assertEquals(array('role2'), $acl->getRoles('Myadmincontroller', 'MyAction'));
-        $this->assertEquals(array('role3'), $acl->getRoles('AnotherController', 'ActionNotFound'));
-        $this->assertEquals(array('role2'), $acl->getRoles('somethingelse', 'actiona'));
-        $this->assertEquals(array('role2'), $acl->getRoles('somethingelse', 'actionb'));
-        $this->assertEquals(array('role3'), $acl->getRoles('somethingelse', 'actionc'));
+        $this->assertEquals(['role2'], $acl->getRoles('mycontroller', 'MyAction1'));
+        $this->assertEquals(['role1', 'role2'], $acl->getRoles('mycontroller', 'MyAction2'));
+        $this->assertEquals(['role2'], $acl->getRoles('Myadmincontroller', 'MyAction'));
+        $this->assertEquals(['role3'], $acl->getRoles('AnotherController', 'ActionNotFound'));
+        $this->assertEquals(['role2'], $acl->getRoles('somethingelse', 'actiona'));
+        $this->assertEquals(['role2'], $acl->getRoles('somethingelse', 'actionb'));
+        $this->assertEquals(['role3'], $acl->getRoles('somethingelse', 'actionc'));
     }
 }

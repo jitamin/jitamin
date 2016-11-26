@@ -42,15 +42,15 @@ class CsvTest extends Base
     public function testReadWrite()
     {
         $filename = tempnam(sys_get_temp_dir(), 'UT');
-        $rows = array(
-            array('Column A', 'Column B'),
-            array('value a', 'value b'),
-        );
+        $rows = [
+            ['Column A', 'Column B'],
+            ['value a', 'value b'],
+        ];
 
         $csv = new Csv;
         $csv->write($filename, $rows);
-        $csv->setColumnMapping(array('A', 'B', 'C'));
-        $csv->read($filename, array($this, 'readRow'));
+        $csv->setColumnMapping(['A', 'B', 'C']);
+        $csv->read($filename, [$this, 'readRow']);
 
         unlink($filename);
 
@@ -59,7 +59,7 @@ class CsvTest extends Base
 
     public function readRow(array $row, $line)
     {
-        $this->assertEquals(array('value a', 'value b', ''), $row);
+        $this->assertEquals(['value a', 'value b', ''], $row);
         $this->assertEquals(1, $line);
     }
 }

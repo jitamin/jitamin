@@ -27,11 +27,11 @@ class TaskExportTest extends Base
         $taskExport = new TaskExport($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Export Project')));
-        $this->assertEquals(1, $swimlaneModel->create(array('project_id' => 1, 'name' => 'S1')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'Category #1', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Export Project']));
+        $this->assertEquals(1, $swimlaneModel->create(['project_id' => 1, 'name' => 'S1']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
 
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $taskCreationModel->create([
             'project_id' => 1,
             'column_id' => 2,
             'category_id' => 1,
@@ -39,14 +39,14 @@ class TaskExportTest extends Base
             'title' => 'Task 1',
             'time_estimated' => 2.5,
             'time_spent' => 3,
-        )));
+        ]));
 
-        $this->assertEquals(2, $taskCreationModel->create(array(
+        $this->assertEquals(2, $taskCreationModel->create([
             'project_id' => 1,
             'swimlane_id' => 1,
             'title' => 'Task 2',
             'date_due' => time(),
-        )));
+        ]));
 
         $report = $taskExport->export(1, date('Y-m-d'), date('Y-m-d'));
 

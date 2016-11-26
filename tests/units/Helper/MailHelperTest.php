@@ -36,7 +36,7 @@ class MailHelperTest extends Base
         $helper = new MailHelper($this->container);
         $this->assertEquals('notifications@hiject.local', $helper->getMailSenderAddress());
 
-        $this->container['configModel']->save(array('mail_sender_address' => 'me@here'));
+        $this->container['configModel']->save(['mail_sender_address' => 'me@here']);
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('me@here', $helper->getMailSenderAddress());
@@ -47,7 +47,7 @@ class MailHelperTest extends Base
         $helper = new MailHelper($this->container);
         $this->assertEquals(MAIL_TRANSPORT, $helper->getMailTransport());
 
-        $this->container['configModel']->save(array('mail_transport' => 'smtp'));
+        $this->container['configModel']->save(['mail_transport' => 'smtp']);
         $this->container['memoryCache']->flush();
 
         $this->assertEquals('smtp', $helper->getMailTransport());

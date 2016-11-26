@@ -30,12 +30,12 @@ class CommentCreationTest extends Base
         $commentModel = new CommentModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
 
-        $event = new GenericEvent(array('project_id' => 1, 'task_id' => 1, 'comment' => 'test123', 'reference' => 'ref123', 'user_id' => 2));
+        $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'comment' => 'test123', 'reference' => 'ref123', 'user_id' => 2]);
 
         $action = new CommentCreation($this->container);
         $action->setProjectId(1);
@@ -58,11 +58,11 @@ class CommentCreationTest extends Base
         $commentModel = new CommentModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
 
-        $event = new GenericEvent(array('project_id' => 1, 'task_id' => 1, 'comment' => 'test123', 'user_id' => 2));
+        $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'comment' => 'test123', 'user_id' => 2]);
 
         $action = new CommentCreation($this->container);
         $action->setProjectId(1);
@@ -84,11 +84,11 @@ class CommentCreationTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
 
-        $event = new GenericEvent(array('project_id' => 1, 'task_id' => 1));
+        $event = new GenericEvent(['project_id' => 1, 'task_id' => 1]);
 
         $action = new CommentCreation($this->container);
         $action->setProjectId(1);

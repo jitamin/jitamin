@@ -28,21 +28,21 @@ class TaskMoveColumnCategoryChangeTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'c1', 'project_id' => 1)));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
-            'task' => array(
+            'task' => [
                 'project_id' => 1,
                 'column_id' => 1,
                 'category_id' => 1,
                 'position' => 1,
                 'swimlane_id' => 0,
-            )
-        ));
+            ]
+        ]);
 
         $action = new TaskMoveColumnCategoryChange($this->container);
         $action->setProjectId(1);
@@ -63,19 +63,19 @@ class TaskMoveColumnCategoryChangeTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'c1', 'project_id' => 1)));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
-            'task' => array(
+            'task' => [
                 'project_id' => 1,
                 'column_id' => 2,
                 'category_id' => 1,
-            )
-        ));
+            ]
+        ]);
 
         $action = new TaskMoveColumnCategoryChange($this->container);
         $action->setProjectId(1);
@@ -91,20 +91,20 @@ class TaskMoveColumnCategoryChangeTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test2')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'c1', 'project_id' => 1)));
-        $this->assertEquals(2, $categoryModel->create(array('name' => 'c2', 'project_id' => 1)));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
+        $this->assertEquals(2, $categoryModel->create(['name' => 'c2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
-            'task' => array(
+            'task' => [
                 'project_id' => 1,
                 'column_id' => 1,
                 'category_id' => 2,
-            )
-        ));
+            ]
+        ]);
 
         $action = new TaskMoveColumnCategoryChange($this->container);
         $action->setProjectId(1);

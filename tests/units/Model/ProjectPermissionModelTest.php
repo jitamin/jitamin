@@ -32,11 +32,11 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermissionModel = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user3')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user3']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
         $this->assertTrue($groupMemberModel->addUser(1, 2));
@@ -44,7 +44,7 @@ class ProjectPermissionModelTest extends Base
         $this->assertTrue($groupRoleModel->addGroup(1, 1, Role::PROJECT_MEMBER));
         $this->assertTrue($userRoleModel->addUser(1, 3, Role::PROJECT_MANAGER));
 
-        $this->assertEquals(array('user1', 'user2'), $projectPermissionModel->findUsernames(1, 'us'));
+        $this->assertEquals(['user1', 'user2'), $projectPermissionModel->findUsernames(1, 'us'));
         $this->assertEmpty($projectPermissionModel->findUsernames(1, 'a'));
         $this->assertEmpty($projectPermissionModel->findUsernames(2, 'user'));
     }
@@ -56,14 +56,14 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
-        $this->assertEquals(3, $projectModel->create(array('name' => 'Project 3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
+        $this->assertEquals(3, $projectModel->create(['name' => 'Project 3']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
         $this->assertTrue($userRoleModel->addUser(1, 2, Role::PROJECT_MANAGER));
         $this->assertTrue($userRoleModel->addUser(1, 3, Role::PROJECT_MANAGER));
@@ -77,9 +77,9 @@ class ProjectPermissionModelTest extends Base
         $this->assertTrue($userRoleModel->addUser(3, 4, Role::PROJECT_MANAGER));
         $this->assertTrue($userRoleModel->addUser(3, 5, Role::PROJECT_VIEWER));
 
-        $this->assertEmpty($projectPermission->getQueryByRole(array(), Role::PROJECT_MANAGER)->findAll());
+        $this->assertEmpty($projectPermission->getQueryByRole([], Role::PROJECT_MANAGER)->findAll());
 
-        $users = $projectPermission->getQueryByRole(array(1, 2), Role::PROJECT_MANAGER)->findAll();
+        $users = $projectPermission->getQueryByRole([1, 2], Role::PROJECT_MANAGER)->findAll();
         $this->assertCount(3, $users);
         $this->assertEquals('user 1', $users[0]['username']);
         $this->assertEquals('Project 1', $users[0]['project_name']);
@@ -88,14 +88,14 @@ class ProjectPermissionModelTest extends Base
         $this->assertEquals('user 4', $users[2]['username']);
         $this->assertEquals('Project 2', $users[2]['project_name']);
 
-        $users = $projectPermission->getQueryByRole(array(1), Role::PROJECT_MANAGER)->findAll();
+        $users = $projectPermission->getQueryByRole([1], Role::PROJECT_MANAGER)->findAll();
         $this->assertCount(2, $users);
         $this->assertEquals('user 1', $users[0]['username']);
         $this->assertEquals('Project 1', $users[0]['project_name']);
         $this->assertEquals('user 2', $users[1]['username']);
         $this->assertEquals('Project 1', $users[1]['project_name']);
 
-        $users = $projectPermission->getQueryByRole(array(1, 2, 3), Role::PROJECT_MEMBER)->findAll();
+        $users = $projectPermission->getQueryByRole([1, 2, 3], Role::PROJECT_MEMBER)->findAll();
         $this->assertCount(4, $users);
         $this->assertEquals('user 3', $users[0]['username']);
         $this->assertEquals('Project 1', $users[0]['project_name']);
@@ -106,7 +106,7 @@ class ProjectPermissionModelTest extends Base
         $this->assertEquals('user 2', $users[3]['username']);
         $this->assertEquals('Project 2', $users[3]['project_name']);
 
-        $users = $projectPermission->getQueryByRole(array(1, 2, 3), Role::PROJECT_VIEWER)->findAll();
+        $users = $projectPermission->getQueryByRole([1, 2, 3], Role::PROJECT_VIEWER)->findAll();
         $this->assertCount(1, $users);
         $this->assertEquals('user 4', $users[0]['username']);
         $this->assertEquals('Project 3', $users[0]['project_name']);
@@ -117,8 +117,8 @@ class ProjectPermissionModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2', 'is_everybody_allowed' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2', 'is_everybody_allowed' => 1]));
 
         $this->assertFalse($projectPermission->isEverybodyAllowed(1));
         $this->assertTrue($projectPermission->isEverybodyAllowed(2));
@@ -134,13 +134,13 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
 
@@ -171,13 +171,13 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
 
@@ -205,10 +205,10 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2', 'is_active' => 0)));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'is_active' => 0]));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
 
         $this->assertTrue($userRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($userRoleModel->addUser(1, 3, Role::PROJECT_MEMBER));
@@ -227,13 +227,13 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
         $this->assertEquals(1, $groupModel->create('Group A'));
 
@@ -261,19 +261,19 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2', 'is_active' => 0)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2', 'is_active' => 0]));
 
         $this->assertTrue($userRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($userRoleModel->addUser(2, 2, Role::PROJECT_VIEWER));
         $this->assertTrue($userRoleModel->addUser(1, 3, Role::PROJECT_VIEWER));
 
         $this->assertEmpty($projectPermission->getActiveProjectIds(1));
-        $this->assertEquals(array(1), $projectPermission->getActiveProjectIds(2));
-        $this->assertEquals(array(1), $projectPermission->getActiveProjectIds(3));
+        $this->assertEquals([1], $projectPermission->getActiveProjectIds(2));
+        $this->assertEquals([1], $projectPermission->getActiveProjectIds(3));
     }
 
     public function testGetProjectIds()
@@ -283,11 +283,11 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2', 'is_active' => 0)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2', 'is_active' => 0]));
 
         $this->assertTrue($userRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($userRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
@@ -295,8 +295,8 @@ class ProjectPermissionModelTest extends Base
         $this->assertTrue($userRoleModel->addUser(2, 3, Role::PROJECT_MEMBER));
 
         $this->assertEmpty($projectPermission->getProjectIds(1));
-        $this->assertEquals(array(1, 2), $projectPermission->getProjectIds(2));
-        $this->assertEquals(array(1, 2), $projectPermission->getProjectIds(3));
+        $this->assertEquals([1, 2], $projectPermission->getProjectIds(2));
+        $this->assertEquals([1, 2], $projectPermission->getProjectIds(3));
     }
 
     public function testDuplicate()
@@ -309,14 +309,14 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project 1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'Project 2')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user 1', 'name' => 'User #1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user 2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user 3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user 4')));
-        $this->assertEquals(6, $userModel->create(array('username' => 'user 5', 'name' => 'User #5')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
+        $this->assertEquals(6, $userModel->create(['username' => 'user 5', 'name' => 'User #5']));
 
         $this->assertEquals(1, $groupModel->create('Group C'));
         $this->assertEquals(2, $groupModel->create('Group B'));

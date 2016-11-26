@@ -15,31 +15,31 @@ use Hiject\Core\Ldap\Entries;
 
 class EntriesTest extends Base
 {
-    private $entries = array(
+    private $entries = [
         'count' => 2,
-        0 => array(
-            'cn' => array(
+        0 => [
+            'cn' => [
                 'count' => 1,
                 0 => 'Hiject Other Group',
-            ),
+            ],
             0 => 'cn',
             'count' => 1,
             'dn' => 'CN=Hiject Other Group,CN=Users,DC=hiject,DC=local',
-        ),
-        1 => array(
-            'cn' => array(
+        ],
+        1 => [
+            'cn' => [
                 'count' => 1,
                 0 => 'Hiject Users',
-            ),
+            ],
             0 => 'cn',
             'count' => 1,
             'dn' => 'CN=Hiject Users,CN=Users,DC=hiject,DC=local',
-        ),
-    );
+        ],
+    ];
 
     public function testGetAll()
     {
-        $entries = new Entries(array());
+        $entries = new Entries([]);
         $this->assertEmpty($entries->getAll());
 
         $entries = new Entries($this->entries);
@@ -52,7 +52,7 @@ class EntriesTest extends Base
 
     public function testGetFirst()
     {
-        $entries = new Entries(array());
+        $entries = new Entries([]);
         $this->assertEquals('', $entries->getFirstEntry()->getDn());
 
         $entries = new Entries($this->entries);

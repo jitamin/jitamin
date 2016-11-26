@@ -29,20 +29,20 @@ class ProjectAuthorizationMiddlewareMiddlewareTest extends Base
 
         $this->container['helper']->user = $this
             ->getMockBuilder('Hiject\Helper\UserHelper')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('hasProjectAccess'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['hasProjectAccess'])
             ->getMock();
 
         $this->container['request'] = $this
             ->getMockBuilder('Hiject\Core\Http\Request')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('getIntegerParam'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['getIntegerParam'])
             ->getMock();
 
         $this->nextMiddleware = $this
             ->getMockBuilder('Hiject\Middleware\ProjectAuthorizationMiddleware')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('execute'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['execute'])
             ->getMock();
 
         $this->middleware = new ProjectAuthorizationMiddleware($this->container);

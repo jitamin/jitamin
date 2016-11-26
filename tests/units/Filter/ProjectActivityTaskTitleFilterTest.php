@@ -28,13 +28,13 @@ class ProjectActivityTaskTitleFilterTest extends Base
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreation->create(array('title' => 'Test2', 'project_id' => 1)));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
 
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(1))));
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(2))));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
 
         $filter = new ProjectActivityTaskTitleFilter('test2');
         $filter->withQuery($query)->apply();
@@ -49,13 +49,13 @@ class ProjectActivityTaskTitleFilterTest extends Base
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreation->create(array('title' => 'Test2', 'project_id' => 1)));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
 
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(1))));
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(2))));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
 
         $filter = new ProjectActivityTaskTitleFilter('test');
         $filter->withQuery($query)->apply();
@@ -70,13 +70,13 @@ class ProjectActivityTaskTitleFilterTest extends Base
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreation->create(array('title' => 'Test2', 'project_id' => 1)));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
 
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(1))));
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(2))));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
 
         $filter = new ProjectActivityTaskTitleFilter('#2');
         $filter->withQuery($query)->apply();

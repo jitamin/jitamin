@@ -22,7 +22,7 @@ class ProjectFileEventJobTest extends Base
         $projectFileEventJob = new ProjectFileEventJob($this->container);
         $projectFileEventJob->withParams(123, 'foobar');
 
-        $this->assertSame(array(123, 'foobar'), $projectFileEventJob->getJobParams());
+        $this->assertSame([123, 'foobar'], $projectFileEventJob->getJobParams());
     }
 
     public function testWithMissingFile()
@@ -43,7 +43,7 @@ class ProjectFileEventJobTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectFileModel = new ProjectFileModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $projectFileModel->create(1, 'Test', '/tmp/test', 123));
 
         $called = $this->container['dispatcher']->getCalledListeners();

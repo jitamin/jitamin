@@ -27,31 +27,31 @@ class AuthenticationMiddlewareTest extends Base
 
         $this->container['authenticationManager'] = $this
             ->getMockBuilder('Hiject\Core\Security\AuthenticationManager')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('checkCurrentSession'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['checkCurrentSession'])
             ->getMock();
 
         $this->container['applicationAuthorization'] = $this
             ->getMockBuilder('Hiject\Core\Security\AccessMap')
-            ->setMethods(array('isAllowed'))
+            ->setMethods(['isAllowed'])
             ->getMock();
 
         $this->container['response'] = $this
             ->getMockBuilder('Hiject\Core\Http\Response')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('redirect'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['redirect'])
             ->getMock();
 
         $this->container['userSession'] = $this
             ->getMockBuilder('Hiject\Core\User\UserSession')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('isLogged'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['isLogged'])
             ->getMock();
 
         $this->nextMiddleware = $this
             ->getMockBuilder('Hiject\Middleware\AuthenticationMiddleware')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('execute'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['execute'])
             ->getMock();
 
         $this->middleware = new AuthenticationMiddleware($this->container);

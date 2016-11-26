@@ -32,9 +32,9 @@ class TaskLinkEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskLinkEventBuilder = new TaskLinkEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'task 1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'task 2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'task 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'task 2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $event = $taskLinkEventBuilder->withTaskLinkId(1)->buildEvent();
@@ -51,9 +51,9 @@ class TaskLinkEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskLinkEventBuilder = new TaskLinkEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'task 1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'task 2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'task 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'task 2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $eventData = $taskLinkEventBuilder->withTaskLinkId(1)->buildEvent();

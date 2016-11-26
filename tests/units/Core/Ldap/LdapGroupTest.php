@@ -26,54 +26,54 @@ class LdapGroupTest extends Base
 
         $this->client = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Client')
-            ->setMethods(array(
+            ->setMethods([
                 'getConnection',
-            ))
+            ])
             ->getMock();
 
         $this->query = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Query')
-            ->setConstructorArgs(array($this->client))
-            ->setMethods(array(
+            ->setConstructorArgs([$this->client])
+            ->setMethods([
                 'execute',
                 'hasResult',
                 'getEntries',
-            ))
+            ])
             ->getMock();
 
         $this->group = $this
             ->getMockBuilder('\Hiject\Core\Ldap\Group')
-            ->setConstructorArgs(array($this->query))
-            ->setMethods(array(
+            ->setConstructorArgs([$this->query])
+            ->setMethods([
                 'getAttributeName',
                 'getBasDn',
-            ))
+            ])
             ->getMock();
     }
 
     public function testGetGroups()
     {
-        $entries = new Entries(array(
+        $entries = new Entries([
             'count' => 2,
-            0 => array(
-                'cn' => array(
+            0 => [
+                'cn' => [
                     'count' => 1,
                     0 => 'Hiject Other Group',
-                ),
+                ],
                 0 => 'cn',
                 'count' => 1,
                 'dn' => 'CN=Hiject Other Group,CN=Users,DC=hiject,DC=local',
-            ),
-            1 => array(
-                'cn' => array(
+            ],
+            1 => [
+                'cn' => [
                     'count' => 1,
                     0 => 'Hiject Users',
-                ),
+                ],
                 0 => 'cn',
                 'count' => 1,
                 'dn' => 'CN=Hiject Users,CN=Users,DC=hiject,DC=local',
-            ),
-        ));
+            ],
+        ]);
 
         $this->client
             ->expects($this->any())
@@ -120,7 +120,7 @@ class LdapGroupTest extends Base
 
     public function testGetGroupsWithNoResult()
     {
-        $entries = new Entries(array());
+        $entries = new Entries([]);
 
         $this->client
             ->expects($this->any())

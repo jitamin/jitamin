@@ -30,19 +30,19 @@ class TaskEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'before', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'before', 'project_id' => 1]));
 
         $event = $taskEventBuilder
             ->withTaskId(1)
-            ->withTask(array('title' => 'before'))
-            ->withChanges(array('title' => 'after'))
+            ->withTask(['title' => 'before'])
+            ->withChanges(['title' => 'after'])
             ->buildEvent();
 
         $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
         $this->assertNotEmpty($event['task']);
         $this->assertEquals(1, $event['task_id']);
-        $this->assertEquals(array('title' => 'after'), $event['changes']);
+        $this->assertEquals(['title' => 'after'], $event['changes']);
     }
 
     public function testBuildWithoutChanges()
@@ -51,8 +51,8 @@ class TaskEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = $taskEventBuilder->withTaskId(1)->buildEvent();
 
@@ -68,12 +68,12 @@ class TaskEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = $taskEventBuilder
             ->withTaskId(1)
-            ->withChanges(array('title' => 'new title'))
+            ->withChanges(['title' => 'new title'])
             ->buildEvent();
 
         $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
@@ -88,13 +88,13 @@ class TaskEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = $taskEventBuilder
             ->withTaskId(1)
-            ->withChanges(array('title' => 'new title', 'project_id' => 1))
-            ->withValues(array('key' => 'value'))
+            ->withChanges(['title' => 'new title', 'project_id' => 1])
+            ->withValues(['key' => 'value'])
             ->buildEvent();
 
         $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);

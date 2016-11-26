@@ -56,14 +56,14 @@ class FileCacheTest extends \Base
 
         self::$functions = $this
             ->getMockBuilder('stdClass')
-            ->setMethods(array(
+            ->setMethods([
                 'file_put_contents',
                 'file_get_contents',
                 'file_exists',
                 'mkdir',
                 'is_dir',
                 'unlink',
-            ))
+            ])
             ->getMock();
     }
 

@@ -50,7 +50,7 @@ class TaskFileProcedureTest extends BaseProcedureTest
 
     public function assertGetAllFiles()
     {
-        $files = $this->app->getAllTaskFiles(array('task_id' => $this->taskId));
+        $files = $this->app->getAllTaskFiles(['task_id' => $this->taskId]);
         $this->assertCount(1, $files);
         $this->assertEquals('My file', $files[0]['name']);
     }
@@ -59,7 +59,7 @@ class TaskFileProcedureTest extends BaseProcedureTest
     {
         $this->assertTrue($this->app->removeTaskFile($this->fileId));
 
-        $files = $this->app->getAllTaskFiles(array('task_id' => $this->taskId));
+        $files = $this->app->getAllTaskFiles(['task_id' => $this->taskId]);
         $this->assertEmpty($files);
     }
 
@@ -70,7 +70,7 @@ class TaskFileProcedureTest extends BaseProcedureTest
 
         $this->assertTrue($this->app->removeAllTaskFiles($this->taskId));
 
-        $files = $this->app->getAllTaskFiles(array('task_id' => $this->taskId));
+        $files = $this->app->getAllTaskFiles(['task_id' => $this->taskId]);
         $this->assertEmpty($files);
     }
 }

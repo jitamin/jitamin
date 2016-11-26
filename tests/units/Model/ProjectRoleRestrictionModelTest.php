@@ -23,7 +23,7 @@ class ProjectRoleRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ProjectRoleRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, ProjectRoleRestrictionModel::RULE_TASK_CREATION));
     }
@@ -34,7 +34,7 @@ class ProjectRoleRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ProjectRoleRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, ProjectRoleRestrictionModel::RULE_TASK_CREATION));
         $this->assertTrue($projectRoleRestrictionModel->remove(1));
@@ -47,7 +47,7 @@ class ProjectRoleRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ProjectRoleRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, ProjectRoleRestrictionModel::RULE_TASK_CREATION));
 
@@ -63,7 +63,7 @@ class ProjectRoleRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ProjectRoleRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, ProjectRoleRestrictionModel::RULE_TASK_CREATION));
 
@@ -81,7 +81,7 @@ class ProjectRoleRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ProjectRoleRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, ProjectRoleRestrictionModel::RULE_TASK_CREATION));
 

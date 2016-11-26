@@ -18,7 +18,7 @@ class LexerTest extends Base
     public function testTokenizeWithNoDefaultToken()
     {
         $lexer = new Lexer();
-        $this->assertSame(array(), $lexer->tokenize('This is Hiject'));
+        $this->assertSame([], $lexer->tokenize('This is Hiject'));
     }
 
     public function testTokenizeWithDefaultToken()
@@ -26,9 +26,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->setDefaultToken('myDefaultToken');
 
-        $expected = array(
-            'myDefaultToken' => array('This is Hiject'),
-        );
+        $expected = [
+            'myDefaultToken' => ['This is Hiject'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('This is Hiject'));
     }
@@ -38,9 +38,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(assignee:)/", 'T_USER');
 
-        $expected = array(
-            'T_USER' => array('admin'),
-        );
+        $expected = [
+            'T_USER' => ['admin'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('assignee:admin something else'));
     }
@@ -51,10 +51,10 @@ class LexerTest extends Base
         $lexer->setDefaultToken('myDefaultToken');
         $lexer->addToken("/^(assignee:)/", 'T_USER');
 
-        $expected = array(
-            'T_USER' => array('admin'),
-            'myDefaultToken' => array('something else'),
-        );
+        $expected = [
+            'T_USER' => ['admin'],
+            'myDefaultToken' => ['something else'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('assignee:admin something else'));
     }
@@ -64,9 +64,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(assignee:)/", 'T_USER');
 
-        $expected = array(
-            'T_USER' => array('Foo Bar'),
-        );
+        $expected = [
+            'T_USER' => ['Foo Bar'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('assignee:"Foo Bar" something else'));
     }
@@ -76,9 +76,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->setDefaultToken('myDefaultToken');
 
-        $expected = array(
-            'myDefaultToken' => array('#123'),
-        );
+        $expected = [
+            'myDefaultToken' => ['#123'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('#123'));
     }
@@ -88,9 +88,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('today'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['today'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:today something else'));
     }
@@ -100,9 +100,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('last month'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['last month'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:"last month" something else'));
     }
@@ -112,36 +112,36 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('<=last month'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['<=last month'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:<="last month" something else'));
 
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('>=next month'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['>=next month'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:>="next month" something else'));
 
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('<+2 days'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['<+2 days'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:<"+2 days" something else'));
 
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('<-1 hour'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['<-1 hour'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:<"-1 hour" something else'));
     }
@@ -151,27 +151,27 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('<=today'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['<=today'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:<=today something else'));
 
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('>now'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['>now'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:>now something else'));
 
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('>=now'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['>=now'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:>=now something else'));
     }
@@ -181,9 +181,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(date:)/", 'T_MY_DATE');
 
-        $expected = array(
-            'T_MY_DATE' => array('<=2016-01-01'),
-        );
+        $expected = [
+            'T_MY_DATE' => ['<=2016-01-01'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('date:<=2016-01-01 something else'));
     }
@@ -193,9 +193,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->setDefaultToken('myDefaultToken');
 
-        $expected = array(
-            'myDefaultToken' => array('àa éçùe'),
-        );
+        $expected = [
+            'myDefaultToken' => ['àa éçùe'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('àa éçùe'));
     }
@@ -205,9 +205,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->setDefaultToken('myDefaultToken');
 
-        $expected = array(
-            'myDefaultToken' => array('६Δↈ五一'),
-        );
+        $expected = [
+            'myDefaultToken' => ['६Δↈ五一'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('६Δↈ五一'));
     }
@@ -217,9 +217,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(tag:)/", 'T_TAG');
 
-        $expected = array(
-            'T_TAG' => array('tag 1', 'tag2'),
-        );
+        $expected = [
+            'T_TAG' => ['tag 1', 'tag2'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('tag:"tag 1" tag:tag2'));
     }
@@ -229,18 +229,18 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(test:)/", 'T_TEST');
 
-        $expected = array(
-            'T_TEST' => array('PO-123'),
-        );
+        $expected = [
+            'T_TEST' => ['PO-123'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('test:PO-123'));
 
         $lexer = new Lexer();
         $lexer->setDefaultToken('myDefaultToken');
 
-        $expected = array(
-            'myDefaultToken' => array('PO-123'),
-        );
+        $expected = [
+            'myDefaultToken' => ['PO-123'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('PO-123'));
     }
@@ -250,9 +250,9 @@ class LexerTest extends Base
         $lexer = new Lexer();
         $lexer->addToken("/^(test:)/", 'T_TEST');
 
-        $expected = array(
-            'T_TEST' => array('PO_123'),
-        );
+        $expected = [
+            'T_TEST' => ['PO_123'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('test:PO_123'));
 
@@ -260,10 +260,10 @@ class LexerTest extends Base
         $lexer->addToken("/^(test:)/", 'T_TEST');
         $lexer->setDefaultToken('myDefaultToken');
 
-        $expected = array(
-            'T_TEST' => array('ABC-123'),
-            'myDefaultToken' => array('PO_123'),
-        );
+        $expected = [
+            'T_TEST' => ['ABC-123'],
+            'myDefaultToken' => ['PO_123'],
+        ];
 
         $this->assertSame($expected, $lexer->tokenize('test:ABC-123 PO_123'));
     }

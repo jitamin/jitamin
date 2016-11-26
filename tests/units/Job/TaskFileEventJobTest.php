@@ -23,7 +23,7 @@ class TaskFileEventJobTest extends Base
         $taskFileEventJob = new TaskFileEventJob($this->container);
         $taskFileEventJob->withParams(123, 'foobar');
 
-        $this->assertSame(array(123, 'foobar'), $taskFileEventJob->getJobParams());
+        $this->assertSame([123, 'foobar'], $taskFileEventJob->getJobParams());
     }
 
     public function testWithMissingFile()
@@ -45,8 +45,8 @@ class TaskFileEventJobTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertEquals(1, $taskFileModel->create(1, 'Test', '/tmp/test', 123));
 
         $called = $this->container['dispatcher']->getCalledListeners();

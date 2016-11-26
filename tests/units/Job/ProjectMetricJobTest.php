@@ -21,7 +21,7 @@ class ProjectMetricJobTest extends Base
         $projectMetricJob->withParams(123);
 
         $this->assertSame(
-            array(123),
+            [123],
             $projectMetricJob->getJobParams()
         );
     }
@@ -30,14 +30,14 @@ class ProjectMetricJobTest extends Base
     {
         $this->container['projectDailyColumnStatsModel'] = $this
             ->getMockBuilder('\Hiject\Model\ProjectDailyColumnStatsModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('updateTotals'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['updateTotals'])
             ->getMock();
 
         $this->container['projectDailyStatsModel'] = $this
             ->getMockBuilder('\Hiject\Model\ProjectDailyStatsModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('updateTotals'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['updateTotals'])
             ->getMock();
 
         $this->container['projectDailyColumnStatsModel']

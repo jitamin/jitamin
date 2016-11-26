@@ -27,13 +27,13 @@ class UserDistributionAnalyticTest extends Base
         $userModel = new UserModel($this->container);
         $userDistributionModel = new UserDistributionAnalytic($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'user1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'user2')));
-        $this->assertEquals(4, $userModel->create(array('username' => 'user3')));
-        $this->assertEquals(5, $userModel->create(array('username' => 'user4')));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user4']));
 
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(1, 3, Role::PROJECT_MEMBER));
@@ -46,33 +46,33 @@ class UserDistributionAnalyticTest extends Base
         $this->createTasks(4, 10, 1);
         $this->createTasks(5, 10, 1);
 
-        $expected = array(
-            array(
+        $expected = [
+            [
                 'user' => 'Unassigned',
                 'nb_tasks' => 10,
                 'percentage' => 10.0,
-            ),
-            array(
+            ],
+            [
                 'user' => 'user1',
                 'nb_tasks' => 30,
                 'percentage' => 30.0,
-            ),
-            array(
+            ],
+            [
                 'user' => 'user2',
                 'nb_tasks' => 40,
                 'percentage' => 40.0,
-            ),
-            array(
+            ],
+            [
                 'user' => 'user3',
                 'nb_tasks' => 10,
                 'percentage' => 10.0,
-            ),
-            array(
+            ],
+            [
                 'user' => 'user4',
                 'nb_tasks' => 10,
                 'percentage' => 10.0,
-            )
-        );
+            ]
+        ];
 
         $this->assertEquals($expected, $userDistributionModel->build(1));
     }
@@ -82,11 +82,11 @@ class UserDistributionAnalyticTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
 
         for ($i = 0; $i < $nb_active; $i++) {
-            $this->assertNotFalse($taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 1)));
+            $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 1]));
         }
 
         for ($i = 0; $i < $nb_inactive; $i++) {
-            $this->assertNotFalse($taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 0)));
+            $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 0]));
         }
     }
 }

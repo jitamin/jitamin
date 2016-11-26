@@ -32,9 +32,9 @@ class CommentEventBuilderTest extends Base
         $projectModel = new ProjectModel($this->container);
         $commentEventBuilder = new CommentEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $commentModel->create(array('task_id' => 1, 'comment' => 'bla bla', 'user_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'bla bla', 'user_id' => 1]));
 
         $commentEventBuilder->withCommentId(1);
         $event = $commentEventBuilder->buildEvent();

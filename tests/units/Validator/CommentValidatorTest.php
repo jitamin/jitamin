@@ -19,28 +19,28 @@ class CommentValidatorTest extends Base
     {
         $commentValidator = new CommentValidator($this->container);
 
-        $result = $commentValidator->validateCreation(array('user_id' => 1, 'task_id' => 1, 'comment' => 'bla'));
+        $result = $commentValidator->validateCreation(['user_id' => 1, 'task_id' => 1, 'comment' => 'bla']);
         $this->assertTrue($result[0]);
 
-        $result = $commentValidator->validateCreation(array('user_id' => 1, 'task_id' => 1, 'comment' => ''));
+        $result = $commentValidator->validateCreation(['user_id' => 1, 'task_id' => 1, 'comment' => '']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateCreation(array('user_id' => 1, 'task_id' => 'a', 'comment' => 'bla'));
+        $result = $commentValidator->validateCreation(['user_id' => 1, 'task_id' => 'a', 'comment' => 'bla']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateCreation(array('user_id' => 'b', 'task_id' => 1, 'comment' => 'bla'));
+        $result = $commentValidator->validateCreation(['user_id' => 'b', 'task_id' => 1, 'comment' => 'bla']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateCreation(array('user_id' => 1, 'comment' => 'bla'));
+        $result = $commentValidator->validateCreation(['user_id' => 1, 'comment' => 'bla']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateCreation(array('task_id' => 1, 'comment' => 'bla'));
+        $result = $commentValidator->validateCreation(['task_id' => 1, 'comment' => 'bla']);
         $this->assertTrue($result[0]);
 
-        $result = $commentValidator->validateCreation(array('comment' => 'bla'));
+        $result = $commentValidator->validateCreation(['comment' => 'bla']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateCreation(array());
+        $result = $commentValidator->validateCreation([]);
         $this->assertFalse($result[0]);
     }
 
@@ -48,19 +48,19 @@ class CommentValidatorTest extends Base
     {
         $commentValidator = new CommentValidator($this->container);
 
-        $result = $commentValidator->validateModification(array('id' => 1, 'comment' => 'bla'));
+        $result = $commentValidator->validateModification(['id' => 1, 'comment' => 'bla']);
         $this->assertTrue($result[0]);
 
-        $result = $commentValidator->validateModification(array('id' => 1, 'comment' => ''));
+        $result = $commentValidator->validateModification(['id' => 1, 'comment' => '']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateModification(array('comment' => 'bla'));
+        $result = $commentValidator->validateModification(['comment' => 'bla']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateModification(array('id' => 'b', 'comment' => 'bla'));
+        $result = $commentValidator->validateModification(['id' => 'b', 'comment' => 'bla']);
         $this->assertFalse($result[0]);
 
-        $result = $commentValidator->validateModification(array());
+        $result = $commentValidator->validateModification([]);
         $this->assertFalse($result[0]);
     }
 }

@@ -22,17 +22,17 @@ class DummyAction extends Hiject\Action\Base
 
     public function getCompatibleEvents()
     {
-        return array('my.event');
+        return ['my.event'];
     }
 
     public function getActionRequiredParameters()
     {
-        return array('p1' => 'Param 1');
+        return ['p1' => 'Param 1'];
     }
 
     public function getEventRequiredParameters()
     {
-        return array('p1', 'p2', 'p3' => array('p4'));
+        return ['p1', 'p2', 'p3' => ['p4']];
     }
 
     public function doAction(array $data)
@@ -63,27 +63,27 @@ class BaseActionTest extends Base
     public function testGetActionRequiredParameters()
     {
         $dummyAction = new DummyAction($this->container);
-        $this->assertEquals(array('p1' => 'Param 1'), $dummyAction->getActionRequiredParameters());
+        $this->assertEquals(['p1' => 'Param 1'], $dummyAction->getActionRequiredParameters());
     }
 
     public function testGetEventRequiredParameters()
     {
         $dummyAction = new DummyAction($this->container);
-        $this->assertEquals(array('p1', 'p2', 'p3' => array('p4')), $dummyAction->getEventRequiredParameters());
+        $this->assertEquals(['p1', 'p2', 'p3' => ['p4']], $dummyAction->getEventRequiredParameters());
     }
 
     public function testGetCompatibleEvents()
     {
         $dummyAction = new DummyAction($this->container);
-        $this->assertEquals(array('my.event'), $dummyAction->getCompatibleEvents());
+        $this->assertEquals(['my.event'], $dummyAction->getCompatibleEvents());
     }
 
     public function testHasRequiredCondition()
     {
         $dummyAction = new DummyAction($this->container);
         $dummyAction->setParam('p1', 123);
-        $this->assertTrue($dummyAction->hasRequiredCondition(array('p1' => 123)));
-        $this->assertFalse($dummyAction->hasRequiredCondition(array('p1' => 456)));
+        $this->assertTrue($dummyAction->hasRequiredCondition(['p1' => 123]));
+        $this->assertFalse($dummyAction->hasRequiredCondition(['p1' => 456]));
     }
 
     public function testProjectId()
@@ -112,9 +112,9 @@ class BaseActionTest extends Base
         $dummyAction = new DummyAction($this->container);
         $dummyAction->setProjectId(1234);
 
-        $this->assertTrue($dummyAction->hasRequiredProject(array('project_id' => 1234)));
-        $this->assertFalse($dummyAction->hasRequiredProject(array('project_id' => 1)));
-        $this->assertFalse($dummyAction->hasRequiredProject(array()));
+        $this->assertTrue($dummyAction->hasRequiredProject(['project_id' => 1234]));
+        $this->assertFalse($dummyAction->hasRequiredProject(['project_id' => 1]));
+        $this->assertFalse($dummyAction->hasRequiredProject([]));
     }
 
     public function testHasRequiredParameters()
@@ -122,9 +122,9 @@ class BaseActionTest extends Base
         $dummyAction = new DummyAction($this->container);
         $dummyAction->setProjectId(1234);
 
-        $this->assertTrue($dummyAction->hasRequiredParameters(array('p1' => 12, 'p2' => 34, 'p3' => array('p4' => 'foobar'))));
-        $this->assertFalse($dummyAction->hasRequiredParameters(array('p1' => 12)));
-        $this->assertFalse($dummyAction->hasRequiredParameters(array()));
+        $this->assertTrue($dummyAction->hasRequiredParameters(['p1' => 12, 'p2' => 34, 'p3' => ['p4' => 'foobar']]));
+        $this->assertFalse($dummyAction->hasRequiredParameters(['p1' => 12]));
+        $this->assertFalse($dummyAction->hasRequiredParameters([]));
     }
 
     public function testAddEvent()
@@ -135,7 +135,7 @@ class BaseActionTest extends Base
 
         $events = $dummyAction->getEvents();
         $this->assertCount(2, $events);
-        $this->assertEquals(array('my.event', 'foobar'), $events);
+        $this->assertEquals(['my.event', 'foobar'], $events);
     }
 
     public function testExecuteOnlyOnce()
@@ -145,7 +145,7 @@ class BaseActionTest extends Base
         $dummyAction->setParam('p1', 'something');
         $dummyAction->addEvent('foobar', 'FooBar');
 
-        $event = new GenericEvent(array('project_id' => 1234, 'p1' => 'something', 'p2' => 'abc', 'p3' => array('p4' => 'a')));
+        $event = new GenericEvent(['project_id' => 1234, 'p1' => 'something', 'p2' => 'abc', 'p3' => ['p4' => 'a']]);
 
         $this->assertTrue($dummyAction->execute($event, 'foobar'));
         $this->assertFalse($dummyAction->execute($event, 'foobar'));

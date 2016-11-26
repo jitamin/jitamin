@@ -71,26 +71,26 @@ abstract class Base extends PHPUnit_Framework_TestCase
 
         $this->container['httpClient'] = $this
             ->getMockBuilder('\Hiject\Core\Http\Client')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('get', 'getJson', 'postJson', 'postJsonAsync', 'postForm', 'postFormAsync'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['get', 'getJson', 'postJson', 'postJsonAsync', 'postForm', 'postFormAsync'])
             ->getMock();
 
         $this->container['emailClient'] = $this
             ->getMockBuilder('\Hiject\Core\Mail\Client')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('send'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['send'])
             ->getMock();
 
         $this->container['userNotificationTypeModel'] = $this
             ->getMockBuilder('\Hiject\Model\UserNotificationTypeModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('getType', 'getSelectedTypes'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['getType', 'getSelectedTypes'])
             ->getMock();
 
         $this->container['objectStorage'] = $this
             ->getMockBuilder('\Hiject\Core\ObjectStorage\FileStorage')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('put', 'moveFile', 'remove', 'moveUploadedFile'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['put', 'moveFile', 'remove', 'moveUploadedFile'])
             ->getMock();
 
         $this->container['sessionStorage'] = new SessionStorage;

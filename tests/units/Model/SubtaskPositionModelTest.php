@@ -25,12 +25,12 @@ class SubtaskPositionModelTest extends Base
         $subtaskPositionModel = new SubtaskPositionModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test 1', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
 
-        $this->assertEquals(1, $subtaskModel->create(array('title' => 'subtask #1', 'task_id' => 1)));
-        $this->assertEquals(2, $subtaskModel->create(array('title' => 'subtask #2', 'task_id' => 1)));
-        $this->assertEquals(3, $subtaskModel->create(array('title' => 'subtask #3', 'task_id' => 1)));
+        $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
+        $this->assertEquals(2, $subtaskModel->create(['title' => 'subtask #2', 'task_id' => 1]));
+        $this->assertEquals(3, $subtaskModel->create(['title' => 'subtask #3', 'task_id' => 1]));
 
         $subtasks = $subtaskModel->getAll(1);
         $this->assertEquals(1, $subtasks[0]['position']);

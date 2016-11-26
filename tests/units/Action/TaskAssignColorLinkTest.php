@@ -32,9 +32,9 @@ class TaskAssignColorLinkTest extends Base
         $action->setParam('link_id', 2);
         $action->setParam('color_id', 'red');
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)
@@ -59,9 +59,9 @@ class TaskAssignColorLinkTest extends Base
         $action->setParam('link_id', 2);
         $action->setParam('color_id', 'red');
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)

@@ -65,7 +65,7 @@ class AuthenticationManagerTest extends Base
         $authManager = new AuthenticationManager($this->container);
         $authManager->register(new DatabaseAuth($this->container));
 
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
         $this->assertTrue($this->container['userSession']->isLogged());
         $this->assertTrue($authManager->checkCurrentSession());
@@ -76,7 +76,7 @@ class AuthenticationManagerTest extends Base
         $authManager = new AuthenticationManager($this->container);
         $authManager->register(new DatabaseAuth($this->container));
 
-        $this->container['sessionStorage']->user = array('id' => 2);
+        $this->container['sessionStorage']->user = ['id' => 2];
 
         $this->assertTrue($this->container['userSession']->isLogged());
         $this->assertFalse($authManager->checkCurrentSession());
@@ -85,9 +85,9 @@ class AuthenticationManagerTest extends Base
 
     public function testPreAuthenticationSuccessful()
     {
-        $this->container['request'] = new Request($this->container, array(REVERSE_PROXY_USER_HEADER => 'admin'));
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onSuccess'));
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, array($this, 'onFailure'));
+        $this->container['request'] = new Request($this->container, [REVERSE_PROXY_USER_HEADER => 'admin']);
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, [$this, 'onSuccess']);
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, [$this, 'onFailure']);
 
         $authManager = new AuthenticationManager($this->container);
         $authManager->register(new ReverseProxyAuth($this->container));
@@ -101,9 +101,9 @@ class AuthenticationManagerTest extends Base
 
     public function testPreAuthenticationFailed()
     {
-        $this->container['request'] = new Request($this->container, array(REVERSE_PROXY_USER_HEADER => ''));
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onSuccess'));
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, array($this, 'onFailure'));
+        $this->container['request'] = new Request($this->container, [REVERSE_PROXY_USER_HEADER => '']);
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, [$this, 'onSuccess']);
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, [$this, 'onFailure']);
 
         $authManager = new AuthenticationManager($this->container);
         $authManager->register(new ReverseProxyAuth($this->container));
@@ -117,8 +117,8 @@ class AuthenticationManagerTest extends Base
 
     public function testPasswordAuthenticationSuccessful()
     {
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onSuccess'));
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, array($this, 'onFailure'));
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, [$this, 'onSuccess']);
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, [$this, 'onFailure']);
 
         $authManager = new AuthenticationManager($this->container);
         $authManager->register(new DatabaseAuth($this->container));
@@ -132,8 +132,8 @@ class AuthenticationManagerTest extends Base
 
     public function testPasswordAuthenticationFailed()
     {
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, array($this, 'onSuccess'));
-        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, array($this, 'onFailure'));
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_SUCCESS, [$this, 'onSuccess']);
+        $this->container['dispatcher']->addListener(AuthenticationManager::EVENT_FAILURE, [$this, 'onFailure']);
 
         $authManager = new AuthenticationManager($this->container);
         $authManager->register(new DatabaseAuth($this->container));
@@ -148,7 +148,7 @@ class AuthenticationManagerTest extends Base
     public function onSuccess($event)
     {
         $this->assertInstanceOf('Hiject\Bus\Event\AuthSuccessEvent', $event);
-        $this->assertTrue(in_array($event->getAuthType(), array('Database', 'ReverseProxy')));
+        $this->assertTrue(in_array($event->getAuthType(), ['Database', 'ReverseProxy']));
     }
 
     public function onFailure($event)

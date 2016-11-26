@@ -68,7 +68,7 @@ class FileStorageTest extends \Base
 
         self::$functions = $this
             ->getMockBuilder('stdClass')
-            ->setMethods(array(
+            ->setMethods([
                 'file_put_contents',
                 'file_get_contents',
                 'file_exists',
@@ -78,7 +78,7 @@ class FileStorageTest extends \Base
                 'rename',
                 'move_uploaded_file',
                 'readfile',
-            ))
+            ])
             ->getMock();
     }
 

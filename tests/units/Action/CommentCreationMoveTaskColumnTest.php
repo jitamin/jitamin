@@ -22,16 +22,16 @@ class CommentCreationMoveTaskColumnTest extends Base
 {
     public function testSuccess()
     {
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
         $projectModel = new ProjectModel($this->container);
         $commentModel = new CommentModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array('task' => array('project_id' => 1, 'column_id' => 2), 'task_id' => 1));
+        $event = new TaskEvent(['task' => ['project_id' => 1, 'column_id' => 2], 'task_id' => 1]);
 
         $action = new CommentCreationMoveTaskColumn($this->container);
         $action->setProjectId(1);
@@ -51,10 +51,10 @@ class CommentCreationMoveTaskColumnTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
-        $event = new TaskEvent(array('task' => array('project_id' => 1, 'column_id' => 3), 'task_id' => 1));
+        $event = new TaskEvent(['task' => ['project_id' => 1, 'column_id' => 3], 'task_id' => 1]);
 
         $action = new CommentCreationMoveTaskColumn($this->container);
         $action->setProjectId(1);

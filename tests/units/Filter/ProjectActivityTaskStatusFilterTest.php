@@ -29,13 +29,13 @@ class ProjectActivityTaskStatusFilterTest extends Base
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(array('title' => 'Test', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreation->create(array('title' => 'Test', 'project_id' => 1)));
+        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
 
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(1))));
-        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, array('task' => $taskFinder->getById(2))));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
+        $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
 
         $this->assertTrue($taskStatus->close(1));
 

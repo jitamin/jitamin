@@ -27,9 +27,9 @@ class ConfigTest extends Base
     {
         $c = new ConfigModel($this->container);
 
-        $this->assertTrue($c->save(array('key1' => 'value1')));
-        $this->assertTrue($c->save(array('key1' => 'value2')));
-        $this->assertTrue($c->save(array('key2' => 'value2')));
+        $this->assertTrue($c->save(['key1' => 'value1']));
+        $this->assertTrue($c->save(['key1' => 'value2']));
+        $this->assertTrue($c->save(['key2' => 'value2']));
 
         $this->assertEquals('value2', $c->getOption('key1'));
         $this->assertEquals('value2', $c->getOption('key2'));
@@ -39,7 +39,7 @@ class ConfigTest extends Base
         $this->assertTrue($c->exists('key1'));
         $this->assertFalse($c->exists('key3'));
 
-        $this->assertTrue($c->save(array('key1' => 'value1')));
+        $this->assertTrue($c->save(['key1' => 'value1']));
 
         $this->assertArrayHasKey('key1', $c->getAll());
         $this->assertArrayHasKey('key2', $c->getAll());
@@ -52,13 +52,13 @@ class ConfigTest extends Base
     {
         $c = new ConfigModel($this->container);
 
-        $this->assertTrue($c->save(array('application_url' => 'http://localhost/')));
+        $this->assertTrue($c->save(['application_url' => 'http://localhost/']));
         $this->assertEquals('http://localhost/', $c->getOption('application_url'));
 
-        $this->assertTrue($c->save(array('application_url' => 'http://localhost')));
+        $this->assertTrue($c->save(['application_url' => 'http://localhost']));
         $this->assertEquals('http://localhost/', $c->getOption('application_url'));
 
-        $this->assertTrue($c->save(array('application_url' => '')));
+        $this->assertTrue($c->save(['application_url' => '']));
         $this->assertEquals('', $c->getOption('application_url'));
     }
 
@@ -113,7 +113,7 @@ class ConfigTest extends Base
         $c = new ConfigModel($this->container);
 
         $this->assertEquals('UTC', $c->get('application_timezone'));
-        $this->assertTrue($c->save(array('application_timezone' => 'Europe/Paris')));
+        $this->assertTrue($c->save(['application_timezone' => 'Europe/Paris']));
 
         $this->assertEquals('UTC', $c->get('application_timezone')); // cached value
         $this->assertEquals('Europe/Paris', $c->getOption('application_timezone'));

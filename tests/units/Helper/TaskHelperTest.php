@@ -18,9 +18,9 @@ class TaskHelperTest extends Base
     public function testSelectPriority()
     {
         $helper = new TaskHelper($this->container);
-        $this->assertNotEmpty($helper->selectPriority(array('priority_end' => '1', 'priority_start' => '5', 'priority_default' => '2'), array()));
-        $this->assertNotEmpty($helper->selectPriority(array('priority_end' => '3', 'priority_start' => '1', 'priority_default' => '2'), array()));
-        $this->assertEmpty($helper->selectPriority(array('priority_end' => '3', 'priority_start' => '3', 'priority_default' => '2'), array()));
+        $this->assertNotEmpty($helper->selectPriority(['priority_end' => '1', 'priority_start' => '5', 'priority_default' => '2'], []));
+        $this->assertNotEmpty($helper->selectPriority(['priority_end' => '3', 'priority_start' => '1', 'priority_default' => '2'], []));
+        $this->assertEmpty($helper->selectPriority(['priority_end' => '3', 'priority_start' => '3', 'priority_default' => '2'], []));
     }
 
     public function testFormatPriority()
@@ -29,14 +29,14 @@ class TaskHelperTest extends Base
 
         $this->assertEquals(
             '<span class="task-board-priority" title="Task priority">P2</span>',
-            $helper->formatPriority(array('priority_end' => '3', 'priority_start' => '1', 'priority_default' => '2'), array('priority' => 2))
+            $helper->formatPriority(['priority_end' => '3', 'priority_start' => '1', 'priority_default' => '2'], ['priority' => 2])
         );
 
         $this->assertEquals(
             '<span class="task-board-priority" title="Task priority">P-6</span>',
-            $helper->formatPriority(array('priority_end' => '3', 'priority_start' => '1', 'priority_default' => '2'), array('priority' => -6))
+            $helper->formatPriority(['priority_end' => '3', 'priority_start' => '1', 'priority_default' => '2'], ['priority' => -6])
         );
 
-        $this->assertEmpty($helper->formatPriority(array('priority_end' => '3', 'priority_start' => '3', 'priority_default' => '2'), array()));
+        $this->assertEmpty($helper->formatPriority(['priority_end' => '3', 'priority_start' => '3', 'priority_default' => '2'], []));
     }
 }

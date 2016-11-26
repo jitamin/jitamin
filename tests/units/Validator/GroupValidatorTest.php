@@ -19,10 +19,10 @@ class GroupValidatorTest extends Base
     {
         $groupValidator = new GroupValidator($this->container);
 
-        $result = $groupValidator->validateCreation(array('name' => 'Test'));
+        $result = $groupValidator->validateCreation(['name' => 'Test']);
         $this->assertTrue($result[0]);
 
-        $result = $groupValidator->validateCreation(array('name' => ''));
+        $result = $groupValidator->validateCreation(['name' => '']);
         $this->assertFalse($result[0]);
     }
 
@@ -30,10 +30,10 @@ class GroupValidatorTest extends Base
     {
         $validator = new GroupValidator($this->container);
 
-        $result = $validator->validateModification(array('name' => 'Test', 'id' => 1));
+        $result = $validator->validateModification(['name' => 'Test', 'id' => 1]);
         $this->assertTrue($result[0]);
 
-        $result = $validator->validateModification(array('name' => 'Test'));
+        $result = $validator->validateModification(['name' => 'Test']);
         $this->assertFalse($result[0]);
     }
 }

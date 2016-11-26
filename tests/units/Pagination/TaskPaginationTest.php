@@ -24,9 +24,9 @@ class TaskPaginationTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskPagination = new TaskPagination($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Project #1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task #1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task #2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1]));
 
         $this->assertCount(1, $taskPagination->getDashboardPaginator(1, 'tasks', 5)->getCollection());
         $this->assertCount(0, $taskPagination->getDashboardPaginator(2, 'tasks', 5)->getCollection());

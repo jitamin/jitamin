@@ -23,7 +23,7 @@ class ColumnRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $columnRestrictionModel = new ColumnRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $columnRestrictionModel->create(1, 1, 2, ColumnRestrictionModel::RULE_BLOCK_TASK_CREATION));
     }
@@ -34,7 +34,7 @@ class ColumnRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ColumnRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, 2, ColumnRestrictionModel::RULE_ALLOW_TASK_OPEN_CLOSE));
         $this->assertTrue($projectRoleRestrictionModel->remove(1));
@@ -47,7 +47,7 @@ class ColumnRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ColumnRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, 2, ColumnRestrictionModel::RULE_ALLOW_TASK_CREATION));
 
@@ -64,7 +64,7 @@ class ColumnRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $projectRoleRestrictionModel = new ColumnRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $projectRoleRestrictionModel->create(1, 1, 2, ColumnRestrictionModel::RULE_ALLOW_TASK_CREATION));
 
@@ -84,7 +84,7 @@ class ColumnRestrictionModelTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
         $columnRestrictionModel = new ColumnRestrictionModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $projectRoleModel->create(1, 'my-custom-role'));
         $this->assertEquals(1, $columnRestrictionModel->create(1, 1, 2, ColumnRestrictionModel::RULE_BLOCK_TASK_CREATION));
 

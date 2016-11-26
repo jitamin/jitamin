@@ -68,10 +68,10 @@ class ActionManagerTest extends Base
             ->register(new TaskCloseColumn($this->container))
             ->register(new TaskUpdateStartDate($this->container));
 
-        $params = $actionManager->getAvailableParameters(array(
-            array('action_name' => '\Hiject\Action\TaskCloseColumn'),
-            array('action_name' => '\Hiject\Action\TaskUpdateStartDate'),
-        ));
+        $params = $actionManager->getAvailableParameters([
+            ['action_name' => '\Hiject\Action\TaskCloseColumn'],
+            ['action_name' => '\Hiject\Action\TaskUpdateStartDate'],
+        ]);
 
         $this->assertCount(2, $params);
         $this->assertArrayHasKey('column_id', $params['\Hiject\Action\TaskCloseColumn']);
@@ -107,13 +107,13 @@ class ActionManagerTest extends Base
         $actionManager->attachEvents();
         $this->assertEmpty($this->dispatcher->getListeners());
 
-        $this->assertEquals(1, $projectModel->create(array('name' =>'test')));
-        $this->assertEquals(1, $actionModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' =>'test']));
+        $this->assertEquals(1, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_CREATE,
             'action_name' => key($actions),
-            'params' => array('column_id' => 1, 'color_id' => 'red'),
-        )));
+            'params' => ['column_id' => 1, 'color_id' => 'red'],
+        ]));
 
         $actionManager->attachEvents();
         $listeners = $this->dispatcher->getListeners(TaskModel::EVENT_CREATE);
@@ -125,7 +125,7 @@ class ActionManagerTest extends Base
 
     public function testAttachEventsWithLoggedUser()
     {
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
 
         $projectModel = new ProjectModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
@@ -136,24 +136,24 @@ class ActionManagerTest extends Base
 
         $actions = $actionManager->getAvailableActions();
 
-        $this->assertEquals(1, $projectModel->create(array('name' =>'test1')));
-        $this->assertEquals(2, $projectModel->create(array('name' =>'test2')));
+        $this->assertEquals(1, $projectModel->create(['name' =>'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' =>'test2']));
 
         $this->assertTrue($projectUserRoleModel->addUser(2, 1, Role::PROJECT_MEMBER));
 
-        $this->assertEquals(1, $actionModel->create(array(
+        $this->assertEquals(1, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_CREATE,
             'action_name' => key($actions),
-            'params' => array('column_id' => 1, 'color_id' => 'red'),
-        )));
+            'params' => ['column_id' => 1, 'color_id' => 'red'],
+        ]));
 
-        $this->assertEquals(2, $actionModel->create(array(
+        $this->assertEquals(2, $actionModel->create([
             'project_id' => 2,
             'event_name' => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => key($actions),
-            'params' => array('column_id' => 1, 'color_id' => 'red'),
-        )));
+            'params' => ['column_id' => 1, 'color_id' => 'red'],
+        ]));
 
         $actionManager->attachEvents();
 
@@ -172,22 +172,22 @@ class ActionManagerTest extends Base
         $actionManager = new ActionManager($this->container);
         $actionManager->register($actionTaskAssignColorColumn);
 
-        $this->assertEquals(1, $projectModel->create(array('name' =>'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' =>'test1']));
         $actions = $actionManager->getAvailableActions();
 
-        $this->assertEquals(1, $actionModel->create(array(
+        $this->assertEquals(1, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => key($actions),
-            'params' => array('column_id' => 2, 'color_id' => 'green'),
-        )));
+            'params' => ['column_id' => 2, 'color_id' => 'green'],
+        ]));
 
-        $this->assertEquals(2, $actionModel->create(array(
+        $this->assertEquals(2, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => key($actions),
-            'params' => array('column_id' => 1, 'color_id' => 'red'),
-        )));
+            'params' => ['column_id' => 1, 'color_id' => 'red'],
+        ]));
 
         $actionManager->attachEvents();
 
@@ -212,13 +212,13 @@ class ActionManagerTest extends Base
 
         $actions = $actionManager->getAvailableActions();
 
-        $this->assertEquals(1, $projectModel->create(array('name' =>'test')));
-        $this->assertEquals(1, $actionModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' =>'test']));
+        $this->assertEquals(1, $actionModel->create([
             'project_id' => 1,
             'event_name' => TaskModel::EVENT_CREATE,
             'action_name' => key($actions),
-            'params' => array('column_id' => 1, 'color_id' => 'red'),
-        )));
+            'params' => ['column_id' => 1, 'color_id' => 'red'],
+        ]));
 
         $actionManager->attachEvents();
         $this->dispatcher->addListener(TaskModel::EVENT_CREATE, function () {});

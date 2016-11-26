@@ -30,7 +30,7 @@ class ProjectFileEventBuilderTest extends Base
         $projectFileModel = new ProjectFileModel($this->container);
         $projectFileEventBuilder = new ProjectFileEventBuilder($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $projectFileModel->create(1, 'Test', '/tmp/test', 123));
 
         $event = $projectFileEventBuilder->withFileId(1)->buildEvent();

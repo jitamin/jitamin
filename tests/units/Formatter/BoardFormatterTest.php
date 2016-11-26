@@ -28,25 +28,25 @@ class BoardFormatterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $swimlaneModel->create(array('name' => 'Swimlane 1', 'project_id' => 1)));
-        $this->assertEquals(2, $swimlaneModel->create(array('name' => 'Swimlane 2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $swimlaneModel->create(['name' => 'Swimlane 1', 'project_id' => 1]));
+        $this->assertEquals(2, $swimlaneModel->create(['name' => 'Swimlane 2', 'project_id' => 1]));
 
         // 2 task within the same column but no score
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1]));
 
         // 2 tasks in the same column with score
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 4)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 5)));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 4]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 5]));
 
         // 1 task in 2nd column
-        $this->assertEquals(5, $taskCreationModel->create(array('title' => 'Task 5', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 2)));
+        $this->assertEquals(5, $taskCreationModel->create(['title' => 'Task 5', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 2]));
 
         // tasks in same column but different swimlanes
-        $this->assertEquals(6, $taskCreationModel->create(array('title' => 'Task 6', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 3, 'score' => 1)));
-        $this->assertEquals(7, $taskCreationModel->create(array('title' => 'Task 7', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 3, 'score' => 2)));
-        $this->assertEquals(8, $taskCreationModel->create(array('title' => 'Task 8', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 3, 'score' => 3)));
+        $this->assertEquals(6, $taskCreationModel->create(['title' => 'Task 6', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 3, 'score' => 1]));
+        $this->assertEquals(7, $taskCreationModel->create(['title' => 'Task 7', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 3, 'score' => 2]));
+        $this->assertEquals(8, $taskCreationModel->create(['title' => 'Task 8', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 3, 'score' => 3]));
 
         $board = BoardFormatter::getInstance($this->container)
             ->withQuery($taskFinderModel->getExtendedQuery())
@@ -142,15 +142,15 @@ class BoardFormatterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($swimlaneModel->disableDefault(1));
-        $this->assertEquals(1, $swimlaneModel->create(array('name' => 'Swimlane 1', 'project_id' => 1)));
-        $this->assertEquals(2, $swimlaneModel->create(array('name' => 'Swimlane 2', 'project_id' => 1)));
+        $this->assertEquals(1, $swimlaneModel->create(['name' => 'Swimlane 1', 'project_id' => 1]));
+        $this->assertEquals(2, $swimlaneModel->create(['name' => 'Swimlane 2', 'project_id' => 1]));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 2)));
-        $this->assertEquals(3, $taskCreationModel->create(array('title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 2, 'score' => 1)));
-        $this->assertEquals(4, $taskCreationModel->create(array('title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 1)));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 2]));
+        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 2, 'score' => 1]));
+        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 1]));
 
         $board = BoardFormatter::getInstance($this->container)
             ->withQuery($taskFinderModel->getExtendedQuery())
@@ -216,7 +216,7 @@ class BoardFormatterTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($swimlaneModel->disableDefault(1));
 
         $board = BoardFormatter::getInstance($this->container)
@@ -233,7 +233,7 @@ class BoardFormatterTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($columnModel->remove(1));
         $this->assertTrue($columnModel->remove(2));
         $this->assertTrue($columnModel->remove(3));
@@ -253,9 +253,9 @@ class BoardFormatterTest extends Base
         $swimlaneModel = new SwimlaneModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $swimlaneModel->create(array('name' => 'Swimlane 1', 'project_id' => 1)));
-        $this->assertEquals(2, $swimlaneModel->create(array('name' => 'Swimlane 2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $swimlaneModel->create(['name' => 'Swimlane 1', 'project_id' => 1]));
+        $this->assertEquals(2, $swimlaneModel->create(['name' => 'Swimlane 2', 'project_id' => 1]));
 
         $board = BoardFormatter::getInstance($this->container)
             ->withQuery($taskFinderModel->getExtendedQuery())
@@ -333,13 +333,13 @@ class BoardFormatterTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'Test')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test1')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test2', 'column_id' => 3)));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test3')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'column_id' => 3]));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test3']));
 
-        $this->assertTrue($taskTagModel->save(1, 1, array('My tag 1', 'My tag 2')));
-        $this->assertTrue($taskTagModel->save(1, 2, array('My tag 3')));
+        $this->assertTrue($taskTagModel->save(1, 1, ['My tag 1', 'My tag 2']));
+        $this->assertTrue($taskTagModel->save(1, 2, ['My tag 3']));
 
         $board = BoardFormatter::getInstance($this->container)
             ->withQuery($taskFinderModel->getExtendedQuery())
@@ -379,29 +379,29 @@ class BoardFormatterTest extends Base
         $this->assertEquals('test3', $board[0]['columns'][0]['tasks'][1]['title']);
         $this->assertEquals('test2', $board[0]['columns'][2]['tasks'][0]['title']);
 
-        $expected = array(
-            array(
+        $expected = [
+            [
                 'id' => 1,
                 'name' => 'My tag 1',
                 'task_id' => 1,
-            ),
-            array(
+            ],
+            [
                 'id' => 2,
                 'name' => 'My tag 2',
                 'task_id' => 1,
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $board[0]['columns'][0]['tasks'][0]['tags']);
-        $this->assertEquals(array(), $board[0]['columns'][0]['tasks'][1]['tags']);
+        $this->assertEquals([], $board[0]['columns'][0]['tasks'][1]['tags']);
 
-        $expected = array(
-            array(
+        $expected = [
+            [
                 'id' => 3,
                 'name' => 'My tag 3',
                 'task_id' => 2,
-            ),
-        );
+            ],
+        ];
 
         $this->assertEquals($expected, $board[0]['columns'][2]['tasks'][0]['tags']);
     }

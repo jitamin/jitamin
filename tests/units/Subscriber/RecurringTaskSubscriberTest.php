@@ -27,8 +27,8 @@ class RecurringTaskSubscriberTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
@@ -47,17 +47,17 @@ class RecurringTaskSubscriberTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_FIRST_COLUMN,
-        )));
+        ]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
-            ->withValues(array('src_column_id' => 1))
+            ->withValues(['src_column_id' => 1])
             ->buildEvent();
 
         $subscriber->onMove($event);
@@ -73,18 +73,18 @@ class RecurringTaskSubscriberTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_FIRST_COLUMN,
             'column_id' => 2,
-        )));
+        ]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
-            ->withValues(array('src_column_id' => 2))
+            ->withValues(['src_column_id' => 2])
             ->buildEvent();
 
         $subscriber->onMove($event);
@@ -100,17 +100,17 @@ class RecurringTaskSubscriberTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_LAST_COLUMN,
-        )));
+        ]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
-            ->withValues(array('dst_column_id' => 4))
+            ->withValues(['dst_column_id' => 4])
             ->buildEvent();
 
         $subscriber->onMove($event);
@@ -126,17 +126,17 @@ class RecurringTaskSubscriberTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_LAST_COLUMN,
-        )));
+        ]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
-            ->withValues(array('dst_column_id' => 2))
+            ->withValues(['dst_column_id' => 2])
             ->buildEvent();
 
         $subscriber->onMove($event);
@@ -152,17 +152,17 @@ class RecurringTaskSubscriberTest extends Base
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array(
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create([
             'title' => 'test',
             'project_id' => 1,
             'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_CLOSE,
-        )));
+        ]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
-            ->withChanges(array('is_active' => 0))
+            ->withChanges(['is_active' => 0])
             ->buildEvent();
 
         $subscriber->onMove($event);

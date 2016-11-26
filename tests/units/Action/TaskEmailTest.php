@@ -28,14 +28,14 @@ class TaskEmailTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertTrue($userModel->update(array('id' => 1, 'email' => 'admin@localhost')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertTrue($userModel->update(['id' => 1, 'email' => 'admin@localhost']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
             'task' => $taskFinderModel->getDetails(1)
-        ));
+        ]);
 
         $action = new TaskEmail($this->container);
         $action->setProjectId(1);
@@ -59,15 +59,15 @@ class TaskEmailTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $event = new TaskEvent(array(
+        $event = new TaskEvent([
             'task_id' => 1,
-            'task' => array(
+            'task' => [
                 'project_id' => 1,
                 'column_id' => 3,
-            )
-        ));
+            ]
+        ]);
 
         $action = new TaskEmail($this->container);
         $action->setProjectId(1);

@@ -20,7 +20,7 @@ class UserSessionTest extends Base
     {
         $us = new UserSession($this->container);
 
-        $user = array(
+        $user = [
             'id' => '123',
             'username' => 'john',
             'password' => 'something',
@@ -30,7 +30,7 @@ class UserSessionTest extends Base
             'is_ldap_user' => '0',
             'twofactor_activated' => '0',
             'role' => Role::APP_MANAGER,
-        );
+        ];
 
         $us->initialize($user);
 
@@ -56,10 +56,10 @@ class UserSessionTest extends Base
 
         $this->assertEquals(0, $us->getId());
 
-        $this->container['sessionStorage']->user = array('id' => 2);
+        $this->container['sessionStorage']->user = ['id' => 2];
         $this->assertEquals(2, $us->getId());
 
-        $this->container['sessionStorage']->user = array('id' => '2');
+        $this->container['sessionStorage']->user = ['id' => '2'];
         $this->assertEquals(2, $us->getId());
     }
 
@@ -69,10 +69,10 @@ class UserSessionTest extends Base
 
         $this->assertFalse($us->isLogged());
 
-        $this->container['sessionStorage']->user = array();
+        $this->container['sessionStorage']->user = [];
         $this->assertFalse($us->isLogged());
 
-        $this->container['sessionStorage']->user = array('id' => 1);
+        $this->container['sessionStorage']->user = ['id' => 1];
         $this->assertTrue($us->isLogged());
     }
 
@@ -82,13 +82,13 @@ class UserSessionTest extends Base
 
         $this->assertFalse($us->isAdmin());
 
-        $this->container['sessionStorage']->user = array('role' => Role::APP_ADMIN);
+        $this->container['sessionStorage']->user = ['role' => Role::APP_ADMIN];
         $this->assertTrue($us->isAdmin());
 
-        $this->container['sessionStorage']->user = array('role' => Role::APP_USER);
+        $this->container['sessionStorage']->user = ['role' => Role::APP_USER];
         $this->assertFalse($us->isAdmin());
 
-        $this->container['sessionStorage']->user = array('role' => '');
+        $this->container['sessionStorage']->user = ['role' => ''];
         $this->assertFalse($us->isAdmin());
     }
 
@@ -117,13 +117,13 @@ class UserSessionTest extends Base
         $us->validatePostAuthentication();
         $this->assertTrue($us->isPostAuthenticationValidated());
 
-        $this->container['sessionStorage']->user = array();
+        $this->container['sessionStorage']->user = [];
         $this->assertFalse($us->hasPostAuthentication());
 
-        $this->container['sessionStorage']->user = array('twofactor_activated' => false);
+        $this->container['sessionStorage']->user = ['twofactor_activated' => false];
         $this->assertFalse($us->hasPostAuthentication());
 
-        $this->container['sessionStorage']->user = array('twofactor_activated' => true);
+        $this->container['sessionStorage']->user = ['twofactor_activated' => true];
         $this->assertTrue($us->hasPostAuthentication());
 
         $us->disablePostAuthentication();

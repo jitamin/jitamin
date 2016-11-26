@@ -21,8 +21,8 @@ class UserPaginationTest extends Base
         $userModel = new UserModel($this->container);
         $userPagination = new UserPagination($this->container);
 
-        $this->assertEquals(2, $userModel->create(array('username' => 'test1')));
-        $this->assertEquals(3, $userModel->create(array('username' => 'test2')));
+        $this->assertEquals(2, $userModel->create(['username' => 'test1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'test2']));
 
         $this->assertCount(3, $userPagination->getListingPaginator()->setOrder('id')->getCollection());
         $this->assertCount(3, $userPagination->getListingPaginator()->setOrder('username')->getCollection());

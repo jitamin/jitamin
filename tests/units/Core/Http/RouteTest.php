@@ -21,9 +21,9 @@ class RouteTest extends Base
         $route = new Route($this->container);
         $route->enable();
 
-        $this->assertEquals(array('p1' => true, 'p2' => true), $route->findParams(array('something', ':p1', ':p2')));
-        $this->assertEquals(array('p1' => true), $route->findParams(array('something', ':p1', '')));
-        $this->assertEquals(array('p1' => true), $route->findParams(array('something', ':p1', 'something else')));
+        $this->assertEquals(['p1' => true, 'p2' => true], $route->findParams(['something', ':p1', ':p2']));
+        $this->assertEquals(['p1' => true], $route->findParams(['something', ':p1', '']));
+        $this->assertEquals(['p1' => true], $route->findParams(['something', ':p1', 'something else']));
     }
 
     public function testFindRoute()
@@ -33,24 +33,24 @@ class RouteTest extends Base
 
         $route->addRoute('/mycontroller/myaction', 'mycontroller', 'myaction');
         $this->assertEquals(
-            array('controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => ''),
+            ['controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => ''],
             $route->findRoute('/mycontroller/myaction')
         );
 
         $route->addRoute('/a/b/c', 'mycontroller', 'myaction', 'myplugin');
         $this->assertEquals(
-            array('controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => 'myplugin'),
+            ['controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => 'myplugin'],
             $route->findRoute('/a/b/c')
         );
 
         $this->assertEquals(
-            array('controller' => Router::DEFAULT_CONTROLLER, 'action' => Router::DEFAULT_METHOD, 'plugin' => ''),
+            ['controller' => Router::DEFAULT_CONTROLLER, 'action' => Router::DEFAULT_METHOD, 'plugin' => ''],
             $route->findRoute('/notfound')
         );
 
         $route->addRoute('/a/b/:c', 'mycontroller', 'myaction', 'myplugin');
         $this->assertEquals(
-            array('controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => 'myplugin'),
+            ['controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => 'myplugin'],
             $route->findRoute('/a/b/myvalue')
         );
 
@@ -58,7 +58,7 @@ class RouteTest extends Base
 
         $route->addRoute('/a/:p1/b/:p2', 'mycontroller', 'myaction');
         $this->assertEquals(
-            array('controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => ''),
+            ['controller' => 'mycontroller', 'action' => 'myaction', 'plugin' => ''],
             $route->findRoute('/a/v1/b/v2')
         );
 
@@ -76,14 +76,14 @@ class RouteTest extends Base
         $route->addRoute('/myplugin/myroute', 'controller1', 'action2', 'myplugin');
         $route->addRoute('/foo/:myvar', 'controller1', 'action3', 'myplugin');
 
-        $this->assertEquals('a/1/b/2', $route->findUrl('controller2', 'action2', array('myvar1' => 1, 'myvar2' => 2)));
-        $this->assertEquals('', $route->findUrl('controller2', 'action2', array('myvar1' => 1)));
+        $this->assertEquals('a/1/b/2', $route->findUrl('controller2', 'action2', ['myvar1' => 1, 'myvar2' => 2]));
+        $this->assertEquals('', $route->findUrl('controller2', 'action2', ['myvar1' => 1]));
         $this->assertEquals('a/b', $route->findUrl('controller1', 'action1'));
         $this->assertEquals('', $route->findUrl('controller1', 'action2'));
 
-        $this->assertEquals('myplugin/myroute', $route->findUrl('controller1', 'action2', array(), 'myplugin'));
-        $this->assertEquals('something', $route->findUrl('controller1', 'action1', array(), 'myplugin'));
-        $this->assertEquals('foo/123', $route->findUrl('controller1', 'action3', array('myvar' => 123), 'myplugin'));
-        $this->assertEquals('foo/123', $route->findUrl('controller1', 'action3', array('myvar' => 123, 'plugin' => 'myplugin')));
+        $this->assertEquals('myplugin/myroute', $route->findUrl('controller1', 'action2', [], 'myplugin'));
+        $this->assertEquals('something', $route->findUrl('controller1', 'action1', [], 'myplugin'));
+        $this->assertEquals('foo/123', $route->findUrl('controller1', 'action3', ['myvar' => 123], 'myplugin'));
+        $this->assertEquals('foo/123', $route->findUrl('controller1', 'action3', ['myvar' => 123, 'plugin' => 'myplugin']));
     }
 }

@@ -30,7 +30,7 @@ class WebLinkProviderTest extends Base
     public function testGetDependencies()
     {
         $webLinkProvider = new WebLinkProvider($this->container);
-        $this->assertEquals(array('related' => 'Related'), $webLinkProvider->getDependencies());
+        $this->assertEquals(['related' => 'Related'], $webLinkProvider->getDependencies());
     }
 
     public function testMatch()

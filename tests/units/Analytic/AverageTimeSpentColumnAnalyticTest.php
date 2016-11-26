@@ -26,15 +26,15 @@ class AverageTimeSpentColumnAnalyticTest extends Base
         $projectModel = new ProjectModel($this->container);
         $averageLeadCycleTimeAnalytic = new AverageTimeSpentColumnAnalytic($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $now = time();
 
-        $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(array('date_completed' => $now + 3600));
-        $this->container['db']->table(TaskModel::TABLE)->eq('id', 2)->update(array('date_completed' => $now + 1800));
+        $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(['date_completed' => $now + 3600]);
+        $this->container['db']->table(TaskModel::TABLE)->eq('id', 2)->update(['date_completed' => $now + 1800]);
 
         $stats = $averageLeadCycleTimeAnalytic->build(1);
 
@@ -67,16 +67,16 @@ class AverageTimeSpentColumnAnalyticTest extends Base
         $projectModel = new ProjectModel($this->container);
         $averageLeadCycleTimeAnalytic = new AverageTimeSpentColumnAnalytic($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $now = time();
-        $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(array('date_completed' => $now + 3600));
-        $this->container['db']->table(TaskModel::TABLE)->eq('id', 2)->update(array('date_completed' => $now + 1800));
+        $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(['date_completed' => $now + 3600]);
+        $this->container['db']->table(TaskModel::TABLE)->eq('id', 2)->update(['date_completed' => $now + 1800]);
 
-        foreach (array(1, 2) as $task_id) {
+        foreach ([1, 2] as $task_id) {
             $task = $taskFinderModel->getById($task_id);
             $task['task_id'] = $task['id'];
             $task['date_moved'] = $now - 900;

@@ -21,9 +21,9 @@ class SubtaskEventJobTest extends Base
     public function testJobParams()
     {
         $subtaskEventJob = new SubtaskEventJob($this->container);
-        $subtaskEventJob->withParams(123, 'foobar', array('k' => 'v'));
+        $subtaskEventJob->withParams(123, 'foobar', ['k' => 'v']);
 
-        $this->assertSame(array(123, 'foobar', array('k' => 'v')), $subtaskEventJob->getJobParams());
+        $this->assertSame([123, 'foobar', ['k' => 'v']], $subtaskEventJob->getJobParams());
     }
 
     public function testWithMissingSubtask()
@@ -47,10 +47,10 @@ class SubtaskEventJobTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'test', 'project_id' => 1)));
-        $this->assertEquals(1, $subtaskModel->create(array('task_id' => 1, 'title' => 'before')));
-        $this->assertTrue($subtaskModel->update(array('id' => 1, 'task_id' => 1, 'title' => 'after')));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $subtaskModel->create(['task_id' => 1, 'title' => 'before']));
+        $this->assertTrue($subtaskModel->update(['id' => 1, 'task_id' => 1, 'title' => 'after']));
         $this->assertTrue($subtaskModel->remove(1));
 
         $called = $this->container['dispatcher']->getCalledListeners();

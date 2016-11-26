@@ -30,7 +30,7 @@ class AttachmentLinkProviderTest extends Base
     public function testGetDependencies()
     {
         $attachmentLinkProvider = new AttachmentLinkProvider($this->container);
-        $this->assertEquals(array('related' => 'Related'), $attachmentLinkProvider->getDependencies());
+        $this->assertEquals(['related' => 'Related'], $attachmentLinkProvider->getDependencies());
     }
 
     public function testMatch()

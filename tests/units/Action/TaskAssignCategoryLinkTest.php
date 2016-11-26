@@ -34,10 +34,10 @@ class TaskAssignCategoryLinkTest extends Base
         $action->setParam('category_id', 1);
         $action->setParam('link_id', 2);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1)));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)
@@ -63,10 +63,10 @@ class TaskAssignCategoryLinkTest extends Base
         $action->setParam('category_id', 1);
         $action->setParam('link_id', 2);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1)));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)
@@ -92,10 +92,10 @@ class TaskAssignCategoryLinkTest extends Base
         $action->setParam('category_id', 1);
         $action->setParam('link_id', 2);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'P1')));
-        $this->assertEquals(1, $categoryModel->create(array('name' => 'C1', 'project_id' => 1)));
-        $this->assertEquals(1, $taskCreationModel->create(array('title' => 'T1', 'project_id' => 1, 'category_id' => 1)));
-        $this->assertEquals(2, $taskCreationModel->create(array('title' => 'T2', 'project_id' => 1)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
+        $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'category_id' => 1]));
+        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)

@@ -39,19 +39,19 @@ class MetadataCacheDecoratorTest extends Base
 
         $this->cacheMock = $this
             ->getMockBuilder('\Hiject\Core\Cache\MemoryCache')
-            ->setMethods(array(
+            ->setMethods([
                 'set',
                 'get',
-            ))
+            ])
             ->getMock();
 
         $this->metadataModelMock = $this
             ->getMockBuilder('\Hiject\Model\UserMetadataModel')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array(
+            ->setConstructorArgs([$this->container])
+            ->setMethods([
                 'getAll',
                 'save',
-            ))
+            ])
             ->getMock()
         ;
 
@@ -88,7 +88,7 @@ class MetadataCacheDecoratorTest extends Base
             ->expects($this->once())
             ->method('get')
             ->with($this->cachePrefix.$this->entityId)
-            ->will($this->returnValue(array('key' => 'foobar')))
+            ->will($this->returnValue(['key' => 'foobar']))
         ;
 
         $this->assertEquals('foobar', $this->metadataCacheDecorator->get('key', 'default'));
@@ -100,7 +100,7 @@ class MetadataCacheDecoratorTest extends Base
             ->expects($this->once())
             ->method('get')
             ->with($this->cachePrefix.$this->entityId)
-            ->will($this->returnValue(array('key1' => 'foobar')))
+            ->will($this->returnValue(['key1' => 'foobar']))
         ;
 
         $this->assertEquals('default', $this->metadataCacheDecorator->get('key', 'default'));
@@ -120,7 +120,7 @@ class MetadataCacheDecoratorTest extends Base
             ->method('set')
             ->with(
                 $this->cachePrefix.$this->entityId,
-                array('key' => 'something')
+                ['key' => 'something']
             )
         ;
 
@@ -128,7 +128,7 @@ class MetadataCacheDecoratorTest extends Base
             ->expects($this->once())
             ->method('getAll')
             ->with($this->entityId)
-            ->will($this->returnValue(array('key' => 'something')))
+            ->will($this->returnValue(['key' => 'something']))
         ;
 
         $this->assertEquals('something', $this->metadataCacheDecorator->get('key', 'default'));

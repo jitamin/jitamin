@@ -29,14 +29,14 @@ class ApplicationAuthorizationMiddlewareMiddlewareTest extends Base
 
         $this->container['helper']->user = $this
             ->getMockBuilder('Hiject\Helper\UserHelper')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('hasAccess'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['hasAccess'])
             ->getMock();
 
         $this->nextMiddleware = $this
             ->getMockBuilder('Hiject\Middleware\ApplicationAuthorizationMiddleware')
-            ->setConstructorArgs(array($this->container))
-            ->setMethods(array('execute'))
+            ->setConstructorArgs([$this->container])
+            ->setMethods(['execute'])
             ->getMock();
 
         $this->middleware = new ApplicationAuthorizationMiddleware($this->container);

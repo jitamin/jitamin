@@ -26,15 +26,15 @@ class TaskMoveColumnNotMovedPeriodTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(1, $projectModel->create(array('name' => 'test1')));
-        $this->assertEquals(1, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test')));
-        $this->assertEquals(2, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'column_id' => 3)));
-        $this->assertEquals(3, $taskCreationModel->create(array('project_id' => 1, 'title' => 'test', 'column_id' => 2)));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 3]));
+        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
 
-        $this->container['db']->table(TaskModel::TABLE)->in('id', array(2, 3))->update(array('date_moved' => strtotime('-10days')));
+        $this->container['db']->table(TaskModel::TABLE)->in('id', [2, 3])->update(['date_moved' => strtotime('-10days')]);
 
         $tasks = $taskFinderModel->getAll(1);
-        $event = new TaskListEvent(array('tasks' => $tasks, 'project_id' => 1));
+        $event = new TaskListEvent(['tasks' => $tasks, 'project_id' => 1]);
 
         $action = new TaskMoveColumnNotMovedPeriod($this->container);
         $action->setProjectId(1);
