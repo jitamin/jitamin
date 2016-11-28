@@ -1,26 +1,20 @@
 <IfModule mod_rewrite.c>
-    Options -MultiViews
-
-    SetEnv HTTP_MOD_REWRITE On
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
 
     RewriteEngine On
+
+    # Redirect Trailing Slashes If Not A Folder...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [QSA,L]
+    RewriteRule ^ index.php [L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
-
-<FilesMatch "(hiject|config.php|config.default.php)">
-    <IfModule mod_version.c>
-        <IfVersion >= 2.3>
-            Require all denied
-        </IfVersion>
-        <IfVersion < 2.3>
-            Order allow,deny
-            Deny from all
-        </IfVersion>
-    </IfModule>
-
-    <IfModule !mod_version.c>
-        Order allow,deny
-        Deny from all
-    </IfModule>
-</FilesMatch>
