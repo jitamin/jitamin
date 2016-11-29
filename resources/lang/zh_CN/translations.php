@@ -28,6 +28,7 @@ return [
     'Lime' => '绿黄色',
     'Light Green' => '浅绿色',
     'Amber' => '黄褐色',
+    'White' => '白色',
     'Preview' => '预览',
     'Write' => '编辑',
     'Write your text in Markdown' => '支持Markdown语法',

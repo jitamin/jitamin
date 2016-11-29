@@ -33,6 +33,7 @@ class SkinModel extends Base
             'green' => t('Green'),
             'purple' => t('Purple'),
             'red' => t('Red'),
+            'white' => t('White'),
             'yellow' => t('Yellow'),
         ];
 
