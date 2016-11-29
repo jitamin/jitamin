@@ -184,7 +184,7 @@ class UserNotificationTest extends Base
         $this->assertNotEmpty($users);
         $this->assertCount(3, $users);
         $this->assertEquals('user1@here', $users[0]['email']);
-        $this->assertEquals('', $users[1]['email']);
+        $this->assertEquals('user2@here', $users[1]['email']);
         $this->assertEquals('user3@here', $users[2]['email']);
     }
 
