@@ -14,7 +14,7 @@
     <?= $this->form->text('name', $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_name') ? '' : 'readonly']) ?>
 
     <?= $this->form->label(t('Email:'), 'email') ?>
-    <?= $this->form->email('email', $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_email') ? '' : 'readonly']) ?>
+    <?= $this->form->email('email', $values, $errors, ['required', $this->user->hasAccess('UserModificationController', 'show/edit_email') ? '' : 'readonly']) ?>
 
     <?= $this->form->label(t('Timezone:'), 'timezone') ?>
     <?= $this->form->select('timezone', $timezones, $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_timezone') ? '' : 'disabled']) ?>
