@@ -39,6 +39,7 @@ return [
     'Remove user' => '删除用户',
     'Do you really want to remove this user: "%s"?' => '确定要删除用户"%s"吗？',
     'All users' => '所有用户',
+    'Username or Email' => '用户名或邮箱',
     'Username' => '用户名',
     'Password' => '密码',
     'Administrator' => '超级管理员',

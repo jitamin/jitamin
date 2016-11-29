@@ -68,7 +68,7 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
         $user = $this->db
             ->table(UserModel::TABLE)
             ->columns('id', 'password')
-            ->eq('username', $this->username)
+            ->eq(strpos($this->username, '@') === false ? 'username' : 'email', $this->username)
             ->eq('disable_login_form', 0)
             ->eq('is_ldap_user', 0)
             ->eq('is_active', 1)

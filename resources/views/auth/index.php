@@ -13,7 +13,7 @@
 
         <?= $this->form->csrf() ?>
 
-        <?= $this->form->label(t('Username'), 'username') ?>
+        <?= $this->form->label(t('Username or Email'), 'username') ?>
         <?= $this->form->text('username', $values, $errors, ['autofocus']) ?>
 
         <?= $this->form->label(t('Password'), 'password') ?>
