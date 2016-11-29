@@ -49,10 +49,10 @@ HJ.component('text-editor', function (containerElement, options) {
         textarea = HJ.el('textarea')
             .attr('name', options.name)
             .attr('tabindex', options.tabindex || '-1')
-            .attr('required', options.required || false)
+            .attr('required', options.required || null)
+            .text(options.text) // Order is important for IE11
             .attr('autofocus', options.autofocus || null)
-            .attr('placeholder', options.placeholder || '')
-            .text(options.text)
+            .attr('placeholder', options.placeholder || null)
             .build();
 
         return HJ.el('div')
