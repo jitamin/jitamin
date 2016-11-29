@@ -15,7 +15,12 @@ use PDO;
 use Hiject\Core\Security\Token;
 use Hiject\Core\Security\Role;
 
-const VERSION = 96;
+const VERSION = 97;
+
+function version_97(PDO $pdo)
+{
+    $pdo->exec('CREATE UNIQUE INDEX users_email_idx ON users(email)');
+}
 
 function version_96(PDO $pdo)
 {
