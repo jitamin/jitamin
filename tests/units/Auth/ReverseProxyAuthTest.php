@@ -110,7 +110,7 @@ class ReverseProxyAuthTest extends Base
         $provider = new ReverseProxyAuth($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'someone', 'role' => Role::APP_MANAGER]));
+        $this->assertEquals(2, $userModel->create(['username' => 'someone', 'email' =>'someone@here', 'role' => Role::APP_MANAGER]));
 
         $this->assertTrue($provider->authenticate());
 

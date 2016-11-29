@@ -183,8 +183,8 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
         $this->assertEquals(3, $projectModel->create(['name' => 'test4', 'is_active' => 0]));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'email' => 'user2@here']));
 
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_VIEWER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 3, Role::PROJECT_MANAGER));
@@ -377,7 +377,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
 
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
@@ -410,7 +410,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
 
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_VIEWER));
@@ -438,7 +438,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
 
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
 
