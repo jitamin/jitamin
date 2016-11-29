@@ -242,9 +242,9 @@ class ProjectDuplicationModelTest extends Base
         $userModel = new UserModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
-        $this->assertEquals(4, $userModel->create(['username' => 'user3']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'email' => 'user2@here']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user3', 'email' => 'user3@here']));
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
@@ -267,7 +267,7 @@ class ProjectDuplicationModelTest extends Base
         $userModel = new UserModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'P1'], 2));
 
         $project = $projectModel->getById(1);
@@ -293,8 +293,8 @@ class ProjectDuplicationModelTest extends Base
         $userModel = new UserModel($this->container);
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'email' => 'user2@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'P1'], 2));
 
         $project = $projectModel->getById(1);
@@ -330,9 +330,9 @@ class ProjectDuplicationModelTest extends Base
         $this->assertEquals(2, $groupModel->create('G2'));
         $this->assertEquals(3, $groupModel->create('G3'));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user2']));
-        $this->assertEquals(4, $userModel->create(['username' => 'user3']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'email' => 'user2@here']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user3', 'email' => 'user3@here']));
 
         $this->assertTrue($groupMemberModel->addUser(1, 2));
         $this->assertTrue($groupMemberModel->addUser(2, 3));

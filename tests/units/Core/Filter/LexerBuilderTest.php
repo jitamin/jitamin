@@ -142,7 +142,7 @@ class LexerBuilderTest extends Base
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'name' => 'Foo Bar']));
+        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'email'=>'foobar@here', 'name' => 'Foo Bar']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskCreation->create(['title' => 'Test 1', 'project_id' => 1, 'owner_id' => 2]));
         $this->assertEquals(2, $taskCreation->create(['title' => 'Test 2', 'project_id' => 1, 'owner_id' => 1]));

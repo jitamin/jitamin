@@ -55,7 +55,7 @@ class DatabaseAuthTest extends Base
 
         $this->assertFalse($provider->isValidSession());
 
-        $this->assertEquals(2, $userModel->create(['username' => 'foobar']));
+        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'email' => 'foobar@here']));
 
         $this->container['sessionStorage']->user = ['id' => 2];
         $this->assertTrue($provider->isValidSession());

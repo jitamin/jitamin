@@ -39,7 +39,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_VIEWER));
 
@@ -58,7 +58,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
 
@@ -78,7 +78,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
 
         $this->assertEquals(1, $projectRoleModel->create(1, 'Custom Role'));
@@ -102,7 +102,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
 
         $this->assertEquals(1, $projectRoleModel->create(1, 'Custom Role'));
@@ -127,7 +127,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_VIEWER));
 
@@ -146,7 +146,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
 
@@ -166,7 +166,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
 
         $this->assertEquals(1, $projectRoleModel->create(1, 'Custom Role'));
@@ -190,7 +190,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
 
         $this->assertEquals(1, $projectRoleModel->create(1, 'Custom Role'));
@@ -217,7 +217,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
@@ -241,7 +241,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
@@ -267,7 +267,7 @@ class ProjectRoleHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
 
         $this->assertEquals(1, $projectRoleModel->create(1, 'Custom Role'));
@@ -301,8 +301,8 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
         $userSessionModel = new UserSession($this->container);
 
-        $this->assertNotFalse($userModel->create(['username' => 'toto', 'password' => '123456']));
-        $this->assertNotFalse($userModel->create(['username' => 'toto2', 'password' => '123456']));
+        $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' =>'toto@here', 'password' => '123456']));
+        $this->assertNotFalse($userModel->create(['username' => 'toto2', 'email' => 'toto2@here', 'password' => '123456']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $taskCreationModel->create(['title' => 'TaskViewController #1', 'project_id' => 1, 'creator_id' => 1]));
         $this->assertEquals(2, $taskCreationModel->create(['title' => 'TaskViewController #2', 'project_id' => 1, 'creator_id' => 2]));

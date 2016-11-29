@@ -32,7 +32,7 @@ class TaskAssignUserTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => 0]));
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
 
         $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'owner_id' => 2]);

@@ -312,7 +312,7 @@ class ProjectModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'name' => 'Me']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here', 'name' => 'Me']));
         $this->assertEquals(1, $projectModel->create(['name' => 'My project 1'], 2));
         $this->assertEquals(2, $projectModel->create(['name' => 'My project 2']));
 

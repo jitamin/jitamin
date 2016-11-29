@@ -28,8 +28,8 @@ class UserHelperTest extends Base
         $userModel = new UserModel($this->container);
         $userHelper = new UserHelper($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'name' => 'User #2']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user2', 'email' => 'user2@here', 'name' => 'User #2']));
 
         $user1 = $userModel->getById(2);
         $user2 = $userModel->getById(3);
