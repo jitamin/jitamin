@@ -59,7 +59,7 @@ class TaskEmailNoActivityTest extends Base
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'test', 'test@here', 'name' => 'Chuck Norris']));
+        $this->assertEquals(2, $userModel->create(['username' => 'test', 'email' => 'test@here', 'name' => 'Chuck Norris']));
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
