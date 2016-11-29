@@ -155,14 +155,14 @@ class UserNotificationTest extends Base
         // Email + Notifications enabled
         $this->assertEquals(2, $u->create(['username' => 'user1', 'email' => 'user1@here', 'notifications_enabled' => 1]));
 
-        // No email + Notifications enabled
-        $this->assertEquals(3, $u->create(['username' => 'user2', 'email' => '', 'notifications_enabled' => 1]));
+        // Email + Notifications enabled
+        $this->assertEquals(3, $u->create(['username' => 'user2', 'email' => 'user2@here', 'notifications_enabled' => 1]));
 
         // Email + Notifications enabled
         $this->assertEquals(4, $u->create(['username' => 'user3', 'email' => 'user3@here', 'notifications_enabled' => 1]));
 
         // User disabled
-        $this->assertEquals(5, $u->create(['username' => 'user4', 'email' => 'user3@here', 'notifications_enabled' => 1, 'is_active' => 0]));
+        $this->assertEquals(5, $u->create(['username' => 'user4', 'email' => 'user4@here', 'notifications_enabled' => 1, 'is_active' => 0]));
 
         // No email + notifications disabled
         $this->assertEquals(6, $u->create(['username' => 'user5']));
