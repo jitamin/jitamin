@@ -66,7 +66,7 @@ $ chmod -R 0777 storage
 
 体验Hiject, 请访问 [Hiject](http://hiject.com):
 
-- **用户名:** hiject
+- **用户名:** `hiject` or `hiject@hiject.com`
 - **密码:** `hiject`
 
 ## 开发相关
