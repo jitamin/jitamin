@@ -719,7 +719,7 @@ return [
     'Reset filters' => '重置过滤器',
     'My tasks due tomorrow' => '我的明天到期的任务',
     'Tasks due today' => '今天到期的任务',
-    'Tasks modified today' => '今天更新的任务',
+    'Tasks updated today' => '今天更新的任务',
     'Tasks due tomorrow' => '明天到期的任务',
     'Tasks due yesterday' => '昨天到期的任务',
     'Closed tasks' => '关闭的任务',
