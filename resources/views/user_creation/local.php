@@ -13,7 +13,7 @@
             <?= $this->form->text('name', $values, $errors) ?>
 
             <?= $this->form->label(t('Email'), 'email') ?>
-            <?= $this->form->email('email', $values, $errors) ?>
+            <?= $this->form->email('email', $values, $errors, ['required']) ?>
 
             <?= $this->form->label(t('Password'), 'password') ?>
             <?= $this->form->password('password', $values, $errors, ['required']) ?>

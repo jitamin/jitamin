@@ -14,7 +14,7 @@
             <?= $this->form->text('name', $values, $errors) ?>
 
             <?= $this->form->label(t('Email'), 'email') ?>
-            <?= $this->form->email('email', $values, $errors) ?>
+            <?= $this->form->email('email', $values, $errors, ['required']) ?>
 
             <?= $this->hook->render('template:user:create-remote:form', ['values' => $values, 'errors' => $errors]) ?>
         </div>
