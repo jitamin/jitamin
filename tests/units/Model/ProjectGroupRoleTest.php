@@ -262,7 +262,7 @@ class ProjectGroupRoleTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'email' => 'user1@here' 'name' => 'User #1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'email' => 'user1@here', 'name' => 'User #1']));
         $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'email' => 'user2@here']));
         $this->assertEquals(4, $userModel->create(['username' => 'user 3', 'email' => 'user3@here']));
         $this->assertEquals(5, $userModel->create(['username' => 'user 4', 'email' => 'user4@here']));
