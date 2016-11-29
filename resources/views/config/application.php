@@ -13,6 +13,10 @@
     <?= $this->form->text('application_name', $values, $errors, ['placeholder="Hiject"']) ?>
     <p class="form-help"><?= t('Example: Hiject (used to show on the navbar)') ?></p>
 
+
+    <?= $this->form->label(t('Skin'), 'application_skin') ?>
+    <?= $this->form->select('application_skin', $skins, $values, $errors) ?>
+
     <?= $this->form->label(t('Language'), 'application_language') ?>
     <?= $this->form->select('application_language', $languages, $values, $errors) ?>
 

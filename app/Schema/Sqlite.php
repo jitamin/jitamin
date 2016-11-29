@@ -15,7 +15,13 @@ use Hiject\Core\Security\Token;
 use Hiject\Core\Security\Role;
 use PDO;
 
-const VERSION = 109;
+const VERSION = 110;
+
+function version_110(PDO $pdo)
+{
+    $pdo->exec('ALTER TABLE users ADD COLUMN skin TEXT');
+    $pdo->exec("INSERT INTO settings VALUES ('application_skin', '', 0, 0)");
+}
 
 function version_109(PDO $pdo)
 {

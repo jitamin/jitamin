@@ -38,6 +38,7 @@ class UserModificationController extends BaseController
             'values' => $values,
             'errors' => $errors,
             'user' => $user,
+            'skins' => $this->skinModel->getSkins(true),
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
             'roles' => $this->role->getApplicationRoles(),

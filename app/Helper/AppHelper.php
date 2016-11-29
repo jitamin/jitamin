@@ -133,6 +133,17 @@ class AppHelper extends Base
     }
 
     /**
+     * Get current skin
+     *
+     * @access public
+     * @return string
+     */
+    public function getSkin()
+    {
+        return $this->skinModel->getCurrentSkin();
+    }
+
+    /**
      * Get current timezone
      *
      * @access public
