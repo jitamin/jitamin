@@ -19,7 +19,7 @@ const VERSION = 98;
 
 function version_98(PDO $pdo)
 {
-    $pdo->exec('ALTER TABLE users ADD COLUMN language VARCHAR(15)');
+    $pdo->exec('ALTER TABLE users ADD COLUMN skin VARCHAR(15)');
     $pdo->exec("INSERT INTO settings VALUES ('application_skin', '', 0, 0)");
 }
 
