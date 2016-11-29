@@ -69,6 +69,7 @@ class ClassProvider implements ServiceProviderInterface
             'ProjectTaskPriorityModel',
             'ProjectUserRoleModel',
             'RememberMeSessionModel',
+            'SkinModel',
             'SubtaskModel',
             'SubtaskPositionModel',
             'SubtaskStatusModel',

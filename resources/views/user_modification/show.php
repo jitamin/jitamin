@@ -16,6 +16,10 @@
     <?= $this->form->label(t('Email:'), 'email') ?>
     <?= $this->form->email('email', $values, $errors, ['required', $this->user->hasAccess('UserModificationController', 'show/edit_email') ? '' : 'readonly']) ?>
 
+    <?= $this->form->label(t('Skin:'), 'skin') ?>
+    <?= $this->form->select('skin', $skins, $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_skin') ? '' : 'disabled']) ?>
+
+
     <?= $this->form->label(t('Timezone:'), 'timezone') ?>
     <?= $this->form->select('timezone', $timezones, $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_timezone') ? '' : 'disabled']) ?>
 

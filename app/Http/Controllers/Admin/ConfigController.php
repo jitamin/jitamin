@@ -25,6 +25,7 @@ class ConfigController extends BaseController
     {
         $this->response->html($this->helper->layout->config('config/application', [
             'mail_transports' => $this->emailClient->getAvailableTransports(),
+            'skins' => $this->skinModel->getSkins(),
             'languages' => $this->languageModel->getLanguages(),
             'timezones' => $this->timezoneModel->getTimezones(),
             'date_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
