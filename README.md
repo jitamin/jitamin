@@ -31,6 +31,12 @@ Hiject 是一款免费、开源，使用PHP语言开发的项目管理系统。
 - [x] 多主题
 - [ ] 集成Phinx
 
+## 安装环境要求
+
+- [PHP](http://www.php.net) 5.6或更高(推荐使用PHP7)
+- 数据库, 推荐使用[MySQL](https://www.mysql.com) 或 [PostgreSQL](http://www.postgresql.org)。 当然[SQLite](https://www.sqlite.org)也可以运行。
+- [Composer](https://getcomposer.org)
+
 ## 安装手册
 
 一. 克隆代码
@@ -51,17 +57,26 @@ $ composer install -o --no-dev
 $ cp config/config{.default,}.php // 根据实际情况修改config.php相关配置。
 ```
 
-三. 确保storage目录可写。
+四. 确保storage目录可写。
 
 ```shell
 $ chmod -R 0777 storage
 ```
 
-## 安装环境要求
+## 升级步骤
 
-- [PHP](http://www.php.net) 5.6或更高(推荐使用PHP7)
-- 数据库, 推荐使用[MySQL](https://www.mysql.com) 或 [PostgreSQL](http://www.postgresql.org)。 当然[SQLite](https://www.sqlite.org)也可以运行。
-- [Composer](https://getcomposer.org)
+一. 获取最新代码
+
+```shell
+$ git fetch --all
+$ git checkout {latest_tag} // 请将`{latest_tag}`修改为最新的tag，比如：0.0.6
+```
+
+二. 更新依赖
+
+```shell
+$ composer install -o --no-dev
+```
 
 ## 系统演示
 
