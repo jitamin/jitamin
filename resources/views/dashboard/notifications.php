@@ -60,7 +60,9 @@
                 <?php endif ?>
             </td>
             <td>
-            <?php if (isset($notification['event_data']['task']['creator_username'])): ?>
+            <?php if ($this->text->contains($notification['event_name'], 'comment')): ?>
+                <?= $notification['event_data']['comment']['username'] ?>
+            <?php else: ?>
                 <?= $notification['event_data']['task']['creator_username'] ?>
             <?php endif ?>
             </td>
