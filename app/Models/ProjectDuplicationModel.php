@@ -15,14 +15,13 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\Role;
 
 /**
- * Project Duplication
+ * Project Duplication.
  */
 class ProjectDuplicationModel extends Base
 {
     /**
-     * Get list of optional models to duplicate
+     * Get list of optional models to duplicate.
      *
-     * @access public
      * @return string[]
      */
     public function getOptionalSelection()
@@ -39,9 +38,8 @@ class ProjectDuplicationModel extends Base
     }
 
     /**
-     * Get list of all possible models to duplicate
+     * Get list of all possible models to duplicate.
      *
-     * @access public
      * @return string[]
      */
     public function getPossibleSelection()
@@ -59,11 +57,11 @@ class ProjectDuplicationModel extends Base
     }
 
     /**
-     * Get a valid project name for the duplication
+     * Get a valid project name for the duplication.
      *
-     * @access public
-     * @param  string   $name         Project name
-     * @param  integer  $max_length   Max length allowed
+     * @param string $name       Project name
+     * @param int    $max_length Max length allowed
+     *
      * @return string
      */
     public function getClonedProjectName($name, $max_length = 50)
@@ -78,14 +76,15 @@ class ProjectDuplicationModel extends Base
     }
 
     /**
-     * Clone a project with all settings
+     * Clone a project with all settings.
      *
-     * @param  integer    $src_project_id       Project Id
-     * @param  array      $selection            Selection of optional project parts to duplicate
-     * @param  integer    $owner_id             Owner of the project
-     * @param  string     $name                 Name of the project
-     * @param  boolean    $private              Force the project to be private
-     * @return integer                          Cloned Project Id
+     * @param int    $src_project_id Project Id
+     * @param array  $selection      Selection of optional project parts to duplicate
+     * @param int    $owner_id       Owner of the project
+     * @param string $name           Name of the project
+     * @param bool   $private        Force the project to be private
+     *
+     * @return int Cloned Project Id
      */
     public function duplicate($src_project_id, $selection = ['projectPermissionModel', 'categoryModel', 'actionModel'], $owner_id = 0, $name = null, $private = null)
     {
@@ -96,6 +95,7 @@ class ProjectDuplicationModel extends Base
 
         if ($dst_project_id === false) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -103,7 +103,7 @@ class ProjectDuplicationModel extends Base
         foreach ($this->getPossibleSelection() as $model) {
 
             // Skip if optional part has not been selected
-            if (in_array($model, $this->getOptionalSelection()) && ! in_array($model, $selection)) {
+            if (in_array($model, $this->getOptionalSelection()) && !in_array($model, $selection)) {
                 continue;
             }
 
@@ -112,14 +112,16 @@ class ProjectDuplicationModel extends Base
                 continue;
             }
 
-            if (! $this->$model->duplicate($src_project_id, $dst_project_id)) {
+            if (!$this->$model->duplicate($src_project_id, $dst_project_id)) {
                 $this->db->cancelTransaction();
+
                 return false;
             }
         }
 
-        if (! $this->makeOwnerManager($dst_project_id, $owner_id)) {
+        if (!$this->makeOwnerManager($dst_project_id, $owner_id)) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -129,14 +131,14 @@ class ProjectDuplicationModel extends Base
     }
 
     /**
-     * Create a project from another one
+     * Create a project from another one.
      *
-     * @access private
-     * @param  integer    $src_project_id
-     * @param  integer    $owner_id
-     * @param  string     $name
-     * @param  boolean    $private
-     * @return integer
+     * @param int    $src_project_id
+     * @param int    $owner_id
+     * @param string $name
+     * @param bool   $private
+     *
+     * @return int
      */
     private function copy($src_project_id, $owner_id = 0, $name = null, $private = null)
     {
@@ -144,19 +146,19 @@ class ProjectDuplicationModel extends Base
         $is_private = empty($project['is_private']) ? 0 : 1;
 
         $values = [
-            'name' => $name ?: $this->getClonedProjectName($project['name']),
-            'is_active' => 1,
-            'last_modified' => time(),
-            'token' => '',
-            'is_public' => 0,
-            'is_private' => $private ? 1 : $is_private,
-            'owner_id' => $owner_id,
+            'name'             => $name ?: $this->getClonedProjectName($project['name']),
+            'is_active'        => 1,
+            'last_modified'    => time(),
+            'token'            => '',
+            'is_public'        => 0,
+            'is_private'       => $private ? 1 : $is_private,
+            'owner_id'         => $owner_id,
             'priority_default' => $project['priority_default'],
-            'priority_start' => $project['priority_start'],
-            'priority_end' => $project['priority_end'],
+            'priority_start'   => $project['priority_start'],
+            'priority_end'     => $project['priority_end'],
         ];
 
-        if (! $this->db->table(ProjectModel::TABLE)->save($values)) {
+        if (!$this->db->table(ProjectModel::TABLE)->save($values)) {
             return false;
         }
 
@@ -164,19 +166,19 @@ class ProjectDuplicationModel extends Base
     }
 
     /**
-     * Make sure that the creator of the duplicated project is also owner
+     * Make sure that the creator of the duplicated project is also owner.
      *
-     * @access private
-     * @param  integer $dst_project_id
-     * @param  integer $owner_id
-     * @return boolean
+     * @param int $dst_project_id
+     * @param int $owner_id
+     *
+     * @return bool
      */
     private function makeOwnerManager($dst_project_id, $owner_id)
     {
         if ($owner_id > 0) {
             $this->projectUserRoleModel->removeUser($dst_project_id, $owner_id);
 
-            if (! $this->projectUserRoleModel->addUser($dst_project_id, $owner_id, Role::PROJECT_MANAGER)) {
+            if (!$this->projectUserRoleModel->addUser($dst_project_id, $owner_id, Role::PROJECT_MANAGER)) {
                 return false;
             }
         }

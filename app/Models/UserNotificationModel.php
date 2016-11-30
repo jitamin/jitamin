@@ -15,16 +15,15 @@ use Hiject\Core\Base;
 use Hiject\Core\Translator;
 
 /**
- * User Notification
+ * User Notification.
  */
 class UserNotificationModel extends Base
 {
     /**
-     * Send notifications to people
+     * Send notifications to people.
      *
-     * @access public
-     * @param  string $event_name
-     * @param  array  $event_data
+     * @param string $event_name
+     * @param array  $event_data
      */
     public function sendNotifications($event_name, array $event_data)
     {
@@ -38,19 +37,18 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Send notification to someone
+     * Send notification to someone.
      *
-     * @access public
-     * @param  array     $user        User
-     * @param  string    $event_name
-     * @param  array     $event_data
+     * @param array  $user       User
+     * @param string $event_name
+     * @param array  $event_data
      */
     public function sendUserNotification(array $user, $event_name, array $event_data)
     {
         Translator::unload();
 
         // Use the user language otherwise use the application language (do not use the session language)
-        if (! empty($user['language'])) {
+        if (!empty($user['language'])) {
             Translator::load($user['language']);
         } else {
             Translator::load($this->configModel->get('application_language', 'en_US'));
@@ -65,11 +63,11 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Get a list of people with notifications enabled
+     * Get a list of people with notifications enabled.
      *
-     * @access public
-     * @param  integer   $project_id        Project id
-     * @param  integer   $exclude_user_id   User id to exclude
+     * @param int $project_id      Project id
+     * @param int $exclude_user_id User id to exclude
+     *
      * @return array
      */
     public function getUsersWithNotificationEnabled($project_id, $exclude_user_id = 0)
@@ -83,7 +81,7 @@ class UserNotificationModel extends Base
         $groups = $this->getProjectGroupMembersWithNotificationEnabled($project_id, $exclude_user_id);
 
         foreach (array_merge($members, $groups) as $user) {
-            if (! isset($users[$user['id']])) {
+            if (!isset($users[$user['id']])) {
                 $users[$user['id']] = $user;
             }
         }
@@ -92,11 +90,11 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Enable notification for someone
+     * Enable notification for someone.
      *
-     * @access public
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function enableNotification($user_id)
     {
@@ -104,11 +102,11 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Disable notification for someone
+     * Disable notification for someone.
      *
-     * @access public
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function disableNotification($user_id)
     {
@@ -116,17 +114,16 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Save settings for the given user
+     * Save settings for the given user.
      *
-     * @access public
-     * @param  integer   $user_id   User id
-     * @param  array     $values    Form values
+     * @param int   $user_id User id
+     * @param array $values  Form values
      */
     public function saveSettings($user_id, array $values)
     {
         $types = empty($values['notification_types']) ? [] : array_keys($values['notification_types']);
 
-        if (! empty($types)) {
+        if (!empty($types)) {
             $this->enableNotification($user_id);
         } else {
             $this->disableNotification($user_id);
@@ -141,10 +138,10 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Read user settings to display the form
+     * Read user settings to display the form.
      *
-     * @access public
-     * @param  integer   $user_id   User id
+     * @param int $user_id User id
+     *
      * @return array
      */
     public function readSettings($user_id)
@@ -152,15 +149,16 @@ class UserNotificationModel extends Base
         $values = $this->db->table(UserModel::TABLE)->eq('id', $user_id)->columns('notifications_enabled', 'notifications_filter')->findOne();
         $values['notification_types'] = $this->userNotificationTypeModel->getSelectedTypes($user_id);
         $values['notification_projects'] = $this->userNotificationFilterModel->getSelectedProjects($user_id);
+
         return $values;
     }
 
     /**
-     * Get a list of project members with notification enabled
+     * Get a list of project members with notification enabled.
      *
-     * @access private
-     * @param  integer   $project_id        Project id
-     * @param  integer   $exclude_user_id   User id to exclude
+     * @param int $project_id      Project id
+     * @param int $exclude_user_id User id to exclude
+     *
      * @return array
      */
     private function getProjectUserMembersWithNotificationEnabled($project_id, $exclude_user_id)
@@ -177,11 +175,11 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Get a list of group members with notification enabled
+     * Get a list of group members with notification enabled.
      *
-     * @access private
-     * @param  integer   $project_id        Project id
-     * @param  integer   $exclude_user_id   User id to exclude
+     * @param int $project_id      Project id
+     * @param int $exclude_user_id User id to exclude
+     *
      * @return array
      */
     private function getProjectGroupMembersWithNotificationEnabled($project_id, $exclude_user_id)
@@ -199,10 +197,10 @@ class UserNotificationModel extends Base
     }
 
     /**
-     * Get a list of project members with notification enabled
+     * Get a list of project members with notification enabled.
      *
-     * @access private
-     * @param  integer   $exclude_user_id   User id to exclude
+     * @param int $exclude_user_id User id to exclude
+     *
      * @return array
      */
     private function getEverybodyWithNotificationEnabled($exclude_user_id)

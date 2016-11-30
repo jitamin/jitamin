@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Task Status controller
+ * Task Status controller.
  */
 class TaskStatusController extends BaseController
 {
     /**
-     * Close a task
-     *
-     * @access public
+     * Close a task.
      */
     public function close()
     {
@@ -27,9 +25,7 @@ class TaskStatusController extends BaseController
     }
 
     /**
-     * Open a task
-     *
-     * @access public
+     * Open a task.
      */
     public function open()
     {
@@ -37,13 +33,12 @@ class TaskStatusController extends BaseController
     }
 
     /**
-     * Common method to change status
+     * Common method to change status.
      *
-     * @access private
-     * @param  string $method
-     * @param  string $template
-     * @param  string $success_message
-     * @param  string $failure_message
+     * @param string $method
+     * @param string $template
+     * @param string $success_message
+     * @param string $failure_message
      */
     private function changeStatus($method, $template, $success_message, $failure_message)
     {

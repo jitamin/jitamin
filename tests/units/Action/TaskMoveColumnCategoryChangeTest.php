@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskMoveColumnCategoryChange;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\CategoryModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Action\TaskMoveColumnCategoryChange;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 
 class TaskMoveColumnCategoryChangeTest extends Base
 {
@@ -35,13 +35,13 @@ class TaskMoveColumnCategoryChangeTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
-                'column_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
+                'column_id'   => 1,
                 'category_id' => 1,
-                'position' => 1,
+                'position'    => 1,
                 'swimlane_id' => 0,
-            ]
+            ],
         ]);
 
         $action = new TaskMoveColumnCategoryChange($this->container);
@@ -70,11 +70,11 @@ class TaskMoveColumnCategoryChangeTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
-                'column_id' => 2,
+            'task'    => [
+                'project_id'  => 1,
+                'column_id'   => 2,
                 'category_id' => 1,
-            ]
+            ],
         ]);
 
         $action = new TaskMoveColumnCategoryChange($this->container);
@@ -99,11 +99,11 @@ class TaskMoveColumnCategoryChangeTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
-                'column_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
+                'column_id'   => 1,
                 'category_id' => 2,
-            ]
+            ],
         ]);
 
         $action = new TaskMoveColumnCategoryChange($this->container);

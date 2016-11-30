@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Comment Validator
+ * Comment Validator.
  */
 class CommentValidator extends BaseValidator
 {
     /**
-     * Validate comment creation
+     * Validate comment creation.
      *
-     * @access public
-     * @param  array   $values           Required parameters to save an action
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Required parameters to save an action
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -36,16 +36,16 @@ class CommentValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate comment modification
+     * Validate comment modification.
      *
-     * @access public
-     * @param  array   $values           Required parameters to save an action
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Required parameters to save an action
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -57,14 +57,13 @@ class CommentValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()
@@ -74,7 +73,7 @@ class CommentValidator extends BaseValidator
             new Validators\Integer('task_id', t('This value must be an integer')),
             new Validators\Integer('user_id', t('This value must be an integer')),
             new Validators\MaxLength('reference', t('The maximum length is %d characters', 50), 50),
-            new Validators\Required('comment', t('Comment is required'))
+            new Validators\Required('comment', t('Comment is required')),
         ];
     }
 }

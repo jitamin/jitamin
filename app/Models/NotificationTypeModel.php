@@ -11,58 +11,54 @@
 
 namespace Hiject\Model;
 
-use Pimple\Container;
 use Hiject\Core\Base;
+use Pimple\Container;
 
 /**
- * Notification Type
+ * Notification Type.
  */
 abstract class NotificationTypeModel extends Base
 {
     /**
-     * Container
+     * Container.
      *
-     * @access private
      * @var \Pimple\Container
      */
     private $classes;
 
     /**
-     * Notification type labels
+     * Notification type labels.
      *
-     * @access private
      * @var array
      */
     private $labels = [];
 
     /**
-     * Hidden notification types
+     * Hidden notification types.
      *
-     * @access private
      * @var array
      */
     private $hiddens = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  \Pimple\Container   $container
+     * @param \Pimple\Container $container
      */
     public function __construct(Container $container)
     {
         parent::__construct($container);
-        $this->classes = new Container;
+        $this->classes = new Container();
     }
 
     /**
-     * Add a new notification type
+     * Add a new notification type.
      *
-     * @access public
-     * @param  string  $type
-     * @param  string  $label
-     * @param  string  $class
-     * @param  boolean $hidden
+     * @param string $type
+     * @param string $label
+     * @param string $class
+     * @param bool   $hidden
+     *
      * @return NotificationTypeModel
      */
     public function setType($type, $label, $class, $hidden = false)
@@ -83,10 +79,10 @@ abstract class NotificationTypeModel extends Base
     }
 
     /**
-     * Get mail notification type instance
+     * Get mail notification type instance.
      *
-     * @access public
-     * @param  string  $type
+     * @param string $type
+     *
      * @return \Hiject\Core\Notification\NotificationInterface
      */
     public function getType($type)
@@ -95,9 +91,8 @@ abstract class NotificationTypeModel extends Base
     }
 
     /**
-     * Get all notification types with labels
+     * Get all notification types with labels.
      *
-     * @access public
      * @return array
      */
     public function getTypes()
@@ -106,9 +101,8 @@ abstract class NotificationTypeModel extends Base
     }
 
     /**
-     * Get all hidden notification types
+     * Get all hidden notification types.
      *
-     * @access public
      * @return array
      */
     public function getHiddenTypes()
@@ -117,10 +111,10 @@ abstract class NotificationTypeModel extends Base
     }
 
     /**
-     * Keep only loaded notification types
+     * Keep only loaded notification types.
      *
-     * @access public
-     * @param  string[] $types
+     * @param string[] $types
+     *
      * @return array
      */
     public function filterTypes(array $types)

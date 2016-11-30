@@ -14,15 +14,15 @@ namespace Hiject\Core\Plugin;
 use Hiject\Core\Base as BaseCore;
 
 /**
- * Class Directory
+ * Class Directory.
  */
 class Directory extends BaseCore
 {
     /**
-     * Get all plugins available
+     * Get all plugins available.
      *
-     * @access public
-     * @param  string $url
+     * @param string $url
+     *
      * @return array
      */
     public function getAvailablePlugins($url = PLUGIN_API_URL)
@@ -30,14 +30,16 @@ class Directory extends BaseCore
         $plugins = $this->httpClient->getJson($url);
         $plugins = array_filter($plugins, [$this, 'isCompatible']);
         $plugins = array_filter($plugins, [$this, 'isInstallable']);
+
         return $plugins;
     }
 
     /**
-     * Filter plugins
+     * Filter plugins.
      *
      * @param array  $plugin
      * @param string $appVersion
+     *
      * @return bool
      */
     public function isCompatible(array $plugin, $appVersion = APP_VERSION)
@@ -49,6 +51,7 @@ class Directory extends BaseCore
         foreach (['>=', '>'] as $operator) {
             if (strpos($plugin['compatible_version'], $operator) === 0) {
                 $pluginVersion = substr($plugin['compatible_version'], strlen($operator));
+
                 return version_compare($appVersion, $pluginVersion, $operator);
             }
         }
@@ -57,9 +60,10 @@ class Directory extends BaseCore
     }
 
     /**
-     * Filter plugins
+     * Filter plugins.
      *
-     * @param array  $plugin
+     * @param array $plugin
+     *
      * @return bool
      */
     public function isInstallable(array $plugin)

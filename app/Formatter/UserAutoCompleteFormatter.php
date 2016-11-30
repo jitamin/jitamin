@@ -11,18 +11,17 @@
 
 namespace Hiject\Formatter;
 
-use Hiject\Model\UserModel;
 use Hiject\Core\Filter\FormatterInterface;
+use Hiject\Model\UserModel;
 
 /**
- * Auto-complete formatter for user filter
+ * Auto-complete formatter for user filter.
  */
 class UserAutoCompleteFormatter extends BaseFormatter implements FormatterInterface
 {
     /**
-     * Format the tasks for the ajax autocompletion
+     * Format the tasks for the ajax autocompletion.
      *
-     * @access public
      * @return array
      */
     public function format()

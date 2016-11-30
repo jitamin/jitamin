@@ -1,4 +1,4 @@
-<?php if (! empty($custom_filters)): ?>
+<?php if (!empty($custom_filters)): ?>
 <div class="page-header">
     <h2><?= t('Custom filters') ?></h2>
 </div>

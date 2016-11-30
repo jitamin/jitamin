@@ -16,17 +16,17 @@ use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
 /**
- * Tool class
+ * Tool class.
  */
 class Tool
 {
     /**
-     * Remove recursively a directory
+     * Remove recursively a directory.
      *
      * @static
-     * @access public
-     * @param  string $directory
-     * @param  bool   $removeDirectory
+     *
+     * @param string $directory
+     * @param bool   $removeDirectory
      */
     public static function removeAllFiles($directory, $removeDirectory = true)
     {
@@ -47,12 +47,13 @@ class Tool
     }
 
     /**
-     * Build dependency injection container from an array
+     * Build dependency injection container from an array.
      *
      * @static
-     * @access public
-     * @param  Container  $container
-     * @param  array      $namespaces
+     *
+     * @param Container $container
+     * @param array     $namespaces
+     *
      * @return Container
      */
     public static function buildDIC(Container $container, array $namespaces)
@@ -70,12 +71,13 @@ class Tool
     }
 
     /**
-     * Build dependency injection container for custom helpers from an array
+     * Build dependency injection container for custom helpers from an array.
      *
      * @static
-     * @access public
-     * @param  Container  $container
-     * @param  array      $namespaces
+     *
+     * @param Container $container
+     * @param array     $namespaces
+     *
      * @return Container
      */
     public static function buildDICHelpers(Container $container, array $namespaces)

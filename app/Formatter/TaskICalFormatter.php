@@ -19,22 +19,20 @@ use Eluceo\iCal\Property\Event\Organizer;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * iCal event formatter for tasks
+ * iCal event formatter for tasks.
  */
 class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterInterface
 {
     /**
-     * Calendar object
+     * Calendar object.
      *
-     * @access private
      * @var \Eluceo\iCal\Component\Calendar
      */
     private $vCalendar;
 
     /**
-     * Get Ical events
+     * Get Ical events.
      *
-     * @access public
      * @return string
      */
     public function format()
@@ -43,31 +41,31 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
     }
 
     /**
-     * Set calendar object
+     * Set calendar object.
      *
-     * @access public
      * @param \Eluceo\iCal\Component\Calendar $vCalendar
+     *
      * @return FormatterInterface
      */
     public function setCalendar(Calendar $vCalendar)
     {
         $this->vCalendar = $vCalendar;
+
         return $this;
     }
 
     /**
-     * Transform results to iCal events
+     * Transform results to iCal events.
      *
-     * @access public
      * @return FormatterInterface
      */
     public function addDateTimeEvents()
     {
         foreach ($this->query->findAll() as $task) {
-            $start = new DateTime;
+            $start = new DateTime();
             $start->setTimestamp($task[$this->startColumn]);
 
-            $end = new DateTime;
+            $end = new DateTime();
             $end->setTimestamp($task[$this->endColumn] ?: time());
 
             $vEvent = $this->getTaskIcalEvent($task, 'task-#'.$task['id'].'-'.$this->startColumn.'-'.$this->endColumn);
@@ -81,15 +79,14 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
     }
 
     /**
-     * Transform results to all day iCal events
+     * Transform results to all day iCal events.
      *
-     * @access public
      * @return FormatterInterface
      */
     public function addFullDayEvents()
     {
         foreach ($this->query->findAll() as $task) {
-            $date = new DateTime;
+            $date = new DateTime();
             $date->setTimestamp($task[$this->startColumn]);
 
             $vEvent = $this->getTaskIcalEvent($task, 'task-#'.$task['id'].'-'.$this->startColumn);
@@ -104,19 +101,19 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
     }
 
     /**
-     * Get common events for task iCal events
+     * Get common events for task iCal events.
      *
-     * @access protected
-     * @param  array   $task
-     * @param  string  $uid
+     * @param array  $task
+     * @param string $uid
+     *
      * @return Event
      */
     protected function getTaskIcalEvent(array &$task, $uid)
     {
-        $dateCreation = new DateTime;
+        $dateCreation = new DateTime();
         $dateCreation->setTimestamp($task['date_creation']);
 
-        $dateModif = new DateTime;
+        $dateModif = new DateTime();
         $dateModif->setTimestamp($task['date_modification']);
 
         $vEvent = new Event($uid);
@@ -128,8 +125,8 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
         $vEvent->setDescriptionHTML($this->helper->text->markdown($task['description']));
         $vEvent->setUrl($this->helper->url->base().$this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
 
-        if (! empty($task['owner_id'])) {
-            $attendees = new Attendees;
+        if (!empty($task['owner_id'])) {
+            $attendees = new Attendees();
             $attendees->add(
                 'MAILTO:'.($task['assignee_email'] ?: $task['assignee_username'].'@hiject.local'),
                 ['CN' => $task['assignee_name'] ?: $task['assignee_username']]
@@ -137,9 +134,9 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
             $vEvent->setAttendees($attendees);
         }
 
-        if (! empty($task['creator_id'])) {
+        if (!empty($task['creator_id'])) {
             $vEvent->setOrganizer(new Organizer(
-                'MAILTO:' . $task['creator_email'] ?: $task['creator_username'].'@hiject.local',
+                'MAILTO:'.$task['creator_email'] ?: $task['creator_username'].'@hiject.local',
                 ['CN' => $task['creator_name'] ?: $task['creator_username']]
             ));
         }

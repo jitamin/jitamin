@@ -12,28 +12,26 @@
 namespace Hiject\Core\Plugin;
 
 /**
- * Plugin Hooks Handler
+ * Plugin Hooks Handler.
  */
 class Hook
 {
     /**
-     * List of hooks
+     * List of hooks.
      *
-     * @access private
      * @var array
      */
     private $hooks = [];
 
     /**
-     * Bind something on a hook
+     * Bind something on a hook.
      *
-     * @access public
-     * @param  string   $hook
-     * @param  mixed    $value
+     * @param string $hook
+     * @param mixed  $value
      */
     public function on($hook, $value)
     {
-        if (! isset($this->hooks[$hook])) {
+        if (!isset($this->hooks[$hook])) {
             $this->hooks[$hook] = [];
         }
 
@@ -41,10 +39,10 @@ class Hook
     }
 
     /**
-     * Get all bindings for a hook
+     * Get all bindings for a hook.
      *
-     * @access public
-     * @param  string  $hook
+     * @param string $hook
+     *
      * @return array
      */
     public function getListeners($hook)
@@ -53,11 +51,11 @@ class Hook
     }
 
     /**
-     * Return true if the hook is used
+     * Return true if the hook is used.
      *
-     * @access public
-     * @param  string  $hook
-     * @return boolean
+     * @param string $hook
+     *
+     * @return bool
      */
     public function exists($hook)
     {
@@ -65,12 +63,12 @@ class Hook
     }
 
     /**
-     * Merge listener results with input array
+     * Merge listener results with input array.
      *
-     * @access public
-     * @param  string  $hook
-     * @param  array   $values
-     * @param  array   $params
+     * @param string $hook
+     * @param array  $values
+     * @param array  $params
+     *
      * @return array
      */
     public function merge($hook, array &$values, array $params = [])
@@ -78,7 +76,7 @@ class Hook
         foreach ($this->getListeners($hook) as $listener) {
             $result = call_user_func_array($listener, $params);
 
-            if (is_array($result) && ! empty($result)) {
+            if (is_array($result) && !empty($result)) {
                 $values = array_merge($values, $result);
             }
         }
@@ -87,11 +85,11 @@ class Hook
     }
 
     /**
-     * Execute only first listener
+     * Execute only first listener.
      *
-     * @access public
-     * @param  string  $hook
-     * @param  array   $params
+     * @param string $hook
+     * @param array  $params
+     *
      * @return mixed
      */
     public function first($hook, array $params = [])
@@ -99,16 +97,14 @@ class Hook
         foreach ($this->getListeners($hook) as $listener) {
             return call_user_func_array($listener, $params);
         }
-
-        return null;
     }
 
     /**
-     * Hook with reference
+     * Hook with reference.
      *
-     * @access public
-     * @param  string $hook
-     * @param  mixed  $param
+     * @param string $hook
+     * @param mixed  $param
+     *
      * @return mixed
      */
     public function reference($hook, &$param)

@@ -18,17 +18,17 @@ use Hiject\Formatter\SubtaskTimeTrackingCalendarFormatter;
 use Hiject\Formatter\TaskCalendarFormatter;
 
 /**
- * Calendar Helper
+ * Calendar Helper.
  */
 class CalendarHelper extends Base
 {
     /**
-     * Get formatted calendar task due events
+     * Get formatted calendar task due events.
      *
-     * @access public
-     * @param  QueryBuilder       $queryBuilder
-     * @param  string             $start
-     * @param  string             $end
+     * @param QueryBuilder $queryBuilder
+     * @param string       $start
+     * @param string       $end
+     *
      * @return array
      */
     public function getTaskDateDueEvents(QueryBuilder $queryBuilder, $start, $end)
@@ -43,12 +43,12 @@ class CalendarHelper extends Base
     }
 
     /**
-     * Get formatted calendar task events
+     * Get formatted calendar task events.
      *
-     * @access public
-     * @param  QueryBuilder       $queryBuilder
-     * @param  string             $start
-     * @param  string             $end
+     * @param QueryBuilder $queryBuilder
+     * @param string       $start
+     * @param string       $end
+     *
      * @return array
      */
     public function getTaskEvents(QueryBuilder $queryBuilder, $start, $end)
@@ -69,17 +69,18 @@ class CalendarHelper extends Base
     }
 
     /**
-     * Get formatted calendar subtask time tracking events
+     * Get formatted calendar subtask time tracking events.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  string  $start
-     * @param  string  $end
+     * @param int    $user_id
+     * @param string $start
+     * @param string $end
+     *
      * @return array
      */
     public function getSubtaskTimeTrackingEvents($user_id, $start, $end)
     {
         $formatter = new SubtaskTimeTrackingCalendarFormatter($this->container);
+
         return $formatter
             ->withQuery($this->subtaskTimeTrackingModel->getUserQuery($user_id)
                 ->addCondition($this->getCalendarCondition(
@@ -93,13 +94,13 @@ class CalendarHelper extends Base
     }
 
     /**
-     * Build SQL condition for a given time range
+     * Build SQL condition for a given time range.
      *
-     * @access public
-     * @param  string   $start_time     Start timestamp
-     * @param  string   $end_time       End timestamp
-     * @param  string   $start_column   Start column name
-     * @param  string   $end_column     End column name
+     * @param string $start_time   Start timestamp
+     * @param string $end_time     End timestamp
+     * @param string $start_column Start column name
+     * @param string $end_column   End column name
+     *
      * @return string
      */
     public function getCalendarCondition($start_time, $end_time, $start_column, $end_column)

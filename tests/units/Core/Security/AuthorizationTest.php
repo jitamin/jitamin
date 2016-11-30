@@ -11,15 +11,15 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Security\Role;
 use Hiject\Core\Security\AccessMap;
 use Hiject\Core\Security\Authorization;
+use Hiject\Core\Security\Role;
 
 class AuthorizationTest extends Base
 {
     public function testIsAllowed()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setDefaultRole(Role::APP_USER);
         $acl->setRoleHierarchy(Role::APP_ADMIN, [Role::APP_MANAGER, Role::APP_USER]);
         $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER]);

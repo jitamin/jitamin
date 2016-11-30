@@ -12,40 +12,36 @@
 namespace Hiject\Core\Cache;
 
 /**
- * Interface CacheInterface
+ * Interface CacheInterface.
  */
 interface CacheInterface
 {
     /**
-     * Store an item in the cache
+     * Store an item in the cache.
      *
-     * @access public
-     * @param  string  $key
-     * @param  mixed   $value
+     * @param string $key
+     * @param mixed  $value
      */
     public function set($key, $value);
 
     /**
-     * Retrieve an item from the cache by key
+     * Retrieve an item from the cache by key.
      *
-     * @access public
-     * @param  string  $key
-     * @return mixed            Null when not found, cached value otherwise
+     * @param string $key
+     *
+     * @return mixed Null when not found, cached value otherwise
      */
     public function get($key);
 
     /**
-     * Remove all items from the cache
-     *
-     * @access public
+     * Remove all items from the cache.
      */
     public function flush();
 
     /**
-     * Remove an item from the cache
+     * Remove an item from the cache.
      *
-     * @access public
-     * @param  string  $key
+     * @param string $key
      */
     public function remove($key);
 }

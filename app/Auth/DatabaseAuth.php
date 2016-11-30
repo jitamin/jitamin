@@ -18,38 +18,34 @@ use Hiject\Model\UserModel;
 use Hiject\User\DatabaseUserProvider;
 
 /**
- * Database Authentication Provider
+ * Database Authentication Provider.
  */
 class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterface, SessionCheckProviderInterface
 {
     /**
-     * User properties
+     * User properties.
      *
-     * @access protected
      * @var array
      */
     protected $userInfo = [];
 
     /**
-     * Username
+     * Username.
      *
-     * @access protected
      * @var string
      */
     protected $username = '';
 
     /**
-     * Password
+     * Password.
      *
-     * @access protected
      * @var string
      */
     protected $password = '';
 
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -58,10 +54,9 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate()
     {
@@ -74,8 +69,9 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
             ->eq('is_active', 1)
             ->findOne();
 
-        if (! empty($user) && password_verify($this->password, $user['password'])) {
+        if (!empty($user) && password_verify($this->password, $user['password'])) {
             $this->userInfo = $user;
+
             return true;
         }
 
@@ -83,10 +79,9 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Check if the user session is valid
+     * Check if the user session is valid.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isValidSession()
     {
@@ -94,25 +89,23 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return \Hiject\User\DatabaseUserProvider
      */
     public function getUser()
     {
         if (empty($this->userInfo)) {
-            return null;
+            return;
         }
 
         return new DatabaseUserProvider($this->userInfo);
     }
 
     /**
-     * Set username
+     * Set username.
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -120,10 +113,9 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Set password
+     * Set password.
      *
-     * @access public
-     * @param  string $password
+     * @param string $password
      */
     public function setPassword($password)
     {

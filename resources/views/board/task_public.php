@@ -12,13 +12,13 @@
 
     <?= $this->hook->render('template:board:public:task:before-title', ['task' => $task]) ?>
     <div class="task-board-title">
-        <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token'])) ?>
+        <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token']]) ?>
     </div>
     <?= $this->hook->render('template:board:public:task:after-title', ['task' => $task]) ?>
 
     <?= $this->render('board/task_footer', [
-        'task' => $task,
+        'task'         => $task,
         'not_editable' => $not_editable,
-        'project' => $project,
+        'project'      => $project,
     ]) ?>
 </div>

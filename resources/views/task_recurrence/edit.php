@@ -5,10 +5,10 @@
 <?php if ($task['recurrence_status'] != \Hiject\Model\TaskModel::RECURRING_STATUS_NONE): ?>
 <div class="listing">
     <?= $this->render('task_recurrence/info', [
-        'task' => $task,
-        'recurrence_trigger_list' => $recurrence_trigger_list,
+        'task'                      => $task,
+        'recurrence_trigger_list'   => $recurrence_trigger_list,
         'recurrence_timeframe_list' => $recurrence_timeframe_list,
-        'recurrence_basedate_list' => $recurrence_basedate_list,
+        'recurrence_basedate_list'  => $recurrence_basedate_list,
     ]) ?>
 </div>
 <?php endif ?>

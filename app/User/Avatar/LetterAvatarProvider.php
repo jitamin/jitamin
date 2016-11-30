@@ -15,7 +15,7 @@ use Hiject\Core\Base;
 use Hiject\Core\User\Avatar\AvatarProviderInterface;
 
 /**
- * Letter Avatar Provider
+ * Letter Avatar Provider.
  *
  * The color hash algorithm is backported from the Javascript library color-hash
  * Source: https://github.com/zenozeng/color-hash
@@ -27,11 +27,11 @@ class LetterAvatarProvider extends Base implements AvatarProviderInterface
     protected $saturation = [0.35, 0.5, 0.65];
 
     /**
-     * Render avatar html
+     * Render avatar html.
      *
-     * @access public
-     * @param  array $user
-     * @param  int   $size
+     * @param array $user
+     * @param int   $size
+     *
      * @return string
      */
     public function render(array $user, $size)
@@ -50,11 +50,11 @@ class LetterAvatarProvider extends Base implements AvatarProviderInterface
     }
 
     /**
-     * Determine if the provider is active
+     * Determine if the provider is active.
      *
-     * @access public
-     * @param  array $user
-     * @return boolean
+     * @param array $user
+     *
+     * @return bool
      */
     public function isActive(array $user)
     {
@@ -62,24 +62,26 @@ class LetterAvatarProvider extends Base implements AvatarProviderInterface
     }
 
     /**
-     * Get background color based on a string
+     * Get background color based on a string.
      *
-     * @param  string $str
+     * @param string $str
+     *
      * @return array
      */
     public function getBackgroundColor($str)
     {
         $hsl = $this->getHSL($str);
+
         return $this->getRGB($hsl[0], $hsl[1], $hsl[2]);
     }
 
     /**
-     * Convert HSL to RGB
+     * Convert HSL to RGB.
      *
-     * @access protected
-     * @param  integer  $hue         Hue ∈ [0, 360)
-     * @param  integer  $saturation  Saturation ∈ [0, 1]
-     * @param  integer  $lightness   Lightness ∈ [0, 1]
+     * @param int $hue        Hue ∈ [0, 360)
+     * @param int $saturation Saturation ∈ [0, 1]
+     * @param int $lightness  Lightness ∈ [0, 1]
+     *
      * @return array
      */
     protected function getRGB($hue, $saturation, $lightness)
@@ -97,26 +99,26 @@ class LetterAvatarProvider extends Base implements AvatarProviderInterface
                 $color--;
             }
 
-            if ($color < 1/6) {
+            if ($color < 1 / 6) {
                 $color = $p + ($q - $p) * 6 * $color;
             } elseif ($color < 0.5) {
                 $color = $q;
-            } elseif ($color < 2/3) {
-                $color = $p + ($q - $p) * 6 * (2/3 - $color);
+            } elseif ($color < 2 / 3) {
+                $color = $p + ($q - $p) * 6 * (2 / 3 - $color);
             } else {
                 $color = $p;
             }
 
             return round($color * 255);
-        }, [$hue + 1/3, $hue, $hue - 1/3]);
+        }, [$hue + 1 / 3, $hue, $hue - 1 / 3]);
     }
 
     /**
      * Returns the hash in [h, s, l].
-     * Note that H ∈ [0, 360); S ∈ [0, 1]; L ∈ [0, 1];
+     * Note that H ∈ [0, 360); S ∈ [0, 1]; L ∈ [0, 1];.
      *
-     * @access protected
-     * @param  string $str
+     * @param string $str
+     *
      * @return int[]
      */
     protected function getHSL($str)
@@ -134,11 +136,11 @@ class LetterAvatarProvider extends Base implements AvatarProviderInterface
     }
 
     /**
-     * BKDR Hash (modified version)
+     * BKDR Hash (modified version).
      *
-     * @access protected
-     * @param  string $str
-     * @return integer
+     * @param string $str
+     *
+     * @return int
      */
     protected function hash($str)
     {
@@ -162,15 +164,16 @@ class LetterAvatarProvider extends Base implements AvatarProviderInterface
     }
 
     /**
-     * Backport of Javascript function charCodeAt()
+     * Backport of Javascript function charCodeAt().
      *
-     * @access protected
-     * @param  string $c
-     * @return integer
+     * @param string $c
+     *
+     * @return int
      */
     protected function getCharCode($c)
     {
         list(, $ord) = unpack('N', mb_convert_encoding($c, 'UCS-4BE', 'UTF-8'));
+
         return $ord;
     }
 }

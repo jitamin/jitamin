@@ -14,16 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * Task Creation Controller
+ * Task Creation Controller.
  */
 class TaskCreationController extends BaseController
 {
     /**
-     * Display a form to create a new task
+     * Display a form to create a new task.
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws PageNotFoundException
      */
     public function show(array $values = [], array $errors = [])
@@ -39,20 +39,18 @@ class TaskCreationController extends BaseController
         $values = $this->hook->merge('controller:task-creation:form:default', $values, ['default_values' => $values]);
 
         $this->response->html($this->template->render('task_creation/show', [
-            'project' => $project,
-            'errors' => $errors,
-            'values' => $values + ['project_id' => $project['id']],
-            'columns_list' => $this->columnModel->getList($project['id']),
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
+            'project'         => $project,
+            'errors'          => $errors,
+            'values'          => $values + ['project_id' => $project['id']],
+            'columns_list'    => $this->columnModel->getList($project['id']),
+            'users_list'      => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
             'categories_list' => $this->categoryModel->getList($project['id']),
-            'swimlanes_list' => $swimlanes_list,
+            'swimlanes_list'  => $swimlanes_list,
         ]));
     }
 
     /**
-     * Validate and save a new task
-     *
-     * @access public
+     * Validate and save a new task.
      */
     public function save()
     {
@@ -61,10 +59,10 @@ class TaskCreationController extends BaseController
 
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
 
-        if (! $valid) {
+        if (!$valid) {
             $this->flash->failure(t('Unable to create your task.'));
             $this->show($values, $errors);
-        } elseif (! $this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
+        } elseif (!$this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
             $this->flash->failure(t('You cannot create tasks in this column.'));
             $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
         } else {
@@ -75,7 +73,7 @@ class TaskCreationController extends BaseController
     }
 
     /**
-     * Duplicate created tasks to multiple projects
+     * Duplicate created tasks to multiple projects.
      *
      * @throws PageNotFoundException
      */
@@ -94,35 +92,35 @@ class TaskCreationController extends BaseController
     }
 
     /**
-     * Executed after the task is saved
+     * Executed after the task is saved.
      *
-     * @param array   $project
-     * @param array   $values
-     * @param integer $task_id
+     * @param array $project
+     * @param array $values
+     * @param int   $task_id
      */
     protected function afterSave(array $project, array &$values, $task_id)
     {
         if (isset($values['duplicate_multiple_projects']) && $values['duplicate_multiple_projects'] == 1) {
             $this->chooseProjects($project, $task_id);
         } elseif (isset($values['another_task']) && $values['another_task'] == 1) {
-            $this->show(array(
-                'owner_id' => $values['owner_id'],
-                'color_id' => $values['color_id'],
-                'category_id' => isset($values['category_id']) ? $values['category_id'] : 0,
-                'column_id' => $values['column_id'],
-                'swimlane_id' => isset($values['swimlane_id']) ? $values['swimlane_id'] : 0,
+            $this->show([
+                'owner_id'     => $values['owner_id'],
+                'color_id'     => $values['color_id'],
+                'category_id'  => isset($values['category_id']) ? $values['category_id'] : 0,
+                'column_id'    => $values['column_id'],
+                'swimlane_id'  => isset($values['swimlane_id']) ? $values['swimlane_id'] : 0,
                 'another_task' => 1,
-            ));
+            ]);
         } else {
             $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
         }
     }
 
     /**
-     * Prepare form values
+     * Prepare form values.
      *
-     * @access protected
-     * @param  array $swimlanes_list
+     * @param array $swimlanes_list
+     *
      * @return array
      */
     protected function prepareValues(array $swimlanes_list)
@@ -138,10 +136,10 @@ class TaskCreationController extends BaseController
     }
 
     /**
-     * Choose projects
+     * Choose projects.
      *
      * @param array $project
-     * @param integer $task_id
+     * @param int   $task_id
      */
     protected function chooseProjects(array $project, $task_id)
     {
@@ -150,10 +148,10 @@ class TaskCreationController extends BaseController
         unset($projects[$project['id']]);
 
         $this->response->html($this->template->render('task_creation/duplicate_projects', [
-            'project' => $project,
-            'task' => $task,
+            'project'       => $project,
+            'task'          => $task,
             'projects_list' => $projects,
-            'values' => ['task_id' => $task['id']]
+            'values'        => ['task_id' => $task['id']],
         ]));
     }
 }

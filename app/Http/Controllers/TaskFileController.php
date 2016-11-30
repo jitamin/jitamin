@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Task File Controller
+ * Task File Controller.
  */
 class TaskFileController extends BaseController
 {
     /**
-     * Screenshot
-     *
-     * @access public
+     * Screenshot.
      */
     public function screenshot()
     {
@@ -27,6 +25,7 @@ class TaskFileController extends BaseController
 
         if ($this->request->isPost() && $this->taskFileModel->uploadScreenshot($task['id'], $this->request->getValue('screenshot')) !== false) {
             $this->flash->success(t('Screenshot uploaded successfully.'));
+
             return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
@@ -36,30 +35,26 @@ class TaskFileController extends BaseController
     }
 
     /**
-     * File upload form
-     *
-     * @access public
+     * File upload form.
      */
     public function create()
     {
         $task = $this->getTask();
 
         $this->response->html($this->template->render('task_file/create', [
-            'task' => $task,
+            'task'     => $task,
             'max_size' => $this->helper->text->phpToBytes(get_upload_max_size()),
         ]));
     }
 
     /**
-     * File upload (save files)
-     *
-     * @access public
+     * File upload (save files).
      */
     public function save()
     {
         $task = $this->getTask();
 
-        if (! $this->taskFileModel->uploadFiles($task['id'], $this->request->getFileInfo('files'))) {
+        if (!$this->taskFileModel->uploadFiles($task['id'], $this->request->getFileInfo('files'))) {
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
@@ -67,9 +62,7 @@ class TaskFileController extends BaseController
     }
 
     /**
-     * Remove a file
-     *
-     * @access public
+     * Remove a file.
      */
     public function remove()
     {
@@ -87,9 +80,7 @@ class TaskFileController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a file
-     *
-     * @access public
+     * Confirmation dialog before removing a file.
      */
     public function confirm()
     {

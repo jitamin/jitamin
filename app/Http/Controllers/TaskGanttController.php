@@ -16,12 +16,12 @@ use Hiject\Formatter\TaskGanttFormatter;
 use Hiject\Model\TaskModel;
 
 /**
- * Tasks Gantt Controller
+ * Tasks Gantt Controller.
  */
 class TaskGanttController extends BaseController
 {
     /**
-     * Show Gantt chart for one project
+     * Show Gantt chart for one project.
      */
     public function show()
     {
@@ -37,32 +37,32 @@ class TaskGanttController extends BaseController
         }
 
         $this->response->html($this->helper->layout->app('task_gantt/show', [
-            'project' => $project,
-            'title' => $project['name'],
+            'project'     => $project,
+            'title'       => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
-            'sorting' => $sorting,
-            'tasks' => $filter->format(new TaskGanttFormatter($this->container)),
+            'sorting'     => $sorting,
+            'tasks'       => $filter->format(new TaskGanttFormatter($this->container)),
         ]));
     }
 
     /**
-     * Save new task start date and due date
+     * Save new task start date and due date.
      */
     public function save()
     {
         $this->getProject();
         $values = $this->request->getJson();
 
-        $result = $this->taskModificationModel->update(array(
-            'id' => $values['id'],
+        $result = $this->taskModificationModel->update([
+            'id'           => $values['id'],
             'date_started' => strtotime($values['start']),
-            'date_due' => strtotime($values['end']),
-        ));
+            'date_due'     => strtotime($values['end']),
+        ]);
 
-        if (! $result) {
-            $this->response->json(array('message' => 'Unable to save task'), 400);
+        if (!$result) {
+            $this->response->json(['message' => 'Unable to save task'], 400);
         } else {
-            $this->response->json(array('message' => 'OK'), 201);
+            $this->response->json(['message' => 'OK'], 201);
         }
     }
 }

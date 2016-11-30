@@ -14,46 +14,46 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * User Unread Notification
+ * User Unread Notification.
  */
 class UserUnreadNotificationModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'user_has_unread_notifications';
 
     /**
-     * Add unread notification to someone
+     * Add unread notification to someone.
      *
-     * @access public
-     * @param  integer   $user_id
-     * @param  string    $event_name
-     * @param  array     $event_data
+     * @param int    $user_id
+     * @param string $event_name
+     * @param array  $event_data
      */
     public function create($user_id, $event_name, array $event_data)
     {
         $this->db->table(self::TABLE)->insert([
-            'user_id' => $user_id,
+            'user_id'       => $user_id,
             'date_creation' => time(),
-            'event_name' => $event_name,
-            'event_data' => json_encode($event_data),
+            'event_name'    => $event_name,
+            'event_data'    => json_encode($event_data),
         ]);
     }
 
     /**
-     * Get one notification
+     * Get one notification.
      *
-     * @param  integer $notification_id
+     * @param int $notification_id
+     *
      * @return array|null
      */
     public function getById($notification_id)
     {
         $notification = $this->db->table(self::TABLE)->eq('id', $notification_id)->findOne();
 
-        if (! empty($notification)) {
+        if (!empty($notification)) {
             $this->unserialize($notification);
         }
 
@@ -61,10 +61,10 @@ class UserUnreadNotificationModel extends Base
     }
 
     /**
-     * Get all notifications for a user
+     * Get all notifications for a user.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getAll($user_id)
@@ -79,12 +79,12 @@ class UserUnreadNotificationModel extends Base
     }
 
     /**
-     * Mark a notification as read
+     * Mark a notification as read.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  integer $notification_id
-     * @return boolean
+     * @param int $user_id
+     * @param int $notification_id
+     *
+     * @return bool
      */
     public function markAsRead($user_id, $notification_id)
     {
@@ -92,11 +92,11 @@ class UserUnreadNotificationModel extends Base
     }
 
     /**
-     * Mark all notifications as read for a user
+     * Mark all notifications as read for a user.
      *
-     * @access public
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function markAllAsRead($user_id)
     {
@@ -104,11 +104,11 @@ class UserUnreadNotificationModel extends Base
     }
 
     /**
-     * Return true if the user as unread notifications
+     * Return true if the user as unread notifications.
      *
-     * @access public
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function hasNotifications($user_id)
     {
@@ -116,10 +116,9 @@ class UserUnreadNotificationModel extends Base
     }
 
     /**
-     * Unserialize the event
+     * Unserialize the event.
      *
-     * @access private
-     * @param  GenericEvent $event
+     * @param GenericEvent $event
      */
     private function unserialize(&$event)
     {

@@ -15,14 +15,13 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Custom Filter Validator
+ * Custom Filter Validator.
  */
 class CustomFilterValidator extends BaseValidator
 {
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()
@@ -35,16 +34,16 @@ class CustomFilterValidator extends BaseValidator
             new Validators\Integer('user_id', t('This value must be an integer')),
             new Validators\Integer('project_id', t('This value must be an integer')),
             new Validators\MaxLength('name', t('The maximum length is %d characters', 100), 100),
-            new Validators\MaxLength('filter', t('The maximum length is %d characters', 100), 100)
+            new Validators\MaxLength('filter', t('The maximum length is %d characters', 100), 100),
         ];
     }
 
     /**
-     * Validate filter creation
+     * Validate filter creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -52,16 +51,16 @@ class CustomFilterValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate filter modification
+     * Validate filter modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -74,7 +73,7 @@ class CustomFilterValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 }

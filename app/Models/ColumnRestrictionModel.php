@@ -14,19 +14,19 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class ColumnRestrictionModel
+ * Class ColumnRestrictionModel.
  */
 class ColumnRestrictionModel extends Base
 {
     const TABLE = 'column_has_restrictions';
 
-    const RULE_ALLOW_TASK_CREATION    = 'allow.task_creation';
-    const RULE_ALLOW_TASK_OPEN_CLOSE  = 'allow.task_open_close';
-    const RULE_BLOCK_TASK_CREATION    = 'block.task_creation';
-    const RULE_BLOCK_TASK_OPEN_CLOSE  = 'block.task_open_close';
+    const RULE_ALLOW_TASK_CREATION = 'allow.task_creation';
+    const RULE_ALLOW_TASK_OPEN_CLOSE = 'allow.task_open_close';
+    const RULE_BLOCK_TASK_CREATION = 'block.task_creation';
+    const RULE_BLOCK_TASK_OPEN_CLOSE = 'block.task_open_close';
 
     /**
-     * Get rules
+     * Get rules.
      *
      * @return array
      */
@@ -41,10 +41,11 @@ class ColumnRestrictionModel extends Base
     }
 
     /**
-     * Fetch one restriction
+     * Fetch one restriction.
      *
-     * @param  int $project_id
-     * @param  int $restriction_id
+     * @param int $project_id
+     * @param int $restriction_id
+     *
      * @return array|null
      */
     public function getById($project_id, $restriction_id)
@@ -68,9 +69,10 @@ class ColumnRestrictionModel extends Base
     }
 
     /**
-     * Get all project column restrictions
+     * Get all project column restrictions.
      *
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -100,10 +102,11 @@ class ColumnRestrictionModel extends Base
     }
 
     /**
-     * Get restrictions
+     * Get restrictions.
      *
-     * @param  int    $project_id
-     * @param  string $role
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return array
      */
     public function getAllByRole($project_id, $role)
@@ -125,12 +128,13 @@ class ColumnRestrictionModel extends Base
     }
 
     /**
-     * Create a new column restriction
+     * Create a new column restriction.
      *
-     * @param  int    $project_id
-     * @param  int    $role_id
-     * @param  int    $column_id
-     * @param  int    $rule
+     * @param int $project_id
+     * @param int $role_id
+     * @param int $column_id
+     * @param int $rule
+     *
      * @return bool|int
      */
     public function create($project_id, $role_id, $column_id, $rule)
@@ -139,16 +143,17 @@ class ColumnRestrictionModel extends Base
             ->table(self::TABLE)
             ->persist([
                 'project_id' => $project_id,
-                'role_id' => $role_id,
-                'column_id' => $column_id,
-                'rule' => $rule,
+                'role_id'    => $role_id,
+                'column_id'  => $column_id,
+                'rule'       => $rule,
             ]);
     }
 
     /**
-     * Remove a permission
+     * Remove a permission.
      *
-     * @param  int $restriction_id
+     * @param int $restriction_id
+     *
      * @return bool
      */
     public function remove($restriction_id)

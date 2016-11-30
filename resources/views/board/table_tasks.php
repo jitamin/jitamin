@@ -16,10 +16,10 @@
 
                 <?php foreach ($column['tasks'] as $task): ?>
                     <?= $this->render($not_editable ? 'board/task_public' : 'board/task_private', [
-                        'project' => $project,
-                        'task' => $task,
+                        'project'                => $project,
+                        'task'                   => $task,
                         'board_highlight_period' => $board_highlight_period,
-                        'not_editable' => $not_editable,
+                        'not_editable'           => $not_editable,
                     ]) ?>
                 <?php endforeach ?>
             </div>

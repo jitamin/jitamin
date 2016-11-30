@@ -12,29 +12,29 @@
 namespace Hiject\Model;
 
 /**
- * Task File Model
+ * Task File Model.
  */
 class TaskFileModel extends FileModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     const TABLE = 'task_has_files';
 
     /**
-     * Events
+     * Events.
      *
      * @var string
      */
     const EVENT_CREATE = 'task.file.create';
 
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getTable()
@@ -43,10 +43,10 @@ class TaskFileModel extends FileModel
     }
 
     /**
-     * Define the foreign key
+     * Define the foreign key.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getForeignKey()
@@ -55,10 +55,10 @@ class TaskFileModel extends FileModel
     }
 
     /**
-     * Define the path prefix
+     * Define the path prefix.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getPathPrefix()
@@ -67,11 +67,11 @@ class TaskFileModel extends FileModel
     }
 
     /**
-     * Get projectId from fileId
+     * Get projectId from fileId.
      *
-     * @access public
-     * @param  integer $file_id
-     * @return integer
+     * @param int $file_id
+     *
+     * @return int
      */
     public function getProjectId($file_id)
     {
@@ -79,28 +79,28 @@ class TaskFileModel extends FileModel
             ->table(self::TABLE)
             ->eq(self::TABLE.'.id', $file_id)
             ->join(TaskModel::TABLE, 'id', 'task_id')
-            ->findOneColumn(TaskModel::TABLE . '.project_id') ?: 0;
+            ->findOneColumn(TaskModel::TABLE.'.project_id') ?: 0;
     }
 
     /**
-     * Handle screenshot upload
+     * Handle screenshot upload.
      *
-     * @access public
-     * @param  integer  $task_id      Task id
-     * @param  string   $blob         Base64 encoded image
-     * @return bool|integer
+     * @param int    $task_id Task id
+     * @param string $blob    Base64 encoded image
+     *
+     * @return bool|int
      */
     public function uploadScreenshot($task_id, $blob)
     {
         $original_filename = e('Screenshot taken %s', $this->helper->dt->datetime(time())).'.png';
+
         return $this->uploadContent($task_id, $original_filename, $blob);
     }
 
     /**
-     * Fire file creation event
+     * Fire file creation event.
      *
-     * @access protected
-     * @param  integer $file_id
+     * @param int $file_id
      */
     protected function fireCreationEvent($file_id)
     {

@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Task Duplication controller
+ * Task Duplication controller.
  */
 class TaskDuplicationController extends BaseController
 {
     /**
-     * Duplicate a task
-     *
-     * @access public
+     * Duplicate a task.
      */
     public function duplicate()
     {
@@ -31,9 +29,11 @@ class TaskDuplicationController extends BaseController
 
             if ($task_id > 0) {
                 $this->flash->success(t('Task created successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task_id]));
             } else {
                 $this->flash->failure(t('Unable to create this task.'));
+
                 return $this->response->redirect($this->helper->url->to('TaskDuplicationController', 'duplicate', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
             }
         }
@@ -44,9 +44,7 @@ class TaskDuplicationController extends BaseController
     }
 
     /**
-     * Move a task to another project
-     *
-     * @access public
+     * Move a task to another project.
      */
     public function move()
     {
@@ -54,7 +52,7 @@ class TaskDuplicationController extends BaseController
 
         if ($this->request->isPost()) {
             $values = $this->request->getValues();
-            list($valid, ) = $this->taskValidator->validateProjectModification($values);
+            list($valid) = $this->taskValidator->validateProjectModification($values);
 
             if ($valid && $this->taskProjectMoveModel->moveToProject($task['id'],
                                                                 $values['project_id'],
@@ -63,6 +61,7 @@ class TaskDuplicationController extends BaseController
                                                                 $values['category_id'],
                                                                 $values['owner_id'])) {
                 $this->flash->success(t('Task updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task['id']]));
             }
 
@@ -73,9 +72,7 @@ class TaskDuplicationController extends BaseController
     }
 
     /**
-     * Duplicate a task to another project
-     *
-     * @access public
+     * Duplicate a task to another project.
      */
     public function copy()
     {
@@ -83,7 +80,7 @@ class TaskDuplicationController extends BaseController
 
         if ($this->request->isPost()) {
             $values = $this->request->getValues();
-            list($valid, ) = $this->taskValidator->validateProjectModification($values);
+            list($valid) = $this->taskValidator->validateProjectModification($values);
 
             if ($valid) {
                 $task_id = $this->taskProjectDuplicationModel->duplicateToProject(
@@ -93,6 +90,7 @@ class TaskDuplicationController extends BaseController
 
                 if ($task_id > 0) {
                     $this->flash->success(t('Task created successfully.'));
+
                     return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task_id]));
                 }
             }
@@ -104,11 +102,10 @@ class TaskDuplicationController extends BaseController
     }
 
     /**
-     * Choose destination when move/copy task to another project
+     * Choose destination when move/copy task to another project.
      *
-     * @access private
-     * @param  array   $task
-     * @param  string  $template
+     * @param array  $task
+     * @param string $template
      */
     private function chooseDestination(array $task, $template)
     {
@@ -117,7 +114,7 @@ class TaskDuplicationController extends BaseController
 
         unset($projects_list[$task['project_id']]);
 
-        if (! empty($projects_list)) {
+        if (!empty($projects_list)) {
             $dst_project_id = $this->request->getIntegerParam('dst_project_id', key($projects_list));
 
             $swimlanes_list = $this->swimlaneModel->getList($dst_project_id, false, true);
@@ -135,13 +132,13 @@ class TaskDuplicationController extends BaseController
         }
 
         $this->response->html($this->template->render($template, [
-            'values' => $values,
-            'task' => $task,
-            'projects_list' => $projects_list,
-            'swimlanes_list' => $swimlanes_list,
-            'columns_list' => $columns_list,
+            'values'          => $values,
+            'task'            => $task,
+            'projects_list'   => $projects_list,
+            'swimlanes_list'  => $swimlanes_list,
+            'columns_list'    => $columns_list,
             'categories_list' => $categories_list,
-            'users_list' => $users_list,
+            'users_list'      => $users_list,
         ]));
     }
 }

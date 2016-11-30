@@ -14,17 +14,17 @@ namespace Hiject\Export;
 use Hiject\Core\Base;
 
 /**
- * Transition Export
+ * Transition Export.
  */
 class TransitionExport extends Base
 {
     /**
-     * Get project export
+     * Get project export.
      *
-     * @access public
-     * @param  integer    $project_id      Project id
-     * @param  mixed      $from            Start date (timestamp or user formatted date)
-     * @param  mixed      $to              End date (timestamp or user formatted date)
+     * @param int   $project_id Project id
+     * @param mixed $from       Start date (timestamp or user formatted date)
+     * @param mixed $to         End date (timestamp or user formatted date)
+     *
      * @return array
      */
     public function export($project_id, $from, $to)
@@ -40,9 +40,8 @@ class TransitionExport extends Base
     }
 
     /**
-     * Get column titles
+     * Get column titles.
      *
-     * @access protected
      * @return string[]
      */
     protected function getColumns()
@@ -59,10 +58,10 @@ class TransitionExport extends Base
     }
 
     /**
-     * Format the output of a transition array
+     * Format the output of a transition array.
      *
-     * @access protected
-     * @param  array     $transition
+     * @param array $transition
+     *
      * @return array
      */
     protected function format(array $transition)
@@ -74,7 +73,7 @@ class TransitionExport extends Base
             $transition['dst_column'],
             $transition['name'] ?: $transition['username'],
             date($this->dateParser->getUserDateTimeFormat(), $transition['date']),
-            round($transition['time_spent'] / 3600, 2)
+            round($transition['time_spent'] / 3600, 2),
         ];
 
         return $values;

@@ -4,10 +4,10 @@
     </div>
     <div class="accordion-content">
         <?= $this->render('task_internal_link/table', [
-            'links' => $links,
-            'task' => $task,
-            'project' => $project,
-            'editable' => $editable,
+            'links'     => $links,
+            'task'      => $task,
+            'project'   => $project,
+            'editable'  => $editable,
             'is_public' => $is_public,
         ]) ?>
     </div>

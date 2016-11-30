@@ -16,17 +16,17 @@ use Hiject\Core\Paginator;
 use Hiject\Model\TaskModel;
 
 /**
- * Class TaskPagination
+ * Class TaskPagination.
  */
 class TaskPagination extends Base
 {
     /**
-     * Get dashboard pagination
+     * Get dashboard pagination.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  string  $method
-     * @param  integer $max
+     * @param int    $user_id
+     * @param string $method
+     * @param int    $max
+     *
      * @return Paginator
      */
     public function getDashboardPaginator($user_id, $method, $max)

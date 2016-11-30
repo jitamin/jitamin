@@ -4,8 +4,8 @@
     </div>
     <div class="accordion-content">
         <?= $this->render('task_external_link/table', [
-            'links' => $links,
-            'task' => $task,
+            'links'   => $links,
+            'task'    => $task,
             'project' => $project,
         ]) ?>
     </div>

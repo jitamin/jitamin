@@ -15,15 +15,15 @@ use Hiject\Core\Base;
 use Hiject\Model\TaskModel;
 
 /**
- * Estimated/Spent Time Comparison
+ * Estimated/Spent Time Comparison.
  */
 class EstimatedTimeComparisonAnalytic extends Base
 {
     /**
-     * Build report
+     * Build report.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function build($project_id)
@@ -36,11 +36,11 @@ class EstimatedTimeComparisonAnalytic extends Base
 
         $metrics = [
             'open' => [
-                'time_spent' => 0,
+                'time_spent'     => 0,
                 'time_estimated' => 0,
             ],
             'closed' => [
-                'time_spent' => 0,
+                'time_spent'     => 0,
                 'time_estimated' => 0,
             ],
         ];

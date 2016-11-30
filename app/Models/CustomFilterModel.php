@@ -14,23 +14,23 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Custom Filter model
+ * Custom Filter model.
  */
 class CustomFilterModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'custom_filters';
 
     /**
-     * Return the list of all allowed custom filters for a user and project
+     * Return the list of all allowed custom filters for a user and project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @param  integer   $user_id       User id
+     * @param int $project_id Project id
+     * @param int $user_id    User id
+     *
      * @return array
      */
     public function getAll($project_id, $user_id)
@@ -59,10 +59,10 @@ class CustomFilterModel extends Base
     }
 
     /**
-     * Get custom filter by id
+     * Get custom filter by id.
      *
-     * @access private
-     * @param  integer   $filter_id
+     * @param int $filter_id
+     *
      * @return array
      */
     public function getById($filter_id)
@@ -71,11 +71,11 @@ class CustomFilterModel extends Base
     }
 
     /**
-     * Create a custom filter
+     * Create a custom filter.
      *
-     * @access public
-     * @param  array    $values    Form values
-     * @return bool|integer
+     * @param array $values Form values
+     *
+     * @return bool|int
      */
     public function create(array $values)
     {
@@ -83,10 +83,10 @@ class CustomFilterModel extends Base
     }
 
     /**
-     * Update a custom filter
+     * Update a custom filter.
      *
-     * @access public
-     * @param  array    $values    Form values
+     * @param array $values Form values
+     *
      * @return bool
      */
     public function update(array $values)
@@ -97,10 +97,10 @@ class CustomFilterModel extends Base
     }
 
     /**
-     * Remove a custom filter
+     * Remove a custom filter.
      *
-     * @access public
-     * @param  integer  $filter_id
+     * @param int $filter_id
+     *
      * @return bool
      */
     public function remove($filter_id)

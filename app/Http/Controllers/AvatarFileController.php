@@ -15,12 +15,12 @@ use Hiject\Core\ObjectStorage\ObjectStorageException;
 use Hiject\Core\Thumbnail;
 
 /**
- * Avatar File Controller
+ * Avatar File Controller.
  */
 class AvatarFileController extends BaseController
 {
     /**
-     * Display avatar page
+     * Display avatar page.
      */
     public function show()
     {
@@ -32,13 +32,13 @@ class AvatarFileController extends BaseController
     }
 
     /**
-     * Upload Avatar
+     * Upload Avatar.
      */
     public function upload()
     {
         $user = $this->getUser();
 
-        if (! $this->avatarFileModel->uploadImageFile($user['id'], $this->request->getFileInfo('avatar'))) {
+        if (!$this->avatarFileModel->uploadImageFile($user['id'], $this->request->getFileInfo('avatar'))) {
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
@@ -46,7 +46,7 @@ class AvatarFileController extends BaseController
     }
 
     /**
-     * Remove Avatar image
+     * Remove Avatar image.
      */
     public function remove()
     {
@@ -58,7 +58,7 @@ class AvatarFileController extends BaseController
     }
 
     /**
-     * Show Avatar image (public)
+     * Show Avatar image (public).
      */
     public function image()
     {
@@ -79,11 +79,10 @@ class AvatarFileController extends BaseController
     }
 
     /**
-     * Render thumbnail from object storage
+     * Render thumbnail from object storage.
      *
-     * @access private
-     * @param  string  $filename
-     * @param  integer $size
+     * @param string $filename
+     * @param int    $size
      */
     private function render($filename, $size)
     {

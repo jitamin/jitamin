@@ -17,12 +17,12 @@ class FunctionTest extends Base
     {
         $input = [
             [
-                'my_column' => 123
+                'my_column' => 123,
             ],
             [
-                'my_column' => 456.7
+                'my_column' => 456.7,
             ],
-            []
+            [],
         ];
 
         $this->assertSame(579.7, array_column_sum($input, 'my_column'));
@@ -43,7 +43,7 @@ class FunctionTest extends Base
                 'k1' => 33,
                 'k2' => 44,
             ],
-            []
+            [],
         ];
 
         $expected = [
@@ -55,14 +55,14 @@ class FunctionTest extends Base
                 [
                     'k1' => 11,
                     'k2' => 55,
-                ]
+                ],
             ],
             33 => [
                 [
                     'k1' => 33,
                     'k2' => 44,
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->assertSame($expected, array_column_index($input, 'k1'));
@@ -72,30 +72,30 @@ class FunctionTest extends Base
     {
         $relations = [
             88 => [
-                'id' => 123,
+                'id'    => 123,
                 'value' => 'test1',
             ],
             99 => [
-                'id' => 456,
+                'id'    => 456,
                 'value' => 'test2',
             ],
-            55 => []
+            55 => [],
         ];
 
         $input = [
             [],
             [
                 'task_id' => 88,
-                'title' => 'task1'
+                'title'   => 'task1',
             ],
             [
                 'task_id' => 99,
-                'title' => 'task2'
+                'title'   => 'task2',
             ],
             [
                 'task_id' => 11,
-                'title' => 'task3'
-            ]
+                'title'   => 'task3',
+            ],
         ];
 
         $expected = [
@@ -103,26 +103,26 @@ class FunctionTest extends Base
                 'my_relation' => [],
             ],
             [
-                'task_id' => 88,
-                'title' => 'task1',
+                'task_id'     => 88,
+                'title'       => 'task1',
                 'my_relation' => [
-                    'id' => 123,
+                    'id'    => 123,
                     'value' => 'test1',
                 ],
             ],
             [
-                'task_id' => 99,
-                'title' => 'task2',
+                'task_id'     => 99,
+                'title'       => 'task2',
                 'my_relation' => [
-                    'id' => 456,
+                    'id'    => 456,
                     'value' => 'test2',
                 ],
             ],
             [
-                'task_id' => 11,
-                'title' => 'task3',
+                'task_id'     => 11,
+                'title'       => 'task3',
                 'my_relation' => [],
-            ]
+            ],
         ];
 
         array_merge_relation($input, $relations, 'my_relation', 'task_id');

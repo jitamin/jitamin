@@ -14,16 +14,16 @@ namespace Hiject\Core\Security;
 use Hiject\Core\Base;
 
 /**
- * Token Handler
+ * Token Handler.
  */
 class Token extends Base
 {
     /**
-     * Generate a random token with different methods: openssl or /dev/urandom or fallback to uniqid()
+     * Generate a random token with different methods: openssl or /dev/urandom or fallback to uniqid().
      *
      * @static
-     * @access public
-     * @return string  Random token
+     *
+     * @return string Random token
      */
     public static function getToken()
     {
@@ -31,14 +31,13 @@ class Token extends Base
     }
 
     /**
-     * Generate and store a CSRF token in the current session
+     * Generate and store a CSRF token in the current session.
      *
-     * @access public
-     * @return string  Random token
+     * @return string Random token
      */
     public function getCSRFToken()
     {
-        if (! isset($this->sessionStorage->csrf)) {
+        if (!isset($this->sessionStorage->csrf)) {
             $this->sessionStorage->csrf = [];
         }
 
@@ -49,16 +48,17 @@ class Token extends Base
     }
 
     /**
-     * Check if the token exists for the current session (a token can be used only one time)
+     * Check if the token exists for the current session (a token can be used only one time).
      *
-     * @access public
-     * @param  string   $token   CSRF token
+     * @param string $token CSRF token
+     *
      * @return bool
      */
     public function validateCSRFToken($token)
     {
         if (isset($this->sessionStorage->csrf[$token])) {
             unset($this->sessionStorage->csrf[$token]);
+
             return true;
         }
 

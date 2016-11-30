@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Task export command class
+ * Task export command class.
  */
 class TaskExportCommand extends BaseCommand
 {

@@ -12,97 +12,87 @@
 namespace Hiject\Core\User;
 
 /**
- * User Provider Interface
+ * User Provider Interface.
  */
 interface UserProviderInterface
 {
     /**
-     * Return true to allow automatic user creation
+     * Return true to allow automatic user creation.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isUserCreationAllowed();
 
     /**
-     * Get external id column name
+     * Get external id column name.
      *
      * Example: google_id, github_id, gitlab_id...
      *
-     * @access public
      * @return string
      */
     public function getExternalIdColumn();
 
     /**
-     * Get internal id
+     * Get internal id.
      *
      * If a value is returned the user properties won't be updated in the local database
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getInternalId();
 
     /**
-     * Get external id
+     * Get external id.
      *
-     * @access public
      * @return string
      */
     public function getExternalId();
 
     /**
-     * Get user role
+     * Get user role.
      *
      * Return an empty string to not override role stored in the database
      *
-     * @access public
      * @return string
      */
     public function getRole();
 
     /**
-     * Get username
+     * Get username.
      *
-     * @access public
      * @return string
      */
     public function getUsername();
 
     /**
-     * Get user full name
+     * Get user full name.
      *
-     * @access public
      * @return string
      */
     public function getName();
 
     /**
-     * Get user email
+     * Get user email.
      *
-     * @access public
      * @return string
      */
     public function getEmail();
 
     /**
-     * Get external group ids
+     * Get external group ids.
      *
      * A synchronization is done at login time,
      * the user will be member of those groups if they exists in the database
      *
-     * @access public
      * @return string[]
      */
     public function getExternalGroupIds();
 
     /**
-     * Get extra user attributes
+     * Get extra user attributes.
      *
      * Example: is_ldap_user, disable_login_form, notifications_enabled...
      *
-     * @access public
      * @return array
      */
     public function getExtraAttributes();

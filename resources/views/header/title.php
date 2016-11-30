@@ -4,4 +4,4 @@
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="/" accesskey="h"><img src="/assets/img/logo.png" alt="{{ $app_name }}"><?= $this->app->config('application_name')?:'Hiject' ?></a>
+<a class="navbar-brand" href="/" accesskey="h"><img src="/assets/img/logo.png" alt="{{ $app_name }}"><?= $this->app->config('application_name') ?: 'Hiject' ?></a>

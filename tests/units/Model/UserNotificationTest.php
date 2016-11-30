@@ -11,19 +11,19 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\UserModel;
-use Hiject\Model\GroupModel;
+use Hiject\Core\Security\Role;
 use Hiject\Model\GroupMemberModel;
+use Hiject\Model\GroupModel;
+use Hiject\Model\ProjectGroupRoleModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectPermissionModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\ProjectGroupRoleModel;
-use Hiject\Model\UserNotificationModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
+use Hiject\Model\UserModel;
 use Hiject\Model\UserNotificationFilterModel;
-use Hiject\Core\Security\Role;
+use Hiject\Model\UserNotificationModel;
 
 class UserNotificationTest extends Base
 {
@@ -54,8 +54,8 @@ class UserNotificationTest extends Base
 
         $n->saveSettings(1, [
             'notifications_enabled' => 1,
-            'notifications_filter' => UserNotificationFilterModel::FILTER_CREATOR,
-            'notification_types' => ['email' => 1],
+            'notifications_filter'  => UserNotificationFilterModel::FILTER_CREATOR,
+            'notification_types'    => ['email' => 1],
             'notification_projects' => [],
         ]);
 
@@ -92,8 +92,8 @@ class UserNotificationTest extends Base
 
         $n->saveSettings(1, [
             'notifications_enabled' => 1,
-            'notifications_filter' => UserNotificationFilterModel::FILTER_ASSIGNEE,
-            'notification_types' => ['web' => 1, 'email' => 1],
+            'notifications_filter'  => UserNotificationFilterModel::FILTER_ASSIGNEE,
+            'notification_types'    => ['web' => 1, 'email' => 1],
             'notification_projects' => [1 => 1],
         ]);
 
@@ -238,8 +238,8 @@ class UserNotificationTest extends Base
 
         $n->saveSettings(1, [
             'notifications_enabled' => 1,
-            'notifications_filter' => UserNotificationFilterModel::FILTER_NONE,
-            'notification_types' => ['web' => 1, 'email' => 1],
+            'notifications_filter'  => UserNotificationFilterModel::FILTER_NONE,
+            'notification_types'    => ['web' => 1, 'email' => 1],
         ]);
 
         $notifier = $this

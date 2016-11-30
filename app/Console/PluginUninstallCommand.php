@@ -19,7 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Plugin uninstall command class
+ * Plugin uninstall command class.
  */
 class PluginUninstallCommand extends BaseCommand
 {

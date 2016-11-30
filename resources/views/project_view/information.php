@@ -9,7 +9,7 @@
                     <li><?= t('Project owner: ') ?><strong><?= $this->text->e($project['owner_name'] ?: $project['owner_username']) ?></strong></li>
                 <?php endif ?>
 
-                <?php if (! empty($users)): ?>
+                <?php if (!empty($users)): ?>
                     <?php foreach ($roles as $role => $role_name): ?>
                         <?php if (isset($users[$role])): ?>
                             <li>

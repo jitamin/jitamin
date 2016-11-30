@@ -11,13 +11,13 @@
 
 namespace Hiject\Console;
 
-use RecursiveIteratorIterator;
 use RecursiveDirectoryIterator;
+use RecursiveIteratorIterator;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Locale comparator command class
+ * Locale comparator command class.
  */
 class LocaleComparatorCommand extends BaseCommand
 {
@@ -37,7 +37,7 @@ class LocaleComparatorCommand extends BaseCommand
         $it->rewind();
 
         while ($it->valid()) {
-            if (! $it->isDot() && substr($it->key(), -4) === '.php') {
+            if (!$it->isDot() && substr($it->key(), -4) === '.php') {
                 $strings = array_merge($strings, $this->search($it->key()));
             }
 

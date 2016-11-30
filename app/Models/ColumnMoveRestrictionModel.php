@@ -14,17 +14,18 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class ColumnMoveRestrictionModel
+ * Class ColumnMoveRestrictionModel.
  */
 class ColumnMoveRestrictionModel extends Base
 {
     const TABLE = 'column_has_move_restrictions';
 
     /**
-     * Fetch one restriction
+     * Fetch one restriction.
      *
-     * @param  int $project_id
-     * @param  int $restriction_id
+     * @param int $project_id
+     * @param int $restriction_id
+     *
      * @return array|null
      */
     public function getById($project_id, $restriction_id)
@@ -50,9 +51,10 @@ class ColumnMoveRestrictionModel extends Base
     }
 
     /**
-     * Get all project column restrictions
+     * Get all project column restrictions.
      *
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -77,10 +79,11 @@ class ColumnMoveRestrictionModel extends Base
     }
 
     /**
-     * Get all sortable column Ids
+     * Get all sortable column Ids.
      *
-     * @param  int    $project_id
-     * @param  string $role
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return array
      */
     public function getSortableColumns($project_id, $role)
@@ -95,12 +98,13 @@ class ColumnMoveRestrictionModel extends Base
     }
 
     /**
-     * Create a new column restriction
+     * Create a new column restriction.
      *
-     * @param  int    $project_id
-     * @param  int    $role_id
-     * @param  int    $src_column_id
-     * @param  int    $dst_column_id
+     * @param int $project_id
+     * @param int $role_id
+     * @param int $src_column_id
+     * @param int $dst_column_id
+     *
      * @return bool|int
      */
     public function create($project_id, $role_id, $src_column_id, $dst_column_id)
@@ -108,17 +112,18 @@ class ColumnMoveRestrictionModel extends Base
         return $this->db
             ->table(self::TABLE)
             ->persist([
-                'project_id' => $project_id,
-                'role_id' => $role_id,
+                'project_id'    => $project_id,
+                'role_id'       => $role_id,
                 'src_column_id' => $src_column_id,
                 'dst_column_id' => $dst_column_id,
             ]);
     }
 
     /**
-     * Remove a permission
+     * Remove a permission.
      *
-     * @param  int $restriction_id
+     * @param int $restriction_id
+     *
      * @return bool
      */
     public function remove($restriction_id)

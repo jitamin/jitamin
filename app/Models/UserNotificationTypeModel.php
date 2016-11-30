@@ -12,37 +12,38 @@
 namespace Hiject\Model;
 
 /**
- * User Notification Type
+ * User Notification Type.
  */
 class UserNotificationTypeModel extends NotificationTypeModel
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'user_has_notification_types';
 
     /**
-     * Get selected notification types for a given user
+     * Get selected notification types for a given user.
      *
-     * @access public
-     * @param integer  $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getSelectedTypes($user_id)
     {
         $types = $this->db->table(self::TABLE)->eq('user_id', $user_id)->asc('notification_type')->findAllByColumn('notification_type');
+
         return $this->filterTypes($types);
     }
 
     /**
-     * Save notification types for a given user
+     * Save notification types for a given user.
      *
-     * @access public
-     * @param  integer  $user_id
-     * @param  string[] $types
-     * @return boolean
+     * @param int      $user_id
+     * @param string[] $types
+     *
+     * @return bool
      */
     public function saveSelectedTypes($user_id, array $types)
     {
@@ -53,6 +54,6 @@ class UserNotificationTypeModel extends NotificationTypeModel
             $results[] = $this->db->table(self::TABLE)->insert(['user_id' => $user_id, 'notification_type' => $type]);
         }
 
-        return ! in_array(false, $results, true);
+        return !in_array(false, $results, true);
     }
 }

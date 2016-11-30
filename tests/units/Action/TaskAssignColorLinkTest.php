@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignColorLink;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskLinkModel;
-use Hiject\Action\TaskAssignColorLink;
 
 class TaskAssignColorLinkTest extends Base
 {

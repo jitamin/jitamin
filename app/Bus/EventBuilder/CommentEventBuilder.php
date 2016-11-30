@@ -15,28 +15,29 @@ use Hiject\Bus\Event\CommentEvent;
 use Hiject\Model\CommentModel;
 
 /**
- * Class CommentEventBuilder
+ * Class CommentEventBuilder.
  */
 class CommentEventBuilder extends BaseEventBuilder
 {
     protected $commentId = 0;
 
     /**
-     * Set commentId
+     * Set commentId.
      *
-     * @param  int $commentId
+     * @param int $commentId
+     *
      * @return $this
      */
     public function withCommentId($commentId)
     {
         $this->commentId = $commentId;
+
         return $this;
     }
 
     /**
-     * Build event data
+     * Build event data.
      *
-     * @access public
      * @return CommentEvent|null
      */
     public function buildEvent()
@@ -44,22 +45,22 @@ class CommentEventBuilder extends BaseEventBuilder
         $comment = $this->commentModel->getById($this->commentId);
 
         if (empty($comment)) {
-            return null;
+            return;
         }
 
-        return new CommentEvent(array(
+        return new CommentEvent([
             'comment' => $comment,
-            'task' => $this->taskFinderModel->getDetails($comment['task_id']),
-        ));
+            'task'    => $this->taskFinderModel->getDetails($comment['task_id']),
+        ]);
     }
 
     /**
-     * Get event title with author
+     * Get event title with author.
      *
-     * @access public
-     * @param  string $author
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $author
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     public function buildTitleWithAuthor($author, $eventName, array $eventData)
@@ -79,11 +80,11 @@ class CommentEventBuilder extends BaseEventBuilder
     }
 
     /**
-     * Get event title without author
+     * Get event title without author.
      *
-     * @access public
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     public function buildTitleWithoutAuthor($eventName, array $eventData)

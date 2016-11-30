@@ -16,15 +16,15 @@ use Hiject\Model\TaskModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Transition Subscriber
+ * Transition Subscriber.
  */
 class TransitionSubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -35,9 +35,8 @@ class TransitionSubscriber extends BaseSubscriber implements EventSubscriberInte
     }
 
     /**
-     * Handle the event
+     * Handle the event.
      *
-     * @access public
      * @param TaskEvent $event
      */
     public function execute(TaskEvent $event)
@@ -46,7 +45,7 @@ class TransitionSubscriber extends BaseSubscriber implements EventSubscriberInte
 
         $user_id = $this->userSession->getId();
 
-        if (! empty($user_id)) {
+        if (!empty($user_id)) {
             $this->transitionModel->save($user_id, $event->getAll());
         }
     }

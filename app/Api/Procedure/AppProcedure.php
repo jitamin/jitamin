@@ -12,7 +12,7 @@
 namespace Hiject\Api\Procedure;
 
 /**
- * App API controller
+ * App API controller.
  */
 class AppProcedure extends BaseProcedure
 {

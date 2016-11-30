@@ -14,23 +14,21 @@ namespace Hiject\User;
 use Hiject\Core\User\UserProviderInterface;
 
 /**
- * OAuth User Provider
+ * OAuth User Provider.
  */
 abstract class OAuthUserProvider implements UserProviderInterface
 {
     /**
-     * User properties
+     * User properties.
      *
-     * @access protected
      * @var array
      */
     protected $user = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  array $user
+     * @param array $user
      */
     public function __construct(array $user)
     {
@@ -38,10 +36,9 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Return true to allow automatic user creation
+     * Return true to allow automatic user creation.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isUserCreationAllowed()
     {
@@ -49,9 +46,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get internal id
+     * Get internal id.
      *
-     * @access public
      * @return string
      */
     public function getInternalId()
@@ -60,9 +56,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external id
+     * Get external id.
      *
-     * @access public
      * @return string
      */
     public function getExternalId()
@@ -71,9 +66,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user role
+     * Get user role.
      *
-     * @access public
      * @return string
      */
     public function getRole()
@@ -82,9 +76,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get username
+     * Get username.
      *
-     * @access public
      * @return string
      */
     public function getUsername()
@@ -93,9 +86,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get full name
+     * Get full name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -104,9 +96,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user email
+     * Get user email.
      *
-     * @access public
      * @return string
      */
     public function getEmail()
@@ -115,9 +106,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external group ids
+     * Get external group ids.
      *
-     * @access public
      * @return array
      */
     public function getExternalGroupIds()
@@ -126,9 +116,8 @@ abstract class OAuthUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get extra user attributes
+     * Get extra user attributes.
      *
-     * @access public
      * @return array
      */
     public function getExtraAttributes()

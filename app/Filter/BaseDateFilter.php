@@ -14,35 +14,34 @@ namespace Hiject\Filter;
 use Hiject\Core\DateParser;
 
 /**
- * Base date filter class
+ * Base date filter class.
  */
 abstract class BaseDateFilter extends BaseFilter
 {
     /**
-     * DateParser object
+     * DateParser object.
      *
-     * @access protected
      * @var DateParser
      */
     protected $dateParser;
 
     /**
-     * Set DateParser object
+     * Set DateParser object.
      *
-     * @access public
-     * @param  DateParser $dateParser
+     * @param DateParser $dateParser
+     *
      * @return $this
      */
     public function setDateParser(DateParser $dateParser)
     {
         $this->dateParser = $dateParser;
+
         return $this;
     }
 
     /**
-     * Parse operator in the input string
+     * Parse operator in the input string.
      *
-     * @access protected
      * @return string
      */
     protected function parseOperator()
@@ -50,13 +49,14 @@ abstract class BaseDateFilter extends BaseFilter
         $operators = [
             '<=' => 'lte',
             '>=' => 'gte',
-            '<' => 'lt',
-            '>' => 'gt',
+            '<'  => 'lt',
+            '>'  => 'gt',
         ];
 
         foreach ($operators as $operator => $method) {
             if (strpos($this->value, $operator) === 0) {
                 $this->value = substr($this->value, strlen($operator));
+
                 return $method;
             }
         }
@@ -65,10 +65,9 @@ abstract class BaseDateFilter extends BaseFilter
     }
 
     /**
-     * Apply a date filter
+     * Apply a date filter.
      *
-     * @access protected
-     * @param  string $field
+     * @param string $field
      */
     protected function applyDateFilter($field)
     {
@@ -84,12 +83,12 @@ abstract class BaseDateFilter extends BaseFilter
     }
 
     /**
-     * Get timestamp from the operator
+     * Get timestamp from the operator.
      *
-     * @access public
-     * @param  string  $method
-     * @param  integer $timestamp
-     * @return integer
+     * @param string $method
+     * @param int    $timestamp
+     *
+     * @return int
      */
     protected function getTimestampFromOperator($method, $timestamp)
     {

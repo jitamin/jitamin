@@ -11,37 +11,34 @@
 
 namespace Hiject\Auth;
 
-use Otp\Otp;
-use Otp\GoogleAuthenticator;
 use Base32\Base32;
 use Hiject\Core\Base;
 use Hiject\Core\Security\PostAuthenticationProviderInterface;
+use Otp\GoogleAuthenticator;
+use Otp\Otp;
 
 /**
- * TOTP Authentication Provider
+ * TOTP Authentication Provider.
  */
 class TotpAuth extends Base implements PostAuthenticationProviderInterface
 {
     /**
-     * User pin code
+     * User pin code.
      *
-     * @access protected
      * @var string
      */
     protected $code = '';
 
     /**
-     * Private key
+     * Private key.
      *
-     * @access protected
      * @var string
      */
     protected $secret = '';
 
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -50,31 +47,28 @@ class TotpAuth extends Base implements PostAuthenticationProviderInterface
     }
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate()
     {
-        $otp = new Otp;
+        $otp = new Otp();
+
         return $otp->checkTotp(Base32::decode($this->secret), $this->code);
     }
 
     /**
-     * Called before to prompt the user
-     *
-     * @access public
+     * Called before to prompt the user.
      */
     public function beforeCode()
     {
     }
 
     /**
-     * Set validation code
+     * Set validation code.
      *
-     * @access public
-     * @param  string $code
+     * @param string $code
      */
     public function setCode($code)
     {
@@ -82,22 +76,21 @@ class TotpAuth extends Base implements PostAuthenticationProviderInterface
     }
 
     /**
-     * Generate secret
+     * Generate secret.
      *
-     * @access public
      * @return string
      */
     public function generateSecret()
     {
         $this->secret = GoogleAuthenticator::generateRandom();
+
         return $this->secret;
     }
 
     /**
-     * Set secret token
+     * Set secret token.
      *
-     * @access public
-     * @param  string  $secret
+     * @param string $secret
      */
     public function setSecret($secret)
     {
@@ -105,9 +98,8 @@ class TotpAuth extends Base implements PostAuthenticationProviderInterface
     }
 
     /**
-     * Get secret token
+     * Get secret token.
      *
-     * @access public
      * @return string
      */
     public function getSecret()
@@ -116,10 +108,10 @@ class TotpAuth extends Base implements PostAuthenticationProviderInterface
     }
 
     /**
-     * Get QR code url
+     * Get QR code url.
      *
-     * @access public
-     * @param  string $label
+     * @param string $label
+     *
      * @return string
      */
     public function getQrCodeUrl($label)
@@ -129,14 +121,15 @@ class TotpAuth extends Base implements PostAuthenticationProviderInterface
         }
 
         $options = ['issuer' => TOTP_ISSUER];
+
         return GoogleAuthenticator::getQrCodeUrl('totp', $label, $this->secret, null, $options);
     }
 
     /**
-     * Get key url (empty if no url can be provided)
+     * Get key url (empty if no url can be provided).
      *
-     * @access public
-     * @param  string $label
+     * @param string $label
+     *
      * @return string
      */
     public function getKeyUrl($label)
@@ -146,6 +139,7 @@ class TotpAuth extends Base implements PostAuthenticationProviderInterface
         }
 
         $options = ['issuer' => TOTP_ISSUER];
+
         return GoogleAuthenticator::getKeyUri('totp', $label, $this->secret, null, $options);
     }
 }

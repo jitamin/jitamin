@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignCurrentUser;
 use Hiject\Bus\Event\GenericEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignCurrentUser;
 
 class TaskAssignCurrentUserTest extends Base
 {

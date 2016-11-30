@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TransitionModel;
-use Hiject\Model\ProjectModel;
 
 class TransitionTest extends Base
 {
@@ -27,11 +27,11 @@ class TransitionTest extends Base
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task_event = [
-            'project_id' => 1,
-            'task_id' => 1,
+            'project_id'    => 1,
+            'task_id'       => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
-            'date_moved' => time() - 3600
+            'date_moved'    => time() - 3600,
         ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));
@@ -57,21 +57,21 @@ class TransitionTest extends Base
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task_event = [
-            'project_id' => 1,
-            'task_id' => 1,
+            'project_id'    => 1,
+            'task_id'       => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
-            'date_moved' => time() - 3600
+            'date_moved'    => time() - 3600,
         ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));
 
         $task_event = [
-            'project_id' => 1,
-            'task_id' => 1,
+            'project_id'    => 1,
+            'task_id'       => 1,
             'src_column_id' => 2,
             'dst_column_id' => 3,
-            'date_moved' => time() - 1200
+            'date_moved'    => time() - 1200,
         ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));
@@ -95,20 +95,20 @@ class TransitionTest extends Base
         $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
 
         $task_event = [
-            'project_id' => 1,
+            'project_id'    => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
-            'date_moved' => time() - 3600
+            'date_moved'    => time() - 3600,
         ];
 
         $this->assertTrue($transitionModel->save(1, ['task_id' => 1] + $task_event));
         $this->assertTrue($transitionModel->save(1, ['task_id' => 2] + $task_event));
 
         $task_event = [
-            'project_id' => 1,
+            'project_id'    => 1,
             'src_column_id' => 2,
             'dst_column_id' => 3,
-            'date_moved' => time() - 1200
+            'date_moved'    => time() - 1200,
         ];
 
         $this->assertTrue($transitionModel->save(1, ['task_id' => 1] + $task_event));

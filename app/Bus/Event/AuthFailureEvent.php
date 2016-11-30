@@ -14,23 +14,21 @@ namespace Hiject\Bus\Event;
 use Symfony\Component\EventDispatcher\Event as BaseEvent;
 
 /**
- * Authentication failure event
+ * Authentication failure event.
  */
 class AuthFailureEvent extends BaseEvent
 {
     /**
-     * Username
+     * Username.
      *
-     * @access private
      * @var string
      */
     private $username = '';
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
      */
     public function __construct($username = '')
     {
@@ -38,9 +36,8 @@ class AuthFailureEvent extends BaseEvent
     }
 
     /**
-     * Get username
+     * Get username.
      *
-     * @access public
      * @return string
      */
     public function getUsername()

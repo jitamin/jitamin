@@ -11,13 +11,13 @@
 
 namespace Hiject\Console;
 
+use Hiject\Bus\Event\TaskListEvent;
+use Hiject\Model\TaskModel;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Hiject\Model\TaskModel;
-use Hiject\Bus\Event\TaskListEvent;
 
 /**
- * Task trigger command class
+ * Task trigger command class.
  */
 class TaskTriggerCommand extends BaseCommand
 {

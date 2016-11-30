@@ -15,23 +15,21 @@ use Pimple\Container;
 use Symfony\Component\Console\Command\Command;
 
 /**
- * Base command class
+ * Base command class.
  */
 abstract class BaseCommand extends Command
 {
     /**
-     * Container instance
+     * Container instance.
      *
-     * @access protected
      * @var \Pimple\Container
      */
     protected $container;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  \Pimple\Container   $container
+     * @param \Pimple\Container $container
      */
     public function __construct(Container $container)
     {
@@ -40,10 +38,10 @@ abstract class BaseCommand extends Command
     }
 
     /**
-     * Load automatically models
+     * Load automatically models.
      *
-     * @access public
-     * @param  string $name Model name
+     * @param string $name Model name
+     *
      * @return mixed
      */
     public function __get($name)

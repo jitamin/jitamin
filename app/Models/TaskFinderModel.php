@@ -14,16 +14,16 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Task Finder model
+ * Task Finder model.
  */
 class TaskFinderModel extends Base
 {
     /**
-     * Get query for project user overview
+     * Get query for project user overview.
      *
-     * @access public
-     * @param array    $project_ids
-     * @param integer  $is_active
+     * @param array $project_ids
+     * @param int   $is_active
+     *
      * @return \PicoDb\Table
      */
     public function getProjectUserOverviewQuery(array $project_ids, $is_active)
@@ -58,10 +58,10 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get query for assigned user tasks
+     * Get query for assigned user tasks.
      *
-     * @access public
-     * @param  integer    $user_id       User id
+     * @param int $user_id User id
+     *
      * @return \PicoDb\Table
      */
     public function getUserQuery($user_id)
@@ -94,9 +94,8 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Extended query
+     * Extended query.
      *
-     * @access public
      * @return \PicoDb\Table
      */
     public function getExtendedQuery()
@@ -163,11 +162,11 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get all tasks for a given project and status
+     * Get all tasks for a given project and status.
      *
-     * @access public
-     * @param  integer   $project_id      Project id
-     * @param  integer   $status_id       Status id
+     * @param int $project_id Project id
+     * @param int $status_id  Status id
+     *
      * @return array
      */
     public function getAll($project_id, $status_id = TaskModel::STATUS_OPEN)
@@ -181,11 +180,11 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get all tasks for a given project and status
+     * Get all tasks for a given project and status.
      *
-     * @access public
-     * @param  integer   $project_id
-     * @param  array     $status
+     * @param int   $project_id
+     * @param array $status
+     *
      * @return array
      */
     public function getAllIds($project_id, array $status = [TaskModel::STATUS_OPEN])
@@ -199,9 +198,8 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get overdue tasks query
+     * Get overdue tasks query.
      *
-     * @access public
      * @return \PicoDb\Table
      */
     public function getOverdueTasksQuery()
@@ -227,9 +225,8 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get a list of overdue tasks for all projects
+     * Get a list of overdue tasks for all projects.
      *
-     * @access public
      * @return array
      */
     public function getOverdueTasks()
@@ -237,11 +234,11 @@ class TaskFinderModel extends Base
         return $this->getOverdueTasksQuery()->findAll();
     }
 
-     /**
-     * Get a list of overdue tasks by project
+    /**
+     * Get a list of overdue tasks by project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getOverdueTasksByProject($project_id)
@@ -249,11 +246,11 @@ class TaskFinderModel extends Base
         return $this->getOverdueTasksQuery()->eq(TaskModel::TABLE.'.project_id', $project_id)->findAll();
     }
 
-     /**
-     * Get a list of overdue tasks by user
+    /**
+     * Get a list of overdue tasks by user.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getOverdueTasksByUser($user_id)
@@ -262,11 +259,11 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get project id for a given task
+     * Get project id for a given task.
      *
-     * @access public
-     * @param  integer   $task_id   Task id
-     * @return integer
+     * @param int $task_id Task id
+     *
+     * @return int
      */
     public function getProjectId($task_id)
     {
@@ -274,10 +271,10 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Fetch a task by the id
+     * Fetch a task by the id.
      *
-     * @access public
-     * @param  integer   $task_id   Task id
+     * @param int $task_id Task id
+     *
      * @return array
      */
     public function getById($task_id)
@@ -286,11 +283,11 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Fetch a task by the reference (external id)
+     * Fetch a task by the reference (external id).
      *
-     * @access public
-     * @param  integer  $project_id  Project id
-     * @param  string   $reference   Task reference
+     * @param int    $project_id Project id
+     * @param string $reference  Task reference
+     *
      * @return array
      */
     public function getByReference($project_id, $reference)
@@ -299,10 +296,10 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get task details (fetch more information from other tables)
+     * Get task details (fetch more information from other tables).
      *
-     * @access public
-     * @param  integer   $task_id   Task id
+     * @param int $task_id Task id
+     *
      * @return array
      */
     public function getDetails($task_id)
@@ -334,9 +331,8 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get iCal query
+     * Get iCal query.
      *
-     * @access public
      * @return \PicoDb\Table
      */
     public function getICalQuery()
@@ -356,12 +352,12 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Count all tasks for a given project and status
+     * Count all tasks for a given project and status.
      *
-     * @access public
-     * @param  integer   $project_id   Project id
-     * @param  array     $status       List of status id
-     * @return integer
+     * @param int   $project_id Project id
+     * @param array $status     List of status id
+     *
+     * @return int
      */
     public function countByProjectId($project_id, array $status = [TaskModel::STATUS_OPEN, TaskModel::STATUS_CLOSED])
     {
@@ -373,12 +369,12 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Count the number of tasks for a given column and status
+     * Count the number of tasks for a given column and status.
      *
-     * @access public
-     * @param  integer   $project_id   Project id
-     * @param  integer   $column_id    Column id
-     * @return integer
+     * @param int $project_id Project id
+     * @param int $column_id  Column id
+     *
+     * @return int
      */
     public function countByColumnId($project_id, $column_id)
     {
@@ -391,13 +387,13 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Count the number of tasks for a given column and swimlane
+     * Count the number of tasks for a given column and swimlane.
      *
-     * @access public
-     * @param  integer   $project_id     Project id
-     * @param  integer   $column_id      Column id
-     * @param  integer   $swimlane_id    Swimlane id
-     * @return integer
+     * @param int $project_id  Project id
+     * @param int $column_id   Column id
+     * @param int $swimlane_id Swimlane id
+     *
+     * @return int
      */
     public function countByColumnAndSwimlaneId($project_id, $column_id, $swimlane_id)
     {
@@ -411,11 +407,11 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Return true if the task exists
+     * Return true if the task exists.
      *
-     * @access public
-     * @param  integer    $task_id   Task id
-     * @return boolean
+     * @param int $task_id Task id
+     *
+     * @return bool
      */
     public function exists($task_id)
     {
@@ -423,10 +419,10 @@ class TaskFinderModel extends Base
     }
 
     /**
-     * Get project token
+     * Get project token.
      *
-     * @access public
-     * @param  integer $task_id
+     * @param int $task_id
+     *
      * @return string
      */
     public function getProjectToken($task_id)

@@ -13,7 +13,7 @@ namespace Hiject\Core\Http;
 
 require_once __DIR__.'/../../Base.php';
 
-function setcookie($name, $value = "", $expire = 0, $path = "", $domain = "", $secure = false, $httponly = false)
+function setcookie($name, $value = '', $expire = 0, $path = '', $domain = '', $secure = false, $httponly = false)
 {
     return RememberMeCookieTest::$functions->setcookie($name, $value, $expire, $path, $domain, $secure, $httponly);
 }

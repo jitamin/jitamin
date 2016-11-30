@@ -1,4 +1,4 @@
-<?php if (! empty($images)): ?>
+<?php if (!empty($images)): ?>
     <div class="file-thumbnails">
         <?php foreach ($images as $file): ?>
             <div class="file-thumbnail">

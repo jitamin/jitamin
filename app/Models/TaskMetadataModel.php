@@ -12,15 +12,15 @@
 namespace Hiject\Model;
 
 /**
- * Task Metadata
+ * Task Metadata.
  */
 class TaskMetadataModel extends MetadataModel
 {
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getTable()
@@ -29,9 +29,8 @@ class TaskMetadataModel extends MetadataModel
     }
 
     /**
-     * Define the entity key
+     * Define the entity key.
      *
-     * @access protected
      * @return string
      */
     protected function getEntityKey()

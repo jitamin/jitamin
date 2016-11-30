@@ -22,7 +22,7 @@
                 <?php if ($project['is_private']): ?>
                     <i class="fa fa-lock" title="<?= t('Private project') ?>"></i>
                 <?php endif ?>
-                <?php if (! empty($project['description'])): ?>
+                <?php if (!empty($project['description'])): ?>
                     <span class="tooltip" title="<?= $this->text->markdownAttribute($project['description']) ?>">
                         <i class="fa fa-info-circle"></i>
                     </span>

@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignColorPriority;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\CategoryModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignColorPriority;
 
 class TaskAssignColorPriorityTest extends Base
 {
@@ -34,10 +34,10 @@ class TaskAssignColorPriorityTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'priority' => 1,
-            ]
+                'priority'   => 1,
+            ],
         ]);
 
         $action = new TaskAssignColorPriority($this->container);
@@ -62,10 +62,10 @@ class TaskAssignColorPriorityTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'priority' => 2,
-            ]
+                'priority'   => 2,
+            ],
         ]);
 
         $action = new TaskAssignColorPriority($this->container);

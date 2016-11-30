@@ -14,54 +14,51 @@ namespace Hiject\Core\Http;
 use Hiject\Core\Base;
 
 /**
- * Route Handler
+ * Route Handler.
  */
 class Route extends Base
 {
     /**
-     * Flag that enable the routing table
+     * Flag that enable the routing table.
      *
-     * @access private
-     * @var boolean
+     * @var bool
      */
     private $activated = false;
 
     /**
-     * Store routes for path lookup
+     * Store routes for path lookup.
      *
-     * @access private
      * @var array
      */
     private $paths = [];
 
     /**
-     * Store routes for url lookup
+     * Store routes for url lookup.
      *
-     * @access private
      * @var array
      */
     private $urls = [];
 
     /**
-     * Enable routing table
+     * Enable routing table.
      *
-     * @access public
      * @return Route
      */
     public function enable()
     {
         $this->activated = true;
+
         return $this;
     }
 
     /**
-     * Add route
+     * Add route.
      *
-     * @access public
-     * @param  string   $path
-     * @param  string   $controller
-     * @param  string   $action
-     * @param  string   $plugin
+     * @param string $path
+     * @param string $controller
+     * @param string $action
+     * @param string $plugin
+     *
      * @return Route
      */
     public function addRoute($path, $controller, $action, $plugin = '')
@@ -72,17 +69,17 @@ class Route extends Base
             $params = $this->findParams($items);
 
             $this->paths[] = [
-                'items' => $items,
-                'count' => count($items),
+                'items'      => $items,
+                'count'      => count($items),
                 'controller' => $controller,
-                'action' => $action,
-                'plugin' => $plugin,
+                'action'     => $action,
+                'plugin'     => $plugin,
             ];
 
             $this->urls[$plugin][$controller][$action][] = [
-                'path' => $path,
+                'path'   => $path,
                 'params' => $params,
-                'count' => count($params),
+                'count'  => count($params),
             ];
         }
 
@@ -90,10 +87,10 @@ class Route extends Base
     }
 
     /**
-     * Find a route according to the given path
+     * Find a route according to the given path.
      *
-     * @access public
-     * @param  string   $path
+     * @param string $path
+     *
      * @return array
      */
     public function findRoute($path)
@@ -106,7 +103,7 @@ class Route extends Base
                 $params = [];
 
                 for ($i = 0; $i < $count; $i++) {
-                    if ($route['items'][$i]{0} === ':') {
+                    if ($route['items'][$i][0] === ':') {
                         $params[substr($route['items'][$i], 1)] = $items[$i];
                     } elseif ($route['items'][$i] !== $items[$i]) {
                         break;
@@ -115,10 +112,11 @@ class Route extends Base
 
                 if ($i === $count) {
                     $this->request->setParams($params);
+
                     return [
                         'controller' => $route['controller'],
-                        'action' => $route['action'],
-                        'plugin' => $route['plugin'],
+                        'action'     => $route['action'],
+                        'plugin'     => $route['plugin'],
                     ];
                 }
             }
@@ -126,19 +124,19 @@ class Route extends Base
 
         return [
                 'controller' => 'DashboardController',
-                'action' => 'show',
-                'plugin' => '',
+                'action'     => 'show',
+                'plugin'     => '',
             ];
     }
 
     /**
-     * Find route url
+     * Find route url.
      *
-     * @access public
-     * @param  string   $controller
-     * @param  string   $action
-     * @param  array    $params
-     * @param  string   $plugin
+     * @param string $controller
+     * @param string $action
+     * @param array  $params
+     * @param string $plugin
+     *
      * @return string
      */
     public function findUrl($controller, $action, array $params = [], $plugin = '')
@@ -148,7 +146,7 @@ class Route extends Base
             unset($params['plugin']);
         }
 
-        if (! isset($this->urls[$plugin][$controller][$action])) {
+        if (!isset($this->urls[$plugin][$controller][$action])) {
             return '';
         }
 
@@ -172,10 +170,10 @@ class Route extends Base
     }
 
     /**
-     * Find url params
+     * Find url params.
      *
-     * @access public
-     * @param  array $items
+     * @param array $items
+     *
      * @return array
      */
     public function findParams(array $items)
@@ -183,7 +181,7 @@ class Route extends Base
         $params = [];
 
         foreach ($items as $item) {
-            if ($item !== '' && $item{0} === ':') {
+            if ($item !== '' && $item[0] === ':') {
                 $params[substr($item, 1)] = true;
             }
         }

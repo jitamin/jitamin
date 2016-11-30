@@ -14,16 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * Category Controller
+ * Category Controller.
  */
 class CategoryController extends BaseController
 {
     /**
-     * Get the category (common method between actions)
+     * Get the category (common method between actions).
      *
-     * @access private
-     * @return array
      * @throws PageNotFoundException
+     *
+     * @return array
      */
     private function getCategory()
     {
@@ -37,11 +37,11 @@ class CategoryController extends BaseController
     }
 
     /**
-     * List of categories for a given project
+     * List of categories for a given project.
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws PageNotFoundException
      */
     public function index(array $values = [], array $errors = [])
@@ -50,17 +50,15 @@ class CategoryController extends BaseController
 
         $this->response->html($this->helper->layout->project('category/index', [
             'categories' => $this->categoryModel->getList($project['id'], false),
-            'values' => $values + ['project_id' => $project['id']],
-            'errors' => $errors,
-            'project' => $project,
-            'title' => t('Categories')
+            'values'     => $values + ['project_id' => $project['id']],
+            'errors'     => $errors,
+            'project'    => $project,
+            'title'      => t('Categories'),
         ]));
     }
 
     /**
-     * Validate and save a new category
-     *
-     * @access public
+     * Validate and save a new category.
      */
     public function save()
     {
@@ -72,6 +70,7 @@ class CategoryController extends BaseController
         if ($valid) {
             if ($this->categoryModel->create($values) !== false) {
                 $this->flash->success(t('Your category have been created successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('CategoryController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to create your category.'));
@@ -82,11 +81,11 @@ class CategoryController extends BaseController
     }
 
     /**
-     * Edit a category (display the form)
+     * Edit a category (display the form).
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
@@ -95,17 +94,15 @@ class CategoryController extends BaseController
         $category = $this->getCategory();
 
         $this->response->html($this->helper->layout->project('category/edit', [
-            'values' => empty($values) ? $category : $values,
-            'errors' => $errors,
+            'values'  => empty($values) ? $category : $values,
+            'errors'  => $errors,
             'project' => $project,
-            'title' => t('Categories')
+            'title'   => t('Categories'),
         ]));
     }
 
     /**
-     * Edit a category (validate the form and update the database)
-     *
-     * @access public
+     * Edit a category (validate the form and update the database).
      */
     public function update()
     {
@@ -117,6 +114,7 @@ class CategoryController extends BaseController
         if ($valid) {
             if ($this->categoryModel->update($values)) {
                 $this->flash->success(t('Your category have been updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('CategoryController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to update your category.'));
@@ -127,16 +125,14 @@ class CategoryController extends BaseController
     }
 
     /**
-     * Move category position
-     *
-     * @access public
+     * Move category position.
      */
     public function move()
     {
         $project = $this->getProject();
         $values = $this->request->getJson();
 
-        if (! empty($values) && isset($values['category_id']) && isset($values['position'])) {
+        if (!empty($values) && isset($values['category_id']) && isset($values['position'])) {
             $result = $this->categoryModel->changePosition($project['id'], $values['category_id'], $values['position']);
             $this->response->json(['result' => $result]);
         } else {
@@ -145,9 +141,7 @@ class CategoryController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a category
-     *
-     * @access public
+     * Confirmation dialog before removing a category.
      */
     public function confirm()
     {
@@ -155,16 +149,14 @@ class CategoryController extends BaseController
         $category = $this->getCategory();
 
         $this->response->html($this->helper->layout->project('category/remove', [
-            'project' => $project,
+            'project'  => $project,
             'category' => $category,
-            'title' => t('Remove a category')
+            'title'    => t('Remove a category'),
         ]));
     }
 
     /**
-     * Remove a category
-     *
-     * @access public
+     * Remove a category.
      */
     public function remove()
     {

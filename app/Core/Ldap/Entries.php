@@ -12,23 +12,21 @@
 namespace Hiject\Core\Ldap;
 
 /**
- * LDAP Entries
+ * LDAP Entries.
  */
 class Entries
 {
     /**
-     * LDAP entries
+     * LDAP entries.
      *
-     * @access protected
      * @var array
      */
     protected $entries = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  array $entries
+     * @param array $entries
      */
     public function __construct(array $entries)
     {
@@ -36,16 +34,15 @@ class Entries
     }
 
     /**
-     * Get all entries
+     * Get all entries.
      *
-     * @access public
      * @return Entry[]
      */
     public function getAll()
     {
         $entities = [];
 
-        if (! isset($this->entries['count'])) {
+        if (!isset($this->entries['count'])) {
             return $entities;
         }
 
@@ -57,9 +54,8 @@ class Entries
     }
 
     /**
-     * Get first entry
+     * Get first entry.
      *
-     * @access public
      * @return Entry
      */
     public function getFirstEntry()

@@ -19,7 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Plugin Upgrade command class
+ * Plugin Upgrade command class.
  */
 class PluginUpgradeCommand extends BaseCommand
 {
@@ -27,8 +27,7 @@ class PluginUpgradeCommand extends BaseCommand
     {
         $this
             ->setName('plugin:upgrade')
-            ->setDescription('Update all installed plugins')
-        ;
+            ->setDescription('Update all installed plugins');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -61,7 +60,5 @@ class PluginUpgradeCommand extends BaseCommand
                 return $availablePlugin;
             }
         }
-
-        return null;
     }
 }

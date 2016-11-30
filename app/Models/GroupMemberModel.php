@@ -14,22 +14,22 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Group Member Model
+ * Group Member Model.
  */
 class GroupMemberModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'group_has_users';
 
     /**
-     * Get query to fetch all users
+     * Get query to fetch all users.
      *
-     * @access public
-     * @param  integer $group_id
+     * @param int $group_id
+     *
      * @return \PicoDb\Table
      */
     public function getQuery($group_id)
@@ -40,10 +40,10 @@ class GroupMemberModel extends Base
     }
 
     /**
-     * Get all users
+     * Get all users.
      *
-     * @access public
-     * @param  integer $group_id
+     * @param int $group_id
+     *
      * @return array
      */
     public function getMembers($group_id)
@@ -52,10 +52,10 @@ class GroupMemberModel extends Base
     }
 
     /**
-     * Get all not members
+     * Get all not members.
      *
-     * @access public
-     * @param  integer $group_id
+     * @param int $group_id
+     *
      * @return array
      */
     public function getNotMembers($group_id)
@@ -70,28 +70,28 @@ class GroupMemberModel extends Base
     }
 
     /**
-     * Add user to a group
+     * Add user to a group.
      *
-     * @access public
-     * @param  integer $group_id
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $group_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function addUser($group_id, $user_id)
     {
-        return $this->db->table(self::TABLE)->insert(array(
+        return $this->db->table(self::TABLE)->insert([
             'group_id' => $group_id,
-            'user_id' => $user_id,
-        ));
+            'user_id'  => $user_id,
+        ]);
     }
 
     /**
-     * Remove user from a group
+     * Remove user from a group.
      *
-     * @access public
-     * @param  integer $group_id
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $group_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function removeUser($group_id, $user_id)
     {
@@ -102,12 +102,12 @@ class GroupMemberModel extends Base
     }
 
     /**
-     * Check if a user is member
+     * Check if a user is member.
      *
-     * @access public
-     * @param  integer $group_id
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $group_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function isMember($group_id, $user_id)
     {
@@ -118,10 +118,10 @@ class GroupMemberModel extends Base
     }
 
     /**
-     * Get all groups for a given user
+     * Get all groups for a given user.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getGroups($user_id)

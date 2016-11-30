@@ -14,14 +14,12 @@ namespace Hiject\Controller;
 use Hiject\Formatter\GroupAutoCompleteFormatter;
 
 /**
- * Group Ajax Controller
+ * Group Ajax Controller.
  */
 class GroupAjaxController extends BaseController
 {
     /**
-     * Group auto-completion (Ajax)
-     *
-     * @access public
+     * Group auto-completion (Ajax).
      */
     public function autocomplete()
     {

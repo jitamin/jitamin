@@ -16,7 +16,7 @@ class LocaleTest extends Base
     public function testLocales()
     {
         foreach (glob('app/Locale/*') as $file) {
-            $locale = require($file . '/translations.php');
+            $locale = require $file.'/translations.php';
 
             foreach ($locale as $k => $v) {
                 if (strpos($k, '%B %e, %Y') !== false) {
@@ -31,7 +31,7 @@ class LocaleTest extends Base
                     $this->assertEquals(
                         substr_count($k, $placeholder),
                         substr_count($v, $placeholder),
-                        'Incorrect number of ' . $placeholder . ' in ' . basename($file) .' translation of: ' . $k
+                        'Incorrect number of '.$placeholder.' in '.basename($file).' translation of: '.$k
                     );
                 }
             }

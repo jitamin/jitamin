@@ -10,11 +10,11 @@
  */
 
 use Hiject\Bus\EventBuilder\TaskEventBuilder;
+use Hiject\Bus\Subscriber\RecurringTaskSubscriber;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Bus\Subscriber\RecurringTaskSubscriber;
 
 require_once __DIR__.'/../Base.php';
 
@@ -49,9 +49,9 @@ class RecurringTaskSubscriberTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
+            'title'              => 'test',
+            'project_id'         => 1,
+            'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_FIRST_COLUMN,
         ]));
 
@@ -75,11 +75,11 @@ class RecurringTaskSubscriberTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
+            'title'              => 'test',
+            'project_id'         => 1,
+            'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_FIRST_COLUMN,
-            'column_id' => 2,
+            'column_id'          => 2,
         ]));
 
         $event = TaskEventBuilder::getInstance($this->container)
@@ -102,9 +102,9 @@ class RecurringTaskSubscriberTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
+            'title'              => 'test',
+            'project_id'         => 1,
+            'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_LAST_COLUMN,
         ]));
 
@@ -128,9 +128,9 @@ class RecurringTaskSubscriberTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
+            'title'              => 'test',
+            'project_id'         => 1,
+            'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_LAST_COLUMN,
         ]));
 
@@ -154,9 +154,9 @@ class RecurringTaskSubscriberTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
+            'title'              => 'test',
+            'project_id'         => 1,
+            'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
             'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_CLOSE,
         ]));
 

@@ -12,16 +12,16 @@
 namespace Hiject\Controller;
 
 /**
- * Class UserCredentialController
+ * Class UserCredentialController.
  */
 class UserCredentialController extends BaseController
 {
     /**
-     * Password modification form
+     * Password modification form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -32,12 +32,12 @@ class UserCredentialController extends BaseController
         return $this->response->html($this->helper->layout->user('user_credential/password', [
             'values' => $values + ['id' => $user['id']],
             'errors' => $errors,
-            'user' => $user,
+            'user'   => $user,
         ]));
     }
 
     /**
-     * Save new password
+     * Save new password.
      *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
@@ -64,11 +64,11 @@ class UserCredentialController extends BaseController
     }
 
     /**
-     * Display a form to edit authentication
+     * Display a form to edit authentication.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -84,12 +84,12 @@ class UserCredentialController extends BaseController
         return $this->response->html($this->helper->layout->user('user_credential/authentication', [
             'values' => $values,
             'errors' => $errors,
-            'user' => $user,
+            'user'   => $user,
         ]));
     }
 
     /**
-     * Save authentication
+     * Save authentication.
      *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
@@ -114,7 +114,7 @@ class UserCredentialController extends BaseController
     }
 
     /**
-     * Unlock user
+     * Unlock user.
      */
     public function unlock()
     {

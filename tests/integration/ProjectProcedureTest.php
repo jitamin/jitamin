@@ -70,14 +70,14 @@ class ProjectProcedureTest extends BaseProcedureTest
 
     public function assertUpdateProject()
     {
-        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => 'test', 'description' => 'test')]);
+        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => 'test', 'description' => 'test']));
 
         $project = $this->app->getProjectById($this->projectId);
         $this->assertNotNull($project);
         $this->assertEquals('test', $project['name']);
         $this->assertEquals('test', $project['description']);
 
-        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => $this->projectName)]);
+        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => $this->projectName]));
     }
 
     public function assertUpdateProjectIdentifier()
@@ -96,7 +96,7 @@ class ProjectProcedureTest extends BaseProcedureTest
     public function assertCreateProjectWithIdentifier()
     {
         $projectId = $this->app->createProject([
-            'name' => 'My project with an identifier',
+            'name'       => 'My project with an identifier',
             'identifier' => 'MYPROJECTWITHIDENTIFIER',
         ]);
 

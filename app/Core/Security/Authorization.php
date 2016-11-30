@@ -12,23 +12,21 @@
 namespace Hiject\Core\Security;
 
 /**
- * Authorization Handler
+ * Authorization Handler.
  */
 class Authorization
 {
     /**
-     * Access Map
+     * Access Map.
      *
-     * @access private
      * @var AccessMap
      */
     private $accessMap;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  AccessMap  $accessMap
+     * @param AccessMap $accessMap
      */
     public function __construct(AccessMap $accessMap)
     {
@@ -36,17 +34,18 @@ class Authorization
     }
 
     /**
-     * Check if the given role is allowed to access to the specified resource
+     * Check if the given role is allowed to access to the specified resource.
      *
-     * @access public
-     * @param  string  $controller
-     * @param  string  $method
-     * @param  string  $role
-     * @return boolean
+     * @param string $controller
+     * @param string $method
+     * @param string $role
+     *
+     * @return bool
      */
     public function isAllowed($controller, $method, $role)
     {
         $roles = $this->accessMap->getRoles($controller, $method);
+
         return in_array($role, $roles);
     }
 }

@@ -1,7 +1,7 @@
 <!-- swimlane -->
 <tr id="swimlane-<?= $swimlane['id'] ?>">
    <th class="board-swimlane-header" colspan="<?= $swimlane['nb_columns'] ?>">
-        <?php if (! $not_editable): ?>
+        <?php if (!$not_editable): ?>
             <a href="#" class="board-swimlane-toggle" data-swimlane-id="<?= $swimlane['id'] ?>">
                 <i class="fa fa-chevron-circle-up hide-icon-swimlane-<?= $swimlane['id'] ?>" title="<?= t('Collapse swimlane') ?>"></i>
                 <i class="fa fa-chevron-circle-down show-icon-swimlane-<?= $swimlane['id'] ?>" title="<?= t('Expand swimlane') ?>" style="display: none"></i>
@@ -10,7 +10,7 @@
 
         <?= $this->text->e($swimlane['name']) ?>
 
-        <?php if (! $not_editable && ! empty($swimlane['description'])): ?>
+        <?php if (!$not_editable && !empty($swimlane['description'])): ?>
             <span
                 title="<?= t('Description') ?>"
                 class="tooltip"

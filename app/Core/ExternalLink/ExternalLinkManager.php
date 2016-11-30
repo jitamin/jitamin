@@ -14,62 +14,61 @@ namespace Hiject\Core\ExternalLink;
 use Hiject\Core\Base;
 
 /**
- * External Link Manager
+ * External Link Manager.
  */
 class ExternalLinkManager extends Base
 {
     /**
-     * Automatic type value
+     * Automatic type value.
      *
      * @var string
      */
     const TYPE_AUTO = 'auto';
 
     /**
-     * Registered providers
+     * Registered providers.
      *
-     * @access private
      * @var ExternalLinkProviderInterface[]
      */
     private $providers = [];
 
     /**
-     * Type chosen by the user
+     * Type chosen by the user.
      *
-     * @access private
      * @var string
      */
     private $userInputType = '';
 
     /**
-     * Text entered by the user
+     * Text entered by the user.
      *
-     * @access private
      * @var string
      */
     private $userInputText = '';
 
     /**
-     * Register a new provider
+     * Register a new provider.
      *
      * Providers are registered in a LIFO queue
      *
-     * @access public
-     * @param  ExternalLinkProviderInterface $provider
+     * @param ExternalLinkProviderInterface $provider
+     *
      * @return ExternalLinkManager
      */
     public function register(ExternalLinkProviderInterface $provider)
     {
         array_unshift($this->providers, $provider);
+
         return $this;
     }
 
     /**
-     * Get provider
+     * Get provider.
      *
-     * @access public
-     * @param  string $type
+     * @param string $type
+     *
      * @throws ExternalLinkProviderNotFound
+     *
      * @return ExternalLinkProviderInterface
      */
     public function getProvider($type)
@@ -84,9 +83,8 @@ class ExternalLinkManager extends Base
     }
 
     /**
-     * Get link types
+     * Get link types.
      *
-     * @access public
      * @return array
      */
     public function getTypes()
@@ -103,25 +101,26 @@ class ExternalLinkManager extends Base
     }
 
     /**
-     * Get dependency label from a provider
+     * Get dependency label from a provider.
      *
-     * @access public
-     * @param  string $type
-     * @param  string $dependency
+     * @param string $type
+     * @param string $dependency
+     *
      * @return string
      */
     public function getDependencyLabel($type, $dependency)
     {
         $provider = $this->getProvider($type);
         $dependencies = $provider->getDependencies();
+
         return isset($dependencies[$dependency]) ? $dependencies[$dependency] : $dependency;
     }
 
     /**
-     * Find a provider that match
+     * Find a provider that match.
      *
-     * @access public
      * @throws ExternalLinkProviderNotFound
+     *
      * @return ExternalLinkProviderInterface
      */
     public function find()
@@ -132,7 +131,7 @@ class ExternalLinkManager extends Base
             $provider = $this->getProvider($this->userInputType);
             $provider->setUserTextInput($this->userInputText);
 
-            if (! $provider->match()) {
+            if (!$provider->match()) {
                 throw new ExternalLinkProviderNotFound('Unable to parse URL with selected provider');
             }
         }
@@ -145,47 +144,51 @@ class ExternalLinkManager extends Base
     }
 
     /**
-     * Set form values
+     * Set form values.
      *
-     * @access public
-     * @param  array $values
+     * @param array $values
+     *
      * @return ExternalLinkManager
      */
     public function setUserInput(array $values)
     {
         $this->userInputType = empty($values['type']) ? self::TYPE_AUTO : $values['type'];
         $this->userInputText = empty($values['text']) ? '' : trim($values['text']);
+
         return $this;
     }
 
     /**
-     * Set provider type
+     * Set provider type.
      *
-     * @access public
-     * @param  string $userInputType
+     * @param string $userInputType
+     *
      * @return ExternalLinkManager
      */
     public function setUserInputType($userInputType)
     {
         $this->userInputType = $userInputType;
+
         return $this;
     }
 
     /**
-     * Set external link
-     * @param  string $userInputText
+     * Set external link.
+     *
+     * @param string $userInputText
+     *
      * @return ExternalLinkManager
      */
     public function setUserInputText($userInputText)
     {
         $this->userInputText = $userInputText;
+
         return $this;
     }
 
     /**
-     * Find a provider that user input
+     * Find a provider that user input.
      *
-     * @access private
      * @return ExternalLinkProviderInterface
      */
     private function findProvider()
@@ -197,7 +200,5 @@ class ExternalLinkManager extends Base
                 return $provider;
             }
         }
-
-        return null;
     }
 }

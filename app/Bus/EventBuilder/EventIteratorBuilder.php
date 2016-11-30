@@ -14,7 +14,7 @@ namespace Hiject\Bus\EventBuilder;
 use Iterator;
 
 /**
- * Class EventIteratorBuilder
+ * Class EventIteratorBuilder.
  */
 class EventIteratorBuilder implements Iterator
 {
@@ -22,21 +22,21 @@ class EventIteratorBuilder implements Iterator
     private $builders = [];
 
     /**
-     * Set builder
+     * Set builder.
      *
-     * @access public
-     * @param  BaseEventBuilder $builder
+     * @param BaseEventBuilder $builder
+     *
      * @return $this
      */
     public function withBuilder(BaseEventBuilder $builder)
     {
         $this->builders[] = $builder;
+
         return $this;
     }
 
     /**
-     * Rewind
-     *
+     * Rewind.
      */
     public function rewind()
     {
@@ -44,7 +44,7 @@ class EventIteratorBuilder implements Iterator
     }
 
     /**
-     * Current
+     * Current.
      *
      * @return BaseEventBuilder
      */
@@ -54,8 +54,7 @@ class EventIteratorBuilder implements Iterator
     }
 
     /**
-     * Key
-     *
+     * Key.
      */
     public function key()
     {
@@ -63,8 +62,7 @@ class EventIteratorBuilder implements Iterator
     }
 
     /**
-     * Next
-     *
+     * Next.
      */
     public function next()
     {
@@ -72,8 +70,7 @@ class EventIteratorBuilder implements Iterator
     }
 
     /**
-     * Check if position valid
-     *
+     * Check if position valid.
      */
     public function valid()
     {

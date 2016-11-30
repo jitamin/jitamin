@@ -11,23 +11,23 @@
 
 namespace Hiject\Api\Middleware;
 
+use Hiject\Core\Base;
 use JsonRPC\Exception\AccessDeniedException;
 use JsonRPC\Exception\AuthenticationFailureException;
 use JsonRPC\MiddlewareInterface;
-use Hiject\Core\Base;
 
 /**
- * Class AuthenticationApiMiddleware
+ * Class AuthenticationApiMiddleware.
  */
 class AuthenticationMiddleware extends Base implements MiddlewareInterface
 {
     /**
-     * Execute Middleware
+     * Execute Middleware.
      *
-     * @access public
-     * @param  string $username
-     * @param  string $password
-     * @param  string $procedureName
+     * @param string $username
+     * @param string $password
+     * @param string $procedureName
+     *
      * @throws AccessDeniedException
      * @throws AuthenticationFailureException
      */
@@ -37,34 +37,34 @@ class AuthenticationMiddleware extends Base implements MiddlewareInterface
 
         if ($this->isUserAuthenticated($username, $password)) {
             $this->userSession->initialize($this->userModel->getByUsername($username));
-        } elseif (! $this->isAppAuthenticated($username, $password)) {
+        } elseif (!$this->isAppAuthenticated($username, $password)) {
             $this->logger->error('API authentication failure for '.$username);
             throw new AuthenticationFailureException('Wrong credentials');
         }
     }
 
     /**
-     * Check user credentials
+     * Check user credentials.
      *
-     * @access public
-     * @param  string  $username
-     * @param  string  $password
-     * @return boolean
+     * @param string $username
+     * @param string $password
+     *
+     * @return bool
      */
     private function isUserAuthenticated($username, $password)
     {
         return $username !== 'jsonrpc' &&
-        ! $this->userLockingModel->isLocked($username) &&
+        !$this->userLockingModel->isLocked($username) &&
         $this->authenticationManager->passwordAuthentication($username, $password);
     }
 
     /**
-     * Check administrative credentials
+     * Check administrative credentials.
      *
-     * @access public
-     * @param  string  $username
-     * @param  string  $password
-     * @return boolean
+     * @param string $username
+     * @param string $password
+     *
+     * @return bool
      */
     private function isAppAuthenticated($username, $password)
     {
@@ -72,9 +72,8 @@ class AuthenticationMiddleware extends Base implements MiddlewareInterface
     }
 
     /**
-     * Get API Token
+     * Get API Token.
      *
-     * @access private
      * @return string
      */
     private function getApiToken()

@@ -18,14 +18,12 @@ use PicoFeed\Syndication\AtomItemBuilder;
 use PicoFeed\Syndication\FeedBuilder;
 
 /**
- * Atom/RSS Feed controller
+ * Atom/RSS Feed controller.
  */
 class FeedController extends BaseController
 {
     /**
-     * RSS feed for a user
-     *
-     * @access public
+     * RSS feed for a user.
      */
     public function user()
     {
@@ -49,9 +47,7 @@ class FeedController extends BaseController
     }
 
     /**
-     * RSS feed for a project
-     *
-     * @access public
+     * RSS feed for a project.
      */
     public function project()
     {
@@ -74,11 +70,11 @@ class FeedController extends BaseController
     }
 
     /**
-     * Build feed items
+     * Build feed items.
      *
-     * @access protected
-     * @param  array       $events
-     * @param  FeedBuilder $feedBuilder
+     * @param array       $events
+     * @param FeedBuilder $feedBuilder
+     *
      * @return FeedBuilder
      */
     protected function buildFeedItems(array $events, FeedBuilder $feedBuilder)

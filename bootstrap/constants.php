@@ -9,25 +9,25 @@
  * file that was distributed with this source code.
  */
 
-define('ROOT_DIR', __DIR__ . DIRECTORY_SEPARATOR . '..');
+define('ROOT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // App directory
 define('APP_DIR', __DIR__);
 
 // Data directory location
-defined('DATA_DIR') or define('DATA_DIR', ROOT_DIR . DIRECTORY_SEPARATOR . 'storage');
+defined('DATA_DIR') or define('DATA_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'storage');
 
 // Files directory (attachments)
-defined('FILES_DIR') or define('FILES_DIR', DATA_DIR . DIRECTORY_SEPARATOR . 'files');
+defined('FILES_DIR') or define('FILES_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'files');
 
 // Available cache drivers are "file" and "memory"
 defined('CACHE_DRIVER') or define('CACHE_DRIVER', 'memory');
 
 // Cache folder (file driver)
-defined('CACHE_DIR') or define('CACHE_DIR', DATA_DIR . DIRECTORY_SEPARATOR . 'cache');
+defined('CACHE_DIR') or define('CACHE_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'cache');
 
 // Plugins settings
-defined('PLUGINS_DIR') or define('PLUGINS_DIR', ROOT_DIR . DIRECTORY_SEPARATOR . 'plugins');
+defined('PLUGINS_DIR') or define('PLUGINS_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'plugins');
 defined('PLUGIN_API_URL') or define('PLUGIN_API_URL', 'http://hiject.com/plugins.json');
 defined('PLUGIN_INSTALLER') or define('PLUGIN_INSTALLER', true);
 
@@ -38,16 +38,16 @@ defined('DEBUG') or define('DEBUG', strtolower(getenv('DEBUG')) === 'true');
 defined('LOG_DRIVER') or define('LOG_DRIVER', '');
 
 // Logging file
-defined('LOG_FILE') or define('LOG_FILE', DATA_DIR . DIRECTORY_SEPARATOR . 'debug.log');
+defined('LOG_FILE') or define('LOG_FILE', DATA_DIR.DIRECTORY_SEPARATOR.'debug.log');
 
 // Application version
-defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__ . '/../VERSION')));
+defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__.'/../VERSION')));
 
 // Database driver: sqlite, mysql or postgres
 defined('DB_DRIVER') or define('DB_DRIVER', 'sqlite');
 
 // Sqlite configuration
-defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR . DIRECTORY_SEPARATOR . 'db.sqlite');
+defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.'db.sqlite');
 
 // Mysql/Postgres configuration
 defined('DB_USERNAME') or define('DB_USERNAME', 'root');

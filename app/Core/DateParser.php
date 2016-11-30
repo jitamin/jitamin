@@ -14,7 +14,7 @@ namespace Hiject\Core;
 use DateTime;
 
 /**
- * Date Parser
+ * Date Parser.
  */
 class DateParser extends Base
 {
@@ -23,42 +23,38 @@ class DateParser extends Base
     const TIME_FORMAT = 'H:i';
 
     /**
-     * Get date format from settings
+     * Get date format from settings.
      *
-     * @access public
      * @return string
      */
     public function getUserDateFormat()
     {
-        return $this->configModel->get('application_date_format', DateParser::DATE_FORMAT);
+        return $this->configModel->get('application_date_format', self::DATE_FORMAT);
     }
 
     /**
-     * Get date time format from settings
+     * Get date time format from settings.
      *
-     * @access public
      * @return string
      */
     public function getUserDateTimeFormat()
     {
-        return $this->configModel->get('application_datetime_format', DateParser::DATE_TIME_FORMAT);
+        return $this->configModel->get('application_datetime_format', self::DATE_TIME_FORMAT);
     }
 
     /**
-     * Get time format from settings
+     * Get time format from settings.
      *
-     * @access public
      * @return string
      */
     public function getUserTimeFormat()
     {
-        return $this->configModel->get('application_time_format', DateParser::TIME_FORMAT);
+        return $this->configModel->get('application_time_format', self::TIME_FORMAT);
     }
 
     /**
-     * List of time formats
+     * List of time formats.
      *
-     * @access public
      * @return string[]
      */
     public function getTimeFormats()
@@ -70,10 +66,10 @@ class DateParser extends Base
     }
 
     /**
-     * List of date formats
+     * List of date formats.
      *
-     * @access public
-     * @param  boolean  $iso
+     * @param bool $iso
+     *
      * @return string[]
      */
     public function getDateFormats($iso = false)
@@ -104,10 +100,10 @@ class DateParser extends Base
     }
 
     /**
-     * List of datetime formats
+     * List of datetime formats.
      *
-     * @access public
-     * @param  boolean  $iso
+     * @param bool $iso
+     *
      * @return string[]
      */
     public function getDateTimeFormats($iso = false)
@@ -126,10 +122,10 @@ class DateParser extends Base
     }
 
     /**
-     * List of all date formats
+     * List of all date formats.
      *
-     * @access public
-     * @param  boolean  $iso
+     * @param bool $iso
+     *
      * @return string[]
      */
     public function getAllDateFormats($iso = false)
@@ -138,10 +134,10 @@ class DateParser extends Base
     }
 
     /**
-     * Get available formats (visible in settings)
+     * Get available formats (visible in settings).
      *
-     * @access public
-     * @param  array  $formats
+     * @param array $formats
+     *
      * @return array
      */
     public function getAvailableFormats(array $formats)
@@ -156,9 +152,8 @@ class DateParser extends Base
     }
 
     /**
-     * Get formats for date parsing
+     * Get formats for date parsing.
      *
-     * @access public
      * @return array
      */
     public function getParserFormats()
@@ -174,11 +169,11 @@ class DateParser extends Base
     }
 
     /**
-     * Parse a date and return a unix timestamp, try different date formats
+     * Parse a date and return a unix timestamp, try different date formats.
      *
-     * @access public
-     * @param  string   $value   Date to parse
-     * @return integer
+     * @param string $value Date to parse
+     *
+     * @return int
      */
     public function getTimestamp($value)
     {
@@ -198,12 +193,12 @@ class DateParser extends Base
     }
 
     /**
-     * Return a timestamp if the given date format is correct otherwise return 0
+     * Return a timestamp if the given date format is correct otherwise return 0.
      *
-     * @access private
-     * @param  string   $value  Date to parse
-     * @param  string   $format Date format
-     * @return integer
+     * @param string $value  Date to parse
+     * @param string $format Date format
+     *
+     * @return int
      */
     private function getValidDate($value, $format)
     {
@@ -213,6 +208,7 @@ class DateParser extends Base
             $errors = DateTime::getLastErrors();
             if ($errors['error_count'] === 0 && $errors['warning_count'] === 0) {
                 $timestamp = $date->getTimestamp();
+
                 return $timestamp > 0 ? $timestamp : 0;
             }
         }
@@ -221,13 +217,13 @@ class DateParser extends Base
     }
 
     /**
-     * Return true if the date is within the date range
+     * Return true if the date is within the date range.
      *
-     * @access public
-     * @param  DateTime  $date
-     * @param  DateTime  $start
-     * @param  DateTime  $end
-     * @return boolean
+     * @param DateTime $date
+     * @param DateTime $start
+     * @param DateTime $end
+     *
+     * @return bool
      */
     public function withinDateRange(DateTime $date, DateTime $start, DateTime $end)
     {
@@ -236,24 +232,25 @@ class DateParser extends Base
 
     /**
      * Get the total number of hours between 2 datetime objects
-     * Minutes are rounded to the nearest quarter
+     * Minutes are rounded to the nearest quarter.
      *
-     * @access public
-     * @param  DateTime $d1
-     * @param  DateTime $d2
+     * @param DateTime $d1
+     * @param DateTime $d2
+     *
      * @return float
      */
     public function getHours(DateTime $d1, DateTime $d2)
     {
         $seconds = abs($d1->getTimestamp() - $d2->getTimestamp());
+
         return round($seconds / 3600, 2);
     }
 
     /**
-     * Get ISO-8601 date from user input
+     * Get ISO-8601 date from user input.
      *
-     * @access public
-     * @param  string   $value   Date to parse
+     * @param string $value Date to parse
+     *
      * @return string
      */
     public function getIsoDate($value)
@@ -262,11 +259,11 @@ class DateParser extends Base
     }
 
     /**
-     * Get a timestamp from an ISO date format
+     * Get a timestamp from an ISO date format.
      *
-     * @access public
-     * @param  string   $value
-     * @return integer
+     * @param string $value
+     *
+     * @return int
      */
     public function getTimestampFromIsoFormat($value)
     {
@@ -274,11 +271,11 @@ class DateParser extends Base
     }
 
     /**
-     * Remove the time from a timestamp
+     * Remove the time from a timestamp.
      *
-     * @access public
-     * @param  integer $timestamp
-     * @return integer
+     * @param int $timestamp
+     *
+     * @return int
      */
     public function removeTimeFromTimestamp($timestamp)
     {
@@ -286,19 +283,19 @@ class DateParser extends Base
     }
 
     /**
-     * Format date (form display)
+     * Format date (form display).
      *
-     * @access public
-     * @param  array    $values   Database values
-     * @param  string[] $fields   Date fields
-     * @param  string   $format   Date format
+     * @param array    $values Database values
+     * @param string[] $fields Date fields
+     * @param string   $format Date format
+     *
      * @return array
      */
     public function format(array $values, array $fields, $format)
     {
         foreach ($fields as $field) {
-            if (! empty($values[$field])) {
-                if (! ctype_digit($values[$field])) {
+            if (!empty($values[$field])) {
+                if (!ctype_digit($values[$field])) {
                     $values[$field] = strtotime($values[$field]);
                 }
 
@@ -312,18 +309,18 @@ class DateParser extends Base
     }
 
     /**
-     * Convert date to timestamp
+     * Convert date to timestamp.
      *
-     * @access public
-     * @param  array    $values     Database values
-     * @param  string[] $fields     Date fields
-     * @param  boolean  $keep_time  Keep time or not
+     * @param array    $values    Database values
+     * @param string[] $fields    Date fields
+     * @param bool     $keep_time Keep time or not
+     *
      * @return array
      */
     public function convert(array $values, array $fields, $keep_time = false)
     {
         foreach ($fields as $field) {
-            if (! empty($values[$field])) {
+            if (!empty($values[$field])) {
                 $timestamp = $this->getTimestamp($values[$field]);
                 $values[$field] = $keep_time ? $timestamp : $this->removeTimeFromTimestamp($timestamp);
             }

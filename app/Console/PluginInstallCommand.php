@@ -19,7 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Plugin install command class
+ * Plugin install command class.
  */
 class PluginInstallCommand extends BaseCommand
 {

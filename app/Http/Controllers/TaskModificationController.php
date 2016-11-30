@@ -12,28 +12,26 @@
 namespace Hiject\Controller;
 
 /**
- * Task Modification controller
+ * Task Modification controller.
  */
 class TaskModificationController extends BaseController
 {
     /**
-     * Set automatically the start date
-     *
-     * @access public
+     * Set automatically the start date.
      */
     public function start()
     {
         $task = $this->getTask();
-        $this->taskModificationModel->update(array('id' => $task['id'], 'date_started' => time()));
+        $this->taskModificationModel->update(['id' => $task['id'], 'date_started' => time()]);
         $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
     }
 
     /**
-     * Display a form to edit a task
+     * Display a form to edit a task.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -50,20 +48,18 @@ class TaskModificationController extends BaseController
         $values = $this->hook->merge('controller:task-modification:form:default', $values, ['default_values' => $values]);
 
         $this->response->html($this->template->render('task_modification/show', [
-            'project' => $project,
-            'values' => $values,
-            'errors' => $errors,
-            'task' => $task,
-            'tags' => $this->taskTagModel->getList($task['id']),
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
+            'project'         => $project,
+            'values'          => $values,
+            'errors'          => $errors,
+            'task'            => $task,
+            'tags'            => $this->taskTagModel->getList($task['id']),
+            'users_list'      => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
             'categories_list' => $this->categoryModel->getList($task['project_id']),
         ]));
     }
 
     /**
-     * Validate and update a task
-     *
-     * @access public
+     * Validate and update a task.
      */
     public function update()
     {

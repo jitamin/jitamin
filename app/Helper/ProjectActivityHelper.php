@@ -19,15 +19,15 @@ use Hiject\Formatter\ProjectActivityEventFormatter;
 use Hiject\Model\ProjectActivityModel;
 
 /**
- * Project Activity Helper
+ * Project Activity Helper.
  */
 class ProjectActivityHelper extends Base
 {
     /**
-     * Search events
+     * Search events.
      *
-     * @access public
-     * @param  string $search
+     * @param string $search
+     *
      * @return array
      */
     public function searchEvents($search)
@@ -41,8 +41,7 @@ class ProjectActivityHelper extends Base
                 ->withFilter(new ProjectActivityProjectIdsFilter(array_keys($projects)))
                 ->getQuery()
                 ->desc(ProjectActivityModel::TABLE.'.id')
-                ->limit(500)
-            ;
+                ->limit(500);
 
             $events = $queryBuilder->format(new ProjectActivityEventFormatter($this->container));
         }
@@ -51,11 +50,11 @@ class ProjectActivityHelper extends Base
     }
 
     /**
-     * Get project activity events
+     * Get project activity events.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  int      $limit
+     * @param int $project_id
+     * @param int $limit
+     *
      * @return array
      */
     public function getProjectEvents($project_id, $limit = 50)
@@ -65,18 +64,17 @@ class ProjectActivityHelper extends Base
 
         $queryBuilder->getQuery()
             ->desc(ProjectActivityModel::TABLE.'.id')
-            ->limit($limit)
-        ;
+            ->limit($limit);
 
         return $queryBuilder->format(new ProjectActivityEventFormatter($this->container));
     }
 
     /**
-     * Get projects activity events
+     * Get projects activity events.
      *
-     * @access public
-     * @param  int[]    $project_ids
-     * @param  int      $limit
+     * @param int[] $project_ids
+     * @param int   $limit
+     *
      * @return array
      */
     public function getProjectsEvents(array $project_ids, $limit = 50)
@@ -86,17 +84,16 @@ class ProjectActivityHelper extends Base
 
         $queryBuilder->getQuery()
             ->desc(ProjectActivityModel::TABLE.'.id')
-            ->limit($limit)
-        ;
+            ->limit($limit);
 
         return $queryBuilder->format(new ProjectActivityEventFormatter($this->container));
     }
 
     /**
-     * Get task activity events
+     * Get task activity events.
      *
-     * @access public
-     * @param  integer $task_id
+     * @param int $task_id
+     *
      * @return array
      */
     public function getTaskEvents($task_id)

@@ -14,15 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Class ProjectRoleRestrictionController
+ * Class ProjectRoleRestrictionController.
  */
 class ProjectRoleRestrictionController extends BaseController
 {
     /**
-     * Show form to create a new project restriction
+     * Show form to create a new project restriction.
      *
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws AccessForbiddenException
      */
     public function create(array $values = [], array $errors = [])
@@ -32,16 +33,16 @@ class ProjectRoleRestrictionController extends BaseController
         $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
         $this->response->html($this->template->render('project_role_restriction/create', [
-            'project' => $project,
-            'role' => $role,
-            'values' => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
-            'errors' => $errors,
+            'project'      => $project,
+            'role'         => $role,
+            'values'       => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
+            'errors'       => $errors,
             'restrictions' => $this->projectRoleRestrictionModel->getRules(),
         ]));
     }
 
     /**
-     * Save new restriction
+     * Save new restriction.
      */
     public function save()
     {
@@ -64,9 +65,7 @@ class ProjectRoleRestrictionController extends BaseController
     }
 
     /**
-     * Confirm suppression
-     *
-     * @access public
+     * Confirm suppression.
      */
     public function confirm()
     {
@@ -74,16 +73,14 @@ class ProjectRoleRestrictionController extends BaseController
         $restriction_id = $this->request->getIntegerParam('restriction_id');
 
         $this->response->html($this->helper->layout->project('project_role_restriction/remove', [
-            'project' => $project,
-            'restriction' => $this->projectRoleRestrictionModel->getById($project['id'], $restriction_id),
+            'project'      => $project,
+            'restriction'  => $this->projectRoleRestrictionModel->getById($project['id'], $restriction_id),
             'restrictions' => $this->projectRoleRestrictionModel->getRules(),
         ]));
     }
 
     /**
-     * Remove a restriction
-     *
-     * @access public
+     * Remove a restriction.
      */
     public function remove()
     {

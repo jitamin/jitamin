@@ -14,23 +14,21 @@ namespace Hiject\Core;
 use Pimple\Container;
 
 /**
- * Base Class
+ * Base Class.
  */
 abstract class Base
 {
     /**
-     * Container instance
+     * Container instance.
      *
-     * @access protected
      * @var \Pimple\Container
      */
     protected $container;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  \Pimple\Container   $container
+     * @param \Pimple\Container $container
      */
     public function __construct(Container $container)
     {
@@ -38,10 +36,10 @@ abstract class Base
     }
 
     /**
-     * Load automatically dependencies
+     * Load automatically dependencies.
      *
-     * @access public
-     * @param  string $name Class name
+     * @param string $name Class name
+     *
      * @return mixed
      */
     public function __get($name)
@@ -50,11 +48,12 @@ abstract class Base
     }
 
     /**
-     * Get object instance
+     * Get object instance.
      *
      * @static
-     * @access public
-     * @param  Container $container
+     *
+     * @param Container $container
+     *
      * @return static
      */
     public static function getInstance(Container $container)

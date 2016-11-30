@@ -12,7 +12,7 @@
 namespace Hiject\Api\Authorization;
 
 /**
- * Class TaskFileAuthorization
+ * Class TaskFileAuthorization.
  */
 class TaskFileAuthorization extends ProjectAuthorization
 {

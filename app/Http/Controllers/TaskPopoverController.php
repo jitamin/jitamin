@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Task Popover
+ * Task Popover.
  */
 class TaskPopoverController extends BaseController
 {
     /**
-     * Screenshot popover
-     *
-     * @access public
+     * Screenshot popover.
      */
     public function screenshot()
     {

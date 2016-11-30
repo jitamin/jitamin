@@ -49,12 +49,12 @@ class TaskProjectMoveModelTest extends Base
 
         // We create a task
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'owner_id' => 1,
+            'title'       => 'test',
+            'project_id'  => 1,
+            'owner_id'    => 1,
             'category_id' => 10,
-            'position' => 333,
-            'priority' => 1,
+            'position'    => 333,
+            'priority'    => 1,
         ]));
 
         $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_PROJECT, [$this, 'onMoveProject']);

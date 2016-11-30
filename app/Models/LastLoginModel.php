@@ -14,33 +14,33 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * LastLogin model
+ * LastLogin model.
  */
 class LastLoginModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'last_logins';
 
     /**
-     * Number of connections to keep for history
+     * Number of connections to keep for history.
      *
-     * @var integer
+     * @var int
      */
     const NB_LOGINS = 10;
 
     /**
-     * Create a new record
+     * Create a new record.
      *
-     * @access public
-     * @param  string   $auth_type   Authentication method
-     * @param  integer  $user_id     User id
-     * @param  string   $ip          IP Address
-     * @param  string   $user_agent  User Agent
-     * @return boolean
+     * @param string $auth_type  Authentication method
+     * @param int    $user_id    User id
+     * @param string $ip         IP Address
+     * @param string $user_agent User Agent
+     *
+     * @return bool
      */
     public function create($auth_type, $user_id, $ip, $user_agent)
     {
@@ -48,20 +48,19 @@ class LastLoginModel extends Base
 
         return $this->db
             ->table(self::TABLE)
-            ->insert(array(
-                'auth_type' => $auth_type,
-                'user_id' => $user_id,
-                'ip' => $ip,
-                'user_agent' => substr($user_agent, 0, 255),
+            ->insert([
+                'auth_type'     => $auth_type,
+                'user_id'       => $user_id,
+                'ip'            => $ip,
+                'user_agent'    => substr($user_agent, 0, 255),
                 'date_creation' => time(),
-            ));
+            ]);
     }
 
     /**
-     * Cleanup login history
+     * Cleanup login history.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
      */
     public function cleanup($user_id)
     {
@@ -80,10 +79,10 @@ class LastLoginModel extends Base
     }
 
     /**
-     * Get the last connections for a given user
+     * Get the last connections for a given user.
      *
-     * @access public
-     * @param  integer  $user_id  User id
+     * @param int $user_id User id
+     *
      * @return array
      */
     public function getAll($user_id)

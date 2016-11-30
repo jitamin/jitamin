@@ -15,15 +15,15 @@ use Hiject\Core\Base;
 use Hiject\Core\Group\GroupBackendProviderInterface;
 
 /**
- * Database Backend Group Provider
+ * Database Backend Group Provider.
  */
 class DatabaseBackendGroupProvider extends Base implements GroupBackendProviderInterface
 {
     /**
-     * Find a group from a search query
+     * Find a group from a search query.
      *
-     * @access public
-     * @param  string $input
+     * @param string $input
+     *
      * @return DatabaseGroupProvider[]
      */
     public function find($input)

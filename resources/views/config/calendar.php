@@ -10,7 +10,7 @@
         <h3><?= t('Project calendar view') ?></h3>
         <?= $this->form->radios('calendar_project_tasks', [
                 'date_creation' => t('Show tasks based on the creation date'),
-                'date_started' => t('Show tasks based on the start date'),
+                'date_started'  => t('Show tasks based on the start date'),
             ], $values) ?>
     </div>
 
@@ -18,7 +18,7 @@
         <h3><?= t('User calendar view') ?></h3>
         <?= $this->form->radios('calendar_user_tasks', [
                 'date_creation' => t('Show tasks based on the creation date'),
-                'date_started' => t('Show tasks based on the start date'),
+                'date_started'  => t('Show tasks based on the start date'),
             ], $values) ?>
     </div>
 

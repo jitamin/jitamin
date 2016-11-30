@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskModel;
 use Hiject\Model\ColumnModel;
-use Hiject\Model\TaskStatusModel;
-use Hiject\Model\TaskPositionModel;
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\TaskFinderModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
+use Hiject\Model\TaskPositionModel;
+use Hiject\Model\TaskStatusModel;
 
 class TaskPositionModelTest extends Base
 {
@@ -278,10 +278,10 @@ class TaskPositionModelTest extends Base
         foreach ([1, 2, 3, 4] as $column_id) {
             for ($i = 1; $i <= $task_per_column; $i++, $counter++) {
                 $task = [
-                    'title' => 'Task #'.$i.'-'.$column_id,
+                    'title'      => 'Task #'.$i.'-'.$column_id,
                     'project_id' => 1,
-                    'column_id' => $column_id,
-                    'owner_id' => 0,
+                    'column_id'  => $column_id,
+                    'owner_id'   => 0,
                 ];
 
                 $this->assertEquals($counter, $taskCreationModel->create($task));

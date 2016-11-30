@@ -60,8 +60,8 @@ class ProjectTaskPriorityModelTest extends Base
 
         $expected = [
             'priority_default' => 0,
-            'priority_start' => 0,
-            'priority_end' => 3,
+            'priority_start'   => 0,
+            'priority_end'     => 3,
         ];
 
         $this->assertEquals($expected, $projectTaskPriorityModel->getPrioritySettings(1));
@@ -74,10 +74,10 @@ class ProjectTaskPriorityModelTest extends Base
         $projectTaskPriorityModel = new ProjectTaskPriorityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create([
-            'name' => 'My project 1',
+            'name'             => 'My project 1',
             'priority_default' => 2,
-            'priority_start' => -2,
-            'priority_end' => 8,
+            'priority_start'   => -2,
+            'priority_end'     => 8,
         ]));
 
         $this->assertEquals(2, $projectTaskPriorityModel->getPriorityForProject(1, 42));

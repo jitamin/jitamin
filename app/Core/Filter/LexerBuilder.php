@@ -14,46 +14,40 @@ namespace Hiject\Core\Filter;
 use PicoDb\Table;
 
 /**
- * Lexer Builder
+ * Lexer Builder.
  */
 class LexerBuilder
 {
     /**
-     * Lexer object
+     * Lexer object.
      *
-     * @access protected
      * @var Lexer
      */
     protected $lexer;
 
     /**
-     * Query object
+     * Query object.
      *
-     * @access protected
      * @var Table
      */
     protected $query;
 
     /**
-     * List of filters
+     * List of filters.
      *
-     * @access protected
      * @var FilterInterface[]
      */
     protected $filters;
 
     /**
-     * QueryBuilder object
+     * QueryBuilder object.
      *
-     * @access protected
      * @var QueryBuilder
      */
     protected $queryBuilder;
 
     /**
-     * Constructor
-     *
-     * @access public
+     * Constructor.
      */
     public function __construct()
     {
@@ -62,11 +56,11 @@ class LexerBuilder
     }
 
     /**
-     * Add a filter
+     * Add a filter.
      *
-     * @access public
-     * @param  FilterInterface $filter
-     * @param  bool            $default
+     * @param FilterInterface $filter
+     * @param bool            $default
+     *
      * @return LexerBuilder
      */
     public function withFilter(FilterInterface $filter, $default = false)
@@ -75,7 +69,7 @@ class LexerBuilder
 
         foreach ($attributes as $attribute) {
             $this->filters[$attribute] = $filter;
-            $this->lexer->addToken(sprintf("/^(%s:)/i", $attribute), $attribute);
+            $this->lexer->addToken(sprintf('/^(%s:)/i', $attribute), $attribute);
 
             if ($default) {
                 $this->lexer->setDefaultToken($attribute);
@@ -86,24 +80,25 @@ class LexerBuilder
     }
 
     /**
-     * Set the query
+     * Set the query.
      *
-     * @access public
-     * @param  Table $query
+     * @param Table $query
+     *
      * @return LexerBuilder
      */
     public function withQuery(Table $query)
     {
         $this->query = $query;
         $this->queryBuilder->withQuery($this->query);
+
         return $this;
     }
 
     /**
-     * Parse the input and build the query
+     * Parse the input and build the query.
      *
-     * @access public
-     * @param  string $input
+     * @param string $input
+     *
      * @return QueryBuilder
      */
     public function build($input)
@@ -120,11 +115,10 @@ class LexerBuilder
     }
 
     /**
-     * Apply filters to the query
+     * Apply filters to the query.
      *
-     * @access protected
-     * @param  FilterInterface $filter
-     * @param  array           $values
+     * @param FilterInterface $filter
+     * @param array           $values
      */
     protected function applyFilters(FilterInterface $filter, array $values)
     {
@@ -135,7 +129,7 @@ class LexerBuilder
             $criteria->withQuery($this->query);
 
             foreach ($values as $value) {
-                $currentFilter = clone($filter);
+                $currentFilter = clone $filter;
                 $criteria->withFilter($currentFilter->withValue($value));
             }
 
@@ -146,7 +140,7 @@ class LexerBuilder
     }
 
     /**
-     * Clone object with deep copy
+     * Clone object with deep copy.
      */
     public function __clone()
     {

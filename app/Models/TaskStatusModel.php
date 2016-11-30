@@ -14,16 +14,16 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Task Status
+ * Task Status.
  */
 class TaskStatusModel extends Base
 {
     /**
-     * Return true if the task is closed
+     * Return true if the task is closed.
      *
-     * @access public
-     * @param  integer    $task_id     Task id
-     * @return boolean
+     * @param int $task_id Task id
+     *
+     * @return bool
      */
     public function isClosed($task_id)
     {
@@ -31,11 +31,11 @@ class TaskStatusModel extends Base
     }
 
     /**
-     * Return true if the task is open
+     * Return true if the task is open.
      *
-     * @access public
-     * @param  integer    $task_id     Task id
-     * @return boolean
+     * @param int $task_id Task id
+     *
+     * @return bool
      */
     public function isOpen($task_id)
     {
@@ -43,24 +43,25 @@ class TaskStatusModel extends Base
     }
 
     /**
-     * Mark a task closed
+     * Mark a task closed.
      *
-     * @access public
-     * @param  integer   $task_id   Task id
-     * @return boolean
+     * @param int $task_id Task id
+     *
+     * @return bool
      */
     public function close($task_id)
     {
         $this->subtaskStatusModel->closeAll($task_id);
+
         return $this->changeStatus($task_id, TaskModel::STATUS_CLOSED, time(), TaskModel::EVENT_CLOSE);
     }
 
     /**
-     * Mark a task open
+     * Mark a task open.
      *
-     * @access public
-     * @param  integer   $task_id   Task id
-     * @return boolean
+     * @param int $task_id Task id
+     *
+     * @return bool
      */
     public function open($task_id)
     {
@@ -68,10 +69,9 @@ class TaskStatusModel extends Base
     }
 
     /**
-     * Close multiple tasks
+     * Close multiple tasks.
      *
-     * @access public
-     * @param  array   $task_ids
+     * @param array $task_ids
      */
     public function closeMultipleTasks(array $task_ids)
     {
@@ -81,11 +81,10 @@ class TaskStatusModel extends Base
     }
 
     /**
-     * Close all tasks within a column/swimlane
+     * Close all tasks within a column/swimlane.
      *
-     * @access public
-     * @param  integer $swimlane_id
-     * @param  integer $column_id
+     * @param int $swimlane_id
+     * @param int $column_id
      */
     public function closeTasksBySwimlaneAndColumn($swimlane_id, $column_id)
     {
@@ -100,18 +99,18 @@ class TaskStatusModel extends Base
     }
 
     /**
-     * Common method to change the status of task
+     * Common method to change the status of task.
      *
-     * @access private
-     * @param  integer   $task_id             Task id
-     * @param  integer   $status              Task status
-     * @param  integer   $date_completed      Timestamp
-     * @param  string    $event_name          Event name
-     * @return boolean
+     * @param int    $task_id        Task id
+     * @param int    $status         Task status
+     * @param int    $date_completed Timestamp
+     * @param string $event_name     Event name
+     *
+     * @return bool
      */
     private function changeStatus($task_id, $status, $date_completed, $event_name)
     {
-        if (! $this->taskFinderModel->exists($task_id)) {
+        if (!$this->taskFinderModel->exists($task_id)) {
             return false;
         }
 
@@ -119,8 +118,8 @@ class TaskStatusModel extends Base
                         ->table(TaskModel::TABLE)
                         ->eq('id', $task_id)
                         ->update([
-                            'is_active' => $status,
-                            'date_completed' => $date_completed,
+                            'is_active'         => $status,
+                            'date_completed'    => $date_completed,
                             'date_modification' => time(),
                         ]);
 
@@ -132,12 +131,12 @@ class TaskStatusModel extends Base
     }
 
     /**
-     * Check the status of a task
+     * Check the status of a task.
      *
-     * @access private
-     * @param  integer   $task_id   Task id
-     * @param  integer   $status    Task status
-     * @return boolean
+     * @param int $task_id Task id
+     * @param int $status  Task status
+     *
+     * @return bool
      */
     private function checkStatus($task_id, $status)
     {

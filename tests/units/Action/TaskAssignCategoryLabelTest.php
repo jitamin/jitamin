@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignCategoryLabel;
 use Hiject\Bus\Event\GenericEvent;
 use Hiject\Model\CategoryModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Action\TaskAssignCategoryLabel;
 
 class TaskAssignCategoryLabelTest extends Base
 {

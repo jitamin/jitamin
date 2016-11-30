@@ -12,7 +12,7 @@
     </li>
 </ul>
 
-<?php if (! empty($task['description'])): ?>
+<?php if (!empty($task['description'])): ?>
     <h2><?= t('Description') ?></h2>
     <?= $this->text->markdown($task['description']) ?: t('There is no description.') ?>
 <?php endif ?>

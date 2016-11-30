@@ -15,7 +15,7 @@ use Hiject\Core\Cache\CacheInterface;
 use Hiject\Model\MetadataModel;
 
 /**
- * Class MetadataCacheDecorator
+ * Class MetadataCacheDecorator.
  */
 class MetadataCacheDecorator
 {
@@ -40,12 +40,12 @@ class MetadataCacheDecorator
     protected $entityId;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param CacheInterface     $cache
-     * @param MetadataModel      $metadataModel
-     * @param string             $cachePrefix
-     * @param integer            $entityId
+     * @param CacheInterface $cache
+     * @param MetadataModel  $metadataModel
+     * @param string         $cachePrefix
+     * @param int            $entityId
      */
     public function __construct(CacheInterface $cache, MetadataModel $metadataModel, $cachePrefix, $entityId)
     {
@@ -56,10 +56,11 @@ class MetadataCacheDecorator
     }
 
     /**
-     * Get metadata value by key
+     * Get metadata value by key.
      *
-     * @param  string $key
-     * @param  mixed  $default
+     * @param string $key
+     * @param mixed  $default
+     *
      * @return mixed
      */
     public function get($key, $default)
@@ -75,7 +76,7 @@ class MetadataCacheDecorator
     }
 
     /**
-     * Set new metadata value
+     * Set new metadata value.
      *
      * @param $key
      * @param $value
@@ -91,7 +92,7 @@ class MetadataCacheDecorator
     }
 
     /**
-     * Get cache key
+     * Get cache key.
      *
      * @return string
      */

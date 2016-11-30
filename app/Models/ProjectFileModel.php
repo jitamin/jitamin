@@ -12,29 +12,29 @@
 namespace Hiject\Model;
 
 /**
- * Project File Model
+ * Project File Model.
  */
 class ProjectFileModel extends FileModel
 {
     /**
-     * Table name
+     * Table name.
      *
      * @var string
      */
     const TABLE = 'project_has_files';
 
     /**
-     * Events
+     * Events.
      *
      * @var string
      */
     const EVENT_CREATE = 'project.file.create';
 
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getTable()
@@ -43,10 +43,10 @@ class ProjectFileModel extends FileModel
     }
 
     /**
-     * Define the foreign key
+     * Define the foreign key.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getForeignKey()
@@ -55,10 +55,10 @@ class ProjectFileModel extends FileModel
     }
 
     /**
-     * Define the path prefix
+     * Define the path prefix.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getPathPrefix()
@@ -67,10 +67,9 @@ class ProjectFileModel extends FileModel
     }
 
     /**
-     * Fire file creation event
+     * Fire file creation event.
      *
-     * @access protected
-     * @param  integer $file_id
+     * @param int $file_id
      */
     protected function fireCreationEvent($file_id)
     {

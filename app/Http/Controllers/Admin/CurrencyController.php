@@ -12,14 +12,13 @@
 namespace Hiject\Controller;
 
 /**
- * Currency Controller
+ * Currency Controller.
  */
 class CurrencyController extends BaseController
 {
     /**
-     * Display all currency rates and form
+     * Display all currency rates and form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -27,18 +26,16 @@ class CurrencyController extends BaseController
     {
         $this->response->html($this->helper->layout->config('currency/index', [
             'config_values' => ['application_currency' => $this->configModel->get('application_currency')],
-            'values' => $values,
-            'errors' => $errors,
-            'rates' => $this->currencyModel->getAll(),
-            'currencies' => $this->currencyModel->getCurrencies(),
-            'title' => t('Settings').' &raquo; '.t('Currency rates'),
+            'values'        => $values,
+            'errors'        => $errors,
+            'rates'         => $this->currencyModel->getAll(),
+            'currencies'    => $this->currencyModel->getCurrencies(),
+            'title'         => t('Settings').' &raquo; '.t('Currency rates'),
         ]));
     }
 
     /**
-     * Validate and save a new currency rate
-     *
-     * @access public
+     * Validate and save a new currency rate.
      */
     public function create()
     {
@@ -48,6 +45,7 @@ class CurrencyController extends BaseController
         if ($valid) {
             if ($this->currencyModel->create($values['currency'], $values['rate'])) {
                 $this->flash->success(t('The currency rate have been added successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('CurrencyController', 'index'));
             } else {
                 $this->flash->failure(t('Unable to add this currency rate.'));
@@ -58,9 +56,7 @@ class CurrencyController extends BaseController
     }
 
     /**
-     * Save reference currency
-     *
-     * @access public
+     * Save reference currency.
      */
     public function reference()
     {

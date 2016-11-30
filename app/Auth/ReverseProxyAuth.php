@@ -17,22 +17,20 @@ use Hiject\Core\Security\SessionCheckProviderInterface;
 use Hiject\User\ReverseProxyUserProvider;
 
 /**
- * Reverse-Proxy Authentication Provider
+ * Reverse-Proxy Authentication Provider.
  */
 class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterface, SessionCheckProviderInterface
 {
     /**
-     * User properties
+     * User properties.
      *
-     * @access protected
      * @var \Hiject\User\ReverseProxyUserProvider
      */
     protected $userInfo = null;
 
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -41,18 +39,18 @@ class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterfac
     }
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate()
     {
         $username = $this->request->getRemoteUser();
 
-        if (! empty($username)) {
+        if (!empty($username)) {
             $userProfile = $this->userModel->getByUsername($username);
             $this->userInfo = new ReverseProxyUserProvider($username, $userProfile ?: []);
+
             return true;
         }
 
@@ -60,10 +58,9 @@ class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterfac
     }
 
     /**
-     * Check if the user session is valid
+     * Check if the user session is valid.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isValidSession()
     {
@@ -71,9 +68,8 @@ class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterfac
     }
 
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return ReverseProxyUserProvider
      */
     public function getUser()

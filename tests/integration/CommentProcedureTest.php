@@ -49,7 +49,7 @@ class CommentProcedureTest extends BaseProcedureTest
     public function assertUpdateComment()
     {
         $this->assertTrue($this->app->execute('updateComment', [
-            'id' => $this->commentId,
+            'id'      => $this->commentId,
             'content' => 'test',
         ]));
 

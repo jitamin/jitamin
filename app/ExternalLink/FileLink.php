@@ -14,19 +14,19 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\ExternalLink\ExternalLinkInterface;
 
 /**
- * File Link
+ * File Link.
  */
 class FileLink extends BaseLink implements ExternalLinkInterface
 {
     /**
-     * Get link title
+     * Get link title.
      *
-     * @access public
      * @return string
      */
     public function getTitle()
     {
         $path = parse_url($this->url, PHP_URL_PATH);
+
         return basename(str_replace('\\', '/', $path));
     }
 }

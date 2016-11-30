@@ -11,11 +11,11 @@
 
 require_once __DIR__.'/../../Base.php';
 
+use Hiject\Auth\DatabaseAuth;
+use Hiject\Auth\ReverseProxyAuth;
+use Hiject\Auth\TotpAuth;
 use Hiject\Core\Http\Request;
 use Hiject\Core\Security\AuthenticationManager;
-use Hiject\Auth\DatabaseAuth;
-use Hiject\Auth\TotpAuth;
-use Hiject\Auth\ReverseProxyAuth;
 
 class AuthenticationManagerTest extends Base
 {

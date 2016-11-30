@@ -15,63 +15,63 @@ use Hiject\Core\Base;
 use PicoDb\Table;
 
 /**
- * Project activity model
+ * Project activity model.
  */
 class ProjectActivityModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'project_activities';
 
     /**
-     * Maximum number of events
+     * Maximum number of events.
      *
-     * @var integer
+     * @var int
      */
     const MAX_EVENTS = 1000;
 
     /**
-     * Add a new event for the project
+     * Add a new event for the project.
      *
-     * @access public
-     * @param  integer     $project_id      Project id
-     * @param  integer     $task_id         Task id
-     * @param  integer     $creator_id      User id
-     * @param  string      $event_name      Event name
-     * @param  array       $data            Event data (will be serialized)
-     * @return boolean
+     * @param int    $project_id Project id
+     * @param int    $task_id    Task id
+     * @param int    $creator_id User id
+     * @param string $event_name Event name
+     * @param array  $data       Event data (will be serialized)
+     *
+     * @return bool
      */
     public function createEvent($project_id, $task_id, $creator_id, $event_name, array $data)
     {
         $values = [
-            'project_id' => $project_id,
-            'task_id' => $task_id,
-            'creator_id' => $creator_id,
-            'event_name' => $event_name,
+            'project_id'    => $project_id,
+            'task_id'       => $task_id,
+            'creator_id'    => $creator_id,
+            'event_name'    => $event_name,
             'date_creation' => time(),
-            'data' => json_encode($data),
+            'data'          => json_encode($data),
         ];
 
         $this->cleanup(self::MAX_EVENTS - 1);
+
         return $this->db->table(self::TABLE)->insert($values);
     }
 
     /**
-     * Get query
+     * Get query.
      *
-     * @access public
      * @return Table
      */
     public function getQuery()
     {
         return $this
             ->db
-            ->table(ProjectActivityModel::TABLE)
+            ->table(self::TABLE)
             ->columns(
-                ProjectActivityModel::TABLE.'.*',
+                self::TABLE.'.*',
                 'uc.username AS author_username',
                 'uc.name AS author_name',
                 'uc.email',
@@ -79,14 +79,13 @@ class ProjectActivityModel extends Base
             )
             ->join(TaskModel::TABLE, 'id', 'task_id')
             ->join(ProjectModel::TABLE, 'id', 'project_id')
-            ->left(UserModel::TABLE, 'uc', 'id', ProjectActivityModel::TABLE, 'creator_id');
+            ->left(UserModel::TABLE, 'uc', 'id', self::TABLE, 'creator_id');
     }
 
     /**
-     * Remove old event entries to avoid large table
+     * Remove old event entries to avoid large table.
      *
-     * @access public
-     * @param  integer    $max    Maximum number of items to keep in the table
+     * @param int $max Maximum number of items to keep in the table
      */
     public function cleanup($max)
     {

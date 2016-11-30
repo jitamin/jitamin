@@ -63,7 +63,7 @@ class TaskAssigneeFilterTest extends Base
 
         $filter = new TaskAssigneeFilter();
         $filter->withQuery($query);
-        $filter->withValue("123");
+        $filter->withValue('123');
         $filter->apply();
 
         $this->assertCount(0, $query->findAll());

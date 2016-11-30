@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Ldap\Group;
 use Hiject\Core\Ldap\Entries;
+use Hiject\Core\Ldap\Group;
 
 class LdapGroupTest extends Base
 {
@@ -55,23 +55,23 @@ class LdapGroupTest extends Base
     {
         $entries = new Entries([
             'count' => 2,
-            0 => [
+            0       => [
                 'cn' => [
                     'count' => 1,
-                    0 => 'Hiject Other Group',
+                    0       => 'Hiject Other Group',
                 ],
-                0 => 'cn',
+                0       => 'cn',
                 'count' => 1,
-                'dn' => 'CN=Hiject Other Group,CN=Users,DC=hiject,DC=local',
+                'dn'    => 'CN=Hiject Other Group,CN=Users,DC=hiject,DC=local',
             ],
             1 => [
                 'cn' => [
                     'count' => 1,
-                    0 => 'Hiject Users',
+                    0       => 'Hiject Users',
                 ],
-                0 => 'cn',
+                0       => 'cn',
                 'count' => 1,
-                'dn' => 'CN=Hiject Users,CN=Users,DC=hiject,DC=local',
+                'dn'    => 'CN=Hiject Users,CN=Users,DC=hiject,DC=local',
             ],
         ]);
 

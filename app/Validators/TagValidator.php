@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Tag Validator
+ * Tag Validator.
  */
 class TagValidator extends BaseValidator
 {
     /**
-     * Validate creation
+     * Validate creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -41,11 +41,11 @@ class TagValidator extends BaseValidator
     }
 
     /**
-     * Validate modification
+     * Validate modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -66,9 +66,8 @@ class TagValidator extends BaseValidator
     }
 
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access protected
      * @return array
      */
     protected function commonValidationRules()

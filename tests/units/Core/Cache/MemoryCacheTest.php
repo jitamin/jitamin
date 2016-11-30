@@ -17,20 +17,20 @@ class MemoryCacheTest extends Base
 {
     public function testKeyNotFound()
     {
-        $c = new MemoryCache;
+        $c = new MemoryCache();
         $this->assertEquals(null, $c->get('mykey'));
     }
 
     public function testSetValue()
     {
-        $c = new MemoryCache;
+        $c = new MemoryCache();
         $c->set('mykey', 'myvalue');
         $this->assertEquals('myvalue', $c->get('mykey'));
     }
 
     public function testRemoveValue()
     {
-        $c = new MemoryCache;
+        $c = new MemoryCache();
         $c->set('mykey', 'myvalue');
         $c->remove('mykey');
         $this->assertEquals(null, $c->get('mykey'));
@@ -38,7 +38,7 @@ class MemoryCacheTest extends Base
 
     public function testFlushAll()
     {
-        $c = new MemoryCache;
+        $c = new MemoryCache();
         $c->set('mykey', 'myvalue');
         $c->flush();
         $this->assertEquals(null, $c->get('mykey'));
@@ -46,7 +46,7 @@ class MemoryCacheTest extends Base
 
     public function testProxy()
     {
-        $c = new MemoryCache;
+        $c = new MemoryCache();
 
         $class = $this
             ->getMockBuilder('stdClass')

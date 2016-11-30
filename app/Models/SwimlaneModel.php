@@ -14,36 +14,36 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Swimlanes
+ * Swimlanes.
  */
 class SwimlaneModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'swimlanes';
 
     /**
-     * Value for active swimlanes
+     * Value for active swimlanes.
      *
-     * @var integer
+     * @var int
      */
     const ACTIVE = 1;
 
     /**
-     * Value for inactive swimlanes
+     * Value for inactive swimlanes.
      *
-     * @var integer
+     * @var int
      */
     const INACTIVE = 0;
 
     /**
-     * Get a swimlane by the id
+     * Get a swimlane by the id.
      *
-     * @access public
-     * @param  integer   $swimlane_id    Swimlane id
+     * @param int $swimlane_id Swimlane id
+     *
      * @return array
      */
     public function getById($swimlane_id)
@@ -52,10 +52,10 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get the swimlane name by the id
+     * Get the swimlane name by the id.
      *
-     * @access public
-     * @param  integer   $swimlane_id    Swimlane id
+     * @param int $swimlane_id Swimlane id
+     *
      * @return string
      */
     public function getNameById($swimlane_id)
@@ -64,12 +64,12 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get a swimlane id by the project and the name
+     * Get a swimlane id by the project and the name.
      *
-     * @access public
-     * @param  integer   $project_id      Project id
-     * @param  string    $name            Name
-     * @return integer
+     * @param int    $project_id Project id
+     * @param string $name       Name
+     *
+     * @return int
      */
     public function getIdByName($project_id, $name)
     {
@@ -80,11 +80,11 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get a swimlane by the project and the name
+     * Get a swimlane by the project and the name.
      *
-     * @access public
-     * @param  integer   $project_id      Project id
-     * @param  string    $name            Swimlane name
+     * @param int    $project_id Project id
+     * @param string $name       Swimlane name
+     *
      * @return array
      */
     public function getByName($project_id, $name)
@@ -96,10 +96,10 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get first active swimlane for a project
+     * Get first active swimlane for a project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array|null
      */
     public function getFirstActiveSwimlane($project_id)
@@ -107,17 +107,17 @@ class SwimlaneModel extends Base
         $swimlanes = $this->getSwimlanes($project_id);
 
         if (empty($swimlanes)) {
-            return null;
+            return;
         }
 
         return $swimlanes[0];
     }
 
     /**
-     * Get default swimlane properties
+     * Get default swimlane properties.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getDefault($project_id)
@@ -136,10 +136,10 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get all swimlanes for a given project
+     * Get all swimlanes for a given project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -152,11 +152,11 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get the list of swimlanes by status
+     * Get the list of swimlanes by status.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @param  integer   $status        Status
+     * @param int $project_id Project id
+     * @param int $status     Status
+     *
      * @return array
      */
     public function getAllByStatus($project_id, $status = self::ACTIVE)
@@ -176,10 +176,10 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get active swimlanes
+     * Get active swimlanes.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getSwimlanes($project_id)
@@ -210,12 +210,12 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Get list of all swimlanes
+     * Get list of all swimlanes.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @param  boolean   $prepend       Prepend default value
-     * @param  boolean   $only_active   Return only active swimlanes
+     * @param int  $project_id  Project id
+     * @param bool $prepend     Prepend default value
+     * @param bool $only_active Return only active swimlanes
+     *
      * @return array
      */
     public function getList($project_id, $prepend = false, $only_active = false)
@@ -227,7 +227,7 @@ class SwimlaneModel extends Base
             $swimlanes[-1] = t('All swimlanes');
         }
 
-        if (! empty($default)) {
+        if (!empty($default)) {
             $swimlanes[0] = $default === 'Default swimlane' ? t($default) : $default;
         }
 
@@ -240,27 +240,28 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Add a new swimlane
+     * Add a new swimlane.
      *
-     * @access public
-     * @param  array    $values   Form values
-     * @return integer|boolean
+     * @param array $values Form values
+     *
+     * @return int|bool
      */
     public function create($values)
     {
-        if (! $this->projectModel->exists($values['project_id'])) {
+        if (!$this->projectModel->exists($values['project_id'])) {
             return 0;
         }
 
         $values['position'] = $this->getLastPosition($values['project_id']);
+
         return $this->db->table(self::TABLE)->persist($values);
     }
 
     /**
-     * Update a swimlane
+     * Update a swimlane.
      *
-     * @access public
-     * @param  array    $values    Form values
+     * @param array $values Form values
+     *
      * @return bool
      */
     public function update(array $values)
@@ -272,10 +273,10 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Update the default swimlane
+     * Update the default swimlane.
      *
-     * @access public
-     * @param  array    $values    Form values
+     * @param array $values Form values
+     *
      * @return bool
      */
     public function updateDefault(array $values)
@@ -283,17 +284,17 @@ class SwimlaneModel extends Base
         return $this->db
             ->table(ProjectModel::TABLE)
             ->eq('id', $values['id'])
-            ->update(array(
-                'default_swimlane' => $values['default_swimlane'],
+            ->update([
+                'default_swimlane'      => $values['default_swimlane'],
                 'show_default_swimlane' => $values['show_default_swimlane'],
-            ));
+            ]);
     }
 
     /**
-     * Enable the default swimlane
+     * Enable the default swimlane.
      *
-     * @access public
-     * @param  integer  $project_id
+     * @param int $project_id
+     *
      * @return bool
      */
     public function enableDefault($project_id)
@@ -301,16 +302,16 @@ class SwimlaneModel extends Base
         return $this->db
             ->table(ProjectModel::TABLE)
             ->eq('id', $project_id)
-            ->update(array(
+            ->update([
                 'show_default_swimlane' => 1,
-            ));
+            ]);
     }
 
     /**
-     * Disable the default swimlane
+     * Disable the default swimlane.
      *
-     * @access public
-     * @param  integer  $project_id
+     * @param int $project_id
+     *
      * @return bool
      */
     public function disableDefault($project_id)
@@ -318,17 +319,17 @@ class SwimlaneModel extends Base
         return $this->db
             ->table(ProjectModel::TABLE)
             ->eq('id', $project_id)
-            ->update(array(
+            ->update([
                 'show_default_swimlane' => 0,
-            ));
+            ]);
     }
 
     /**
-     * Get the last position of a swimlane
+     * Get the last position of a swimlane.
      *
-     * @access public
-     * @param  integer   $project_id
-     * @return integer
+     * @param int $project_id
+     *
+     * @return int
      */
     public function getLastPosition($project_id)
     {
@@ -340,11 +341,11 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Disable a swimlane
+     * Disable a swimlane.
      *
-     * @access public
-     * @param  integer   $project_id     Project id
-     * @param  integer   $swimlane_id    Swimlane id
+     * @param int $project_id  Project id
+     * @param int $swimlane_id Swimlane id
+     *
      * @return bool
      */
     public function disable($project_id, $swimlane_id)
@@ -352,10 +353,10 @@ class SwimlaneModel extends Base
         $result = $this->db
             ->table(self::TABLE)
             ->eq('id', $swimlane_id)
-            ->update(array(
+            ->update([
                 'is_active' => self::INACTIVE,
-                'position' => 0,
-            ));
+                'position'  => 0,
+            ]);
 
         if ($result) {
             // Re-order positions
@@ -366,11 +367,11 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Enable a swimlane
+     * Enable a swimlane.
      *
-     * @access public
-     * @param  integer   $project_id     Project id
-     * @param  integer   $swimlane_id    Swimlane id
+     * @param int $project_id  Project id
+     * @param int $swimlane_id Swimlane id
+     *
      * @return bool
      */
     public function enable($project_id, $swimlane_id)
@@ -378,18 +379,18 @@ class SwimlaneModel extends Base
         return $this->db
             ->table(self::TABLE)
             ->eq('id', $swimlane_id)
-            ->update(array(
+            ->update([
                 'is_active' => self::ACTIVE,
-                'position' => $this->getLastPosition($project_id),
-            ));
+                'position'  => $this->getLastPosition($project_id),
+            ]);
     }
 
     /**
-     * Remove a swimlane
+     * Remove a swimlane.
      *
-     * @access public
-     * @param  integer   $project_id     Project id
-     * @param  integer   $swimlane_id    Swimlane id
+     * @param int $project_id  Project id
+     * @param int $swimlane_id Swimlane id
+     *
      * @return bool
      */
     public function remove($project_id, $swimlane_id)
@@ -397,10 +398,11 @@ class SwimlaneModel extends Base
         $this->db->startTransaction();
 
         // Tasks should not be assigned anymore to this swimlane
-        $this->db->table(TaskModel::TABLE)->eq('swimlane_id', $swimlane_id)->update(array('swimlane_id' => 0));
+        $this->db->table(TaskModel::TABLE)->eq('swimlane_id', $swimlane_id)->update(['swimlane_id' => 0]);
 
-        if (! $this->db->table(self::TABLE)->eq('id', $swimlane_id)->remove()) {
+        if (!$this->db->table(self::TABLE)->eq('id', $swimlane_id)->remove()) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -413,11 +415,11 @@ class SwimlaneModel extends Base
     }
 
     /**
-     * Update swimlane positions after disabling or removing a swimlane
+     * Update swimlane positions after disabling or removing a swimlane.
      *
-     * @access public
-     * @param  integer  $project_id     Project id
-     * @return boolean
+     * @param int $project_id Project id
+     *
+     * @return bool
      */
     public function updatePositions($project_id)
     {
@@ -430,27 +432,27 @@ class SwimlaneModel extends Base
             ->asc('id')
             ->findAllByColumn('id');
 
-        if (! $swimlanes) {
+        if (!$swimlanes) {
             return false;
         }
 
         foreach ($swimlanes as $swimlane_id) {
             $this->db->table(self::TABLE)
                 ->eq('id', $swimlane_id)
-                ->update(array('position' => ++$position));
+                ->update(['position' => ++$position]);
         }
 
         return true;
     }
 
     /**
-     * Change swimlane position
+     * Change swimlane position.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  integer  $swimlane_id
-     * @param  integer  $position
-     * @return boolean
+     * @param int $project_id
+     * @param int $swimlane_id
+     * @param int $position
+     *
+     * @return bool
      */
     public function changePosition($project_id, $swimlane_id, $position)
     {
@@ -473,22 +475,22 @@ class SwimlaneModel extends Base
                 $offset++;
             }
 
-            $results[] = $this->db->table(self::TABLE)->eq('id', $current_swimlane_id)->update(array('position' => $offset));
+            $results[] = $this->db->table(self::TABLE)->eq('id', $current_swimlane_id)->update(['position' => $offset]);
             $offset++;
         }
 
-        $results[] = $this->db->table(self::TABLE)->eq('id', $swimlane_id)->update(array('position' => $position));
+        $results[] = $this->db->table(self::TABLE)->eq('id', $swimlane_id)->update(['position' => $position]);
 
         return !in_array(false, $results, true);
     }
 
     /**
-     * Duplicate Swimlane to project
+     * Duplicate Swimlane to project.
      *
-     * @access public
-     * @param   integer    $project_from      Project Template
-     * @param   integer    $project_to        Project that receives the copy
-     * @return  integer|boolean
+     * @param int $project_from Project Template
+     * @param int $project_to   Project that receives the copy
+     *
+     * @return int|bool
      */
     public function duplicate($project_from, $project_to)
     {
@@ -498,7 +500,7 @@ class SwimlaneModel extends Base
             unset($swimlane['id']);
             $swimlane['project_id'] = $project_to;
 
-            if (! $this->db->table(self::TABLE)->save($swimlane)) {
+            if (!$this->db->table(self::TABLE)->save($swimlane)) {
                 return false;
             }
         }

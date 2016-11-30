@@ -58,21 +58,21 @@ class QueryTest extends \Base
     {
         $entries = [
             'count' => 1,
-            0 => [
-                'count' => 2,
-                'dn' => 'uid=my_user,ou=People,dc=hiject,dc=local',
+            0       => [
+                'count'       => 2,
+                'dn'          => 'uid=my_user,ou=People,dc=hiject,dc=local',
                 'displayname' => [
                     'count' => 1,
-                    0 => 'My user',
+                    0       => 'My user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
-            ]
+            ],
         ];
 
         $this->client

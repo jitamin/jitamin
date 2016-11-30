@@ -55,7 +55,7 @@ abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
     {
         $this->adminUserId = $this->getUserId('superuser');
 
-        if (! $this->adminUserId) {
+        if (!$this->adminUserId) {
             $this->adminUserId = $this->app->createUser('superuser', 'password', 'Admin User', 'user@localhost', 'app-admin');
             $this->assertNotFalse($this->adminUserId);
         }
@@ -69,7 +69,7 @@ abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
     {
         $this->managerUserId = $this->getUserId('manager');
 
-        if (! $this->managerUserId) {
+        if (!$this->managerUserId) {
             $this->managerUserId = $this->app->createUser('manager', 'password', 'Manager User', 'user@localhost', 'app-manager');
             $this->assertNotFalse($this->managerUserId);
         }
@@ -83,7 +83,7 @@ abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
     {
         $this->userUserId = $this->getUserId('user');
 
-        if (! $this->userUserId) {
+        if (!$this->userUserId) {
             $this->userUserId = $this->app->createUser('user', 'password', 'Standard User', 'user@localhost', 'app-user');
             $this->assertNotFalse($this->userUserId);
         }
@@ -97,7 +97,7 @@ abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
     {
         $user = $this->app->getUserByName($username);
 
-        if (! empty($user)) {
+        if (!empty($user)) {
             return $user['id'];
         }
 
@@ -134,7 +134,7 @@ abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
     {
         $this->subtaskId = $this->app->createSubtask([
             'task_id' => $this->taskId,
-            'title' => 'subtask #1',
+            'title'   => 'subtask #1',
         ]);
 
         $this->assertNotFalse($this->subtaskId);

@@ -14,21 +14,20 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class TagModel
+ * Class TagModel.
  */
 class TagModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'tags';
 
     /**
-     * Get all tags
+     * Get all tags.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -37,10 +36,10 @@ class TagModel extends Base
     }
 
     /**
-     * Get all tags by project
+     * Get all tags by project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAllByProject($project_id)
@@ -49,10 +48,10 @@ class TagModel extends Base
     }
 
     /**
-     * Get assignable tags for a project
+     * Get assignable tags for a project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAssignableList($project_id)
@@ -67,10 +66,10 @@ class TagModel extends Base
     }
 
     /**
-     * Get one tag
+     * Get one tag.
      *
-     * @access public
-     * @param  integer $tag_id
+     * @param int $tag_id
+     *
      * @return array|null
      */
     public function getById($tag_id)
@@ -79,12 +78,12 @@ class TagModel extends Base
     }
 
     /**
-     * Get tag id from tag name
+     * Get tag id from tag name.
      *
-     * @access public
-     * @param  int    $project_id
-     * @param  string $tag
-     * @return integer
+     * @param int    $project_id
+     * @param string $tag
+     *
+     * @return int
      */
     public function getIdByName($project_id, $tag)
     {
@@ -100,13 +99,13 @@ class TagModel extends Base
     }
 
     /**
-     * Return true if the tag exists
+     * Return true if the tag exists.
      *
-     * @access public
-     * @param  integer $project_id
-     * @param  string  $tag
-     * @param  integer $tag_id
-     * @return boolean
+     * @param int    $project_id
+     * @param string $tag
+     * @param int    $tag_id
+     *
+     * @return bool
      */
     public function exists($project_id, $tag, $tag_id = 0)
     {
@@ -123,11 +122,11 @@ class TagModel extends Base
     }
 
     /**
-     * Return tag id and create a new tag if necessary
+     * Return tag id and create a new tag if necessary.
      *
-     * @access public
-     * @param  int    $project_id
-     * @param  string $tag
+     * @param int    $project_id
+     * @param string $tag
+     *
      * @return bool|int
      */
     public function findOrCreateTag($project_id, $tag)
@@ -142,41 +141,41 @@ class TagModel extends Base
     }
 
     /**
-     * Add a new tag
+     * Add a new tag.
      *
-     * @access public
-     * @param  int    $project_id
-     * @param  string $tag
+     * @param int    $project_id
+     * @param string $tag
+     *
      * @return bool|int
      */
     public function create($project_id, $tag)
     {
-        return $this->db->table(self::TABLE)->persist(array(
+        return $this->db->table(self::TABLE)->persist([
             'project_id' => $project_id,
-            'name' => $tag,
-        ));
+            'name'       => $tag,
+        ]);
     }
 
     /**
-     * Update a tag
+     * Update a tag.
      *
-     * @access public
-     * @param  integer $tag_id
-     * @param  string  $tag
+     * @param int    $tag_id
+     * @param string $tag
+     *
      * @return bool
      */
     public function update($tag_id, $tag)
     {
-        return $this->db->table(self::TABLE)->eq('id', $tag_id)->update(array(
+        return $this->db->table(self::TABLE)->eq('id', $tag_id)->update([
             'name' => $tag,
-        ));
+        ]);
     }
 
     /**
-     * Remove a tag
+     * Remove a tag.
      *
-     * @access public
-     * @param  integer $tag_id
+     * @param int $tag_id
+     *
      * @return bool
      */
     public function remove($tag_id)

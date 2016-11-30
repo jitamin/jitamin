@@ -18,7 +18,7 @@
                     ) ?>
                 </td>
                 <td>
-                    <?php if (! empty($link['task_assignee_username'])): ?>
+                    <?php if (!empty($link['task_assignee_username'])): ?>
                         <?= $this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']) ?>
                     <?php else: ?>
                         <?= t('Not assigned') ?>

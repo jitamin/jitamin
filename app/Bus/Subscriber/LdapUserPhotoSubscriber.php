@@ -11,20 +11,20 @@
 
 namespace Hiject\Bus\Subscriber;
 
-use Hiject\Core\User\UserProfile;
 use Hiject\Bus\Event\UserProfileSyncEvent;
+use Hiject\Core\User\UserProfile;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Class LdapUserPhotoSubscriber
+ * Class LdapUserPhotoSubscriber.
  */
 class LdapUserPhotoSubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -35,10 +35,9 @@ class LdapUserPhotoSubscriber extends BaseSubscriber implements EventSubscriberI
     }
 
     /**
-     * Save the user profile photo from LDAP to the object storage
+     * Save the user profile photo from LDAP to the object storage.
      *
-     * @access public
-     * @param  UserProfileSyncEvent $event
+     * @param UserProfileSyncEvent $event
      */
     public function syncUserPhoto(UserProfileSyncEvent $event)
     {
@@ -46,7 +45,7 @@ class LdapUserPhotoSubscriber extends BaseSubscriber implements EventSubscriberI
             $profile = $event->getProfile();
             $photo = $event->getUser()->getPhoto();
 
-            if (empty($profile['avatar_path']) && ! empty($photo)) {
+            if (empty($profile['avatar_path']) && !empty($photo)) {
                 $this->logger->info('Saving user photo from LDAP profile');
                 $this->avatarFileModel->uploadImageContent($profile['id'], $photo);
             }

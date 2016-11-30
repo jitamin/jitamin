@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Subtask export command class
+ * Subtask export command class.
  */
 class SubtaskExportCommand extends BaseCommand
 {

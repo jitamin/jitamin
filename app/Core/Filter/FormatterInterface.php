@@ -14,23 +14,22 @@ namespace Hiject\Core\Filter;
 use PicoDb\Table;
 
 /**
- * Formatter interface
+ * Formatter interface.
  */
 interface FormatterInterface
 {
     /**
-     * Set query
+     * Set query.
      *
-     * @access public
-     * @param  Table $query
+     * @param Table $query
+     *
      * @return FormatterInterface
      */
     public function withQuery(Table $query);
 
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return mixed
      */
     public function format();

@@ -12,7 +12,7 @@
 namespace Hiject\Api\Authorization;
 
 /**
- * Class TaskLinkAuthorization
+ * Class TaskLinkAuthorization.
  */
 class TaskLinkAuthorization extends ProjectAuthorization
 {

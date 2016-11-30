@@ -15,16 +15,16 @@ use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * Subtask controller
+ * Subtask controller.
  */
 class SubtaskController extends BaseController
 {
     /**
-     * Creation form
+     * Creation form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
@@ -37,35 +37,34 @@ class SubtaskController extends BaseController
         }
 
         $this->response->html($this->template->render('subtask/create', [
-            'values' => $values,
-            'errors' => $errors,
+            'values'     => $values,
+            'errors'     => $errors,
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
-            'task' => $task,
+            'task'       => $task,
         ]));
     }
-    
+
     /**
-     * Prepare form values
+     * Prepare form values.
      *
-     * @access protected
-     * @param  array $task
+     * @param array $task
+     *
      * @return array
      */
     protected function prepareValues(array $task)
     {
         $values = [
-            'task_id' => $task['id'],
-            'another_subtask' => $this->request->getIntegerParam('another_subtask', 0)
+            'task_id'         => $task['id'],
+            'another_subtask' => $this->request->getIntegerParam('another_subtask', 0),
         ];
 
         $values = $this->hook->merge('controller:subtask:form:default', $values, ['default_values' => $values]);
+
         return $values;
     }
 
     /**
-     * Validation and creation
-     *
-     * @access public
+     * Validation and creation.
      */
     public function save()
     {
@@ -82,7 +81,7 @@ class SubtaskController extends BaseController
             }
 
             if (isset($values['another_subtask']) && $values['another_subtask'] == 1) {
-                return $this->create(array('project_id' => $task['project_id'], 'task_id' => $task['id'], 'another_subtask' => 1));
+                return $this->create(['project_id' => $task['project_id'], 'task_id' => $task['id'], 'another_subtask' => 1]);
             }
 
             return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']], 'subtasks'), true);
@@ -92,11 +91,11 @@ class SubtaskController extends BaseController
     }
 
     /**
-     * Edit form
+     * Edit form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
@@ -106,19 +105,17 @@ class SubtaskController extends BaseController
         $subtask = $this->getSubtask();
 
         $this->response->html($this->template->render('subtask/edit', [
-            'values' => empty($values) ? $subtask : $values,
-            'errors' => $errors,
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
+            'values'      => empty($values) ? $subtask : $values,
+            'errors'      => $errors,
+            'users_list'  => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
             'status_list' => $this->subtaskModel->getStatusList(),
-            'subtask' => $subtask,
-            'task' => $task,
+            'subtask'     => $subtask,
+            'task'        => $task,
         ]));
     }
 
     /**
-     * Update and validate a subtask
-     *
-     * @access public
+     * Update and validate a subtask.
      */
     public function update()
     {
@@ -142,9 +139,7 @@ class SubtaskController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a subtask
-     *
-     * @access public
+     * Confirmation dialog before removing a subtask.
      */
     public function confirm()
     {
@@ -153,14 +148,12 @@ class SubtaskController extends BaseController
 
         $this->response->html($this->template->render('subtask/remove', [
             'subtask' => $subtask,
-            'task' => $task,
+            'task'    => $task,
         ]));
     }
 
     /**
-     * Remove a subtask
-     *
-     * @access public
+     * Remove a subtask.
      */
     public function remove()
     {
@@ -178,9 +171,7 @@ class SubtaskController extends BaseController
     }
 
     /**
-     * Move subtask position
-     *
-     * @access public
+     * Move subtask position.
      */
     public function movePosition()
     {
@@ -188,9 +179,9 @@ class SubtaskController extends BaseController
         $task_id = $this->request->getIntegerParam('task_id');
         $values = $this->request->getJson();
 
-        if (! empty($values) && $this->helper->user->hasProjectAccess('SubtaskController', 'movePosition', $project_id)) {
+        if (!empty($values) && $this->helper->user->hasProjectAccess('SubtaskController', 'movePosition', $project_id)) {
             $result = $this->subtaskPositionModel->changePosition($task_id, $values['subtask_id'], $values['position']);
-            $this->response->json(array('result' => $result));
+            $this->response->json(['result' => $result]);
         } else {
             throw new AccessForbiddenException();
         }

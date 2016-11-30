@@ -14,14 +14,13 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Project activity event formatter
+ * Project activity event formatter.
  */
 class ProjectActivityEventFormatter extends BaseFormatter implements FormatterInterface
 {
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -41,15 +40,15 @@ class ProjectActivityEventFormatter extends BaseFormatter implements FormatterIn
     }
 
     /**
-     * Decode event data, supports unserialize() and json_decode()
+     * Decode event data, supports unserialize() and json_decode().
      *
-     * @access protected
-     * @param  string   $data   Serialized data
+     * @param string $data Serialized data
+     *
      * @return array
      */
     protected function unserializeEvent($data)
     {
-        if ($data{0} === 'a') {
+        if ($data[0] === 'a') {
             return unserialize($data);
         }
 
@@ -57,10 +56,10 @@ class ProjectActivityEventFormatter extends BaseFormatter implements FormatterIn
     }
 
     /**
-     * Get the event html content
+     * Get the event html content.
      *
-     * @access protected
-     * @param  array     $params    Event properties
+     * @param array $params Event properties
+     *
      * @return string
      */
     protected function renderEvent(array $params)

@@ -12,15 +12,15 @@
 namespace Hiject\Model;
 
 /**
- * Project Metadata
+ * Project Metadata.
  */
 class ProjectMetadataModel extends MetadataModel
 {
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getTable()
@@ -29,9 +29,8 @@ class ProjectMetadataModel extends MetadataModel
     }
 
     /**
-     * Define the entity key
+     * Define the entity key.
      *
-     * @access protected
      * @return string
      */
     protected function getEntityKey()
@@ -40,18 +39,18 @@ class ProjectMetadataModel extends MetadataModel
     }
 
     /**
-     * Helper method to duplicate all metadata to another project
+     * Helper method to duplicate all metadata to another project.
      *
-     * @access public
-     * @param  integer $src_project_id
-     * @param  integer $dst_project_id
-     * @return boolean
+     * @param int $src_project_id
+     * @param int $dst_project_id
+     *
+     * @return bool
      */
     public function duplicate($src_project_id, $dst_project_id)
     {
         $metadata = $this->getAll($src_project_id);
 
-        if (! $this->save($dst_project_id, $metadata)) {
+        if (!$this->save($dst_project_id, $metadata)) {
             return false;
         }
 

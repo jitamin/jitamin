@@ -16,34 +16,37 @@ use Hiject\Bus\EventBuilder\TaskEventBuilder;
 use Hiject\Model\TaskModel;
 
 /**
- * Class TaskEventJob
+ * Class TaskEventJob.
  */
 class TaskEventJob extends BaseJob
 {
     /**
-     * Set job params
+     * Set job params.
      *
-     * @param  int    $taskId
-     * @param  array  $eventNames
-     * @param  array  $changes
-     * @param  array  $values
-     * @param  array  $task
+     * @param int   $taskId
+     * @param array $eventNames
+     * @param array $changes
+     * @param array $values
+     * @param array $task
+     *
      * @return $this
      */
     public function withParams($taskId, array $eventNames, array $changes = [], array $values = [], array $task = [])
     {
         $this->jobParams = [$taskId, $eventNames, $changes, $values, $task];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @param  int    $taskId
-     * @param  array  $eventNames
-     * @param  array  $changes
-     * @param  array  $values
-     * @param  array  $task
+     * @param int   $taskId
+     * @param array $eventNames
+     * @param array $changes
+     * @param array $values
+     * @param array $task
+     *
      * @return $this
      */
     public function execute($taskId, array $eventNames, array $changes = [], array $values = [], array $task = [])
@@ -63,11 +66,10 @@ class TaskEventJob extends BaseJob
     }
 
     /**
-     * Trigger event
+     * Trigger event.
      *
-     * @access protected
-     * @param  string    $eventName
-     * @param  TaskEvent $event
+     * @param string    $eventName
+     * @param TaskEvent $event
      */
     protected function fireEvent($eventName, TaskEvent $event)
     {

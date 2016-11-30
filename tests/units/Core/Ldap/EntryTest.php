@@ -16,21 +16,21 @@ use Hiject\Core\Ldap\Entry;
 class EntryTest extends Base
 {
     private $entry = [
-        'count' => 2,
-        'dn' => 'uid=my_user,ou=People,dc=hiject,dc=local',
+        'count'       => 2,
+        'dn'          => 'uid=my_user,ou=People,dc=hiject,dc=local',
         'displayname' => [
             'count' => 1,
-            0 => 'My LDAP user',
+            0       => 'My LDAP user',
         ],
         'broken' => [],
-        'mail' => [
+        'mail'   => [
             'count' => 2,
-            0 => 'user1@localhost',
-            1 => 'user2@localhost',
+            0       => 'user1@localhost',
+            1       => 'user2@localhost',
         ],
         'samaccountname' => [
             'count' => 1,
-            0 => 'my_ldap_user',
+            0       => 'my_ldap_user',
         ],
         0 => 'displayname',
         1 => 'mail',

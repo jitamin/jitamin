@@ -11,32 +11,32 @@
 
 namespace Hiject\Model;
 
-use PicoDb\Database;
 use Hiject\Core\Base;
+use PicoDb\Database;
 
 /**
- * Subtask Model
+ * Subtask Model.
  */
 class SubtaskModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'subtasks';
 
     /**
-     * Subtask status
+     * Subtask status.
      *
-     * @var integer
+     * @var int
      */
     const STATUS_TODO = 0;
     const STATUS_INPROGRESS = 1;
     const STATUS_DONE = 2;
 
     /**
-     * Events
+     * Events.
      *
      * @var string
      */
@@ -45,11 +45,11 @@ class SubtaskModel extends Base
     const EVENT_DELETE = 'subtask.delete';
 
     /**
-     * Get projectId from subtaskId
+     * Get projectId from subtaskId.
      *
-     * @access public
-     * @param  integer $subtask_id
-     * @return integer
+     * @param int $subtask_id
+     *
+     * @return int
      */
     public function getProjectId($subtask_id)
     {
@@ -57,37 +57,36 @@ class SubtaskModel extends Base
             ->table(self::TABLE)
             ->eq(self::TABLE.'.id', $subtask_id)
             ->join(TaskModel::TABLE, 'id', 'task_id')
-            ->findOneColumn(TaskModel::TABLE . '.project_id') ?: 0;
+            ->findOneColumn(TaskModel::TABLE.'.project_id') ?: 0;
     }
 
     /**
-     * Get available status
+     * Get available status.
      *
-     * @access public
      * @return string[]
      */
     public function getStatusList()
     {
         return [
-            self::STATUS_TODO => t('Todo'),
+            self::STATUS_TODO       => t('Todo'),
             self::STATUS_INPROGRESS => t('In progress'),
-            self::STATUS_DONE => t('Done'),
+            self::STATUS_DONE       => t('Done'),
         ];
     }
 
     /**
-     * Get the query to fetch subtasks assigned to a user
+     * Get the query to fetch subtasks assigned to a user.
      *
-     * @access public
-     * @param  integer    $user_id         User id
-     * @param  array      $status          List of status
+     * @param int   $user_id User id
+     * @param array $status  List of status
+     *
      * @return \PicoDb\Table
      */
     public function getUserQuery($user_id, array $status)
     {
-        return $this->db->table(SubtaskModel::TABLE)
+        return $this->db->table(self::TABLE)
             ->columns(
-                SubtaskModel::TABLE.'.*',
+                self::TABLE.'.*',
                 TaskModel::TABLE.'.project_id',
                 TaskModel::TABLE.'.color_id',
                 TaskModel::TABLE.'.title AS task_name',
@@ -96,17 +95,17 @@ class SubtaskModel extends Base
             ->subquery($this->subtaskTimeTrackingModel->getTimerQuery($user_id), 'timer_start_date')
             ->eq('user_id', $user_id)
             ->eq(ProjectModel::TABLE.'.is_active', ProjectModel::ACTIVE)
-            ->in(SubtaskModel::TABLE.'.status', $status)
+            ->in(self::TABLE.'.status', $status)
             ->join(TaskModel::TABLE, 'id', 'task_id')
             ->join(ProjectModel::TABLE, 'id', 'project_id', TaskModel::TABLE)
-            ->callback(array($this, 'addStatusName'));
+            ->callback([$this, 'addStatusName']);
     }
 
     /**
-     * Get all subtasks for a given task
+     * Get all subtasks for a given task.
      *
-     * @access public
-     * @param  integer   $task_id    Task id
+     * @param int $task_id Task id
+     *
      * @return array
      */
     public function getAll($task_id)
@@ -122,16 +121,16 @@ class SubtaskModel extends Base
                     ->subquery($this->subtaskTimeTrackingModel->getTimerQuery($this->userSession->getId()), 'timer_start_date')
                     ->join(UserModel::TABLE, 'id', 'user_id')
                     ->asc(self::TABLE.'.position')
-                    ->callback(array($this, 'addStatusName'))
+                    ->callback([$this, 'addStatusName'])
                     ->findAll();
     }
 
     /**
-     * Get a subtask by the id
+     * Get a subtask by the id.
      *
-     * @access public
-     * @param  integer   $subtask_id    Subtask id
-     * @param  bool      $more          Fetch more data
+     * @param int  $subtask_id Subtask id
+     * @param bool $more       Fetch more data
+     *
      * @return array
      */
     public function getById($subtask_id, $more = false)
@@ -143,7 +142,7 @@ class SubtaskModel extends Base
                         ->columns(self::TABLE.'.*', UserModel::TABLE.'.username', UserModel::TABLE.'.name')
                         ->subquery($this->subtaskTimeTrackingModel->getTimerQuery($this->userSession->getId()), 'timer_start_date')
                         ->join(UserModel::TABLE, 'id', 'user_id')
-                        ->callback(array($this, 'addStatusName'))
+                        ->callback([$this, 'addStatusName'])
                         ->findOne();
         }
 
@@ -151,11 +150,11 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Get the position of the last column for a given project
+     * Get the position of the last column for a given project.
      *
-     * @access public
-     * @param  integer  $task_id   Task id
-     * @return integer
+     * @param int $task_id Task id
+     *
+     * @return int
      */
     public function getLastPosition($task_id)
     {
@@ -167,11 +166,11 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Create a new subtask
+     * Create a new subtask.
      *
-     * @access public
-     * @param  array    $values    Form values
-     * @return bool|integer
+     * @param array $values Form values
+     *
+     * @return bool|int
      */
     public function create(array $values)
     {
@@ -187,11 +186,11 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Update
+     * Update.
      *
-     * @access public
-     * @param  array $values
-     * @param  bool  $fire_event
+     * @param array $values
+     * @param bool  $fire_event
+     *
      * @return bool
      */
     public function update(array $values, $fire_event = true)
@@ -211,24 +210,25 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Remove
+     * Remove.
      *
-     * @access public
-     * @param  integer   $subtask_id    Subtask id
+     * @param int $subtask_id Subtask id
+     *
      * @return bool
      */
     public function remove($subtask_id)
     {
         $this->subtaskEventJob->execute($subtask_id, self::EVENT_DELETE);
+
         return $this->db->table(self::TABLE)->eq('id', $subtask_id)->remove();
     }
 
     /**
-     * Duplicate all subtasks to another task
+     * Duplicate all subtasks to another task.
      *
-     * @access public
-     * @param  integer   $src_task_id    Source task id
-     * @param  integer   $dst_task_id    Destination task id
+     * @param int $src_task_id Source task id
+     * @param int $dst_task_id Destination task id
+     *
      * @return bool
      */
     public function duplicate($src_task_id, $dst_task_id)
@@ -243,7 +243,7 @@ class SubtaskModel extends Base
             foreach ($subtasks as &$subtask) {
                 $subtask['task_id'] = $dst_task_id;
 
-                if (! $db->table(SubtaskModel::TABLE)->save($subtask)) {
+                if (!$db->table(SubtaskModel::TABLE)->save($subtask)) {
                     return false;
                 }
             }
@@ -251,10 +251,9 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Prepare data before insert/update
+     * Prepare data before insert/update.
      *
-     * @access protected
-     * @param  array    $values    Form values
+     * @param array $values Form values
      */
     protected function prepare(array &$values)
     {
@@ -264,10 +263,9 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Prepare data before insert
+     * Prepare data before insert.
      *
-     * @access protected
-     * @param  array    $values    Form values
+     * @param array $values Form values
      */
     protected function prepareCreation(array &$values)
     {
@@ -282,10 +280,10 @@ class SubtaskModel extends Base
     }
 
     /**
-     * Add subtask status status to the resultset
+     * Add subtask status status to the resultset.
      *
-     * @access public
-     * @param  array    $subtasks   Subtasks
+     * @param array $subtasks Subtasks
+     *
      * @return array
      */
     public function addStatusName(array $subtasks)
@@ -295,7 +293,7 @@ class SubtaskModel extends Base
         foreach ($subtasks as &$subtask) {
             $subtask['status_name'] = $status[$subtask['status']];
             $subtask['timer_start_date'] = isset($subtask['timer_start_date']) ? $subtask['timer_start_date'] : 0;
-            $subtask['is_timer_started'] = ! empty($subtask['timer_start_date']);
+            $subtask['is_timer_started'] = !empty($subtask['timer_start_date']);
         }
 
         return $subtasks;

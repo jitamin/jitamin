@@ -14,27 +14,27 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Task Model
+ * Task Model.
  */
 class TaskModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'tasks';
 
     /**
-     * Task status
+     * Task status.
      *
-     * @var integer
+     * @var int
      */
     const STATUS_OPEN = 1;
     const STATUS_CLOSED = 0;
 
     /**
-     * Events
+     * Events.
      *
      * @var string
      */
@@ -53,46 +53,46 @@ class TaskModel extends Base
     const EVENT_DAILY_CRONJOB = 'task.cronjob.daily';
 
     /**
-     * Recurrence: status
+     * Recurrence: status.
      *
-     * @var integer
+     * @var int
      */
     const RECURRING_STATUS_NONE = 0;
     const RECURRING_STATUS_PENDING = 1;
     const RECURRING_STATUS_PROCESSED = 2;
 
     /**
-     * Recurrence: trigger
+     * Recurrence: trigger.
      *
-     * @var integer
+     * @var int
      */
     const RECURRING_TRIGGER_FIRST_COLUMN = 0;
     const RECURRING_TRIGGER_LAST_COLUMN = 1;
     const RECURRING_TRIGGER_CLOSE = 2;
 
     /**
-     * Recurrence: timeframe
+     * Recurrence: timeframe.
      *
-     * @var integer
+     * @var int
      */
     const RECURRING_TIMEFRAME_DAYS = 0;
     const RECURRING_TIMEFRAME_MONTHS = 1;
     const RECURRING_TIMEFRAME_YEARS = 2;
 
     /**
-     * Recurrence: base date used to calculate new due date
+     * Recurrence: base date used to calculate new due date.
      *
-     * @var integer
+     * @var int
      */
     const RECURRING_BASEDATE_DUEDATE = 0;
     const RECURRING_BASEDATE_TRIGGERDATE = 1;
 
     /**
-     * Remove a task
+     * Remove a task.
      *
-     * @access public
-     * @param  integer $task_id Task id
-     * @return boolean
+     * @param int $task_id Task id
+     *
+     * @return bool
      */
     public function remove($task_id)
     {
@@ -106,13 +106,13 @@ class TaskModel extends Base
     }
 
     /**
-     * Get a the task id from a text
+     * Get a the task id from a text.
      *
      * Example: "Fix bug #1234" will return 1234
      *
-     * @access public
-     * @param  string $message Text
-     * @return integer
+     * @param string $message Text
+     *
+     * @return int
      */
     public function getTaskIdFromText($message)
     {
@@ -124,12 +124,12 @@ class TaskModel extends Base
     }
 
     /**
-     * Get task progress based on the column position
+     * Get task progress based on the column position.
      *
-     * @access public
-     * @param  array $task
-     * @param  array $columns
-     * @return integer
+     * @param array $task
+     * @param array $columns
+     *
+     * @return int
      */
     public function getProgress(array $task, array $columns)
     {

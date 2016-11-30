@@ -14,16 +14,16 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * User Locking Model
+ * User Locking Model.
  */
 class UserLockingModel extends Base
 {
     /**
-     * Get the number of failed login for the user
+     * Get the number of failed login for the user.
      *
-     * @access public
-     * @param  string  $username
-     * @return integer
+     * @param string $username
+     *
+     * @return int
      */
     public function getFailedLogin($username)
     {
@@ -33,28 +33,28 @@ class UserLockingModel extends Base
     }
 
     /**
-     * Reset to 0 the counter of failed login
+     * Reset to 0 the counter of failed login.
      *
-     * @access public
-     * @param  string  $username
-     * @return boolean
+     * @param string $username
+     *
+     * @return bool
      */
     public function resetFailedLogin($username)
     {
         return $this->db->table(UserModel::TABLE)
             ->eq('username', $username)
-            ->update(array(
-                'nb_failed_login' => 0,
+            ->update([
+                'nb_failed_login'      => 0,
                 'lock_expiration_date' => 0,
-            ));
+            ]);
     }
 
     /**
-     * Increment failed login counter
+     * Increment failed login counter.
      *
-     * @access public
-     * @param  string  $username
-     * @return boolean
+     * @param string $username
+     *
+     * @return bool
      */
     public function incrementFailedLogin($username)
     {
@@ -64,11 +64,11 @@ class UserLockingModel extends Base
     }
 
     /**
-     * Check if the account is locked
+     * Check if the account is locked.
      *
-     * @access public
-     * @param  string  $username
-     * @return boolean
+     * @param string $username
+     *
+     * @return bool
      */
     public function isLocked($username)
     {
@@ -80,29 +80,29 @@ class UserLockingModel extends Base
     }
 
     /**
-     * Lock the account for the specified duration
+     * Lock the account for the specified duration.
      *
-     * @access public
-     * @param  string   $username   Username
-     * @param  integer  $duration   Duration in minutes
-     * @return boolean
+     * @param string $username Username
+     * @param int    $duration Duration in minutes
+     *
+     * @return bool
      */
     public function lock($username, $duration = 15)
     {
         return $this->db->table(UserModel::TABLE)
             ->eq('username', $username)
-            ->update(array(
-                'lock_expiration_date' => time() + $duration * 60
-            ));
+            ->update([
+                'lock_expiration_date' => time() + $duration * 60,
+            ]);
     }
 
     /**
-     * Return true if the captcha must be shown
+     * Return true if the captcha must be shown.
      *
-     * @access public
-     * @param  string  $username
-     * @param  integer $tries
-     * @return boolean
+     * @param string $username
+     * @param int    $tries
+     *
+     * @return bool
      */
     public function hasCaptcha($username, $tries = BRUTEFORCE_CAPTCHA)
     {

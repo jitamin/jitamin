@@ -14,15 +14,15 @@ namespace Hiject\Core\User;
 use Hiject\Core\Base;
 
 /**
- * User Synchronization
+ * User Synchronization.
  */
 class UserSync extends Base
 {
     /**
-     * Synchronize user profile
+     * Synchronize user profile.
      *
-     * @access public
-     * @param  UserProviderInterface $user
+     * @param UserProviderInterface $user
+     *
      * @return array
      */
     public function synchronize(UserProviderInterface $user)
@@ -30,7 +30,7 @@ class UserSync extends Base
         $profile = $this->userModel->getByExternalId($user->getExternalIdColumn(), $user->getExternalId());
         $properties = UserProperty::getProperties($user);
 
-        if (! empty($profile)) {
+        if (!empty($profile)) {
             $profile = $this->updateUser($profile, $properties);
         } elseif ($user->isUserCreationAllowed()) {
             $profile = $this->createUser($user, $properties);
@@ -40,20 +40,21 @@ class UserSync extends Base
     }
 
     /**
-     * Update user profile
+     * Update user profile.
      *
-     * @access public
-     * @param  array    $profile
-     * @param  array    $properties
+     * @param array $profile
+     * @param array $properties
+     *
      * @return array
      */
     private function updateUser(array $profile, array $properties)
     {
         $values = UserProperty::filterProperties($profile, $properties);
 
-        if (! empty($values)) {
+        if (!empty($values)) {
             $values['id'] = $profile['id'];
             $result = $this->userModel->update($values);
+
             return $result ? array_merge($profile, $properties) : $profile;
         }
 
@@ -61,11 +62,11 @@ class UserSync extends Base
     }
 
     /**
-     * Create user
+     * Create user.
      *
-     * @access public
-     * @param  UserProviderInterface  $user
-     * @param  array                  $properties
+     * @param UserProviderInterface $user
+     * @param array                 $properties
+     *
      * @return array
      */
     private function createUser(UserProviderInterface $user, array $properties)
@@ -74,6 +75,7 @@ class UserSync extends Base
 
         if ($userId === false) {
             $this->logger->error('Unable to create user profile: '.$user->getExternalId());
+
             return [];
         }
 

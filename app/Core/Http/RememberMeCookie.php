@@ -14,23 +14,23 @@ namespace Hiject\Core\Http;
 use Hiject\Core\Base;
 
 /**
- * Remember Me Cookie
+ * Remember Me Cookie.
  */
 class RememberMeCookie extends Base
 {
     /**
-     * Cookie name
+     * Cookie name.
      *
      * @var string
      */
     const COOKIE_NAME = 'HJ_RM';
 
     /**
-     * Encode the cookie
+     * Encode the cookie.
      *
-     * @access public
-     * @param  string   $token        Session token
-     * @param  string   $sequence     Sequence token
+     * @param string $token    Session token
+     * @param string $sequence Sequence token
+     *
      * @return string
      */
     public function encode($token, $sequence)
@@ -39,10 +39,10 @@ class RememberMeCookie extends Base
     }
 
     /**
-     * Decode the value of a cookie
+     * Decode the value of a cookie.
      *
-     * @access public
-     * @param  string   $value    Raw cookie data
+     * @param string $value Raw cookie data
+     *
      * @return array
      */
     public function decode($value)
@@ -50,15 +50,14 @@ class RememberMeCookie extends Base
         list($token, $sequence) = explode('|', $value);
 
         return [
-            'token' => $token,
+            'token'    => $token,
             'sequence' => $sequence,
         ];
     }
 
     /**
-     * Return true if the current user has a RememberMe cookie
+     * Return true if the current user has a RememberMe cookie.
      *
-     * @access public
      * @return bool
      */
     public function hasCookie()
@@ -67,13 +66,13 @@ class RememberMeCookie extends Base
     }
 
     /**
-     * Write and encode the cookie
+     * Write and encode the cookie.
      *
-     * @access public
-     * @param  string   $token        Session token
-     * @param  string   $sequence     Sequence token
-     * @param  string   $expiration   Cookie expiration
-     * @return boolean
+     * @param string $token      Session token
+     * @param string $sequence   Sequence token
+     * @param string $expiration Cookie expiration
+     *
+     * @return bool
      */
     public function write($token, $sequence, $expiration)
     {
@@ -89,9 +88,8 @@ class RememberMeCookie extends Base
     }
 
     /**
-     * Read and decode the cookie
+     * Read and decode the cookie.
      *
-     * @access public
      * @return mixed
      */
     public function read()
@@ -106,10 +104,9 @@ class RememberMeCookie extends Base
     }
 
     /**
-     * Remove the cookie
+     * Remove the cookie.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function remove()
     {

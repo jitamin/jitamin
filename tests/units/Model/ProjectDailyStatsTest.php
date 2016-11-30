@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectDailyStatsModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskStatusModel;
 
@@ -40,15 +40,15 @@ class ProjectDailyStatsTest extends Base
         $metrics = $pds->getRawMetrics(1, date('Y-m-d', strtotime('-1days')), date('Y-m-d'));
         $expected = [
             [
-                'day' => date('Y-m-d', strtotime('-1days')),
-                'avg_lead_time' => 0,
+                'day'            => date('Y-m-d', strtotime('-1days')),
+                'avg_lead_time'  => 0,
                 'avg_cycle_time' => 43200,
             ],
             [
-                'day' => date('Y-m-d'),
-                'avg_lead_time' => 0,
+                'day'            => date('Y-m-d'),
+                'avg_lead_time'  => 0,
                 'avg_cycle_time' => 43200,
-            ]
+            ],
         ];
 
         $this->assertEquals($expected[0]['day'], $metrics[0]['day']);

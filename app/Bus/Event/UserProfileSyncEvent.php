@@ -16,19 +16,19 @@ use Hiject\User\LdapUserProvider;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
- * Class UserProfileSyncEvent
+ * Class UserProfileSyncEvent.
  */
 class UserProfileSyncEvent extends Event
 {
     /**
-     * User profile
+     * User profile.
      *
      * @var array
      */
     private $profile;
 
     /**
-     * User provider
+     * User provider.
      *
      * @var UserProviderInterface
      */
@@ -47,9 +47,8 @@ class UserProfileSyncEvent extends Event
     }
 
     /**
-     * Get user profile
+     * Get user profile.
      *
-     * @access public
      * @return array
      */
     public function getProfile()
@@ -58,9 +57,8 @@ class UserProfileSyncEvent extends Event
     }
 
     /**
-     * Get user provider object
+     * Get user provider object.
      *
-     * @access public
      * @return UserProviderInterface|LdapUserProvider
      */
     public function getUser()

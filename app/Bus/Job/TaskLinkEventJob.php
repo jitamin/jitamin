@@ -14,28 +14,31 @@ namespace Hiject\Bus\Job;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
 
 /**
- * Class TaskLinkEventJob
+ * Class TaskLinkEventJob.
  */
 class TaskLinkEventJob extends BaseJob
 {
     /**
-     * Set job params
+     * Set job params.
      *
-     * @param  int    $taskLinkId
-     * @param  string $eventName
+     * @param int    $taskLinkId
+     * @param string $eventName
+     *
      * @return $this
      */
     public function withParams($taskLinkId, $eventName)
     {
         $this->jobParams = [$taskLinkId, $eventName];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @param  int    $taskLinkId
-     * @param  string $eventName
+     * @param int    $taskLinkId
+     * @param string $eventName
+     *
      * @return $this
      */
     public function execute($taskLinkId, $eventName)

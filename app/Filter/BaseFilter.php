@@ -14,7 +14,7 @@ namespace Hiject\Filter;
 use PicoDb\Table;
 
 /**
- * Base filter class
+ * Base filter class.
  */
 abstract class BaseFilter
 {
@@ -29,10 +29,9 @@ abstract class BaseFilter
     protected $value;
 
     /**
-     * BaseFilter constructor
+     * BaseFilter constructor.
      *
-     * @access public
-     * @param  mixed $value
+     * @param mixed $value
      */
     public function __construct($value = null)
     {
@@ -40,11 +39,12 @@ abstract class BaseFilter
     }
 
     /**
-     * Get object instance
+     * Get object instance.
      *
      * @static
-     * @access public
-     * @param  mixed $value
+     *
+     * @param mixed $value
+     *
      * @return static
      */
     public static function getInstance($value = null)
@@ -53,28 +53,30 @@ abstract class BaseFilter
     }
 
     /**
-     * Set query
+     * Set query.
      *
-     * @access public
-     * @param  Table $query
+     * @param Table $query
+     *
      * @return \Hiject\Core\Filter\FilterInterface
      */
     public function withQuery(Table $query)
     {
         $this->query = $query;
+
         return $this;
     }
 
     /**
-     * Set the value
+     * Set the value.
      *
-     * @access public
-     * @param  string $value
+     * @param string $value
+     *
      * @return \Hiject\Core\Filter\FilterInterface
      */
     public function withValue($value)
     {
         $this->value = $value;
+
         return $this;
     }
 }

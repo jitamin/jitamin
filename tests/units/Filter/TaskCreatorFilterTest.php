@@ -63,7 +63,7 @@ class TaskCreatorFilterTest extends Base
 
         $filter = new TaskCreatorFilter();
         $filter->withQuery($query);
-        $filter->withValue("123");
+        $filter->withValue('123');
         $filter->apply();
 
         $this->assertCount(0, $query->findAll());

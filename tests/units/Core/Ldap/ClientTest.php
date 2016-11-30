@@ -61,7 +61,7 @@ class ClientTest extends \Base
     public function testGetLdapServerNotConfigured()
     {
         $this->setExpectedException('\LogicException');
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->getLdapServer();
     }
 
@@ -76,7 +76,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue('my_ldap_resource'));
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->open('my_ldap_server');
         $this->assertEquals('my_ldap_resource', $ldap->getConnection());
     }
@@ -94,7 +94,7 @@ class ClientTest extends \Base
 
         $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->open('my_ldap_server');
         $this->assertNotEquals('my_ldap_resource', $ldap->getConnection());
     }
@@ -118,7 +118,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(true));
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->open('my_ldap_server', 389, true);
         $this->assertEquals('my_ldap_resource', $ldap->getConnection());
     }
@@ -144,7 +144,7 @@ class ClientTest extends \Base
 
         $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->open('my_ldap_server', 389, true);
         $this->assertNotEquals('my_ldap_resource', $ldap->getConnection());
     }
@@ -156,7 +156,7 @@ class ClientTest extends \Base
             ->method('ldap_bind')
             ->will($this->returnValue(true));
 
-        $ldap = new Client;
+        $ldap = new Client();
         $this->assertTrue($ldap->useAnonymousAuthentication());
     }
 
@@ -169,7 +169,7 @@ class ClientTest extends \Base
 
         $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->useAnonymousAuthentication();
     }
 
@@ -194,7 +194,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(true));
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->open('my_ldap_server');
         $this->assertTrue($ldap->authenticate('my_ldap_user', 'my_ldap_password'));
     }
@@ -222,7 +222,7 @@ class ClientTest extends \Base
 
         $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
 
-        $ldap = new Client;
+        $ldap = new Client();
         $ldap->open('my_ldap_server');
         $ldap->authenticate('my_ldap_user', 'my_ldap_password');
     }

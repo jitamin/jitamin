@@ -12,14 +12,13 @@
 namespace Hiject\Controller;
 
 /**
- * Project Edit Controller
+ * Project Edit Controller.
  */
 class ProjectEditController extends BaseController
 {
     /**
-     * General edition (most common operations)
+     * General edition (most common operations).
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -29,9 +28,8 @@ class ProjectEditController extends BaseController
     }
 
     /**
-     * Change start and end dates
+     * Change start and end dates.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -41,21 +39,19 @@ class ProjectEditController extends BaseController
     }
 
     /**
-     * Change project description
+     * Change project description.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
-    public function description(array $values = [], array $errors =[])
+    public function description(array $values = [], array $errors = [])
     {
         $this->renderView('project_edit/description', $values, $errors);
     }
 
     /**
-     * Change task priority
+     * Change task priority.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -65,9 +61,7 @@ class ProjectEditController extends BaseController
     }
 
     /**
-     * Validate and update a project
-     *
-     * @access public
+     * Validate and update a project.
      */
     public function update()
     {
@@ -81,6 +75,7 @@ class ProjectEditController extends BaseController
         if ($valid) {
             if ($this->projectModel->update($values)) {
                 $this->flash->success(t('Project updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('ProjectEditController', $redirect, ['project_id' => $project['id']]), true);
             } else {
                 $this->flash->failure(t('Unable to update this project.'));
@@ -91,22 +86,22 @@ class ProjectEditController extends BaseController
     }
 
     /**
-     * Prepare form values
+     * Prepare form values.
      *
-     * @access private
-     * @param  string $redirect
-     * @param  array  $project
-     * @param  array  $values
+     * @param string $redirect
+     * @param array  $project
+     * @param array  $values
+     *
      * @return array
      */
     private function prepareValues($redirect, array $project, array $values)
     {
         if ($redirect === 'edit') {
             if (isset($values['is_private'])) {
-                if (! $this->helper->user->hasProjectAccess('ProjectCreationController', 'create', $project['id'])) {
+                if (!$this->helper->user->hasProjectAccess('ProjectCreationController', 'create', $project['id'])) {
                     unset($values['is_private']);
                 }
-            } elseif ($project['is_private'] == 1 && ! isset($values['is_private'])) {
+            } elseif ($project['is_private'] == 1 && !isset($values['is_private'])) {
                 if ($this->helper->user->hasProjectAccess('ProjectCreationController', 'create', $project['id'])) {
                     $values += ['is_private' => 0];
                 }
@@ -117,23 +112,22 @@ class ProjectEditController extends BaseController
     }
 
     /**
-     * Common method to render different views
+     * Common method to render different views.
      *
-     * @access private
-     * @param  string $template
-     * @param  array  $values
-     * @param  array  $errors
+     * @param string $template
+     * @param array  $values
+     * @param array  $errors
      */
     private function renderView($template, array $values, array $errors)
     {
         $project = $this->getProject();
 
         $this->response->html($this->helper->layout->project($template, [
-            'owners' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
-            'values' => empty($values) ? $project : $values,
-            'errors' => $errors,
+            'owners'  => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
+            'values'  => empty($values) ? $project : $values,
+            'errors'  => $errors,
             'project' => $project,
-            'title' => t('Edit project')
+            'title'   => t('Edit project'),
         ]));
     }
 }

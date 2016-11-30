@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 $dbUrlParser = new PicoDb\UrlParser();
 
@@ -36,10 +36,10 @@ if (file_exists($config_file)) {
     require $config_file;
 }
 
-require __DIR__ . '/constants.php';
-require __DIR__ . '/env.php';
+require __DIR__.'/constants.php';
+require __DIR__.'/env.php';
 
-$container = new Pimple\Container;
+$container = new Pimple\Container();
 $container->register(new Hiject\Providers\MailProvider());
 $container->register(new Hiject\Providers\HelperProvider());
 $container->register(new Hiject\Providers\SessionProvider());

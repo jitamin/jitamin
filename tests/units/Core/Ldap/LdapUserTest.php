@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
+use Hiject\Core\Ldap\Entries;
 use Hiject\Core\Ldap\Query;
 use Hiject\Core\Ldap\User;
-use Hiject\Core\Ldap\Entries;
 use Hiject\Core\Security\Role;
 use Hiject\Group\LdapGroupProvider;
 
@@ -74,26 +74,26 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
-                'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+            0       => [
+                'count'       => 2,
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
                 'displayname' => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'samaccountname' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
-            ]
+            ],
         ]);
 
         $this->client
@@ -155,30 +155,30 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
-                'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+            0       => [
+                'count'       => 2,
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
                 'displayname' => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'samaccountname' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 'jpegPhoto' => [
                     'count' => 1,
-                    0 => 'my photo',
+                    0       => 'my photo',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
-            ]
+            ],
         ]);
 
         $this->client
@@ -223,31 +223,31 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
-                'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+            0       => [
+                'count'       => 2,
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
                 'displayname' => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'samaccountname' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 'memberof' => [
                     'count' => 1,
-                    0 => 'CN=Hiject-Admins,CN=Users,DC=hiject,DC=local',
+                    0       => 'CN=Hiject-Admins,CN=Users,DC=hiject,DC=local',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
                 3 => 'memberof',
-            ]
+            ],
         ]);
 
         $this->client
@@ -318,32 +318,32 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
-                'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+            0       => [
+                'count'       => 2,
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
                 'displayname' => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'samaccountname' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 'memberof' => [
                     'count' => 2,
-                    0 => 'CN=Hiject-Users,CN=Users,DC=hiject,DC=local',
-                    1 => 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local',
+                    0       => 'CN=Hiject-Users,CN=Users,DC=hiject,DC=local',
+                    1       => 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
                 2 => 'samaccountname',
                 3 => 'memberof',
-            ]
+            ],
         ]);
 
         $this->client
@@ -462,30 +462,30 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
+            0       => [
                 'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
-                'cn' => [
+                'dn'    => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
+                'cn'    => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'uid' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 0 => 'cn',
                 1 => 'mail',
                 2 => 'uid',
-            ]
+            ],
         ]);
 
         $groups = [
-            new LdapGroupProvider('CN=Hiject Admins,OU=Groups,DC=hiject,DC=local', 'Hiject Admins')
+            new LdapGroupProvider('CN=Hiject Admins,OU=Groups,DC=hiject,DC=local', 'Hiject Admins'),
         ];
 
         $this->client
@@ -567,26 +567,26 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
+            0       => [
                 'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
-                'cn' => [
+                'dn'    => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
+                'cn'    => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'uid' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 0 => 'cn',
                 1 => 'mail',
                 2 => 'uid',
-            ]
+            ],
         ]);
 
         $groups = [
@@ -679,26 +679,26 @@ class LdapUserTest extends Base
     {
         $entries = new Entries([
             'count' => 1,
-            0 => [
+            0       => [
                 'count' => 2,
-                'dn' => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
-                'cn' => [
+                'dn'    => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
+                'cn'    => [
                     'count' => 1,
-                    0 => 'My LDAP user',
+                    0       => 'My LDAP user',
                 ],
                 'mail' => [
                     'count' => 2,
-                    0 => 'user1@localhost',
-                    1 => 'user2@localhost',
+                    0       => 'user1@localhost',
+                    1       => 'user2@localhost',
                 ],
                 'uid' => [
                     'count' => 1,
-                    0 => 'my_ldap_user',
+                    0       => 'my_ldap_user',
                 ],
                 0 => 'cn',
                 1 => 'mail',
                 2 => 'uid',
-            ]
+            ],
         ]);
 
         $groups = [

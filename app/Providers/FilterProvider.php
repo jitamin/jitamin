@@ -27,7 +27,6 @@ use Hiject\Filter\TaskCreationDateFilter;
 use Hiject\Filter\TaskCreatorFilter;
 use Hiject\Filter\TaskDescriptionFilter;
 use Hiject\Filter\TaskDueDateFilter;
-use Hiject\Filter\TaskStartDateFilter;
 use Hiject\Filter\TaskIdFilter;
 use Hiject\Filter\TaskLinkFilter;
 use Hiject\Filter\TaskModificationDateFilter;
@@ -35,28 +34,29 @@ use Hiject\Filter\TaskMovedDateFilter;
 use Hiject\Filter\TaskPriorityFilter;
 use Hiject\Filter\TaskProjectFilter;
 use Hiject\Filter\TaskReferenceFilter;
+use Hiject\Filter\TaskStartDateFilter;
 use Hiject\Filter\TaskStatusFilter;
 use Hiject\Filter\TaskSubtaskAssigneeFilter;
 use Hiject\Filter\TaskSwimlaneFilter;
 use Hiject\Filter\TaskTagFilter;
 use Hiject\Filter\TaskTitleFilter;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectGroupRoleModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
 use Hiject\Model\UserModel;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Filter Provider
+ * Filter Provider.
  */
 class FilterProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
@@ -64,6 +64,7 @@ class FilterProvider implements ServiceProviderInterface
         $this->createUserFilter($container);
         $this->createProjectFilter($container);
         $this->createTaskFilter($container);
+
         return $container;
     }
 
@@ -72,6 +73,7 @@ class FilterProvider implements ServiceProviderInterface
         $container['userQuery'] = $container->factory(function ($c) {
             $builder = new QueryBuilder();
             $builder->withQuery($c['db']->table(UserModel::TABLE));
+
             return $builder;
         });
 
@@ -83,18 +85,21 @@ class FilterProvider implements ServiceProviderInterface
         $container['projectGroupRoleQuery'] = $container->factory(function ($c) {
             $builder = new QueryBuilder();
             $builder->withQuery($c['db']->table(ProjectGroupRoleModel::TABLE));
+
             return $builder;
         });
 
         $container['projectUserRoleQuery'] = $container->factory(function ($c) {
             $builder = new QueryBuilder();
             $builder->withQuery($c['db']->table(ProjectUserRoleModel::TABLE));
+
             return $builder;
         });
 
         $container['projectQuery'] = $container->factory(function ($c) {
             $builder = new QueryBuilder();
             $builder->withQuery($c['db']->table(ProjectModel::TABLE));
+
             return $builder;
         });
 
@@ -110,8 +115,7 @@ class FilterProvider implements ServiceProviderInterface
                 )
                 ->withFilter(ProjectActivityCreatorFilter::getInstance()
                     ->setCurrentUserId($c['userSession']->getId())
-                )
-            ;
+                );
 
             return $builder;
         });
@@ -131,6 +135,7 @@ class FilterProvider implements ServiceProviderInterface
         $container['taskQuery'] = $container->factory(function ($c) {
             $builder = new QueryBuilder();
             $builder->withQuery($c['taskFinderModel']->getExtendedQuery());
+
             return $builder;
         });
 
@@ -183,8 +188,7 @@ class FilterProvider implements ServiceProviderInterface
                 ->withFilter(TaskTagFilter::getInstance()
                     ->setDatabase($c['db'])
                 )
-                ->withFilter(new TaskTitleFilter(), true)
-            ;
+                ->withFilter(new TaskTitleFilter(), true);
 
             return $builder;
         });

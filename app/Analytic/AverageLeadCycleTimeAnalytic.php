@@ -15,25 +15,25 @@ use Hiject\Core\Base;
 use Hiject\Model\TaskModel;
 
 /**
- * Average Lead and Cycle Time
+ * Average Lead and Cycle Time.
  */
 class AverageLeadCycleTimeAnalytic extends Base
 {
     /**
-     * Build report
+     * Build report.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function build($project_id)
     {
         $stats = [
-            'count' => 0,
-            'total_lead_time' => 0,
+            'count'            => 0,
+            'total_lead_time'  => 0,
             'total_cycle_time' => 0,
-            'avg_lead_time' => 0,
-            'avg_cycle_time' => 0,
+            'avg_lead_time'    => 0,
+            'avg_cycle_time'   => 0,
         ];
 
         $tasks = $this->getTasks($project_id);
@@ -51,11 +51,11 @@ class AverageLeadCycleTimeAnalytic extends Base
     }
 
     /**
-     * Calculate average
+     * Calculate average.
      *
-     * @access private
-     * @param  array  &$stats
-     * @param  string $field
+     * @param array  &$stats
+     * @param string $field
+     *
      * @return float
      */
     private function calculateAverage(array &$stats, $field)
@@ -68,11 +68,11 @@ class AverageLeadCycleTimeAnalytic extends Base
     }
 
     /**
-     * Calculate lead time
+     * Calculate lead time.
      *
-     * @access private
-     * @param  array  &$task
-     * @return integer
+     * @param array &$task
+     *
+     * @return int
      */
     private function calculateLeadTime(array &$task)
     {
@@ -83,11 +83,11 @@ class AverageLeadCycleTimeAnalytic extends Base
     }
 
     /**
-     * Calculate cycle time
+     * Calculate cycle time.
      *
-     * @access private
-     * @param  array  &$task
-     * @return integer
+     * @param array &$task
+     *
+     * @return int
      */
     private function calculateCycleTime(array &$task)
     {
@@ -103,10 +103,10 @@ class AverageLeadCycleTimeAnalytic extends Base
     }
 
     /**
-     * Get the 1000 last created tasks
+     * Get the 1000 last created tasks.
      *
-     * @access private
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     private function getTasks($project_id)

@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Web notification controller
+ * Web notification controller.
  */
 class WebNotificationController extends BaseController
 {
     /**
-     * Mark all notifications as read
-     *
-     * @access public
+     * Mark all notifications as read.
      */
     public function flush()
     {
@@ -30,9 +28,7 @@ class WebNotificationController extends BaseController
     }
 
     /**
-     * Mark a notification as read
-     *
-     * @access public
+     * Mark a notification as read.
      */
     public function remove()
     {
@@ -44,7 +40,7 @@ class WebNotificationController extends BaseController
     }
 
     /**
-     * Redirect to the task and mark notification as read
+     * Redirect to the task and mark notification as read.
      */
     public function redirect()
     {
@@ -76,7 +72,7 @@ class WebNotificationController extends BaseController
     {
         $user_id = $this->request->getIntegerParam('user_id');
 
-        if (! $this->userSession->isAdmin() && $user_id != $this->userSession->getId()) {
+        if (!$this->userSession->isAdmin() && $user_id != $this->userSession->getId()) {
             $user_id = $this->userSession->getId();
         }
 

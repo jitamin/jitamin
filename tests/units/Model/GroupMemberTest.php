@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Model\GroupMemberModel;
 use Hiject\Model\GroupModel;
 use Hiject\Model\UserModel;
-use Hiject\Model\GroupMemberModel;
 
 class GroupMemberTest extends Base
 {

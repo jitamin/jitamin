@@ -12,21 +12,21 @@
 namespace Hiject\Model;
 
 /**
- * Task Project Duplication
+ * Task Project Duplication.
  */
 class TaskProjectDuplicationModel extends TaskDuplicationModel
 {
     /**
-     * Duplicate a task to another project
+     * Duplicate a task to another project.
      *
-     * @access public
-     * @param  integer    $task_id
-     * @param  integer    $project_id
-     * @param  integer    $swimlane_id
-     * @param  integer    $column_id
-     * @param  integer    $category_id
-     * @param  integer    $owner_id
-     * @return boolean|integer
+     * @param int $task_id
+     * @param int $project_id
+     * @param int $swimlane_id
+     * @param int $column_id
+     * @param int $category_id
+     * @param int $owner_id
+     *
+     * @return bool|int
      */
     public function duplicateToProject($task_id, $project_id, $swimlane_id = null, $column_id = null, $category_id = null, $owner_id = null)
     {
@@ -42,15 +42,15 @@ class TaskProjectDuplicationModel extends TaskDuplicationModel
     }
 
     /**
-     * Prepare values before duplication
+     * Prepare values before duplication.
      *
-     * @access protected
-     * @param  integer $task_id
-     * @param  integer $project_id
-     * @param  integer $swimlane_id
-     * @param  integer $column_id
-     * @param  integer $category_id
-     * @param  integer $owner_id
+     * @param int $task_id
+     * @param int $project_id
+     * @param int $swimlane_id
+     * @param int $column_id
+     * @param int $category_id
+     * @param int $owner_id
+     *
      * @return array
      */
     protected function prepare($task_id, $project_id, $swimlane_id, $column_id, $category_id, $owner_id)
@@ -61,6 +61,7 @@ class TaskProjectDuplicationModel extends TaskDuplicationModel
         $values['swimlane_id'] = $swimlane_id !== null ? $swimlane_id : $values['swimlane_id'];
         $values['category_id'] = $category_id !== null ? $category_id : $values['category_id'];
         $values['owner_id'] = $owner_id !== null ? $owner_id : $values['owner_id'];
+
         return $values;
     }
 }

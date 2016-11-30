@@ -12,10 +12,10 @@
 use Hiject\Core\Controller\Runner;
 
 try {
-    require __DIR__ . '/../bootstrap/autoload.php';
+    require __DIR__.'/../bootstrap/autoload.php';
     $container['router']->dispatch();
     $runner = new Runner($container);
     $runner->execute();
 } catch (Exception $e) {
-    echo 'Internal Error: ' . $e->getMessage();
+    echo 'Internal Error: '.$e->getMessage();
 }

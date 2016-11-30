@@ -14,14 +14,13 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Gantt chart formatter for projects
+ * Gantt chart formatter for projects.
  */
 class ProjectGanttFormatter extends BaseFormatter implements FormatterInterface
 {
     /**
-     * Format projects to be displayed in the Gantt chart
+     * Format projects to be displayed in the Gantt chart.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -36,8 +35,8 @@ class ProjectGanttFormatter extends BaseFormatter implements FormatterInterface
             $color = next($colors) ?: reset($colors);
 
             $bars[] = [
-                'type' => 'project',
-                'id' => $project['id'],
+                'type'  => 'project',
+                'id'    => $project['id'],
                 'title' => $project['name'],
                 'start' => [
                     (int) date('Y', $start),
@@ -49,12 +48,12 @@ class ProjectGanttFormatter extends BaseFormatter implements FormatterInterface
                     (int) date('n', $end),
                     (int) date('j', $end),
                 ],
-                'link' => $this->helper->url->href('ProjectSettingsController', 'show', ['project_id' => $project['id']]),
-                'board_link' => $this->helper->url->href('BoardViewController', 'show', ['project_id' => $project['id']]),
-                'gantt_link' => $this->helper->url->href('TaskGanttController', 'show', ['project_id' => $project['id']]),
-                'color' => $color,
+                'link'        => $this->helper->url->href('ProjectSettingsController', 'show', ['project_id' => $project['id']]),
+                'board_link'  => $this->helper->url->href('BoardViewController', 'show', ['project_id' => $project['id']]),
+                'gantt_link'  => $this->helper->url->href('TaskGanttController', 'show', ['project_id' => $project['id']]),
+                'color'       => $color,
                 'not_defined' => empty($project['start_date']) || empty($project['end_date']),
-                'users' => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
+                'users'       => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
             ];
         }
 

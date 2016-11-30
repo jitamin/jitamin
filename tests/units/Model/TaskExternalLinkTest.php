@@ -11,11 +11,11 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskExternalLinkModel;
 use Hiject\Core\ExternalLink\ExternalLinkManager;
 use Hiject\ExternalLink\WebLinkProvider;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskExternalLinkModel;
 
 class TaskExternalLinkTest extends Base
 {

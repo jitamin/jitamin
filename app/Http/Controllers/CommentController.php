@@ -16,17 +16,17 @@ use Hiject\Core\Controller\PageNotFoundException;
 use Hiject\Model\UserMetadataModel;
 
 /**
- * Comment Controller
+ * Comment Controller.
  */
 class CommentController extends BaseController
 {
     /**
-     * Get the current comment
+     * Get the current comment.
      *
-     * @access private
-     * @return array
      * @throws PageNotFoundException
      * @throws AccessForbiddenException
+     *
+     * @return array
      */
     private function getComment()
     {
@@ -36,7 +36,7 @@ class CommentController extends BaseController
             throw new PageNotFoundException();
         }
 
-        if (! $this->userSession->isAdmin() && $comment['user_id'] != $this->userSession->getId()) {
+        if (!$this->userSession->isAdmin() && $comment['user_id'] != $this->userSession->getId()) {
             throw new AccessForbiddenException();
         }
 
@@ -44,11 +44,11 @@ class CommentController extends BaseController
     }
 
     /**
-     * Add comment form
+     * Add comment form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
@@ -66,14 +66,12 @@ class CommentController extends BaseController
         $this->response->html($this->template->render('comment/create', [
             'values' => $values,
             'errors' => $errors,
-            'task' => $task,
+            'task'   => $task,
         ]));
     }
 
     /**
-     * Add a comment
-     *
-     * @access public
+     * Add a comment.
      */
     public function save()
     {
@@ -96,11 +94,11 @@ class CommentController extends BaseController
     }
 
     /**
-     * Edit a comment
+     * Edit a comment.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws AccessForbiddenException
      * @throws PageNotFoundException
      */
@@ -110,18 +108,16 @@ class CommentController extends BaseController
         $comment = $this->getComment();
 
         $this->response->html($this->template->render('comment/edit', [
-            'values' => empty($values) ? $comment : $values,
-            'errors' => $errors,
+            'values'  => empty($values) ? $comment : $values,
+            'errors'  => $errors,
             'comment' => $comment,
-            'task' => $task,
-            'title' => t('Edit a comment')
+            'task'    => $task,
+            'title'   => t('Edit a comment'),
         ]));
     }
 
     /**
-     * Update and validate a comment
-     *
-     * @access public
+     * Update and validate a comment.
      */
     public function update()
     {
@@ -145,9 +141,7 @@ class CommentController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a comment
-     *
-     * @access public
+     * Confirmation dialog before removing a comment.
      */
     public function confirm()
     {
@@ -156,15 +150,13 @@ class CommentController extends BaseController
 
         $this->response->html($this->template->render('comment/remove', [
             'comment' => $comment,
-            'task' => $task,
-            'title' => t('Remove a comment')
+            'task'    => $task,
+            'title'   => t('Remove a comment'),
         ]));
     }
 
     /**
-     * Remove a comment
-     *
-     * @access public
+     * Remove a comment.
      */
     public function remove()
     {
@@ -182,9 +174,7 @@ class CommentController extends BaseController
     }
 
     /**
-     * Toggle comment sorting
-     *
-     * @access public
+     * Toggle comment sorting.
      */
     public function toggleSorting()
     {

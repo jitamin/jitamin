@@ -12,7 +12,7 @@
 namespace Hiject\Controller;
 
 /**
- * Class SubtaskConverterController
+ * Class SubtaskConverterController.
  */
 class SubtaskConverterController extends BaseController
 {
@@ -23,7 +23,7 @@ class SubtaskConverterController extends BaseController
 
         $this->response->html($this->template->render('subtask_converter/show', [
             'subtask' => $subtask,
-            'task' => $task,
+            'task'    => $task,
         ]));
     }
 

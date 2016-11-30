@@ -11,26 +11,26 @@
 
 namespace Hiject\Providers;
 
-use Hiject\Bus\Subscriber\LdapUserPhotoSubscriber;
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
-use Symfony\Component\EventDispatcher\EventDispatcher;
 use Hiject\Bus\Subscriber\AuthSubscriber;
 use Hiject\Bus\Subscriber\BootstrapSubscriber;
+use Hiject\Bus\Subscriber\LdapUserPhotoSubscriber;
 use Hiject\Bus\Subscriber\NotificationSubscriber;
 use Hiject\Bus\Subscriber\ProjectDailySummarySubscriber;
 use Hiject\Bus\Subscriber\ProjectModificationDateSubscriber;
-use Hiject\Bus\Subscriber\TransitionSubscriber;
 use Hiject\Bus\Subscriber\RecurringTaskSubscriber;
+use Hiject\Bus\Subscriber\TransitionSubscriber;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
- * Class EventDispatcherProvider
+ * Class EventDispatcherProvider.
  */
 class EventDispatcherProvider implements ServiceProviderInterface
 {
     public function register(Container $container)
     {
-        $container['dispatcher'] = new EventDispatcher;
+        $container['dispatcher'] = new EventDispatcher();
         $container['dispatcher']->addSubscriber(new BootstrapSubscriber($container));
         $container['dispatcher']->addSubscriber(new AuthSubscriber($container));
         $container['dispatcher']->addSubscriber(new ProjectDailySummarySubscriber($container));

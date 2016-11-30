@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\ProjectUserRoleModel;
 
 /**
- * Filter ProjectUserRole users by project
+ * Filter ProjectUserRole users by project.
  */
 class ProjectUserRoleProjectFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,14 +30,14 @@ class ProjectUserRoleProjectFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->query->eq(ProjectUserRoleModel::TABLE.'.project_id', $this->value);
+
         return $this;
     }
 }

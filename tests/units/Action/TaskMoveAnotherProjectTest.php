@@ -11,13 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Bus\Event\GenericEvent;
-use Hiject\Bus\Event\TaskEvent;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Action\TaskMoveAnotherProject;
+use Hiject\Bus\Event\TaskEvent;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 
 class TaskMoveAnotherProjectTest extends Base
 {
@@ -33,10 +32,10 @@ class TaskMoveAnotherProjectTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 2,
-            ]
+                'column_id'  => 2,
+            ],
         ]);
 
         $action = new TaskMoveAnotherProject($this->container);
@@ -62,10 +61,10 @@ class TaskMoveAnotherProjectTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 3,
-            ]
+                'column_id'  => 3,
+            ],
         ]);
 
         $action = new TaskMoveAnotherProject($this->container);

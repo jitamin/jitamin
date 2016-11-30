@@ -14,21 +14,20 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Group Model
+ * Group Model.
  */
 class GroupModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'groups';
 
     /**
-     * Get query to fetch all groups
+     * Get query to fetch all groups.
      *
-     * @access public
      * @return \PicoDb\Table
      */
     public function getQuery()
@@ -37,10 +36,10 @@ class GroupModel extends Base
     }
 
     /**
-     * Get a specific group by id
+     * Get a specific group by id.
      *
-     * @access public
-     * @param  integer $group_id
+     * @param int $group_id
+     *
      * @return array
      */
     public function getById($group_id)
@@ -49,10 +48,10 @@ class GroupModel extends Base
     }
 
     /**
-     * Get a specific group by external id
+     * Get a specific group by external id.
      *
-     * @access public
-     * @param  integer $external_id
+     * @param int $external_id
+     *
      * @return array
      */
     public function getByExternalId($external_id)
@@ -61,9 +60,8 @@ class GroupModel extends Base
     }
 
     /**
-     * Get all groups
+     * Get all groups.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -72,10 +70,10 @@ class GroupModel extends Base
     }
 
     /**
-     * Search groups by name
+     * Search groups by name.
      *
-     * @access public
-     * @param  string  $input
+     * @param string $input
+     *
      * @return array
      */
     public function search($input)
@@ -84,11 +82,11 @@ class GroupModel extends Base
     }
 
     /**
-     * Remove a group
+     * Remove a group.
      *
-     * @access public
-     * @param  integer $group_id
-     * @return boolean
+     * @param int $group_id
+     *
+     * @return bool
      */
     public function remove($group_id)
     {
@@ -96,27 +94,27 @@ class GroupModel extends Base
     }
 
     /**
-     * Create a new group
+     * Create a new group.
      *
-     * @access public
-     * @param  string  $name
-     * @param  string  $external_id
-     * @return integer|boolean
+     * @param string $name
+     * @param string $external_id
+     *
+     * @return int|bool
      */
     public function create($name, $external_id = '')
     {
-        return $this->db->table(self::TABLE)->persist(array(
-            'name' => $name,
+        return $this->db->table(self::TABLE)->persist([
+            'name'        => $name,
             'external_id' => $external_id,
-        ));
+        ]);
     }
 
     /**
-     * Update existing group
+     * Update existing group.
      *
-     * @access public
-     * @param  array $values
-     * @return boolean
+     * @param array $values
+     *
+     * @return bool
      */
     public function update(array $values)
     {
@@ -124,12 +122,12 @@ class GroupModel extends Base
     }
 
     /**
-     * Get groupId from externalGroupId and create the group if not found
+     * Get groupId from externalGroupId and create the group if not found.
      *
-     * @access public
-     * @param  string $name
-     * @param  string $external_id
-     * @return bool|integer
+     * @param string $name
+     * @param string $external_id
+     *
+     * @return bool|int
      */
     public function getOrCreateExternalGroupId($name, $external_id)
     {

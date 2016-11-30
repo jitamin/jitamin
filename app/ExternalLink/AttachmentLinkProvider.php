@@ -14,14 +14,13 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\ExternalLink\ExternalLinkProviderInterface;
 
 /**
- * Attachment Link Provider
+ * Attachment Link Provider.
  */
 class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkProviderInterface
 {
     /**
-     * File extensions that are not attachments
+     * File extensions that are not attachments.
      *
-     * @access protected
      * @var array
      */
     protected $extensions = [
@@ -38,9 +37,8 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     ];
 
     /**
-     * Get provider name
+     * Get provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -49,9 +47,8 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     }
 
     /**
-     * Get link type
+     * Get link type.
      *
-     * @access public
      * @return string
      */
     public function getType()
@@ -60,9 +57,8 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     }
 
     /**
-     * Get a dictionary of supported dependency types by the provider
+     * Get a dictionary of supported dependency types by the provider.
      *
-     * @access public
      * @return array
      */
     public function getDependencies()
@@ -73,10 +69,9 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     }
 
     /**
-     * Return true if the provider can parse correctly the user input
+     * Return true if the provider can parse correctly the user input.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function match()
     {
@@ -88,9 +83,8 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     }
 
     /**
-     * Get the link found with the properties
+     * Get the link found with the properties.
      *
-     * @access public
      * @return \Hiject\Core\ExternalLink\ExternalLinkInterface
      */
     public function getLink()
@@ -102,11 +96,11 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     }
 
     /**
-     * Check file extension
+     * Check file extension.
      *
-     * @access protected
-     * @param  string $extension
-     * @return boolean
+     * @param string $extension
+     *
+     * @return bool
      */
     protected function isValidExtension($extension)
     {

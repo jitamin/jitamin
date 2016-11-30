@@ -14,33 +14,33 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Metadata
+ * Metadata.
  */
 abstract class MetadataModel extends Base
 {
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     abstract protected function getTable();
 
     /**
-     * Define the entity key
+     * Define the entity key.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     abstract protected function getEntityKey();
 
     /**
-     * Get all metadata for the entity
+     * Get all metadata for the entity.
      *
-     * @access public
-     * @param  integer  $entity_id
+     * @param int $entity_id
+     *
      * @return array
      */
     public function getAll($entity_id)
@@ -53,12 +53,12 @@ abstract class MetadataModel extends Base
     }
 
     /**
-     * Get a metadata for the given entity
+     * Get a metadata for the given entity.
      *
-     * @access public
-     * @param  integer  $entity_id
-     * @param  string   $name
-     * @param  string   $default
+     * @param int    $entity_id
+     * @param string $name
+     * @param string $default
+     *
      * @return mixed
      */
     public function get($entity_id, $name, $default = '')
@@ -71,12 +71,12 @@ abstract class MetadataModel extends Base
     }
 
     /**
-     * Return true if a metadata exists
+     * Return true if a metadata exists.
      *
-     * @access public
-     * @param  integer  $entity_id
-     * @param  string   $name
-     * @return boolean
+     * @param int    $entity_id
+     * @param string $name
+     *
+     * @return bool
      */
     public function exists($entity_id, $name)
     {
@@ -88,12 +88,12 @@ abstract class MetadataModel extends Base
     }
 
     /**
-     * Update or insert new metadata
+     * Update or insert new metadata.
      *
-     * @access public
-     * @param  integer  $entity_id
-     * @param  array    $values
-     * @return boolean
+     * @param int   $entity_id
+     * @param array $values
+     *
+     * @return bool
      */
     public function save($entity_id, array $values)
     {
@@ -109,31 +109,32 @@ abstract class MetadataModel extends Base
                     ->eq($this->getEntityKey(), $entity_id)
                     ->eq('name', $key)
                     ->update([
-                        'value' => $value,
+                        'value'      => $value,
                         'changed_on' => $timestamp,
                         'changed_by' => $user_id,
                     ]);
             } else {
                 $results[] = $this->db->table($this->getTable())->insert([
-                    'name' => $key,
-                    'value' => $value,
+                    'name'                => $key,
+                    'value'               => $value,
                     $this->getEntityKey() => $entity_id,
-                    'changed_on' => $timestamp,
-                    'changed_by' => $user_id,
+                    'changed_on'          => $timestamp,
+                    'changed_by'          => $user_id,
                 ]);
             }
         }
 
         $this->db->closeTransaction();
-        return ! in_array(false, $results, true);
+
+        return !in_array(false, $results, true);
     }
 
     /**
-     * Remove a metadata
+     * Remove a metadata.
      *
-     * @access public
-     * @param  integer $entity_id
-     * @param  string  $name
+     * @param int    $entity_id
+     * @param string $name
+     *
      * @return bool
      */
     public function remove($entity_id, $name)

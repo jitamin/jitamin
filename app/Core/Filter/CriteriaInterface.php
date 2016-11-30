@@ -14,32 +14,31 @@ namespace Hiject\Core\Filter;
 use PicoDb\Table;
 
 /**
- * Criteria Interface
+ * Criteria Interface.
  */
 interface CriteriaInterface
 {
     /**
-     * Set the Query
+     * Set the Query.
      *
-     * @access public
      * @param Table $query
+     *
      * @return CriteriaInterface
      */
     public function withQuery(Table $query);
 
     /**
-     * Set filter
+     * Set filter.
      *
-     * @access public
-     * @param  FilterInterface $filter
+     * @param FilterInterface $filter
+     *
      * @return CriteriaInterface
      */
     public function withFilter(FilterInterface $filter);
 
     /**
-     * Apply condition
+     * Apply condition.
      *
-     * @access public
      * @return CriteriaInterface
      */
     public function apply();

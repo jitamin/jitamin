@@ -15,14 +15,13 @@ use Hiject\Core\Controller\PageNotFoundException;
 use Hiject\Model\ProjectModel;
 
 /**
- * Class UserViewController
+ * Class UserViewController.
  */
 class UserViewController extends BaseController
 {
     /**
-     * Public user profile
+     * Public user profile.
      *
-     * @access public
      * @throws PageNotFoundException
      */
     public function profile()
@@ -40,9 +39,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display user information
-     *
-     * @access public
+     * Display user information.
      */
     public function show()
     {
@@ -55,9 +52,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display timesheet
-     *
-     * @access public
+     * Display timesheet.
      */
     public function timesheet()
     {
@@ -78,9 +73,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display last password reset
-     *
-     * @access public
+     * Display last password reset.
      */
     public function passwordReset()
     {
@@ -92,9 +85,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display last connections
-     *
-     * @access public
+     * Display last connections.
      */
     public function lastLogin()
     {
@@ -106,9 +97,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display user sessions
-     *
-     * @access public
+     * Display user sessions.
      */
     public function sessions()
     {
@@ -120,9 +109,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Remove a "RememberMe" token
-     *
-     * @access public
+     * Remove a "RememberMe" token.
      */
     public function removeSession()
     {
@@ -133,9 +120,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display user notifications
-     *
-     * @access public
+     * Display user notifications.
      */
     public function notifications()
     {
@@ -145,6 +130,7 @@ class UserViewController extends BaseController
             $values = $this->request->getValues();
             $this->userNotificationModel->saveSettings($user['id'], $values);
             $this->flash->success(t('User updated successfully.'));
+
             return $this->response->redirect($this->helper->url->to('UserViewController', 'notifications', ['user_id' => $user['id']]));
         }
 
@@ -158,9 +144,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display user integrations
-     *
-     * @access public
+     * Display user integrations.
      */
     public function integrations()
     {
@@ -180,9 +164,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Display external accounts
-     *
-     * @access public
+     * Display external accounts.
      */
     public function external()
     {
@@ -194,9 +176,7 @@ class UserViewController extends BaseController
     }
 
     /**
-     * Public access management
-     *
-     * @access public
+     * Public access management.
      */
     public function share()
     {
@@ -206,7 +186,7 @@ class UserViewController extends BaseController
         if ($switch === 'enable' || $switch === 'disable') {
             $this->checkCSRFParam();
 
-            if ($this->userModel->{$switch . 'PublicAccess'}($user['id'])) {
+            if ($this->userModel->{$switch.'PublicAccess'}($user['id'])) {
                 $this->flash->success(t('User updated successfully.'));
             } else {
                 $this->flash->failure(t('Unable to update this user.'));

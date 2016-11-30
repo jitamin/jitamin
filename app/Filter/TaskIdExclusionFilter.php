@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Exclude task ids
+ * Exclude task ids.
  */
 class TaskIdExclusionFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,14 +30,14 @@ class TaskIdExclusionFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->query->notin(TaskModel::TABLE.'.id', $this->value);
+
         return $this;
     }
 }

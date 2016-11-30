@@ -12,7 +12,7 @@
 namespace Hiject\Api\Procedure;
 
 /**
- * Group Member API controller
+ * Group Member API controller.
  */
 class GroupMemberProcedure extends BaseProcedure
 {

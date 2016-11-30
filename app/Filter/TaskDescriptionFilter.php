@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by description
+ * Filter tasks by description.
  */
 class TaskDescriptionFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,14 +30,14 @@ class TaskDescriptionFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->query->ilike(TaskModel::TABLE.'.description', '%'.$this->value.'%');
+
         return $this;
     }
 }

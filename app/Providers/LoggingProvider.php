@@ -11,23 +11,23 @@
 
 namespace Hiject\Providers;
 
-use Psr\Log\LogLevel;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
+use Psr\Log\LogLevel;
+use SimpleLogger\File;
 use SimpleLogger\Logger;
 use SimpleLogger\Stderr;
 use SimpleLogger\Stdout;
 use SimpleLogger\Syslog;
-use SimpleLogger\File;
 
 /**
- * Class LoggingProvider
+ * Class LoggingProvider.
  */
 class LoggingProvider implements ServiceProviderInterface
 {
     public function register(Container $container)
     {
-        $logger = new Logger;
+        $logger = new Logger();
         $driver = null;
 
         switch (LOG_DRIVER) {
@@ -46,7 +46,7 @@ class LoggingProvider implements ServiceProviderInterface
         }
 
         if ($driver !== null) {
-            if (! DEBUG) {
+            if (!DEBUG) {
                 $driver->setLevel(LogLevel::INFO);
             }
 
@@ -54,6 +54,7 @@ class LoggingProvider implements ServiceProviderInterface
         }
 
         $container['logger'] = $logger;
+
         return $container;
     }
 }

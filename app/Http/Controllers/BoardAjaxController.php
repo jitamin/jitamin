@@ -16,30 +16,28 @@ use Hiject\Formatter\BoardFormatter;
 use Hiject\Model\UserMetadataModel;
 
 /**
- * Class BoardAjaxController
+ * Class BoardAjaxController.
  */
 class BoardAjaxController extends BaseController
 {
     /**
-     * Save new task positions (Ajax request made by the drag and drop)
-     *
-     * @access public
+     * Save new task positions (Ajax request made by the drag and drop).
      */
     public function save()
     {
         $project_id = $this->request->getIntegerParam('project_id');
 
-        if (! $project_id || ! $this->request->isAjax()) {
+        if (!$project_id || !$this->request->isAjax()) {
             throw new AccessForbiddenException();
         }
 
         $values = $this->request->getJson();
 
-        if (! $this->helper->projectRole->canMoveTask($project_id, $values['src_column_id'], $values['dst_column_id'])) {
+        if (!$this->helper->projectRole->canMoveTask($project_id, $values['src_column_id'], $values['dst_column_id'])) {
             throw new AccessForbiddenException(e("You don't have the permission to move this task"));
         }
 
-        $result =$this->taskPositionModel->movePosition(
+        $result = $this->taskPositionModel->movePosition(
             $project_id,
             $values['task_id'],
             $values['dst_column_id'],
@@ -47,7 +45,7 @@ class BoardAjaxController extends BaseController
             $values['swimlane_id']
         );
 
-        if (! $result) {
+        if (!$result) {
             $this->response->status(400);
         } else {
             $this->response->html($this->renderBoard($project_id), 201);
@@ -55,18 +53,16 @@ class BoardAjaxController extends BaseController
     }
 
     /**
-     * Check if the board have been changed
-     *
-     * @access public
+     * Check if the board have been changed.
      */
     public function check()
     {
         $project_id = $this->request->getIntegerParam('project_id');
         $timestamp = $this->request->getIntegerParam('timestamp');
 
-        if (! $project_id || ! $this->request->isAjax()) {
+        if (!$project_id || !$this->request->isAjax()) {
             throw new AccessForbiddenException();
-        } elseif (! $this->projectModel->isModifiedSince($project_id, $timestamp)) {
+        } elseif (!$this->projectModel->isModifiedSince($project_id, $timestamp)) {
             $this->response->status(304);
         } else {
             $this->response->html($this->renderBoard($project_id));
@@ -74,15 +70,13 @@ class BoardAjaxController extends BaseController
     }
 
     /**
-     * Reload the board with new filters
-     *
-     * @access public
+     * Reload the board with new filters.
      */
     public function reload()
     {
         $project_id = $this->request->getIntegerParam('project_id');
 
-        if (! $project_id || ! $this->request->isAjax()) {
+        if (!$project_id || !$this->request->isAjax()) {
             throw new AccessForbiddenException();
         }
 
@@ -93,9 +87,7 @@ class BoardAjaxController extends BaseController
     }
 
     /**
-     * Enable collapsed mode
-     *
-     * @access public
+     * Enable collapsed mode.
      */
     public function collapse()
     {
@@ -103,9 +95,7 @@ class BoardAjaxController extends BaseController
     }
 
     /**
-     * Enable expanded mode
-     *
-     * @access public
+     * Enable expanded mode.
      */
     public function expand()
     {
@@ -113,10 +103,9 @@ class BoardAjaxController extends BaseController
     }
 
     /**
-     * Change display mode
+     * Change display mode.
      *
-     * @access private
-     * @param  int $mode
+     * @param int $mode
      */
     private function changeDisplayMode($mode)
     {
@@ -131,21 +120,21 @@ class BoardAjaxController extends BaseController
     }
 
     /**
-     * Render board
+     * Render board.
      *
-     * @access protected
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return string
      */
     protected function renderBoard($project_id)
     {
         return $this->template->render('board/table_container', [
-            'project' => $this->projectModel->getById($project_id),
+            'project'                        => $this->projectModel->getById($project_id),
             'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-            'board_highlight_period' => $this->configModel->get('board_highlight_period'),
-            'swimlanes' => $this->taskLexer
+            'board_highlight_period'         => $this->configModel->get('board_highlight_period'),
+            'swimlanes'                      => $this->taskLexer
                 ->build($this->userSession->getFilters($project_id))
-                ->format(BoardFormatter::getInstance($this->container)->withProjectId($project_id))
+                ->format(BoardFormatter::getInstance($this->container)->withProjectId($project_id)),
         ]);
     }
 }

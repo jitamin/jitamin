@@ -12,14 +12,13 @@
 namespace Hiject\Core\Security;
 
 /**
- * Pre-Authentication Provider Interface
+ * Pre-Authentication Provider Interface.
  */
 interface PreAuthenticationProviderInterface extends AuthenticationProviderInterface
 {
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return \Hiject\Core\User\UserProviderInterface
      */
     public function getUser();

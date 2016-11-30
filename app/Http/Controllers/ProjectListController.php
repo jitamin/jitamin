@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Class ProjectListController
+ * Class ProjectListController.
  */
 class ProjectListController extends BaseController
 {
     /**
-     * List of projects
-     *
-     * @access public
+     * List of projects.
      */
     public function show()
     {
@@ -39,9 +37,9 @@ class ProjectListController extends BaseController
             ->calculate();
 
         $this->response->html($this->helper->layout->app('project_list/show', [
-            'paginator' => $paginator,
+            'paginator'   => $paginator,
             'nb_projects' => $nb_projects,
-            'title' => t('Projects').' ('.$nb_projects.')'
+            'title'       => t('Projects').' ('.$nb_projects.')',
         ]));
     }
 }

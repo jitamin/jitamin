@@ -16,7 +16,7 @@ use Hiject\Core\ExternalLink\ExternalLinkManager;
 use Hiject\Core\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
- * Task External Link API controller
+ * Task External Link API controller.
  */
 class TaskExternalLinkProcedure extends BaseProcedure
 {
@@ -31,6 +31,7 @@ class TaskExternalLinkProcedure extends BaseProcedure
             return $this->externalLinkManager->getProvider($providerName)->getDependencies();
         } catch (ExternalLinkProviderNotFound $e) {
             $this->logger->error(__METHOD__.': '.$e->getMessage());
+
             return false;
         }
     }
@@ -38,12 +39,14 @@ class TaskExternalLinkProcedure extends BaseProcedure
     public function getExternalTaskLinkById($task_id, $link_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getExternalTaskLink', $task_id);
+
         return $this->taskExternalLinkModel->getById($link_id);
     }
 
     public function getAllExternalTaskLinks($task_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getExternalTaskLinks', $task_id);
+
         return $this->taskExternalLinkModel->getAll($task_id);
     }
 
@@ -60,17 +63,18 @@ class TaskExternalLinkProcedure extends BaseProcedure
             $link = $provider->getLink();
 
             $values = [
-                'task_id' => $task_id,
-                'title' => $title ?: $link->getTitle(),
-                'url' => $link->getUrl(),
-                'link_type' => $provider->getType(),
+                'task_id'    => $task_id,
+                'title'      => $title ?: $link->getTitle(),
+                'url'        => $link->getUrl(),
+                'link_type'  => $provider->getType(),
                 'dependency' => $dependency,
             ];
 
             list($valid, $errors) = $this->externalLinkValidator->validateCreation($values);
 
-            if (! $valid) {
+            if (!$valid) {
                 $this->logger->error(__METHOD__.': '.var_export($errors));
+
                 return false;
             }
 
@@ -88,16 +92,17 @@ class TaskExternalLinkProcedure extends BaseProcedure
 
         $link = $this->taskExternalLinkModel->getById($link_id);
         $values = $this->filterValues([
-            'title' => $title,
-            'url' => $url,
+            'title'      => $title,
+            'url'        => $url,
             'dependency' => $dependency,
         ]);
 
         $values = array_merge($link, $values);
         list($valid, $errors) = $this->externalLinkValidator->validateModification($values);
 
-        if (! $valid) {
+        if (!$valid) {
             $this->logger->error(__METHOD__.': '.var_export($errors));
+
             return false;
         }
 
@@ -107,6 +112,7 @@ class TaskExternalLinkProcedure extends BaseProcedure
     public function removeExternalTaskLink($task_id, $link_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeExternalTaskLink', $task_id);
+
         return $this->taskExternalLinkModel->remove($link_id);
     }
 }

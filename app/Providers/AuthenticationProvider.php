@@ -11,28 +11,28 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
-use Hiject\Core\Security\AuthenticationManager;
-use Hiject\Core\Security\AccessMap;
-use Hiject\Core\Security\Authorization;
-use Hiject\Core\Security\Role;
-use Hiject\Auth\RememberMeAuth;
 use Hiject\Auth\DatabaseAuth;
 use Hiject\Auth\LdapAuth;
-use Hiject\Auth\TotpAuth;
+use Hiject\Auth\RememberMeAuth;
 use Hiject\Auth\ReverseProxyAuth;
+use Hiject\Auth\TotpAuth;
+use Hiject\Core\Security\AccessMap;
+use Hiject\Core\Security\AuthenticationManager;
+use Hiject\Core\Security\Authorization;
+use Hiject\Core\Security\Role;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Authentication Provider
+ * Authentication Provider.
  */
 class AuthenticationProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
@@ -64,14 +64,13 @@ class AuthenticationProvider implements ServiceProviderInterface
     }
 
     /**
-     * Get ACL for projects
+     * Get ACL for projects.
      *
-     * @access public
      * @return AccessMap
      */
     public function getProjectAccessMap()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setDefaultRole(Role::PROJECT_VIEWER);
         $acl->setRoleHierarchy(Role::PROJECT_MANAGER, [Role::PROJECT_MEMBER, Role::PROJECT_VIEWER]);
         $acl->setRoleHierarchy(Role::PROJECT_MEMBER, [Role::PROJECT_VIEWER]);
@@ -119,14 +118,13 @@ class AuthenticationProvider implements ServiceProviderInterface
     }
 
     /**
-     * Get ACL for the application
+     * Get ACL for the application.
      *
-     * @access public
      * @return AccessMap
      */
     public function getApplicationAccessMap()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setDefaultRole(Role::APP_USER);
         $acl->setRoleHierarchy(Role::APP_ADMIN, [Role::APP_MANAGER, Role::APP_USER, Role::APP_PUBLIC]);
         $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER, Role::APP_PUBLIC]);
@@ -163,14 +161,13 @@ class AuthenticationProvider implements ServiceProviderInterface
     }
 
     /**
-     * Get ACL for the API
+     * Get ACL for the API.
      *
-     * @access public
      * @return AccessMap
      */
     public function getApiAccessMap()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setDefaultRole(Role::APP_USER);
         $acl->setRoleHierarchy(Role::APP_ADMIN, [Role::APP_MANAGER, Role::APP_USER, Role::APP_PUBLIC]);
         $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER, Role::APP_PUBLIC]);
@@ -187,14 +184,13 @@ class AuthenticationProvider implements ServiceProviderInterface
     }
 
     /**
-     * Get ACL for the API
+     * Get ACL for the API.
      *
-     * @access public
      * @return AccessMap
      */
     public function getApiProjectAccessMap()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setDefaultRole(Role::PROJECT_VIEWER);
         $acl->setRoleHierarchy(Role::PROJECT_MANAGER, [Role::PROJECT_MEMBER, Role::PROJECT_VIEWER]);
         $acl->setRoleHierarchy(Role::PROJECT_MEMBER, [Role::PROJECT_VIEWER]);

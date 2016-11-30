@@ -11,115 +11,102 @@
 
 namespace Hiject\Core;
 
-use Pimple\Container;
 use PicoDb\Table;
+use Pimple\Container;
 
 /**
- * Paginator helper
+ * Paginator helper.
  */
 class Paginator
 {
     /**
-     * Container instance
+     * Container instance.
      *
-     * @access private
      * @var \Pimple\Container
      */
     private $container;
 
     /**
-     * Total number of items
+     * Total number of items.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $total = 0;
 
     /**
-     * Page number
+     * Page number.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $page = 1;
 
     /**
-     * Offset
+     * Offset.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $offset = 0;
 
     /**
-     * Limit
+     * Limit.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $limit = 0;
 
     /**
-     * Sort by this column
+     * Sort by this column.
      *
-     * @access private
      * @var string
      */
     private $order = '';
 
     /**
-     * Sorting direction
+     * Sorting direction.
      *
-     * @access private
      * @var string
      */
     private $direction = 'ASC';
 
     /**
-     * Slice of items
+     * Slice of items.
      *
-     * @access private
      * @var array
      */
     private $items = [];
 
     /**
-     * PicoDb Table instance
+     * PicoDb Table instance.
      *
-     * @access private
      * @var \Picodb\Table
      */
     private $query = null;
 
     /**
-     * Controller name
+     * Controller name.
      *
-     * @access private
      * @var string
      */
     private $controller = '';
 
     /**
-     * Action name
+     * Action name.
      *
-     * @access private
      * @var string
      */
     private $action = '';
 
     /**
-     * Url params
+     * Url params.
      *
-     * @access private
      * @var array
      */
     private $params = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  \Pimple\Container   $container
+     * @param \Pimple\Container $container
      */
     public function __construct(Container $container)
     {
@@ -127,23 +114,23 @@ class Paginator
     }
 
     /**
-     * Set a PicoDb query
+     * Set a PicoDb query.
      *
-     * @access public
      * @param  \PicoDb\Table
+     *
      * @return Paginator
      */
     public function setQuery(Table $query)
     {
         $this->query = $query;
         $this->total = $this->query->count();
+
         return $this;
     }
 
     /**
-     * Execute a PicoDb query
+     * Execute a PicoDb query.
      *
-     * @access public
      * @return array
      */
     public function executeQuery()
@@ -160,12 +147,12 @@ class Paginator
     }
 
     /**
-     * Set url parameters
+     * Set url parameters.
      *
-     * @access public
-     * @param  string      $controller
-     * @param  string      $action
-     * @param  array       $params
+     * @param string $controller
+     * @param string $action
+     * @param array  $params
+     *
      * @return Paginator
      */
     public function setUrl($controller, $action, array $params = [])
@@ -173,26 +160,27 @@ class Paginator
         $this->controller = $controller;
         $this->action = $action;
         $this->params = $params;
+
         return $this;
     }
 
     /**
-     * Add manually items
+     * Add manually items.
      *
-     * @access public
-     * @param  array       $items
+     * @param array $items
+     *
      * @return Paginator
      */
     public function setCollection(array $items)
     {
         $this->items = $items;
+
         return $this;
     }
 
     /**
-     * Return the items
+     * Return the items.
      *
-     * @access public
      * @return array
      */
     public function getCollection()
@@ -201,23 +189,23 @@ class Paginator
     }
 
     /**
-     * Set the total number of items
+     * Set the total number of items.
      *
-     * @access public
-     * @param  integer    $total
+     * @param int $total
+     *
      * @return Paginator
      */
     public function setTotal($total)
     {
         $this->total = $total;
+
         return $this;
     }
 
     /**
-     * Get the total number of items
+     * Get the total number of items.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getTotal()
     {
@@ -225,62 +213,65 @@ class Paginator
     }
 
     /**
-     * Set the default page number
+     * Set the default page number.
      *
-     * @access public
-     * @param  integer     $page
+     * @param int $page
+     *
      * @return Paginator
      */
     public function setPage($page)
     {
         $this->page = $page;
+
         return $this;
     }
 
     /**
-     * Set the default column order
+     * Set the default column order.
      *
-     * @access public
-     * @param  string     $order
+     * @param string $order
+     *
      * @return Paginator
      */
     public function setOrder($order)
     {
         $this->order = $order;
+
         return $this;
     }
 
     /**
-     * Set the default sorting direction
+     * Set the default sorting direction.
      *
-     * @access public
-     * @param  string    $direction
+     * @param string $direction
+     *
      * @return Paginator
      */
     public function setDirection($direction)
     {
         $this->direction = $direction;
+
         return $this;
     }
 
     /**
-     * Set the maximum number of items per page
+     * Set the maximum number of items per page.
      *
-     * @access public
-     * @param  integer     $limit
+     * @param int $limit
+     *
      * @return Paginator
      */
     public function setMax($limit)
     {
         $this->limit = $limit;
+
         return $this;
     }
 
     /**
-     * Return true if the collection is empty
+     * Return true if the collection is empty.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isEmpty()
     {
@@ -288,10 +279,10 @@ class Paginator
     }
 
     /**
-     * Execute the offset calculation only if the $condition is true
+     * Execute the offset calculation only if the $condition is true.
      *
-     * @access public
-     * @param  boolean    $condition
+     * @param bool $condition
+     *
      * @return Paginator
      */
     public function calculateOnlyIf($condition)
@@ -304,9 +295,8 @@ class Paginator
     }
 
     /**
-     * Calculate the offset value accoring to url params and the page number
+     * Calculate the offset value accoring to url params and the page number.
      *
-     * @access public
      * @return Paginator
      */
     public function calculate()
@@ -325,19 +315,19 @@ class Paginator
     }
 
     /**
-     * Get url params for link generation
+     * Get url params for link generation.
      *
-     * @access public
-     * @param  integer  $page
-     * @param  string   $order
-     * @param  string   $direction
+     * @param int    $page
+     * @param string $order
+     * @param string $direction
+     *
      * @return string
      */
     public function getUrlParams($page, $order, $direction)
     {
         $params = [
-            'page' => $page,
-            'order' => $order,
+            'page'      => $page,
+            'order'     => $order,
             'direction' => $direction,
         ];
 
@@ -345,9 +335,8 @@ class Paginator
     }
 
     /**
-     * Generate the previous link
+     * Generate the previous link.
      *
-     * @access public
      * @return string
      */
     public function generatePreviousLink()
@@ -373,9 +362,8 @@ class Paginator
     }
 
     /**
-     * Generate the next link
+     * Generate the next link.
      *
-     * @access public
      * @return string
      */
     public function generateNextLink()
@@ -401,10 +389,9 @@ class Paginator
     }
 
     /**
-     * Return true if there is no pagination to show
+     * Return true if there is no pagination to show.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function hasNothingtoShow()
     {
@@ -412,16 +399,15 @@ class Paginator
     }
 
     /**
-     * Generation pagination links
+     * Generation pagination links.
      *
-     * @access public
      * @return string
      */
     public function toHtml()
     {
         $html = '';
 
-        if (! $this->hasNothingtoShow()) {
+        if (!$this->hasNothingtoShow()) {
             $html .= '<div class="pagination">';
             $html .= $this->generatePreviousLink();
             $html .= $this->generateNextLink();
@@ -432,9 +418,8 @@ class Paginator
     }
 
     /**
-     * Magic method to output pagination links
+     * Magic method to output pagination links.
      *
-     * @access public
      * @return string
      */
     public function __toString()
@@ -443,10 +428,11 @@ class Paginator
     }
 
     /**
-     * Column sorting
+     * Column sorting.
      *
-     * @param  string   $label         Column title
-     * @param  string   $column        SQL column name
+     * @param string $label  Column title
+     * @param string $column SQL column name
+     *
      * @return string
      */
     public function order($label, $column)

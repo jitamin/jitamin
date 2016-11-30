@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskModel;
+use Hiject\Model\CategoryModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskDuplicationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\CategoryModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskTagModel;
 
 class TaskDuplicationModelTest extends Base
@@ -66,12 +66,12 @@ class TaskDuplicationModelTest extends Base
         $this->assertTrue($categoryModel->exists(2));
 
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'column_id' => 3,
-            'owner_id' => 1,
+            'title'       => 'test',
+            'project_id'  => 1,
+            'column_id'   => 3,
+            'owner_id'    => 1,
             'category_id' => 2,
-            'time_spent' => 4.4
+            'time_spent'  => 4.4,
         ]));
 
         $task = $taskFinderModel->getById(1);
@@ -117,9 +117,9 @@ class TaskDuplicationModelTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
+            'title'      => 'test',
             'project_id' => 1,
-            'tags' => ['T1', 'T2']
+            'tags'       => ['T1', 'T2'],
         ]));
 
         $this->assertEquals(2, $taskDuplicationModel->duplicate(1));
@@ -139,9 +139,9 @@ class TaskDuplicationModelTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
+            'title'      => 'test',
             'project_id' => 1,
-            'priority' => 2
+            'priority'   => 2,
         ]));
 
         $this->assertEquals(2, $taskDuplicationModel->duplicate(1));

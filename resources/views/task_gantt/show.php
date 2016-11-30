@@ -17,7 +17,7 @@
         </ul>
     </div>
 
-    <?php if (! empty($tasks)): ?>
+    <?php if (!empty($tasks)): ?>
         <div
             id="gantt-chart"
             data-records='<?= json_encode($tasks, JSON_HEX_APOS) ?>'

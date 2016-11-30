@@ -12,9 +12,9 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ColumnModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
 
 class TaskFinderModelTest extends Base
@@ -29,11 +29,11 @@ class TaskFinderModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $categoryModel->create(['project_id' => 1, 'name' => 'C1']));
         $this->assertEquals(1, $taskCreationModel->create([
-            'project_id' => 1,
-            'title' => 'Task #1',
-            'reference' => 'test',
+            'project_id'  => 1,
+            'title'       => 'Task #1',
+            'reference'   => 'test',
             'description' => 'desc',
-            'owner_id' => 1,
+            'owner_id'    => 1,
             'category_id' => 1,
         ]));
 

@@ -14,49 +14,48 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * User Notification Filter
+ * User Notification Filter.
  */
 class UserNotificationFilterModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const PROJECT_TABLE = 'user_has_notifications';
 
     /**
-     * User filters
+     * User filters.
      *
-     * @var integer
+     * @var int
      */
-    const FILTER_NONE      = 1;
-    const FILTER_ASSIGNEE  = 2;
-    const FILTER_CREATOR   = 3;
-    const FILTER_BOTH      = 4;
+    const FILTER_NONE = 1;
+    const FILTER_ASSIGNEE = 2;
+    const FILTER_CREATOR = 3;
+    const FILTER_BOTH = 4;
 
     /**
-     * Get the list of filters
+     * Get the list of filters.
      *
-     * @access public
      * @return array
      */
     public function getFilters()
     {
         return [
-            self::FILTER_NONE => t('All tasks'),
+            self::FILTER_NONE     => t('All tasks'),
             self::FILTER_ASSIGNEE => t('Only for tasks assigned to me'),
-            self::FILTER_CREATOR => t('Only for tasks created by me'),
-            self::FILTER_BOTH => t('Only for tasks created by me and assigned to me'),
+            self::FILTER_CREATOR  => t('Only for tasks created by me'),
+            self::FILTER_BOTH     => t('Only for tasks created by me and assigned to me'),
         ];
     }
 
     /**
-     * Get user selected filter
+     * Get user selected filter.
      *
-     * @access public
-     * @param  integer  $user_id
-     * @return integer
+     * @param int $user_id
+     *
+     * @return int
      */
     public function getSelectedFilter($user_id)
     {
@@ -64,12 +63,12 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Save selected filter for a user
+     * Save selected filter for a user.
      *
-     * @access public
-     * @param  integer  $user_id
-     * @param  string   $filter
-     * @return boolean
+     * @param int    $user_id
+     * @param string $filter
+     *
+     * @return bool
      */
     public function saveFilter($user_id, $filter)
     {
@@ -79,10 +78,10 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Get user selected projects
+     * Get user selected projects.
      *
-     * @access public
-     * @param  integer  $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getSelectedProjects($user_id)
@@ -91,12 +90,12 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Save selected projects for a user
+     * Save selected projects for a user.
      *
-     * @access public
-     * @param  integer    $user_id
-     * @param  integer[]  $project_ids
-     * @return boolean
+     * @param int   $user_id
+     * @param int[] $project_ids
+     *
+     * @return bool
      */
     public function saveSelectedProjects($user_id, array $project_ids)
     {
@@ -105,7 +104,7 @@ class UserNotificationFilterModel extends Base
 
         foreach ($project_ids as $project_id) {
             $results[] = $this->db->table(self::PROJECT_TABLE)->insert([
-                'user_id' => $user_id,
+                'user_id'    => $user_id,
                 'project_id' => $project_id,
             ]);
         }
@@ -114,12 +113,12 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Return true if the user should receive notification
+     * Return true if the user should receive notification.
      *
-     * @access public
-     * @param  array  $user
-     * @param  array  $event_data
-     * @return boolean
+     * @param array $user
+     * @param array $event_data
+     *
+     * @return bool
      */
     public function shouldReceiveNotification(array $user, array $event_data)
     {
@@ -140,11 +139,11 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Return true if the user will receive all notifications
+     * Return true if the user will receive all notifications.
      *
-     * @access public
-     * @param  array  $user
-     * @return boolean
+     * @param array $user
+     *
+     * @return bool
      */
     public function filterNone(array $user)
     {
@@ -152,12 +151,12 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Return true if the user is the assignee and selected the filter "assignee"
+     * Return true if the user is the assignee and selected the filter "assignee".
      *
-     * @access public
-     * @param  array  $user
-     * @param  array  $event_data
-     * @return boolean
+     * @param array $user
+     * @param array $event_data
+     *
+     * @return bool
      */
     public function filterAssignee(array $user, array $event_data)
     {
@@ -165,12 +164,12 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Return true if the user is the creator and enabled the filter "creator"
+     * Return true if the user is the creator and enabled the filter "creator".
      *
-     * @access public
-     * @param  array  $user
-     * @param  array  $event_data
-     * @return boolean
+     * @param array $user
+     * @param array $event_data
+     *
+     * @return bool
      */
     public function filterCreator(array $user, array $event_data)
     {
@@ -178,12 +177,12 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Return true if the user is the assignee or the creator and selected the filter "both"
+     * Return true if the user is the assignee or the creator and selected the filter "both".
      *
-     * @access public
-     * @param  array  $user
-     * @param  array  $event_data
-     * @return boolean
+     * @param array $user
+     * @param array $event_data
+     *
+     * @return bool
      */
     public function filterBoth(array $user, array $event_data)
     {
@@ -192,18 +191,18 @@ class UserNotificationFilterModel extends Base
     }
 
     /**
-     * Return true if the user want to receive notification for the selected project
+     * Return true if the user want to receive notification for the selected project.
      *
-     * @access public
-     * @param  array  $user
-     * @param  array  $event_data
-     * @return boolean
+     * @param array $user
+     * @param array $event_data
+     *
+     * @return bool
      */
     public function filterProject(array $user, array $event_data)
     {
         $projects = $this->getSelectedProjects($user['id']);
 
-        if (! empty($projects)) {
+        if (!empty($projects)) {
             return in_array($event_data['task']['project_id'], $projects);
         }
 

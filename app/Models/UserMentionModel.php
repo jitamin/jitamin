@@ -11,19 +11,19 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
 use Hiject\Bus\Event\GenericEvent;
+use Hiject\Core\Base;
 
 /**
- * User Mention
+ * User Mention.
  */
 class UserMentionModel extends Base
 {
     /**
-     * Get list of mentioned users
+     * Get list of mentioned users.
      *
-     * @access public
-     * @param  string $content
+     * @param string $content
+     *
      * @return array
      */
     public function getMentionedUsers($content)
@@ -43,12 +43,11 @@ class UserMentionModel extends Base
     }
 
     /**
-     * Fire events for user mentions
+     * Fire events for user mentions.
      *
-     * @access public
-     * @param  string       $content
-     * @param  string       $eventName
-     * @param  GenericEvent $event
+     * @param string       $content
+     * @param string       $eventName
+     * @param GenericEvent $event
      */
     public function fireEvents($content, $eventName, GenericEvent $event)
     {

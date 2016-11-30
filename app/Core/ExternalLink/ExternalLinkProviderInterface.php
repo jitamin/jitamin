@@ -12,28 +12,26 @@
 namespace Hiject\Core\ExternalLink;
 
 /**
- * External Link Provider Interface
+ * External Link Provider Interface.
  */
 interface ExternalLinkProviderInterface
 {
     /**
-     * Get provider name (label)
+     * Get provider name (label).
      *
-     * @access public
      * @return string
      */
     public function getName();
 
     /**
-     * Get link type (will be saved in the database)
+     * Get link type (will be saved in the database).
      *
-     * @access public
      * @return string
      */
     public function getType();
 
     /**
-     * Get a dictionary of supported dependency types by the provider
+     * Get a dictionary of supported dependency types by the provider.
      *
      * Example:
      *
@@ -46,31 +44,27 @@ interface ExternalLinkProviderInterface
      *
      * The dictionary key is saved in the database.
      *
-     * @access public
      * @return array
      */
     public function getDependencies();
 
     /**
-     * Set text entered by the user
+     * Set text entered by the user.
      *
-     * @access public
-     * @param  string $input
+     * @param string $input
      */
     public function setUserTextInput($input);
 
     /**
-     * Return true if the provider can parse correctly the user input
+     * Return true if the provider can parse correctly the user input.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function match();
 
     /**
-     * Get the link found with the properties
+     * Get the link found with the properties.
      *
-     * @access public
      * @return ExternalLinkInterface
      */
     public function getLink();

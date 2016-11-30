@@ -10,7 +10,7 @@
  */
 
 /**
- * Associate another dict to a dict based on a common key
+ * Associate another dict to a dict based on a common key.
  *
  * @param array  $input
  * @param array  $relations
@@ -29,7 +29,7 @@ function array_merge_relation(array &$input, array &$relations, $relation, $colu
 }
 
 /**
- * Create indexed array from a list of dict
+ * Create indexed array from a list of dict.
  *
  * $input = [
  *   ['k1' => 1, 'k2' => 2], ['k1' => 3, 'k2' => 4], ['k1' => 1, 'k2' => 5]
@@ -42,8 +42,9 @@ function array_merge_relation(array &$input, array &$relations, $relation, $colu
  *   3 => [['k1' => 3, 'k2' => 4]],
  * ]
  *
- * @param  array   $input
- * @param  string  $column
+ * @param array  $input
+ * @param string $column
+ *
  * @return array
  */
 function array_column_index(array &$input, $column)
@@ -60,7 +61,7 @@ function array_column_index(array &$input, $column)
 }
 
 /**
- * Sum all values from a single column in the input array
+ * Sum all values from a single column in the input array.
  *
  * $input = [
  *   ['column' => 2], ['column' => 3]
@@ -68,9 +69,10 @@ function array_column_index(array &$input, $column)
  *
  * array_column_sum($input, 'column') returns 5
  *
- * @param  array   $input
- * @param  string  $column
- * @return double
+ * @param array  $input
+ * @param string $column
+ *
+ * @return float
  */
 function array_column_sum(array &$input, $column)
 {
@@ -86,7 +88,7 @@ function array_column_sum(array &$input, $column)
 }
 
 /**
- * Get upload max size
+ * Get upload max size.
  *
  * @return string
  */
@@ -96,7 +98,7 @@ function get_upload_max_size()
 }
 
 /**
- * Translate a string
+ * Translate a string.
  *
  * @return string
  */
@@ -106,7 +108,7 @@ function t()
 }
 
 /**
- * Translate a string with no HTML escaping
+ * Translate a string with no HTML escaping.
  *
  * @return string
  */
@@ -116,9 +118,10 @@ function e()
 }
 
 /**
- * Translate a number
+ * Translate a number.
  *
- * @param  mixed $value
+ * @param mixed $value
+ *
  * @return string
  */
 function n($value)

@@ -12,47 +12,45 @@
 namespace Hiject\Core\Mail;
 
 use Hiject\Bus\Job\EmailJob;
-use Pimple\Container;
 use Hiject\Core\Base;
+use Pimple\Container;
 
 /**
- * Mail Client
+ * Mail Client.
  */
 class Client extends Base
 {
     /**
-     * Mail transport instances
+     * Mail transport instances.
      *
-     * @access private
      * @var \Pimple\Container
      */
     private $transports;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  \Pimple\Container   $container
+     * @param \Pimple\Container $container
      */
     public function __construct(Container $container)
     {
         parent::__construct($container);
-        $this->transports = new Container;
+        $this->transports = new Container();
     }
 
     /**
-     * Send a HTML email
+     * Send a HTML email.
      *
-     * @access public
-     * @param  string  $email
-     * @param  string  $name
-     * @param  string  $subject
-     * @param  string  $html
+     * @param string $email
+     * @param string $name
+     * @param string $subject
+     * @param string $html
+     *
      * @return Client
      */
     public function send($email, $name, $subject, $html)
     {
-        if (! empty($email)) {
+        if (!empty($email)) {
             $this->queueManager->push(EmailJob::getInstance($this->container)
                 ->withParams($email, $name, $subject, $html, $this->getAuthor())
             );
@@ -62,9 +60,8 @@ class Client extends Base
     }
 
     /**
-     * Get email author
+     * Get email author.
      *
-     * @access public
      * @return string
      */
     public function getAuthor()
@@ -79,10 +76,10 @@ class Client extends Base
     }
 
     /**
-     * Get mail transport instance
+     * Get mail transport instance.
      *
-     * @access public
-     * @param  string  $transport
+     * @param string $transport
+     *
      * @return ClientInterface
      */
     public function getTransport($transport)
@@ -91,11 +88,11 @@ class Client extends Base
     }
 
     /**
-     * Add a new mail transport
+     * Add a new mail transport.
      *
-     * @access public
-     * @param  string  $transport
-     * @param  string  $class
+     * @param string $transport
+     * @param string $class
+     *
      * @return Client
      */
     public function setTransport($transport, $class)
@@ -110,14 +107,14 @@ class Client extends Base
     }
 
     /**
-     * Return the list of registered transports
+     * Return the list of registered transports.
      *
-     * @access public
      * @return array
      */
     public function getAvailableTransports()
     {
         $availableTransports = $this->transports->keys();
+
         return array_combine($availableTransports, $availableTransports);
     }
 }

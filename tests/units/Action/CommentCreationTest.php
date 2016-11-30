@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\CommentCreation;
 use Hiject\Bus\Event\GenericEvent;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Core\Security\Role;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
+use Hiject\Model\TaskCreationModel;
 use Hiject\Model\UserModel;
-use Hiject\Action\CommentCreation;
-use Hiject\Core\Security\Role;
 
 class CommentCreationTest extends Base
 {

@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\UserModel;
 use Hiject\Model\UserMetadataModel;
+use Hiject\Model\UserModel;
 
 class UserMetadataTest extends Base
 {

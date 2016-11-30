@@ -18,34 +18,34 @@
         <?php endif ?>
 
         <?php foreach ($swimlanes as $index => $swimlane): ?>
-            <?php if (! ($swimlane['nb_tasks'] === 0 && isset($not_editable))): ?>
+            <?php if (!($swimlane['nb_tasks'] === 0 && isset($not_editable))): ?>
 
                 <!-- Note: Do not show swimlane row on the top otherwise we can't collapse columns -->
                 <?php if ($index > 0 && $swimlane['nb_swimlanes'] > 1): ?>
                     <?= $this->render('board/table_swimlane', [
-                        'project' => $project,
-                        'swimlane' => $swimlane,
+                        'project'      => $project,
+                        'swimlane'     => $swimlane,
                         'not_editable' => isset($not_editable),
                     ]) ?>
                 <?php endif ?>
 
                 <?= $this->render('board/table_column', [
-                    'swimlane' => $swimlane,
+                    'swimlane'     => $swimlane,
                     'not_editable' => isset($not_editable),
                 ]) ?>
 
                 <?php if ($index === 0 && $swimlane['nb_swimlanes'] > 1): ?>
                     <?= $this->render('board/table_swimlane', [
-                        'project' => $project,
-                        'swimlane' => $swimlane,
+                        'project'      => $project,
+                        'swimlane'     => $swimlane,
                         'not_editable' => isset($not_editable),
                     ]) ?>
                 <?php endif ?>
 
                 <?= $this->render('board/table_tasks', [
-                    'project' => $project,
-                    'swimlane' => $swimlane,
-                    'not_editable' => isset($not_editable),
+                    'project'                => $project,
+                    'swimlane'               => $swimlane,
+                    'not_editable'           => isset($not_editable),
                     'board_highlight_period' => $board_highlight_period,
                 ]) ?>
 

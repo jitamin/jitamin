@@ -12,35 +12,31 @@
 namespace Hiject\Controller;
 
 /**
- * Project File Controller
+ * Project File Controller.
  */
 class ProjectFileController extends BaseController
 {
     /**
-     * File upload form
-     *
-     * @access public
+     * File upload form.
      */
     public function create()
     {
         $project = $this->getProject();
 
         $this->response->html($this->template->render('project_file/create', [
-            'project' => $project,
+            'project'  => $project,
             'max_size' => $this->helper->text->phpToBytes(get_upload_max_size()),
         ]));
     }
 
     /**
-     * Save uploaded files
-     *
-     * @access public
+     * Save uploaded files.
      */
     public function save()
     {
         $project = $this->getProject();
 
-        if (! $this->projectFileModel->uploadFiles($project['id'], $this->request->getFileInfo('files'))) {
+        if (!$this->projectFileModel->uploadFiles($project['id'], $this->request->getFileInfo('files'))) {
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
@@ -48,9 +44,7 @@ class ProjectFileController extends BaseController
     }
 
     /**
-     * Remove a file
-     *
-     * @access public
+     * Remove a file.
      */
     public function remove()
     {
@@ -68,9 +62,7 @@ class ProjectFileController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a file
-     *
-     * @access public
+     * Confirmation dialog before removing a file.
      */
     public function confirm()
     {
@@ -79,7 +71,7 @@ class ProjectFileController extends BaseController
 
         $this->response->html($this->template->render('project_file/remove', [
             'project' => $project,
-            'file' => $file,
+            'file'    => $file,
         ]));
     }
 }

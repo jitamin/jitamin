@@ -29,11 +29,11 @@
             </td>
             <?= $this->hook->render('template:dashboard:subtasks:rows', ['subtask' => $subtask]) ?>
             <td>
-                <?php if (! empty($subtask['time_spent'])): ?>
+                <?php if (!empty($subtask['time_spent'])): ?>
                     <strong><?= $this->text->e($subtask['time_spent']).'h' ?></strong> <?= t('spent') ?> ,
                 <?php endif ?>
 
-                <?php if (! empty($subtask['time_estimated'])): ?>
+                <?php if (!empty($subtask['time_estimated'])): ?>
                     <strong><?= $this->text->e($subtask['time_estimated']).'h' ?></strong> <?= t('estimated') ?>
                 <?php endif ?>
             </td>

@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Core\Security\Role;
 use Hiject\Model\ActionModel;
+use Hiject\Model\CategoryModel;
+use Hiject\Model\ColumnModel;
 use Hiject\Model\ProjectModel;
+use Hiject\Model\ProjectUserRoleModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
-use Hiject\Model\ColumnModel;
-use Hiject\Model\CategoryModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Core\Security\Role;
 
 class ActionModelTest extends Base
 {
@@ -30,10 +30,10 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
     }
 
@@ -45,10 +45,10 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertNotEmpty($actionModel->getById(1));
@@ -64,10 +64,10 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $action = $actionModel->getById(1);
@@ -86,10 +86,10 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(1, $actionModel->getProjectId(1));
@@ -105,17 +105,17 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
-            'project_id' => 2,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 2,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 6, 'color_id' => 'blue'],
+            'params'      => ['column_id' => 6, 'color_id' => 'blue'],
         ]));
 
         $actions = $actionModel->getAll();
@@ -141,17 +141,17 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
-            'project_id' => 2,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 2,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 6, 'color_id' => 'blue'],
+            'params'      => ['column_id' => 6, 'color_id' => 'blue'],
         ]));
 
         $actions = $actionModel->getAllByProject(1);
@@ -191,24 +191,24 @@ class ActionModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(3, 3, Role::PROJECT_MANAGER));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
-            'project_id' => 2,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 2,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 6, 'color_id' => 'blue'],
+            'params'      => ['column_id' => 6, 'color_id' => 'blue'],
         ]));
 
         $this->assertEquals(3, $actionModel->create([
-            'project_id' => 3,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 3,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 10, 'color_id' => 'green'],
+            'params'      => ['column_id' => 10, 'color_id' => 'green'],
         ]));
 
         $actions = $actionModel->getAllByUser(1);
@@ -240,10 +240,10 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -266,10 +266,10 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['src_column_id' => 1, 'dst_column_id' => 2, 'dest_column_id' => 3],
+            'params'      => ['src_column_id' => 1, 'dst_column_id' => 2, 'dest_column_id' => 3],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -295,17 +295,17 @@ class ActionModelTest extends Base
         $this->assertTrue($columnModel->update(2, 'My unique column'));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignColorColumn',
-            'params' => ['column_id' => 2, 'color_id' => 'green'],
+            'params'      => ['column_id' => 2, 'color_id' => 'green'],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -329,10 +329,10 @@ class ActionModelTest extends Base
         $this->assertEquals(3, $projectModel->create(['name' => 'test2']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CLOSE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CLOSE,
             'action_name' => '\Hiject\Action\TaskDuplicateAnotherProject',
-            'params' => ['column_id' => 1, 'project_id' => 3],
+            'params'      => ['column_id' => 1, 'project_id' => 3],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -355,10 +355,10 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CLOSE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CLOSE,
             'action_name' => '\Hiject\Action\TaskDuplicateAnotherProject',
-            'params' => ['column_id' => 1, 'project_id' => 2],
+            'params'      => ['column_id' => 1, 'project_id' => 2],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -383,10 +383,10 @@ class ActionModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignSpecificUser',
-            'params' => ['column_id' => 1, 'user_id' => 2],
+            'params'      => ['column_id' => 1, 'user_id' => 2],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -416,10 +416,10 @@ class ActionModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_VIEWER));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignSpecificUser',
-            'params' => ['column_id' => 1, 'user_id' => 2],
+            'params'      => ['column_id' => 1, 'user_id' => 2],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -443,10 +443,10 @@ class ActionModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => '\Hiject\Action\TaskAssignSpecificUser',
-            'params' => ['column_id' => 1, 'owner_id' => 2],
+            'params'      => ['column_id' => 1, 'owner_id' => 2],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -468,10 +468,10 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $categoryModel->create(['name' => 'c1', 'project_id' => 2]));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE_UPDATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
             'action_name' => '\Hiject\Action\TaskAssignColorCategory',
-            'params' => ['column_id' => 1, 'category_id' => 1],
+            'params'      => ['column_id' => 1, 'category_id' => 1],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -498,10 +498,10 @@ class ActionModelTest extends Base
         $this->assertEquals(2, $categoryModel->create(['name' => 'c2', 'project_id' => 2]));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE_UPDATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
             'action_name' => '\Hiject\Action\TaskAssignColorCategory',
-            'params' => ['column_id' => 1, 'category_id' => 1],
+            'params'      => ['column_id' => 1, 'category_id' => 1],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));
@@ -522,10 +522,10 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE_UPDATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
             'action_name' => '\Hiject\Action\TaskAssignColorCategory',
-            'params' => ['column_id' => 1, 'category_id' => 1],
+            'params'      => ['column_id' => 1, 'category_id' => 1],
         ]));
 
         $this->assertTrue($actionModel->duplicate(1, 2));

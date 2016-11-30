@@ -16,15 +16,15 @@ use Hiject\Model\TaskModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Project daily summary Subscriber
+ * Project daily summary Subscriber.
  */
 class ProjectDailySummarySubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -39,9 +39,8 @@ class ProjectDailySummarySubscriber extends BaseSubscriber implements EventSubsc
     }
 
     /**
-     * Handle the event
+     * Handle the event.
      *
-     * @access public
      * @param TaskEvent $event
      */
     public function execute(TaskEvent $event)

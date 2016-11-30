@@ -14,32 +14,29 @@ namespace Hiject\Group;
 use Hiject\Core\Group\GroupProviderInterface;
 
 /**
- * LDAP Group Provider
+ * LDAP Group Provider.
  */
 class LdapGroupProvider implements GroupProviderInterface
 {
     /**
-     * Group DN
+     * Group DN.
      *
-     * @access private
      * @var string
      */
     private $dn = '';
 
     /**
-     * Group Name
+     * Group Name.
      *
-     * @access private
      * @var string
      */
     private $name = '';
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string $dn
-     * @param  string $name
+     * @param string $dn
+     * @param string $name
      */
     public function __construct($dn, $name)
     {
@@ -48,10 +45,9 @@ class LdapGroupProvider implements GroupProviderInterface
     }
 
     /**
-     * Get internal id
+     * Get internal id.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getInternalId()
     {
@@ -59,9 +55,8 @@ class LdapGroupProvider implements GroupProviderInterface
     }
 
     /**
-     * Get external id
+     * Get external id.
      *
-     * @access public
      * @return string
      */
     public function getExternalId()
@@ -70,9 +65,8 @@ class LdapGroupProvider implements GroupProviderInterface
     }
 
     /**
-     * Get group name
+     * Get group name.
      *
-     * @access public
      * @return string
      */
     public function getName()

@@ -2,7 +2,7 @@
     <h2><?= t('Plugin Directory') ?></h2>
 </div>
 
-<?php if (! $is_configured): ?>
+<?php if (!$is_configured): ?>
 <p class="alert alert-error">
     <?= t('Your Hiject instance is not configured to install plugins from the user interface.') ?>
 </p>
@@ -27,7 +27,7 @@
             </td>
             <td>
                 <?php if ($is_configured): ?>
-                    <?php if (! isset($installed_plugins[$plugin['title']])): ?>
+                    <?php if (!isset($installed_plugins[$plugin['title']])): ?>
                         <i class="fa fa-cloud-download fa-fw" aria-hidden="true"></i>
                         <?= $this->url->link(t('Install'), 'PluginController', 'install', ['archive_url' => urlencode($plugin['download'])], true) ?>
                     <?php elseif ($installed_plugins[$plugin['title']] < $plugin['version']): ?>
