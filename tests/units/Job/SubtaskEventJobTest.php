@@ -28,7 +28,8 @@ class SubtaskEventJobTest extends Base
 
     public function testWithMissingSubtask()
     {
-        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_CREATE, function () {});
+        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_CREATE, function () {
+        });
 
         $subtaskEventJob = new SubtaskEventJob($this->container);
         $subtaskEventJob->execute(42, SubtaskModel::EVENT_CREATE);
@@ -39,9 +40,12 @@ class SubtaskEventJobTest extends Base
 
     public function testTriggerEvents()
     {
-        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_CREATE, function () {});
-        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_UPDATE, function () {});
-        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_DELETE, function () {});
+        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_CREATE, function () {
+        });
+        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_UPDATE, function () {
+        });
+        $this->container['dispatcher']->addListener(SubtaskModel::EVENT_DELETE, function () {
+        });
 
         $subtaskModel = new SubtaskModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);

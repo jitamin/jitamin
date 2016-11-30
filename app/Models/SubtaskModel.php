@@ -234,7 +234,6 @@ class SubtaskModel extends Base
     public function duplicate($src_task_id, $dst_task_id)
     {
         return $this->db->transaction(function (Database $db) use ($src_task_id, $dst_task_id) {
-
             $subtasks = $db->table(SubtaskModel::TABLE)
                 ->columns('title', 'time_estimated', 'position')
                 ->eq('task_id', $src_task_id)

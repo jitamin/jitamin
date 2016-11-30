@@ -28,7 +28,8 @@ class TaskFileEventJobTest extends Base
 
     public function testWithMissingFile()
     {
-        $this->container['dispatcher']->addListener(TaskFileModel::EVENT_CREATE, function () {});
+        $this->container['dispatcher']->addListener(TaskFileModel::EVENT_CREATE, function () {
+        });
 
         $taskFileEventJob = new TaskFileEventJob($this->container);
         $taskFileEventJob->execute(42, TaskFileModel::EVENT_CREATE);
@@ -39,7 +40,8 @@ class TaskFileEventJobTest extends Base
 
     public function testTriggerEvents()
     {
-        $this->container['dispatcher']->addListener(TaskFileModel::EVENT_CREATE, function () {});
+        $this->container['dispatcher']->addListener(TaskFileModel::EVENT_CREATE, function () {
+        });
 
         $taskFileModel = new TaskFileModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);

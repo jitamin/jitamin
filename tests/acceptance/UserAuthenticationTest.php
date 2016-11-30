@@ -13,7 +13,6 @@ require_once __DIR__.'/Base.php';
 
 class UserAuthenticationTest extends Base
 {
-
     public function validLoginInputsProvider()
     {
         $inputs[] = [

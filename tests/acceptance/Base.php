@@ -11,7 +11,6 @@
 
 class Base extends PHPUnit_Extensions_Selenium2TestCase
 {
-
     public function setUp()
     {
         $this->setHost(SELENIUM_HOST);

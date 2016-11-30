@@ -36,7 +36,8 @@ class TaskEventJobTest extends Base
 
     public function testWithMissingTask()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, function () {
+        });
 
         $taskEventJob = new TaskEventJob($this->container);
         $taskEventJob->execute(42, [TaskModel::EVENT_CREATE]);
@@ -47,8 +48,10 @@ class TaskEventJobTest extends Base
 
     public function testTriggerCreateEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, function () {});
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE, function () {
+        });
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
@@ -63,8 +66,10 @@ class TaskEventJobTest extends Base
 
     public function testTriggerUpdateEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_UPDATE, function () {});
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_UPDATE, function () {
+        });
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskModificationModel = new TaskModificationModel($this->container);
@@ -81,7 +86,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerAssigneeChangeEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_ASSIGNEE_CHANGE, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_ASSIGNEE_CHANGE, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskModificationModel = new TaskModificationModel($this->container);
@@ -97,7 +103,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerCloseEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_CLOSE, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_CLOSE, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskStatusModel = new TaskStatusModel($this->container);
@@ -113,7 +120,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerOpenEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_OPEN, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_OPEN, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskStatusModel = new TaskStatusModel($this->container);
@@ -130,7 +138,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerMovePositionEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_POSITION, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_POSITION, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskPositionModel = new TaskPositionModel($this->container);
@@ -147,7 +156,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerMoveColumnEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_COLUMN, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_COLUMN, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskPositionModel = new TaskPositionModel($this->container);
@@ -163,7 +173,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerMoveSwimlaneEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_SWIMLANE, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_SWIMLANE, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskPositionModel = new TaskPositionModel($this->container);
@@ -181,7 +192,8 @@ class TaskEventJobTest extends Base
 
     public function testTriggerMoveProjectEvent()
     {
-        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_PROJECT, function () {});
+        $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_PROJECT, function () {
+        });
 
         $taskCreationModel = new TaskCreationModel($this->container);
         $projectModel = new ProjectModel($this->container);
