@@ -12,6 +12,7 @@ return [
     'No' => '否',
     'cancel' => '取消',
     'or' => '或者',
+    'None' => '无',
     'Yellow' => '黄色',
     'Blue' => '蓝色',
     'Green' => '绿色',
