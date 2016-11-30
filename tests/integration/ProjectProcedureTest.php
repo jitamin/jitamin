@@ -77,7 +77,7 @@ class ProjectProcedureTest extends BaseProcedureTest
         $this->assertEquals('test', $project['name']);
         $this->assertEquals('test', $project['description']);
 
-        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => $this->projectName)]);
+        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => $this->projectName]));
     }
 
     public function assertUpdateProjectIdentifier()
