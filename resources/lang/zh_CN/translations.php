@@ -147,7 +147,7 @@ return [
     'Task created successfully.' => '成功创建任务。',
     'User created successfully.' => '成功创建用户。',
     'Unable to create your user.' => '无法创建用户。',
-    'User updated successfully.' => '成功更新用户。',
+    'User updated successfully.' => '成功更新用户信息。',
     'Unable to update your user.' => '无法为您更新用户。',
     'User removed successfully.' => '成功删除用户。',
     'Unable to remove this user.' => '无法删除该用户。',

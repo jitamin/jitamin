@@ -58,13 +58,13 @@
         <?= $this->hook->render('template:layout:top') ?>
         <?= $this->render('header') ?>
         <section class="page container">
+            <?= $this->app->flashMessage() ?>
             <?= $this->render('breadcrumb', [
                     'project' => isset($project) ? $project : null,
                     'task' => isset($task) ? $task : null,
                     'description' => isset($description) ? $description : null,
                     'title' => $title,
             ]) ?>
-            <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>
         <?= $this->render('footer', [
