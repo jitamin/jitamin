@@ -5,8 +5,8 @@
     <div class="accordion-content">
         <?= $this->render('subtask/table', [
             'subtasks' => $subtasks,
-            'task' => $task,
-            'editable' => $editable
+            'task'     => $task,
+            'editable' => $editable,
         ]) ?>
     </div>
 </section>

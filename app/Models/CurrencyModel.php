@@ -14,21 +14,20 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Currency
+ * Currency.
  */
 class CurrencyModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'currencies';
 
     /**
-     * Get available application currencies
+     * Get available application currencies.
      *
-     * @access public
      * @return array
      */
     public function getCurrencies()
@@ -52,9 +51,8 @@ class CurrencyModel extends Base
     }
 
     /**
-     * Get all currency rates
+     * Get all currency rates.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -63,12 +61,12 @@ class CurrencyModel extends Base
     }
 
     /**
-     * Calculate the price for the reference currency
+     * Calculate the price for the reference currency.
      *
-     * @access public
-     * @param  string  $currency
-     * @param  double  $price
-     * @return double
+     * @param string $currency
+     * @param float  $price
+     *
+     * @return float
      */
     public function getPrice($currency, $price)
     {
@@ -86,12 +84,12 @@ class CurrencyModel extends Base
     }
 
     /**
-     * Add a new currency rate
+     * Add a new currency rate.
      *
-     * @access public
-     * @param  string    $currency
-     * @param  float     $rate
-     * @return boolean|integer
+     * @param string $currency
+     * @param float  $rate
+     *
+     * @return bool|int
      */
     public function create($currency, $rate)
     {
@@ -103,12 +101,12 @@ class CurrencyModel extends Base
     }
 
     /**
-     * Update a currency rate
+     * Update a currency rate.
      *
-     * @access public
-     * @param  string    $currency
-     * @param  float     $rate
-     * @return boolean
+     * @param string $currency
+     * @param float  $rate
+     *
+     * @return bool
      */
     public function update($currency, $rate)
     {

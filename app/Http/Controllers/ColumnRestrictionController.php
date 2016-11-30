@@ -14,15 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Class ColumnMoveRestrictionController
+ * Class ColumnMoveRestrictionController.
  */
 class ColumnRestrictionController extends BaseController
 {
     /**
-     * Show form to create a new column restriction
+     * Show form to create a new column restriction.
      *
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws AccessForbiddenException
      */
     public function create(array $values = [], array $errors = [])
@@ -33,16 +34,16 @@ class ColumnRestrictionController extends BaseController
 
         $this->response->html($this->template->render('column_restriction/create', [
             'project' => $project,
-            'role' => $role,
-            'rules' => $this->columnRestrictionModel->getRules(),
+            'role'    => $role,
+            'rules'   => $this->columnRestrictionModel->getRules(),
             'columns' => $this->columnModel->getList($project['id']),
-            'values' => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
-            'errors' => $errors,
+            'values'  => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
+            'errors'  => $errors,
         ]));
     }
 
     /**
-     * Save new column restriction
+     * Save new column restriction.
      */
     public function save()
     {
@@ -72,9 +73,7 @@ class ColumnRestrictionController extends BaseController
     }
 
     /**
-     * Confirm suppression
-     *
-     * @access public
+     * Confirm suppression.
      */
     public function confirm()
     {
@@ -82,15 +81,13 @@ class ColumnRestrictionController extends BaseController
         $restriction_id = $this->request->getIntegerParam('restriction_id');
 
         $this->response->html($this->helper->layout->project('column_restriction/remove', [
-            'project' => $project,
+            'project'     => $project,
             'restriction' => $this->columnRestrictionModel->getById($project['id'], $restriction_id),
         ]));
     }
 
     /**
-     * Remove a restriction
-     *
-     * @access public
+     * Remove a restriction.
      */
     public function remove()
     {

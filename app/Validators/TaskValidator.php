@@ -15,14 +15,13 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Task Validator
+ * Task Validator.
  */
 class TaskValidator extends BaseValidator
 {
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()
@@ -55,11 +54,11 @@ class TaskValidator extends BaseValidator
     }
 
     /**
-     * Validate task creation
+     * Validate task creation.
      *
-     * @access public
-     * @param  array    $values           Form values
-     * @return array    $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -72,16 +71,16 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate task creation
+     * Validate task creation.
      *
-     * @access public
-     * @param  array    $values           Form values
-     * @return array    $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateBulkCreation(array $values)
     {
@@ -98,16 +97,16 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate edit recurrence
+     * Validate edit recurrence.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateEditRecurrence(array $values)
     {
@@ -119,17 +118,16 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
-
     /**
-     * Validate task modification (form)
+     * Validate task modification (form).
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -142,16 +140,16 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate task modification (Api)
+     * Validate task modification (Api).
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateApiModification(array $values)
     {
@@ -163,16 +161,16 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate project modification
+     * Validate project modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateProjectModification(array $values)
     {
@@ -185,16 +183,16 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate time tracking modification (form)
+     * Validate time tracking modification (form).
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateTimeModification(array $values)
     {
@@ -206,7 +204,7 @@ class TaskValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 }

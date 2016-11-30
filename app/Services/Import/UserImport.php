@@ -11,30 +11,28 @@
 
 namespace Hiject\Import;
 
+use Hiject\Core\Base;
+use Hiject\Core\Csv;
+use Hiject\Core\Security\Role;
 use Hiject\Model\UserModel;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
-use Hiject\Core\Security\Role;
-use Hiject\Core\Base;
-use Hiject\Core\Csv;
 
 /**
- * User Import
+ * User Import.
  */
 class UserImport extends Base
 {
     /**
-     * Number of successful import
+     * Number of successful import.
      *
-     * @access public
-     * @var integer
+     * @var int
      */
     public $counter = 0;
 
     /**
-     * Get mapping between CSV header and SQL columns
+     * Get mapping between CSV header and SQL columns.
      *
-     * @access public
      * @return array
      */
     public function getColumnMapping()
@@ -51,11 +49,10 @@ class UserImport extends Base
     }
 
     /**
-     * Import a single row
+     * Import a single row.
      *
-     * @access public
-     * @param  array   $row
-     * @param  integer $line_number
+     * @param array $row
+     * @param int   $line_number
      */
     public function import(array $row, $line_number)
     {
@@ -74,10 +71,10 @@ class UserImport extends Base
     }
 
     /**
-     * Format row before validation
+     * Format row before validation.
      *
-     * @access public
-     * @param  array   $row
+     * @param array $row
+     *
      * @return array
      */
     public function prepare(array $row)
@@ -105,11 +102,11 @@ class UserImport extends Base
     }
 
     /**
-     * Validate user creation
+     * Validate user creation.
      *
-     * @access public
-     * @param  array   $values
-     * @return boolean
+     * @param array $values
+     *
+     * @return bool
      */
     public function validateCreation(array $values)
     {

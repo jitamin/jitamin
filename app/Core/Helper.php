@@ -14,43 +14,40 @@ namespace Hiject\Core;
 use Pimple\Container;
 
 /**
- * Helper base class
+ * Helper base class.
  */
 class Helper
 {
     /**
-     * Helper instances
+     * Helper instances.
      *
-     * @access private
      * @var \Pimple\Container
      */
     private $helpers;
 
     /**
-     * Container instance
+     * Container instance.
      *
-     * @access private
      * @var \Pimple\Container
      */
     private $container;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  \Pimple\Container   $container
+     * @param \Pimple\Container $container
      */
     public function __construct(Container $container)
     {
         $this->container = $container;
-        $this->helpers = new Container;
+        $this->helpers = new Container();
     }
 
     /**
-     * Expose helpers with magic getter
+     * Expose helpers with magic getter.
      *
-     * @access public
-     * @param  string $helper
+     * @param string $helper
+     *
      * @return mixed
      */
     public function __get($helper)
@@ -59,10 +56,10 @@ class Helper
     }
 
     /**
-     * Expose helpers with method
+     * Expose helpers with method.
      *
-     * @access public
-     * @param  string $helper
+     * @param string $helper
+     *
      * @return mixed
      */
     public function getHelper($helper)
@@ -71,11 +68,11 @@ class Helper
     }
 
     /**
-     * Register a new Helper
+     * Register a new Helper.
      *
-     * @access public
-     * @param  string $property
-     * @param  string $className
+     * @param string $property
+     * @param string $className
+     *
      * @return Helper
      */
     public function register($property, $className)

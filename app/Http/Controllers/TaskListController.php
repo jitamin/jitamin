@@ -15,14 +15,12 @@ use Hiject\Filter\TaskProjectFilter;
 use Hiject\Model\TaskModel;
 
 /**
- * Task List Controller
+ * Task List Controller.
  */
 class TaskListController extends BaseController
 {
     /**
-     * Show list view for projects
-     *
-     * @access public
+     * Show list view for projects.
      */
     public function show()
     {
@@ -42,10 +40,10 @@ class TaskListController extends BaseController
             ->calculate();
 
         $this->response->html($this->helper->layout->app('task_list/show', [
-            'project' => $project,
-            'title' => $project['name'],
+            'project'     => $project,
+            'title'       => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
-            'paginator' => $paginator,
+            'paginator'   => $paginator,
         ]));
     }
 }

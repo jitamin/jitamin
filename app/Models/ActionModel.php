@@ -14,22 +14,22 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Action Model
+ * Action Model.
  */
 class ActionModel extends Base
 {
     /**
-     * SQL table name for actions
+     * SQL table name for actions.
      *
      * @var string
      */
     const TABLE = 'actions';
 
     /**
-     * Return actions and parameters for a given user
+     * Return actions and parameters for a given user.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getAllByUser($user_id)
@@ -37,7 +37,7 @@ class ActionModel extends Base
         $project_ids = $this->projectPermissionModel->getActiveProjectIds($user_id);
         $actions = [];
 
-        if (! empty($project_ids)) {
+        if (!empty($project_ids)) {
             $actions = $this->db->table(self::TABLE)->in('project_id', $project_ids)->findAll();
             $params = $this->actionParameterModel->getAllByActions(array_column($actions, 'id'));
             $this->attachParamsToActions($actions, $params);
@@ -47,44 +47,45 @@ class ActionModel extends Base
     }
 
     /**
-     * Return actions and parameters for a given project
+     * Return actions and parameters for a given project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAllByProject($project_id)
     {
         $actions = $this->db->table(self::TABLE)->eq('project_id', $project_id)->findAll();
         $params = $this->actionParameterModel->getAllByActions(array_column($actions, 'id'));
+
         return $this->attachParamsToActions($actions, $params);
     }
 
     /**
-     * Return all actions and parameters
+     * Return all actions and parameters.
      *
-     * @access public
      * @return array
      */
     public function getAll()
     {
         $actions = $this->db->table(self::TABLE)->findAll();
         $params = $this->actionParameterModel->getAll();
+
         return $this->attachParamsToActions($actions, $params);
     }
 
     /**
-     * Fetch an action
+     * Fetch an action.
      *
-     * @access public
-     * @param  integer $action_id
+     * @param int $action_id
+     *
      * @return array
      */
     public function getById($action_id)
     {
         $action = $this->db->table(self::TABLE)->eq('id', $action_id)->findOne();
 
-        if (! empty($action)) {
+        if (!empty($action)) {
             $action['params'] = $this->actionParameterModel->getAllByAction($action_id);
         }
 
@@ -92,11 +93,11 @@ class ActionModel extends Base
     }
 
     /**
-     * Get the projectId by the actionId
+     * Get the projectId by the actionId.
      *
-     * @access public
-     * @param  integer $action_id
-     * @return integer
+     * @param int $action_id
+     *
+     * @return int
      */
     public function getProjectId($action_id)
     {
@@ -104,11 +105,11 @@ class ActionModel extends Base
     }
 
     /**
-     * Attach parameters to actions
+     * Attach parameters to actions.
      *
-     * @access private
-     * @param  array  &$actions
-     * @param  array  &$params
+     * @param array &$actions
+     * @param array &$params
+     *
      * @return array
      */
     private function attachParamsToActions(array &$actions, array &$params)
@@ -121,10 +122,10 @@ class ActionModel extends Base
     }
 
     /**
-     * Remove an action
+     * Remove an action.
      *
-     * @access public
-     * @param  integer $action_id
+     * @param int $action_id
+     *
      * @return bool
      */
     public function remove($action_id)
@@ -133,31 +134,33 @@ class ActionModel extends Base
     }
 
     /**
-     * Create an action
+     * Create an action.
      *
-     * @access public
-     * @param  array   $values  Required parameters to save an action
-     * @return boolean|integer
+     * @param array $values Required parameters to save an action
+     *
+     * @return bool|int
      */
     public function create(array $values)
     {
         $this->db->startTransaction();
 
         $action = [
-            'project_id' => $values['project_id'],
-            'event_name' => $values['event_name'],
+            'project_id'  => $values['project_id'],
+            'event_name'  => $values['event_name'],
             'action_name' => $values['action_name'],
         ];
 
-        if (! $this->db->table(self::TABLE)->insert($action)) {
+        if (!$this->db->table(self::TABLE)->insert($action)) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
         $action_id = $this->db->getLastId();
 
-        if (! $this->actionParameterModel->create($action_id, $values)) {
+        if (!$this->actionParameterModel->create($action_id, $values)) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -167,12 +170,14 @@ class ActionModel extends Base
     }
 
     /**
-     * Copy actions from a project to another one (skip actions that cannot resolve parameters)
+     * Copy actions from a project to another one (skip actions that cannot resolve parameters).
      *
      * @author Antonio Rabelo
-     * @param  integer    $src_project_id      Source project id
-     * @param  integer    $dst_project_id      Destination project id
-     * @return boolean
+     *
+     * @param int $src_project_id Source project id
+     * @param int $dst_project_id Destination project id
+     *
+     * @return bool
      */
     public function duplicate($src_project_id, $dst_project_id)
     {
@@ -182,19 +187,19 @@ class ActionModel extends Base
             $this->db->startTransaction();
 
             $values = [
-                'project_id' => $dst_project_id,
-                'event_name' => $action['event_name'],
+                'project_id'  => $dst_project_id,
+                'event_name'  => $action['event_name'],
                 'action_name' => $action['action_name'],
             ];
 
-            if (! $this->db->table(self::TABLE)->insert($values)) {
+            if (!$this->db->table(self::TABLE)->insert($values)) {
                 $this->db->cancelTransaction();
                 continue;
             }
 
             $action_id = $this->db->getLastId();
 
-            if (! $this->actionParameterModel->duplicateParameters($dst_project_id, $action_id, $action['params'])) {
+            if (!$this->actionParameterModel->duplicateParameters($dst_project_id, $action_id, $action['params'])) {
                 $this->logger->error('Action::duplicate => skip action '.$action['action_name'].' '.$action['id']);
                 $this->db->cancelTransaction();
                 continue;

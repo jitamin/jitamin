@@ -11,32 +11,33 @@
 
 namespace Hiject\Bus\EventBuilder;
 
-use Hiject\Bus\Event\ProjectFileEvent;
 use Hiject\Bus\Event\GenericEvent;
+use Hiject\Bus\Event\ProjectFileEvent;
 
 /**
- * Class ProjectFileEventBuilder
+ * Class ProjectFileEventBuilder.
  */
 class ProjectFileEventBuilder extends BaseEventBuilder
 {
     protected $fileId = 0;
 
     /**
-     * Set fileId
+     * Set fileId.
      *
-     * @param  int $fileId
+     * @param int $fileId
+     *
      * @return $this
      */
     public function withFileId($fileId)
     {
         $this->fileId = $fileId;
+
         return $this;
     }
 
     /**
-     * Build event data
+     * Build event data.
      *
-     * @access public
      * @return GenericEvent|null
      */
     public function buildEvent()
@@ -45,22 +46,23 @@ class ProjectFileEventBuilder extends BaseEventBuilder
 
         if (empty($file)) {
             $this->logger->debug(__METHOD__.': File not found');
-            return null;
+
+            return;
         }
 
         return new ProjectFileEvent([
-            'file' => $file,
+            'file'    => $file,
             'project' => $this->projectModel->getById($file['project_id']),
         ]);
     }
 
     /**
-     * Get event title with author
+     * Get event title with author.
      *
-     * @access public
-     * @param  string $author
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $author
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     public function buildTitleWithAuthor($author, $eventName, array $eventData)
@@ -69,11 +71,11 @@ class ProjectFileEventBuilder extends BaseEventBuilder
     }
 
     /**
-     * Get event title without author
+     * Get event title without author.
      *
-     * @access public
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     public function buildTitleWithoutAuthor($eventName, array $eventData)

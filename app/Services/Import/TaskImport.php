@@ -17,30 +17,27 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Task Import
+ * Task Import.
  */
 class TaskImport extends Base
 {
     /**
-     * Number of successful import
+     * Number of successful import.
      *
-     * @access public
-     * @var integer
+     * @var int
      */
     public $counter = 0;
 
     /**
-     * Project id to import tasks
+     * Project id to import tasks.
      *
-     * @access public
-     * @var integer
+     * @var int
      */
     public $projectId;
 
     /**
-     * Get mapping between CSV header and SQL columns
+     * Get mapping between CSV header and SQL columns.
      *
-     * @access public
      * @return array
      */
     public function getColumnMapping()
@@ -64,11 +61,10 @@ class TaskImport extends Base
     }
 
     /**
-     * Import a single row
+     * Import a single row.
      *
-     * @access public
-     * @param  array   $row
-     * @param  integer $line_number
+     * @param array $row
+     * @param int   $line_number
      */
     public function import(array $row, $line_number)
     {
@@ -87,10 +83,10 @@ class TaskImport extends Base
     }
 
     /**
-     * Format row before validation
+     * Format row before validation.
      *
-     * @access public
-     * @param  array   $row
+     * @param array $row
+     *
      * @return array
      */
     public function prepare(array $row)
@@ -105,31 +101,31 @@ class TaskImport extends Base
         $values['time_estimated'] = (float) $row['time_estimated'];
         $values['time_spent'] = (float) $row['time_spent'];
 
-        if (! empty($row['assignee'])) {
+        if (!empty($row['assignee'])) {
             $values['owner_id'] = $this->userModel->getIdByUsername($row['assignee']);
         }
 
-        if (! empty($row['creator'])) {
+        if (!empty($row['creator'])) {
             $values['creator_id'] = $this->userModel->getIdByUsername($row['creator']);
         }
 
-        if (! empty($row['color'])) {
+        if (!empty($row['color'])) {
             $values['color_id'] = $this->colorModel->find($row['color']);
         }
 
-        if (! empty($row['column'])) {
+        if (!empty($row['column'])) {
             $values['column_id'] = $this->columnModel->getColumnIdByTitle($this->projectId, $row['column']);
         }
 
-        if (! empty($row['category'])) {
+        if (!empty($row['category'])) {
             $values['category_id'] = $this->categoryModel->getIdByName($this->projectId, $row['category']);
         }
 
-        if (! empty($row['swimlane'])) {
+        if (!empty($row['swimlane'])) {
             $values['swimlane_id'] = $this->swimlaneModel->getIdByName($this->projectId, $row['swimlane']);
         }
 
-        if (! empty($row['date_due'])) {
+        if (!empty($row['date_due'])) {
             $values['date_due'] = $this->dateParser->getTimestampFromIsoFormat($row['date_due']);
         }
 
@@ -142,11 +138,11 @@ class TaskImport extends Base
     }
 
     /**
-     * Validate user creation
+     * Validate user creation.
      *
-     * @access public
-     * @param  array   $values
-     * @return boolean
+     * @param array $values
+     *
+     * @return bool
      */
     public function validateCreation(array $values)
     {

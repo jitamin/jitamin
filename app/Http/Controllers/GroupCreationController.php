@@ -12,14 +12,13 @@
 namespace Hiject\Controller;
 
 /**
- * Class GroupCreationController
+ * Class GroupCreationController.
  */
 class GroupCreationController extends BaseController
 {
     /**
-     * Display a form to create a new group
+     * Display a form to create a new group.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -32,9 +31,7 @@ class GroupCreationController extends BaseController
     }
 
     /**
-     * Validate and save a new group
-     *
-     * @access public
+     * Validate and save a new group.
      */
     public function save()
     {
@@ -44,6 +41,7 @@ class GroupCreationController extends BaseController
         if ($valid) {
             if ($this->groupModel->create($values['name']) !== false) {
                 $this->flash->success(t('Group created successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('GroupListController', 'index'), true);
             } else {
                 $this->flash->failure(t('Unable to create your group.'));

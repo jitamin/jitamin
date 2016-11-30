@@ -11,26 +11,26 @@
 
 namespace Hiject\Model;
 
-use PDO;
 use Hiject\Core\Base;
+use PDO;
 
 /**
- * Link model
+ * Link model.
  */
 class LinkModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'links';
 
     /**
-     * Get a link by id
+     * Get a link by id.
      *
-     * @access public
-     * @param  integer   $link_id   Link id
+     * @param int $link_id Link id
+     *
      * @return array
      */
     public function getById($link_id)
@@ -39,10 +39,10 @@ class LinkModel extends Base
     }
 
     /**
-     * Get a link by name
+     * Get a link by name.
      *
-     * @access public
-     * @param  string $label
+     * @param string $label
+     *
      * @return array
      */
     public function getByLabel($label)
@@ -51,11 +51,11 @@ class LinkModel extends Base
     }
 
     /**
-     * Get the opposite link id
+     * Get the opposite link id.
      *
-     * @access public
-     * @param  integer   $link_id   Link id
-     * @return integer
+     * @param int $link_id Link id
+     *
+     * @return int
      */
     public function getOppositeLinkId($link_id)
     {
@@ -63,9 +63,8 @@ class LinkModel extends Base
     }
 
     /**
-     * Get all links
+     * Get all links.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -74,9 +73,8 @@ class LinkModel extends Base
     }
 
     /**
-     * Get merged links
+     * Get merged links.
      *
-     * @access public
      * @return array
      */
     public function getMergedList()
@@ -92,11 +90,11 @@ class LinkModel extends Base
     }
 
     /**
-     * Get label list
+     * Get label list.
      *
-     * @access public
-     * @param  integer   $exclude_id   Exclude this link
-     * @param  boolean   $prepend      Prepend default value
+     * @param int  $exclude_id Exclude this link
+     * @param bool $prepend    Prepend default value
+     *
      * @return array
      */
     public function getList($exclude_id = 0, $prepend = true)
@@ -111,29 +109,30 @@ class LinkModel extends Base
     }
 
     /**
-     * Create a new link label
+     * Create a new link label.
      *
-     * @access public
-     * @param  string   $label
-     * @param  string   $opposite_label
-     * @return boolean|integer
+     * @param string $label
+     * @param string $opposite_label
+     *
+     * @return bool|int
      */
     public function create($label, $opposite_label = '')
     {
         $this->db->startTransaction();
 
-        if (! $this->db->table(self::TABLE)->insert(['label' => $label])) {
+        if (!$this->db->table(self::TABLE)->insert(['label' => $label])) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
         $label_id = $this->db->getLastId();
 
-        if (! empty($opposite_label)) {
+        if (!empty($opposite_label)) {
             $this->db
                 ->table(self::TABLE)
                 ->insert([
-                    'label' => $opposite_label,
+                    'label'       => $opposite_label,
                     'opposite_id' => $label_id,
                 ]);
 
@@ -141,7 +140,7 @@ class LinkModel extends Base
                 ->table(self::TABLE)
                 ->eq('id', $label_id)
                 ->update([
-                    'opposite_id' => $this->db->getLastId()
+                    'opposite_id' => $this->db->getLastId(),
                 ]);
         }
 
@@ -151,11 +150,11 @@ class LinkModel extends Base
     }
 
     /**
-     * Update a link
+     * Update a link.
      *
-     * @access public
-     * @param  array   $values
-     * @return boolean
+     * @param array $values
+     *
+     * @return bool
      */
     public function update(array $values)
     {
@@ -163,21 +162,22 @@ class LinkModel extends Base
                     ->table(self::TABLE)
                     ->eq('id', $values['id'])
                     ->update([
-                        'label' => $values['label'],
+                        'label'       => $values['label'],
                         'opposite_id' => $values['opposite_id'],
                     ]);
     }
 
     /**
-     * Remove a link a the relation to its opposite
+     * Remove a link a the relation to its opposite.
      *
-     * @access public
-     * @param  integer  $link_id
-     * @return boolean
+     * @param int $link_id
+     *
+     * @return bool
      */
     public function remove($link_id)
     {
         $this->db->table(self::TABLE)->eq('opposite_id', $link_id)->update(['opposite_id' => 0]);
+
         return $this->db->table(self::TABLE)->eq('id', $link_id)->remove();
     }
 }

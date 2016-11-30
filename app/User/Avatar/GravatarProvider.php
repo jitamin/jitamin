@@ -15,31 +15,32 @@ use Hiject\Core\Base;
 use Hiject\Core\User\Avatar\AvatarProviderInterface;
 
 /**
- * Gravatar Avatar Provider
+ * Gravatar Avatar Provider.
  */
 class GravatarProvider extends Base implements AvatarProviderInterface
 {
     /**
-     * Render avatar html
+     * Render avatar html.
      *
-     * @access public
-     * @param  array $user
-     * @param  int   $size
+     * @param array $user
+     * @param int   $size
+     *
      * @return string
      */
     public function render(array $user, $size)
     {
         $url = sprintf('https://www.gravatar.com/avatar/%s?s=%d', md5(strtolower($user['email'])), $size);
         $title = $this->helper->text->e($user['name'] ?: $user['username']);
+
         return '<img src="'.$url.'" alt="'.$title.'" title="'.$title.'">';
     }
 
     /**
-     * Determine if the provider is active
+     * Determine if the provider is active.
      *
-     * @access public
-     * @param  array $user
-     * @return boolean
+     * @param array $user
+     *
+     * @return bool
      */
     public function isActive(array $user)
     {

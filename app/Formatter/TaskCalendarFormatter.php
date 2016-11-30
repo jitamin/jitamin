@@ -14,34 +14,32 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Calendar event formatter for task filter
+ * Calendar event formatter for task filter.
  */
 class TaskCalendarFormatter extends BaseTaskCalendarFormatter implements FormatterInterface
 {
     /**
-     * Full day event flag
+     * Full day event flag.
      *
-     * @access private
-     * @var boolean
+     * @var bool
      */
     private $fullDay = false;
 
     /**
-     * When called calendar events will be full day
+     * When called calendar events will be full day.
      *
-     * @access public
      * @return FormatterInterface
      */
     public function setFullDay()
     {
         $this->fullDay = true;
+
         return $this;
     }
 
     /**
-     * Transform tasks to calendar events
+     * Transform tasks to calendar events.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -50,17 +48,17 @@ class TaskCalendarFormatter extends BaseTaskCalendarFormatter implements Formatt
 
         foreach ($this->query->findAll() as $task) {
             $events[] = [
-                'timezoneParam' => $this->timezoneModel->getCurrentTimezone(),
-                'id' => $task['id'],
-                'title' => t('#%d', $task['id']).' '.$task['title'],
+                'timezoneParam'   => $this->timezoneModel->getCurrentTimezone(),
+                'id'              => $task['id'],
+                'title'           => t('#%d', $task['id']).' '.$task['title'],
                 'backgroundColor' => $this->colorModel->getBackgroundColor($task['color_id']),
-                'borderColor' => $this->colorModel->getBorderColor($task['color_id']),
-                'textColor' => 'black',
-                'url' => $this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
-                'start' => date($this->getDateTimeFormat(), $task[$this->startColumn]),
-                'end' => date($this->getDateTimeFormat(), $task[$this->endColumn] ?: time()),
-                'editable' => $this->fullDay,
-                'allday' => $this->fullDay,
+                'borderColor'     => $this->colorModel->getBorderColor($task['color_id']),
+                'textColor'       => 'black',
+                'url'             => $this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
+                'start'           => date($this->getDateTimeFormat(), $task[$this->startColumn]),
+                'end'             => date($this->getDateTimeFormat(), $task[$this->endColumn] ?: time()),
+                'editable'        => $this->fullDay,
+                'allday'          => $this->fullDay,
             ];
         }
 
@@ -68,9 +66,8 @@ class TaskCalendarFormatter extends BaseTaskCalendarFormatter implements Formatt
     }
 
     /**
-     * Get DateTime format for event
+     * Get DateTime format for event.
      *
-     * @access private
      * @return string
      */
     private function getDateTimeFormat()

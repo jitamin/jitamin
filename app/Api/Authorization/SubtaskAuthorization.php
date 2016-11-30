@@ -12,7 +12,7 @@
 namespace Hiject\Api\Authorization;
 
 /**
- * Class SubtaskAuthorization
+ * Class SubtaskAuthorization.
  */
 class SubtaskAuthorization extends ProjectAuthorization
 {

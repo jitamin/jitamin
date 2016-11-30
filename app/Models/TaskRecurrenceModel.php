@@ -15,14 +15,13 @@ use DateInterval;
 use DateTime;
 
 /**
- * Task Recurrence
+ * Task Recurrence.
  */
 class TaskRecurrenceModel extends TaskDuplicationModel
 {
     /**
-     * Return the list user selectable recurrence status
+     * Return the list user selectable recurrence status.
      *
-     * @access public
      * @return array
      */
     public function getRecurrenceStatusList()
@@ -34,9 +33,8 @@ class TaskRecurrenceModel extends TaskDuplicationModel
     }
 
     /**
-     * Return the list recurrence triggers
+     * Return the list recurrence triggers.
      *
-     * @access public
      * @return array
      */
     public function getRecurrenceTriggerList()
@@ -49,9 +47,8 @@ class TaskRecurrenceModel extends TaskDuplicationModel
     }
 
     /**
-     * Return the list options to calculate recurrence due date
+     * Return the list options to calculate recurrence due date.
      *
-     * @access public
      * @return array
      */
     public function getRecurrenceBasedateList()
@@ -63,9 +60,8 @@ class TaskRecurrenceModel extends TaskDuplicationModel
     }
 
     /**
-     * Return the list recurrence timeframes
+     * Return the list recurrence timeframes.
      *
-     * @access public
      * @return array
      */
     public function getRecurrenceTimeframeList()
@@ -78,11 +74,11 @@ class TaskRecurrenceModel extends TaskDuplicationModel
     }
 
     /**
-     * Duplicate recurring task
+     * Duplicate recurring task.
      *
-     * @access public
-     * @param  integer             $task_id      Task id
-     * @return boolean|integer                   Recurrence task id
+     * @param int $task_id Task id
+     *
+     * @return bool|int Recurrence task id
      */
     public function duplicateRecurringTask($task_id)
     {
@@ -103,7 +99,7 @@ class TaskRecurrenceModel extends TaskDuplicationModel
                     ->eq('id', $task_id)
                     ->update([
                         'recurrence_status' => TaskModel::RECURRING_STATUS_PROCESSED,
-                        'recurrence_child' => $recurring_task_id,
+                        'recurrence_child'  => $recurring_task_id,
                     ]);
 
                 if ($parent_update) {
@@ -116,14 +112,13 @@ class TaskRecurrenceModel extends TaskDuplicationModel
     }
 
     /**
-     * Calculate new due date for new recurrence task
+     * Calculate new due date for new recurrence task.
      *
-     * @access public
-     * @param  array   $values   Task fields
+     * @param array $values Task fields
      */
     public function calculateRecurringTaskDueDate(array &$values)
     {
-        if (! empty($values['date_due']) && $values['recurrence_factor'] != 0) {
+        if (!empty($values['date_due']) && $values['recurrence_factor'] != 0) {
             if ($values['recurrence_basedate'] == TaskModel::RECURRING_BASEDATE_TRIGGERDATE) {
                 $values['date_due'] = time();
             }
@@ -133,13 +128,13 @@ class TaskRecurrenceModel extends TaskDuplicationModel
 
             switch ($values['recurrence_timeframe']) {
                 case TaskModel::RECURRING_TIMEFRAME_MONTHS:
-                    $interval = 'P' . $factor . 'M';
+                    $interval = 'P'.$factor.'M';
                     break;
                 case TaskModel::RECURRING_TIMEFRAME_YEARS:
-                    $interval = 'P' . $factor . 'Y';
+                    $interval = 'P'.$factor.'Y';
                     break;
                 default:
-                    $interval = 'P' . $factor . 'D';
+                    $interval = 'P'.$factor.'D';
             }
 
             $date_due = new DateTime();

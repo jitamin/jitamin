@@ -11,10 +11,10 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Analytic\AverageLeadCycleTimeAnalytic;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class AverageLeadCycleTimeAnalyticTest extends Base
 {
@@ -52,9 +52,9 @@ class AverageLeadCycleTimeAnalyticTest extends Base
         $stats = $averageLeadCycleTimeAnalytic->build(1);
 
         $this->assertEquals(5, $stats['count']);
-        $this->assertEquals(3600 + 1800 + 3600 + 2*3600, $stats['total_lead_time'], '', 5);
+        $this->assertEquals(3600 + 1800 + 3600 + 2 * 3600, $stats['total_lead_time'], '', 5);
         $this->assertEquals(1800 + 900, $stats['total_cycle_time'], '', 5);
-        $this->assertEquals((3600 + 1800 + 3600 + 2*3600) / 5, $stats['avg_lead_time'], '', 5);
+        $this->assertEquals((3600 + 1800 + 3600 + 2 * 3600) / 5, $stats['avg_lead_time'], '', 5);
         $this->assertEquals((1800 + 900) / 5, $stats['avg_cycle_time'], '', 5);
     }
 
@@ -69,11 +69,11 @@ class AverageLeadCycleTimeAnalyticTest extends Base
         $stats = $averageLeadCycleTimeAnalytic->build(1);
 
         $expected = [
-            'count' => 0,
-            'total_lead_time' => 0,
+            'count'            => 0,
+            'total_lead_time'  => 0,
             'total_cycle_time' => 0,
-            'avg_lead_time' => 0,
-            'avg_cycle_time' => 0,
+            'avg_lead_time'    => 0,
+            'avg_cycle_time'   => 0,
         ];
 
         $this->assertEquals($expected, $stats);

@@ -17,14 +17,13 @@ use Hiject\Model\ProjectGroupRoleModel;
 use Hiject\Model\UserModel;
 
 /**
- * Filter ProjectGroupRole users by username
+ * Filter ProjectGroupRole users by username.
  */
 class ProjectGroupRoleUsernameFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -33,9 +32,8 @@ class ProjectGroupRoleUsernameFilter extends BaseFilter implements FilterInterfa
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

@@ -14,32 +14,34 @@ namespace Hiject\Bus\Job;
 use Hiject\Bus\Event\GenericEvent;
 
 /**
- * Class NotificationJob
+ * Class NotificationJob.
  */
 class NotificationJob extends BaseJob
 {
     /**
-     * Set job parameters
+     * Set job parameters.
      *
      * @param GenericEvent $event
      * @param string       $eventName
+     *
      * @return $this
      */
     public function withParams(GenericEvent $event, $eventName)
     {
         $this->jobParams = [$event->getAll(), $eventName];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
      * @param array  $eventData
      * @param string $eventName
      */
     public function execute(array $eventData, $eventName)
     {
-        if (! empty($eventData['mention'])) {
+        if (!empty($eventData['mention'])) {
             $this->userNotificationModel->sendUserNotification($eventData['mention'], $eventName, $eventData);
         } else {
             $this->userNotificationModel->sendNotifications($eventName, $eventData);

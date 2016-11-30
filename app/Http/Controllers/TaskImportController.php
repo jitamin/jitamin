@@ -14,15 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Csv;
 
 /**
- * Task Import controller
+ * Task Import controller.
  */
 class TaskImportController extends BaseController
 {
     /**
-     * Upload the file and ask settings
+     * Upload the file and ask settings.
      *
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     public function show(array $values = [], array $errors = [])
@@ -30,18 +31,18 @@ class TaskImportController extends BaseController
         $project = $this->getProject();
 
         $this->response->html($this->helper->layout->project('task_import/show', [
-            'project' => $project,
-            'values' => $values,
-            'errors' => $errors,
-            'max_size' => get_upload_max_size(),
+            'project'    => $project,
+            'values'     => $values,
+            'errors'     => $errors,
+            'max_size'   => get_upload_max_size(),
             'delimiters' => Csv::getDelimiters(),
             'enclosures' => Csv::getEnclosures(),
-            'title' => t('Import tasks from CSV file'),
+            'title'      => t('Import tasks from CSV file'),
         ], 'task_import/sidebar'));
     }
 
     /**
-     * Process CSV file
+     * Process CSV file.
      */
     public function save()
     {
@@ -49,7 +50,7 @@ class TaskImportController extends BaseController
         $values = $this->request->getValues();
         $filename = $this->request->getFilePath('file');
 
-        if (! file_exists($filename)) {
+        if (!file_exists($filename)) {
             $this->show($values, ['file' => [t('Unable to read your file')]]);
         } else {
             $this->taskImport->projectId = $project['id'];
@@ -69,12 +70,11 @@ class TaskImportController extends BaseController
     }
 
     /**
-     * Generate template
-     *
+     * Generate template.
      */
     public function template()
     {
         $this->response->withFileDownload('tasks.csv');
-        $this->response->csv(array($this->taskImport->getColumnMapping()));
+        $this->response->csv([$this->taskImport->getColumnMapping()]);
     }
 }

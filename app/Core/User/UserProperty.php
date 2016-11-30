@@ -12,25 +12,26 @@
 namespace Hiject\Core\User;
 
 /**
- * User Property
+ * User Property.
  */
 class UserProperty
 {
     /**
-     * Get filtered user properties from user provider
+     * Get filtered user properties from user provider.
      *
      * @static
-     * @access public
-     * @param  UserProviderInterface $user
+     *
+     * @param UserProviderInterface $user
+     *
      * @return array
      */
     public static function getProperties(UserProviderInterface $user)
     {
         $properties = [
-            'username' => $user->getUsername(),
-            'name' => $user->getName(),
-            'email' => $user->getEmail(),
-            'role' => $user->getRole(),
+            'username'                   => $user->getUsername(),
+            'name'                       => $user->getName(),
+            'email'                      => $user->getEmail(),
+            'role'                       => $user->getRole(),
             $user->getExternalIdColumn() => $user->getExternalId(),
         ];
 
@@ -40,12 +41,13 @@ class UserProperty
     }
 
     /**
-     * Filter user properties compared to existing user profile
+     * Filter user properties compared to existing user profile.
      *
      * @static
-     * @access public
-     * @param  array  $profile
-     * @param  array  $properties
+     *
+     * @param array $profile
+     * @param array $properties
+     *
      * @return array
      */
     public static function filterProperties(array $profile, array $properties)
@@ -55,7 +57,7 @@ class UserProperty
 
         foreach ($properties as $property => $value) {
             if (self::isNotEmptyValue($value) &&
-                ! in_array($property, $excludedProperties) &&
+                !in_array($property, $excludedProperties) &&
                 array_key_exists($property, $profile) &&
                 $value !== $profile[$property]) {
                 $values[$property] = $value;
@@ -66,12 +68,13 @@ class UserProperty
     }
 
     /**
-     * Check if a value is not empty
+     * Check if a value is not empty.
      *
      * @static
-     * @access public
-     * @param  string $value
-     * @return boolean
+     *
+     * @param string $value
+     *
+     * @return bool
      */
     public static function isNotEmptyValue($value)
     {

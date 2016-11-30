@@ -17,7 +17,7 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class HelperProvider
+ * Class HelperProvider.
  */
 class HelperProvider implements ServiceProviderInterface
 {

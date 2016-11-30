@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskCloseColumn;
 use Hiject\Bus\Event\TaskEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskCloseColumn;
 
 class TaskCloseColumnTest extends Base
 {
@@ -31,10 +31,10 @@ class TaskCloseColumnTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 2,
-            ]
+                'column_id'  => 2,
+            ],
         ]);
 
         $action = new TaskCloseColumn($this->container);
@@ -58,10 +58,10 @@ class TaskCloseColumnTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 3,
-            ]
+                'column_id'  => 3,
+            ],
         ]);
 
         $action = new TaskCloseColumn($this->container);

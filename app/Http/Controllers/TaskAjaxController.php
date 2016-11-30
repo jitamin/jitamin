@@ -18,14 +18,12 @@ use Hiject\Filter\TaskTitleFilter;
 use Hiject\Formatter\TaskAutoCompleteFormatter;
 
 /**
- * Task Ajax Controller
+ * Task Ajax Controller.
  */
 class TaskAjaxController extends BaseController
 {
     /**
-     * Task auto-completion (Ajax)
-     *
-     * @access public
+     * Task auto-completion (Ajax).
      */
     public function autocomplete()
     {
@@ -34,12 +32,12 @@ class TaskAjaxController extends BaseController
         $exclude_task_id = $this->request->getIntegerParam('exclude_task_id');
 
         if (empty($project_ids)) {
-            $this->response->json(array());
+            $this->response->json([]);
         } else {
             $filter = $this->taskQuery->withFilter(new TaskProjectsFilter($project_ids));
 
-            if (! empty($exclude_task_id)) {
-                $filter->withFilter(new TaskIdExclusionFilter(array($exclude_task_id)));
+            if (!empty($exclude_task_id)) {
+                $filter->withFilter(new TaskIdExclusionFilter([$exclude_task_id]));
             }
 
             if (ctype_digit($search)) {

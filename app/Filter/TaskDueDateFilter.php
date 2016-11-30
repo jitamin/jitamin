@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by due date
+ * Filter tasks by due date.
  */
 class TaskDueDateFilter extends BaseDateFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,9 +30,8 @@ class TaskDueDateFilter extends BaseDateFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

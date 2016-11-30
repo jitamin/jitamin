@@ -15,12 +15,12 @@ use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Controller\BaseMiddleware;
 
 /**
- * Class ProjectAuthorizationMiddleware
+ * Class ProjectAuthorizationMiddleware.
  */
 class ProjectAuthorizationMiddleware extends BaseMiddleware
 {
     /**
-     * Execute middleware
+     * Execute middleware.
      */
     public function execute()
     {
@@ -31,7 +31,7 @@ class ProjectAuthorizationMiddleware extends BaseMiddleware
             $project_id = $this->taskFinderModel->getProjectId($task_id);
         }
 
-        if ($project_id > 0 && ! $this->helper->user->hasProjectAccess($this->router->getController(), $this->router->getAction(), $project_id)) {
+        if ($project_id > 0 && !$this->helper->user->hasProjectAccess($this->router->getController(), $this->router->getAction(), $project_id)) {
             throw new AccessForbiddenException();
         }
 

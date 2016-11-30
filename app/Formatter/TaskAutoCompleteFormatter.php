@@ -16,14 +16,13 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
 
 /**
- * Task AutoComplete Formatter
+ * Task AutoComplete Formatter.
  */
 class TaskAutoCompleteFormatter extends BaseFormatter implements FormatterInterface
 {
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()

@@ -13,13 +13,13 @@ require __DIR__.'/../../vendor/autoload.php';
 require __DIR__.'/../../bootstrap/constants.php';
 
 use Composer\Autoload\ClassLoader;
-use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
-use Symfony\Component\Stopwatch\Stopwatch;
-use SimpleLogger\Logger;
 use Hiject\Core\Session\FlashMessage;
 use Hiject\Core\Session\SessionStorage;
 use Hiject\Providers\ActionProvider;
+use SimpleLogger\Logger;
+use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Stopwatch\Stopwatch;
 
 abstract class Base extends PHPUnit_Framework_TestCase
 {
@@ -46,7 +46,7 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo = null;
         }
 
-        $this->container = new Pimple\Container;
+        $this->container = new Pimple\Container();
         $this->container->register(new Hiject\Providers\CacheProvider());
         $this->container->register(new Hiject\Providers\HelperProvider());
         $this->container->register(new Hiject\Providers\AuthenticationProvider());
@@ -60,8 +60,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
         $this->container->register(new Hiject\Providers\QueueProvider());
 
         $this->container['dispatcher'] = new TraceableEventDispatcher(
-            new EventDispatcher,
-            new Stopwatch
+            new EventDispatcher(),
+            new Stopwatch()
         );
 
         $this->dispatcher = $this->container['dispatcher'];
@@ -93,8 +93,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
             ->setMethods(['put', 'moveFile', 'remove', 'moveUploadedFile'])
             ->getMock();
 
-        $this->container['sessionStorage'] = new SessionStorage;
-        $this->container->register(new ActionProvider);
+        $this->container['sessionStorage'] = new SessionStorage();
+        $this->container->register(new ActionProvider());
 
         $this->container['flash'] = function ($c) {
             return new FlashMessage($c);

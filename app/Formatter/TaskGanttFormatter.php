@@ -14,22 +14,20 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Task Gantt Formatter
+ * Task Gantt Formatter.
  */
 class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
 {
     /**
-     * Local cache for project columns
+     * Local cache for project columns.
      *
-     * @access private
      * @var array
      */
     private $columns = [];
-    
+
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -44,15 +42,15 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
     }
 
     /**
-     * Format a single task
+     * Format a single task.
      *
-     * @access private
-     * @param  array  $task
+     * @param array $task
+     *
      * @return array
      */
     private function formatTask(array $task)
     {
-        if (! isset($this->columns[$task['project_id']])) {
+        if (!isset($this->columns[$task['project_id']])) {
             $this->columns[$task['project_id']] = $this->columnModel->getList($task['project_id']);
         }
 
@@ -60,8 +58,8 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
         $end = $task['date_due'] ?: $start;
 
         return [
-            'type' => 'task',
-            'id' => $task['id'],
+            'type'  => 'task',
+            'id'    => $task['id'],
             'title' => $task['title'],
             'start' => [
                 (int) date('Y', $start),
@@ -74,11 +72,11 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
                 (int) date('j', $end),
             ],
             'column_title' => $task['column_name'],
-            'assignee' => $task['assignee_name'] ?: $task['assignee_username'],
-            'progress' => $this->taskModel->getProgress($task, $this->columns[$task['project_id']]).'%',
-            'link' => $this->helper->url->href('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]),
-            'color' => $this->colorModel->getColorProperties($task['color_id']),
-            'not_defined' => empty($task['date_due']) || empty($task['date_started']),
+            'assignee'     => $task['assignee_name'] ?: $task['assignee_username'],
+            'progress'     => $this->taskModel->getProgress($task, $this->columns[$task['project_id']]).'%',
+            'link'         => $this->helper->url->href('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]),
+            'color'        => $this->colorModel->getColorProperties($task['color_id']),
+            'not_defined'  => empty($task['date_due']) || empty($task['date_started']),
         ];
     }
 }

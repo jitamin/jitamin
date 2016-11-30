@@ -14,15 +14,14 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * User helpers
+ * User helpers.
  */
 class UserHelper extends Base
 {
     /**
-     * Return true if the logged user as unread notifications
+     * Return true if the logged user as unread notifications.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function hasNotifications()
     {
@@ -30,10 +29,10 @@ class UserHelper extends Base
     }
 
     /**
-     * Get initials from a user
+     * Get initials from a user.
      *
-     * @access public
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      */
     public function getInitials($name)
@@ -48,22 +47,23 @@ class UserHelper extends Base
     }
 
     /**
-     * Return the user full name
+     * Return the user full name.
      *
-     * @param  array    $user   User properties
+     * @param array $user User properties
+     *
      * @return string
      */
     public function getFullname(array $user = [])
     {
         $user = empty($user) ? $this->userSession->getAll() : $user;
+
         return $user['name'] ?: $user['username'];
     }
 
     /**
-     * Get user id
+     * Get user id.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -71,10 +71,11 @@ class UserHelper extends Base
     }
 
     /**
-     * Check if the given user_id is the connected user
+     * Check if the given user_id is the connected user.
      *
-     * @param  integer   $user_id   User id
-     * @return boolean
+     * @param int $user_id User id
+     *
+     * @return bool
      */
     public function isCurrentUser($user_id)
     {
@@ -82,10 +83,9 @@ class UserHelper extends Base
     }
 
     /**
-     * Return if the logged user is admin
+     * Return if the logged user is admin.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isAdmin()
     {
@@ -93,10 +93,10 @@ class UserHelper extends Base
     }
 
     /**
-     * Get role name
+     * Get role name.
      *
-     * @access public
-     * @param  string  $role
+     * @param string $role
+     *
      * @return string
      */
     public function getRoleName($role = '')
@@ -105,15 +105,16 @@ class UserHelper extends Base
     }
 
     /**
-     * Check application access
+     * Check application access.
      *
-     * @param  string  $controller
-     * @param  string  $action
+     * @param string $controller
+     * @param string $action
+     *
      * @return bool
      */
     public function hasAccess($controller, $action)
     {
-        if (! $this->userSession->isLogged()) {
+        if (!$this->userSession->isLogged()) {
             return false;
         }
 
@@ -129,11 +130,12 @@ class UserHelper extends Base
     }
 
     /**
-     * Check project access
+     * Check project access.
      *
-     * @param  string  $controller
-     * @param  string  $action
-     * @param  integer $project_id
+     * @param string $controller
+     * @param string $action
+     * @param int    $project_id
+     *
      * @return bool
      */
     public function hasProjectAccess($controller, $action, $project_id)

@@ -14,36 +14,36 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Class TaskSuppressionController
+ * Class TaskSuppressionController.
  */
 class TaskSuppressionController extends BaseController
 {
     /**
-     * Confirmation dialog box before to remove the task
+     * Confirmation dialog box before to remove the task.
      */
     public function confirm()
     {
         $task = $this->getTask();
 
-        if (! $this->helper->projectRole->canRemoveTask($task)) {
+        if (!$this->helper->projectRole->canRemoveTask($task)) {
             throw new AccessForbiddenException();
         }
 
         $this->response->html($this->template->render('task_suppression/remove', [
-            'task' => $task,
+            'task'     => $task,
             'redirect' => $this->request->getStringParam('redirect'),
         ]));
     }
 
     /**
-     * Remove a task
+     * Remove a task.
      */
     public function remove()
     {
         $task = $this->getTask();
         $this->checkCSRFParam();
 
-        if (! $this->helper->projectRole->canRemoveTask($task)) {
+        if (!$this->helper->projectRole->canRemoveTask($task)) {
             throw new AccessForbiddenException();
         }
 

@@ -14,31 +14,31 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * TaskLink model
+ * TaskLink model.
  */
 class TaskLinkModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'task_has_links';
 
     /**
-     * Events
+     * Events.
      *
      * @var string
      */
     const EVENT_CREATE_UPDATE = 'task_internal_link.create_update';
-    const EVENT_DELETE        = 'task_internal_link.delete';
+    const EVENT_DELETE = 'task_internal_link.delete';
 
     /**
-     * Get projectId from $task_link_id
+     * Get projectId from $task_link_id.
      *
-     * @access public
-     * @param  integer $task_link_id
-     * @return integer
+     * @param int $task_link_id
+     *
+     * @return int
      */
     public function getProjectId($task_link_id)
     {
@@ -46,14 +46,14 @@ class TaskLinkModel extends Base
             ->table(self::TABLE)
             ->eq(self::TABLE.'.id', $task_link_id)
             ->join(TaskModel::TABLE, 'id', 'task_id')
-            ->findOneColumn(TaskModel::TABLE . '.project_id') ?: 0;
+            ->findOneColumn(TaskModel::TABLE.'.project_id') ?: 0;
     }
 
     /**
-     * Get a task link
+     * Get a task link.
      *
-     * @access public
-     * @param  integer   $task_link_id   Task link id
+     * @param int $task_link_id Task link id
+     *
      * @return array
      */
     public function getById($task_link_id)
@@ -74,10 +74,10 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Get the opposite task link (use the unique index task_has_links_unique)
+     * Get the opposite task link (use the unique index task_has_links_unique).
      *
-     * @access public
-     * @param  array     $task_link
+     * @param array $task_link
+     *
      * @return array
      */
     public function getOppositeTaskLink(array $task_link)
@@ -92,10 +92,10 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Get all links attached to a task
+     * Get all links attached to a task.
      *
-     * @access public
-     * @param  integer   $task_id   Task id
+     * @param int $task_id Task id
+     *
      * @return array
      */
     public function getAll($task_id)
@@ -134,10 +134,10 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Get all links attached to a task grouped by label
+     * Get all links attached to a task grouped by label.
      *
-     * @access public
-     * @param  integer   $task_id   Task id
+     * @param int $task_id Task id
+     *
      * @return array
      */
     public function getAllGroupedByLabel($task_id)
@@ -146,7 +146,7 @@ class TaskLinkModel extends Base
         $result = [];
 
         foreach ($links as $link) {
-            if (! isset($result[$link['label']])) {
+            if (!isset($result[$link['label']])) {
                 $result[$link['label']] = [];
             }
 
@@ -157,13 +157,13 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Create a new link
+     * Create a new link.
      *
-     * @access public
-     * @param  integer   $task_id            Task id
-     * @param  integer   $opposite_task_id   Opposite task id
-     * @param  integer   $link_id            Link id
-     * @return integer|boolean
+     * @param int $task_id          Task id
+     * @param int $opposite_task_id Opposite task id
+     * @param int $link_id          Link id
+     *
+     * @return int|bool
      */
     public function create($task_id, $opposite_task_id, $link_id)
     {
@@ -175,6 +175,7 @@ class TaskLinkModel extends Base
 
         if ($task_link_id1 === false || $task_link_id2 === false) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -185,14 +186,14 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Update a task link
+     * Update a task link.
      *
-     * @access public
-     * @param  integer   $task_link_id          Task link id
-     * @param  integer   $task_id               Task id
-     * @param  integer   $opposite_task_id      Opposite task id
-     * @param  integer   $link_id               Link id
-     * @return boolean
+     * @param int $task_link_id     Task link id
+     * @param int $task_id          Task id
+     * @param int $opposite_task_id Opposite task id
+     * @param int $link_id          Link id
+     *
+     * @return bool
      */
     public function update($task_link_id, $task_id, $opposite_task_id, $link_id)
     {
@@ -207,6 +208,7 @@ class TaskLinkModel extends Base
 
         if ($result1 === false || $result2 === false) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -217,11 +219,11 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Remove a link between two tasks
+     * Remove a link between two tasks.
      *
-     * @access public
-     * @param  integer   $task_link_id
-     * @return boolean
+     * @param int $task_link_id
+     *
+     * @return bool
      */
     public function remove($task_link_id)
     {
@@ -246,6 +248,7 @@ class TaskLinkModel extends Base
 
         if ($result1 === false || $result2 === false) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -255,11 +258,10 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Publish events
+     * Publish events.
      *
-     * @access protected
-     * @param  integer[] $task_link_ids
-     * @param  string    $eventName
+     * @param int[]  $task_link_ids
+     * @param string $eventName
      */
     protected function fireEvents(array $task_link_ids, $eventName)
     {
@@ -269,13 +271,13 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Create task link
+     * Create task link.
      *
-     * @access protected
-     * @param  integer $task_id
-     * @param  integer $opposite_task_id
-     * @param  integer $link_id
-     * @return integer|boolean
+     * @param int $task_id
+     * @param int $opposite_task_id
+     * @param int $link_id
+     *
+     * @return int|bool
      */
     protected function createTaskLink($task_id, $opposite_task_id, $link_id)
     {
@@ -287,21 +289,21 @@ class TaskLinkModel extends Base
     }
 
     /**
-     * Update task link
+     * Update task link.
      *
-     * @access protected
-     * @param  integer $task_link_id
-     * @param  integer $task_id
-     * @param  integer $opposite_task_id
-     * @param  integer $link_id
-     * @return boolean
+     * @param int $task_link_id
+     * @param int $task_id
+     * @param int $opposite_task_id
+     * @param int $link_id
+     *
+     * @return bool
      */
     protected function updateTaskLink($task_link_id, $task_id, $opposite_task_id, $link_id)
     {
         return $this->db->table(self::TABLE)->eq('id', $task_link_id)->update([
-            'task_id' => $task_id,
+            'task_id'          => $task_id,
             'opposite_task_id' => $opposite_task_id,
-            'link_id' => $link_id,
+            'link_id'          => $link_id,
         ]);
     }
 }

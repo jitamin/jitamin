@@ -13,9 +13,9 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Action\TaskCloseNotMovedColumn;
 use Hiject\Bus\Event\TaskListEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
 
 class TaskCloseNotMovedColumnTest extends Base

@@ -11,10 +11,10 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Validator\TaskLinkValidator;
-use Hiject\Model\TaskLinkModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskLinkModel;
+use Hiject\Validator\TaskLinkValidator;
 
 class TaskLinkValidatorTest extends Base
 {

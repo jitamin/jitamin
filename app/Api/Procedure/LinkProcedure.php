@@ -12,15 +12,15 @@
 namespace Hiject\Api\Procedure;
 
 /**
- * Link API controller
+ * Link API controller.
  */
 class LinkProcedure extends BaseProcedure
 {
     /**
-     * Get a link by id
+     * Get a link by id.
      *
-     * @access public
-     * @param  integer   $link_id   Link id
+     * @param int $link_id Link id
+     *
      * @return array
      */
     public function getLinkById($link_id)
@@ -29,10 +29,10 @@ class LinkProcedure extends BaseProcedure
     }
 
     /**
-     * Get a link by name
+     * Get a link by name.
      *
-     * @access public
-     * @param  string $label
+     * @param string $label
+     *
      * @return array
      */
     public function getLinkByLabel($label)
@@ -41,11 +41,11 @@ class LinkProcedure extends BaseProcedure
     }
 
     /**
-     * Get the opposite link id
+     * Get the opposite link id.
      *
-     * @access public
-     * @param  integer   $link_id   Link id
-     * @return integer
+     * @param int $link_id Link id
+     *
+     * @return int
      */
     public function getOppositeLinkId($link_id)
     {
@@ -53,9 +53,8 @@ class LinkProcedure extends BaseProcedure
     }
 
     /**
-     * Get all links
+     * Get all links.
      *
-     * @access public
      * @return array
      */
     public function getAllLinks()
@@ -64,51 +63,53 @@ class LinkProcedure extends BaseProcedure
     }
 
     /**
-     * Create a new link label
+     * Create a new link label.
      *
-     * @access public
-     * @param  string   $label
-     * @param  string   $opposite_label
-     * @return boolean|integer
+     * @param string $label
+     * @param string $opposite_label
+     *
+     * @return bool|int
      */
     public function createLink($label, $opposite_label = '')
     {
         $values = [
-            'label' => $label,
+            'label'          => $label,
             'opposite_label' => $opposite_label,
         ];
 
-        list($valid, ) = $this->linkValidator->validateCreation($values);
+        list($valid) = $this->linkValidator->validateCreation($values);
+
         return $valid ? $this->linkModel->create($label, $opposite_label) : false;
     }
 
     /**
-     * Update a link
+     * Update a link.
      *
-     * @access public
-     * @param  integer  $link_id
-     * @param  integer  $opposite_link_id
-     * @param  string   $label
-     * @return boolean
+     * @param int    $link_id
+     * @param int    $opposite_link_id
+     * @param string $label
+     *
+     * @return bool
      */
     public function updateLink($link_id, $opposite_link_id, $label)
     {
         $values = [
-            'id' => $link_id,
+            'id'          => $link_id,
             'opposite_id' => $opposite_link_id,
-            'label' => $label,
+            'label'       => $label,
         ];
 
-        list($valid, ) = $this->linkValidator->validateModification($values);
+        list($valid) = $this->linkValidator->validateModification($values);
+
         return $valid && $this->linkModel->update($values);
     }
 
     /**
-     * Remove a link a the relation to its opposite
+     * Remove a link a the relation to its opposite.
      *
-     * @access public
-     * @param  integer  $link_id
-     * @return boolean
+     * @param int $link_id
+     *
+     * @return bool
      */
     public function removeLink($link_id)
     {

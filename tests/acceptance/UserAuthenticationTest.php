@@ -19,7 +19,7 @@ class UserAuthenticationTest extends Base
             [
                 'username' => 'admin',
                 'password' => 'admin',
-            ]
+            ],
         ];
 
         return $inputs;
@@ -31,7 +31,7 @@ class UserAuthenticationTest extends Base
             [
                 'username' => 'wrong_username',
                 'password' => 'wrong_password',
-            ]
+            ],
         ];
 
         return $inputs;

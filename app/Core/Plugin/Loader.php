@@ -13,26 +13,24 @@ namespace Hiject\Core\Plugin;
 
 use Composer\Autoload\ClassLoader;
 use DirectoryIterator;
-use LogicException;
 use Hiject\Core\Tool;
+use LogicException;
 
 /**
- * Plugin Loader
+ * Plugin Loader.
  */
 class Loader extends \Hiject\Core\Base
 {
     /**
-     * Plugin instances
+     * Plugin instances.
      *
-     * @access protected
      * @var array
      */
     protected $plugins = [];
 
     /**
-     * Get list of loaded plugins
+     * Get list of loaded plugins.
      *
-     * @access public
      * @return Base[]
      */
     public function getPlugins()
@@ -41,9 +39,7 @@ class Loader extends \Hiject\Core\Base
     }
 
     /**
-     * Scan plugin folder and load plugins
-     *
-     * @access public
+     * Scan plugin folder and load plugins.
      */
     public function scan()
     {
@@ -65,10 +61,9 @@ class Loader extends \Hiject\Core\Base
     }
 
     /**
-     * Load plugin schema
+     * Load plugin schema.
      *
-     * @access public
-     * @param  string $pluginName
+     * @param string $pluginName
      */
     public function loadSchema($pluginName)
     {
@@ -79,18 +74,19 @@ class Loader extends \Hiject\Core\Base
     }
 
     /**
-     * Load plugin
+     * Load plugin.
      *
-     * @access public
+     * @param string $pluginName
+     *
      * @throws LogicException
-     * @param  string $pluginName
+     *
      * @return Base
      */
     public function loadPlugin($pluginName)
     {
         $className = '\Hiject\Plugin\\'.$pluginName.'\\Plugin';
 
-        if (! class_exists($className)) {
+        if (!class_exists($className)) {
             throw new LogicException('Unable to load this plugin class '.$className);
         }
 
@@ -98,11 +94,10 @@ class Loader extends \Hiject\Core\Base
     }
 
     /**
-     * Initialize plugin
+     * Initialize plugin.
      *
-     * @access public
-     * @param  string $pluginName
-     * @param  Base   $plugin
+     * @param string $pluginName
+     * @param Base   $plugin
      */
     public function initializePlugin($pluginName, Base $plugin)
     {

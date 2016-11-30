@@ -14,7 +14,7 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Subtask helpers
+ * Subtask helpers.
  */
 class SubtaskHelper extends Base
 {
@@ -32,17 +32,17 @@ class SubtaskHelper extends Base
     }
 
     /**
-     * Get the link to toggle subtask status
+     * Get the link to toggle subtask status.
      *
-     * @access public
-     * @param  array    $subtask
-     * @param  integer  $project_id
-     * @param  boolean  $refresh_table
+     * @param array $subtask
+     * @param int   $project_id
+     * @param bool  $refresh_table
+     *
      * @return string
      */
     public function toggleStatus(array $subtask, $project_id, $refresh_table = false)
     {
-        if (! $this->helper->user->hasProjectAccess('SubtaskController', 'edit', $project_id)) {
+        if (!$this->helper->user->hasProjectAccess('SubtaskController', 'edit', $project_id)) {
             return $this->getTitle($subtask);
         }
 
@@ -53,6 +53,7 @@ class SubtaskHelper extends Base
         }
 
         $class = 'subtask-toggle-status '.($refresh_table ? 'subtask-refresh-table' : '');
+
         return $this->helper->url->link($this->getTitle($subtask), 'SubtaskStatusController', 'change', $params, false, $class);
     }
 

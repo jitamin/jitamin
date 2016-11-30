@@ -14,16 +14,16 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Application Helper
+ * Application Helper.
  */
 class AppHelper extends Base
 {
     /**
-     * Get config variable
+     * Get config variable.
      *
-     * @access public
-     * @param  string $param
-     * @param  mixed  $default_value
+     * @param string $param
+     * @param mixed  $default_value
+     *
      * @return mixed
      */
     public function config($param, $default_value = '')
@@ -32,12 +32,12 @@ class AppHelper extends Base
     }
 
     /**
-     * Make sidebar menu active
+     * Make sidebar menu active.
      *
-     * @access public
-     * @param  string $controller
-     * @param  string $action
-     * @param  string $plugin
+     * @param string $controller
+     * @param string $action
+     * @param string $plugin
+     *
      * @return string
      */
     public function checkMenuSelection($controller, $action = '', $plugin = '')
@@ -56,9 +56,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get plugin name from route
+     * Get plugin name from route.
      *
-     * @access public
      * @return string
      */
     public function getPluginName()
@@ -67,9 +66,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get router controller
+     * Get router controller.
      *
-     * @access public
      * @return string
      */
     public function getRouterController()
@@ -78,9 +76,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get router action
+     * Get router action.
      *
-     * @access public
      * @return string
      */
     public function getRouterAction()
@@ -89,9 +86,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get javascript language code
+     * Get javascript language code.
      *
-     * @access public
      * @return string
      */
     public function jsLang()
@@ -100,9 +96,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get date format for Jquery DatePicker
+     * Get date format for Jquery DatePicker.
      *
-     * @access public
      * @return string
      */
     public function getJsDateFormat()
@@ -116,9 +111,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get time format for Jquery Plugin DateTimePicker
+     * Get time format for Jquery Plugin DateTimePicker.
      *
-     * @access public
      * @return string
      */
     public function getJsTimeFormat()
@@ -133,9 +127,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get current skin
+     * Get current skin.
      *
-     * @access public
      * @return string
      */
     public function getSkin()
@@ -144,9 +137,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get current timezone
+     * Get current timezone.
      *
-     * @access public
      * @return string
      */
     public function getTimezone()
@@ -155,9 +147,8 @@ class AppHelper extends Base
     }
 
     /**
-     * Get session flash message
+     * Get session flash message.
      *
-     * @access public
      * @return string
      */
     public function flashMessage()
@@ -165,11 +156,11 @@ class AppHelper extends Base
         $success_message = $this->flash->getMessage('success');
         $failure_message = $this->flash->getMessage('failure');
 
-        if (! empty($success_message)) {
+        if (!empty($success_message)) {
             return '<div class="alert alert-success alert-fade-out">'.$this->helper->text->e($success_message).'</div>';
         }
 
-        if (! empty($failure_message)) {
+        if (!empty($failure_message)) {
             return '<div class="alert alert-error">'.$this->helper->text->e($failure_message).'</div>';
         }
 

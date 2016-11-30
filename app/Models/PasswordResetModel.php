@@ -14,29 +14,29 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Password Reset Model
+ * Password Reset Model.
  */
 class PasswordResetModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'password_reset';
 
     /**
-     * Token duration (30 minutes)
+     * Token duration (30 minutes).
      *
-     * @var integer
+     * @var int
      */
     const DURATION = 1800;
 
     /**
-     * Get all tokens
+     * Get all tokens.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getAll($user_id)
@@ -45,42 +45,42 @@ class PasswordResetModel extends Base
     }
 
     /**
-     * Generate a new reset token for a user
+     * Generate a new reset token for a user.
      *
-     * @access public
-     * @param  string  $username
-     * @param  integer $expiration
-     * @return boolean|string
+     * @param string $username
+     * @param int    $expiration
+     *
+     * @return bool|string
      */
     public function create($username, $expiration = 0)
     {
         $user_id = $this->db->table(UserModel::TABLE)->eq('username', $username)->neq('email', '')->notNull('email')->findOneColumn('id');
 
-        if (! $user_id) {
+        if (!$user_id) {
             return false;
         }
 
         $token = $this->token->getToken();
 
-        $result = $this->db->table(self::TABLE)->insert(array(
-            'token' => $token,
-            'user_id' => $user_id,
+        $result = $this->db->table(self::TABLE)->insert([
+            'token'           => $token,
+            'user_id'         => $user_id,
             'date_expiration' => $expiration ?: time() + self::DURATION,
-            'date_creation' => time(),
-            'ip' => $this->request->getIpAddress(),
-            'user_agent' => $this->request->getUserAgent(),
-            'is_active' => 1,
-        ));
+            'date_creation'   => time(),
+            'ip'              => $this->request->getIpAddress(),
+            'user_agent'      => $this->request->getUserAgent(),
+            'is_active'       => 1,
+        ]);
 
         return $result ? $token : false;
     }
 
     /**
-     * Get user id from the token
+     * Get user id from the token.
      *
-     * @access public
-     * @param  string $token
-     * @return integer
+     * @param string $token
+     *
+     * @return int
      */
     public function getUserIdByToken($token)
     {
@@ -88,14 +88,14 @@ class PasswordResetModel extends Base
     }
 
     /**
-     * Disable all tokens for a user
+     * Disable all tokens for a user.
      *
-     * @access public
-     * @param  integer $user_id
-     * @return boolean
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function disable($user_id)
     {
-        return $this->db->table(self::TABLE)->eq('user_id', $user_id)->update(array('is_active' => 0));
+        return $this->db->table(self::TABLE)->eq('user_id', $user_id)->update(['is_active' => 0]);
     }
 }

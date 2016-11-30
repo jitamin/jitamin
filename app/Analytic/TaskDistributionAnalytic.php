@@ -14,15 +14,15 @@ namespace Hiject\Analytic;
 use Hiject\Core\Base;
 
 /**
- * Task Distribution
+ * Task Distribution.
  */
 class TaskDistributionAnalytic extends Base
 {
     /**
-     * Build report
+     * Build report.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function build($project_id)
@@ -37,7 +37,7 @@ class TaskDistributionAnalytic extends Base
 
             $metrics[] = [
                 'column_title' => $column['title'],
-                'nb_tasks' => $nb_tasks,
+                'nb_tasks'     => $nb_tasks,
             ];
         }
 

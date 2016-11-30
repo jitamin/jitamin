@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Subtask Status
+ * Subtask Status.
  */
 class SubtaskStatusController extends BaseController
 {
     /**
-     * Change status to the next status: Toto -> In Progress -> Done
-     *
-     * @access public
+     * Change status to the next status: Toto -> In Progress -> Done.
      */
     public function change()
     {
@@ -39,9 +37,7 @@ class SubtaskStatusController extends BaseController
     }
 
     /**
-     * Start/stop timer for subtasks
-     *
-     * @access public
+     * Start/stop timer for subtasks.
      */
     public function timer()
     {
@@ -60,16 +56,16 @@ class SubtaskStatusController extends BaseController
     }
 
     /**
-     * Render table
+     * Render table.
      *
-     * @access private
-     * @param  array  $task
+     * @param array $task
+     *
      * @return string
      */
     private function renderTable(array $task)
     {
         return $this->template->render('subtask/table', [
-            'task' => $task,
+            'task'     => $task,
             'subtasks' => $this->subtaskModel->getAll($task['id']),
             'editable' => true,
         ]);

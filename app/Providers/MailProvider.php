@@ -16,7 +16,7 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Mail Provider
+ * Mail Provider.
  */
 class MailProvider implements ServiceProviderInterface
 {
@@ -32,6 +32,7 @@ class MailProvider implements ServiceProviderInterface
             $mailer->setTransport('smtp', '\Hiject\Core\Mail\Transport\Smtp');
             $mailer->setTransport('sendmail', '\Hiject\Core\Mail\Transport\Sendmail');
             $mailer->setTransport('mail', '\Hiject\Core\Mail\Transport\Mail');
+
             return $mailer;
         };
 

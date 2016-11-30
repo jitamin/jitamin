@@ -44,9 +44,9 @@ class DatetimeHelperTest extends Base
         $this->assertEquals('&lt;15m', $helper->age(0, 30));
         $this->assertEquals('&lt;30m', $helper->age(0, 1000));
         $this->assertEquals('&lt;1h', $helper->age(0, 3000));
-        $this->assertEquals('~2h', $helper->age(0, 2*3600));
-        $this->assertEquals('1d', $helper->age(0, 30*3600));
-        $this->assertEquals('2d', $helper->age(0, 65*3600));
+        $this->assertEquals('~2h', $helper->age(0, 2 * 3600));
+        $this->assertEquals('1d', $helper->age(0, 30 * 3600));
+        $this->assertEquals('2d', $helper->age(0, 65 * 3600));
     }
 
     public function testGetDayHours()

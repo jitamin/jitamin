@@ -14,15 +14,15 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class SubtaskStatusModel
+ * Class SubtaskStatusModel.
  */
 class SubtaskStatusModel extends Base
 {
     /**
-     * Get the subtask in progress for this user
+     * Get the subtask in progress for this user.
      *
-     * @access public
-     * @param  integer   $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getSubtaskInProgress($user_id)
@@ -34,11 +34,11 @@ class SubtaskStatusModel extends Base
     }
 
     /**
-     * Return true if the user have a subtask in progress
+     * Return true if the user have a subtask in progress.
      *
-     * @access public
-     * @param  integer   $user_id
-     * @return boolean
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function hasSubtaskInProgress($user_id)
     {
@@ -50,11 +50,11 @@ class SubtaskStatusModel extends Base
     }
 
     /**
-     * Change the status of subtask
+     * Change the status of subtask.
      *
-     * @access public
-     * @param  integer  $subtask_id
-     * @return boolean|integer
+     * @param int $subtask_id
+     *
+     * @return bool|int
      */
     public function toggleStatus($subtask_id)
     {
@@ -62,8 +62,8 @@ class SubtaskStatusModel extends Base
         $status = ($subtask['status'] + 1) % 3;
 
         $values = [
-            'id' => $subtask['id'],
-            'status' => $status,
+            'id'      => $subtask['id'],
+            'status'  => $status,
             'task_id' => $subtask['task_id'],
         ];
 
@@ -78,17 +78,17 @@ class SubtaskStatusModel extends Base
     }
 
     /**
-     * Close all subtasks of a task
+     * Close all subtasks of a task.
      *
-     * @access public
-     * @param  integer  $task_id
-     * @return boolean
+     * @param int $task_id
+     *
+     * @return bool
      */
     public function closeAll($task_id)
     {
         return $this->db
             ->table(SubtaskModel::TABLE)
             ->eq('task_id', $task_id)
-            ->update(array('status' => SubtaskModel::STATUS_DONE));
+            ->update(['status' => SubtaskModel::STATUS_DONE]);
     }
 }

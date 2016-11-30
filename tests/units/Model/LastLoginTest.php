@@ -41,7 +41,7 @@ class LastLoginTest extends Base
         $lastLoginModel = new LastLoginModel($this->container);
 
         for ($i = 0; $i < $lastLoginModel::NB_LOGINS + 5; $i++) {
-            $this->assertTrue($lastLoginModel->create('Test' . $i, 1, '127.0.0.1', 'My browser'));
+            $this->assertTrue($lastLoginModel->create('Test'.$i, 1, '127.0.0.1', 'My browser'));
         }
 
         $connections = $lastLoginModel->getAll(1);

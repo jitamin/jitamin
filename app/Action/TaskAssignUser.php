@@ -12,14 +12,13 @@
 namespace Hiject\Action;
 
 /**
- * Assign a task to someone
+ * Assign a task to someone.
  */
 class TaskAssignUser extends Base
 {
     /**
-     * Get automatic action description
+     * Get automatic action description.
      *
-     * @access public
      * @return string
      */
     public function getDescription()
@@ -28,9 +27,8 @@ class TaskAssignUser extends Base
     }
 
     /**
-     * Get the list of compatible events
+     * Get the list of compatible events.
      *
-     * @access public
      * @return array
      */
     public function getCompatibleEvents()
@@ -39,9 +37,8 @@ class TaskAssignUser extends Base
     }
 
     /**
-     * Get the required parameter for the action (defined by the user)
+     * Get the required parameter for the action (defined by the user).
      *
-     * @access public
      * @return array
      */
     public function getActionRequiredParameters()
@@ -50,9 +47,8 @@ class TaskAssignUser extends Base
     }
 
     /**
-     * Get the required parameter for the event
+     * Get the required parameter for the event.
      *
-     * @access public
      * @return string[]
      */
     public function getEventRequiredParameters()
@@ -64,16 +60,16 @@ class TaskAssignUser extends Base
     }
 
     /**
-     * Execute the action (assign the given user)
+     * Execute the action (assign the given user).
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool            True if the action was executed or false when not executed
+     * @param array $data Event data dictionary
+     *
+     * @return bool True if the action was executed or false when not executed
      */
     public function doAction(array $data)
     {
         $values = [
-            'id' => $data['task_id'],
+            'id'       => $data['task_id'],
             'owner_id' => $data['owner_id'],
         ];
 
@@ -81,10 +77,10 @@ class TaskAssignUser extends Base
     }
 
     /**
-     * Check if the event data meet the action condition
+     * Check if the event data meet the action condition.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
+     * @param array $data Event data dictionary
+     *
      * @return bool
      */
     public function hasRequiredCondition(array $data)

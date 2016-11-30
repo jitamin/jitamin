@@ -14,23 +14,21 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\Base;
 
 /**
- * Base Link Provider
+ * Base Link Provider.
  */
 abstract class BaseLinkProvider extends Base
 {
     /**
-     * User input
+     * User input.
      *
-     * @access protected
      * @var string
      */
     protected $userInput = '';
 
     /**
-     * Set text entered by the user
+     * Set text entered by the user.
      *
-     * @access public
-     * @param  string $input
+     * @param string $input
      */
     public function setUserTextInput($input)
     {

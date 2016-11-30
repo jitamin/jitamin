@@ -1,4 +1,4 @@
-<?php if (! empty($categories)): ?>
+<?php if (!empty($categories)): ?>
 <div class="page-header">
     <h2><?= t('Categories') ?></h2>
 </div>

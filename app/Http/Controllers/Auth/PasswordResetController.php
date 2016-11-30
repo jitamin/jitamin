@@ -14,15 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Password Reset Controller
+ * Password Reset Controller.
  */
 class PasswordResetController extends BaseController
 {
     /**
-     * Show the form to reset the password
+     * Show the form to reset the password.
      *
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\BaseException
      */
     public function create(array $values = [], array $errors = [])
@@ -30,14 +31,14 @@ class PasswordResetController extends BaseController
         $this->checkActivation();
 
         $this->response->html($this->helper->layout->app('password_reset/create', [
-            'errors' => $errors,
-            'values' => $values,
+            'errors'    => $errors,
+            'values'    => $values,
             'no_layout' => true,
         ]));
     }
 
     /**
-     * Validate and send the email
+     * Validate and send the email.
      */
     public function save()
     {
@@ -55,10 +56,11 @@ class PasswordResetController extends BaseController
     }
 
     /**
-     * Show the form to set a new password
+     * Show the form to set a new password.
      *
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\BaseException
      */
     public function change(array $values = [], array $errors = [])
@@ -70,9 +72,9 @@ class PasswordResetController extends BaseController
 
         if ($user_id !== false) {
             $this->response->html($this->helper->layout->app('password_reset/change', [
-                'token' => $token,
-                'errors' => $errors,
-                'values' => $values,
+                'token'     => $token,
+                'errors'    => $errors,
+                'values'    => $values,
                 'no_layout' => true,
             ]));
         } else {
@@ -81,7 +83,7 @@ class PasswordResetController extends BaseController
     }
 
     /**
-     * Set the new password
+     * Set the new password.
      */
     public function update()
     {
@@ -106,7 +108,7 @@ class PasswordResetController extends BaseController
     }
 
     /**
-     * Send the email
+     * Send the email.
      *
      * @param string $username
      */
@@ -127,7 +129,7 @@ class PasswordResetController extends BaseController
     }
 
     /**
-     * Check feature availability
+     * Check feature availability.
      */
     private function checkActivation()
     {

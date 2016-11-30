@@ -14,14 +14,13 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\ExternalLink\ExternalLinkInterface;
 
 /**
- * Web Link
+ * Web Link.
  */
 class WebLink extends BaseLink implements ExternalLinkInterface
 {
     /**
-     * Get link title
+     * Get link title.
      *
-     * @access public
      * @return string
      */
     public function getTitle()
@@ -34,7 +33,7 @@ class WebLink extends BaseLink implements ExternalLinkInterface
 
         $components = parse_url($this->url);
 
-        if (! empty($components['host']) && ! empty($components['path'])) {
+        if (!empty($components['host']) && !empty($components['path'])) {
             return $components['host'].$components['path'];
         }
 

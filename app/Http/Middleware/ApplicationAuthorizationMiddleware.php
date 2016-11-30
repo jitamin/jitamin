@@ -15,16 +15,16 @@ use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Controller\BaseMiddleware;
 
 /**
- * Class ApplicationAuthorizationMiddleware
+ * Class ApplicationAuthorizationMiddleware.
  */
 class ApplicationAuthorizationMiddleware extends BaseMiddleware
 {
     /**
-     * Execute middleware
+     * Execute middleware.
      */
     public function execute()
     {
-        if (! $this->helper->user->hasAccess($this->router->getController(), $this->router->getAction())) {
+        if (!$this->helper->user->hasAccess($this->router->getController(), $this->router->getAction())) {
             throw new AccessForbiddenException();
         }
 

@@ -14,18 +14,18 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class SubtaskPositionModel
+ * Class SubtaskPositionModel.
  */
 class SubtaskPositionModel extends Base
 {
     /**
-     * Change subtask position
+     * Change subtask position.
      *
-     * @access public
-     * @param  integer  $task_id
-     * @param  integer  $subtask_id
-     * @param  integer  $position
-     * @return boolean
+     * @param int $task_id
+     * @param int $subtask_id
+     * @param int $position
+     *
+     * @return bool
      */
     public function changePosition($task_id, $subtask_id, $position)
     {
@@ -42,11 +42,11 @@ class SubtaskPositionModel extends Base
                 $offset++;
             }
 
-            $results[] = $this->db->table(SubtaskModel::TABLE)->eq('id', $current_subtask_id)->update(array('position' => $offset));
+            $results[] = $this->db->table(SubtaskModel::TABLE)->eq('id', $current_subtask_id)->update(['position' => $offset]);
             $offset++;
         }
 
-        $results[] = $this->db->table(SubtaskModel::TABLE)->eq('id', $subtask_id)->update(array('position' => $position));
+        $results[] = $this->db->table(SubtaskModel::TABLE)->eq('id', $subtask_id)->update(['position' => $position]);
 
         return !in_array(false, $results, true);
     }

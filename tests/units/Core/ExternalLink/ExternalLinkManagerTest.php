@@ -12,8 +12,8 @@
 require_once __DIR__.'/../../Base.php';
 
 use Hiject\Core\ExternalLink\ExternalLinkManager;
-use Hiject\ExternalLink\WebLinkProvider;
 use Hiject\ExternalLink\AttachmentLinkProvider;
+use Hiject\ExternalLink\WebLinkProvider;
 
 class ExternalLinkManagerTest extends Base
 {

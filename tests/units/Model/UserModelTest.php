@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\UserModel;
-use Hiject\Model\SubtaskModel;
+use Hiject\Core\Security\Role;
 use Hiject\Model\CommentModel;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\SubtaskModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Core\Security\Role;
+use Hiject\Model\UserModel;
 
 class UserModelTest extends Base
 {
@@ -156,11 +156,11 @@ class UserModelTest extends Base
         $userModel = new UserModel($this->container);
 
         $input = [
-            'username' => 'user1',
-            'password' => '1234',
+            'username'     => 'user1',
+            'password'     => '1234',
             'confirmation' => '1234',
-            'name' => 'me',
-            'role' => Role::APP_ADMIN,
+            'name'         => 'me',
+            'role'         => Role::APP_ADMIN,
         ];
 
         $userModel->prepare($input);
@@ -171,12 +171,12 @@ class UserModelTest extends Base
         $this->assertNotEmpty($input['password']);
 
         $input = [
-            'username' => 'user1',
-            'password' => '1234',
+            'username'         => 'user1',
+            'password'         => '1234',
             'current_password' => 'bla',
-            'confirmation' => '1234',
-            'name' => 'me',
-            'is_ldap_user' => '1',
+            'confirmation'     => '1234',
+            'name'             => 'me',
+            'is_ldap_user'     => '1',
         ];
 
         $userModel->prepare($input);
@@ -191,7 +191,7 @@ class UserModelTest extends Base
         $this->assertEquals(1, $input['is_ldap_user']);
 
         $input = [
-            'id' => 2,
+            'id'   => 2,
             'name' => 'me',
         ];
 
@@ -221,7 +221,7 @@ class UserModelTest extends Base
 
         $input = [
             'username' => 'something',
-            'password' => ''
+            'password' => '',
         ];
 
         $userModel->prepare($input);

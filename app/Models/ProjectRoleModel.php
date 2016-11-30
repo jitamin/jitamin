@@ -15,16 +15,17 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\Role;
 
 /**
- * Class ProjectRoleModel
+ * Class ProjectRoleModel.
  */
 class ProjectRoleModel extends Base
 {
     const TABLE = 'project_has_roles';
 
     /**
-     * Get list of project roles
+     * Get list of project roles.
      *
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getList($project_id)
@@ -39,10 +40,11 @@ class ProjectRoleModel extends Base
     }
 
     /**
-     * Get a role
+     * Get a role.
      *
-     * @param  int $project_id
-     * @param  int $role_id
+     * @param int $project_id
+     * @param int $role_id
+     *
      * @return array|null
      */
     public function getById($project_id, $role_id)
@@ -54,9 +56,10 @@ class ProjectRoleModel extends Base
     }
 
     /**
-     * Get all project roles
+     * Get all project roles.
      *
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -68,9 +71,10 @@ class ProjectRoleModel extends Base
     }
 
     /**
-     * Get all project roles with restrictions
+     * Get all project roles with restrictions.
      *
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAllWithRestrictions($project_id)
@@ -93,10 +97,11 @@ class ProjectRoleModel extends Base
     }
 
     /**
-     * Create a new project role
+     * Create a new project role.
      *
-     * @param  int $project_id
-     * @param  string $role
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return bool|int
      */
     public function create($project_id, $role)
@@ -105,16 +110,17 @@ class ProjectRoleModel extends Base
             ->table(self::TABLE)
             ->persist([
                 'project_id' => $project_id,
-                'role' => $role,
+                'role'       => $role,
             ]);
     }
 
     /**
-     * Update a project role
+     * Update a project role.
      *
-     * @param  int $role_id
-     * @param  int $project_id
-     * @param  string $role
+     * @param int    $role_id
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return bool
      */
     public function update($role_id, $project_id, $role)
@@ -128,7 +134,7 @@ class ProjectRoleModel extends Base
             ->eq('project_id', $project_id)
             ->eq('role', $previousRole['role'])
             ->update([
-                'role' => $role
+                'role' => $role,
             ]);
 
         $r2 = $this->db
@@ -136,7 +142,7 @@ class ProjectRoleModel extends Base
             ->eq('project_id', $project_id)
             ->eq('role', $previousRole['role'])
             ->update([
-                'role' => $role
+                'role' => $role,
             ]);
 
         $r3 = $this->db
@@ -149,18 +155,21 @@ class ProjectRoleModel extends Base
 
         if ($r1 && $r2 && $r3) {
             $this->db->closeTransaction();
+
             return true;
         }
 
         $this->db->cancelTransaction();
+
         return false;
     }
 
     /**
-     * Remove a project role
+     * Remove a project role.
      *
-     * @param  int $project_id
-     * @param  int $role_id
+     * @param int $project_id
+     * @param int $role_id
+     *
      * @return bool
      */
     public function remove($project_id, $role_id)
@@ -174,7 +183,7 @@ class ProjectRoleModel extends Base
             ->eq('project_id', $project_id)
             ->eq('role', $role['role'])
             ->update([
-                'role' => Role::PROJECT_MEMBER
+                'role' => Role::PROJECT_MEMBER,
             ]);
 
         $r2 = $this->db
@@ -182,7 +191,7 @@ class ProjectRoleModel extends Base
             ->eq('project_id', $project_id)
             ->eq('role', $role['role'])
             ->update([
-                'role' => Role::PROJECT_MEMBER
+                'role' => Role::PROJECT_MEMBER,
             ]);
 
         $r3 = $this->db
@@ -193,10 +202,12 @@ class ProjectRoleModel extends Base
 
         if ($r1 && $r2 && $r3) {
             $this->db->closeTransaction();
+
             return true;
         }
 
         $this->db->cancelTransaction();
+
         return false;
     }
 }

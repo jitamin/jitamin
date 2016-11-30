@@ -15,16 +15,16 @@ use Hiject\Core\Base;
 use Hiject\Model\UserMetadataModel;
 
 /**
- * Board Helper
+ * Board Helper.
  */
 class BoardHelper extends Base
 {
     /**
-     * Return true if tasks are collapsed
+     * Return true if tasks are collapsed.
      *
-     * @access public
-     * @param  integer   $project_id
-     * @return boolean
+     * @param int $project_id
+     *
+     * @return bool
      */
     public function isCollapsed($project_id)
     {

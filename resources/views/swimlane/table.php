@@ -7,7 +7,7 @@
             <th class="column-8"><?= t('Actions') ?></th>
         </tr>
 
-        <?php if (! empty($default_swimlane)): ?>
+        <?php if (!empty($default_swimlane)): ?>
         <tr>
             <td>
                 <?= $this->text->e($default_swimlane['default_swimlane']) ?>
@@ -38,13 +38,13 @@
         <?php foreach ($swimlanes as $swimlane): ?>
         <tr data-swimlane-id="<?= $swimlane['id'] ?>">
             <td>
-                <?php if (! isset($disable_handler)): ?>
+                <?php if (!isset($disable_handler)): ?>
                     <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change column position') ?>"></i>
                 <?php endif ?>
 
                 <?= $this->text->e($swimlane['name']) ?>
 
-                <?php if (! empty($swimlane['description'])): ?>
+                <?php if (!empty($swimlane['description'])): ?>
                     <span class="tooltip" title="<?= $this->text->markdownAttribute($swimlane['description']) ?>">
                         <i class="fa fa-info-circle"></i>
                     </span>

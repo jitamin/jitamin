@@ -14,24 +14,24 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Project Daily Stats
+ * Project Daily Stats.
  */
 class ProjectDailyStatsModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'project_daily_stats';
 
     /**
-     * Update daily totals for the project
+     * Update daily totals for the project.
      *
-     * @access public
-     * @param  integer    $project_id    Project id
-     * @param  string     $date          Record date (YYYY-MM-DD)
-     * @return boolean
+     * @param int    $project_id Project id
+     * @param string $date       Record date (YYYY-MM-DD)
+     *
+     * @return bool
      */
     public function updateTotals($project_id, $date)
     {
@@ -41,12 +41,12 @@ class ProjectDailyStatsModel extends Base
 
         $this->db->table(self::TABLE)->eq('day', $date)->eq('project_id', $project_id)->remove();
 
-        $this->db->table(self::TABLE)->insert(array(
-            'day' => $date,
-            'project_id' => $project_id,
-            'avg_lead_time' => $lead_cycle_time['avg_lead_time'],
+        $this->db->table(self::TABLE)->insert([
+            'day'            => $date,
+            'project_id'     => $project_id,
+            'avg_lead_time'  => $lead_cycle_time['avg_lead_time'],
             'avg_cycle_time' => $lead_cycle_time['avg_cycle_time'],
-        ));
+        ]);
 
         $this->db->closeTransaction();
 
@@ -54,12 +54,12 @@ class ProjectDailyStatsModel extends Base
     }
 
     /**
-     * Get raw metrics for the project within a data range
+     * Get raw metrics for the project within a data range.
      *
-     * @access public
-     * @param  integer    $project_id    Project id
-     * @param  string     $from          Start date (ISO format YYYY-MM-DD)
-     * @param  string     $to            End date
+     * @param int    $project_id Project id
+     * @param string $from       Start date (ISO format YYYY-MM-DD)
+     * @param string $to         End date
+     *
      * @return array
      */
     public function getRawMetrics($project_id, $from, $to)

@@ -4,7 +4,7 @@
         $this->render('header/admin_dropdown'),
         $this->render('header/user_notifications'),
         $this->render('header/creation_dropdown'),
-        $this->render('header/user_dropdown')
+        $this->render('header/user_dropdown'),
     ]) ?>
 <div class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -19,7 +19,7 @@
                 <?= $_top_right_corner ?>
             </ul>
 
-            <?php if (! empty($board_selector)): ?>
+            <?php if (!empty($board_selector)): ?>
             <?= $this->render('header/board_selector', ['board_selector' => $board_selector]) ?>
             <?php endif ?>
 

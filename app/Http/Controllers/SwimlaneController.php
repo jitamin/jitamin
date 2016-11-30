@@ -16,16 +16,16 @@ use Hiject\Core\Controller\PageNotFoundException;
 use Hiject\Model\SwimlaneModel;
 
 /**
- * Swimlanes Controller
+ * Swimlanes Controller.
  */
 class SwimlaneController extends BaseController
 {
     /**
-     * Get the swimlane (common method between actions)
+     * Get the swimlane (common method between actions).
      *
-     * @access private
-     * @return array
      * @throws PageNotFoundException
+     *
+     * @return array
      */
     private function getSwimlane()
     {
@@ -39,29 +39,27 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * List of swimlanes for a given project
-     *
-     * @access public
+     * List of swimlanes for a given project.
      */
     public function index()
     {
         $project = $this->getProject();
 
         $this->response->html($this->helper->layout->project('swimlane/index', [
-            'default_swimlane' => $this->swimlaneModel->getDefault($project['id']),
-            'active_swimlanes' => $this->swimlaneModel->getAllByStatus($project['id'], SwimlaneModel::ACTIVE),
+            'default_swimlane'   => $this->swimlaneModel->getDefault($project['id']),
+            'active_swimlanes'   => $this->swimlaneModel->getAllByStatus($project['id'], SwimlaneModel::ACTIVE),
             'inactive_swimlanes' => $this->swimlaneModel->getAllByStatus($project['id'], SwimlaneModel::INACTIVE),
-            'project' => $project,
-            'title' => t('Swimlanes')
+            'project'            => $project,
+            'title'              => t('Swimlanes'),
         ]));
     }
 
     /**
-     * Create a new swimlane
+     * Create a new swimlane.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     public function create(array $values = [], array $errors = [])
@@ -69,16 +67,14 @@ class SwimlaneController extends BaseController
         $project = $this->getProject();
 
         $this->response->html($this->template->render('swimlane/create', [
-            'values' => $values + ['project_id' => $project['id']],
-            'errors' => $errors,
+            'values'  => $values + ['project_id' => $project['id']],
+            'errors'  => $errors,
             'project' => $project,
         ]));
     }
 
     /**
-     * Validate and save a new swimlane
-     *
-     * @access public
+     * Validate and save a new swimlane.
      */
     public function save()
     {
@@ -89,6 +85,7 @@ class SwimlaneController extends BaseController
         if ($valid) {
             if ($this->swimlaneModel->create($values) !== false) {
                 $this->flash->success(t('Your swimlane have been created successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
             } else {
                 $errors = ['name' => [t('Another swimlane with the same name exists in the project')]];
@@ -99,11 +96,11 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Edit default swimlane (display the form)
+     * Edit default swimlane (display the form).
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     public function editDefault(array $values = [], array $errors = [])
@@ -112,16 +109,14 @@ class SwimlaneController extends BaseController
         $swimlane = $this->swimlaneModel->getDefault($project['id']);
 
         $this->response->html($this->helper->layout->project('swimlane/edit_default', [
-            'values' => empty($values) ? $swimlane : $values,
-            'errors' => $errors,
+            'values'  => empty($values) ? $swimlane : $values,
+            'errors'  => $errors,
             'project' => $project,
         ]));
     }
 
     /**
-     * Change the default swimlane
-     *
-     * @access public
+     * Change the default swimlane.
      */
     public function updateDefault()
     {
@@ -133,6 +128,7 @@ class SwimlaneController extends BaseController
         if ($valid) {
             if ($this->swimlaneModel->updateDefault($values)) {
                 $this->flash->success(t('The default swimlane have been updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]), true);
             } else {
                 $this->flash->failure(t('Unable to update this swimlane.'));
@@ -143,11 +139,11 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Edit a swimlane (display the form)
+     * Edit a swimlane (display the form).
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
@@ -156,16 +152,14 @@ class SwimlaneController extends BaseController
         $swimlane = $this->getSwimlane();
 
         $this->response->html($this->helper->layout->project('swimlane/edit', [
-            'values' => empty($values) ? $swimlane : $values,
-            'errors' => $errors,
+            'values'  => empty($values) ? $swimlane : $values,
+            'errors'  => $errors,
             'project' => $project,
         ]));
     }
 
     /**
-     * Edit a swimlane (validate the form and update the database)
-     *
-     * @access public
+     * Edit a swimlane (validate the form and update the database).
      */
     public function update()
     {
@@ -177,6 +171,7 @@ class SwimlaneController extends BaseController
         if ($valid) {
             if ($this->swimlaneModel->update($values)) {
                 $this->flash->success(t('Swimlane updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('SwimlaneController', 'index', ['project_id' => $project['id']]));
             } else {
                 $errors = ['name' => [t('Another swimlane with the same name exists in the project')]];
@@ -187,9 +182,7 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a swimlane
-     *
-     * @access public
+     * Confirmation dialog before removing a swimlane.
      */
     public function confirm()
     {
@@ -197,15 +190,13 @@ class SwimlaneController extends BaseController
         $swimlane = $this->getSwimlane();
 
         $this->response->html($this->helper->layout->project('swimlane/remove', [
-            'project' => $project,
+            'project'  => $project,
             'swimlane' => $swimlane,
         ]));
     }
 
     /**
-     * Remove a swimlane
-     *
-     * @access public
+     * Remove a swimlane.
      */
     public function remove()
     {
@@ -223,9 +214,7 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Disable a swimlane
-     *
-     * @access public
+     * Disable a swimlane.
      */
     public function disable()
     {
@@ -243,9 +232,7 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Disable default swimlane
-     *
-     * @access public
+     * Disable default swimlane.
      */
     public function disableDefault()
     {
@@ -262,9 +249,7 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Enable a swimlane
-     *
-     * @access public
+     * Enable a swimlane.
      */
     public function enable()
     {
@@ -282,9 +267,7 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Enable default swimlane
-     *
-     * @access public
+     * Enable default swimlane.
      */
     public function enableDefault()
     {
@@ -301,18 +284,16 @@ class SwimlaneController extends BaseController
     }
 
     /**
-     * Move swimlane position
-     *
-     * @access public
+     * Move swimlane position.
      */
     public function move()
     {
         $project = $this->getProject();
         $values = $this->request->getJson();
 
-        if (! empty($values) && isset($values['swimlane_id']) && isset($values['position'])) {
+        if (!empty($values) && isset($values['swimlane_id']) && isset($values['position'])) {
             $result = $this->swimlaneModel->changePosition($project['id'], $values['swimlane_id'], $values['position']);
-            $this->response->json(array('result' => $result));
+            $this->response->json(['result' => $result]);
         } else {
             throw new AccessForbiddenException();
         }

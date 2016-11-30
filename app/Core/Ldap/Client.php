@@ -15,38 +15,37 @@ use LogicException;
 use Psr\Log\LoggerInterface;
 
 /**
- * LDAP Client
+ * LDAP Client.
  */
 class Client
 {
     /**
-     * LDAP resource
+     * LDAP resource.
      *
-     * @access protected
      * @var resource
      */
     protected $ldap;
 
     /**
-     * Logger instance
+     * Logger instance.
      *
-     * @access private
      * @var LoggerInterface
      */
     private $logger;
 
     /**
-     * Establish LDAP connection
+     * Establish LDAP connection.
      *
      * @static
-     * @access public
-     * @param  string $username
-     * @param  string $password
+     *
+     * @param string $username
+     * @param string $password
+     *
      * @return Client
      */
     public static function connect($username = null, $password = null)
     {
-        $client = new static;
+        $client = new static();
         $client->open($client->getLdapServer());
         $username = $username ?: $client->getLdapUsername();
         $password = $password ?: $client->getLdapPassword();
@@ -61,9 +60,8 @@ class Client
     }
 
     /**
-     * Get server connection
+     * Get server connection.
      *
-     * @access public
      * @return resource
      */
     public function getConnection()
@@ -72,23 +70,24 @@ class Client
     }
 
     /**
-     * Establish server connection
+     * Establish server connection.
      *
-     * @access public
+     * @param string $server LDAP server hostname or IP
+     * @param int    $port   LDAP port
+     * @param bool   $tls    Start TLS
+     * @param bool   $verify Skip SSL certificate verification
+     *
      * @throws ClientException
-     * @param  string   $server  LDAP server hostname or IP
-     * @param  integer  $port    LDAP port
-     * @param  boolean  $tls     Start TLS
-     * @param  boolean  $verify  Skip SSL certificate verification
+     *
      * @return Client
      */
     public function open($server, $port = LDAP_PORT, $tls = LDAP_START_TLS, $verify = LDAP_SSL_VERIFY)
     {
-        if (! function_exists('ldap_connect')) {
+        if (!function_exists('ldap_connect')) {
             throw new ClientException('LDAP: The PHP LDAP extension is required');
         }
 
-        if (! $verify) {
+        if (!$verify) {
             putenv('LDAPTLS_REQCERT=never');
         }
 
@@ -103,7 +102,7 @@ class Client
         ldap_set_option($this->ldap, LDAP_OPT_NETWORK_TIMEOUT, 1);
         ldap_set_option($this->ldap, LDAP_OPT_TIMELIMIT, 1);
 
-        if ($tls && ! @ldap_start_tls($this->ldap)) {
+        if ($tls && !@ldap_start_tls($this->ldap)) {
             throw new ClientException('LDAP: Unable to start TLS');
         }
 
@@ -111,15 +110,15 @@ class Client
     }
 
     /**
-     * Anonymous authentication
+     * Anonymous authentication.
      *
-     * @access public
      * @throws ClientException
-     * @return boolean
+     *
+     * @return bool
      */
     public function useAnonymousAuthentication()
     {
-        if (! @ldap_bind($this->ldap)) {
+        if (!@ldap_bind($this->ldap)) {
             throw new ClientException('Unable to perform anonymous binding');
         }
 
@@ -127,17 +126,18 @@ class Client
     }
 
     /**
-     * Authentication with username/password
+     * Authentication with username/password.
      *
-     * @access public
+     * @param string $bind_rdn
+     * @param string $bind_password
+     *
      * @throws ClientException
-     * @param  string  $bind_rdn
-     * @param  string  $bind_password
-     * @return boolean
+     *
+     * @return bool
      */
     public function authenticate($bind_rdn, $bind_password)
     {
-        if (! @ldap_bind($this->ldap, $bind_rdn, $bind_password)) {
+        if (!@ldap_bind($this->ldap, $bind_rdn, $bind_password)) {
             throw new ClientException('LDAP authentication failure for "'.$bind_rdn.'"');
         }
 
@@ -145,14 +145,13 @@ class Client
     }
 
     /**
-     * Get LDAP server name
+     * Get LDAP server name.
      *
-     * @access public
      * @return string
      */
     public function getLdapServer()
     {
-        if (! LDAP_SERVER) {
+        if (!LDAP_SERVER) {
             throw new LogicException('LDAP server not configured, check the parameter LDAP_SERVER');
         }
 
@@ -160,9 +159,8 @@ class Client
     }
 
     /**
-     * Get LDAP username (proxy auth)
+     * Get LDAP username (proxy auth).
      *
-     * @access public
      * @return string
      */
     public function getLdapUsername()
@@ -171,9 +169,8 @@ class Client
     }
 
     /**
-     * Get LDAP password (proxy auth)
+     * Get LDAP password (proxy auth).
      *
-     * @access public
      * @return string
      */
     public function getLdapPassword()
@@ -182,22 +179,22 @@ class Client
     }
 
     /**
-     * Set logger
+     * Set logger.
      *
-     * @access public
-     * @param  LoggerInterface $logger
+     * @param LoggerInterface $logger
+     *
      * @return Client
      */
     public function setLogger(LoggerInterface $logger)
     {
         $this->logger = $logger;
+
         return $this;
     }
 
     /**
-     * Get logger
+     * Get logger.
      *
-     * @access public
      * @return LoggerInterface
      */
     public function getLogger()
@@ -206,10 +203,9 @@ class Client
     }
 
     /**
-     * Test if a logger is defined
+     * Test if a logger is defined.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function hasLogger()
     {

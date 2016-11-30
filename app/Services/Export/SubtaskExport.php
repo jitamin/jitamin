@@ -12,30 +12,29 @@
 namespace Hiject\Export;
 
 use Hiject\Core\Base;
-use Hiject\Model\TaskModel;
 use Hiject\Model\SubtaskModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 /**
- * Subtask Export
+ * Subtask Export.
  */
 class SubtaskExport extends Base
 {
     /**
-     * Subtask statuses
+     * Subtask statuses.
      *
-     * @access private
      * @var array
      */
     private $subtask_status = [];
 
     /**
-     * Fetch subtasks and return the prepared CSV
+     * Fetch subtasks and return the prepared CSV.
      *
-     * @access public
-     * @param  integer    $project_id      Project id
-     * @param  mixed      $from            Start date (timestamp or user formatted date)
-     * @param  mixed      $to              End date (timestamp or user formatted date)
+     * @param int   $project_id Project id
+     * @param mixed $from       Start date (timestamp or user formatted date)
+     * @param mixed $to         End date (timestamp or user formatted date)
+     *
      * @return array
      */
     public function export($project_id, $from, $to)
@@ -52,9 +51,8 @@ class SubtaskExport extends Base
     }
 
     /**
-     * Get column titles
+     * Get column titles.
      *
-     * @access public
      * @return string[]
      */
     public function getColumns()
@@ -72,10 +70,10 @@ class SubtaskExport extends Base
     }
 
     /**
-     * Format the output of a subtask array
+     * Format the output of a subtask array.
      *
-     * @access public
-     * @param  array     $subtask        Subtask properties
+     * @param array $subtask Subtask properties
+     *
      * @return array
      */
     public function format(array $subtask)
@@ -94,21 +92,21 @@ class SubtaskExport extends Base
     }
 
     /**
-     * Get all subtasks for a given project
+     * Get all subtasks for a given project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @param  mixed     $from          Start date (timestamp or user formatted date)
-     * @param  mixed     $to            End date (timestamp or user formatted date)
+     * @param int   $project_id Project id
+     * @param mixed $from       Start date (timestamp or user formatted date)
+     * @param mixed $to         End date (timestamp or user formatted date)
+     *
      * @return array
      */
     public function getSubtasks($project_id, $from, $to)
     {
-        if (! is_numeric($from)) {
+        if (!is_numeric($from)) {
             $from = $this->dateParser->removeTimeFromTimestamp($this->dateParser->getTimestamp($from));
         }
 
-        if (! is_numeric($to)) {
+        if (!is_numeric($to)) {
             $to = $this->dateParser->removeTimeFromTimestamp(strtotime('+1 day', $this->dateParser->getTimestamp($to)));
         }
 

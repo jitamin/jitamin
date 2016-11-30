@@ -14,15 +14,15 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Two Factor Auth controller
+ * Two Factor Auth controller.
  */
 class TwoFactorController extends UserViewController
 {
     /**
-     * Only the current user can access to 2FA settings
+     * Only the current user can access to 2FA settings.
      *
-     * @access private
-     * @param  array $user
+     * @param array $user
+     *
      * @throws AccessForbiddenException
      */
     private function checkCurrentUser(array $user)
@@ -33,9 +33,7 @@ class TwoFactorController extends UserViewController
     }
 
     /**
-     * Show form to disable/enable 2FA
-     *
-     * @access public
+     * Show form to disable/enable 2FA.
      */
     public function index()
     {
@@ -44,15 +42,13 @@ class TwoFactorController extends UserViewController
         unset($this->sessionStorage->twoFactorSecret);
 
         $this->response->html($this->helper->layout->user('twofactor/index', [
-            'user' => $user,
+            'user'     => $user,
             'provider' => $this->authenticationManager->getPostAuthenticationProvider()->getName(),
         ]));
     }
 
     /**
-     * Show page with secret and test form
-     *
-     * @access public
+     * Show page with secret and test form.
      */
     public function show()
     {
@@ -62,7 +58,7 @@ class TwoFactorController extends UserViewController
         $label = $user['email'] ?: $user['username'];
         $provider = $this->authenticationManager->getPostAuthenticationProvider();
 
-        if (! isset($this->sessionStorage->twoFactorSecret)) {
+        if (!isset($this->sessionStorage->twoFactorSecret)) {
             $provider->generateSecret();
             $provider->beforeCode();
             $this->sessionStorage->twoFactorSecret = $provider->getSecret();
@@ -71,17 +67,15 @@ class TwoFactorController extends UserViewController
         }
 
         $this->response->html($this->helper->layout->user('twofactor/show', [
-            'user' => $user,
-            'secret' => $this->sessionStorage->twoFactorSecret,
+            'user'       => $user,
+            'secret'     => $this->sessionStorage->twoFactorSecret,
             'qrcode_url' => $provider->getQrCodeUrl($label),
-            'key_url' => $provider->getKeyUrl($label),
+            'key_url'    => $provider->getKeyUrl($label),
         ]));
     }
 
     /**
-     * Test code and save secret
-     *
-     * @access public
+     * Test code and save secret.
      */
     public function test()
     {
@@ -98,9 +92,9 @@ class TwoFactorController extends UserViewController
             $this->flash->success(t('The two factor authentication code is valid.'));
 
             $this->userModel->update([
-                'id' => $user['id'],
+                'id'                  => $user['id'],
                 'twofactor_activated' => 1,
-                'twofactor_secret' => $this->authenticationManager->getPostAuthenticationProvider()->getSecret(),
+                'twofactor_secret'    => $this->authenticationManager->getPostAuthenticationProvider()->getSecret(),
             ]);
 
             unset($this->sessionStorage->twoFactorSecret);
@@ -114,9 +108,7 @@ class TwoFactorController extends UserViewController
     }
 
     /**
-     * Disable 2FA for the current user
-     *
-     * @access public
+     * Disable 2FA for the current user.
      */
     public function deactivate()
     {
@@ -124,9 +116,9 @@ class TwoFactorController extends UserViewController
         $this->checkCurrentUser($user);
 
         $this->userModel->update([
-            'id' => $user['id'],
+            'id'                  => $user['id'],
             'twofactor_activated' => 0,
-            'twofactor_secret' => '',
+            'twofactor_secret'    => '',
         ]);
 
         // Allow the user to test or disable the feature
@@ -137,9 +129,7 @@ class TwoFactorController extends UserViewController
     }
 
     /**
-     * Check 2FA
-     *
-     * @access public
+     * Check 2FA.
      */
     public function check()
     {
@@ -163,13 +153,11 @@ class TwoFactorController extends UserViewController
     }
 
     /**
-     * Ask the 2FA code
-     *
-     * @access public
+     * Ask the 2FA code.
      */
     public function code()
     {
-        if (! isset($this->sessionStorage->twoFactorBeforeCodeCalled)) {
+        if (!isset($this->sessionStorage->twoFactorBeforeCodeCalled)) {
             $provider = $this->authenticationManager->getPostAuthenticationProvider();
             $provider->beforeCode();
             $this->sessionStorage->twoFactorBeforeCodeCalled = true;
@@ -181,9 +169,7 @@ class TwoFactorController extends UserViewController
     }
 
     /**
-     * Disable 2FA for a user
-     *
-     * @access public
+     * Disable 2FA for a user.
      */
     public function disable()
     {
@@ -193,9 +179,9 @@ class TwoFactorController extends UserViewController
             $this->checkCSRFParam();
 
             $this->userModel->update([
-                'id' => $user['id'],
+                'id'                  => $user['id'],
                 'twofactor_activated' => 0,
-                'twofactor_secret' => '',
+                'twofactor_secret'    => '',
             ]);
 
             return $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user['id']]));

@@ -12,21 +12,19 @@
 namespace Hiject\Controller;
 
 /**
- * Class User List Controller
+ * Class User List Controller.
  */
 class UserListController extends BaseController
 {
     /**
-     * List all users
-     *
-     * @access public
+     * List all users.
      */
     public function show()
     {
         $paginator = $this->userPagination->getListingPaginator();
 
         $this->response->html($this->helper->layout->app('user_list/show', [
-            'title' => t('Users').' ('.$paginator->getTotal().')',
+            'title'     => t('Users').' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
         ]));
     }

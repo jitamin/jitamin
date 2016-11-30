@@ -15,7 +15,7 @@ use Hiject\Core\Cache\CacheInterface;
 use Hiject\Model\ProjectRoleRestrictionModel;
 
 /**
- * Class ProjectRoleRestrictionCacheDecorator
+ * Class ProjectRoleRestrictionCacheDecorator.
  */
 class ProjectRoleRestrictionCacheDecorator
 {
@@ -34,8 +34,8 @@ class ProjectRoleRestrictionCacheDecorator
     /**
      * ColumnMoveRestrictionDecorator constructor.
      *
-     * @param CacheInterface                  $cache
-     * @param ProjectRoleRestrictionModel     $projectRoleRestrictionModel
+     * @param CacheInterface              $cache
+     * @param ProjectRoleRestrictionModel $projectRoleRestrictionModel
      */
     public function __construct(CacheInterface $cache, ProjectRoleRestrictionModel $projectRoleRestrictionModel)
     {
@@ -44,10 +44,11 @@ class ProjectRoleRestrictionCacheDecorator
     }
 
     /**
-     * Proxy method to get sortable columns
+     * Proxy method to get sortable columns.
      *
-     * @param  int    $project_id
-     * @param  string $role
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return array|mixed
      */
     public function getAllByRole($project_id, $role)

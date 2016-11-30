@@ -19,16 +19,16 @@ use Hiject\Filter\ProjectUserRoleProjectFilter;
 use Hiject\Filter\ProjectUserRoleUsernameFilter;
 
 /**
- * Project Permission
+ * Project Permission.
  */
 class ProjectPermissionModel extends Base
 {
     /**
-     * Get query for project users overview
+     * Get query for project users overview.
      *
-     * @access public
-     * @param  array    $project_ids
-     * @param  string   $role
+     * @param array  $project_ids
+     * @param string $role
+     *
      * @return \PicoDb\Table
      */
     public function getQueryByRole(array $project_ids, $role)
@@ -55,11 +55,11 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Get all usernames (fetch users from groups)
+     * Get all usernames (fetch users from groups).
      *
-     * @access public
-     * @param  integer $project_id
-     * @param  string  $input
+     * @param int    $project_id
+     * @param string $input
+     *
      * @return array
      */
     public function findUsernames($project_id, $input)
@@ -84,10 +84,10 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Return true if everybody is allowed for the project
+     * Return true if everybody is allowed for the project.
      *
-     * @access public
-     * @param  integer   $project_id   Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function isEverybodyAllowed($project_id)
@@ -100,11 +100,12 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Return true if the user is allowed to access a project
+     * Return true if the user is allowed to access a project.
      *
-     * @param integer $project_id
-     * @param integer $user_id
-     * @return boolean
+     * @param int $project_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function isUserAllowed($project_id, $user_id)
     {
@@ -119,31 +120,31 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Return true if the user is assignable
+     * Return true if the user is assignable.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  integer  $user_id
-     * @return boolean
+     * @param int $project_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function isAssignable($project_id, $user_id)
     {
         if ($this->userModel->isActive($user_id)) {
             $role = $this->projectUserRoleModel->getUserRole($project_id, $user_id);
 
-            return ! empty($role) && $role !== Role::PROJECT_VIEWER;
+            return !empty($role) && $role !== Role::PROJECT_VIEWER;
         }
 
         return false;
     }
 
     /**
-     * Return true if the user is member
+     * Return true if the user is member.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  integer  $user_id
-     * @return boolean
+     * @param int $project_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function isMember($project_id, $user_id)
     {
@@ -151,10 +152,10 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Get active project ids by user
+     * Get active project ids by user.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getActiveProjectIds($user_id)
@@ -163,10 +164,10 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Get all project ids by user
+     * Get all project ids by user.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return array
      */
     public function getProjectIds($user_id)
@@ -175,11 +176,12 @@ class ProjectPermissionModel extends Base
     }
 
     /**
-     * Copy permissions to another project
+     * Copy permissions to another project.
      *
-     * @param  integer  $project_src_id  Project Template
-     * @param  integer  $project_dst_id  Project that receives the copy
-     * @return boolean
+     * @param int $project_src_id Project Template
+     * @param int $project_dst_id Project that receives the copy
+     *
+     * @return bool
      */
     public function duplicate($project_src_id, $project_dst_id)
     {

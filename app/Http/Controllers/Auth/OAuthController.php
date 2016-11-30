@@ -14,14 +14,13 @@ namespace Hiject\Controller;
 use Hiject\Core\Security\OAuthAuthenticationProviderInterface;
 
 /**
- * OAuth Controller
+ * OAuth Controller.
  */
 class OAuthController extends BaseController
 {
     /**
-     * Redirect to the provider if no code received
+     * Redirect to the provider if no code received.
      *
-     * @access private
      * @param string $provider
      */
     protected function step1($provider)
@@ -29,7 +28,7 @@ class OAuthController extends BaseController
         $code = $this->request->getStringParam('code');
         $state = $this->request->getStringParam('state');
 
-        if (! empty($code)) {
+        if (!empty($code)) {
             $this->step2($provider, $code, $state);
         } else {
             $this->response->redirect($this->authenticationManager->getProvider($provider)->getService()->getAuthorizationUrl());
@@ -37,9 +36,8 @@ class OAuthController extends BaseController
     }
 
     /**
-     * Link or authenticate the user
+     * Link or authenticate the user.
      *
-     * @access protected
      * @param string $providerName
      * @param string $code
      * @param string $state
@@ -67,14 +65,13 @@ class OAuthController extends BaseController
     }
 
     /**
-     * Link the account
+     * Link the account.
      *
-     * @access protected
-     * @param  OAuthAuthenticationProviderInterface $provider
+     * @param OAuthAuthenticationProviderInterface $provider
      */
     protected function link(OAuthAuthenticationProviderInterface $provider)
     {
-        if (! $provider->authenticate()) {
+        if (!$provider->authenticate()) {
             $this->flash->failure(t('External authentication failed'));
         } else {
             $this->userProfile->assign($this->userSession->getId(), $provider->getUser());
@@ -85,9 +82,7 @@ class OAuthController extends BaseController
     }
 
     /**
-     * Unlink external account
-     *
-     * @access public
+     * Unlink external account.
      */
     public function unlink()
     {
@@ -104,9 +99,8 @@ class OAuthController extends BaseController
     }
 
     /**
-     * Authenticate the account
+     * Authenticate the account.
      *
-     * @access protected
      * @param string $providerName
      */
     protected function authenticate($providerName)
@@ -119,18 +113,17 @@ class OAuthController extends BaseController
     }
 
     /**
-     * Show login failure page
+     * Show login failure page.
      *
-     * @access protected
-     * @param  string $message
+     * @param string $message
      */
     protected function authenticationFailure($message)
     {
         $this->response->html($this->helper->layout->app('auth/index', [
-            'errors' => ['login' => $message],
-            'values' => [],
+            'errors'    => ['login' => $message],
+            'values'    => [],
             'no_layout' => true,
-            'title' => t('Login')
+            'title'     => t('Login'),
         ]));
     }
 }

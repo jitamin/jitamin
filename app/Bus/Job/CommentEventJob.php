@@ -15,28 +15,31 @@ use Hiject\Bus\EventBuilder\CommentEventBuilder;
 use Hiject\Model\CommentModel;
 
 /**
- * Class CommentEventJob
+ * Class CommentEventJob.
  */
 class CommentEventJob extends BaseJob
 {
     /**
-     * Set job params
+     * Set job params.
      *
-     * @param  int    $commentId
-     * @param  string $eventName
+     * @param int    $commentId
+     * @param string $eventName
+     *
      * @return $this
      */
     public function withParams($commentId, $eventName)
     {
         $this->jobParams = [$commentId, $eventName];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @param  int    $commentId
-     * @param  string $eventName
+     * @param int    $commentId
+     * @param string $eventName
+     *
      * @return $this
      */
     public function execute($commentId, $eventName)

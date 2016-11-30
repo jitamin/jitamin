@@ -11,16 +11,16 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
+use Hiject\Core\Http\Client as HttpClient;
+use Hiject\Core\Http\OAuth2;
 use Hiject\Core\ObjectStorage\FileStorage;
 use Hiject\Core\Paginator;
-use Hiject\Core\Http\OAuth2;
 use Hiject\Core\Tool;
-use Hiject\Core\Http\Client as HttpClient;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Class ClassProvider
+ * Class ClassProvider.
  */
 class ClassProvider implements ServiceProviderInterface
 {
@@ -166,7 +166,7 @@ class ClassProvider implements ServiceProviderInterface
             'UserSync',
             'UserSession',
             'UserProfile',
-        ]
+        ],
     ];
 
     public function register(Container $container)
@@ -191,8 +191,8 @@ class ClassProvider implements ServiceProviderInterface
 
         $container['cspRules'] = [
             'default-src' => "'self'",
-            'style-src' => "'self' 'unsafe-inline'",
-            'img-src' => '* data:',
+            'style-src'   => "'self' 'unsafe-inline'",
+            'img-src'     => '* data:',
         ];
 
         return $container;

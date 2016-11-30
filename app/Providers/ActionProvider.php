@@ -11,13 +11,6 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
-use Hiject\Action\TaskAssignColorPriority;
-use Hiject\Action\TaskAssignDueDateOnCreation;
-use Hiject\Action\TaskMoveColumnClosed;
-use Hiject\Action\TaskMoveColumnNotMovedPeriod;
-use Hiject\Core\Action\ActionManager;
 use Hiject\Action\CommentCreation;
 use Hiject\Action\CommentCreationMoveTaskColumn;
 use Hiject\Action\TaskAssignCategoryColor;
@@ -26,13 +19,20 @@ use Hiject\Action\TaskAssignCategoryLink;
 use Hiject\Action\TaskAssignColorCategory;
 use Hiject\Action\TaskAssignColorColumn;
 use Hiject\Action\TaskAssignColorLink;
+use Hiject\Action\TaskAssignColorPriority;
+use Hiject\Action\TaskAssignColorSwimlane;
 use Hiject\Action\TaskAssignColorUser;
 use Hiject\Action\TaskAssignCurrentUser;
 use Hiject\Action\TaskAssignCurrentUserColumn;
+use Hiject\Action\TaskAssignDueDateOnCreation;
+use Hiject\Action\TaskAssignPrioritySwimlane;
 use Hiject\Action\TaskAssignSpecificUser;
 use Hiject\Action\TaskAssignUser;
 use Hiject\Action\TaskClose;
 use Hiject\Action\TaskCloseColumn;
+use Hiject\Action\TaskCloseNoActivity;
+use Hiject\Action\TaskCloseNoActivityColumn;
+use Hiject\Action\TaskCloseNotMovedColumn;
 use Hiject\Action\TaskCreation;
 use Hiject\Action\TaskDuplicateAnotherProject;
 use Hiject\Action\TaskEmail;
@@ -40,25 +40,25 @@ use Hiject\Action\TaskEmailNoActivity;
 use Hiject\Action\TaskMoveAnotherProject;
 use Hiject\Action\TaskMoveColumnAssigned;
 use Hiject\Action\TaskMoveColumnCategoryChange;
+use Hiject\Action\TaskMoveColumnClosed;
+use Hiject\Action\TaskMoveColumnNotMovedPeriod;
 use Hiject\Action\TaskMoveColumnUnAssigned;
 use Hiject\Action\TaskOpen;
 use Hiject\Action\TaskUpdateStartDate;
-use Hiject\Action\TaskCloseNoActivity;
-use Hiject\Action\TaskCloseNoActivityColumn;
-use Hiject\Action\TaskCloseNotMovedColumn;
-use Hiject\Action\TaskAssignColorSwimlane;
-use Hiject\Action\TaskAssignPrioritySwimlane;
+use Hiject\Core\Action\ActionManager;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Action Provider
+ * Action Provider.
  */
 class ActionProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)

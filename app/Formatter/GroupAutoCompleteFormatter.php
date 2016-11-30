@@ -16,23 +16,21 @@ use Hiject\Core\Group\GroupProviderInterface;
 use PicoDb\Table;
 
 /**
- * Auto-complete formatter for groups
+ * Auto-complete formatter for groups.
  */
 class GroupAutoCompleteFormatter implements FormatterInterface
 {
     /**
-     * Groups found
+     * Groups found.
      *
-     * @access private
      * @var GroupProviderInterface[]
      */
     private $groups;
 
     /**
-     * Format groups for the ajax auto-completion
+     * Format groups for the ajax auto-completion.
      *
-     * @access public
-     * @param  GroupProviderInterface[] $groups
+     * @param GroupProviderInterface[] $groups
      */
     public function __construct(array $groups)
     {
@@ -40,10 +38,10 @@ class GroupAutoCompleteFormatter implements FormatterInterface
     }
 
     /**
-     * Set query
+     * Set query.
      *
-     * @access public
-     * @param  Table $query
+     * @param Table $query
+     *
      * @return FormatterInterface
      */
     public function withQuery(Table $query)
@@ -52,9 +50,8 @@ class GroupAutoCompleteFormatter implements FormatterInterface
     }
 
     /**
-     * Format groups for the ajax auto-completion
+     * Format groups for the ajax auto-completion.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -63,10 +60,10 @@ class GroupAutoCompleteFormatter implements FormatterInterface
 
         foreach ($this->groups as $group) {
             $result[] = [
-                'id' => $group->getInternalId(),
+                'id'          => $group->getInternalId(),
                 'external_id' => $group->getExternalId(),
-                'value' => $group->getName(),
-                'label' => $group->getName(),
+                'value'       => $group->getName(),
+                'label'       => $group->getName(),
             ];
         }
 

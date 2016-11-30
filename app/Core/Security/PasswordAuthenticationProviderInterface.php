@@ -12,31 +12,28 @@
 namespace Hiject\Core\Security;
 
 /**
- * Password Authentication Provider Interface
+ * Password Authentication Provider Interface.
  */
 interface PasswordAuthenticationProviderInterface extends AuthenticationProviderInterface
 {
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return \Hiject\Core\User\UserProviderInterface
      */
     public function getUser();
 
     /**
-     * Set username
+     * Set username.
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
      */
     public function setUsername($username);
 
     /**
-     * Set password
+     * Set password.
      *
-     * @access public
-     * @param  string $password
+     * @param string $password
      */
     public function setPassword($password);
 }

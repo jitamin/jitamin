@@ -16,14 +16,13 @@ use Hiject\Core\Paginator;
 use Hiject\Model\UserModel;
 
 /**
- * Class UserPagination
+ * Class UserPagination.
  */
 class UserPagination extends Base
 {
     /**
-     * Get user listing paginator
+     * Get user listing paginator.
      *
-     * @access public
      * @return Paginator
      */
     public function getListingPaginator()

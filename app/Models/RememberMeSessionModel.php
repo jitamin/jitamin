@@ -15,30 +15,30 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\Token;
 
 /**
- * Remember Me Model
+ * Remember Me Model.
  */
 class RememberMeSessionModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'remember_me';
 
     /**
-     * Expiration (60 days)
+     * Expiration (60 days).
      *
-     * @var integer
+     * @var int
      */
     const EXPIRATION = 5184000;
 
     /**
-     * Get a remember me record
+     * Get a remember me record.
      *
-     * @access public
      * @param $token
      * @param $sequence
+     *
      * @return mixed
      */
     public function find($token, $sequence)
@@ -52,10 +52,10 @@ class RememberMeSessionModel extends Base
     }
 
     /**
-     * Get all sessions for a given user
+     * Get all sessions for a given user.
      *
-     * @access public
-     * @param  integer  $user_id  User id
+     * @param int $user_id User id
+     *
      * @return array
      */
     public function getAll($user_id)
@@ -69,12 +69,12 @@ class RememberMeSessionModel extends Base
     }
 
     /**
-     * Create a new RememberMe session
+     * Create a new RememberMe session.
      *
-     * @access public
-     * @param  integer  $user_id     User id
-     * @param  string   $ip          IP Address
-     * @param  string   $user_agent  User Agent
+     * @param int    $user_id    User id
+     * @param string $ip         IP Address
+     * @param string $user_agent User Agent
+     *
      * @return array
      */
     public function create($user_id, $ip, $user_agent)
@@ -89,27 +89,27 @@ class RememberMeSessionModel extends Base
             ->db
             ->table(self::TABLE)
             ->insert([
-                'user_id' => $user_id,
-                'ip' => $ip,
-                'user_agent' => $user_agent,
-                'token' => $token,
-                'sequence' => $sequence,
-                'expiration' => $expiration,
+                'user_id'       => $user_id,
+                'ip'            => $ip,
+                'user_agent'    => $user_agent,
+                'token'         => $token,
+                'sequence'      => $sequence,
+                'expiration'    => $expiration,
                 'date_creation' => time(),
             ]);
 
         return [
-            'token' => $token,
-            'sequence' => $sequence,
+            'token'      => $token,
+            'sequence'   => $sequence,
             'expiration' => $expiration,
         ];
     }
 
     /**
-     * Remove a session record
+     * Remove a session record.
      *
-     * @access public
-     * @param  integer  $session_id   Session id
+     * @param int $session_id Session id
+     *
      * @return mixed
      */
     public function remove($session_id)
@@ -121,10 +121,10 @@ class RememberMeSessionModel extends Base
     }
 
     /**
-     * Remove old sessions for a given user
+     * Remove old sessions for a given user.
      *
-     * @access public
-     * @param  integer  $user_id  User id
+     * @param int $user_id User id
+     *
      * @return bool
      */
     public function cleanup($user_id)
@@ -137,10 +137,10 @@ class RememberMeSessionModel extends Base
     }
 
     /**
-     * Return a new sequence token and update the database
+     * Return a new sequence token and update the database.
      *
-     * @access public
-     * @param  string   $token        Session token
+     * @param string $token Session token
+     *
      * @return string
      */
     public function updateSequence($token)
@@ -151,7 +151,7 @@ class RememberMeSessionModel extends Base
             ->db
             ->table(self::TABLE)
             ->eq('token', $token)
-            ->update(array('sequence' => $sequence));
+            ->update(['sequence' => $sequence]);
 
         return $sequence;
     }

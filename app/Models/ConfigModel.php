@@ -14,29 +14,29 @@ namespace Hiject\Model;
 use Hiject\Core\Security\Token;
 
 /**
- * Config model
+ * Config model.
  */
 class ConfigModel extends SettingModel
 {
     /**
-     * Get a config variable with in-memory caching
+     * Get a config variable with in-memory caching.
      *
-     * @access public
-     * @param  string   $name            Parameter name
-     * @param  string   $default_value   Default value of the parameter
+     * @param string $name          Parameter name
+     * @param string $default_value Default value of the parameter
+     *
      * @return string
      */
     public function get($name, $default_value = '')
     {
         $options = $this->memoryCache->proxy($this, 'getAll');
+
         return isset($options[$name]) && $options[$name] !== '' ? $options[$name] : $default_value;
     }
 
     /**
-     * Optimize the Sqlite database
+     * Optimize the Sqlite database.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function optimizeDatabase()
     {
@@ -44,9 +44,8 @@ class ConfigModel extends SettingModel
     }
 
     /**
-     * Compress the Sqlite database
+     * Compress the Sqlite database.
      *
-     * @access public
      * @return string
      */
     public function downloadDatabase()
@@ -55,10 +54,9 @@ class ConfigModel extends SettingModel
     }
 
     /**
-     * Get the Sqlite database size in bytes
+     * Get the Sqlite database size in bytes.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getDatabaseSize()
     {
@@ -66,11 +64,11 @@ class ConfigModel extends SettingModel
     }
 
     /**
-     * Regenerate a token
+     * Regenerate a token.
      *
-     * @access public
-     * @param  string   $option   Parameter name
-     * @return boolean
+     * @param string $option Parameter name
+     *
+     * @return bool
      */
     public function regenerateToken($option)
     {
@@ -78,15 +76,15 @@ class ConfigModel extends SettingModel
     }
 
     /**
-     * Prepare data before save
+     * Prepare data before save.
      *
-     * @access public
-     * @param  array $values
+     * @param array $values
+     *
      * @return array
      */
     public function prepare(array $values)
     {
-        if (! empty($values['application_url']) && substr($values['application_url'], -1) !== '/') {
+        if (!empty($values['application_url']) && substr($values['application_url'], -1) !== '/') {
             $values['application_url'] = $values['application_url'].'/';
         }
 

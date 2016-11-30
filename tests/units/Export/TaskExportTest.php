@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__ . '/../Base.php';
+require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
 use Hiject\Export\TaskExport;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\CategoryModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
+use Hiject\Model\TaskCreationModel;
 
 class TaskExportTest extends Base
 {
@@ -32,20 +32,20 @@ class TaskExportTest extends Base
         $this->assertEquals(1, $categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
 
         $this->assertEquals(1, $taskCreationModel->create([
-            'project_id' => 1,
-            'column_id' => 2,
-            'category_id' => 1,
-            'reference' => 'REF1',
-            'title' => 'Task 1',
+            'project_id'     => 1,
+            'column_id'      => 2,
+            'category_id'    => 1,
+            'reference'      => 'REF1',
+            'title'          => 'Task 1',
             'time_estimated' => 2.5,
-            'time_spent' => 3,
+            'time_spent'     => 3,
         ]));
 
         $this->assertEquals(2, $taskCreationModel->create([
-            'project_id' => 1,
+            'project_id'  => 1,
             'swimlane_id' => 1,
-            'title' => 'Task 2',
-            'date_due' => time(),
+            'title'       => 'Task 2',
+            'date_due'    => time(),
         ]));
 
         $report = $taskExport->export(1, date('Y-m-d'), date('Y-m-d'));

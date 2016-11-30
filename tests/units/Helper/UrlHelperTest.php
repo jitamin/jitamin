@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Core\Http\Request;
 use Hiject\Helper\UrlHelper;
 use Hiject\Model\ConfigModel;
-use Hiject\Core\Http\Request;
 
 class UrlHelperTest extends Base
 {
@@ -68,8 +68,8 @@ class UrlHelperTest extends Base
     public function testDir()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/hiject/index.php',
-                'REQUEST_METHOD' => 'GET'
+                'PHP_SELF'       => '/hiject/index.php',
+                'REQUEST_METHOD' => 'GET',
             ]
         );
 
@@ -77,8 +77,8 @@ class UrlHelperTest extends Base
         $this->assertEquals('/hiject/', $h->dir());
 
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/index.php',
-                'REQUEST_METHOD' => 'GET'
+                'PHP_SELF'       => '/index.php',
+                'REQUEST_METHOD' => 'GET',
             ]
         );
 
@@ -89,10 +89,10 @@ class UrlHelperTest extends Base
     public function testServer()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/index.php',
+                'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
-                'SERVER_NAME' => 'localhost',
-                'SERVER_PORT' => 80,
+                'SERVER_NAME'    => 'localhost',
+                'SERVER_PORT'    => 80,
             ]
         );
 
@@ -100,10 +100,10 @@ class UrlHelperTest extends Base
         $this->assertEquals('http://localhost/', $h->server());
 
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/index.php',
+                'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
-                'SERVER_NAME' => 'hj',
-                'SERVER_PORT' => 1234,
+                'SERVER_NAME'    => 'hj',
+                'SERVER_PORT'    => 1234,
             ]
         );
 
@@ -114,10 +114,10 @@ class UrlHelperTest extends Base
     public function testBase()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/index.php',
+                'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
-                'SERVER_NAME' => 'hj',
-                'SERVER_PORT' => 1234,
+                'SERVER_NAME'    => 'hj',
+                'SERVER_PORT'    => 1234,
             ]
         );
 

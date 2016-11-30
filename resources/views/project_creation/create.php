@@ -23,7 +23,7 @@
         <div class="project-creation-options" <?= isset($values['src_project_id']) && $values['src_project_id'] > 0 ? '' : 'style="display: none"' ?>>
             <p class="alert"><?= t('Which parts of the project do you want to duplicate?') ?></p>
 
-            <?php if (! $is_private): ?>
+            <?php if (!$is_private): ?>
                 <?= $this->form->checkbox('projectPermissionModel', t('Permissions'), 1, true) ?>
             <?php endif ?>
 

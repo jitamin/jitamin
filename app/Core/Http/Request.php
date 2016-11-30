@@ -11,18 +11,17 @@
 
 namespace Hiject\Core\Http;
 
-use Pimple\Container;
 use Hiject\Core\Base;
+use Pimple\Container;
 
 /**
- * Request class
+ * Request class.
  */
 class Request extends Base
 {
     /**
-     * Pointer to PHP environment variables
+     * Pointer to PHP environment variables.
      *
-     * @access private
      * @var array
      */
     private $server;
@@ -32,15 +31,14 @@ class Request extends Base
     private $cookies;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
      * @param \Pimple\Container $container
-     * @param array $server
-     * @param array $get
-     * @param array $post
-     * @param array $files
-     * @param array $cookies
+     * @param array             $server
+     * @param array             $get
+     * @param array             $post
+     * @param array             $files
+     * @param array             $cookies
      */
     public function __construct(Container $container, array $server = [], array $get = [], array $post = [], array $files = [], array $cookies = [])
     {
@@ -53,7 +51,7 @@ class Request extends Base
     }
 
     /**
-     * Set GET parameters
+     * Set GET parameters.
      *
      * @param array $params
      */
@@ -63,11 +61,11 @@ class Request extends Base
     }
 
     /**
-     * Get query string string parameter
+     * Get query string string parameter.
      *
-     * @access public
-     * @param  string   $name            Parameter name
-     * @param  string   $default_value   Default value
+     * @param string $name          Parameter name
+     * @param string $default_value Default value
+     *
      * @return string
      */
     public function getStringParam($name, $default_value = '')
@@ -76,12 +74,12 @@ class Request extends Base
     }
 
     /**
-     * Get query string integer parameter
+     * Get query string integer parameter.
      *
-     * @access public
-     * @param  string   $name            Parameter name
-     * @param  integer  $default_value   Default value
-     * @return integer
+     * @param string $name          Parameter name
+     * @param int    $default_value Default value
+     *
+     * @return int
      */
     public function getIntegerParam($name, $default_value = 0)
     {
@@ -89,28 +87,29 @@ class Request extends Base
     }
 
     /**
-     * Get a form value
+     * Get a form value.
      *
-     * @access public
-     * @param  string    $name   Form field name
+     * @param string $name Form field name
+     *
      * @return string|null
      */
     public function getValue($name)
     {
         $values = $this->getValues();
+
         return isset($values[$name]) ? $values[$name] : null;
     }
 
     /**
-     * Get form values and check for CSRF token
+     * Get form values and check for CSRF token.
      *
-     * @access public
      * @return array
      */
     public function getValues()
     {
-        if (! empty($this->post) && ! empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
+        if (!empty($this->post) && !empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
             unset($this->post['csrf_token']);
+
             return $this->post;
         }
 
@@ -118,9 +117,8 @@ class Request extends Base
     }
 
     /**
-     * Get the raw body of the HTTP request
+     * Get the raw body of the HTTP request.
      *
-     * @access public
      * @return string
      */
     public function getBody()
@@ -129,9 +127,8 @@ class Request extends Base
     }
 
     /**
-     * Get the Json request body
+     * Get the Json request body.
      *
-     * @access public
      * @return array
      */
     public function getJson()
@@ -140,10 +137,10 @@ class Request extends Base
     }
 
     /**
-     * Get the content of an uploaded file
+     * Get the content of an uploaded file.
      *
-     * @access public
-     * @param  string   $name   Form file name
+     * @param string $name Form file name
+     *
      * @return string
      */
     public function getFileContent($name)
@@ -156,10 +153,10 @@ class Request extends Base
     }
 
     /**
-     * Get the path of an uploaded file
+     * Get the path of an uploaded file.
      *
-     * @access public
-     * @param  string   $name   Form file name
+     * @param string $name Form file name
+     *
      * @return string
      */
     public function getFilePath($name)
@@ -168,10 +165,10 @@ class Request extends Base
     }
 
     /**
-     * Get info of an uploaded file
+     * Get info of an uploaded file.
      *
-     * @access public
-     * @param  string   $name   Form file name
+     * @param string $name Form file name
+     *
      * @return array
      */
     public function getFileInfo($name)
@@ -180,9 +177,8 @@ class Request extends Base
     }
 
     /**
-     * Return HTTP method
+     * Return HTTP method.
      *
-     * @access public
      * @return bool
      */
     public function getMethod()
@@ -191,9 +187,8 @@ class Request extends Base
     }
 
     /**
-     * Return true if the HTTP request is sent with the POST method
+     * Return true if the HTTP request is sent with the POST method.
      *
-     * @access public
      * @return bool
      */
     public function isPost()
@@ -202,9 +197,8 @@ class Request extends Base
     }
 
     /**
-     * Return true if the HTTP request is an Ajax request
+     * Return true if the HTTP request is an Ajax request.
      *
-     * @access public
      * @return bool
      */
     public function isAjax()
@@ -213,12 +207,11 @@ class Request extends Base
     }
 
     /**
-     * Check if the page is requested through HTTPS
+     * Check if the page is requested through HTTPS.
      *
      * Note: IIS return the value 'off' and other web servers an empty value when it's not HTTPS
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isHTTPS()
     {
@@ -230,10 +223,10 @@ class Request extends Base
     }
 
     /**
-     * Get cookie value
+     * Get cookie value.
      *
-     * @access public
-     * @param  string $name
+     * @param string $name
+     *
      * @return string
      */
     public function getCookie($name)
@@ -242,22 +235,22 @@ class Request extends Base
     }
 
     /**
-     * Return a HTTP header value
+     * Return a HTTP header value.
      *
-     * @access public
-     * @param  string   $name   Header name
+     * @param string $name Header name
+     *
      * @return string
      */
     public function getHeader($name)
     {
         $name = 'HTTP_'.str_replace('-', '_', strtoupper($name));
+
         return $this->getServerVariable($name);
     }
 
     /**
-     * Get remote user
+     * Get remote user.
      *
-     * @access public
      * @return string
      */
     public function getRemoteUser()
@@ -266,9 +259,8 @@ class Request extends Base
     }
 
     /**
-     * Returns query string
+     * Returns query string.
      *
-     * @access public
      * @return string
      */
     public function getQueryString()
@@ -277,9 +269,8 @@ class Request extends Base
     }
 
     /**
-     * Return URI
+     * Return URI.
      *
-     * @access public
      * @return string
      */
     public function getUri()
@@ -288,9 +279,8 @@ class Request extends Base
     }
 
     /**
-     * Get the user agent
+     * Get the user agent.
      *
-     * @access public
      * @return string
      */
     public function getUserAgent()
@@ -299,9 +289,8 @@ class Request extends Base
     }
 
     /**
-     * Get the IP address of the user
+     * Get the IP address of the user.
      *
-     * @access public
      * @return string
      */
     public function getIpAddress()
@@ -314,7 +303,7 @@ class Request extends Base
             'HTTP_X_CLUSTER_CLIENT_IP',
             'HTTP_FORWARDED_FOR',
             'HTTP_FORWARDED',
-            'REMOTE_ADDR'
+            'REMOTE_ADDR',
         ];
 
         foreach ($keys as $key) {
@@ -329,9 +318,8 @@ class Request extends Base
     }
 
     /**
-     * Get start time
+     * Get start time.
      *
-     * @access public
      * @return float
      */
     public function getStartTime()
@@ -340,10 +328,10 @@ class Request extends Base
     }
 
     /**
-     * Get server variable
+     * Get server variable.
      *
-     * @access public
-     * @param  string $variable
+     * @param string $variable
+     *
      * @return string
      */
     public function getServerVariable($variable)

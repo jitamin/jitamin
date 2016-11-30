@@ -16,26 +16,22 @@ use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * Base Controller
+ * Base Controller.
  */
 abstract class BaseController extends Base
 {
     /**
-     * Check if the CSRF token from the URL is correct
-     *
-     * @access protected
+     * Check if the CSRF token from the URL is correct.
      */
     protected function checkCSRFParam()
     {
-        if (! $this->token->validateCSRFToken($this->request->getStringParam('csrf_token'))) {
+        if (!$this->token->validateCSRFToken($this->request->getStringParam('csrf_token'))) {
             throw new AccessForbiddenException();
         }
     }
 
     /**
-     * Check webhook token
-     *
-     * @access protected
+     * Check webhook token.
      */
     protected function checkWebhookToken()
     {
@@ -45,12 +41,12 @@ abstract class BaseController extends Base
     }
 
     /**
-     * Common method to get a task for task views
+     * Common method to get a task for task views.
      *
-     * @access protected
-     * @return array
      * @throws PageNotFoundException
      * @throws AccessForbiddenException
+     *
+     * @return array
      */
     protected function getTask()
     {
@@ -69,12 +65,12 @@ abstract class BaseController extends Base
     }
 
     /**
-     * Get Task or Project file
+     * Get Task or Project file.
      *
-     * @access protected
-     * @return array
      * @throws PageNotFoundException
      * @throws AccessForbiddenException
+     *
+     * @return array
      */
     protected function getFile()
     {
@@ -98,16 +94,18 @@ abstract class BaseController extends Base
         }
 
         $file['model'] = $model;
+
         return $file;
     }
 
     /**
-     * Common method to get a project
+     * Common method to get a project.
      *
-     * @access protected
-     * @param  integer      $project_id    Default project id
-     * @return array
+     * @param int $project_id Default project id
+     *
      * @throws PageNotFoundException
+     *
+     * @return array
      */
     protected function getProject($project_id = 0)
     {
@@ -122,12 +120,12 @@ abstract class BaseController extends Base
     }
 
     /**
-     * Common method to get the user
+     * Common method to get the user.
      *
-     * @access protected
-     * @return array
      * @throws PageNotFoundException
      * @throws AccessForbiddenException
+     *
+     * @return array
      */
     protected function getUser()
     {
@@ -137,7 +135,7 @@ abstract class BaseController extends Base
             throw new PageNotFoundException();
         }
 
-        if (! $this->userSession->isAdmin() && $this->userSession->getId() != $user['id']) {
+        if (!$this->userSession->isAdmin() && $this->userSession->getId() != $user['id']) {
             throw new AccessForbiddenException();
         }
 
@@ -145,11 +143,11 @@ abstract class BaseController extends Base
     }
 
     /**
-     * Get the current subtask
+     * Get the current subtask.
      *
-     * @access protected
-     * @return array
      * @throws PageNotFoundException
+     *
+     * @return array
      */
     protected function getSubtask()
     {

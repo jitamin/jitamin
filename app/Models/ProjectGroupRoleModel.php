@@ -15,23 +15,23 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\Role;
 
 /**
- * Project Group Role
+ * Project Group Role.
  */
 class ProjectGroupRoleModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'project_has_groups';
 
     /**
-     * Get the list of project visible by the given user according to groups
+     * Get the list of project visible by the given user according to groups.
      *
-     * @access public
-     * @param  integer  $user_id
-     * @param  array    $status
+     * @param int   $user_id
+     * @param array $status
+     *
      * @return array
      */
     public function getProjectsByUser($user_id, $status = [ProjectModel::ACTIVE, ProjectModel::INACTIVE])
@@ -46,11 +46,11 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * For a given project get the role of the specified user
+     * For a given project get the role of the specified user.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  integer  $user_id
+     * @param int $project_id
+     * @param int $user_id
+     *
      * @return string
      */
     public function getUserRole($project_id, $user_id)
@@ -65,10 +65,10 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * Get all groups associated directly to the project
+     * Get all groups associated directly to the project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getGroups($project_id)
@@ -82,10 +82,10 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * From groups get all users associated to the project
+     * From groups get all users associated to the project.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getUsers($project_id)
@@ -100,10 +100,10 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * From groups get all users assignable to tasks
+     * From groups get all users assignable to tasks.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAssignableUsers($project_id)
@@ -120,30 +120,30 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * Add a group to the project
+     * Add a group to the project.
      *
-     * @access public
-     * @param  integer $project_id
-     * @param  integer $group_id
-     * @param  string  $role
-     * @return boolean
+     * @param int    $project_id
+     * @param int    $group_id
+     * @param string $role
+     *
+     * @return bool
      */
     public function addGroup($project_id, $group_id, $role)
     {
         return $this->db->table(self::TABLE)->insert([
-            'group_id' => $group_id,
+            'group_id'   => $group_id,
             'project_id' => $project_id,
-            'role' => $role,
+            'role'       => $role,
         ]);
     }
 
     /**
-     * Remove a group from the project
+     * Remove a group from the project.
      *
-     * @access public
-     * @param  integer $project_id
-     * @param  integer $group_id
-     * @return boolean
+     * @param int $project_id
+     * @param int $group_id
+     *
+     * @return bool
      */
     public function removeGroup($project_id, $group_id)
     {
@@ -151,13 +151,13 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * Change a group role for the project
+     * Change a group role for the project.
      *
-     * @access public
-     * @param  integer $project_id
-     * @param  integer $group_id
-     * @param  string  $role
-     * @return boolean
+     * @param int    $project_id
+     * @param int    $group_id
+     * @param string $role
+     *
+     * @return bool
      */
     public function changeGroupRole($project_id, $group_id, $role)
     {
@@ -170,11 +170,12 @@ class ProjectGroupRoleModel extends Base
     }
 
     /**
-     * Copy group access from a project to another one
+     * Copy group access from a project to another one.
      *
-     * @param  integer   $project_src_id  Project Template
-     * @param  integer   $project_dst_id  Project that receives the copy
-     * @return boolean
+     * @param int $project_src_id Project Template
+     * @param int $project_dst_id Project that receives the copy
+     *
+     * @return bool
      */
     public function duplicate($project_src_id, $project_dst_id)
     {
@@ -183,11 +184,11 @@ class ProjectGroupRoleModel extends Base
         foreach ($rows as $row) {
             $result = $this->db->table(self::TABLE)->save([
                 'project_id' => $project_dst_id,
-                'group_id' => $row['group_id'],
-                'role' => $row['role'],
+                'group_id'   => $row['group_id'],
+                'role'       => $row['role'],
             ]);
 
-            if (! $result) {
+            if (!$result) {
                 return false;
             }
         }

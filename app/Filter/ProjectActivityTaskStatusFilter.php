@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter activity events by task status
+ * Filter activity events by task status.
  */
 class ProjectActivityTaskStatusFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,9 +30,8 @@ class ProjectActivityTaskStatusFilter extends BaseFilter implements FilterInterf
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

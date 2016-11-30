@@ -12,15 +12,14 @@
 namespace Hiject\Core\Security;
 
 /**
- * Session Check Provider Interface
+ * Session Check Provider Interface.
  */
 interface SessionCheckProviderInterface
 {
     /**
-     * Check if the user session is valid
+     * Check if the user session is valid.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isValidSession();
 }

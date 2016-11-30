@@ -14,40 +14,36 @@ namespace Hiject\Core;
 use SplFileObject;
 
 /**
- * CSV Writer/Reader
+ * CSV Writer/Reader.
  */
 class Csv
 {
     /**
-     * CSV delimiter
+     * CSV delimiter.
      *
-     * @access private
      * @var string
      */
     private $delimiter = ',';
 
     /**
-     * CSV enclosure
+     * CSV enclosure.
      *
-     * @access private
      * @var string
      */
     private $enclosure = '"';
 
     /**
-     * CSV/SQL columns
+     * CSV/SQL columns.
      *
-     * @access private
      * @var array
      */
     private $columns = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string  $delimiter
-     * @param  string  $enclosure
+     * @param string $delimiter
+     * @param string $enclosure
      */
     public function __construct($delimiter = ',', $enclosure = '"')
     {
@@ -56,27 +52,27 @@ class Csv
     }
 
     /**
-     * Get list of delimiters
+     * Get list of delimiters.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getDelimiters()
     {
         return [
-            ',' => t('Comma'),
-            ';' => t('Semi-colon'),
+            ','  => t('Comma'),
+            ';'  => t('Semi-colon'),
             '\t' => t('Tab'),
-            '|' => t('Vertical bar'),
+            '|'  => t('Vertical bar'),
         ];
     }
 
     /**
-     * Get list of enclosures
+     * Get list of enclosures.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getEnclosures()
@@ -84,24 +80,26 @@ class Csv
         return [
             '"' => t('Double Quote'),
             "'" => t('Single Quote'),
-            '' => t('None'),
+            ''  => t('None'),
         ];
     }
 
     /**
-     * Check boolean field value
+     * Check boolean field value.
      *
      * @static
-     * @access public
-     * @param  mixed $value
+     *
+     * @param mixed $value
+     *
      * @return int
      */
     public static function getBooleanValue($value)
     {
-        if (! empty($value)) {
+        if (!empty($value)) {
             $value = trim(strtolower($value));
-            return $value === '1' || $value{0}
-            === 't' || $value{0}
+
+            return $value === '1' || $value[0]
+            === 't' || $value[0]
             === 'y' ? 1 : 0;
         }
 
@@ -109,37 +107,38 @@ class Csv
     }
 
     /**
-     * Output CSV file to standard output
+     * Output CSV file to standard output.
      *
      * @static
-     * @access public
-     * @param  array  $rows
+     *
+     * @param array $rows
      */
     public static function output(array $rows)
     {
-        $csv = new static;
+        $csv = new static();
         $csv->write('php://output', $rows);
     }
 
     /**
-     * Define column mapping between CSV and SQL columns
+     * Define column mapping between CSV and SQL columns.
      *
-     * @access public
-     * @param  array $columns
+     * @param array $columns
+     *
      * @return Csv
      */
     public function setColumnMapping(array $columns)
     {
         $this->columns = $columns;
+
         return $this;
     }
 
     /**
-     * Read CSV file
+     * Read CSV file.
      *
-     * @access public
-     * @param  string    $filename
-     * @param  callable  $callback   Example: function(array $row, $line_number)
+     * @param string   $filename
+     * @param callable $callback Example: function(array $row, $line_number)
+     *
      * @return Csv
      */
     public function read($filename, $callback)
@@ -152,7 +151,7 @@ class Csv
         foreach ($file as $row) {
             $row = $this->filterRow($row);
 
-            if (! empty($row) && $line_number > 0) {
+            if (!empty($row) && $line_number > 0) {
                 call_user_func_array($callback, [$this->associateColumns($row), $line_number]);
             }
 
@@ -163,11 +162,11 @@ class Csv
     }
 
     /**
-     * Write CSV file
+     * Write CSV file.
      *
-     * @access public
-     * @param  string    $filename
-     * @param  array     $rows
+     * @param string $filename
+     * @param array  $rows
+     *
      * @return Csv
      */
     public function write($filename, array $rows)
@@ -186,10 +185,10 @@ class Csv
     }
 
     /**
-     * Associate columns header with row values
+     * Associate columns header with row values.
      *
-     * @access private
-     * @param  array $row
+     * @param array $row
+     *
      * @return array
      */
     private function associateColumns(array $row)
@@ -211,10 +210,10 @@ class Csv
     }
 
     /**
-     * Filter empty rows
+     * Filter empty rows.
      *
-     * @access private
-     * @param  array $row
+     * @param array $row
+     *
      * @return array
      */
     private function filterRow(array $row)

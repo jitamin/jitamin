@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by start date
+ * Filter tasks by start date.
  */
 class TaskStartDateFilter extends BaseDateFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,14 +30,14 @@ class TaskStartDateFilter extends BaseDateFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->applyDateFilter(TaskModel::TABLE.'.date_started');
+
         return $this;
     }
 }

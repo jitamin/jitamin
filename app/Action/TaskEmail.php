@@ -14,14 +14,13 @@ namespace Hiject\Action;
 use Hiject\Model\TaskModel;
 
 /**
- * Email a task to someone
+ * Email a task to someone.
  */
 class TaskEmail extends Base
 {
     /**
-     * Get automatic action description
+     * Get automatic action description.
      *
-     * @access public
      * @return string
      */
     public function getDescription()
@@ -30,9 +29,8 @@ class TaskEmail extends Base
     }
 
     /**
-     * Get the list of compatible events
+     * Get the list of compatible events.
      *
-     * @access public
      * @return array
      */
     public function getCompatibleEvents()
@@ -44,24 +42,22 @@ class TaskEmail extends Base
     }
 
     /**
-     * Get the required parameter for the action (defined by the user)
+     * Get the required parameter for the action (defined by the user).
      *
-     * @access public
      * @return array
      */
     public function getActionRequiredParameters()
     {
         return [
             'column_id' => t('Column'),
-            'user_id' => t('User that will receive the email'),
-            'subject' => t('Email subject'),
+            'user_id'   => t('User that will receive the email'),
+            'subject'   => t('Email subject'),
         ];
     }
 
     /**
-     * Get the required parameter for the event
+     * Get the required parameter for the event.
      *
-     * @access public
      * @return string[]
      */
     public function getEventRequiredParameters()
@@ -76,23 +72,23 @@ class TaskEmail extends Base
     }
 
     /**
-     * Execute the action (move the task to another column)
+     * Execute the action (move the task to another column).
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool            True if the action was executed or false when not executed
+     * @param array $data Event data dictionary
+     *
+     * @return bool True if the action was executed or false when not executed
      */
     public function doAction(array $data)
     {
         $user = $this->userModel->getById($this->getParam('user_id'));
 
-        if (! empty($user['email'])) {
+        if (!empty($user['email'])) {
             $this->emailClient->send(
                 $user['email'],
                 $user['name'] ?: $user['username'],
                 $this->getParam('subject'),
                 $this->template->render('notification/task_create', [
-                    'task' => $data['task'],
+                    'task'            => $data['task'],
                     'application_url' => $this->configModel->get('application_url'),
                 ])
             );
@@ -104,10 +100,10 @@ class TaskEmail extends Base
     }
 
     /**
-     * Check if the event data meet the action condition
+     * Check if the event data meet the action condition.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
+     * @param array $data Event data dictionary
+     *
      * @return bool
      */
     public function hasRequiredCondition(array $data)

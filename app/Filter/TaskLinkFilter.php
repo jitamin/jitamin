@@ -13,41 +13,40 @@ namespace Hiject\Filter;
 
 use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\LinkModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskLinkModel;
+use Hiject\Model\TaskModel;
 use PicoDb\Database;
 use PicoDb\Table;
 
 /**
- * Filter tasks by link name
+ * Filter tasks by link name.
  */
 class TaskLinkFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Database object
+     * Database object.
      *
-     * @access private
      * @var Database
      */
     private $db;
 
     /**
-     * Set database object
+     * Set database object.
      *
-     * @access public
-     * @param  Database $db
+     * @param Database $db
+     *
      * @return TaskLinkFilter
      */
     public function setDatabase(Database $db)
     {
         $this->db = $db;
+
         return $this;
     }
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -56,16 +55,15 @@ class TaskLinkFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return string
      */
     public function apply()
     {
         $task_ids = $this->getSubQuery()->findAllByColumn('task_id');
 
-        if (! empty($task_ids)) {
+        if (!empty($task_ids)) {
             $this->query->in(TaskModel::TABLE.'.id', $task_ids);
         } else {
             $this->query->eq(TaskModel::TABLE.'.id', 0); // No match
@@ -73,9 +71,8 @@ class TaskLinkFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Get subquery
+     * Get subquery.
      *
-     * @access protected
      * @return Table
      */
     protected function getSubQuery()

@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\ProjectModel;
 
 /**
- * Filter project by type
+ * Filter project by type.
  */
 class ProjectTypeFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,9 +30,8 @@ class ProjectTypeFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

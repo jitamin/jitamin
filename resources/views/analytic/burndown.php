@@ -2,7 +2,7 @@
     <h2><?= t('Burndown chart') ?></h2>
 </div>
 
-<?php if (! $display_graph): ?>
+<?php if (!$display_graph): ?>
     <p class="alert"><?= t('You need at least 2 days of data to show the chart.') ?></p>
 <?php else: ?>
     <section id="analytic-burndown">

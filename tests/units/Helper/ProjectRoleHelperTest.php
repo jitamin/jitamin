@@ -35,7 +35,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -54,7 +54,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -74,7 +74,7 @@ class ProjectRoleHelperTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -98,7 +98,7 @@ class ProjectRoleHelperTest extends Base
         $columnRestrictionModel = new ColumnRestrictionModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -123,7 +123,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -142,7 +142,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -162,7 +162,7 @@ class ProjectRoleHelperTest extends Base
         $projectRoleModel = new ProjectRoleModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -186,7 +186,7 @@ class ProjectRoleHelperTest extends Base
         $columnRestrictionModel = new ColumnRestrictionModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -213,7 +213,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -237,7 +237,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -263,7 +263,7 @@ class ProjectRoleHelperTest extends Base
         $columnMoveRestrictionModel = new ColumnMoveRestrictionModel($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 2,
+            'id'   => 2,
             'role' => Role::APP_USER,
         ];
 
@@ -301,7 +301,7 @@ class ProjectRoleHelperTest extends Base
         $userModel = new UserModel($this->container);
         $userSessionModel = new UserSession($this->container);
 
-        $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' =>'toto@here', 'password' => '123456']));
+        $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' => 'toto@here', 'password' => '123456']));
         $this->assertNotFalse($userModel->create(['username' => 'toto2', 'email' => 'toto2@here', 'password' => '123456']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $taskCreationModel->create(['title' => 'TaskViewController #1', 'project_id' => 1, 'creator_id' => 1]));

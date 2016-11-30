@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Analytic\EstimatedTimeComparisonAnalytic;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
 
 class EstimatedTimeComparisonAnalyticTest extends Base
 {
@@ -36,13 +36,13 @@ class EstimatedTimeComparisonAnalyticTest extends Base
 
         $expected = [
             'open' => [
-                'time_spent' => 8.5,
+                'time_spent'     => 8.5,
                 'time_estimated' => 7.25,
             ],
             'closed' => [
-                'time_spent' => 0.5,
+                'time_spent'     => 0.5,
                 'time_estimated' => 1.25,
-            ]
+            ],
         ];
 
         $this->assertEquals($expected, $estimatedTimeComparisonAnalytic->build(1));
@@ -65,13 +65,13 @@ class EstimatedTimeComparisonAnalyticTest extends Base
 
         $expected = [
             'open' => [
-                'time_spent' => 8.5,
+                'time_spent'     => 8.5,
                 'time_estimated' => 7.25,
             ],
             'closed' => [
-                'time_spent' => 0,
+                'time_spent'     => 0,
                 'time_estimated' => 0,
-            ]
+            ],
         ];
 
         $this->assertEquals($expected, $estimatedTimeComparisonAnalytic->build(1));
@@ -94,13 +94,13 @@ class EstimatedTimeComparisonAnalyticTest extends Base
 
         $expected = [
             'closed' => [
-                'time_spent' => 8.5,
+                'time_spent'     => 8.5,
                 'time_estimated' => 7.25,
             ],
             'open' => [
-                'time_spent' => 0,
+                'time_spent'     => 0,
                 'time_estimated' => 0,
-            ]
+            ],
         ];
 
         $this->assertEquals($expected, $estimatedTimeComparisonAnalytic->build(1));

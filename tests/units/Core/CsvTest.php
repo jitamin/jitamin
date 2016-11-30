@@ -47,7 +47,7 @@ class CsvTest extends Base
             ['value a', 'value b'],
         ];
 
-        $csv = new Csv;
+        $csv = new Csv();
         $csv->write($filename, $rows);
         $csv->setColumnMapping(['A', 'B', 'C']);
         $csv->read($filename, [$this, 'readRow']);

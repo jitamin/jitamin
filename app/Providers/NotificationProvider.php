@@ -11,23 +11,23 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
-use Hiject\Model\UserNotificationTypeModel;
 use Hiject\Model\ProjectNotificationTypeModel;
+use Hiject\Model\UserNotificationTypeModel;
 use Hiject\Notification\MailNotification as MailNotification;
 use Hiject\Notification\WebNotification as WebNotification;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Notification Provider
+ * Notification Provider.
  */
 class NotificationProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
@@ -36,6 +36,7 @@ class NotificationProvider implements ServiceProviderInterface
             $type = new UserNotificationTypeModel($container);
             $type->setType(MailNotification::TYPE, t('Email'), '\Hiject\Notification\MailNotification');
             $type->setType(WebNotification::TYPE, t('Web'), '\Hiject\Notification\WebNotification');
+
             return $type;
         };
 
@@ -43,6 +44,7 @@ class NotificationProvider implements ServiceProviderInterface
             $type = new ProjectNotificationTypeModel($container);
             $type->setType('webhook', 'Webhook', '\Hiject\Notification\WebhookNotification', true);
             $type->setType('activity_stream', 'ActivityStream', '\Hiject\Notification\ActivityStreamNotification', true);
+
             return $type;
         };
 

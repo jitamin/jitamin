@@ -17,7 +17,7 @@ class EventManagerTest extends Base
 {
     public function testAddEvent()
     {
-        $eventManager = new EventManager;
+        $eventManager = new EventManager();
         $eventManager->register('my.event', 'My Event');
 
         $events = $eventManager->getAll();

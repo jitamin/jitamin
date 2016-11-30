@@ -2,7 +2,7 @@
     <h2><?= t('Currency rates') ?></h2>
 </div>
 
-<?php if (! empty($rates)): ?>
+<?php if (!empty($rates)): ?>
 
 <table class="table-striped">
     <tr>

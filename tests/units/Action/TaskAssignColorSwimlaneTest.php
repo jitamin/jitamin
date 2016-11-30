@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignColorSwimlane;
 use Hiject\Bus\Event\TaskEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignColorSwimlane;
 
 class TaskAssignColorSwimlaneTest extends Base
 {
@@ -31,16 +31,16 @@ class TaskAssignColorSwimlaneTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
                 'swimlane_id' => 2,
-            ]
+            ],
         ]);
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
         $this->assertNotEquals('red', $task['color_id']);
-                
+
         $action = new TaskAssignColorSwimlane($this->container);
         $action->setProjectId(1);
         $action->setParam('color_id', 'red');
@@ -63,10 +63,10 @@ class TaskAssignColorSwimlaneTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
                 'swimlane_id' => 3,
-            ]
+            ],
         ]);
 
         $action = new TaskAssignColorSwimlane($this->container);

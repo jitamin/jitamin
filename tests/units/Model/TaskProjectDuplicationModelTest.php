@@ -41,12 +41,12 @@ class TaskProjectDuplicationModelTest extends Base
         $this->assertTrue($categoryModel->exists(1));
 
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'column_id' => 2,
-            'owner_id' => 1,
+            'title'       => 'test',
+            'project_id'  => 1,
+            'column_id'   => 2,
+            'owner_id'    => 1,
             'category_id' => 1,
-            'priority' => 3,
+            'priority'    => 3,
         ]));
 
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {

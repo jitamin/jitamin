@@ -11,22 +11,22 @@
 
 namespace Hiject\Bus\Subscriber;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Hiject\Bus\Event\AuthFailureEvent;
+use Hiject\Bus\Event\AuthSuccessEvent;
 use Hiject\Core\Security\AuthenticationManager;
 use Hiject\Core\Session\SessionManager;
-use Hiject\Bus\Event\AuthSuccessEvent;
-use Hiject\Bus\Event\AuthFailureEvent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Authentication Subscriber
+ * Authentication Subscriber.
  */
 class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -34,15 +34,14 @@ class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
         return [
             AuthenticationManager::EVENT_SUCCESS => 'afterLogin',
             AuthenticationManager::EVENT_FAILURE => 'onLoginFailure',
-            SessionManager::EVENT_DESTROY => 'afterLogout',
+            SessionManager::EVENT_DESTROY        => 'afterLogout',
         ];
     }
 
     /**
-     * After Login callback
+     * After Login callback.
      *
-     * @access public
-     * @param  AuthSuccessEvent $event
+     * @param AuthSuccessEvent $event
      */
     public function afterLogin(AuthSuccessEvent $event)
     {
@@ -71,9 +70,7 @@ class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * Destroy RememberMe session on logout
-     *
-     * @access public
+     * Destroy RememberMe session on logout.
      */
     public function afterLogout()
     {
@@ -83,7 +80,7 @@ class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
         if ($credentials !== false) {
             $session = $this->rememberMeSessionModel->find($credentials['token'], $credentials['sequence']);
 
-            if (! empty($session)) {
+            if (!empty($session)) {
                 $this->rememberMeSessionModel->remove($session['id']);
             }
 
@@ -92,9 +89,8 @@ class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * Increment failed login counter
+     * Increment failed login counter.
      *
-     * @access public
      * @param AuthFailureEvent $event
      */
     public function onLoginFailure(AuthFailureEvent $event)
@@ -102,7 +98,7 @@ class AuthSubscriber extends BaseSubscriber implements EventSubscriberInterface
         $this->logger->debug('Subscriber executed: '.__METHOD__);
         $username = $event->getUsername();
 
-        if (! empty($username)) {
+        if (!empty($username)) {
             $this->userLockingModel->incrementFailedLogin($username);
 
             if ($this->userLockingModel->getFailedLogin($username) > BRUTEFORCE_LOCKDOWN) {

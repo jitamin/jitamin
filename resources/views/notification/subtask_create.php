@@ -8,7 +8,7 @@
     <li><?= t('Assignee:') ?> <?= $this->text->e($subtask['name'] ?: $subtask['username'] ?: '?') ?></li>
     <li>
         <?= t('Time tracking:') ?>
-        <?php if (! empty($subtask['time_estimated'])): ?>
+        <?php if (!empty($subtask['time_estimated'])): ?>
             <strong><?= $this->text->e($subtask['time_estimated']).'h' ?></strong> <?= t('estimated') ?>
         <?php endif ?>
     </li>

@@ -12,7 +12,7 @@
 namespace Hiject\Bus\Event;
 
 /**
- * Project file event
+ * Project file event.
  */
 class ProjectFileEvent extends GenericEvent
 {

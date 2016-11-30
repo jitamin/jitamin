@@ -11,6 +11,7 @@
 
 namespace Hiject\Controller;
 
+use Eluceo\iCal\Component\Calendar as iCalendar;
 use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Filter\QueryBuilder;
 use Hiject\Filter\TaskAssigneeFilter;
@@ -18,17 +19,14 @@ use Hiject\Filter\TaskProjectFilter;
 use Hiject\Filter\TaskStatusFilter;
 use Hiject\Formatter\TaskICalFormatter;
 use Hiject\Model\TaskModel;
-use Eluceo\iCal\Component\Calendar as iCalendar;
 
 /**
- * iCalendar Controller
+ * iCalendar Controller.
  */
 class ICalendarController extends BaseController
 {
     /**
-     * Get user iCalendar
-     *
-     * @access public
+     * Get user iCalendar.
      */
     public function user()
     {
@@ -57,9 +55,7 @@ class ICalendarController extends BaseController
     }
 
     /**
-     * Get project iCalendar
-     *
-     * @access public
+     * Get project iCalendar.
      */
     public function project()
     {
@@ -88,9 +84,8 @@ class ICalendarController extends BaseController
     }
 
     /**
-     * Common method to render iCal events
+     * Common method to render iCal events.
      *
-     * @access private
      * @param QueryBuilder $queryBuilder
      * @param iCalendar    $calendar
      */

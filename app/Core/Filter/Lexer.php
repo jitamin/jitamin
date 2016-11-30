@@ -12,22 +12,20 @@
 namespace Hiject\Core\Filter;
 
 /**
- * Lexer
+ * Lexer.
  */
 class Lexer
 {
     /**
-     * Current position
+     * Current position.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $offset = 0;
 
     /**
-     * Token map
+     * Token map.
      *
-     * @access private
      * @var array
      */
     private $tokenMap = [
@@ -41,45 +39,46 @@ class Lexer
     ];
 
     /**
-     * Default token
+     * Default token.
      *
-     * @access private
      * @var string
      */
     private $defaultToken = '';
 
     /**
-     * Add token
+     * Add token.
      *
-     * @access public
-     * @param  string $regex
-     * @param  string $token
+     * @param string $regex
+     * @param string $token
+     *
      * @return $this
      */
     public function addToken($regex, $token)
     {
         $this->tokenMap = [$regex => $token] + $this->tokenMap;
+
         return $this;
     }
 
     /**
-     * Set default token
+     * Set default token.
      *
-     * @access public
-     * @param  string $token
+     * @param string $token
+     *
      * @return $this
      */
     public function setDefaultToken($token)
     {
         $this->defaultToken = $token;
+
         return $this;
     }
 
     /**
-     * Tokenize input string
+     * Tokenize input string.
      *
-     * @access public
-     * @param  string  $input
+     * @param string $input
+     *
      * @return array
      */
     public function tokenize($input)
@@ -102,11 +101,11 @@ class Lexer
     }
 
     /**
-     * Find a token that match and move the offset
+     * Find a token that match and move the offset.
      *
-     * @access protected
-     * @param  string  $string
-     * @return array|boolean
+     * @param string $string
+     *
+     * @return array|bool
      */
     protected function match($string)
     {
@@ -125,10 +124,10 @@ class Lexer
     }
 
     /**
-     * Build map of tokens and matches
+     * Build map of tokens and matches.
      *
-     * @access protected
-     * @param  array  $tokens
+     * @param array $tokens
+     *
      * @return array
      */
     protected function map(array $tokens)

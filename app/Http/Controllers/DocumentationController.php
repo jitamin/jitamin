@@ -14,7 +14,7 @@ namespace Hiject\Controller;
 use Parsedown;
 
 /**
- * Documentation Viewer
+ * Documentation Viewer.
  */
 class DocumentationController extends BaseController
 {
@@ -31,7 +31,7 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Display keyboard shortcut
+     * Display keyboard shortcut.
      */
     public function shortcuts()
     {
@@ -39,10 +39,10 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Prepare Markdown file
+     * Prepare Markdown file.
      *
-     * @access private
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return array
      */
     private function render($filename)
@@ -51,19 +51,19 @@ class DocumentationController extends BaseController
         $content = preg_replace_callback('/\((.*.markdown)\)/', [$this, 'replaceMarkdownUrl'], $data);
         $content = preg_replace_callback('/\((screenshots.*\.png)\)/', [$this, 'replaceImageUrl'], $content);
 
-        list($title, ) = explode("\n", $data, 2);
+        list($title) = explode("\n", $data, 2);
 
         return [
             'content' => Parsedown::instance()->text($content),
-            'title' => $title !== 'Documentation' ? t('Documentation: %s', $title) : $title,
+            'title'   => $title !== 'Documentation' ? t('Documentation: %s', $title) : $title,
         ];
     }
 
     /**
-     * Regex callback to replace Markdown links
+     * Regex callback to replace Markdown links.
      *
-     * @access public
-     * @param  array $matches
+     * @param array $matches
+     *
      * @return string
      */
     public function replaceMarkdownUrl(array $matches)
@@ -72,10 +72,10 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Regex callback to replace image links
+     * Regex callback to replace image links.
      *
-     * @access public
-     * @param  array $matches
+     * @param array $matches
+     *
      * @return string
      */
     public function replaceImageUrl(array $matches)
@@ -84,23 +84,23 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Get Markdown file according to the current language
+     * Get Markdown file according to the current language.
      *
-     * @access private
-     * @param  string $page
+     * @param string $page
+     *
      * @return string
      */
     private function getPageFilename($page)
     {
-        return $this->getFileLocation($page . '.markdown') ?:
+        return $this->getFileLocation($page.'.markdown') ?:
             implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', 'index.markdown']);
     }
 
     /**
-     * Get base URL for Markdown links
+     * Get base URL for Markdown links.
      *
-     * @access private
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return string
      */
     private function getFileBaseUrl($filename)
@@ -118,10 +118,10 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Get file location according to the current language
+     * Get file location according to the current language.
      *
-     * @access private
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return string
      */
     private function getFileLocation($filename)

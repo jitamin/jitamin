@@ -15,7 +15,7 @@ use Hiject\Core\Base;
 use Hiject\Core\Csv;
 
 /**
- * Response class
+ * Response class.
  */
 class Response extends Base
 {
@@ -25,9 +25,8 @@ class Response extends Base
     private $responseSent = false;
 
     /**
-     * Return true if the response have been sent to the user agent
+     * Return true if the response have been sent to the user agent.
      *
-     * @access public
      * @return bool
      */
     public function isResponseAlreadySent()
@@ -36,63 +35,66 @@ class Response extends Base
     }
 
     /**
-     * Set HTTP status code
+     * Set HTTP status code.
      *
-     * @access public
-     * @param  integer $statusCode
+     * @param int $statusCode
+     *
      * @return $this
      */
     public function withStatusCode($statusCode)
     {
         $this->httpStatusCode = $statusCode;
+
         return $this;
     }
 
     /**
-     * Set HTTP header
+     * Set HTTP header.
      *
-     * @access public
-     * @param  string $header
-     * @param  string $value
+     * @param string $header
+     * @param string $value
+     *
      * @return $this
      */
     public function withHeader($header, $value)
     {
         $this->httpHeaders[$header] = $value;
+
         return $this;
     }
 
     /**
-     * Set content type header
+     * Set content type header.
      *
-     * @access public
-     * @param  string $value
+     * @param string $value
+     *
      * @return $this
      */
     public function withContentType($value)
     {
         $this->httpHeaders['Content-Type'] = $value;
+
         return $this;
     }
 
     /**
-     * Set default security headers
+     * Set default security headers.
      *
-     * @access public
      * @return $this
      */
     public function withSecurityHeaders()
     {
         $this->httpHeaders['X-Content-Type-Options'] = 'nosniff';
         $this->httpHeaders['X-XSS-Protection'] = '1; mode=block';
+
         return $this;
     }
 
     /**
-     * Set header Content-Security-Policy
+     * Set header Content-Security-Policy.
      *
-     * @access public
-     * @param  array  $policies
+     * @param array $policies
+     *
      * @return $this
      */
     public function withContentSecurityPolicy(array $policies = [])
@@ -104,25 +106,25 @@ class Response extends Base
         }
 
         $this->withHeader('Content-Security-Policy', $values);
+
         return $this;
     }
 
     /**
-     * Set header X-Frame-Options
+     * Set header X-Frame-Options.
      *
-     * @access public
      * @return $this
      */
     public function withXframe()
     {
         $this->withHeader('X-Frame-Options', 'DENY');
+
         return $this;
     }
 
     /**
-     * Set header Strict-Transport-Security (only if we use HTTPS)
+     * Set header Strict-Transport-Security (only if we use HTTPS).
      *
-     * @access public
      * @return $this
      */
     public function withStrictTransportSecurity()
@@ -135,59 +137,59 @@ class Response extends Base
     }
 
     /**
-     * Set HTTP response body
+     * Set HTTP response body.
      *
-     * @access public
-     * @param  string $body
+     * @param string $body
+     *
      * @return $this
      */
     public function withBody($body)
     {
         $this->httpBody = $body;
+
         return $this;
     }
 
     /**
-     * Send headers to cache a resource
+     * Send headers to cache a resource.
      *
-     * @access public
-     * @param  integer $duration
-     * @param  string  $etag
+     * @param int    $duration
+     * @param string $etag
+     *
      * @return $this
      */
     public function withCache($duration, $etag = '')
     {
         $this
             ->withHeader('Pragma', 'cache')
-            ->withHeader('Expires', gmdate('D, d M Y H:i:s', time() + $duration) . ' GMT')
-            ->withHeader('Cache-Control', 'public, max-age=' . $duration)
-        ;
+            ->withHeader('Expires', gmdate('D, d M Y H:i:s', time() + $duration).' GMT')
+            ->withHeader('Cache-Control', 'public, max-age='.$duration);
 
         if ($etag) {
-            $this->withHeader('ETag', '"' . $etag . '"');
+            $this->withHeader('ETag', '"'.$etag.'"');
         }
 
         return $this;
     }
 
     /**
-     * Send no cache headers
+     * Send no cache headers.
      *
-     * @access public
      * @return $this
      */
     public function withoutCache()
     {
         $this->withHeader('Pragma', 'no-cache');
         $this->withHeader('Expires', 'Sat, 26 Jul 1997 05:00:00 GMT');
+
         return $this;
     }
 
     /**
-     * Force the browser to download an attachment
+     * Force the browser to download an attachment.
      *
-     * @access public
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return $this
      */
     public function withFileDownload($filename)
@@ -195,13 +197,12 @@ class Response extends Base
         $this->withHeader('Content-Disposition', 'attachment; filename="'.$filename.'"');
         $this->withHeader('Content-Transfer-Encoding', 'binary');
         $this->withHeader('Content-Type', 'application/octet-stream');
+
         return $this;
     }
 
     /**
-     * Send headers and body
-     *
-     * @access public
+     * Send headers and body.
      */
     public function send()
     {
@@ -216,16 +217,15 @@ class Response extends Base
             header($header.': '.$value);
         }
 
-        if (! empty($this->httpBody)) {
+        if (!empty($this->httpBody)) {
             echo $this->httpBody;
         }
     }
 
     /**
-     * Send a custom HTTP status code
+     * Send a custom HTTP status code.
      *
-     * @access public
-     * @param  integer $statusCode
+     * @param int $statusCode
      */
     public function status($statusCode)
     {
@@ -234,11 +234,10 @@ class Response extends Base
     }
 
     /**
-     * Redirect to another URL
+     * Redirect to another URL.
      *
-     * @access public
-     * @param  string   $url   Redirection URL
-     * @param  boolean  $self  If Ajax request and true: refresh the current page
+     * @param string $url  Redirection URL
+     * @param bool   $self If Ajax request and true: refresh the current page
      */
     public function redirect($url, $self = false)
     {
@@ -252,11 +251,10 @@ class Response extends Base
     }
 
     /**
-     * Send a HTML response
+     * Send a HTML response.
      *
-     * @access public
-     * @param  string  $data
-     * @param  integer $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function html($data, $statusCode = 200)
     {
@@ -267,11 +265,10 @@ class Response extends Base
     }
 
     /**
-     * Send a text response
+     * Send a text response.
      *
-     * @access public
-     * @param  string   $data
-     * @param  integer  $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function text($data, $statusCode = 200)
     {
@@ -282,10 +279,9 @@ class Response extends Base
     }
 
     /**
-     * Send a CSV response
+     * Send a CSV response.
      *
-     * @access public
-     * @param  array  $data  Data to serialize in csv
+     * @param array $data Data to serialize in csv
      */
     public function csv(array $data)
     {
@@ -296,11 +292,10 @@ class Response extends Base
     }
 
     /**
-     * Send a Json response
+     * Send a Json response.
      *
-     * @access public
-     * @param  array    $data         Data to serialize in json
-     * @param  integer  $statusCode   HTTP status code
+     * @param array $data       Data to serialize in json
+     * @param int   $statusCode HTTP status code
      */
     public function json(array $data, $statusCode = 200)
     {
@@ -312,11 +307,10 @@ class Response extends Base
     }
 
     /**
-     * Send a XML response
+     * Send a XML response.
      *
-     * @access public
-     * @param  string   $data
-     * @param  integer  $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function xml($data, $statusCode = 200)
     {
@@ -328,11 +322,10 @@ class Response extends Base
     }
 
     /**
-     * Send a javascript response
+     * Send a javascript response.
      *
-     * @access public
-     * @param  string  $data
-     * @param  integer $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function js($data, $statusCode = 200)
     {
@@ -343,11 +336,10 @@ class Response extends Base
     }
 
     /**
-     * Send a css response
+     * Send a css response.
      *
-     * @access public
-     * @param  string  $data
-     * @param  integer $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function css($data, $statusCode = 200)
     {
@@ -358,11 +350,10 @@ class Response extends Base
     }
 
     /**
-     * Send a binary response
+     * Send a binary response.
      *
-     * @access public
-     * @param  string  $data
-     * @param  integer $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function binary($data, $statusCode = 200)
     {
@@ -375,11 +366,10 @@ class Response extends Base
     }
 
     /**
-     * Send a iCal response
+     * Send a iCal response.
      *
-     * @access public
-     * @param  string  $data
-     * @param  integer $statusCode
+     * @param string $data
+     * @param int    $statusCode
      */
     public function ical($data, $statusCode = 200)
     {

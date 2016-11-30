@@ -14,7 +14,7 @@ class Base extends PHPUnit_Extensions_Selenium2TestCase
     public function setUp()
     {
         $this->setHost(SELENIUM_HOST);
-        $this->setPort((integer) SELENIUM_PORT);
+        $this->setPort((int) SELENIUM_PORT);
         $this->setBrowserUrl(HIJECT_APP_URL);
         $this->setBrowser(DEFAULT_BROWSER);
     }

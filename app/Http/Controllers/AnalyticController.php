@@ -15,14 +15,12 @@ use Hiject\Filter\TaskProjectFilter;
 use Hiject\Model\TaskModel;
 
 /**
- * Project Analytic Controller
+ * Project Analytic Controller.
  */
 class AnalyticController extends BaseController
 {
     /**
-     * Show average Lead and Cycle time
-     *
-     * @access public
+     * Show average Lead and Cycle time.
      */
     public function leadAndCycleTime()
     {
@@ -32,19 +30,17 @@ class AnalyticController extends BaseController
         $this->response->html($this->helper->layout->analytic('analytic/lead_cycle_time', [
             'values' => [
                 'from' => $from,
-                'to' => $to,
+                'to'   => $to,
             ],
             'project' => $project,
             'average' => $this->averageLeadCycleTimeAnalytic->build($project['id']),
             'metrics' => $this->projectDailyStatsModel->getRawMetrics($project['id'], $from, $to),
-            'title' => t('Lead and cycle time'),
+            'title'   => t('Lead and cycle time'),
         ]));
     }
 
     /**
-     * Show comparison between actual and estimated hours chart
-     *
-     * @access public
+     * Show comparison between actual and estimated hours chart.
      */
     public function timeComparison()
     {
@@ -61,17 +57,15 @@ class AnalyticController extends BaseController
             ->calculate();
 
         $this->response->html($this->helper->layout->analytic('analytic/time_comparison', [
-            'project' => $project,
+            'project'   => $project,
             'paginator' => $paginator,
-            'metrics' => $this->estimatedTimeComparisonAnalytic->build($project['id']),
-            'title' => t('Estimated vs actual time'),
+            'metrics'   => $this->estimatedTimeComparisonAnalytic->build($project['id']),
+            'title'     => t('Estimated vs actual time'),
         ]));
     }
 
     /**
-     * Show average time spent by column
-     *
-     * @access public
+     * Show average time spent by column.
      */
     public function averageTimeByColumn()
     {
@@ -80,14 +74,12 @@ class AnalyticController extends BaseController
         $this->response->html($this->helper->layout->analytic('analytic/avg_time_columns', [
             'project' => $project,
             'metrics' => $this->averageTimeSpentColumnAnalytic->build($project['id']),
-            'title' => t('Average time into each column'),
+            'title'   => t('Average time into each column'),
         ]));
     }
 
     /**
-     * Show tasks distribution graph
-     *
-     * @access public
+     * Show tasks distribution graph.
      */
     public function taskDistribution()
     {
@@ -96,14 +88,12 @@ class AnalyticController extends BaseController
         $this->response->html($this->helper->layout->analytic('analytic/task_distribution', [
             'project' => $project,
             'metrics' => $this->taskDistributionAnalytic->build($project['id']),
-            'title' => t('Task distribution'),
+            'title'   => t('Task distribution'),
         ]));
     }
 
     /**
-     * Show users repartition
-     *
-     * @access public
+     * Show users repartition.
      */
     public function userDistribution()
     {
@@ -112,14 +102,12 @@ class AnalyticController extends BaseController
         $this->response->html($this->helper->layout->analytic('analytic/user_distribution', [
             'project' => $project,
             'metrics' => $this->userDistributionAnalytic->build($project['id']),
-            'title' => t('User repartition'),
+            'title'   => t('User repartition'),
         ]));
     }
 
     /**
-     * Show cumulative flow diagram
-     *
-     * @access public
+     * Show cumulative flow diagram.
      */
     public function cfd()
     {
@@ -127,9 +115,7 @@ class AnalyticController extends BaseController
     }
 
     /**
-     * Show burndown chart
-     *
-     * @access public
+     * Show burndown chart.
      */
     public function burndown()
     {
@@ -137,9 +123,8 @@ class AnalyticController extends BaseController
     }
 
     /**
-     * Common method for CFD and Burdown chart
+     * Common method for CFD and Burdown chart.
      *
-     * @access private
      * @param string $template
      * @param string $column
      * @param string $title
@@ -154,12 +139,12 @@ class AnalyticController extends BaseController
         $this->response->html($this->helper->layout->analytic($template, [
             'values' => [
                 'from' => $from,
-                'to' => $to,
+                'to'   => $to,
             ],
             'display_graph' => $display_graph,
-            'metrics' => $display_graph ? $this->projectDailyColumnStatsModel->getAggregatedMetrics($project['id'], $from, $to, $column) : [],
-            'project' => $project,
-            'title' => $title,
+            'metrics'       => $display_graph ? $this->projectDailyColumnStatsModel->getAggregatedMetrics($project['id'], $from, $to, $column) : [],
+            'project'       => $project,
+            'title'         => $title,
         ]));
     }
 
@@ -170,7 +155,7 @@ class AnalyticController extends BaseController
         $from = $this->request->getStringParam('from', date('Y-m-d', strtotime('-1week')));
         $to = $this->request->getStringParam('to', date('Y-m-d'));
 
-        if (! empty($values)) {
+        if (!empty($values)) {
             $from = $this->dateParser->getIsoDate($values['from']);
             $to = $this->dateParser->getIsoDate($values['to']);
         }

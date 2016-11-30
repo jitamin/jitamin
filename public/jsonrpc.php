@@ -9,6 +9,6 @@
  * file that was distributed with this source code.
  */
 
-require __DIR__ . '/../bootstrap/autoload.php';
+require __DIR__.'/../bootstrap/autoload.php';
 
 echo $container['api']->execute();

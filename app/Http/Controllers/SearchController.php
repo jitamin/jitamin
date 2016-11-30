@@ -14,7 +14,7 @@ namespace Hiject\Controller;
 use Hiject\Filter\TaskProjectsFilter;
 
 /**
- * Search Controller
+ * Search Controller.
  */
 class SearchController extends BaseController
 {
@@ -30,7 +30,7 @@ class SearchController extends BaseController
                 ->setOrder('tasks.id')
                 ->setDirection('DESC');
 
-        if ($query !== '' && ! empty($projects)) {
+        if ($query !== '' && !empty($projects)) {
             $paginator
                 ->setQuery($this->taskLexer
                     ->build($query)
@@ -44,12 +44,12 @@ class SearchController extends BaseController
 
         $this->response->html($this->helper->layout->app('search/index', [
             'values' => [
-                'q' => $query,
+                'q'          => $query,
                 'controller' => 'SearchController',
-                'action' => 'index',
+                'action'     => 'index',
             ],
             'paginator' => $paginator,
-            'title' => t('Search tasks').($nb_tasks > 0 ? ' ('.$nb_tasks.')' : '')
+            'title'     => t('Search tasks').($nb_tasks > 0 ? ' ('.$nb_tasks.')' : ''),
         ]));
     }
 
@@ -61,13 +61,13 @@ class SearchController extends BaseController
 
         $this->response->html($this->helper->layout->app('search/activity', [
             'values' => [
-                'q' => $query,
+                'q'          => $query,
                 'controller' => 'SearchController',
-                'action' => 'activity',
+                'action'     => 'activity',
             ],
-            'title' => t('Search in activity stream').($nb_events > 0 ? ' ('.$nb_events.')' : ''),
+            'title'     => t('Search in activity stream').($nb_events > 0 ? ' ('.$nb_events.')' : ''),
             'nb_events' => $nb_events,
-            'events' => $events,
+            'events'    => $events,
         ]));
     }
 }

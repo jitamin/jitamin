@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
+use Hiject\Model\ProjectModel;
+use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskPositionModel;
 use Hiject\Model\TaskCreationModel;
-use Hiject\Model\SubtaskModel;
-use Hiject\Model\ProjectModel;
 
 require_once __DIR__.'/../Base.php';
 

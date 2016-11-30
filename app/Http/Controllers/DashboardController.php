@@ -12,95 +12,83 @@
 namespace Hiject\Controller;
 
 /**
- * Dashboard Controller
+ * Dashboard Controller.
  */
 class DashboardController extends BaseController
 {
     /**
-     * Dashboard overview
-     *
-     * @access public
+     * Dashboard overview.
      */
     public function show()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/show', [
-            'title' => t('Dashboard for %s', $this->helper->user->getFullname($user)),
+            'title'             => t('Dashboard for %s', $this->helper->user->getFullname($user)),
             'project_paginator' => $this->projectPagination->getDashboardPaginator($user['id'], 'show', 10),
-            'events' => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 10),
-            'user' => $user,
+            'events'            => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 10),
+            'user'              => $user,
         ]));
     }
 
     /**
-     * My tasks
-     *
-     * @access public
+     * My tasks.
      */
     public function tasks()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/tasks', [
-            'title' => t('Tasks overview for %s', $this->helper->user->getFullname($user)),
+            'title'     => t('Tasks overview for %s', $this->helper->user->getFullname($user)),
             'paginator' => $this->taskPagination->getDashboardPaginator($user['id'], 'tasks', 50),
-            'user' => $user,
+            'user'      => $user,
         ]));
     }
 
     /**
-     * My subtasks
-     *
-     * @access public
+     * My subtasks.
      */
     public function subtasks()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/subtasks', [
-            'title' => t('Subtasks overview for %s', $this->helper->user->getFullname($user)),
+            'title'     => t('Subtasks overview for %s', $this->helper->user->getFullname($user)),
             'paginator' => $this->subtaskPagination->getDashboardPaginator($user['id'], 'subtasks', 50),
-            'user' => $user,
+            'user'      => $user,
         ]));
     }
 
     /**
-     * My projects
-     *
-     * @access public
+     * My projects.
      */
     public function projects()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/projects', [
-            'title' => t('Projects overview for %s', $this->helper->user->getFullname($user)),
+            'title'     => t('Projects overview for %s', $this->helper->user->getFullname($user)),
             'paginator' => $this->projectPagination->getDashboardPaginator($user['id'], 'projects', 25),
-            'user' => $user,
+            'user'      => $user,
         ]));
     }
 
     /**
-     * My activity stream
-     *
-     * @access public
+     * My activity stream.
      */
     public function activity()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/activity', [
-            'title' => t('Activity stream for %s', $this->helper->user->getFullname($user)),
+            'title'  => t('Activity stream for %s', $this->helper->user->getFullname($user)),
             'events' => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 100),
-            'user' => $user,
+            'user'   => $user,
         ]));
     }
 
     /**
-     * My calendar
-     *
-     * @access public
+     * My calendar.
      */
     public function calendar()
     {
@@ -108,23 +96,21 @@ class DashboardController extends BaseController
 
         $this->response->html($this->helper->layout->dashboard('dashboard/calendar', [
             'title' => t('Calendar for %s', $this->helper->user->getFullname($user)),
-            'user' => $user,
+            'user'  => $user,
         ]));
     }
 
     /**
-     * My notifications
-     *
-     * @access public
+     * My notifications.
      */
     public function notifications()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/notifications', [
-            'title' => t('Notifications for %s', $this->helper->user->getFullname($user)),
+            'title'         => t('Notifications for %s', $this->helper->user->getFullname($user)),
             'notifications' => $this->userUnreadNotificationModel->getAll($user['id']),
-            'user' => $user,
+            'user'          => $user,
         ]));
     }
 }

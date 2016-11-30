@@ -15,14 +15,14 @@ use Hiject\Api\Authorization\ProjectAuthorization;
 use Hiject\Formatter\BoardFormatter;
 
 /**
- * Board API controller
+ * Board API controller.
  */
 class BoardProcedure extends BaseProcedure
 {
     public function getBoard($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getBoard', $project_id);
-        
+
         return BoardFormatter::getInstance($this->container)
             ->withProjectId($project_id)
             ->withQuery($this->taskFinderModel->getExtendedQuery())

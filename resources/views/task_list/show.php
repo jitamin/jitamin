@@ -3,7 +3,7 @@
 
     <?php if ($paginator->isEmpty()): ?>
         <p class="alert"><?= t('No tasks found.') ?></p>
-    <?php elseif (! $paginator->isEmpty()): ?>
+    <?php elseif (!$paginator->isEmpty()): ?>
         <table class="table-striped table-scrolling table-small">
             <tr>
                 <th class="column-5"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>

@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Column Validator
+ * Column Validator.
  */
 class ColumnValidator extends BaseValidator
 {
     /**
-     * Validate column modification
+     * Validate column modification.
      *
-     * @access public
-     * @param  array   $values           Required parameters to update a column
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Required parameters to update a column
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -37,16 +37,16 @@ class ColumnValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate column creation
+     * Validate column creation.
      *
-     * @access public
-     * @param  array   $values           Required parameters to save an action
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Required parameters to save an action
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -59,14 +59,13 @@ class ColumnValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()

@@ -14,14 +14,13 @@ namespace Hiject\Filter;
 use Hiject\Core\Filter\FilterInterface;
 
 /**
- * Class UserNameFilter
+ * Class UserNameFilter.
  */
 class UserNameFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -30,9 +29,8 @@ class UserNameFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

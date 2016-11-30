@@ -12,34 +12,31 @@
 namespace Hiject\Core\Group;
 
 /**
- * Group Provider Interface
+ * Group Provider Interface.
  */
 interface GroupProviderInterface
 {
     /**
-     * Get internal id
+     * Get internal id.
      *
      * You must return 0 if the group come from an external backend
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getInternalId();
 
     /**
-     * Get external id
+     * Get external id.
      *
      * You must return a unique id if the group come from an external provider
      *
-     * @access public
      * @return string
      */
     public function getExternalId();
 
     /**
-     * Get group name
+     * Get group name.
      *
-     * @access public
      * @return string
      */
     public function getName();

@@ -14,48 +14,45 @@ namespace Hiject\Core\Filter;
 use PicoDb\Table;
 
 /**
- * Filter Interface
+ * Filter Interface.
  */
 interface FilterInterface
 {
     /**
-     * BaseFilter constructor
+     * BaseFilter constructor.
      *
-     * @access public
-     * @param  mixed $value
+     * @param mixed $value
      */
     public function __construct($value = null);
 
     /**
-     * Set the value
+     * Set the value.
      *
-     * @access public
-     * @param  string $value
+     * @param string $value
+     *
      * @return FilterInterface
      */
     public function withValue($value);
 
     /**
-     * Set query
+     * Set query.
      *
-     * @access public
-     * @param  Table $query
+     * @param Table $query
+     *
      * @return FilterInterface
      */
     public function withQuery(Table $query);
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes();
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply();

@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Category Validator
+ * Category Validator.
  */
 class CategoryValidator extends BaseValidator
 {
     /**
-     * Validate category creation
+     * Validate category creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -37,16 +37,16 @@ class CategoryValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate category modification
+     * Validate category modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -59,14 +59,13 @@ class CategoryValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()
@@ -74,7 +73,7 @@ class CategoryValidator extends BaseValidator
         return [
             new Validators\Integer('id', t('The id must be an integer')),
             new Validators\Integer('project_id', t('The project id must be an integer')),
-            new Validators\MaxLength('name', t('The maximum length is %d characters', 50), 50)
+            new Validators\MaxLength('name', t('The maximum length is %d characters', 50), 50),
         ];
     }
 }

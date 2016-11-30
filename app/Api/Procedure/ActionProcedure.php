@@ -15,7 +15,7 @@ use Hiject\Api\Authorization\ActionAuthorization;
 use Hiject\Api\Authorization\ProjectAuthorization;
 
 /**
- * Action API controller
+ * Action API controller.
  */
 class ActionProcedure extends BaseProcedure
 {
@@ -37,12 +37,14 @@ class ActionProcedure extends BaseProcedure
     public function removeAction($action_id)
     {
         ActionAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeAction', $action_id);
+
         return $this->actionModel->remove($action_id);
     }
 
     public function getActions($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getActions', $project_id);
+
         return $this->actionModel->getAllByProject($project_id);
     }
 
@@ -50,29 +52,29 @@ class ActionProcedure extends BaseProcedure
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'createAction', $project_id);
         $values = [
-            'project_id' => $project_id,
-            'event_name' => $event_name,
+            'project_id'  => $project_id,
+            'event_name'  => $event_name,
             'action_name' => $action_name,
-            'params' => $params,
+            'params'      => $params,
         ];
 
-        list($valid, ) = $this->actionValidator->validateCreation($values);
+        list($valid) = $this->actionValidator->validateCreation($values);
 
-        if (! $valid) {
+        if (!$valid) {
             return false;
         }
 
         // Check if the action exists
         $actions = $this->actionManager->getAvailableActions();
 
-        if (! isset($actions[$action_name])) {
+        if (!isset($actions[$action_name])) {
             return false;
         }
 
         // Check the event
         $action = $this->actionManager->getAction($action_name);
 
-        if (! in_array($event_name, $action->getEvents())) {
+        if (!in_array($event_name, $action->getEvents())) {
             return false;
         }
 
@@ -80,14 +82,14 @@ class ActionProcedure extends BaseProcedure
 
         // Check missing parameters
         foreach ($required_params as $param => $value) {
-            if (! isset($params[$param])) {
+            if (!isset($params[$param])) {
                 return false;
             }
         }
 
         // Check extra parameters
         foreach ($params as $param => $value) {
-            if (! isset($required_params[$param])) {
+            if (!isset($required_params[$param])) {
                 return false;
             }
         }

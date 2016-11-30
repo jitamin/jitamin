@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Currency Validator
+ * Currency Validator.
  */
 class CurrencyValidator extends BaseValidator
 {
     /**
-     * Validate
+     * Validate.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -36,7 +36,7 @@ class CurrencyValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 }

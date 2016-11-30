@@ -12,25 +12,24 @@
 namespace Hiject\Core\User\Avatar;
 
 /**
- * Avatar Provider Interface
+ * Avatar Provider Interface.
  */
 interface AvatarProviderInterface
 {
     /**
-     * Render avatar html
+     * Render avatar html.
      *
-     * @access public
-     * @param  array $user
-     * @param  int   $size
+     * @param array $user
+     * @param int   $size
      */
     public function render(array $user, $size);
 
     /**
-     * Determine if the provider is active
+     * Determine if the provider is active.
      *
-     * @access public
-     * @param  array $user
-     * @return boolean
+     * @param array $user
+     *
+     * @return bool
      */
     public function isActive(array $user);
 }

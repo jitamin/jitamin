@@ -23,11 +23,11 @@ class UserSyncTest extends Base
         $userSync = new UserSync($this->container);
 
         $profile = [
-            'id' => 2,
-            'username' => 'bob',
-            'name' => 'Bob',
-            'email' => '',
-            'role' => Role::APP_MANAGER,
+            'id'           => 2,
+            'username'     => 'bob',
+            'name'         => 'Bob',
+            'email'        => '',
+            'role'         => Role::APP_MANAGER,
             'is_ldap_user' => 1,
         ];
 
@@ -40,11 +40,11 @@ class UserSyncTest extends Base
         $user = new LdapUserProvider('ldapId', 'admin', 'Admin', 'email@localhost', Role::APP_MANAGER, []);
 
         $profile = [
-            'id' => 1,
+            'id'       => 1,
             'username' => 'admin',
-            'name' => 'Admin',
-            'email' => 'email@localhost',
-            'role' => Role::APP_MANAGER,
+            'name'     => 'Admin',
+            'email'    => 'email@localhost',
+            'role'     => Role::APP_MANAGER,
         ];
 
         $this->assertArraySubset($profile, $userSync->synchronize($user));
@@ -52,11 +52,11 @@ class UserSyncTest extends Base
         $user = new LdapUserProvider('ldapId', 'admin', '', '', Role::APP_ADMIN, []);
 
         $profile = [
-            'id' => 1,
+            'id'       => 1,
             'username' => 'admin',
-            'name' => 'Admin',
-            'email' => 'email@localhost',
-            'role' => Role::APP_ADMIN,
+            'name'     => 'Admin',
+            'email'    => 'email@localhost',
+            'role'     => Role::APP_ADMIN,
         ];
 
         $this->assertArraySubset($profile, $userSync->synchronize($user));

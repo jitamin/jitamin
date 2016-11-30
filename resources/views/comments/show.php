@@ -13,10 +13,10 @@
         <?php endif ?>
         <?php foreach ($comments as $comment): ?>
             <?= $this->render('comment/show', [
-                'comment' => $comment,
-                'task' => $task,
-                'project' => $project,
-                'editable' => $editable,
+                'comment'   => $comment,
+                'task'      => $task,
+                'project'   => $project,
+                'editable'  => $editable,
                 'is_public' => isset($is_public) && $is_public,
             ]) ?>
         <?php endforeach ?>
@@ -28,7 +28,7 @@
                     'task_id' => $task['id'],
                 ],
                 'errors' => [],
-                'task' => $task,
+                'task'   => $task,
             ]) ?>
         <?php endif ?>
     </div>

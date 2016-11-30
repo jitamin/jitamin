@@ -1,4 +1,4 @@
-<?php if (! empty($files)): ?>
+<?php if (!empty($files)): ?>
     <table class="table-striped table-scrolling">
         <tr>
             <th><?= t('Filename') ?></th>

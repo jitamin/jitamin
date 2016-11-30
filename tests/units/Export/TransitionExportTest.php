@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__ . '/../Base.php';
+require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\TransitionModel;
 use Hiject\Export\TransitionExport;
 use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TransitionModel;
 
 class TransitionExportTest extends Base
 {
@@ -29,11 +29,11 @@ class TransitionExportTest extends Base
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task_event = [
-            'project_id' => 1,
-            'task_id' => 1,
+            'project_id'    => 1,
+            'task_id'       => 1,
             'src_column_id' => 1,
             'dst_column_id' => 2,
-            'date_moved' => time() - 3600
+            'date_moved'    => time() - 3600,
         ];
 
         $this->assertTrue($transitionModel->save(1, $task_event));

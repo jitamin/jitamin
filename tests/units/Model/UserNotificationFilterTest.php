@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\UserModel;
 use Hiject\Model\ProjectModel;
+use Hiject\Model\UserModel;
 use Hiject\Model\UserNotificationFilterModel;
 use Hiject\Model\UserNotificationModel;
 

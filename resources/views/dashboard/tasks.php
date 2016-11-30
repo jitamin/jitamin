@@ -39,11 +39,11 @@
                 <?php endif ?>
             </td>
             <td><small>
-                <?php if (! empty($task['time_spent'])): ?>
+                <?php if (!empty($task['time_spent'])): ?>
                     <?= t('Time spent:') ?><strong><?= $this->text->e($task['time_spent']).t('hours') ?></strong>, 
                 <?php endif ?>
 
-                <?php if (! empty($task['time_estimated'])): ?>
+                <?php if (!empty($task['time_estimated'])): ?>
                     <?= t('Time estimated:') ?><strong><?= $this->text->e($task['time_estimated']).t('hours') ?></strong>
                 <?php endif ?>
             </small></td>

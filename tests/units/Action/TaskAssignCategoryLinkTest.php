@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignCategoryLink;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
+use Hiject\Model\CategoryModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskLinkModel;
-use Hiject\Model\CategoryModel;
-use Hiject\Action\TaskAssignCategoryLink;
 
 class TaskAssignCategoryLinkTest extends Base
 {

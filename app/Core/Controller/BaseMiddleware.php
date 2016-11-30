@@ -14,7 +14,7 @@ namespace Hiject\Core\Controller;
 use Hiject\Core\Base;
 
 /**
- * Class BaseMiddleware
+ * Class BaseMiddleware.
  */
 abstract class BaseMiddleware extends Base
 {
@@ -24,19 +24,21 @@ abstract class BaseMiddleware extends Base
     protected $nextMiddleware = null;
 
     /**
-     * Execute middleware
+     * Execute middleware.
      */
     abstract public function execute();
 
     /**
-     * Set next middleware
+     * Set next middleware.
      *
-     * @param  BaseMiddleware $nextMiddleware
+     * @param BaseMiddleware $nextMiddleware
+     *
      * @return BaseMiddleware
      */
     public function setNextMiddleware(BaseMiddleware $nextMiddleware)
     {
         $this->nextMiddleware = $nextMiddleware;
+
         return $this;
     }
 
@@ -49,13 +51,13 @@ abstract class BaseMiddleware extends Base
     }
 
     /**
-     * Move to next middleware
+     * Move to next middleware.
      */
     public function next()
     {
         if ($this->nextMiddleware !== null) {
             if (DEBUG) {
-                $this->logger->debug(__METHOD__.' => ' . get_class($this->nextMiddleware));
+                $this->logger->debug(__METHOD__.' => '.get_class($this->nextMiddleware));
             }
 
             $this->nextMiddleware->execute();

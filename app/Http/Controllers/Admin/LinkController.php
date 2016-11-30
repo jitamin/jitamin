@@ -14,16 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * Link Controller
+ * Link Controller.
  */
 class LinkController extends BaseController
 {
     /**
-     * Get the current link
+     * Get the current link.
      *
-     * @access private
-     * @return array
      * @throws PageNotFoundException
+     *
+     * @return array
      */
     private function getLink()
     {
@@ -37,26 +37,23 @@ class LinkController extends BaseController
     }
 
     /**
-     * List of links
+     * List of links.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
     public function index(array $values = [], array $errors = [])
     {
         $this->response->html($this->helper->layout->config('link/index', [
-            'links' => $this->linkModel->getMergedList(),
+            'links'  => $this->linkModel->getMergedList(),
             'values' => $values,
             'errors' => $errors,
-            'title' => t('Settings').' &raquo; '.t('Task\'s links'),
+            'title'  => t('Settings').' &raquo; '.t('Task\'s links'),
         ]));
     }
 
     /**
-     * Validate and save a new link
-     *
-     * @access public
+     * Validate and save a new link.
      */
     public function save()
     {
@@ -66,6 +63,7 @@ class LinkController extends BaseController
         if ($valid) {
             if ($this->linkModel->create($values['label'], $values['opposite_label']) !== false) {
                 $this->flash->success(t('Link added successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('LinkController', 'index'));
             } else {
                 $this->flash->failure(t('Unable to create your link.'));
@@ -76,11 +74,11 @@ class LinkController extends BaseController
     }
 
     /**
-     * Edit form
+     * Edit form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
@@ -92,15 +90,13 @@ class LinkController extends BaseController
             'values' => $values ?: $link,
             'errors' => $errors,
             'labels' => $this->linkModel->getList($link['id']),
-            'link' => $link,
-            'title' => t('Link modification')
+            'link'   => $link,
+            'title'  => t('Link modification'),
         ]));
     }
 
     /**
-     * Edit a link (validate the form and update the database)
-     *
-     * @access public
+     * Edit a link (validate the form and update the database).
      */
     public function update()
     {
@@ -110,6 +106,7 @@ class LinkController extends BaseController
         if ($valid) {
             if ($this->linkModel->update($values)) {
                 $this->flash->success(t('Link updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('LinkController', 'index'));
             } else {
                 $this->flash->failure(t('Unable to update your link.'));
@@ -120,24 +117,20 @@ class LinkController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a link
-     *
-     * @access public
+     * Confirmation dialog before removing a link.
      */
     public function confirm()
     {
         $link = $this->getLink();
 
         $this->response->html($this->helper->layout->config('link/remove', [
-            'link' => $link,
-            'title' => t('Remove a link')
+            'link'  => $link,
+            'title' => t('Remove a link'),
         ]));
     }
 
     /**
-     * Remove a link
-     *
-     * @access public
+     * Remove a link.
      */
     public function remove()
     {

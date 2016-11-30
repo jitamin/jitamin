@@ -1,36 +1,36 @@
 <section id="main" class="public-task">
     <?= $this->render('task/details', [
-        'task' => $task,
-        'tags' => $tags,
-        'project' => $project,
+        'task'     => $task,
+        'tags'     => $tags,
+        'project'  => $project,
         'editable' => false,
     ]) ?>
 
     <?= $this->render('task/description', [
-        'task' => $task,
-        'project' => $project,
+        'task'      => $task,
+        'project'   => $project,
         'is_public' => true,
     ]) ?>
 
     <?= $this->render('subtask/show', [
-        'task' => $task,
+        'task'     => $task,
         'subtasks' => $subtasks,
-        'editable' => false
+        'editable' => false,
     ]) ?>
 
     <?= $this->render('task_internal_link/show', [
-        'task' => $task,
-        'links' => $links,
-        'project' => $project,
-        'editable' => false,
+        'task'      => $task,
+        'links'     => $links,
+        'project'   => $project,
+        'editable'  => false,
         'is_public' => true,
     ]) ?>
 
     <?= $this->render('comments/show', [
-        'task' => $task,
-        'comments' => $comments,
-        'project' => $project,
-        'editable' => false,
+        'task'      => $task,
+        'comments'  => $comments,
+        'project'   => $project,
+        'editable'  => false,
         'is_public' => true,
     ]) ?>
 </section>

@@ -15,16 +15,15 @@ use Hiject\Core\Tool;
 use LogicException;
 
 /**
- * Class FileCache
+ * Class FileCache.
  */
 class FileCache extends BaseCache
 {
     /**
-     * Store an item in the cache
+     * Store an item in the cache.
      *
-     * @access public
-     * @param  string $key
-     * @param  mixed  $value
+     * @param string $key
+     * @param mixed  $value
      */
     public function set($key, $value)
     {
@@ -33,11 +32,11 @@ class FileCache extends BaseCache
     }
 
     /**
-     * Retrieve an item from the cache by key
+     * Retrieve an item from the cache by key.
      *
-     * @access public
-     * @param  string $key
-     * @return mixed            Null when not found, cached value otherwise
+     * @param string $key
+     *
+     * @return mixed Null when not found, cached value otherwise
      */
     public function get($key)
     {
@@ -46,14 +45,10 @@ class FileCache extends BaseCache
         if (file_exists($filename)) {
             return unserialize(file_get_contents($filename));
         }
-
-        return null;
     }
 
     /**
-     * Remove all items from the cache
-     *
-     * @access public
+     * Remove all items from the cache.
      */
     public function flush()
     {
@@ -62,10 +57,9 @@ class FileCache extends BaseCache
     }
 
     /**
-     * Remove an item from the cache
+     * Remove an item from the cache.
      *
-     * @access public
-     * @param  string $key
+     * @param string $key
      */
     public function remove($key)
     {
@@ -77,10 +71,10 @@ class FileCache extends BaseCache
     }
 
     /**
-     * Get absolute filename from the key
+     * Get absolute filename from the key.
      *
-     * @access protected
-     * @param  string $key
+     * @param string $key
+     *
      * @return string
      */
     protected function getFilenameFromKey($key)
@@ -89,15 +83,14 @@ class FileCache extends BaseCache
     }
 
     /**
-     * Create cache folder if missing
+     * Create cache folder if missing.
      *
-     * @access protected
      * @throws LogicException
      */
     protected function createCacheFolder()
     {
-        if (! is_dir(CACHE_DIR)) {
-            if (! mkdir(CACHE_DIR, 0755)) {
+        if (!is_dir(CACHE_DIR)) {
+            if (!mkdir(CACHE_DIR, 0755)) {
                 throw new LogicException('Unable to create cache directory: '.CACHE_DIR);
             }
         }

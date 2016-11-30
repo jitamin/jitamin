@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\ProjectActivityModel;
 
 /**
- * Filter activity events by projectIds
+ * Filter activity events by projectIds.
  */
 class ProjectActivityProjectIdsFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,9 +30,8 @@ class ProjectActivityProjectIdsFilter extends BaseFilter implements FilterInterf
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

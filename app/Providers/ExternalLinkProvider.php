@@ -11,23 +11,23 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
 use Hiject\Core\ExternalLink\ExternalLinkManager;
-use Hiject\ExternalLink\WebLinkProvider;
 use Hiject\ExternalLink\AttachmentLinkProvider;
 use Hiject\ExternalLink\FileLinkProvider;
+use Hiject\ExternalLink\WebLinkProvider;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * External Link Provider
+ * External Link Provider.
  */
 class ExternalLinkProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)

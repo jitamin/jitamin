@@ -11,16 +11,16 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Action\ActionManager;
 use Hiject\Action\TaskAssignColorColumn;
 use Hiject\Action\TaskClose;
 use Hiject\Action\TaskCloseColumn;
 use Hiject\Action\TaskUpdateStartDate;
+use Hiject\Core\Action\ActionManager;
+use Hiject\Core\Security\Role;
 use Hiject\Model\ActionModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Core\Security\Role;
+use Hiject\Model\TaskModel;
 
 class ActionManagerTest extends Base
 {
@@ -107,12 +107,12 @@ class ActionManagerTest extends Base
         $actionManager->attachEvents();
         $this->assertEmpty($this->dispatcher->getListeners());
 
-        $this->assertEquals(1, $projectModel->create(['name' =>'test']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => key($actions),
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $actionManager->attachEvents();
@@ -136,23 +136,23 @@ class ActionManagerTest extends Base
 
         $actions = $actionManager->getAvailableActions();
 
-        $this->assertEquals(1, $projectModel->create(['name' =>'test1']));
-        $this->assertEquals(2, $projectModel->create(['name' =>'test2']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
+        $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         $this->assertTrue($projectUserRoleModel->addUser(2, 1, Role::PROJECT_MEMBER));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => key($actions),
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
-            'project_id' => 2,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 2,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => key($actions),
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $actionManager->attachEvents();
@@ -172,21 +172,21 @@ class ActionManagerTest extends Base
         $actionManager = new ActionManager($this->container);
         $actionManager->register($actionTaskAssignColorColumn);
 
-        $this->assertEquals(1, $projectModel->create(['name' =>'test1']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $actions = $actionManager->getAvailableActions();
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => key($actions),
-            'params' => ['column_id' => 2, 'color_id' => 'green'],
+            'params'      => ['column_id' => 2, 'color_id' => 'green'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => key($actions),
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $actionManager->attachEvents();
@@ -212,12 +212,12 @@ class ActionManagerTest extends Base
 
         $actions = $actionManager->getAvailableActions();
 
-        $this->assertEquals(1, $projectModel->create(['name' =>'test']));
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE,
             'action_name' => key($actions),
-            'params' => ['column_id' => 1, 'color_id' => 'red'],
+            'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $actionManager->attachEvents();

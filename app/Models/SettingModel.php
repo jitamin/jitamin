@@ -14,31 +14,31 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Application Settings
+ * Application Settings.
  */
 abstract class SettingModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'settings';
 
     /**
-     * Prepare data before save
+     * Prepare data before save.
      *
      * @abstract
-     * @access public
-     * @param  array $values
+     *
+     * @param array $values
+     *
      * @return array
      */
     abstract public function prepare(array $values);
 
     /**
-     * Get all settings
+     * Get all settings.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -47,11 +47,11 @@ abstract class SettingModel extends Base
     }
 
     /**
-     * Get a setting value
+     * Get a setting value.
      *
-     * @access public
-     * @param  string   $name
-     * @param  string   $default
+     * @param string $name
+     * @param string $default
+     *
      * @return mixed
      */
     public function getOption($name, $default = '')
@@ -65,11 +65,11 @@ abstract class SettingModel extends Base
     }
 
     /**
-     * Return true if a setting exists
+     * Return true if a setting exists.
      *
-     * @access public
-     * @param  string   $name
-     * @return boolean
+     * @param string $name
+     *
+     * @return bool
      */
     public function exists($name)
     {
@@ -80,11 +80,11 @@ abstract class SettingModel extends Base
     }
 
     /**
-     * Update or insert new settings
+     * Update or insert new settings.
      *
-     * @access public
-     * @param  array    $values
-     * @return boolean
+     * @param array $values
+     *
+     * @return bool
      */
     public function save(array $values)
     {
@@ -97,23 +97,23 @@ abstract class SettingModel extends Base
 
         foreach ($values as $option => $value) {
             if ($this->exists($option)) {
-                $results[] = $this->db->table(self::TABLE)->eq('option', $option)->update(array(
-                    'value' => $value,
+                $results[] = $this->db->table(self::TABLE)->eq('option', $option)->update([
+                    'value'      => $value,
                     'changed_on' => $timestamp,
                     'changed_by' => $user_id,
-                ));
+                ]);
             } else {
-                $results[] = $this->db->table(self::TABLE)->insert(array(
-                    'option' => $option,
-                    'value' => $value,
+                $results[] = $this->db->table(self::TABLE)->insert([
+                    'option'     => $option,
+                    'value'      => $value,
                     'changed_on' => $timestamp,
                     'changed_by' => $user_id,
-                ));
+                ]);
             }
         }
 
         $this->db->closeTransaction();
 
-        return ! in_array(false, $results, true);
+        return !in_array(false, $results, true);
     }
 }

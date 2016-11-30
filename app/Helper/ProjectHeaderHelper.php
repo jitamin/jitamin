@@ -14,58 +14,59 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Project Header Helper
+ * Project Header Helper.
  */
 class ProjectHeaderHelper extends Base
 {
     /**
-     * Get current query
+     * Get current query.
      *
-     * @access public
-     * @param  array  $project
+     * @param array $project
+     *
      * @return string
      */
     public function getSearchQuery(array $project)
     {
         $query = $this->request->getStringParam('q', $this->userSession->getFilters($project['id']));
         $this->userSession->setFilters($project['id'], $query);
+
         return urldecode($query);
     }
 
     /**
-     * Render project header (views switcher and search box)
+     * Render project header (views switcher and search box).
      *
-     * @access public
-     * @param  array  $project
-     * @param  string $controller
-     * @param  string $action
-     * @param  bool   $boardView
+     * @param array  $project
+     * @param string $controller
+     * @param string $action
+     * @param bool   $boardView
+     *
      * @return string
      */
     public function render(array $project, $controller, $action, $boardView = false)
     {
         $filters = [
             'controller' => $controller,
-            'action' => $action,
+            'action'     => $action,
             'project_id' => $project['id'],
-            'q' => $this->getSearchQuery($project),
+            'q'          => $this->getSearchQuery($project),
         ];
 
         return $this->template->render('project_header/header', [
-            'project' => $project,
-            'filters' => $filters,
-            'categories_list' => $this->categoryModel->getList($project['id'], false),
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], false),
+            'project'             => $project,
+            'filters'             => $filters,
+            'categories_list'     => $this->categoryModel->getList($project['id'], false),
+            'users_list'          => $this->projectUserRoleModel->getAssignableUsersList($project['id'], false),
             'custom_filters_list' => $this->customFilterModel->getAll($project['id'], $this->userSession->getId()),
-            'board_view' => $boardView,
+            'board_view'          => $boardView,
         ]);
     }
 
     /**
-     * Get project description
+     * Get project description.
      *
-     * @access public
-     * @param  array  &$project
+     * @param array &$project
+     *
      * @return string
      */
     public function getDescription(array &$project)
@@ -73,7 +74,7 @@ class ProjectHeaderHelper extends Base
         if ($project['owner_id'] > 0) {
             $description = t('Project owner: ').'**'.$this->helper->text->e($project['owner_name'] ?: $project['owner_username']).'**'.PHP_EOL.PHP_EOL;
 
-            if (! empty($project['description'])) {
+            if (!empty($project['description'])) {
                 $description .= '***'.PHP_EOL.PHP_EOL;
                 $description .= $project['description'];
             }

@@ -14,16 +14,16 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Task Analytic
+ * Task Analytic.
  */
 class TaskAnalyticModel extends Base
 {
     /**
-     * Get the time between date_creation and date_completed or now if empty
+     * Get the time between date_creation and date_completed or now if empty.
      *
-     * @access public
-     * @param  array   $task
-     * @return integer
+     * @param array $task
+     *
+     * @return int
      */
     public function getLeadTime(array $task)
     {
@@ -31,11 +31,11 @@ class TaskAnalyticModel extends Base
     }
 
     /**
-     * Get the time between date_started and date_completed or now if empty
+     * Get the time between date_started and date_completed or now if empty.
      *
-     * @access public
-     * @param  array   $task
-     * @return integer
+     * @param array $task
+     *
+     * @return int
      */
     public function getCycleTime(array $task)
     {
@@ -47,10 +47,10 @@ class TaskAnalyticModel extends Base
     }
 
     /**
-     * Get the average time spent in each column
+     * Get the average time spent in each column.
      *
-     * @access public
-     * @param  array   $task
+     * @param array $task
+     *
      * @return array
      */
     public function getTimeSpentByColumn(array $task)
@@ -67,8 +67,8 @@ class TaskAnalyticModel extends Base
             }
 
             $result[] = [
-                'id' => $column_id,
-                'title' => $column_title,
+                'id'         => $column_id,
+                'title'      => $column_title,
                 'time_spent' => $time_spent,
             ];
         }

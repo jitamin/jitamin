@@ -12,30 +12,26 @@
 namespace Hiject\Controller;
 
 /**
- * Action Creation Controller
+ * Action Creation Controller.
  */
 class ActionCreationController extends BaseController
 {
     /**
-     * Show the form (step 1)
-     *
-     * @access public
+     * Show the form (step 1).
      */
     public function create()
     {
         $project = $this->getProject();
 
         $this->response->html($this->template->render('action_creation/create', [
-            'project' => $project,
-            'values' => ['project_id' => $project['id']],
+            'project'           => $project,
+            'values'            => ['project_id' => $project['id']],
             'available_actions' => $this->actionManager->getAvailableActions(),
         ]));
     }
 
     /**
-     * Choose the event according to the action (step 2)
-     *
-     * @access public
+     * Choose the event according to the action (step 2).
      */
     public function event()
     {
@@ -47,17 +43,15 @@ class ActionCreationController extends BaseController
         }
 
         return $this->response->html($this->template->render('action_creation/event', [
-            'values' => $values,
-            'project' => $project,
+            'values'            => $values,
+            'project'           => $project,
             'available_actions' => $this->actionManager->getAvailableActions(),
-            'events' => $this->actionManager->getCompatibleEvents($values['action_name']),
+            'events'            => $this->actionManager->getCompatibleEvents($values['action_name']),
         ]));
     }
 
     /**
-     * Define action parameters (step 3)
-     *
-     * @access public
+     * Define action parameters (step 3).
      */
     public function params()
     {
@@ -79,26 +73,24 @@ class ActionCreationController extends BaseController
         unset($projects_list[$project['id']]);
 
         return $this->response->html($this->template->render('action_creation/params', [
-            'values' => $values,
-            'action_params' => $action_params,
-            'columns_list' => $this->columnModel->getList($project['id']),
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id']),
-            'projects_list' => $projects_list,
-            'colors_list' => $this->colorModel->getList(),
-            'categories_list' => $this->categoryModel->getList($project['id']),
-            'links_list' => $this->linkModel->getList(0, false),
-            'priorities_list' => $this->projectTaskPriorityModel->getPriorities($project),
-            'project' => $project,
+            'values'            => $values,
+            'action_params'     => $action_params,
+            'columns_list'      => $this->columnModel->getList($project['id']),
+            'users_list'        => $this->projectUserRoleModel->getAssignableUsersList($project['id']),
+            'projects_list'     => $projects_list,
+            'colors_list'       => $this->colorModel->getList(),
+            'categories_list'   => $this->categoryModel->getList($project['id']),
+            'links_list'        => $this->linkModel->getList(0, false),
+            'priorities_list'   => $this->projectTaskPriorityModel->getPriorities($project),
+            'project'           => $project,
             'available_actions' => $this->actionManager->getAvailableActions(),
-            'swimlane_list' => $this->swimlaneModel->getList($project['id']),
-            'events' => $this->actionManager->getCompatibleEvents($values['action_name']),
+            'swimlane_list'     => $this->swimlaneModel->getList($project['id']),
+            'events'            => $this->actionManager->getCompatibleEvents($values['action_name']),
         ]));
     }
 
     /**
-     * Save the action (last step)
-     *
-     * @access public
+     * Save the action (last step).
      */
     public function save()
     {
@@ -106,15 +98,14 @@ class ActionCreationController extends BaseController
     }
 
     /**
-     * Common method to save the action
+     * Common method to save the action.
      *
-     * @access private
-     * @param  array     $project   Project properties
-     * @param  array     $values    Form values
+     * @param array $project Project properties
+     * @param array $values  Form values
      */
     private function doCreation(array $project, array $values)
     {
-        list($valid, ) = $this->actionValidator->validateCreation($values);
+        list($valid) = $this->actionValidator->validateCreation($values);
 
         if ($valid) {
             if ($this->actionModel->create($values) !== false) {

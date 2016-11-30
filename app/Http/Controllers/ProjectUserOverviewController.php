@@ -11,12 +11,12 @@
 
 namespace Hiject\Controller;
 
-use Hiject\Model\UserModel;
-use Hiject\Model\TaskModel;
 use Hiject\Core\Security\Role;
+use Hiject\Model\TaskModel;
+use Hiject\Model\UserModel;
 
 /**
- * Project User overview
+ * Project User overview.
  */
 class ProjectUserOverviewController extends BaseController
 {
@@ -37,7 +37,7 @@ class ProjectUserOverviewController extends BaseController
     {
         list($user_id, $project_ids, $users) = $this->common();
 
-        $query = $this->projectPermissionModel->getQueryByRole($project_ids, $role)->callback(array($this->projectModel, 'applyColumnStats'));
+        $query = $this->projectPermissionModel->getQueryByRole($project_ids, $role)->callback([$this->projectModel, 'applyColumnStats']);
 
         if ($user_id !== UserModel::EVERYBODY_ID && isset($users[$user_id])) {
             $query->eq(UserModel::TABLE.'.id', $user_id);
@@ -53,9 +53,9 @@ class ProjectUserOverviewController extends BaseController
 
         $this->response->html($this->helper->layout->projectUser('project_user_overview/roles', [
             'paginator' => $paginator,
-            'title' => $title,
-            'user_id' => $user_id,
-            'users' => $users,
+            'title'     => $title,
+            'user_id'   => $user_id,
+            'users'     => $users,
         ]));
     }
 
@@ -79,15 +79,14 @@ class ProjectUserOverviewController extends BaseController
 
         $this->response->html($this->helper->layout->projectUser('project_user_overview/tasks', [
             'paginator' => $paginator,
-            'title' => $title,
-            'user_id' => $user_id,
-            'users' => $users,
+            'title'     => $title,
+            'user_id'   => $user_id,
+            'users'     => $users,
         ]));
     }
 
     /**
-     * Display the list of project managers
-     *
+     * Display the list of project managers.
      */
     public function managers()
     {
@@ -95,8 +94,7 @@ class ProjectUserOverviewController extends BaseController
     }
 
     /**
-     * Display the list of project members
-     *
+     * Display the list of project members.
      */
     public function members()
     {
@@ -104,8 +102,7 @@ class ProjectUserOverviewController extends BaseController
     }
 
     /**
-     * Display the list of open taks
-     *
+     * Display the list of open taks.
      */
     public function opens()
     {
@@ -113,8 +110,7 @@ class ProjectUserOverviewController extends BaseController
     }
 
     /**
-     * Display the list of closed tasks
-     *
+     * Display the list of closed tasks.
      */
     public function closed()
     {
@@ -122,7 +118,7 @@ class ProjectUserOverviewController extends BaseController
     }
 
     /**
-     * Users tooltip
+     * Users tooltip.
      */
     public function users()
     {

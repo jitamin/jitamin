@@ -12,23 +12,21 @@
 namespace Hiject\Core\Plugin;
 
 /**
- * Plugin Base class
+ * Plugin Base class.
  */
 abstract class Base extends \Hiject\Core\Base
 {
     /**
-     * Method called for each request
+     * Method called for each request.
      *
      * @abstract
-     * @access public
      */
     abstract public function initialize();
 
     /**
-     * Override default CSP rules
+     * Override default CSP rules.
      *
-     * @access public
-     * @param  array  $rules
+     * @param array $rules
      */
     public function setContentSecurityPolicy(array $rules)
     {
@@ -36,9 +34,8 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Returns all classes that needs to be stored in the DI container
+     * Returns all classes that needs to be stored in the DI container.
      *
-     * @access public
      * @return array
      */
     public function getClasses()
@@ -47,9 +44,8 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Returns all helper classes that needs to be stored in the DI container
+     * Returns all helper classes that needs to be stored in the DI container.
      *
-     * @access public
      * @return array
      */
     public function getHelpers()
@@ -58,11 +54,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Listen on internal events
+     * Listen on internal events.
      *
-     * @access public
-     * @param  string   $event
-     * @param  callable $callback
+     * @param string   $event
+     * @param callable $callback
      */
     public function on($event, $callback)
     {
@@ -74,11 +69,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Get plugin name
+     * Get plugin name.
      *
      * This method should be overridden by your Plugin class
      *
-     * @access public
      * @return string
      */
     public function getPluginName()
@@ -87,11 +81,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Get plugin description
+     * Get plugin description.
      *
      * This method should be overridden by your Plugin class
      *
-     * @access public
      * @return string
      */
     public function getPluginDescription()
@@ -100,11 +93,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Get plugin author
+     * Get plugin author.
      *
      * This method should be overridden by your Plugin class
      *
-     * @access public
      * @return string
      */
     public function getPluginAuthor()
@@ -113,11 +105,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Get plugin version
+     * Get plugin version.
      *
      * This method should be overridden by your Plugin class
      *
-     * @access public
      * @return string
      */
     public function getPluginVersion()
@@ -126,11 +117,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Get plugin homepage
+     * Get plugin homepage.
      *
      * This method should be overridden by your Plugin class
      *
-     * @access public
      * @return string
      */
     public function getPluginHomepage()

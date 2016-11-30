@@ -14,22 +14,20 @@ namespace Hiject\Bus\Job;
 use Hiject\Core\Base;
 
 /**
- * Class BaseJob
+ * Class BaseJob.
  */
 abstract class BaseJob extends Base
 {
     /**
-     * Job parameters
+     * Job parameters.
      *
-     * @access protected
      * @var array
      */
     protected $jobParams = [];
 
     /**
-     * Get job parameters
+     * Get job parameters.
      *
-     * @access public
      * @return array
      */
     public function getJobParams()

@@ -11,19 +11,19 @@
 
 namespace Hiject\Core\Plugin;
 
-use ZipArchive;
 use Hiject\Core\Tool;
+use ZipArchive;
 
 /**
- * Class Installer
+ * Class Installer.
  */
 class Installer extends \Hiject\Core\Base
 {
     /**
-     * Return true if Hiject is configured to install plugins
+     * Return true if Hiject is configured to install plugins.
      *
      * @static
-     * @access public
+     *
      * @return bool
      */
     public static function isConfigured()
@@ -32,17 +32,17 @@ class Installer extends \Hiject\Core\Base
     }
 
     /**
-     * Install a plugin
+     * Install a plugin.
      *
-     * @access public
-     * @param  string $archiveUrl
+     * @param string $archiveUrl
+     *
      * @throws PluginInstallerException
      */
     public function install($archiveUrl)
     {
         $zip = $this->downloadPluginArchive($archiveUrl);
 
-        if (! $zip->extractTo(PLUGINS_DIR)) {
+        if (!$zip->extractTo(PLUGINS_DIR)) {
             $this->cleanupArchive($zip);
             throw new PluginInstallerException(t('Unable to extract plugin archive.'));
         }
@@ -51,21 +51,21 @@ class Installer extends \Hiject\Core\Base
     }
 
     /**
-     * Uninstall a plugin
+     * Uninstall a plugin.
      *
-     * @access public
-     * @param  string $pluginId
+     * @param string $pluginId
+     *
      * @throws PluginInstallerException
      */
     public function uninstall($pluginId)
     {
         $pluginFolder = PLUGINS_DIR.DIRECTORY_SEPARATOR.basename($pluginId);
 
-        if (! file_exists($pluginFolder)) {
+        if (!file_exists($pluginFolder)) {
             throw new PluginInstallerException(t('Plugin not found.'));
         }
 
-        if (! is_writable($pluginFolder)) {
+        if (!is_writable($pluginFolder)) {
             throw new PluginInstallerException(e('You don\'t have the permission to remove this plugin.'));
         }
 
@@ -73,10 +73,10 @@ class Installer extends \Hiject\Core\Base
     }
 
     /**
-     * Update a plugin
+     * Update a plugin.
      *
-     * @access public
-     * @param  string $archiveUrl
+     * @param string $archiveUrl
+     *
      * @throws PluginInstallerException
      */
     public function update($archiveUrl)
@@ -86,7 +86,7 @@ class Installer extends \Hiject\Core\Base
         $firstEntry = $zip->statIndex(0);
         $this->uninstall($firstEntry['name']);
 
-        if (! $zip->extractTo(PLUGINS_DIR)) {
+        if (!$zip->extractTo(PLUGINS_DIR)) {
             $this->cleanupArchive($zip);
             throw new PluginInstallerException(t('Unable to extract plugin archive.'));
         }
@@ -95,12 +95,13 @@ class Installer extends \Hiject\Core\Base
     }
 
     /**
-     * Download archive from URL
+     * Download archive from URL.
      *
-     * @access protected
-     * @param  string $archiveUrl
-     * @return ZipArchive
+     * @param string $archiveUrl
+     *
      * @throws PluginInstallerException
+     *
+     * @return ZipArchive
      */
     protected function downloadPluginArchive($archiveUrl)
     {
@@ -132,9 +133,8 @@ class Installer extends \Hiject\Core\Base
     }
 
     /**
-     * Remove archive file
+     * Remove archive file.
      *
-     * @access protected
      * @param ZipArchive $zip
      */
     protected function cleanupArchive(ZipArchive $zip)

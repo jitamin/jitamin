@@ -12,13 +12,13 @@
 
         <!-- column in expanded mode -->
         <div class="board-column-expanded">
-            <?php if (! $not_editable && $this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
+            <?php if (!$not_editable && $this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
                 <div class="board-add-icon">
                     <?= $this->url->link('+', 'TaskCreationController', 'show', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover', t('Add a new task')) ?>
                 </div>
             <?php endif ?>
 
-            <?php if ($swimlane['nb_swimlanes'] > 1 && ! empty($column['column_nb_tasks'])): ?>
+            <?php if ($swimlane['nb_swimlanes'] > 1 && !empty($column['column_nb_tasks'])): ?>
                 <span title="<?= t('Total number of tasks in this column across all swimlanes') ?>" class="board-column-header-task-count">
                     (<span><?= $column['column_nb_tasks'] ?></span>)
                 </span>
@@ -55,13 +55,13 @@
                 <?php endif ?>
             </span>
 
-            <?php if (! $not_editable && ! empty($column['description'])): ?>
+            <?php if (!$not_editable && !empty($column['description'])): ?>
                 <span class="tooltip pull-right" title="<?= $this->text->markdownAttribute($column['description']) ?>">
                     &nbsp;<i class="fa fa-info-circle"></i>
                 </span>
             <?php endif ?>
 
-            <?php if (! empty($column['score'])): ?>
+            <?php if (!empty($column['score'])): ?>
                 <span class="pull-right" title="<?= t('Score') ?>">
                     <?= $column['score'] ?>
                 </span>

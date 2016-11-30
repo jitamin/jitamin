@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Class ProjectSettingsController
+ * Class ProjectSettingsController.
  */
 class ProjectSettingsController extends BaseController
 {
     /**
-     * Show the project information page
-     *
-     * @access public
+     * Show the project information page.
      */
     public function show()
     {
@@ -27,15 +25,13 @@ class ProjectSettingsController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_settings/show', [
             'project' => $project,
-            'stats' => $this->projectModel->getTaskStats($project['id']),
-            'title' => $project['name'],
+            'stats'   => $this->projectModel->getTaskStats($project['id']),
+            'title'   => $project['name'],
         ]));
     }
 
     /**
-     * Public access management
-     *
-     * @access public
+     * Public access management.
      */
     public function share()
     {
@@ -43,12 +39,12 @@ class ProjectSettingsController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_settings/share', [
             'project' => $project,
-            'title' => t('Public access'),
+            'title'   => t('Public access'),
         ]));
     }
 
     /**
-     * Change project sharing
+     * Change project sharing.
      *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
@@ -69,25 +65,23 @@ class ProjectSettingsController extends BaseController
     }
 
     /**
-     * Integrations page
-     *
-     * @access public
+     * Integrations page.
      */
     public function integrations()
     {
         $project = $this->getProject();
 
         $this->response->html($this->helper->layout->project('project_settings/integrations', [
-            'project' => $project,
-            'title' => t('Integrations'),
+            'project'       => $project,
+            'title'         => t('Integrations'),
             'webhook_token' => $this->configModel->get('webhook_token'),
-            'values' => $this->projectMetadataModel->getAll($project['id']),
-            'errors' => [],
+            'values'        => $this->projectMetadataModel->getAll($project['id']),
+            'errors'        => [],
         ]));
     }
 
     /**
-     * Update integrations
+     * Update integrations.
      *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -101,9 +95,7 @@ class ProjectSettingsController extends BaseController
     }
 
     /**
-     * Display project notifications
-     *
-     * @access public
+     * Display project notifications.
      */
     public function notifications()
     {
@@ -111,14 +103,14 @@ class ProjectSettingsController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_settings/notifications', [
             'notifications' => $this->projectNotificationModel->readSettings($project['id']),
-            'types' => $this->projectNotificationTypeModel->getTypes(),
-            'project' => $project,
-            'title' => t('Notifications'),
+            'types'         => $this->projectNotificationTypeModel->getTypes(),
+            'project'       => $project,
+            'title'         => t('Notifications'),
         ]));
     }
 
     /**
-     * Update notifications
+     * Update notifications.
      *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -133,11 +125,10 @@ class ProjectSettingsController extends BaseController
     }
 
     /**
-     * Duplicate a project
+     * Duplicate a project.
      *
      * @author Antonio Rabelo
      * @author Michael Lüpkes
-     * @access public
      */
     public function duplicate()
     {
@@ -145,12 +136,12 @@ class ProjectSettingsController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_settings/duplicate', [
             'project' => $project,
-            'title' => t('Clone this project')
+            'title'   => t('Clone this project'),
         ]));
     }
 
     /**
-     * Do project duplication
+     * Do project duplication.
      */
     public function doDuplication()
     {

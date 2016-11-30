@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignPrioritySwimlane;
 use Hiject\Bus\Event\TaskEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignPrioritySwimlane;
 
 class TaskAssignPrioritySwimlaneTest extends Base
 {
@@ -32,13 +32,13 @@ class TaskAssignPrioritySwimlaneTest extends Base
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
         $this->assertEquals(1, $task['priority']);
-                
+
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
                 'swimlane_id' => 2,
-            ]
+            ],
         ]);
 
         $action = new TaskAssignPrioritySwimlane($this->container);

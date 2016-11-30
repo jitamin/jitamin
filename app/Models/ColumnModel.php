@@ -14,22 +14,22 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Column Model
+ * Column Model.
  */
 class ColumnModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'columns';
 
     /**
-     * Get a column by the id
+     * Get a column by the id.
      *
-     * @access public
-     * @param  integer  $column_id    Column id
+     * @param int $column_id Column id
+     *
      * @return array
      */
     public function getById($column_id)
@@ -38,11 +38,11 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get projectId by the columnId
+     * Get projectId by the columnId.
      *
-     * @access public
-     * @param  integer  $column_id    Column id
-     * @return integer
+     * @param int $column_id Column id
+     *
+     * @return int
      */
     public function getProjectId($column_id)
     {
@@ -50,11 +50,11 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get the first column id for a given project
+     * Get the first column id for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @return integer
+     * @param int $project_id Project id
+     *
+     * @return int
      */
     public function getFirstColumnId($project_id)
     {
@@ -62,11 +62,11 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get the last column id for a given project
+     * Get the last column id for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @return integer
+     * @param int $project_id Project id
+     *
+     * @return int
      */
     public function getLastColumnId($project_id)
     {
@@ -74,11 +74,11 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get the position of the last column for a given project
+     * Get the position of the last column for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @return integer
+     * @param int $project_id Project id
+     *
+     * @return int
      */
     public function getLastColumnPosition($project_id)
     {
@@ -90,12 +90,12 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get a column id by the name
+     * Get a column id by the name.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  string   $title
-     * @return integer
+     * @param int    $project_id
+     * @param string $title
+     *
+     * @return int
      */
     public function getColumnIdByTitle($project_id, $title)
     {
@@ -103,11 +103,11 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get a column title by the id
+     * Get a column title by the id.
      *
-     * @access public
-     * @param  integer  $column_id
-     * @return integer
+     * @param int $column_id
+     *
+     * @return int
      */
     public function getColumnTitleById($column_id)
     {
@@ -115,10 +115,10 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get all columns sorted by position for a given project
+     * Get all columns sorted by position for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -127,71 +127,72 @@ class ColumnModel extends Base
     }
 
     /**
-     * Get the list of columns sorted by position [ column_id => title ]
+     * Get the list of columns sorted by position [ column_id => title ].
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @param  boolean  $prepend      Prepend a default value
+     * @param int  $project_id Project id
+     * @param bool $prepend    Prepend a default value
+     *
      * @return array
      */
     public function getList($project_id, $prepend = false)
     {
         $listing = $this->db->hashtable(self::TABLE)->eq('project_id', $project_id)->asc('position')->getAll('id', 'title');
+
         return $prepend ? [-1 => t('All columns')] + $listing : $listing;
     }
 
     /**
-     * Add a new column to the board
+     * Add a new column to the board.
      *
-     * @access public
-     * @param  integer $project_id  Project id
-     * @param  string  $title       Column title
-     * @param  integer $task_limit  Task limit
-     * @param  string  $description Column description
-     * @param  integer $hide_in_dashboard
+     * @param int    $project_id        Project id
+     * @param string $title             Column title
+     * @param int    $task_limit        Task limit
+     * @param string $description       Column description
+     * @param int    $hide_in_dashboard
+     *
      * @return bool|int
      */
     public function create($project_id, $title, $task_limit = 0, $description = '', $hide_in_dashboard = 0)
     {
         $values = [
-            'project_id' => $project_id,
-            'title' => $title,
-            'task_limit' => intval($task_limit),
-            'position' => $this->getLastColumnPosition($project_id) + 1,
+            'project_id'        => $project_id,
+            'title'             => $title,
+            'task_limit'        => intval($task_limit),
+            'position'          => $this->getLastColumnPosition($project_id) + 1,
             'hide_in_dashboard' => $hide_in_dashboard,
-            'description' => $description,
+            'description'       => $description,
         ];
 
         return $this->db->table(self::TABLE)->persist($values);
     }
 
     /**
-     * Update a column
+     * Update a column.
      *
-     * @access public
-     * @param  integer   $column_id     Column id
-     * @param  string    $title         Column title
-     * @param  integer   $task_limit    Task limit
-     * @param  string    $description   Optional description
-     * @param  integer   $hide_in_dashboard
-     * @return boolean
+     * @param int    $column_id         Column id
+     * @param string $title             Column title
+     * @param int    $task_limit        Task limit
+     * @param string $description       Optional description
+     * @param int    $hide_in_dashboard
+     *
+     * @return bool
      */
     public function update($column_id, $title, $task_limit = 0, $description = '', $hide_in_dashboard = 0)
     {
         return $this->db->table(self::TABLE)->eq('id', $column_id)->update([
-            'title' => $title,
-            'task_limit' => intval($task_limit),
+            'title'             => $title,
+            'task_limit'        => intval($task_limit),
             'hide_in_dashboard' => $hide_in_dashboard,
-            'description' => $description,
+            'description'       => $description,
         ]);
     }
 
     /**
-     * Remove a column and all tasks associated to this column
+     * Remove a column and all tasks associated to this column.
      *
-     * @access public
-     * @param  integer  $column_id    Column id
-     * @return boolean
+     * @param int $column_id Column id
+     *
+     * @return bool
      */
     public function remove($column_id)
     {
@@ -199,13 +200,13 @@ class ColumnModel extends Base
     }
 
     /**
-     * Change column position
+     * Change column position.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  integer  $column_id
-     * @param  integer  $position
-     * @return boolean
+     * @param int $project_id
+     * @param int $column_id
+     * @param int $position
+     *
+     * @return bool
      */
     public function changePosition($project_id, $column_id, $position)
     {

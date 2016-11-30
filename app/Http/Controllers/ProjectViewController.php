@@ -12,12 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Project Overview Controller
+ * Project Overview Controller.
  */
 class ProjectViewController extends BaseController
 {
     /**
-     * Show project overview
+     * Show project overview.
      */
     public function show()
     {
@@ -25,14 +25,14 @@ class ProjectViewController extends BaseController
         $this->projectModel->getColumnStats($project);
 
         $this->response->html($this->helper->layout->app('project_view/show', [
-            'project' => $project,
-            'title' => $project['name'],
+            'project'     => $project,
+            'title'       => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
-            'users' => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
-            'roles' => $this->projectRoleModel->getList($project['id']),
-            'events' => $this->helper->projectActivity->getProjectEvents($project['id'], 10),
-            'images' => $this->projectFileModel->getAllImages($project['id']),
-            'files' => $this->projectFileModel->getAllDocuments($project['id']),
+            'users'       => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
+            'roles'       => $this->projectRoleModel->getList($project['id']),
+            'events'      => $this->helper->projectActivity->getProjectEvents($project['id'], 10),
+            'images'      => $this->projectFileModel->getAllImages($project['id']),
+            'files'       => $this->projectFileModel->getAllDocuments($project['id']),
         ]));
     }
 }

@@ -12,7 +12,7 @@
 namespace Hiject\Core;
 
 /**
- * Thumbnail Generator
+ * Thumbnail Generator.
  */
 class Thumbnail
 {
@@ -21,75 +21,81 @@ class Thumbnail
     protected $dstImage;
 
     /**
-     * Create a thumbnail from a local file
+     * Create a thumbnail from a local file.
      *
      * @static
-     * @access public
-     * @param  string $filename
+     *
+     * @param string $filename
+     *
      * @return Thumbnail
      */
     public static function createFromFile($filename)
     {
         $self = new static();
         $self->fromFile($filename);
+
         return $self;
     }
 
     /**
-     * Create a thumbnail from a string
+     * Create a thumbnail from a string.
      *
      * @static
-     * @access public
-     * @param  string $blob
+     *
+     * @param string $blob
+     *
      * @return Thumbnail
      */
     public static function createFromString($blob)
     {
         $self = new static();
         $self->fromString($blob);
+
         return $self;
     }
 
     /**
-     * Load the local image file in memory with GD
+     * Load the local image file in memory with GD.
      *
-     * @access public
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return Thumbnail
      */
     public function fromFile($filename)
     {
         $this->metadata = getimagesize($filename);
         $this->srcImage = imagecreatefromstring(file_get_contents($filename));
+
         return $this;
     }
 
     /**
-     * Load the image blob in memory with GD
+     * Load the image blob in memory with GD.
      *
-     * @access public
-     * @param  string $blob
+     * @param string $blob
+     *
      * @return Thumbnail
      */
     public function fromString($blob)
     {
         if (!function_exists('getimagesizefromstring')) {
-            $uri = 'data://application/octet-stream;base64,' . base64_encode($blob);
+            $uri = 'data://application/octet-stream;base64,'.base64_encode($blob);
             $this->metadata = getimagesize($uri);
         } else {
             $this->metadata = getimagesizefromstring($blob);
         }
 
         $this->srcImage = imagecreatefromstring($blob);
+
         return $this;
     }
 
     /**
-     * Resize the image
+     * Resize the image.
      *
-     * @access public
-     * @param  int $width
-     * @param  int $height
+     * @param int $width
+     * @param int $height
+     *
      * @return Thumbnail
      */
     public function resize($width = 250, $height = 100)
@@ -135,10 +141,10 @@ class Thumbnail
     }
 
     /**
-     * Save the thumbnail to a local file
+     * Save the thumbnail to a local file.
      *
-     * @access public
-     * @param  string $filename
+     * @param string $filename
+     *
      * @return Thumbnail
      */
     public function toFile($filename)
@@ -146,13 +152,13 @@ class Thumbnail
         imagejpeg($this->dstImage, $filename);
         imagedestroy($this->dstImage);
         imagedestroy($this->srcImage);
+
         return $this;
     }
 
     /**
-     * Return the thumbnail as a string
+     * Return the thumbnail as a string.
      *
-     * @access public
      * @return string
      */
     public function toString()
@@ -161,13 +167,12 @@ class Thumbnail
         imagejpeg($this->dstImage, null);
         imagedestroy($this->dstImage);
         imagedestroy($this->srcImage);
+
         return ob_get_clean();
     }
 
     /**
-     * Output the thumbnail directly to the browser or stdout
-     *
-     * @access public
+     * Output the thumbnail directly to the browser or stdout.
      */
     public function toOutput()
     {

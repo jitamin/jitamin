@@ -15,17 +15,16 @@ use ArrayAccess;
 use Symfony\Component\EventDispatcher\Event as BaseEvent;
 
 /**
- * Generic event
+ * Generic event.
  */
 class GenericEvent extends BaseEvent implements ArrayAccess
 {
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  array $values
+     * @param array $values
      */
     public function __construct(array $values = [])
     {
@@ -33,9 +32,8 @@ class GenericEvent extends BaseEvent implements ArrayAccess
     }
 
     /**
-     * Get all
+     * Get all.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -44,11 +42,11 @@ class GenericEvent extends BaseEvent implements ArrayAccess
     }
 
     /**
-     * Set offset
+     * Set offset.
      *
-     * @access public
-     * @param  string $offset
-     * @param  string $value
+     * @param string $offset
+     * @param string $value
+     *
      * @return null
      */
     public function offsetSet($offset, $value)
@@ -61,11 +59,11 @@ class GenericEvent extends BaseEvent implements ArrayAccess
     }
 
     /**
-     * Check if the offset exists
+     * Check if the offset exists.
      *
-     * @access public
-     * @param  string $offset
-     * @return boolean
+     * @param string $offset
+     *
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -73,10 +71,10 @@ class GenericEvent extends BaseEvent implements ArrayAccess
     }
 
     /**
-     * Unset offset
+     * Unset offset.
      *
-     * @access public
-     * @param  string $offset
+     * @param string $offset
+     *
      * @return null
      */
     public function offsetUnset($offset)
@@ -85,10 +83,10 @@ class GenericEvent extends BaseEvent implements ArrayAccess
     }
 
     /**
-     * Get offset by it's key
+     * Get offset by it's key.
      *
-     * @access public
-     * @param  string $offset
+     * @param string $offset
+     *
      * @return array|null
      */
     public function offsetGet($offset)

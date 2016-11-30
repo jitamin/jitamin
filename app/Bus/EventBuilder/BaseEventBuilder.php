@@ -11,39 +11,38 @@
 
 namespace Hiject\Bus\EventBuilder;
 
-use Hiject\Core\Base;
 use Hiject\Bus\Event\GenericEvent;
+use Hiject\Core\Base;
 
 /**
- * Class BaseEventBuilder
+ * Class BaseEventBuilder.
  */
 abstract class BaseEventBuilder extends Base
 {
     /**
-     * Build event data
+     * Build event data.
      *
-     * @access public
      * @return GenericEvent|null
      */
     abstract public function buildEvent();
 
     /**
-     * Get event title with author
+     * Get event title with author.
      *
-     * @access public
-     * @param  string $author
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $author
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     abstract public function buildTitleWithAuthor($author, $eventName, array $eventData);
 
     /**
-     * Get event title without author
+     * Get event title without author.
      *
-     * @access public
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     abstract public function buildTitleWithoutAuthor($eventName, array $eventData);

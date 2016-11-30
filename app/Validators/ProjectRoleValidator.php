@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Class ProjectRoleValidator
+ * Class ProjectRoleValidator.
  */
 class ProjectRoleValidator extends BaseValidator
 {
     /**
-     * Validate creation
+     * Validate creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -32,16 +32,16 @@ class ProjectRoleValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate modification
+     * Validate modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -53,14 +53,13 @@ class ProjectRoleValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()

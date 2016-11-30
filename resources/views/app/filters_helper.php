@@ -10,7 +10,7 @@
         <li><a href="#" class="filter-helper" data-filter="status:open due:tomorrow"><?= t('Tasks due tomorrow') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open due:yesterday"><?= t('Tasks due yesterday') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:closed"><?= t('Closed tasks') ?></a></li>
-        <li><a href="#" class="filter-helper" data-filter="status:closed due:>=<?= date('Y-m-d', strtotime("last Monday"))?>"><?= t('Closed tasks due this week') ?></a></li>
+        <li><a href="#" class="filter-helper" data-filter="status:closed due:>=<?= date('Y-m-d', strtotime('last Monday'))?>"><?= t('Closed tasks due this week') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open"><?= t('Open tasks') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open assignee:nobody"><?= t('Not assigned') ?></a></li>
         <li><a href="#" class="filter-helper" data-filter="status:open category:none"><?= t('No category') ?></a></li>

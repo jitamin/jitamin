@@ -2,7 +2,7 @@
     <h2><?= t('Public access') ?></h2>
 </div>
 
-<?php if (! empty($user['token'])): ?>
+<?php if (!empty($user['token'])): ?>
     <div class="listing">
         <ul class="no-bullet">
             <li><strong><i class="fa fa-rss-square"></i> <?= $this->url->link(t('RSS feed'), 'FeedController', 'user', ['token' => $user['token']], false, '', '', true) ?></strong></li>

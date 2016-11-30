@@ -17,31 +17,27 @@ use Hiject\Filter\TaskStatusFilter;
 use Hiject\Model\TaskModel;
 
 /**
- * Calendar Controller
+ * Calendar Controller.
  */
 class CalendarController extends BaseController
 {
     /**
-     * Show calendar view for projects
-     *
-     * @access public
+     * Show calendar view for projects.
      */
     public function show()
     {
         $project = $this->getProject();
 
         $this->response->html($this->helper->layout->app('calendar/show', [
-            'project' => $project,
-            'title' => $project['name'],
-            'description' => $this->helper->projectHeader->getDescription($project),
+            'project'        => $project,
+            'title'          => $project['name'],
+            'description'    => $this->helper->projectHeader->getDescription($project),
             'check_interval' => $this->configModel->get('board_private_refresh_interval'),
         ]));
     }
 
     /**
-     * Get tasks to display on the calendar (project view)
-     *
-     * @access public
+     * Get tasks to display on the calendar (project view).
      */
     public function project()
     {
@@ -51,22 +47,20 @@ class CalendarController extends BaseController
         $search = $this->userSession->getFilters($project_id);
         $queryBuilder = $this->taskLexer->build($search)->withFilter(new TaskProjectFilter($project_id));
 
-        $events = $this->helper->calendar->getTaskDateDueEvents(clone($queryBuilder), $start, $end);
-        $events = array_merge($events, $this->helper->calendar->getTaskEvents(clone($queryBuilder), $start, $end));
+        $events = $this->helper->calendar->getTaskDateDueEvents(clone $queryBuilder, $start, $end);
+        $events = array_merge($events, $this->helper->calendar->getTaskEvents(clone $queryBuilder, $start, $end));
 
         $events = $this->hook->merge('controller:calendar:project:events', $events, [
             'project_id' => $project_id,
-            'start' => $start,
-            'end' => $end,
+            'start'      => $start,
+            'end'        => $end,
         ]);
 
         $this->response->json($events);
     }
 
     /**
-     * Get tasks to display on the calendar (user view)
-     *
-     * @access public
+     * Get tasks to display on the calendar (user view).
      */
     public function user()
     {
@@ -77,8 +71,8 @@ class CalendarController extends BaseController
             ->withFilter(new TaskAssigneeFilter($user_id))
             ->withFilter(new TaskStatusFilter(TaskModel::STATUS_OPEN));
 
-        $events = $this->helper->calendar->getTaskDateDueEvents(clone($queryBuilder), $start, $end);
-        $events = array_merge($events, $this->helper->calendar->getTaskEvents(clone($queryBuilder), $start, $end));
+        $events = $this->helper->calendar->getTaskDateDueEvents(clone $queryBuilder, $start, $end);
+        $events = array_merge($events, $this->helper->calendar->getTaskEvents(clone $queryBuilder, $start, $end));
 
         if ($this->configModel->get('calendar_user_subtasks_time_tracking') == 1) {
             $events = array_merge($events, $this->helper->calendar->getSubtaskTimeTrackingEvents($user_id, $start, $end));
@@ -86,17 +80,15 @@ class CalendarController extends BaseController
 
         $events = $this->hook->merge('controller:calendar:user:events', $events, [
             'user_id' => $user_id,
-            'start' => $start,
-            'end' => $end,
+            'start'   => $start,
+            'end'     => $end,
         ]);
 
         $this->response->json($events);
     }
 
     /**
-     * Update task due date
-     *
-     * @access public
+     * Update task due date.
      */
     public function save()
     {
@@ -104,7 +96,7 @@ class CalendarController extends BaseController
             $values = $this->request->getJson();
 
             $this->taskModificationModel->update([
-                'id' => $values['task_id'],
+                'id'       => $values['task_id'],
                 'date_due' => substr($values['date_due'], 0, 10),
             ]);
         }

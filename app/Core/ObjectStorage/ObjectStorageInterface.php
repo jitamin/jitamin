@@ -12,62 +12,60 @@
 namespace Hiject\Core\ObjectStorage;
 
 /**
- * Object Storage Interface
+ * Object Storage Interface.
  */
 interface ObjectStorageInterface
 {
     /**
-     * Fetch object contents
+     * Fetch object contents.
      *
-     * @access public
-     * @param  string  $key
+     * @param string $key
+     *
      * @return string
      */
     public function get($key);
 
     /**
-     * Save object
+     * Save object.
      *
-     * @access public
-     * @param  string  $key
-     * @param  string  $blob
+     * @param string $key
+     * @param string $blob
      */
     public function put($key, &$blob);
 
     /**
-     * Output directly object content
+     * Output directly object content.
      *
-     * @access public
-     * @param  string  $key
+     * @param string $key
      */
     public function output($key);
 
     /**
-     * Move local file to object storage
+     * Move local file to object storage.
      *
-     * @access public
-     * @param  string  $filename
-     * @param  string  $key
-     * @return boolean
+     * @param string $filename
+     * @param string $key
+     *
+     * @return bool
      */
     public function moveFile($filename, $key);
 
     /**
-     * Move uploaded file to object storage
+     * Move uploaded file to object storage.
      *
-     * @access public
-     * @param  string  $filename
-     * @param  string  $key
-     * @return boolean
+     * @param string $filename
+     * @param string $key
+     *
+     * @return bool
      */
     public function moveUploadedFile($filename, $key);
 
     /**
-     * Remove object
+     * Remove object.
      *
-     * @access public
-     * @param  string  $key
-     * @return boolean
+     * @param string $key
+     *
+     * @return bool
      */
     public function remove($key);
 }

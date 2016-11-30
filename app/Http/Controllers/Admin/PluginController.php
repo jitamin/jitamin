@@ -16,26 +16,24 @@ use Hiject\Core\Plugin\Installer;
 use Hiject\Core\Plugin\PluginInstallerException;
 
 /**
- * Class PluginController
+ * Class PluginController.
  */
 class PluginController extends BaseController
 {
     /**
-     * Display the plugin page
-     *
-     * @access public
+     * Display the plugin page.
      */
     public function show()
     {
         $this->response->html($this->helper->layout->plugin('plugin/show', [
-            'plugins' => $this->pluginLoader->getPlugins(),
-            'title' => t('Installed Plugins'),
+            'plugins'       => $this->pluginLoader->getPlugins(),
+            'title'         => t('Installed Plugins'),
             'is_configured' => Installer::isConfigured(),
         ]));
     }
 
     /**
-     * Display list of available plugins
+     * Display list of available plugins.
      */
     public function directory()
     {
@@ -48,13 +46,13 @@ class PluginController extends BaseController
         $this->response->html($this->helper->layout->plugin('plugin/directory', [
             'installed_plugins' => $installedPlugins,
             'available_plugins' => Directory::getInstance($this->container)->getAvailablePlugins(),
-            'title' => t('Plugin Directory'),
-            'is_configured' => Installer::isConfigured(),
+            'title'             => t('Plugin Directory'),
+            'is_configured'     => Installer::isConfigured(),
         ]));
     }
 
     /**
-     * Install plugin from URL
+     * Install plugin from URL.
      *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
@@ -75,7 +73,7 @@ class PluginController extends BaseController
     }
 
     /**
-     * Update plugin from URL
+     * Update plugin from URL.
      *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
@@ -96,7 +94,7 @@ class PluginController extends BaseController
     }
 
     /**
-     * Confirmation before to remove the plugin
+     * Confirmation before to remove the plugin.
      */
     public function confirm()
     {
@@ -105,12 +103,12 @@ class PluginController extends BaseController
 
         $this->response->html($this->template->render('plugin/remove', [
             'plugin_id' => $pluginId,
-            'plugin' => $plugins[$pluginId],
+            'plugin'    => $plugins[$pluginId],
         ]));
     }
 
     /**
-     * Remove a plugin
+     * Remove a plugin.
      *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */

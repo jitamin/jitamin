@@ -12,18 +12,18 @@
 namespace Hiject\Core\Cache;
 
 /**
- * Base Class for Cache Drivers
+ * Base Class for Cache Drivers.
  */
 abstract class BaseCache implements CacheInterface
 {
     /**
-     * Proxy cache
+     * Proxy cache.
      *
      * Note: Arguments must be scalar types
      *
-     * @access public
-     * @param  string    $class        Class instance
-     * @param  string    $method       Container method
+     * @param string $class  Class instance
+     * @param string $method Container method
+     *
      * @return mixed
      */
     public function proxy($class, $method)
@@ -35,7 +35,7 @@ abstract class BaseCache implements CacheInterface
         $result = $this->get($key);
 
         if ($result === null) {
-            $result = call_user_func_array(array($class, $method), array_splice($args, 1));
+            $result = call_user_func_array([$class, $method], array_splice($args, 1));
             $this->set($key, $result);
         }
 

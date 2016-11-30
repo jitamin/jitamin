@@ -11,19 +11,19 @@
                     <?= $this->url->link(t('Edit user'), 'UserModificationController', 'show', ['user_id' => $user['id']]) ?>
                 </li>
         <?php endif ?>
-        <?php if ($user['is_active'] == 1 && $this->user->hasAccess('UserStatusController', 'disable') && ! $this->user->isCurrentUser($user['id'])): ?>
+        <?php if ($user['is_active'] == 1 && $this->user->hasAccess('UserStatusController', 'disable') && !$this->user->isCurrentUser($user['id'])): ?>
             <li>
                 <i class="fa fa-times fa-fw"></i>
                 <?= $this->url->link(t('Disable'), 'UserStatusController', 'confirmDisable', ['user_id' => $user['id']], false, 'popover') ?>
             </li>
         <?php endif ?>
-        <?php if ($user['is_active'] == 0 && $this->user->hasAccess('UserStatusController', 'enable') && ! $this->user->isCurrentUser($user['id'])): ?>
+        <?php if ($user['is_active'] == 0 && $this->user->hasAccess('UserStatusController', 'enable') && !$this->user->isCurrentUser($user['id'])): ?>
             <li>
                 <i class="fa fa-check-square-o fa-fw"></i>
                 <?= $this->url->link(t('Enable'), 'UserStatusController', 'confirmEnable', ['user_id' => $user['id']], false, 'popover') ?>
             </li>
         <?php endif ?>
-        <?php if ($this->user->hasAccess('UserStatusController', 'remove') && ! $this->user->isCurrentUser($user['id'])): ?>
+        <?php if ($this->user->hasAccess('UserStatusController', 'remove') && !$this->user->isCurrentUser($user['id'])): ?>
             <li>
                 <i class="fa fa-trash-o fa-fw"></i>
                 <?= $this->url->link(t('Remove'), 'UserStatusController', 'confirmRemove', ['user_id' => $user['id']], false, 'popover') ?>

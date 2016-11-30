@@ -12,31 +12,28 @@
 namespace Hiject\Core\ExternalLink;
 
 /**
- * External Link Interface
+ * External Link Interface.
  */
 interface ExternalLinkInterface
 {
     /**
-     * Get link title
+     * Get link title.
      *
-     * @access public
      * @return string
      */
     public function getTitle();
 
     /**
-     * Get link URL
+     * Get link URL.
      *
-     * @access public
      * @return string
      */
     public function getUrl();
 
     /**
-     * Set link URL
+     * Set link URL.
      *
-     * @access public
-     * @param  string $url
+     * @param string $url
      */
     public function setUrl($url);
 }

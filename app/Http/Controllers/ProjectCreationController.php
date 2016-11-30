@@ -12,14 +12,13 @@
 namespace Hiject\Controller;
 
 /**
- * Project Creation Controller
+ * Project Creation Controller.
  */
 class ProjectCreationController extends BaseController
 {
     /**
-     * Display a form to create a new project
+     * Display a form to create a new project.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -29,18 +28,17 @@ class ProjectCreationController extends BaseController
         $projects_list = [0 => t('Do not duplicate anything')] + $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
 
         $this->response->html($this->helper->layout->app('project_creation/create', [
-            'values' => $values,
-            'errors' => $errors,
-            'is_private' => $is_private,
+            'values'        => $values,
+            'errors'        => $errors,
+            'is_private'    => $is_private,
             'projects_list' => $projects_list,
-            'title' => $is_private ? t('New private project') : t('New project'),
+            'title'         => $is_private ? t('New private project') : t('New project'),
         ]));
     }
 
     /**
-     * Display a form to create a private project
+     * Display a form to create a private project.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -51,9 +49,7 @@ class ProjectCreationController extends BaseController
     }
 
     /**
-     * Validate and save a new project
-     *
-     * @access public
+     * Validate and save a new project.
      */
     public function save()
     {
@@ -65,6 +61,7 @@ class ProjectCreationController extends BaseController
 
             if ($project_id > 0) {
                 $this->flash->success(t('Your project have been created successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', ['project_id' => $project_id]));
             }
 
@@ -75,11 +72,11 @@ class ProjectCreationController extends BaseController
     }
 
     /**
-     * Create or duplicate a project
+     * Create or duplicate a project.
      *
-     * @access private
-     * @param  array  $values
-     * @return boolean|integer
+     * @param array $values
+     *
+     * @return bool|int
      */
     private function createOrDuplicate(array $values)
     {
@@ -91,16 +88,16 @@ class ProjectCreationController extends BaseController
     }
 
     /**
-     * Save a new project
+     * Save a new project.
      *
-     * @access private
-     * @param  array  $values
-     * @return boolean|integer
+     * @param array $values
+     *
+     * @return bool|int
      */
     private function createNewProject(array $values)
     {
         $project = [
-            'name' => $values['name'],
+            'name'       => $values['name'],
             'is_private' => $values['is_private'],
         ];
 
@@ -108,11 +105,11 @@ class ProjectCreationController extends BaseController
     }
 
     /**
-     * Creatte from another project
+     * Creatte from another project.
      *
-     * @access private
-     * @param  array  $values
-     * @return boolean|integer
+     * @param array $values
+     *
+     * @return bool|int
      */
     private function duplicateNewProject(array $values)
     {

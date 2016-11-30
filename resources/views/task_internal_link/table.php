@@ -1,9 +1,9 @@
-<?php if (! empty($links)): ?>
+<?php if (!empty($links)): ?>
 <table class="task-links-table table-striped table-scrolling">
     <?php foreach ($links as $label => $grouped_links): ?>
         <?php $hide_td = false ?>
         <?php foreach ($grouped_links as $link): ?>
-            <?php if (! $hide_td): ?>
+            <?php if (!$hide_td): ?>
                 <tr>
                     <td class="column-40" colspan="2">
                         <?= t('This task') ?>
@@ -50,7 +50,7 @@
                 <?= $this->text->e($link['column_title']) ?>
             </td>
             <td>
-                <?php if (! empty($link['task_assignee_username'])): ?>
+                <?php if (!empty($link['task_assignee_username'])): ?>
                     <?php if ($editable): ?>
                         <?= $this->url->link($this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']), 'UserViewController', 'show', ['user_id' => $link['task_assignee_id']]) ?>
                     <?php else: ?>
@@ -59,11 +59,11 @@
                 <?php endif ?>
             </td>
             <td>
-                <?php if (! empty($link['task_time_spent'])): ?>
+                <?php if (!empty($link['task_time_spent'])): ?>
                     <strong><?= $this->text->e($link['task_time_spent']).'h' ?></strong> <?= t('spent') ?>
                 <?php endif ?>
 
-                <?php if (! empty($link['task_time_estimated'])): ?>
+                <?php if (!empty($link['task_time_estimated'])): ?>
                     <strong><?= $this->text->e($link['task_time_estimated']).'h' ?></strong> <?= t('estimated') ?>
                 <?php endif ?>
             </td>

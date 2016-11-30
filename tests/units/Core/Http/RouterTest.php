@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
+use Hiject\Core\Http\Request;
 use Hiject\Core\Http\Route;
 use Hiject\Core\Http\Router;
-use Hiject\Core\Http\Request;
 
 class RouterTest extends Base
 {
@@ -54,15 +54,15 @@ class RouterTest extends Base
     public function testDispatcherWithNoUrlRewrite()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/hiject/index.php',
-                'REQUEST_URI' => '/hiject/?controller=FakeController&action=myAction&myvar=value1',
-                'QUERY_STRING' => 'controller=FakeController&action=myAction&myvar=value1',
-                'REQUEST_METHOD' => 'GET'
+                'PHP_SELF'       => '/hiject/index.php',
+                'REQUEST_URI'    => '/hiject/?controller=FakeController&action=myAction&myvar=value1',
+                'QUERY_STRING'   => 'controller=FakeController&action=myAction&myvar=value1',
+                'REQUEST_METHOD' => 'GET',
             ],
             [
                 'controller' => 'FakeController',
-                'action' => 'myAction',
-                'myvar' => 'value1',
+                'action'     => 'myAction',
+                'myvar'      => 'value1',
             ]
         );
 
@@ -78,16 +78,16 @@ class RouterTest extends Base
     public function testDispatcherWithNoUrlRewriteAndPlugin()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/hiject/index.php',
-                'REQUEST_URI' => '/hiject/?controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
-                'QUERY_STRING' => 'controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
-                'REQUEST_METHOD' => 'GET'
+                'PHP_SELF'       => '/hiject/index.php',
+                'REQUEST_URI'    => '/hiject/?controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
+                'QUERY_STRING'   => 'controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
+                'REQUEST_METHOD' => 'GET',
             ],
             [
                 'controller' => 'FakeController',
-                'action' => 'myAction',
-                'myvar' => 'value1',
-                'plugin' => 'myplugin',
+                'action'     => 'myAction',
+                'myvar'      => 'value1',
+                'plugin'     => 'myplugin',
             ]
         );
 
@@ -103,10 +103,10 @@ class RouterTest extends Base
     public function testDispatcherWithUrlRewrite()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/hiject/index.php',
-                'REQUEST_URI' => '/hiject/my/route/123?myvar=value1',
-                'QUERY_STRING' => 'myvar=value1',
-                'REQUEST_METHOD' => 'GET'
+                'PHP_SELF'       => '/hiject/index.php',
+                'REQUEST_URI'    => '/hiject/my/route/123?myvar=value1',
+                'QUERY_STRING'   => 'myvar=value1',
+                'REQUEST_METHOD' => 'GET',
             ],
             [
                 'myvar' => 'value1',
@@ -130,10 +130,10 @@ class RouterTest extends Base
     public function testDispatcherWithUrlRewriteWithPlugin()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF' => '/hiject/index.php',
-                'REQUEST_URI' => '/hiject/my/plugin/route/123?myvar=value1',
-                'QUERY_STRING' => 'myvar=value1',
-                'REQUEST_METHOD' => 'GET'
+                'PHP_SELF'       => '/hiject/index.php',
+                'REQUEST_URI'    => '/hiject/my/plugin/route/123?myvar=value1',
+                'QUERY_STRING'   => 'myvar=value1',
+                'REQUEST_METHOD' => 'GET',
             ],
             [
                 'myvar' => 'value1',

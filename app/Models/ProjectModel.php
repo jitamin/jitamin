@@ -12,54 +12,54 @@
 namespace Hiject\Model;
 
 use Hiject\Core\Base;
-use Hiject\Core\Security\Token;
 use Hiject\Core\Security\Role;
+use Hiject\Core\Security\Token;
 
 /**
- * Project model
+ * Project model.
  */
 class ProjectModel extends Base
 {
     /**
-     * SQL table name for projects
+     * SQL table name for projects.
      *
      * @var string
      */
     const TABLE = 'projects';
 
     /**
-     * Value for active project
+     * Value for active project.
      *
-     * @var integer
+     * @var int
      */
     const ACTIVE = 1;
 
     /**
-     * Value for inactive project
+     * Value for inactive project.
      *
-     * @var integer
+     * @var int
      */
     const INACTIVE = 0;
 
     /**
-     * Value for private project
+     * Value for private project.
      *
-     * @var integer
+     * @var int
      */
     const TYPE_PRIVATE = 1;
 
     /**
-     * Value for team project
+     * Value for team project.
      *
-     * @var integer
+     * @var int
      */
     const TYPE_TEAM = 0;
 
     /**
-     * Get a project by the id
+     * Get a project by the id.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getById($project_id)
@@ -68,10 +68,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get a project by id with owner name
+     * Get a project by id with owner name.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getByIdWithOwner($project_id)
@@ -84,10 +84,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get a project by the name
+     * Get a project by the name.
      *
-     * @access public
-     * @param  string     $name    Project name
+     * @param string $name Project name
+     *
      * @return array
      */
     public function getByName($name)
@@ -96,11 +96,11 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get a project by the identifier (code)
+     * Get a project by the identifier (code).
      *
-     * @access public
-     * @param  string  $identifier
-     * @return array|boolean
+     * @param string $identifier
+     *
+     * @return array|bool
      */
     public function getByIdentifier($identifier)
     {
@@ -112,11 +112,11 @@ class ProjectModel extends Base
     }
 
     /**
-     * Fetch project data by using the token
+     * Fetch project data by using the token.
      *
-     * @access public
-     * @param  string   $token    Token
-     * @return array|boolean
+     * @param string $token Token
+     *
+     * @return array|bool
      */
     public function getByToken($token)
     {
@@ -128,9 +128,8 @@ class ProjectModel extends Base
     }
 
     /**
-     * Return the first project from the database (no sorting)
+     * Return the first project from the database (no sorting).
      *
-     * @access public
      * @return array
      */
     public function getFirst()
@@ -139,11 +138,11 @@ class ProjectModel extends Base
     }
 
     /**
-     * Return true if the project is private
+     * Return true if the project is private.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @return boolean
+     * @param int $project_id Project id
+     *
+     * @return bool
      */
     public function isPrivate($project_id)
     {
@@ -151,9 +150,8 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get all projects
+     * Get all projects.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -162,10 +160,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get all projects with given Ids
+     * Get all projects with given Ids.
      *
-     * @access public
-     * @param  integer[]   $project_ids
+     * @param int[] $project_ids
+     *
      * @return array
      */
     public function getAllByIds(array $project_ids)
@@ -178,9 +176,8 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get all project ids
+     * Get all project ids.
      *
-     * @access public
      * @return array
      */
     public function getAllIds()
@@ -189,10 +186,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Return the list of all projects
+     * Return the list of all projects.
      *
-     * @access public
-     * @param  bool     $prepend   If true, prepend to the list the value 'None'
+     * @param bool $prepend If true, prepend to the list the value 'None'
+     *
      * @return array
      */
     public function getList($prepend = true)
@@ -205,10 +202,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get all projects with all its data for a given status
+     * Get all projects with all its data for a given status.
      *
-     * @access public
-     * @param  integer   $status   Project status: self::ACTIVE or self:INACTIVE
+     * @param int $status Project status: self::ACTIVE or self:INACTIVE
+     *
      * @return array
      */
     public function getAllByStatus($status)
@@ -221,10 +218,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get a list of project by status
+     * Get a list of project by status.
      *
-     * @access public
-     * @param  integer   $status   Project status: self::ACTIVE or self:INACTIVE
+     * @param int $status Project status: self::ACTIVE or self:INACTIVE
+     *
      * @return array
      */
     public function getListByStatus($status)
@@ -237,11 +234,11 @@ class ProjectModel extends Base
     }
 
     /**
-     * Return the number of projects by status
+     * Return the number of projects by status.
      *
-     * @access public
-     * @param  integer   $status   Status: self::ACTIVE or self:INACTIVE
-     * @return integer
+     * @param int $status Status: self::ACTIVE or self:INACTIVE
+     *
+     * @return int
      */
     public function countByStatus($status)
     {
@@ -252,10 +249,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Gather some task metrics for a given project
+     * Gather some task metrics for a given project.
      *
-     * @access public
-     * @param  integer    $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getTaskStats($project_id)
@@ -278,10 +275,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get stats for each column of a project
+     * Get stats for each column of a project.
      *
-     * @access public
-     * @param  array    $project
+     * @param array $project
+     *
      * @return array
      */
     public function getColumnStats(array &$project)
@@ -299,10 +296,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Apply column stats to a collection of projects (filter callback)
+     * Apply column stats to a collection of projects (filter callback).
      *
-     * @access public
-     * @param  array    $projects
+     * @param array $projects
+     *
      * @return array
      */
     public function applyColumnStats(array $projects)
@@ -315,20 +312,20 @@ class ProjectModel extends Base
     }
 
     /**
-     * Get project summary for a list of project
+     * Get project summary for a list of project.
      *
-     * @access public
-     * @param  array      $project_ids     List of project id
+     * @param array $project_ids List of project id
+     *
      * @return \PicoDb\Table
      */
     public function getQueryColumnStats(array $project_ids)
     {
         if (empty($project_ids)) {
-            return $this->db->table(ProjectModel::TABLE)->eq(ProjectModel::TABLE.'.id', 0);
+            return $this->db->table(self::TABLE)->eq(self::TABLE.'.id', 0);
         }
 
         return $this->db
-                    ->table(ProjectModel::TABLE)
+                    ->table(self::TABLE)
                     ->columns(self::TABLE.'.*', UserModel::TABLE.'.username AS owner_username', UserModel::TABLE.'.name AS owner_name')
                     ->join(UserModel::TABLE, 'id', 'owner_id')
                     ->in(self::TABLE.'.id', $project_ids)
@@ -336,13 +333,13 @@ class ProjectModel extends Base
     }
 
     /**
-     * Create a project
+     * Create a project.
      *
-     * @access public
-     * @param  array    $values     Form values
-     * @param  integer  $user_id    User who create the project
-     * @param  bool     $add_user   Automatically add the user
-     * @return integer              Project id
+     * @param array $values   Form values
+     * @param int   $user_id  User who create the project
+     * @param bool  $add_user Automatically add the user
+     *
+     * @return int Project id
      */
     public function create(array $values, $user_id = 0, $add_user = false)
     {
@@ -353,21 +350,23 @@ class ProjectModel extends Base
         $values['is_private'] = empty($values['is_private']) ? 0 : 1;
         $values['owner_id'] = $user_id;
 
-        if (! empty($values['identifier'])) {
+        if (!empty($values['identifier'])) {
             $values['identifier'] = strtoupper($values['identifier']);
         }
 
         $this->helper->model->convertIntegerFields($values, ['priority_default', 'priority_start', 'priority_end']);
 
-        if (! $this->db->table(self::TABLE)->save($values)) {
+        if (!$this->db->table(self::TABLE)->save($values)) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
         $project_id = $this->db->getLastId();
 
-        if (! $this->boardModel->create($project_id, $this->boardModel->getUserColumns())) {
+        if (!$this->boardModel->create($project_id, $this->boardModel->getUserColumns())) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -383,11 +382,11 @@ class ProjectModel extends Base
     }
 
     /**
-     * Check if the project have been modified
+     * Check if the project have been modified.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @param  integer   $timestamp     Timestamp
+     * @param int $project_id Project id
+     * @param int $timestamp  Timestamp
+     *
      * @return bool
      */
     public function isModifiedSince($project_id, $timestamp)
@@ -399,37 +398,37 @@ class ProjectModel extends Base
     }
 
     /**
-     * Update modification date
+     * Update modification date.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function updateModificationDate($project_id)
     {
         return $this->db->table(self::TABLE)->eq('id', $project_id)->update([
-            'last_modified' => time()
+            'last_modified' => time(),
         ]);
     }
 
     /**
-     * Update a project
+     * Update a project.
      *
-     * @access public
-     * @param  array    $values    Form values
+     * @param array $values Form values
+     *
      * @return bool
      */
     public function update(array $values)
     {
-        if (! empty($values['identifier'])) {
+        if (!empty($values['identifier'])) {
             $values['identifier'] = strtoupper($values['identifier']);
         }
 
-        if (! empty($values['start_date'])) {
+        if (!empty($values['start_date'])) {
             $values['start_date'] = $this->dateParser->getIsoDate($values['start_date']);
         }
 
-        if (! empty($values['end_date'])) {
+        if (!empty($values['end_date'])) {
             $values['end_date'] = $this->dateParser->getIsoDate($values['end_date']);
         }
 
@@ -440,10 +439,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Remove a project
+     * Remove a project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function remove($project_id)
@@ -452,11 +451,11 @@ class ProjectModel extends Base
     }
 
     /**
-     * Return true if the project exists
+     * Return true if the project exists.
      *
-     * @access public
-     * @param  integer    $project_id   Project id
-     * @return boolean
+     * @param int $project_id Project id
+     *
+     * @return bool
      */
     public function exists($project_id)
     {
@@ -464,10 +463,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Enable a project
+     * Enable a project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function enable($project_id)
@@ -480,10 +479,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Disable a project
+     * Disable a project.
      *
-     * @access public
-     * @param  integer   $project_id   Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function disable($project_id)
@@ -496,10 +495,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Enable public access for a project
+     * Enable public access for a project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function enablePublicAccess($project_id)
@@ -512,10 +511,10 @@ class ProjectModel extends Base
     }
 
     /**
-     * Disable public access for a project
+     * Disable public access for a project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return bool
      */
     public function disablePublicAccess($project_id)

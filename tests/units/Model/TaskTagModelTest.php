@@ -93,28 +93,28 @@ class TaskTagModelTest extends Base
         $expected = [
             1 => [
                 [
-                    'id' => 1,
-                    'name' => 'My tag 1',
-                    'task_id' => 1
+                    'id'      => 1,
+                    'name'    => 'My tag 1',
+                    'task_id' => 1,
                 ],
                 [
-                    'id' => 2,
-                    'name' => 'My tag 2',
-                    'task_id' => 1
+                    'id'      => 2,
+                    'name'    => 'My tag 2',
+                    'task_id' => 1,
                 ],
                 [
-                    'id' => 3,
-                    'name' => 'My tag 3',
-                    'task_id' => 1
+                    'id'      => 3,
+                    'name'    => 'My tag 3',
+                    'task_id' => 1,
                 ],
             ],
             2 => [
                 [
-                    'id' => 3,
-                    'name' => 'My tag 3',
+                    'id'      => 3,
+                    'name'    => 'My tag 3',
                     'task_id' => 2,
-                ]
-            ]
+                ],
+            ],
         ];
 
         $this->assertEquals($expected, $tags);

@@ -41,8 +41,8 @@ class GroupProcedureTest extends BaseProcedureTest
     public function assertUpdateGroup()
     {
         $this->assertTrue($this->app->updateGroup([
-            'group_id' => $this->groupId2,
-            'name' => 'My Group C',
+            'group_id'    => $this->groupId2,
+            'name'        => 'My Group C',
             'external_id' => 'something else',
         ]));
 

@@ -14,28 +14,31 @@ namespace Hiject\Bus\Job;
 use Hiject\Bus\EventBuilder\ProjectFileEventBuilder;
 
 /**
- * Class ProjectFileEventJob
+ * Class ProjectFileEventJob.
  */
 class ProjectFileEventJob extends BaseJob
 {
     /**
-     * Set job params
+     * Set job params.
      *
-     * @param  int    $fileId
-     * @param  string $eventName
+     * @param int    $fileId
+     * @param string $eventName
+     *
      * @return $this
      */
     public function withParams($fileId, $eventName)
     {
         $this->jobParams = [$fileId, $eventName];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @param  int    $fileId
-     * @param  string $eventName
+     * @param int    $fileId
+     * @param string $eventName
+     *
      * @return $this
      */
     public function execute($fileId, $eventName)

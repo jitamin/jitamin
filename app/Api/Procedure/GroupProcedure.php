@@ -12,7 +12,7 @@
 namespace Hiject\Api\Procedure;
 
 /**
- * Group API controller
+ * Group API controller.
  */
 class GroupProcedure extends BaseProcedure
 {
@@ -24,8 +24,8 @@ class GroupProcedure extends BaseProcedure
     public function updateGroup($group_id, $name = null, $external_id = null)
     {
         $values = [
-            'id' => $group_id,
-            'name' => $name,
+            'id'          => $group_id,
+            'name'        => $name,
             'external_id' => $external_id,
         ];
 

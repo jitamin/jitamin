@@ -11,35 +11,32 @@
 
 namespace Hiject\User;
 
-use Hiject\Core\User\UserProviderInterface;
 use Hiject\Core\Security\Role;
+use Hiject\Core\User\UserProviderInterface;
 
 /**
- * Reverse Proxy User Provider
+ * Reverse Proxy User Provider.
  */
 class ReverseProxyUserProvider implements UserProviderInterface
 {
     /**
-     * Username
+     * Username.
      *
-     * @access protected
      * @var string
      */
     protected $username = '';
 
     /**
-     * User profile if the user already exists
+     * User profile if the user already exists.
      *
-     * @access protected
      * @var array
      */
     private $userProfile = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
      */
     public function __construct($username, array $userProfile = [])
     {
@@ -48,10 +45,9 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Return true to allow automatic user creation
+     * Return true to allow automatic user creation.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isUserCreationAllowed()
     {
@@ -59,9 +55,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get internal id
+     * Get internal id.
      *
-     * @access public
      * @return string
      */
     public function getInternalId()
@@ -70,9 +65,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external id column name
+     * Get external id column name.
      *
-     * @access public
      * @return string
      */
     public function getExternalIdColumn()
@@ -81,9 +75,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external id
+     * Get external id.
      *
-     * @access public
      * @return string
      */
     public function getExternalId()
@@ -92,9 +85,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user role
+     * Get user role.
      *
-     * @access public
      * @return string
      */
     public function getRole()
@@ -111,9 +103,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get username
+     * Get username.
      *
-     * @access public
      * @return string
      */
     public function getUsername()
@@ -122,9 +113,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get full name
+     * Get full name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -133,9 +123,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user email
+     * Get user email.
      *
-     * @access public
      * @return string
      */
     public function getEmail()
@@ -144,9 +133,8 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external group ids
+     * Get external group ids.
      *
-     * @access public
      * @return array
      */
     public function getExternalGroupIds()
@@ -155,15 +143,14 @@ class ReverseProxyUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get extra user attributes
+     * Get extra user attributes.
      *
-     * @access public
      * @return array
      */
     public function getExtraAttributes()
     {
         return [
-            'is_ldap_user' => 1,
+            'is_ldap_user'       => 1,
             'disable_login_form' => 1,
         ];
     }

@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TransitionModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskFinderModel;
 use Hiject\Analytic\AverageTimeSpentColumnAnalytic;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
+use Hiject\Model\TransitionModel;
 
 class AverageTimeSpentColumnAnalyticTest extends Base
 {
@@ -39,8 +39,8 @@ class AverageTimeSpentColumnAnalyticTest extends Base
         $stats = $averageLeadCycleTimeAnalytic->build(1);
 
         $this->assertEquals(2, $stats[1]['count']);
-        $this->assertEquals(3600+1800, $stats[1]['time_spent'], '', 3);
-        $this->assertEquals((int) ((3600+1800)/2), $stats[1]['average'], '', 3);
+        $this->assertEquals(3600 + 1800, $stats[1]['time_spent'], '', 3);
+        $this->assertEquals((int) ((3600 + 1800) / 2), $stats[1]['average'], '', 3);
         $this->assertEquals('Backlog', $stats[1]['title']);
 
         $this->assertEquals(0, $stats[2]['count']);
@@ -88,8 +88,8 @@ class AverageTimeSpentColumnAnalyticTest extends Base
         $stats = $averageLeadCycleTimeAnalytic->build(1);
 
         $this->assertEquals(2, $stats[1]['count']);
-        $this->assertEquals(3600+1800, $stats[1]['time_spent'], '', 3);
-        $this->assertEquals((int) ((3600+1800)/2), $stats[1]['average'], '', 3);
+        $this->assertEquals(3600 + 1800, $stats[1]['time_spent'], '', 3);
+        $this->assertEquals((int) ((3600 + 1800) / 2), $stats[1]['average'], '', 3);
         $this->assertEquals('Backlog', $stats[1]['title']);
 
         $this->assertEquals(0, $stats[2]['count']);

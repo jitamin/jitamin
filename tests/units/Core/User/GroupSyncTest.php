@@ -12,8 +12,8 @@
 require_once __DIR__.'/../../Base.php';
 
 use Hiject\Core\User\GroupSync;
-use Hiject\Model\GroupModel;
 use Hiject\Model\GroupMemberModel;
+use Hiject\Model\GroupModel;
 
 class GroupSyncTest extends Base
 {

@@ -14,21 +14,21 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Avatar Helper
+ * Avatar Helper.
  */
 class AvatarHelper extends Base
 {
     /**
-     * Render user avatar
+     * Render user avatar.
      *
-     * @access public
-     * @param  string  $user_id
-     * @param  string  $username
-     * @param  string  $name
-     * @param  string  $email
-     * @param  string  $avatar_path
-     * @param  string  $css
-     * @param  int     $size
+     * @param string $user_id
+     * @param string $username
+     * @param string $name
+     * @param string $email
+     * @param string $avatar_path
+     * @param string $css
+     * @param int    $size
+     *
      * @return string
      */
     public function render($user_id, $username, $name, $email, $avatar_path, $css = 'avatar-left', $size = 48)
@@ -43,15 +43,15 @@ class AvatarHelper extends Base
     }
 
     /**
-     * Render small user avatar
+     * Render small user avatar.
      *
-     * @access public
-     * @param  string $user_id
-     * @param  string $username
-     * @param  string $name
-     * @param  string $email
-     * @param  string $avatar_path
-     * @param  string $css
+     * @param string $user_id
+     * @param string $username
+     * @param string $name
+     * @param string $email
+     * @param string $avatar_path
+     * @param string $css
+     *
      * @return string
      */
     public function small($user_id, $username, $name, $email, $avatar_path, $css = '')
@@ -60,15 +60,16 @@ class AvatarHelper extends Base
     }
 
     /**
-     * Get a small avatar for the current user
+     * Get a small avatar for the current user.
      *
-     * @access public
-     * @param  string $css
+     * @param string $css
+     *
      * @return string
      */
     public function currentUserSmall($css = '')
     {
         $user = $this->userSession->getAll();
+
         return $this->small($user['id'], $user['username'], $user['name'], $user['email'], $user['avatar_path'], $css);
     }
 }

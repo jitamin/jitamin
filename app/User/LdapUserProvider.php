@@ -15,86 +15,77 @@ use Hiject\Core\User\UserProviderInterface;
 use Hiject\Model\LanguageModel;
 
 /**
- * LDAP User Provider
+ * LDAP User Provider.
  */
 class LdapUserProvider implements UserProviderInterface
 {
     /**
-     * LDAP DN
+     * LDAP DN.
      *
-     * @access protected
      * @var string
      */
     protected $dn;
 
     /**
-     * LDAP username
+     * LDAP username.
      *
-     * @access protected
      * @var string
      */
     protected $username;
 
     /**
-     * User name
+     * User name.
      *
-     * @access protected
      * @var string
      */
     protected $name;
 
     /**
-     * Email
+     * Email.
      *
-     * @access protected
      * @var string
      */
     protected $email;
 
     /**
-     * User role
+     * User role.
      *
-     * @access protected
      * @var string
      */
     protected $role;
 
     /**
-     * Group LDAP DNs
+     * Group LDAP DNs.
      *
-     * @access protected
      * @var string[]
      */
     protected $groupIds;
 
     /**
-     * User photo
+     * User photo.
      *
-     * @access protected
      * @var string
      */
     protected $photo = '';
 
     /**
-     * User language
+     * User language.
      *
-     * @access protected
      * @var string
      */
     protected $language = '';
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string   $dn
-     * @param  string   $username
-     * @param  string   $name
-     * @param  string   $email
-     * @param  string   $role
-     * @param  string[] $groupIds
-     * @param  string   $photo
-     * @param  string   $language
+     * @param string   $dn
+     * @param string   $username
+     * @param string   $name
+     * @param string   $email
+     * @param string   $role
+     * @param string[] $groupIds
+     * @param string   $photo
+     * @param string   $language
      */
     public function __construct($dn, $username, $name, $email, $role, array $groupIds, $photo = '', $language = '')
     {
@@ -109,10 +100,9 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Return true to allow automatic user creation
+     * Return true to allow automatic user creation.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function isUserCreationAllowed()
     {
@@ -120,9 +110,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get internal id
+     * Get internal id.
      *
-     * @access public
      * @return string
      */
     public function getInternalId()
@@ -131,9 +120,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external id column name
+     * Get external id column name.
      *
-     * @access public
      * @return string
      */
     public function getExternalIdColumn()
@@ -142,9 +130,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get external id
+     * Get external id.
      *
-     * @access public
      * @return string
      */
     public function getExternalId()
@@ -153,9 +140,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user role
+     * Get user role.
      *
-     * @access public
      * @return string
      */
     public function getRole()
@@ -164,9 +150,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get username
+     * Get username.
      *
-     * @access public
      * @return string
      */
     public function getUsername()
@@ -175,9 +160,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get full name
+     * Get full name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -186,9 +170,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user email
+     * Get user email.
      *
-     * @access public
      * @return string
      */
     public function getEmail()
@@ -197,9 +180,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get groups DN
+     * Get groups DN.
      *
-     * @access public
      * @return string[]
      */
     public function getExternalGroupIds()
@@ -208,16 +190,15 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get extra user attributes
+     * Get extra user attributes.
      *
-     * @access public
      * @return array
      */
     public function getExtraAttributes()
     {
         $attributes = ['is_ldap_user' => 1];
 
-        if (! empty($this->language)) {
+        if (!empty($this->language)) {
             $attributes['language'] = LanguageModel::findCode($this->language);
         }
 
@@ -225,9 +206,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get User DN
+     * Get User DN.
      *
-     * @access public
      * @return string
      */
     public function getDn()
@@ -236,9 +216,8 @@ class LdapUserProvider implements UserProviderInterface
     }
 
     /**
-     * Get user photo
+     * Get user photo.
      *
-     * @access public
      * @return string
      */
     public function getPhoto()

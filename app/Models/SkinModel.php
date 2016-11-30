@@ -14,15 +14,15 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class Skin
+ * Class Skin.
  */
 class SkinModel extends Base
 {
     /**
-     * Get available skins
+     * Get available skins.
      *
-     * @access public
-     * @param  boolean   $prepend  Prepend a default value
+     * @param bool $prepend Prepend a default value
+     *
      * @return array
      */
     public function getSkins($prepend = false)
@@ -30,12 +30,12 @@ class SkinModel extends Base
         // Sorted by value
         $skins = [
             'default' => t('None'),
-            'blue' => t('Blue'),
-            'green' => t('Green'),
-            'purple' => t('Purple'),
-            'red' => t('Red'),
-            'white' => t('White'),
-            'yellow' => t('Yellow'),
+            'blue'    => t('Blue'),
+            'green'   => t('Green'),
+            'purple'  => t('Purple'),
+            'red'     => t('Red'),
+            'white'   => t('White'),
+            'yellow'  => t('Yellow'),
         ];
 
         if ($prepend) {
@@ -46,14 +46,13 @@ class SkinModel extends Base
     }
 
     /**
-     * Get current skin
+     * Get current skin.
      *
-     * @access public
      * @return string
      */
     public function getCurrentSkin()
     {
-        if ($this->userSession->isLogged() && ! empty($this->sessionStorage->user['skin'])) {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['skin'])) {
             return $this->sessionStorage->user['skin'];
         }
 

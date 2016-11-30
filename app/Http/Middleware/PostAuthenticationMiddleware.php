@@ -14,12 +14,12 @@ namespace Hiject\Middleware;
 use Hiject\Core\Controller\BaseMiddleware;
 
 /**
- * Class PostAuthenticationMiddleware
+ * Class PostAuthenticationMiddleware.
  */
 class PostAuthenticationMiddleware extends BaseMiddleware
 {
     /**
-     * Execute middleware
+     * Execute middleware.
      */
     public function execute()
     {
@@ -27,7 +27,7 @@ class PostAuthenticationMiddleware extends BaseMiddleware
         $action = strtolower($this->router->getAction());
         $ignore = ($controller === 'twofactorcontroller' && in_array($action, ['code', 'check'])) || ($controller === 'authcontroller' && $action === 'logout');
 
-        if ($ignore === false && $this->userSession->hasPostAuthentication() && ! $this->userSession->isPostAuthenticationValidated()) {
+        if ($ignore === false && $this->userSession->hasPostAuthentication() && !$this->userSession->isPostAuthenticationValidated()) {
             $this->nextMiddleware = null;
 
             if ($this->request->isAjax()) {

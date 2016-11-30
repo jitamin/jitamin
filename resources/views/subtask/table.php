@@ -1,4 +1,4 @@
-<?php if (! empty($subtasks)): ?>
+<?php if (!empty($subtasks)): ?>
     <table
         class="subtasks-table table-striped table-scrolling"
         data-save-position-url="<?= $this->url->href('SubtaskController', 'movePosition', ['project_id' => $task['project_id'], 'task_id' => $task['id']]) ?>"
@@ -26,7 +26,7 @@
                 <?php endif ?>
             </td>
             <td>
-                <?php if (! empty($subtask['username'])): ?>
+                <?php if (!empty($subtask['username'])): ?>
                     <?= $this->text->e($subtask['name'] ?: $subtask['username']) ?>
                 <?php endif ?>
             </td>
@@ -34,11 +34,11 @@
             <td>
                 <ul class="no-bullet">
                     <li>
-                        <?php if (! empty($subtask['time_spent'])): ?>
+                        <?php if (!empty($subtask['time_spent'])): ?>
                             <strong><?= $this->text->e($subtask['time_spent']).'h' ?></strong> <?= t('spent') ?>
                         <?php endif ?>
 
-                        <?php if (! empty($subtask['time_estimated'])): ?>
+                        <?php if (!empty($subtask['time_estimated'])): ?>
                             <strong><?= $this->text->e($subtask['time_estimated']).'h' ?></strong> <?= t('estimated') ?>
                         <?php endif ?>
                     </li>
@@ -59,7 +59,7 @@
             <?php if ($editable): ?>
                 <td>
                     <?= $this->render('subtask/menu', [
-                        'task' => $task,
+                        'task'    => $task,
                         'subtask' => $subtask,
                     ]) ?>
                 </td>

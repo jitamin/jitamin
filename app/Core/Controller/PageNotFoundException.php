@@ -12,7 +12,7 @@
 namespace Hiject\Core\Controller;
 
 /**
- * Class PageNotFoundException
+ * Class PageNotFoundException.
  */
 class PageNotFoundException extends BaseException
 {

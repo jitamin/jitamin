@@ -14,16 +14,16 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Tag Duplication
+ * Tag Duplication.
  */
 class TagDuplicationModel extends Base
 {
     /**
-     * Duplicate project tags to another project
+     * Duplicate project tags to another project.
      *
-     * @access public
-     * @param  integer $src_project_id
-     * @param  integer $dst_project_id
+     * @param int $src_project_id
+     * @param int $dst_project_id
+     *
      * @return bool
      */
     public function duplicate($src_project_id, $dst_project_id)
@@ -35,16 +35,15 @@ class TagDuplicationModel extends Base
             $results[] = $this->tagModel->create($dst_project_id, $tag['name']);
         }
 
-        return ! in_array(false, $results, true);
+        return !in_array(false, $results, true);
     }
 
     /**
-     * Link tags to the new tasks
+     * Link tags to the new tasks.
      *
-     * @access public
-     * @param  integer $src_task_id
-     * @param  integer $dst_task_id
-     * @param  integer $dst_project_id
+     * @param int $src_task_id
+     * @param int $dst_task_id
+     * @param int $dst_project_id
      */
     public function duplicateTaskTagsToAnotherProject($src_task_id, $dst_task_id, $dst_project_id)
     {
@@ -60,11 +59,10 @@ class TagDuplicationModel extends Base
     }
 
     /**
-     * Duplicate tags to the new task
+     * Duplicate tags to the new task.
      *
-     * @access public
-     * @param  integer $src_task_id
-     * @param  integer $dst_task_id
+     * @param int $src_task_id
+     * @param int $dst_task_id
      */
     public function duplicateTaskTags($src_task_id, $dst_task_id)
     {
@@ -76,11 +74,10 @@ class TagDuplicationModel extends Base
     }
 
     /**
-     * Remove tags that are not available in destination project
+     * Remove tags that are not available in destination project.
      *
-     * @access public
-     * @param  integer $task_id
-     * @param  integer $dst_project_id
+     * @param int $task_id
+     * @param int $dst_project_id
      */
     public function syncTaskTagsToAnotherProject($task_id, $dst_project_id)
     {

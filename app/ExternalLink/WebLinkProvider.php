@@ -14,14 +14,13 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\ExternalLink\ExternalLinkProviderInterface;
 
 /**
- * Web Link Provider
+ * Web Link Provider.
  */
 class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderInterface
 {
     /**
-     * Get provider name
+     * Get provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -30,9 +29,8 @@ class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderIn
     }
 
     /**
-     * Get link type
+     * Get link type.
      *
-     * @access public
      * @return string
      */
     public function getType()
@@ -41,9 +39,8 @@ class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderIn
     }
 
     /**
-     * Get a dictionary of supported dependency types by the provider
+     * Get a dictionary of supported dependency types by the provider.
      *
-     * @access public
      * @return array
      */
     public function getDependencies()
@@ -54,10 +51,9 @@ class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderIn
     }
 
     /**
-     * Return true if the provider can parse correctly the user input
+     * Return true if the provider can parse correctly the user input.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function match()
     {
@@ -68,9 +64,8 @@ class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderIn
     }
 
     /**
-     * Get the link found with the properties
+     * Get the link found with the properties.
      *
-     * @access public
      * @return \Hiject\Core\ExternalLink\ExternalLinkInterface
      */
     public function getLink()

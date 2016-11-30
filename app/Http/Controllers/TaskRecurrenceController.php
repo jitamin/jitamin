@@ -12,16 +12,16 @@
 namespace Hiject\Controller;
 
 /**
- * Task Recurrence controller
+ * Task Recurrence controller.
  */
 class TaskRecurrenceController extends BaseController
 {
     /**
-     * Edit recurrence form
+     * Edit recurrence form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -34,20 +34,18 @@ class TaskRecurrenceController extends BaseController
         }
 
         $this->response->html($this->template->render('task_recurrence/edit', [
-            'values' => $values,
-            'errors' => $errors,
-            'task' => $task,
-            'recurrence_status_list' => $this->taskRecurrenceModel->getRecurrenceStatusList(),
-            'recurrence_trigger_list' => $this->taskRecurrenceModel->getRecurrenceTriggerList(),
+            'values'                    => $values,
+            'errors'                    => $errors,
+            'task'                      => $task,
+            'recurrence_status_list'    => $this->taskRecurrenceModel->getRecurrenceStatusList(),
+            'recurrence_trigger_list'   => $this->taskRecurrenceModel->getRecurrenceTriggerList(),
             'recurrence_timeframe_list' => $this->taskRecurrenceModel->getRecurrenceTimeframeList(),
-            'recurrence_basedate_list' => $this->taskRecurrenceModel->getRecurrenceBasedateList(),
+            'recurrence_basedate_list'  => $this->taskRecurrenceModel->getRecurrenceBasedateList(),
         ]));
     }
 
     /**
-     * Update recurrence form
-     *
-     * @access public
+     * Update recurrence form.
      */
     public function update()
     {

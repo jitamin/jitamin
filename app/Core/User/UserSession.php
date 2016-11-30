@@ -15,15 +15,14 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\Role;
 
 /**
- * User Session
+ * User Session.
  */
 class UserSession extends Base
 {
     /**
-     * Refresh current session if necessary
+     * Refresh current session if necessary.
      *
-     * @access public
-     * @param integer $user_id
+     * @param int $user_id
      */
     public function refresh($user_id)
     {
@@ -33,10 +32,9 @@ class UserSession extends Base
     }
 
     /**
-     * Update user session
+     * Update user session.
      *
-     * @access public
-     * @param  array  $user
+     * @param array $user
      */
     public function initialize(array $user)
     {
@@ -55,9 +53,8 @@ class UserSession extends Base
     }
 
     /**
-     * Get user properties
+     * Get user properties.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -66,9 +63,8 @@ class UserSession extends Base
     }
 
     /**
-     * Get user application role
+     * Get user application role.
      *
-     * @access public
      * @return string
      */
     public function getRole()
@@ -77,9 +73,8 @@ class UserSession extends Base
     }
 
     /**
-     * Return true if the user has validated the 2FA key
+     * Return true if the user has validated the 2FA key.
      *
-     * @access public
      * @return bool
      */
     public function isPostAuthenticationValidated()
@@ -88,9 +83,7 @@ class UserSession extends Base
     }
 
     /**
-     * Validate 2FA for the current session
-     *
-     * @access public
+     * Validate 2FA for the current session.
      */
     public function validatePostAuthentication()
     {
@@ -98,9 +91,8 @@ class UserSession extends Base
     }
 
     /**
-     * Return true if the user has 2FA enabled
+     * Return true if the user has 2FA enabled.
      *
-     * @access public
      * @return bool
      */
     public function hasPostAuthentication()
@@ -109,9 +101,7 @@ class UserSession extends Base
     }
 
     /**
-     * Disable 2FA for the current session
-     *
-     * @access public
+     * Disable 2FA for the current session.
      */
     public function disablePostAuthentication()
     {
@@ -119,9 +109,8 @@ class UserSession extends Base
     }
 
     /**
-     * Return true if the logged user is admin
+     * Return true if the logged user is admin.
      *
-     * @access public
      * @return bool
      */
     public function isAdmin()
@@ -130,10 +119,9 @@ class UserSession extends Base
     }
 
     /**
-     * Get the connected user id
+     * Get the connected user id.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -141,9 +129,8 @@ class UserSession extends Base
     }
 
     /**
-     * Get username
+     * Get username.
      *
-     * @access public
      * @return string
      */
     public function getUsername()
@@ -152,34 +139,32 @@ class UserSession extends Base
     }
 
     /**
-     * Check is the user is connected
+     * Check is the user is connected.
      *
-     * @access public
      * @return bool
      */
     public function isLogged()
     {
-        return isset($this->sessionStorage->user) && ! empty($this->sessionStorage->user);
+        return isset($this->sessionStorage->user) && !empty($this->sessionStorage->user);
     }
 
     /**
-     * Get project filters from the session
+     * Get project filters from the session.
      *
-     * @access public
-     * @param  integer  $project_id
+     * @param int $project_id
+     *
      * @return string
      */
     public function getFilters($project_id)
     {
-        return ! empty($this->sessionStorage->filters[$project_id]) ? $this->sessionStorage->filters[$project_id] : 'status:open';
+        return !empty($this->sessionStorage->filters[$project_id]) ? $this->sessionStorage->filters[$project_id] : 'status:open';
     }
 
     /**
-     * Save project filters in the session
+     * Save project filters in the session.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  string   $filters
+     * @param int    $project_id
+     * @param string $filters
      */
     public function setFilters($project_id, $filters)
     {

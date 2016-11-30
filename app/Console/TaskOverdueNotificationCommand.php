@@ -11,15 +11,15 @@
 
 namespace Hiject\Console;
 
-use Hiject\Model\TaskModel;
 use Hiject\Core\Security\Role;
+use Hiject\Model\TaskModel;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Task overdue notification command class
+ * Task overdue notification command class.
  */
 class TaskOverdueNotificationCommand extends BaseCommand
 {
@@ -71,9 +71,7 @@ class TaskOverdueNotificationCommand extends BaseCommand
     }
 
     /**
-     * Send all overdue tasks for one user in one email
-     *
-     * @access public
+     * Send all overdue tasks for one user in one email.
      */
     public function sendGroupOverdueTaskNotifications()
     {
@@ -91,9 +89,7 @@ class TaskOverdueNotificationCommand extends BaseCommand
     }
 
     /**
-     * Send all overdue tasks in one email to project manager(s)
-     *
-     * @access public
+     * Send all overdue tasks in one email to project manager(s).
      */
     public function sendOverdueTaskNotificationsToManagers()
     {
@@ -119,9 +115,7 @@ class TaskOverdueNotificationCommand extends BaseCommand
     }
 
     /**
-     * Send overdue tasks
-     *
-     * @access public
+     * Send overdue tasks.
      */
     public function sendOverdueTaskNotifications()
     {
@@ -139,11 +133,10 @@ class TaskOverdueNotificationCommand extends BaseCommand
     }
 
     /**
-     * Send overdue tasks for a given user
+     * Send overdue tasks for a given user.
      *
-     * @access public
-     * @param  array   $user
-     * @param  array   $tasks
+     * @param array $user
+     * @param array $tasks
      */
     public function sendUserOverdueTaskNotifications(array $user, array $tasks)
     {
@@ -157,7 +150,7 @@ class TaskOverdueNotificationCommand extends BaseCommand
             }
         }
 
-        if (! empty($user_tasks)) {
+        if (!empty($user_tasks)) {
             $this->userNotificationModel->sendUserNotification(
                 $user,
                 TaskModel::EVENT_OVERDUE,
@@ -167,11 +160,10 @@ class TaskOverdueNotificationCommand extends BaseCommand
     }
 
     /**
-     * Send overdue tasks for a project manager(s)
+     * Send overdue tasks for a project manager(s).
      *
-     * @access public
-     * @param  array   $manager
-     * @param  array   $tasks
+     * @param array $manager
+     * @param array $tasks
      */
     public function sendUserOverdueTaskNotificationsToManagers(array $manager, array $tasks)
     {
@@ -183,11 +175,11 @@ class TaskOverdueNotificationCommand extends BaseCommand
     }
 
     /**
-     * Group a collection of records by a column
+     * Group a collection of records by a column.
      *
-     * @access public
-     * @param  array   $collection
-     * @param  string  $column
+     * @param array  $collection
+     * @param string $column
+     *
      * @return array
      */
     public function groupByColumn(array $collection, $column)

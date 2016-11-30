@@ -6,9 +6,9 @@
         <p class="alert alert-error"><?= $this->text->e($errors['login']) ?></p>
     <?php endif ?>
 
-    <h2><?= t('Sign in to %s', $this->app->config('application_name')?:'Hiject') ?></h2>
+    <h2><?= t('Sign in to %s', $this->app->config('application_name') ?: 'Hiject') ?></h2>
 
-    <?php if (! HIDE_LOGIN_FORM): ?>
+    <?php if (!HIDE_LOGIN_FORM) : ?>
     <form method="post" action="<?= $this->url->href('AuthController', 'check') ?>">
 
         <?= $this->form->csrf() ?>

@@ -16,14 +16,12 @@ use Hiject\Formatter\UserAutoCompleteFormatter;
 use Hiject\Model\UserModel;
 
 /**
- * User Ajax Controller
+ * User Ajax Controller.
  */
 class UserAjaxController extends BaseController
 {
     /**
-     * User auto-completion (Ajax)
-     *
-     * @access public
+     * User auto-completion (Ajax).
      */
     public function autocomplete()
     {
@@ -34,9 +32,7 @@ class UserAjaxController extends BaseController
     }
 
     /**
-     * User mention auto-completion (Ajax)
-     *
-     * @access public
+     * User mention auto-completion (Ajax).
      */
     public function mention()
     {
@@ -47,9 +43,7 @@ class UserAjaxController extends BaseController
     }
 
     /**
-     * Check if the user is connected
-     *
-     * @access public
+     * Check if the user is connected.
      */
     public function status()
     {

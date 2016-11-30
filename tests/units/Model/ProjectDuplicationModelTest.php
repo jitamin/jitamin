@@ -11,22 +11,22 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Core\Security\Role;
 use Hiject\Model\ActionModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\CategoryModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\ProjectGroupRoleModel;
-use Hiject\Model\ProjectDuplicationModel;
-use Hiject\Model\TagModel;
-use Hiject\Model\TaskTagModel;
-use Hiject\Model\UserModel;
-use Hiject\Model\GroupModel;
 use Hiject\Model\GroupMemberModel;
+use Hiject\Model\GroupModel;
+use Hiject\Model\ProjectDuplicationModel;
+use Hiject\Model\ProjectGroupRoleModel;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\ProjectUserRoleModel;
 use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskModel;
+use Hiject\Model\TagModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Core\Security\Role;
+use Hiject\Model\TaskModel;
+use Hiject\Model\TaskTagModel;
+use Hiject\Model\UserModel;
 
 class ProjectDuplicationModelTest extends Base
 {
@@ -156,10 +156,10 @@ class ProjectDuplicationModelTest extends Base
         $projectDuplicationModel = new ProjectDuplicationModel($this->container);
 
         $this->assertEquals(1, $projectModel->create([
-            'name' => 'My project',
+            'name'             => 'My project',
             'priority_default' => 2,
-            'priority_start' => -2,
-            'priority_end' => 8,
+            'priority_start'   => -2,
+            'priority_end'     => 8,
         ]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
@@ -359,10 +359,10 @@ class ProjectDuplicationModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_MOVE_COLUMN,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
             'action_name' => 'TaskAssignCurrentUser',
-            'params' => ['column_id' => 2],
+            'params'      => ['column_id' => 2],
         ]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));
@@ -389,10 +389,10 @@ class ProjectDuplicationModelTest extends Base
         $this->assertEquals(3, $categoryModel->create(['name' => 'C3', 'project_id' => 1]));
 
         $this->assertEquals(1, $actionModel->create([
-            'project_id' => 1,
-            'event_name' => TaskModel::EVENT_CREATE_UPDATE,
+            'project_id'  => 1,
+            'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
             'action_name' => 'TaskAssignColorCategory',
-            'params' => ['color_id' => 'blue', 'category_id' => 2],
+            'params'      => ['color_id' => 'blue', 'category_id' => 2],
         ]));
 
         $this->assertEquals(2, $projectDuplicationModel->duplicate(1));

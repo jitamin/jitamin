@@ -19,56 +19,55 @@ use PicoDb\Database;
 use PicoDb\Table;
 
 /**
- * Filter tasks by subtasks assignee
+ * Filter tasks by subtasks assignee.
  */
 class TaskSubtaskAssigneeFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Database object
+     * Database object.
      *
-     * @access private
      * @var Database
      */
     private $db;
 
     /**
-     * Current user id
+     * Current user id.
      *
-     * @access private
      * @var int
      */
     private $currentUserId = 0;
 
     /**
-     * Set current user id
+     * Set current user id.
      *
-     * @access public
-     * @param  integer $userId
+     * @param int $userId
+     *
      * @return TaskSubtaskAssigneeFilter
      */
     public function setCurrentUserId($userId)
     {
         $this->currentUserId = $userId;
+
         return $this;
     }
 
     /**
-     * Set database object
+     * Set database object.
      *
-     * @access public
-     * @param  Database $db
+     * @param Database $db
+     *
      * @return TaskSubtaskAssigneeFilter
      */
     public function setDatabase(Database $db)
     {
         $this->db = $db;
+
         return $this;
     }
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -77,16 +76,15 @@ class TaskSubtaskAssigneeFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return string
      */
     public function apply()
     {
         $task_ids = $this->getSubQuery()->findAllByColumn('task_id');
 
-        if (! empty($task_ids)) {
+        if (!empty($task_ids)) {
             $this->query->in(TaskModel::TABLE.'.id', $task_ids);
         } else {
             $this->query->eq(TaskModel::TABLE.'.id', 0); // No match
@@ -94,9 +92,8 @@ class TaskSubtaskAssigneeFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Get subquery
+     * Get subquery.
      *
-     * @access protected
      * @return Table
      */
     protected function getSubQuery()
@@ -115,10 +112,10 @@ class TaskSubtaskAssigneeFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply subquery filter
+     * Apply subquery filter.
      *
-     * @access protected
-     * @param  Table $subquery
+     * @param Table $subquery
+     *
      * @return Table
      */
     protected function applySubQueryFilter(Table $subquery)

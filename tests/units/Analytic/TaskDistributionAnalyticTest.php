@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Analytic\TaskDistributionAnalytic;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
 
 class TaskDistributionAnalyticTest extends Base
 {
@@ -33,24 +33,24 @@ class TaskDistributionAnalyticTest extends Base
         $expected = [
             [
                 'column_title' => 'Backlog',
-                'nb_tasks' => 20,
-                'percentage' => 20.0,
+                'nb_tasks'     => 20,
+                'percentage'   => 20.0,
             ],
             [
                 'column_title' => 'Ready',
-                'nb_tasks' => 30,
-                'percentage' => 30.0,
+                'nb_tasks'     => 30,
+                'percentage'   => 30.0,
             ],
             [
                 'column_title' => 'Work in progress',
-                'nb_tasks' => 40,
-                'percentage' => 40.0,
+                'nb_tasks'     => 40,
+                'percentage'   => 40.0,
             ],
             [
                 'column_title' => 'Done',
-                'nb_tasks' => 10,
-                'percentage' => 10.0,
-            ]
+                'nb_tasks'     => 10,
+                'percentage'   => 10.0,
+            ],
         ];
 
         $this->assertEquals($expected, $taskDistributionModel->build(1));

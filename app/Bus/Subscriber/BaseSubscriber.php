@@ -14,7 +14,7 @@ namespace Hiject\Bus\Subscriber;
 use Hiject\Core\Base;
 
 /**
- * Base class for subscribers
+ * Base class for subscribers.
  */
 class BaseSubscriber extends Base
 {

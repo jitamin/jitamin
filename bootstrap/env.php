@@ -16,7 +16,7 @@ if (version_compare(PHP_VERSION, '5.6.0', '<')) {
 
 // Check data folder if sqlite
 if (DB_DRIVER === 'sqlite' && !is_writable(dirname(DB_FILENAME))) {
-    throw new Exception('The directory "' . dirname(DB_FILENAME) . '" must be writeable by your web server user');
+    throw new Exception('The directory "'.dirname(DB_FILENAME).'" must be writeable by your web server user');
 }
 
 // Check PDO extensions
@@ -35,7 +35,7 @@ if (DB_DRIVER === 'postgres' && !extension_loaded('pdo_pgsql')) {
 // Check other extensions
 foreach (['gd', 'mbstring', 'hash', 'openssl', 'json', 'hash', 'ctype', 'filter', 'session'] as $ext) {
     if (!extension_loaded($ext)) {
-        throw new Exception('PHP extension required: "' . $ext . '"');
+        throw new Exception('PHP extension required: "'.$ext.'"');
     }
 }
 

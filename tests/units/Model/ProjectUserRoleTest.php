@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
-use Hiject\Model\UserModel;
-use Hiject\Model\GroupModel;
-use Hiject\Model\GroupMemberModel;
-use Hiject\Model\ProjectGroupRoleModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\ProjectPermissionModel;
 use Hiject\Core\Security\Role;
+use Hiject\Model\GroupMemberModel;
+use Hiject\Model\GroupModel;
+use Hiject\Model\ProjectGroupRoleModel;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\ProjectPermissionModel;
+use Hiject\Model\ProjectUserRoleModel;
+use Hiject\Model\UserModel;
 
 class ProjectUserRoleTest extends Base
 {

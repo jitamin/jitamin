@@ -14,14 +14,13 @@ namespace Hiject\Action;
 use Hiject\Model\TaskModel;
 
 /**
- * Assign a task to the logged user on column change
+ * Assign a task to the logged user on column change.
  */
 class TaskAssignCurrentUserColumn extends Base
 {
     /**
-     * Get automatic action description
+     * Get automatic action description.
      *
-     * @access public
      * @return string
      */
     public function getDescription()
@@ -30,9 +29,8 @@ class TaskAssignCurrentUserColumn extends Base
     }
 
     /**
-     * Get the list of compatible events
+     * Get the list of compatible events.
      *
-     * @access public
      * @return array
      */
     public function getCompatibleEvents()
@@ -43,9 +41,8 @@ class TaskAssignCurrentUserColumn extends Base
     }
 
     /**
-     * Get the required parameter for the action (defined by the user)
+     * Get the required parameter for the action (defined by the user).
      *
-     * @access public
      * @return array
      */
     public function getActionRequiredParameters()
@@ -56,9 +53,8 @@ class TaskAssignCurrentUserColumn extends Base
     }
 
     /**
-     * Get the required parameter for the event
+     * Get the required parameter for the event.
      *
-     * @access public
      * @return string[]
      */
     public function getEventRequiredParameters()
@@ -73,20 +69,20 @@ class TaskAssignCurrentUserColumn extends Base
     }
 
     /**
-     * Execute the action
+     * Execute the action.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool            True if the action was executed or false when not executed
+     * @param array $data Event data dictionary
+     *
+     * @return bool True if the action was executed or false when not executed
      */
     public function doAction(array $data)
     {
-        if (! $this->userSession->isLogged()) {
+        if (!$this->userSession->isLogged()) {
             return false;
         }
 
         $values = [
-            'id' => $data['task_id'],
+            'id'       => $data['task_id'],
             'owner_id' => $this->userSession->getId(),
         ];
 
@@ -94,10 +90,10 @@ class TaskAssignCurrentUserColumn extends Base
     }
 
     /**
-     * Check if the event data meet the action condition
+     * Check if the event data meet the action condition.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
+     * @param array $data Event data dictionary
+     *
      * @return bool
      */
     public function hasRequiredCondition(array $data)

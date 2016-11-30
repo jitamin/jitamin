@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\UserModel;
 use Hiject\Analytic\UserDistributionAnalytic;
 use Hiject\Core\Security\Role;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\ProjectUserRoleModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\UserModel;
 
 class UserDistributionAnalyticTest extends Base
 {
@@ -48,30 +48,30 @@ class UserDistributionAnalyticTest extends Base
 
         $expected = [
             [
-                'user' => 'Unassigned',
-                'nb_tasks' => 10,
+                'user'       => 'Unassigned',
+                'nb_tasks'   => 10,
                 'percentage' => 10.0,
             ],
             [
-                'user' => 'user1',
-                'nb_tasks' => 30,
+                'user'       => 'user1',
+                'nb_tasks'   => 30,
                 'percentage' => 30.0,
             ],
             [
-                'user' => 'user2',
-                'nb_tasks' => 40,
+                'user'       => 'user2',
+                'nb_tasks'   => 40,
                 'percentage' => 40.0,
             ],
             [
-                'user' => 'user3',
-                'nb_tasks' => 10,
+                'user'       => 'user3',
+                'nb_tasks'   => 10,
                 'percentage' => 10.0,
             ],
             [
-                'user' => 'user4',
-                'nb_tasks' => 10,
+                'user'       => 'user4',
+                'nb_tasks'   => 10,
                 'percentage' => 10.0,
-            ]
+            ],
         ];
 
         $this->assertEquals($expected, $userDistributionModel->build(1));

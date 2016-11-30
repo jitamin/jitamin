@@ -17,8 +17,8 @@
     <?= $this->hook->render('template:board:public:task:after-title', ['task' => $task]) ?>
 
     <?= $this->render('board/task_footer', [
-        'task' => $task,
+        'task'         => $task,
         'not_editable' => $not_editable,
-        'project' => $project,
+        'project'      => $project,
     ]) ?>
 </div>

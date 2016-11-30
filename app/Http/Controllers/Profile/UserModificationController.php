@@ -12,16 +12,16 @@
 namespace Hiject\Controller;
 
 /**
- * Class UserModificationController
+ * Class UserModificationController.
  */
 class UserModificationController extends BaseController
 {
     /**
-     * Display a form to edit user information
+     * Display a form to edit user information.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -35,25 +35,25 @@ class UserModificationController extends BaseController
         }
 
         return $this->response->html($this->helper->layout->user('user_modification/show', [
-            'values' => $values,
-            'errors' => $errors,
-            'user' => $user,
-            'skins' => $this->skinModel->getSkins(true),
+            'values'    => $values,
+            'errors'    => $errors,
+            'user'      => $user,
+            'skins'     => $this->skinModel->getSkins(true),
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
-            'roles' => $this->role->getApplicationRoles(),
+            'roles'     => $this->role->getApplicationRoles(),
         ]));
     }
 
     /**
-     * Save user information
+     * Save user information.
      */
     public function save()
     {
         $user = $this->getUser();
         $values = $this->request->getValues();
 
-        if (! $this->userSession->isAdmin()) {
+        if (!$this->userSession->isAdmin()) {
             if (isset($values['role'])) {
                 unset($values['role']);
             }

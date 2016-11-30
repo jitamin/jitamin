@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\UserModel;
 
 /**
- * Filter ProjectUserRole users by username
+ * Filter ProjectUserRole users by username.
  */
 class ProjectUserRoleUsernameFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,9 +30,8 @@ class ProjectUserRoleUsernameFilter extends BaseFilter implements FilterInterfac
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

@@ -14,23 +14,23 @@ namespace Hiject\Core\Session;
 use Hiject\Core\Base;
 
 /**
- * Session Manager
+ * Session Manager.
  */
 class SessionManager extends Base
 {
     /**
-     * Event names
+     * Event names.
      *
      * @var string
      */
     const EVENT_DESTROY = 'session.destroy';
 
     /**
-     * Return true if the session is open
+     * Return true if the session is open.
      *
      * @static
-     * @access public
-     * @return boolean
+     *
+     * @return bool
      */
     public static function isOpen()
     {
@@ -38,9 +38,7 @@ class SessionManager extends Base
     }
 
     /**
-     * Create a new session
-     *
-     * @access public
+     * Create a new session.
      */
     public function open()
     {
@@ -57,9 +55,7 @@ class SessionManager extends Base
     }
 
     /**
-     * Destroy the session
-     *
-     * @access public
+     * Destroy the session.
      */
     public function close()
     {
@@ -83,9 +79,7 @@ class SessionManager extends Base
     }
 
     /**
-     * Define session settings
-     *
-     * @access private
+     * Define session settings.
      */
     private function configure()
     {

@@ -12,23 +12,21 @@
 namespace Hiject\Core\Security;
 
 /**
- * Authentication Provider Interface
+ * Authentication Provider Interface.
  */
 interface AuthenticationProviderInterface
 {
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName();
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate();
 }

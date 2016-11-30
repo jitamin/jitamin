@@ -16,15 +16,15 @@ use Hiject\Model\TaskModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Recurring task Subscriber
+ * Recurring task Subscriber.
  */
 class RecurringTaskSubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -36,9 +36,8 @@ class RecurringTaskSubscriber extends BaseSubscriber implements EventSubscriberI
     }
 
     /**
-     * Move the task
+     * Move the task.
      *
-     * @access public
      * @param TaskEvent $event
      */
     public function onMove(TaskEvent $event)
@@ -56,9 +55,8 @@ class RecurringTaskSubscriber extends BaseSubscriber implements EventSubscriberI
     }
 
     /**
-     * Close the task
+     * Close the task.
      *
-     * @access public
      * @param TaskEvent $event
      */
     public function onClose(TaskEvent $event)

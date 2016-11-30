@@ -10,7 +10,7 @@
                 <?= $this->render('app/filters_helper', ['reset' => 'status:open', 'project' => $project]) ?>
             </div>
 
-            <?php if (isset($custom_filters_list) && ! empty($custom_filters_list)): ?>
+            <?php if (isset($custom_filters_list) && !empty($custom_filters_list)): ?>
             <div class="input-addon-item">
                 <div class="dropdown">
                     <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('Custom filters') ?>"><i class="fa fa-anchor"></i> <i class="fa fa-caret-down"></i></a>
@@ -37,7 +37,7 @@
             </div>
             <?php endif ?>
 
-            <?php if (isset($categories_list) && ! empty($categories_list)): ?>
+            <?php if (isset($categories_list) && !empty($categories_list)): ?>
             <div class="input-addon-item">
                 <div class="dropdown">
                     <a href="#" class="dropdown-menu dropdown-menu-link-icon" title="<?= t('Category filters') ?>"><i class="fa fa-sitemap"></i> <i class="fa fa-caret-down"></i></a>

@@ -14,22 +14,22 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Task External Link Model
+ * Task External Link Model.
  */
 class TaskExternalLinkModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'task_has_external_links';
 
     /**
-     * Get all links
+     * Get all links.
      *
-     * @access public
-     * @param  integer $task_id
+     * @param int $task_id
+     *
      * @return array
      */
     public function getAll($task_id)
@@ -52,10 +52,10 @@ class TaskExternalLinkModel extends Base
     }
 
     /**
-     * Get link
+     * Get link.
      *
-     * @access public
-     * @param  integer $link_id
+     * @param int $link_id
+     *
      * @return array
      */
     public function getById($link_id)
@@ -64,11 +64,11 @@ class TaskExternalLinkModel extends Base
     }
 
     /**
-     * Add a new link in the database
+     * Add a new link in the database.
      *
-     * @access public
-     * @param  array  $values  Form values
-     * @return boolean|integer
+     * @param array $values Form values
+     *
+     * @return bool|int
      */
     public function create(array $values)
     {
@@ -81,24 +81,25 @@ class TaskExternalLinkModel extends Base
     }
 
     /**
-     * Modify external link
+     * Modify external link.
      *
-     * @access public
-     * @param  array  $values  Form values
-     * @return boolean
+     * @param array $values Form values
+     *
+     * @return bool
      */
     public function update(array $values)
     {
         $values['date_modification'] = time();
+
         return $this->db->table(self::TABLE)->eq('id', $values['id'])->update($values);
     }
 
     /**
-     * Remove a link
+     * Remove a link.
      *
-     * @access public
-     * @param  integer $link_id
-     * @return boolean
+     * @param int $link_id
+     *
+     * @return bool
      */
     public function remove($link_id)
     {

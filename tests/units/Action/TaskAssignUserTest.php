@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignUser;
 use Hiject\Bus\Event\GenericEvent;
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\TaskFinderModel;
+use Hiject\Core\Security\Role;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
 use Hiject\Model\UserModel;
-use Hiject\Action\TaskAssignUser;
-use Hiject\Core\Security\Role;
 
 class TaskAssignUserTest extends Base
 {

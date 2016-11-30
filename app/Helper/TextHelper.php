@@ -11,18 +11,19 @@
 
 namespace Hiject\Helper;
 
-use Hiject\Core\Markdown;
 use Hiject\Core\Base;
+use Hiject\Core\Markdown;
 
 /**
- * Text Helpers
+ * Text Helpers.
  */
 class TextHelper extends Base
 {
     /**
-     * HTML escaping
+     * HTML escaping.
      *
-     * @param  string   $value    Value to escape
+     * @param string $value Value to escape
+     *
      * @return string
      */
     public function e($value)
@@ -31,24 +32,26 @@ class TextHelper extends Base
     }
 
     /**
-     * Markdown transformation
+     * Markdown transformation.
      *
-     * @param  string    $text
-     * @param  boolean   $isPublicLink
+     * @param string $text
+     * @param bool   $isPublicLink
+     *
      * @return string
      */
     public function markdown($text, $isPublicLink = false)
     {
         $parser = new Markdown($this->container, $isPublicLink);
         $parser->setMarkupEscaped(MARKDOWN_ESCAPE_HTML);
+
         return $parser->text($text);
     }
 
     /**
-     * Escape Markdown text that need to be stored in HTML attribute
+     * Escape Markdown text that need to be stored in HTML attribute.
      *
-     * @access public
-     * @param  string $text
+     * @param string $text
+     *
      * @return mixed
      */
     public function markdownAttribute($text)
@@ -57,10 +60,11 @@ class TextHelper extends Base
     }
 
     /**
-     * Format a file size
+     * Format a file size.
      *
-     * @param  integer  $size        Size in bytes
-     * @param  integer  $precision   Precision
+     * @param int $size      Size in bytes
+     * @param int $precision Precision
+     *
      * @return string
      */
     public function bytes($size, $precision = 2)
@@ -68,19 +72,20 @@ class TextHelper extends Base
         $base = log($size) / log(1024);
         $suffixes = ['', 'k', 'M', 'G', 'T'];
 
-        return round(pow(1024, $base - floor($base)), $precision).$suffixes[(int)floor($base)];
+        return round(pow(1024, $base - floor($base)), $precision).$suffixes[(int) floor($base)];
     }
 
     /**
-     * Get the number of bytes from PHP size
+     * Get the number of bytes from PHP size.
      *
-     * @param  integer  $val        PHP size (example: 2M)
-     * @return integer
+     * @param int $val PHP size (example: 2M)
+     *
+     * @return int
      */
     public function phpToBytes($val)
     {
         $val = trim($val);
-        $last = strtolower($val[strlen($val)-1]);
+        $last = strtolower($val[strlen($val) - 1]);
 
         switch ($last) {
             case 'g':
@@ -95,11 +100,12 @@ class TextHelper extends Base
     }
 
     /**
-     * Return true if needle is contained in the haystack
+     * Return true if needle is contained in the haystack.
      *
-     * @param  string   $haystack   Haystack
-     * @param  string   $needle     Needle
-     * @return boolean
+     * @param string $haystack Haystack
+     * @param string $needle   Needle
+     *
+     * @return bool
      */
     public function contains($haystack, $needle)
     {
@@ -107,11 +113,12 @@ class TextHelper extends Base
     }
 
     /**
-     * Return a value from a dictionary
+     * Return a value from a dictionary.
      *
-     * @param  mixed   $id              Key
-     * @param  array   $listing         Dictionary
-     * @param  string  $default_value   Value displayed when the key doesn't exists
+     * @param mixed  $id            Key
+     * @param array  $listing       Dictionary
+     * @param string $default_value Value displayed when the key doesn't exists
+     *
      * @return string
      */
     public function in($id, array $listing, $default_value = '?')

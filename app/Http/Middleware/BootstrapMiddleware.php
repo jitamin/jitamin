@@ -14,12 +14,12 @@ namespace Hiject\Middleware;
 use Hiject\Core\Controller\BaseMiddleware;
 
 /**
- * Class BootstrapMiddleware
+ * Class BootstrapMiddleware.
  */
 class BootstrapMiddleware extends BaseMiddleware
 {
     /**
-     * Execute middleware
+     * Execute middleware.
      */
     public function execute()
     {
@@ -30,9 +30,7 @@ class BootstrapMiddleware extends BaseMiddleware
     }
 
     /**
-     * Send HTTP headers
-     *
-     * @access private
+     * Send HTTP headers.
      */
     private function sendHeaders()
     {

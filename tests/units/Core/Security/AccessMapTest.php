@@ -17,7 +17,7 @@ class AccessMapTest extends Base
 {
     public function testRoleHierarchy()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setRoleHierarchy('admin', ['manager', 'user']);
         $acl->setRoleHierarchy('manager', ['user']);
 
@@ -28,7 +28,7 @@ class AccessMapTest extends Base
 
     public function testGetHighestRole()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setRoleHierarchy('manager', ['member', 'viewer']);
         $acl->setRoleHierarchy('member', ['viewer']);
 
@@ -42,7 +42,7 @@ class AccessMapTest extends Base
 
     public function testAddRulesAndGetRoles()
     {
-        $acl = new AccessMap;
+        $acl = new AccessMap();
         $acl->setDefaultRole('role3');
         $acl->setRoleHierarchy('role2', ['role1']);
 
