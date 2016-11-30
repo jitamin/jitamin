@@ -7,7 +7,7 @@
     <?= $this->form->hidden('project_id', $values) ?>
 
     <?= $this->form->label(t('Name'), 'name') ?>
-    <?= $this->form->text('name', $values, $errors, ['required'], 'maxlength="100"')) ?>
+    <?= $this->form->text('name', $values, $errors, ['required'], 'maxlength="100"') ?>
 
     <?= $this->form->label(t('Filter'), 'filter') ?>
     <?= $this->form->text('filter', $values, $errors, ['required', 'maxlength="100"']) ?>

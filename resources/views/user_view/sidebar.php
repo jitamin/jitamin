@@ -1,6 +1,6 @@
 <div class="sidebar sidebar-icons">
     <div class="sidebar-title">
-        <h2><?= t('Information') ?></h2>
+        <h2><?= t('Profile') ?></h2>
     </div>
     <ul>
         <?php if ($this->user->hasAccess('UserViewController', 'show')): ?>

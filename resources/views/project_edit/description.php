@@ -1,11 +1,5 @@
 <div class="page-header">
-    <h2><?= t('Edit project') ?></h2>
-    <ul>
-        <li><?= $this->url->link(t('General'), 'ProjectEditController', 'edit', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li><?= $this->url->link(t('Dates'), 'ProjectEditController', 'dates', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li class="active"><?= $this->url->link(t('Description'), 'ProjectEditController', 'description', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li><?= $this->url->link(t('Task priority'), 'ProjectEditController', 'priority', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-    </ul>
+    <h2><?= t('Edit description') ?></h2>
 </div>
 <form method="post" class="popover-form" action="<?= $this->url->href('ProjectEditController', 'update', ['project_id' => $project['id'], 'redirect' => 'description']) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>

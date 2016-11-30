@@ -15,7 +15,7 @@
                 <?= $this->url->link(t('Plugins management'), 'PluginController', 'show') ?>
             </li>
             <li>
-                <i class="fa fa-gear"></i>
+                <i class="fa fa-gears"></i>
                 <?= $this->url->link(t('Application settings'), 'ConfigController', 'index') ?>
             </li>
     </ul>

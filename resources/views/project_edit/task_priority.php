@@ -3,7 +3,6 @@
     <ul>
         <li ><?= $this->url->link(t('General'), 'ProjectEditController', 'edit', ['project_id' => $project['id']], false, 'popover-link') ?></li>
         <li><?= $this->url->link(t('Dates'), 'ProjectEditController', 'dates', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li><?= $this->url->link(t('Description'), 'ProjectEditController', 'description', ['project_id' => $project['id']], false, 'popover-link') ?></li>
         <li class="active"><?= $this->url->link(t('Task priority'), 'ProjectEditController', 'priority', ['project_id' => $project['id']], false, 'popover-link') ?></li>
     </ul>
 </div>

@@ -3,7 +3,6 @@
     <ul>
         <li class="active"><?= $this->url->link(t('General'), 'ProjectEditController', 'edit', ['project_id' => $project['id']], false, 'popover-link') ?></li>
         <li><?= $this->url->link(t('Dates'), 'ProjectEditController', 'dates', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li><?= $this->url->link(t('Description'), 'ProjectEditController', 'description', ['project_id' => $project['id']], false, 'popover-link') ?></li>
         <li><?= $this->url->link(t('Task priority'), 'ProjectEditController', 'priority', ['project_id' => $project['id']], false, 'popover-link') ?></li>
     </ul>
 </div>
@@ -17,7 +16,7 @@
     <?= $this->form->label(t('Identifier'), 'identifier') ?>
     <?= $this->form->text('identifier', $values, $errors, ['maxlength="50"']) ?>
     <p class="form-help"><?= t('The project identifier is optional and must be alphanumeric, example: MYPROJECT.') ?></p>
-
+    <?= $this->form->textEditor('description', $values, $errors, ['autofocus' => true]) ?>
     <hr>
     <div class="form-inline">
         <?= $this->form->label(t('Project owner'), 'owner_id') ?>
