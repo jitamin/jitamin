@@ -12,10 +12,10 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ConfigModel;
-use Hiject\Model\TaskModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskModel;
 
 class TaskCreationModelTest extends Base
 {

@@ -14,33 +14,33 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Comment model
+ * Comment model.
  */
 class CommentModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'comments';
 
     /**
-     * Events
+     * Events.
      *
      * @var string
      */
-    const EVENT_UPDATE       = 'comment.update';
-    const EVENT_CREATE       = 'comment.create';
-    const EVENT_DELETE       = 'comment.delete';
+    const EVENT_UPDATE = 'comment.update';
+    const EVENT_CREATE = 'comment.create';
+    const EVENT_DELETE = 'comment.delete';
     const EVENT_USER_MENTION = 'comment.user.mention';
 
     /**
-     * Get projectId from commentId
+     * Get projectId from commentId.
      *
-     * @access public
-     * @param  integer $comment_id
-     * @return integer
+     * @param int $comment_id
+     *
+     * @return int
      */
     public function getProjectId($comment_id)
     {
@@ -48,15 +48,15 @@ class CommentModel extends Base
             ->table(self::TABLE)
             ->eq(self::TABLE.'.id', $comment_id)
             ->join(TaskModel::TABLE, 'id', 'task_id')
-            ->findOneColumn(TaskModel::TABLE . '.project_id') ?: 0;
+            ->findOneColumn(TaskModel::TABLE.'.project_id') ?: 0;
     }
 
     /**
-     * Get all comments for a given task
+     * Get all comments for a given task.
      *
-     * @access public
-     * @param  integer  $task_id  Task id
-     * @param  string   $sorting  ASC/DESC
+     * @param int    $task_id Task id
+     * @param string $sorting ASC/DESC
+     *
      * @return array
      */
     public function getAll($task_id, $sorting = 'ASC')
@@ -81,10 +81,10 @@ class CommentModel extends Base
     }
 
     /**
-     * Get a comment
+     * Get a comment.
      *
-     * @access public
-     * @param  integer  $comment_id  Comment id
+     * @param int $comment_id Comment id
+     *
      * @return array
      */
     public function getById($comment_id)
@@ -109,11 +109,11 @@ class CommentModel extends Base
     }
 
     /**
-     * Get the number of comments for a given task
+     * Get the number of comments for a given task.
      *
-     * @access public
-     * @param  integer  $task_id  Task id
-     * @return integer
+     * @param int $task_id Task id
+     *
+     * @return int
      */
     public function count($task_id)
     {
@@ -124,11 +124,11 @@ class CommentModel extends Base
     }
 
     /**
-     * Create a new comment
+     * Create a new comment.
      *
-     * @access public
-     * @param  array    $values   Form values
-     * @return boolean|integer
+     * @param array $values Form values
+     *
+     * @return bool|int
      */
     public function create(array $values)
     {
@@ -143,11 +143,11 @@ class CommentModel extends Base
     }
 
     /**
-     * Update a comment in the database
+     * Update a comment in the database.
      *
-     * @access public
-     * @param  array    $values   Form values
-     * @return boolean
+     * @param array $values Form values
+     *
+     * @return bool
      */
     public function update(array $values)
     {
@@ -164,15 +164,16 @@ class CommentModel extends Base
     }
 
     /**
-     * Remove a comment
+     * Remove a comment.
      *
-     * @access public
-     * @param  integer  $comment_id  Comment id
-     * @return boolean
+     * @param int $comment_id Comment id
+     *
+     * @return bool
      */
     public function remove($comment_id)
     {
         $this->commentEventJob->execute($comment_id, self::EVENT_DELETE);
+
         return $this->db->table(self::TABLE)->eq('id', $comment_id)->remove();
     }
 }

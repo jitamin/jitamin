@@ -11,28 +11,28 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
+use Hiject\Core\Session\FlashMessage;
 use Hiject\Core\Session\SessionManager;
 use Hiject\Core\Session\SessionStorage;
-use Hiject\Core\Session\FlashMessage;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Session Provider
+ * Session Provider.
  */
 class SessionProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
     {
         $container['sessionStorage'] = function () {
-            return new SessionStorage;
+            return new SessionStorage();
         };
 
         $container['sessionManager'] = function ($c) {

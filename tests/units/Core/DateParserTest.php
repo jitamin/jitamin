@@ -129,7 +129,7 @@ class DateParserTest extends Base
     public function testGetTimestampFromUserDateFormats()
     {
         $this->container['configModel']->save([
-            'application_date_format' => 'd/m/Y',
+            'application_date_format'     => 'd/m/Y',
             'application_datetime_format' => 'd/m/Y g:i a',
         ]);
 
@@ -146,7 +146,7 @@ class DateParserTest extends Base
     public function testGetTimestampFromAnotherUserDateFormats()
     {
         $this->container['configModel']->save([
-            'application_date_format' => 'd.m.Y',
+            'application_date_format'     => 'd.m.Y',
             'application_datetime_format' => 'd.m.Y H:i',
         ]);
 
@@ -222,7 +222,7 @@ class DateParserTest extends Base
     {
         $dateParser = new DateParser($this->container);
         $values = [
-            'date_due' => '2015-01-25',
+            'date_due'     => '2015-01-25',
             'date_started' => '2015-01-25 17:25',
         ];
 

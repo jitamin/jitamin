@@ -23,12 +23,12 @@
                     <li>
                         <?= t('Priority:') ?></strong> <span><?= t('P'.$task['priority']) ?>
                     </li>
-                    <?php if (! empty($task['reference'])): ?>
+                    <?php if (!empty($task['reference'])): ?>
                         <li>
                             <?= t('Reference:') ?> <span><?= $this->text->e($task['reference']) ?></span>
                         </li>
                     <?php endif ?>
-                    <?php if (! empty($task['score'])): ?>
+                    <?php if (!empty($task['score'])): ?>
                         <li>
                             <?= t('Complexity:') ?> <span><?= $this->text->e($task['score']) ?></span>
                         </li>
@@ -55,13 +55,13 @@
             </div>
             <div class="task-summary-column">
                 <ul class="no-bullet">
-                    <?php if (! empty($task['category_name'])): ?>
+                    <?php if (!empty($task['category_name'])): ?>
                         <li>
                             <?= t('Category:') ?>
                             <span><?= $this->text->e($task['category_name']) ?></span>
                         </li>
                     <?php endif ?>
-                    <?php if (! empty($task['swimlane_name'])): ?>
+                    <?php if (!empty($task['swimlane_name'])): ?>
                         <li>
                             <?= t('Swimlane:') ?>
                             <span><?= $this->text->e($task['swimlane_name']) ?></span>
@@ -152,7 +152,7 @@
                 </ul>
             </div>
         </div>
-        <?php if (! empty($tags)): ?>
+        <?php if (!empty($tags)): ?>
             <div class="task-tags">
                 <ul>
                     <?php foreach ($tags as $tag): ?>

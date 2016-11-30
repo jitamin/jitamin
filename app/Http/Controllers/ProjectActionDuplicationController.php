@@ -12,7 +12,7 @@
 namespace Hiject\Controller;
 
 /**
- * Duplicate automatic action from another project
+ * Duplicate automatic action from another project.
  */
 class ProjectActionDuplicationController extends BaseController
 {
@@ -23,7 +23,7 @@ class ProjectActionDuplicationController extends BaseController
         unset($projects[$project['id']]);
 
         $this->response->html($this->template->render('project_action_duplication/show', [
-            'project' => $project,
+            'project'       => $project,
             'projects_list' => $projects,
         ]));
     }

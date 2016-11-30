@@ -14,18 +14,18 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class ProjectRoleRestrictionModel
+ * Class ProjectRoleRestrictionModel.
  */
 class ProjectRoleRestrictionModel extends Base
 {
     const TABLE = 'project_role_has_restrictions';
 
-    const RULE_TASK_CREATION    = 'task_creation';
-    const RULE_TASK_OPEN_CLOSE  = 'task_open_close';
-    const RULE_TASK_MOVE        = 'task_move';
+    const RULE_TASK_CREATION = 'task_creation';
+    const RULE_TASK_OPEN_CLOSE = 'task_open_close';
+    const RULE_TASK_MOVE = 'task_move';
 
     /**
-     * Get rules
+     * Get rules.
      *
      * @return array
      */
@@ -39,10 +39,11 @@ class ProjectRoleRestrictionModel extends Base
     }
 
     /**
-     * Get a single restriction
+     * Get a single restriction.
      *
-     * @param  integer $project_id
-     * @param  integer $restriction_id
+     * @param int $project_id
+     * @param int $restriction_id
+     *
      * @return array|null
      */
     public function getById($project_id, $restriction_id)
@@ -55,9 +56,10 @@ class ProjectRoleRestrictionModel extends Base
     }
 
     /**
-     * Get restrictions
+     * Get restrictions.
      *
-     * @param  int    $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -82,10 +84,11 @@ class ProjectRoleRestrictionModel extends Base
     }
 
     /**
-     * Get restrictions
+     * Get restrictions.
      *
-     * @param  int    $project_id
-     * @param  string $role
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return array
      */
     public function getAllByRole($project_id, $role)
@@ -106,11 +109,12 @@ class ProjectRoleRestrictionModel extends Base
     }
 
     /**
-     * Create a new restriction
+     * Create a new restriction.
      *
-     * @param  int $project_id
-     * @param  int $role_id
-     * @param  string $rule
+     * @param int    $project_id
+     * @param int    $role_id
+     * @param string $rule
+     *
      * @return bool|int
      */
     public function create($project_id, $role_id, $rule)
@@ -118,15 +122,16 @@ class ProjectRoleRestrictionModel extends Base
         return $this->db->table(self::TABLE)
             ->persist([
                 'project_id' => $project_id,
-                'role_id' => $role_id,
-                'rule' => $rule,
+                'role_id'    => $role_id,
+                'rule'       => $rule,
             ]);
     }
 
     /**
-     * Remove a restriction
+     * Remove a restriction.
      *
-     * @param  integer $restriction_id
+     * @param int $restriction_id
+     *
      * @return bool
      */
     public function remove($restriction_id)

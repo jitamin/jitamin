@@ -17,7 +17,7 @@ class HookTest extends Base
 {
     public function testGetListeners()
     {
-        $hook = new Hook;
+        $hook = new Hook();
         $this->assertEmpty($hook->getListeners('myhook'));
 
         $hook->on('myhook', 'A');
@@ -28,7 +28,7 @@ class HookTest extends Base
 
     public function testExists()
     {
-        $hook = new Hook;
+        $hook = new Hook();
         $this->assertFalse($hook->exists('myhook'));
 
         $hook->on('myhook', 'A');
@@ -38,7 +38,7 @@ class HookTest extends Base
 
     public function testMergeWithNoBinding()
     {
-        $hook = new Hook;
+        $hook = new Hook();
         $values = ['A', 'B'];
 
         $result = $hook->merge('myhook', $values, ['p' => 'c']);
@@ -47,7 +47,7 @@ class HookTest extends Base
 
     public function testMergeWithBindings()
     {
-        $hook = new Hook;
+        $hook = new Hook();
         $values = ['A', 'B'];
         $expected = ['A', 'B', 'c', 'D'];
 
@@ -66,7 +66,7 @@ class HookTest extends Base
 
     public function testMergeWithBindingButReturningBadData()
     {
-        $hook = new Hook;
+        $hook = new Hook();
         $values = ['A', 'B'];
         $expected = ['A', 'B'];
 
@@ -81,7 +81,7 @@ class HookTest extends Base
 
     public function testFirstWithNoBinding()
     {
-        $hook = new Hook;
+        $hook = new Hook();
 
         $result = $hook->first('myhook', ['p' => 2]);
         $this->assertEquals(null, $result);
@@ -89,7 +89,7 @@ class HookTest extends Base
 
     public function testFirstWithMultipleBindings()
     {
-        $hook = new Hook;
+        $hook = new Hook();
 
         $hook->on('myhook', function ($p) {
             return $p + 1;

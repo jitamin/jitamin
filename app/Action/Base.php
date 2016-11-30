@@ -14,47 +14,43 @@ namespace Hiject\Action;
 use Hiject\Bus\Event\GenericEvent;
 
 /**
- * Base class for automatic actions
+ * Base class for automatic actions.
  */
 abstract class Base extends \Hiject\Core\Base
 {
     /**
-     * Extended events
+     * Extended events.
      *
-     * @access private
      * @var array
      */
     private $compatibleEvents = [];
 
     /**
-     * Flag for called listener
+     * Flag for called listener.
      *
-     * @access private
-     * @var boolean
+     * @var bool
      */
     private $called = false;
 
     /**
-     * Project id
+     * Project id.
      *
-     * @access private
-     * @var integer
+     * @var int
      */
     private $projectId = 0;
 
     /**
-     * User parameters
+     * User parameters.
      *
-     * @access private
      * @var array
      */
     private $params = [];
 
     /**
-     * Get automatic action name
+     * Get automatic action name.
      *
      * @final
-     * @access public
+     *
      * @return string
      */
     final public function getName()
@@ -63,64 +59,64 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Get automatic action description
+     * Get automatic action description.
      *
      * @abstract
-     * @access public
+     *
      * @return string
      */
     abstract public function getDescription();
 
     /**
-     * Execute the action
+     * Execute the action.
      *
      * @abstract
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool            True if the action was executed or false when not executed
+     *
+     * @param array $data Event data dictionary
+     *
+     * @return bool True if the action was executed or false when not executed
      */
     abstract public function doAction(array $data);
 
     /**
-     * Get the required parameter for the action (defined by the user)
+     * Get the required parameter for the action (defined by the user).
      *
      * @abstract
-     * @access public
+     *
      * @return array
      */
     abstract public function getActionRequiredParameters();
 
     /**
-     * Get the required parameter for the event (check if for the event data)
+     * Get the required parameter for the event (check if for the event data).
      *
      * @abstract
-     * @access public
+     *
      * @return array
      */
     abstract public function getEventRequiredParameters();
 
     /**
-     * Get the compatible events
+     * Get the compatible events.
      *
      * @abstract
-     * @access public
+     *
      * @return array
      */
     abstract public function getCompatibleEvents();
 
     /**
-     * Check if the event data meet the action condition
+     * Check if the event data meet the action condition.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
+     * @param array $data Event data dictionary
+     *
      * @return bool
      */
     abstract public function hasRequiredCondition(array $data);
 
     /**
-     * Return class information
+     * Return class information.
      *
-     * @access public
      * @return string
      */
     public function __toString()
@@ -135,23 +131,23 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Set project id
+     * Set project id.
      *
-     * @access public
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return Base
      */
     public function setProjectId($project_id)
     {
         $this->projectId = $project_id;
+
         return $this;
     }
 
     /**
-     * Get project id
+     * Get project id.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getProjectId()
     {
@@ -159,25 +155,26 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Set an user defined parameter
+     * Set an user defined parameter.
      *
-     * @access  public
-     * @param   string  $name    Parameter name
-     * @param   mixed   $value   Value
-     * @return  Base
+     * @param string $name  Parameter name
+     * @param mixed  $value Value
+     *
+     * @return Base
      */
     public function setParam($name, $value)
     {
         $this->params[$name] = $value;
+
         return $this;
     }
 
     /**
-     * Get an user defined parameter
+     * Get an user defined parameter.
      *
-     * @access public
-     * @param  string  $name            Parameter name
-     * @param  mixed   $default         Default value
+     * @param string $name    Parameter name
+     * @param mixed  $default Default value
+     *
      * @return mixed
      */
     public function getParam($name, $default = null)
@@ -186,11 +183,11 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Check if an action is executable (right project and required parameters)
+     * Check if an action is executable (right project and required parameters).
      *
-     * @access public
-     * @param  array   $data
-     * @param  string  $eventName
+     * @param array  $data
+     * @param string $eventName
+     *
      * @return bool
      */
     public function isExecutable(array $data, $eventName)
@@ -202,10 +199,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Check if the event is compatible with the action
+     * Check if the event is compatible with the action.
      *
-     * @access public
-     * @param  string  $eventName
+     * @param string $eventName
+     *
      * @return bool
      */
     public function hasCompatibleEvent($eventName)
@@ -214,10 +211,10 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Check if the event data has the required project
+     * Check if the event data has the required project.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
+     * @param array $data Event data dictionary
+     *
      * @return bool
      */
     public function hasRequiredProject(array $data)
@@ -227,11 +224,11 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Check if the event data has required parameters to execute the action
+     * Check if the event data has required parameters to execute the action.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool            True if all keys are there
+     * @param array $data Event data dictionary
+     *
+     * @return bool True if all keys are there
      */
     public function hasRequiredParameters(array $data, array $parameters = [])
     {
@@ -240,7 +237,7 @@ abstract class Base extends \Hiject\Core\Base
         foreach ($parameters as $key => $value) {
             if (is_array($value)) {
                 return isset($data[$key]) && $this->hasRequiredParameters($data[$key], $value);
-            } elseif (! isset($data[$value])) {
+            } elseif (!isset($data[$value])) {
                 return false;
             }
         }
@@ -249,11 +246,11 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Execute the action
+     * Execute the action.
      *
-     * @access public
-     * @param  \Hiject\Event\GenericEvent   $event
-     * @param  string                         $eventName
+     * @param \Hiject\Event\GenericEvent $event
+     * @param string                     $eventName
+     *
      * @return bool
      */
     public function execute(GenericEvent $event, $eventName)
@@ -278,11 +275,11 @@ abstract class Base extends \Hiject\Core\Base
     }
 
     /**
-     * Register a new event for the automatic action
+     * Register a new event for the automatic action.
      *
-     * @access public
-     * @param  string $event
-     * @param  string $description
+     * @param string $event
+     * @param string $description
+     *
      * @return Base
      */
     public function addEvent($event, $description = '')
@@ -292,13 +289,13 @@ abstract class Base extends \Hiject\Core\Base
         }
 
         $this->compatibleEvents[] = $event;
+
         return $this;
     }
 
     /**
-     * Get all compatible events of an automatic action
+     * Get all compatible events of an automatic action.
      *
-     * @access public
      * @return array
      */
     public function getEvents()

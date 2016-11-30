@@ -98,15 +98,15 @@ class TaskRecurrenceModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
         $this->assertEquals(1, $taskCreationModel->create([
-            'title' => 'test',
-            'project_id' => 1,
-            'date_due' => 1436561776,
-            'recurrence_status' => TaskModel::RECURRING_STATUS_PENDING,
-            'recurrence_trigger' => TaskModel::RECURRING_TRIGGER_CLOSE,
-            'recurrence_factor' => 2,
+            'title'                => 'test',
+            'project_id'           => 1,
+            'date_due'             => 1436561776,
+            'recurrence_status'    => TaskModel::RECURRING_STATUS_PENDING,
+            'recurrence_trigger'   => TaskModel::RECURRING_TRIGGER_CLOSE,
+            'recurrence_factor'    => 2,
             'recurrence_timeframe' => TaskModel::RECURRING_TIMEFRAME_DAYS,
-            'recurrence_basedate' => TaskModel::RECURRING_BASEDATE_TRIGGERDATE,
-            'tags' => ['T1', 'T2'],
+            'recurrence_basedate'  => TaskModel::RECURRING_BASEDATE_TRIGGERDATE,
+            'tags'                 => ['T1', 'T2'],
         ]));
 
         $this->assertEquals(2, $taskRecurrenceModel->duplicateRecurringTask(1));

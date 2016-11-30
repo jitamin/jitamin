@@ -12,27 +12,25 @@
 namespace Hiject\Core\Session;
 
 /**
- * Session Storage
+ * Session Storage.
  */
 class SessionStorage
 {
     /**
-     * Pointer to external storage
+     * Pointer to external storage.
      *
-     * @access private
      * @var array
      */
     private $storage = [];
 
     /**
-     * Set external storage
+     * Set external storage.
      *
-     * @access public
-     * @param  array  $storage  External session storage (example: $_SESSION)
+     * @param array $storage External session storage (example: $_SESSION)
      */
     public function setStorage(array &$storage)
     {
-        $this->storage =& $storage;
+        $this->storage = &$storage;
 
         // Load dynamically existing session variables into object properties
         foreach ($storage as $key => $value) {
@@ -41,9 +39,8 @@ class SessionStorage
     }
 
     /**
-     * Get all session variables
+     * Get all session variables.
      *
-     * @access public
      * @return array
      */
     public function getAll()
@@ -55,9 +52,7 @@ class SessionStorage
     }
 
     /**
-     * Flush session data
-     *
-     * @access public
+     * Flush session data.
      */
     public function flush()
     {
@@ -70,9 +65,7 @@ class SessionStorage
     }
 
     /**
-     * Copy class properties to external storage
-     *
-     * @access public
+     * Copy class properties to external storage.
      */
     public function __destruct()
     {

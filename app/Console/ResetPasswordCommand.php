@@ -17,7 +17,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
 /**
- * Reset password command class
+ * Reset password command class.
  */
 class ResetPasswordCommand extends BaseCommand
 {
@@ -26,8 +26,7 @@ class ResetPasswordCommand extends BaseCommand
         $this
             ->setName('user:reset-password')
             ->setDescription('Change user password')
-            ->addArgument('username', InputArgument::REQUIRED, 'Username')
-        ;
+            ->addArgument('username', InputArgument::REQUIRED, 'Username');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -54,10 +53,10 @@ class ResetPasswordCommand extends BaseCommand
 
     private function validatePassword(OutputInterface $output, $password, $confirmation)
     {
-        list($valid, $errors) = $this->passwordResetValidator->validateModification(array(
-            'password' => $password,
+        list($valid, $errors) = $this->passwordResetValidator->validateModification([
+            'password'     => $password,
             'confirmation' => $confirmation,
-        ));
+        ]);
 
         if (!$valid) {
             foreach ($errors as $error_list) {
@@ -76,11 +75,13 @@ class ResetPasswordCommand extends BaseCommand
 
         if (empty($userId)) {
             $output->writeln('<error>User not found</error>');
+
             return false;
         }
 
-        if (!$this->userModel->update(array('id' => $userId, 'password' => $password))) {
+        if (!$this->userModel->update(['id' => $userId, 'password' => $password])) {
             $output->writeln('<error>Unable to update password</error>');
+
             return false;
         }
 

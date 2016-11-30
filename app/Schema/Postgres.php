@@ -11,9 +11,9 @@
 
 namespace Schema;
 
-use PDO;
-use Hiject\Core\Security\Token;
 use Hiject\Core\Security\Role;
+use Hiject\Core\Security\Token;
+use PDO;
 
 const VERSION = 98;
 
@@ -30,17 +30,17 @@ function version_97(PDO $pdo)
 
 function version_96(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE project_has_categories ADD COLUMN position INTEGER DEFAULT 0");
+    $pdo->exec('ALTER TABLE project_has_categories ADD COLUMN position INTEGER DEFAULT 0');
 }
 
 function version_95(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN progress INTEGER DEFAULT 0");
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN progress INTEGER DEFAULT 0');
 }
 
 function version_94(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE column_has_restrictions (
             restriction_id SERIAL PRIMARY KEY,
             project_id INTEGER NOT NULL,
@@ -52,12 +52,12 @@ function version_94(PDO $pdo)
             FOREIGN KEY(role_id) REFERENCES project_has_roles(role_id) ON DELETE CASCADE,
             FOREIGN KEY(column_id) REFERENCES columns(id) ON DELETE CASCADE
         )
-    ");
+    ');
 }
 
 function version_93(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_role_has_restrictions (
             restriction_id SERIAL PRIMARY KEY,
             project_id INTEGER NOT NULL,
@@ -67,12 +67,12 @@ function version_93(PDO $pdo)
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
             FOREIGN KEY(role_id) REFERENCES project_has_roles(role_id) ON DELETE CASCADE
         )
-    ");
+    ');
 }
 
 function version_92(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_has_roles (
             role_id SERIAL PRIMARY KEY,
             role VARCHAR(255) NOT NULL,
@@ -80,9 +80,9 @@ function version_92(PDO $pdo)
             UNIQUE(project_id, role),
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE column_has_move_restrictions (
             restriction_id SERIAL PRIMARY KEY,
             project_id INTEGER NOT NULL,
@@ -95,7 +95,7 @@ function version_92(PDO $pdo)
             FOREIGN KEY(src_column_id) REFERENCES columns(id) ON DELETE CASCADE,
             FOREIGN KEY(dst_column_id) REFERENCES columns(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
     $pdo->exec('ALTER TABLE "project_has_users" ALTER COLUMN "role" TYPE VARCHAR(255)');
     $pdo->exec('ALTER TABLE "project_has_groups" ALTER COLUMN "role" TYPE VARCHAR(255)');
@@ -108,16 +108,16 @@ function version_91(PDO $pdo)
 
 function version_90(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE tags (
             id SERIAL PRIMARY KEY,
             name VARCHAR(255) NOT NULL,
             project_id INTEGER NOT NULL,
             UNIQUE(project_id, name)
         )
-    ");
+    ');
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE task_has_tags (
             task_id INTEGER NOT NULL,
             tag_id INTEGER NOT NULL,
@@ -125,27 +125,27 @@ function version_90(PDO $pdo)
             FOREIGN KEY(tag_id) REFERENCES tags(id) ON DELETE CASCADE,
             UNIQUE(tag_id, task_id)
         )
-    ");
+    ');
 }
 
 function version_89(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE users ADD COLUMN avatar_path VARCHAR(255)");
+    $pdo->exec('ALTER TABLE users ADD COLUMN avatar_path VARCHAR(255)');
 }
 
 function version_88(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE user_has_metadata ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL");
-    $pdo->exec("ALTER TABLE user_has_metadata ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL");
+    $pdo->exec('ALTER TABLE user_has_metadata ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL');
+    $pdo->exec('ALTER TABLE user_has_metadata ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL');
 
-    $pdo->exec("ALTER TABLE project_has_metadata ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL");
-    $pdo->exec("ALTER TABLE project_has_metadata ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL");
+    $pdo->exec('ALTER TABLE project_has_metadata ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL');
+    $pdo->exec('ALTER TABLE project_has_metadata ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL');
 
-    $pdo->exec("ALTER TABLE task_has_metadata ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL");
-    $pdo->exec("ALTER TABLE task_has_metadata ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL");
+    $pdo->exec('ALTER TABLE task_has_metadata ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL');
+    $pdo->exec('ALTER TABLE task_has_metadata ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL');
 
-    $pdo->exec("ALTER TABLE settings ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL");
-    $pdo->exec("ALTER TABLE settings ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL");
+    $pdo->exec('ALTER TABLE settings ADD COLUMN changed_by INTEGER DEFAULT 0 NOT NULL');
+    $pdo->exec('ALTER TABLE settings ADD COLUMN changed_on INTEGER DEFAULT 0 NOT NULL');
 }
 
 function version_87(PDO $pdo)
@@ -179,7 +179,7 @@ function version_85(PDO $pdo)
 
 function version_84(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE task_has_external_links (
             id SERIAL PRIMARY KEY,
             link_type VARCHAR(100) NOT NULL,
@@ -192,25 +192,25 @@ function version_84(PDO $pdo)
             creator_id INT DEFAULT 0,
             FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
         )
-    ");
+    ');
 }
 
 function version_83(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE projects ADD COLUMN priority_default INTEGER DEFAULT 0");
-    $pdo->exec("ALTER TABLE projects ADD COLUMN priority_start INTEGER DEFAULT 0");
-    $pdo->exec("ALTER TABLE projects ADD COLUMN priority_end INTEGER DEFAULT 3");
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN priority INTEGER DEFAULT 0");
+    $pdo->exec('ALTER TABLE projects ADD COLUMN priority_default INTEGER DEFAULT 0');
+    $pdo->exec('ALTER TABLE projects ADD COLUMN priority_start INTEGER DEFAULT 0');
+    $pdo->exec('ALTER TABLE projects ADD COLUMN priority_end INTEGER DEFAULT 3');
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN priority INTEGER DEFAULT 0');
 }
 
 function version_82(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE projects ADD COLUMN owner_id INTEGER DEFAULT 0");
+    $pdo->exec('ALTER TABLE projects ADD COLUMN owner_id INTEGER DEFAULT 0');
 }
 
 function version_81(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE password_reset (
             token VARCHAR(80) PRIMARY KEY,
             user_id INTEGER NOT NULL,
@@ -221,7 +221,7 @@ function version_81(PDO $pdo)
             is_active BOOLEAN NOT NULL,
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
     $pdo->exec("INSERT INTO settings VALUES ('password_reset', '1')");
 }
@@ -246,7 +246,7 @@ function version_79(PDO $pdo)
             $row['action_name'] = '\Hiject\Action\TaskCloseColumn';
         } elseif ($row['action_name'] === 'TaskLogMoveAnotherColumn') {
             $row['action_name'] = '\Hiject\Action\CommentCreationMoveTaskColumn';
-        } elseif ($row['action_name']{0} !== '\\') {
+        } elseif ($row['action_name'][0] !== '\\') {
             $row['action_name'] = '\Hiject\Action\\'.$row['action_name'];
         }
 
@@ -287,7 +287,7 @@ function version_77(PDO $pdo)
 
 function version_76(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_has_groups (
             group_id INTEGER NOT NULL,
             project_id INTEGER NOT NULL,
@@ -296,7 +296,7 @@ function version_76(PDO $pdo)
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
             UNIQUE(group_id, project_id)
         )
-    ");
+    ');
 
     $pdo->exec("ALTER TABLE project_has_users ADD COLUMN role VARCHAR(25) NOT NULL DEFAULT '".Role::PROJECT_VIEWER."'");
 
@@ -327,7 +327,7 @@ function version_75(PDO $pdo)
         )
     ");
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE group_has_users (
             group_id INTEGER NOT NULL,
             user_id INTEGER NOT NULL,
@@ -335,7 +335,7 @@ function version_75(PDO $pdo)
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
             UNIQUE(group_id, user_id)
         )
-    ");
+    ');
 }
 
 function version_74(PDO $pdo)
@@ -375,7 +375,7 @@ function version_73(PDO $pdo)
         )
     ");
 
-    $pdo->exec("DROP TABLE project_integrations");
+    $pdo->exec('DROP TABLE project_integrations');
 
     $pdo->exec("DELETE FROM settings WHERE \"option\"='integration_jabber'");
     $pdo->exec("DELETE FROM settings WHERE \"option\"='integration_jabber_server'");
@@ -395,7 +395,7 @@ function version_73(PDO $pdo)
 
 function version_72(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_has_notification_types (
             id SERIAL PRIMARY KEY,
             project_id INTEGER NOT NULL,
@@ -403,7 +403,7 @@ function version_72(PDO $pdo)
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
             UNIQUE(project_id, notification_type)
         )
-    ");
+    ');
 }
 
 function version_71(PDO $pdo)
@@ -413,16 +413,16 @@ function version_71(PDO $pdo)
 
 function version_70(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN date_due TYPE BIGINT");
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN date_creation TYPE BIGINT");
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN date_completed TYPE BIGINT");
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN date_started TYPE BIGINT");
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN date_moved TYPE BIGINT");
-    $pdo->exec("ALTER TABLE comments ALTER COLUMN date_creation TYPE BIGINT");
-    $pdo->exec("ALTER TABLE last_logins ALTER COLUMN date_creation TYPE BIGINT");
-    $pdo->exec("ALTER TABLE project_activities ALTER COLUMN date_creation TYPE BIGINT");
-    $pdo->exec("ALTER TABLE projects ALTER COLUMN last_modified TYPE BIGINT");
-    $pdo->exec("ALTER TABLE remember_me ALTER COLUMN date_creation TYPE BIGINT");
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN date_due TYPE BIGINT');
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN date_creation TYPE BIGINT');
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN date_completed TYPE BIGINT');
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN date_started TYPE BIGINT');
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN date_moved TYPE BIGINT');
+    $pdo->exec('ALTER TABLE comments ALTER COLUMN date_creation TYPE BIGINT');
+    $pdo->exec('ALTER TABLE last_logins ALTER COLUMN date_creation TYPE BIGINT');
+    $pdo->exec('ALTER TABLE project_activities ALTER COLUMN date_creation TYPE BIGINT');
+    $pdo->exec('ALTER TABLE projects ALTER COLUMN last_modified TYPE BIGINT');
+    $pdo->exec('ALTER TABLE remember_me ALTER COLUMN date_creation TYPE BIGINT');
     $pdo->exec('ALTER TABLE files ALTER COLUMN "date" TYPE BIGINT');
     $pdo->exec('ALTER TABLE transitions ALTER COLUMN "date" TYPE BIGINT');
     $pdo->exec('ALTER TABLE subtask_time_tracking ALTER COLUMN "start" TYPE BIGINT');
@@ -432,7 +432,7 @@ function version_70(PDO $pdo)
 
 function version_69(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE user_has_unread_notifications (
             id SERIAL PRIMARY KEY,
             user_id INTEGER NOT NULL,
@@ -441,16 +441,16 @@ function version_69(PDO $pdo)
             event_data TEXT NOT NULL,
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE user_has_notification_types (
             id SERIAL PRIMARY KEY,
             user_id INTEGER NOT NULL,
             notification_type VARCHAR(50),
             FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
     $pdo->exec('CREATE UNIQUE INDEX user_has_notification_types_user_idx ON user_has_notification_types(user_id, notification_type)');
 
@@ -481,22 +481,22 @@ function version_68(PDO $pdo)
 
 function version_67(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE plugin_schema_versions (
             plugin VARCHAR(80) NOT NULL PRIMARY KEY,
             version INTEGER NOT NULL DEFAULT 0
         )
-    ");
+    ');
 }
 
 function version_66(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE swimlanes ADD COLUMN description TEXT");
+    $pdo->exec('ALTER TABLE swimlanes ADD COLUMN description TEXT');
 }
 
 function version_65(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE users ADD COLUMN gitlab_id INTEGER");
+    $pdo->exec('ALTER TABLE users ADD COLUMN gitlab_id INTEGER');
 }
 
 function version_64(PDO $pdo)
@@ -512,8 +512,8 @@ function version_63(PDO $pdo)
 
 function version_62(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE users ADD COLUMN nb_failed_login INTEGER DEFAULT 0");
-    $pdo->exec("ALTER TABLE users ADD COLUMN lock_expiration_date INTEGER DEFAULT 0");
+    $pdo->exec('ALTER TABLE users ADD COLUMN nb_failed_login INTEGER DEFAULT 0');
+    $pdo->exec('ALTER TABLE users ADD COLUMN lock_expiration_date INTEGER DEFAULT 0');
 }
 
 function version_61(PDO $pdo)
@@ -529,7 +529,7 @@ function version_60(PDO $pdo)
 
 function version_59(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_daily_stats (
             id SERIAL PRIMARY KEY,
             day CHAR(10) NOT NULL,
@@ -538,7 +538,7 @@ function version_59(PDO $pdo)
             avg_cycle_time INTEGER NOT NULL DEFAULT 0,
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
     $pdo->exec('CREATE UNIQUE INDEX project_daily_stats_idx ON project_daily_stats(day, project_id)');
 
@@ -564,51 +564,51 @@ function version_56(PDO $pdo)
 function version_55(PDO $pdo)
 {
     $pdo->exec('ALTER TABLE comments DROP CONSTRAINT IF EXISTS comments_user_id_fkey');
-    $pdo->exec("ALTER TABLE comments ALTER COLUMN task_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE comments ALTER COLUMN user_id SET DEFAULT 0");
+    $pdo->exec('ALTER TABLE comments ALTER COLUMN task_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE comments ALTER COLUMN user_id SET DEFAULT 0');
     $pdo->exec('ALTER TABLE comments RENAME COLUMN "date" TO "date_creation"');
-    $pdo->exec("ALTER TABLE comments ALTER COLUMN date_creation SET NOT NULL");
+    $pdo->exec('ALTER TABLE comments ALTER COLUMN date_creation SET NOT NULL');
 }
 
 function version_54(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE project_has_categories ALTER COLUMN project_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE project_has_categories ALTER COLUMN name SET NOT NULL");
+    $pdo->exec('ALTER TABLE project_has_categories ALTER COLUMN project_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE project_has_categories ALTER COLUMN name SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE actions ALTER COLUMN project_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE actions ALTER COLUMN event_name SET NOT NULL");
-    $pdo->exec("ALTER TABLE actions ALTER COLUMN action_name SET NOT NULL");
+    $pdo->exec('ALTER TABLE actions ALTER COLUMN project_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE actions ALTER COLUMN event_name SET NOT NULL');
+    $pdo->exec('ALTER TABLE actions ALTER COLUMN action_name SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE action_has_params ALTER COLUMN action_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE action_has_params ALTER COLUMN name SET NOT NULL");
-    $pdo->exec("ALTER TABLE action_has_params ALTER COLUMN value SET NOT NULL");
+    $pdo->exec('ALTER TABLE action_has_params ALTER COLUMN action_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE action_has_params ALTER COLUMN name SET NOT NULL');
+    $pdo->exec('ALTER TABLE action_has_params ALTER COLUMN value SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE files ALTER COLUMN name SET NOT NULL");
-    $pdo->exec("ALTER TABLE files ALTER COLUMN task_id SET NOT NULL");
+    $pdo->exec('ALTER TABLE files ALTER COLUMN name SET NOT NULL');
+    $pdo->exec('ALTER TABLE files ALTER COLUMN task_id SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE subtasks ALTER COLUMN title SET NOT NULL");
+    $pdo->exec('ALTER TABLE subtasks ALTER COLUMN title SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN title SET NOT NULL");
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN project_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE tasks ALTER COLUMN column_id SET NOT NULL");
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN title SET NOT NULL');
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN project_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE tasks ALTER COLUMN column_id SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE columns ALTER COLUMN title SET NOT NULL");
-    $pdo->exec("ALTER TABLE columns ALTER COLUMN project_id SET NOT NULL");
+    $pdo->exec('ALTER TABLE columns ALTER COLUMN title SET NOT NULL');
+    $pdo->exec('ALTER TABLE columns ALTER COLUMN project_id SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE project_has_users ALTER COLUMN project_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE project_has_users ALTER COLUMN user_id SET NOT NULL");
+    $pdo->exec('ALTER TABLE project_has_users ALTER COLUMN project_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE project_has_users ALTER COLUMN user_id SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE projects ALTER COLUMN name SET NOT NULL");
+    $pdo->exec('ALTER TABLE projects ALTER COLUMN name SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE users ALTER COLUMN username SET NOT NULL");
+    $pdo->exec('ALTER TABLE users ALTER COLUMN username SET NOT NULL');
 
-    $pdo->exec("ALTER TABLE user_has_notifications ALTER COLUMN user_id SET NOT NULL");
-    $pdo->exec("ALTER TABLE user_has_notifications ALTER COLUMN user_id SET NOT NULL");
+    $pdo->exec('ALTER TABLE user_has_notifications ALTER COLUMN user_id SET NOT NULL');
+    $pdo->exec('ALTER TABLE user_has_notifications ALTER COLUMN user_id SET NOT NULL');
 }
 
 function version_53(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE users ADD COLUMN notifications_filter INTEGER DEFAULT 4");
+    $pdo->exec('ALTER TABLE users ADD COLUMN notifications_filter INTEGER DEFAULT 4');
 }
 
 function version_52(PDO $pdo)
@@ -759,9 +759,9 @@ function version_37(PDO $pdo)
         FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
     )');
 
-    $pdo->exec("CREATE INDEX transitions_task_index ON transitions(task_id)");
-    $pdo->exec("CREATE INDEX transitions_project_index ON transitions(project_id)");
-    $pdo->exec("CREATE INDEX transitions_user_index ON transitions(user_id)");
+    $pdo->exec('CREATE INDEX transitions_task_index ON transitions(task_id)');
+    $pdo->exec('CREATE INDEX transitions_project_index ON transitions(project_id)');
+    $pdo->exec('CREATE INDEX transitions_user_index ON transitions(user_id)');
 }
 
 function version_36(PDO $pdo)
@@ -778,7 +778,7 @@ function version_35(PDO $pdo)
 
 function version_34(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE subtask_time_tracking ADD COLUMN time_spent REAL DEFAULT 0");
+    $pdo->exec('ALTER TABLE subtask_time_tracking ADD COLUMN time_spent REAL DEFAULT 0');
 }
 
 function version_30(PDO $pdo)
@@ -823,7 +823,7 @@ function version_27(PDO $pdo)
         UNIQUE("label")
     )');
 
-    $pdo->exec("CREATE TABLE task_has_links (
+    $pdo->exec('CREATE TABLE task_has_links (
         id SERIAL PRIMARY KEY,
         link_id INTEGER NOT NULL,
         task_id INTEGER NOT NULL,
@@ -831,10 +831,10 @@ function version_27(PDO $pdo)
         FOREIGN KEY(link_id) REFERENCES links(id) ON DELETE CASCADE,
         FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE,
         FOREIGN KEY(opposite_task_id) REFERENCES tasks(id) ON DELETE CASCADE
-    )");
+    )');
 
-    $pdo->exec("CREATE INDEX task_has_links_task_index ON task_has_links(task_id)");
-    $pdo->exec("CREATE UNIQUE INDEX task_has_links_unique ON task_has_links(link_id, task_id, opposite_task_id)");
+    $pdo->exec('CREATE INDEX task_has_links_task_index ON task_has_links(task_id)');
+    $pdo->exec('CREATE UNIQUE INDEX task_has_links_unique ON task_has_links(link_id, task_id, opposite_task_id)');
 
     $rq = $pdo->prepare('INSERT INTO links (label, opposite_id) VALUES (?, ?)');
     $rq->execute(['relates to', 0]);
@@ -880,7 +880,7 @@ function version_26(PDO $pdo)
                 )");
 
     // If there is no activities for some tasks use the date_creation
-    $pdo->exec("UPDATE tasks SET date_moved = date_creation WHERE date_moved IS NULL OR date_moved = 0");
+    $pdo->exec('UPDATE tasks SET date_moved = date_creation WHERE date_moved IS NULL OR date_moved = 0');
 }
 
 function version_25(PDO $pdo)
@@ -979,7 +979,7 @@ function version_17(PDO $pdo)
 
 function version_16(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_daily_summaries (
             id SERIAL PRIMARY KEY,
             day CHAR(10) NOT NULL,
@@ -989,7 +989,7 @@ function version_16(PDO $pdo)
             FOREIGN KEY(column_id) REFERENCES columns(id) ON DELETE CASCADE,
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
     $pdo->exec('CREATE UNIQUE INDEX project_daily_column_stats_idx ON project_daily_summaries(day, project_id, column_id)');
 }
@@ -1001,7 +1001,7 @@ function version_15(PDO $pdo)
 
 function version_14(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE project_activities (
             id SERIAL PRIMARY KEY,
             date_creation INTEGER NOT NULL,
@@ -1014,7 +1014,7 @@ function version_14(PDO $pdo)
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
             FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
         )
-    ");
+    ');
 
     $pdo->exec('DROP TABLE task_has_events');
     $pdo->exec('DROP TABLE comment_has_events');
@@ -1023,12 +1023,12 @@ function version_14(PDO $pdo)
 
 function version_13(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN date_started INTEGER");
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN time_spent FLOAT DEFAULT 0");
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN time_estimated FLOAT DEFAULT 0");
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN date_started INTEGER');
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN time_spent FLOAT DEFAULT 0');
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN time_estimated FLOAT DEFAULT 0');
 
-    $pdo->exec("ALTER TABLE task_has_subtasks ALTER COLUMN time_estimated TYPE FLOAT");
-    $pdo->exec("ALTER TABLE task_has_subtasks ALTER COLUMN time_spent TYPE FLOAT");
+    $pdo->exec('ALTER TABLE task_has_subtasks ALTER COLUMN time_estimated TYPE FLOAT');
+    $pdo->exec('ALTER TABLE task_has_subtasks ALTER COLUMN time_spent TYPE FLOAT');
 }
 
 function version_12(PDO $pdo)
@@ -1057,7 +1057,7 @@ function version_10(PDO $pdo)
     $parameters = $rq->fetch(PDO::FETCH_ASSOC);
 
     $rq = $pdo->prepare('INSERT INTO settings VALUES (?, ?)');
-    $rq->execute(['board_highlight_period', defined('RECENT_TASK_PERIOD') ? RECENT_TASK_PERIOD : 48*60*60]);
+    $rq->execute(['board_highlight_period', defined('RECENT_TASK_PERIOD') ? RECENT_TASK_PERIOD : 48 * 60 * 60]);
     $rq->execute(['board_public_refresh_interval', defined('BOARD_PUBLIC_CHECK_INTERVAL') ? BOARD_PUBLIC_CHECK_INTERVAL : 60]);
     $rq->execute(['board_private_refresh_interval', defined('BOARD_CHECK_INTERVAL') ? BOARD_CHECK_INTERVAL : 10]);
     $rq->execute(['board_columns', $parameters['default_columns']]);
@@ -1093,7 +1093,7 @@ function version_7(PDO $pdo)
 
 function version_6(PDO $pdo)
 {
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE task_has_events (
             id SERIAL PRIMARY KEY,
             date_creation INTEGER NOT NULL,
@@ -1106,9 +1106,9 @@ function version_6(PDO $pdo)
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
             FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
         );
-    ");
+    ');
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE subtask_has_events (
             id SERIAL PRIMARY KEY,
             date_creation INTEGER NOT NULL,
@@ -1123,9 +1123,9 @@ function version_6(PDO $pdo)
             FOREIGN KEY(subtask_id) REFERENCES task_has_subtasks(id) ON DELETE CASCADE,
             FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
         );
-    ");
+    ');
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE comment_has_events (
             id SERIAL PRIMARY KEY,
             date_creation INTEGER NOT NULL,
@@ -1140,7 +1140,7 @@ function version_6(PDO $pdo)
             FOREIGN KEY(comment_id) REFERENCES comments(id) ON DELETE CASCADE,
             FOREIGN KEY(task_id) REFERENCES tasks(id) ON DELETE CASCADE
         );
-    ");
+    ');
 }
 
 function version_5(PDO $pdo)
@@ -1152,7 +1152,7 @@ function version_4(PDO $pdo)
 {
     $pdo->exec("ALTER TABLE users ADD COLUMN notifications_enabled BOOLEAN DEFAULT '0'");
 
-    $pdo->exec("
+    $pdo->exec('
         CREATE TABLE user_has_notifications (
             user_id INTEGER,
             project_id INTEGER,
@@ -1160,19 +1160,19 @@ function version_4(PDO $pdo)
             FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
             UNIQUE(project_id, user_id)
         );
-    ");
+    ');
 }
 
 function version_3(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE config ADD COLUMN webhooks_url_task_modification VARCHAR(255)");
-    $pdo->exec("ALTER TABLE config ADD COLUMN webhooks_url_task_creation VARCHAR(255)");
+    $pdo->exec('ALTER TABLE config ADD COLUMN webhooks_url_task_modification VARCHAR(255)');
+    $pdo->exec('ALTER TABLE config ADD COLUMN webhooks_url_task_creation VARCHAR(255)');
 }
 
 function version_2(PDO $pdo)
 {
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN creator_id INTEGER DEFAULT 0");
-    $pdo->exec("ALTER TABLE tasks ADD COLUMN date_modification INTEGER DEFAULT 0");
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN creator_id INTEGER DEFAULT 0');
+    $pdo->exec('ALTER TABLE tasks ADD COLUMN date_modification INTEGER DEFAULT 0');
 }
 
 function version_1(PDO $pdo)

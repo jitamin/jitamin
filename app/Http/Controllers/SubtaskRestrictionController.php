@@ -14,14 +14,12 @@ namespace Hiject\Controller;
 use Hiject\Model\SubtaskModel;
 
 /**
- * Subtask Restriction
+ * Subtask Restriction.
  */
 class SubtaskRestrictionController extends BaseController
 {
     /**
-     * Show popup
-     *
-     * @access public
+     * Show popup.
      */
     public function show()
     {
@@ -34,15 +32,13 @@ class SubtaskRestrictionController extends BaseController
                 SubtaskModel::STATUS_DONE => t('Done'),
             ],
             'subtask_inprogress' => $this->subtaskStatusModel->getSubtaskInProgress($this->userSession->getId()),
-            'subtask' => $subtask,
-            'task' => $task,
+            'subtask'            => $subtask,
+            'task'               => $task,
         ]));
     }
 
     /**
-     * Change status of the in progress subtask and the other subtask
-     *
-     * @access public
+     * Change status of the in progress subtask and the other subtask.
      */
     public function save()
     {
@@ -51,16 +47,16 @@ class SubtaskRestrictionController extends BaseController
         $values = $this->request->getValues();
 
         // Change status of the previous "in progress" subtask
-        $this->subtaskModel->update(array(
-            'id' => $values['id'],
+        $this->subtaskModel->update([
+            'id'     => $values['id'],
             'status' => $values['status'],
-        ));
+        ]);
 
         // Set the current subtask to "in progress"
-        $this->subtaskModel->update(array(
-            'id' => $subtask['id'],
+        $this->subtaskModel->update([
+            'id'     => $subtask['id'],
             'status' => SubtaskModel::STATUS_INPROGRESS,
-        ));
+        ]);
 
         $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
     }

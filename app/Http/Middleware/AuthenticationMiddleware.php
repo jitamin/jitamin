@@ -16,20 +16,20 @@ use Hiject\Core\Controller\BaseMiddleware;
 use Hiject\Core\Security\Role;
 
 /**
- * Class AuthenticationMiddleware
+ * Class AuthenticationMiddleware.
  */
 class AuthenticationMiddleware extends BaseMiddleware
 {
     /**
-     * Execute middleware
+     * Execute middleware.
      */
     public function execute()
     {
-        if (! $this->authenticationManager->checkCurrentSession()) {
+        if (!$this->authenticationManager->checkCurrentSession()) {
             throw AccessForbiddenException::getInstance()->withoutLayout();
         }
 
-        if (! $this->isPublicAccess()) {
+        if (!$this->isPublicAccess()) {
             $this->handleAuthentication();
         }
 
@@ -38,7 +38,7 @@ class AuthenticationMiddleware extends BaseMiddleware
 
     protected function handleAuthentication()
     {
-        if (! $this->userSession->isLogged() && ! $this->authenticationManager->preAuthentication()) {
+        if (!$this->userSession->isLogged() && !$this->authenticationManager->preAuthentication()) {
             $this->nextMiddleware = null;
 
             if ($this->request->isAjax()) {
@@ -54,6 +54,7 @@ class AuthenticationMiddleware extends BaseMiddleware
     {
         if ($this->applicationAuthorization->isAllowed($this->router->getController(), $this->router->getAction(), Role::APP_PUBLIC)) {
             $this->nextMiddleware = null;
+
             return true;
         }
 

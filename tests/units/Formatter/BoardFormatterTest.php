@@ -381,13 +381,13 @@ class BoardFormatterTest extends Base
 
         $expected = [
             [
-                'id' => 1,
-                'name' => 'My tag 1',
+                'id'      => 1,
+                'name'    => 'My tag 1',
                 'task_id' => 1,
             ],
             [
-                'id' => 2,
-                'name' => 'My tag 2',
+                'id'      => 2,
+                'name'    => 'My tag 2',
                 'task_id' => 1,
             ],
         ];
@@ -397,8 +397,8 @@ class BoardFormatterTest extends Base
 
         $expected = [
             [
-                'id' => 3,
-                'name' => 'My tag 3',
+                'id'      => 3,
+                'name'    => 'My tag 3',
                 'task_id' => 2,
             ],
         ];

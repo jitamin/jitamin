@@ -15,16 +15,16 @@ use Hiject\Core\Controller\PageNotFoundException;
 use Hiject\Core\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
- * Task External Link Controller
+ * Task External Link Controller.
  */
 class TaskExternalLinkController extends BaseController
 {
     /**
-     * First creation form
+     * First creation form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
@@ -35,15 +35,13 @@ class TaskExternalLinkController extends BaseController
         $this->response->html($this->template->render('task_external_link/find', [
             'values' => $values,
             'errors' => $errors,
-            'task' => $task,
-            'types' => $this->externalLinkManager->getTypes(),
+            'task'   => $task,
+            'types'  => $this->externalLinkManager->getTypes(),
         ]));
     }
 
     /**
-     * Second creation form
-     *
-     * @access public
+     * Second creation form.
      */
     public function create()
     {
@@ -56,13 +54,13 @@ class TaskExternalLinkController extends BaseController
 
             $this->response->html($this->template->render('task_external_link/create', [
                 'values' => [
-                    'title' => $link->getTitle(),
-                    'url' => $link->getUrl(),
+                    'title'     => $link->getTitle(),
+                    'url'       => $link->getUrl(),
                     'link_type' => $provider->getType(),
                 ],
                 'dependencies' => $provider->getDependencies(),
-                'errors' => [],
-                'task' => $task,
+                'errors'       => [],
+                'task'         => $task,
             ]));
         } catch (ExternalLinkProviderNotFound $e) {
             $errors = ['text' => [t('Unable to fetch link information.')]];
@@ -71,9 +69,7 @@ class TaskExternalLinkController extends BaseController
     }
 
     /**
-     * Save link
-     *
-     * @access public
+     * Save link.
      */
     public function save()
     {
@@ -83,6 +79,7 @@ class TaskExternalLinkController extends BaseController
 
         if ($valid && $this->taskExternalLinkModel->create($values) !== false) {
             $this->flash->success(t('Link added successfully.'));
+
             return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
@@ -90,11 +87,11 @@ class TaskExternalLinkController extends BaseController
     }
 
     /**
-     * Edit form
+     * Edit form.
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws ExternalLinkProviderNotFound
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
@@ -115,17 +112,15 @@ class TaskExternalLinkController extends BaseController
         $provider = $this->externalLinkManager->getProvider($values['link_type']);
 
         $this->response->html($this->template->render('task_external_link/edit', [
-            'values' => $values,
-            'errors' => $errors,
-            'task' => $task,
+            'values'       => $values,
+            'errors'       => $errors,
+            'task'         => $task,
             'dependencies' => $provider->getDependencies(),
         ]));
     }
 
     /**
-     * Update link
-     *
-     * @access public
+     * Update link.
      */
     public function update()
     {
@@ -135,6 +130,7 @@ class TaskExternalLinkController extends BaseController
 
         if ($valid && $this->taskExternalLinkModel->update($values)) {
             $this->flash->success(t('Link updated successfully.'));
+
             return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
@@ -142,9 +138,7 @@ class TaskExternalLinkController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a link
-     *
-     * @access public
+     * Confirmation dialog before removing a link.
      */
     public function confirm()
     {
@@ -163,9 +157,7 @@ class TaskExternalLinkController extends BaseController
     }
 
     /**
-     * Remove a link
-     *
-     * @access public
+     * Remove a link.
      */
     public function remove()
     {

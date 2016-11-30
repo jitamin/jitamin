@@ -11,14 +11,14 @@
 
 namespace Hiject\Api\Procedure;
 
-use LogicException;
-use Hiject\Core\Security\Role;
 use Hiject\Core\Ldap\Client as LdapClient;
 use Hiject\Core\Ldap\ClientException as LdapException;
 use Hiject\Core\Ldap\User as LdapUser;
+use Hiject\Core\Security\Role;
+use LogicException;
 
 /**
- * User API controller
+ * User API controller.
  */
 class UserProcedure extends BaseProcedure
 {
@@ -60,33 +60,35 @@ class UserProcedure extends BaseProcedure
     public function createUser($username, $password, $name = '', $email = '', $role = Role::APP_USER)
     {
         $values = [
-            'username' => $username,
-            'password' => $password,
+            'username'     => $username,
+            'password'     => $password,
             'confirmation' => $password,
-            'name' => $name,
-            'email' => $email,
-            'role' => $role,
+            'name'         => $name,
+            'email'        => $email,
+            'role'         => $role,
         ];
 
-        list($valid, ) = $this->userValidator->validateCreation($values);
+        list($valid) = $this->userValidator->validateCreation($values);
+
         return $valid ? $this->userModel->create($values) : false;
     }
 
     /**
-     * Create LDAP user in the database
+     * Create LDAP user in the database.
      *
      * Only "anonymous" and "proxy" LDAP authentication are supported by this method
      *
      * User information will be fetched from the LDAP server
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
+     *
      * @return bool|int
      */
     public function createLdapUser($username)
     {
         if (LDAP_BIND_TYPE === 'user') {
             $this->logger->error('LDAP authentication "user" is not supported by this API call');
+
             return false;
         }
 
@@ -97,6 +99,7 @@ class UserProcedure extends BaseProcedure
 
             if ($user === null) {
                 $this->logger->info('User not found in LDAP server');
+
                 return false;
             }
 
@@ -105,16 +108,17 @@ class UserProcedure extends BaseProcedure
             }
 
             $values = [
-                'username' => $user->getUsername(),
-                'name' => $user->getName(),
-                'email' => $user->getEmail(),
-                'role' => $user->getRole(),
+                'username'     => $user->getUsername(),
+                'name'         => $user->getName(),
+                'email'        => $user->getEmail(),
+                'role'         => $user->getRole(),
                 'is_ldap_user' => 1,
             ];
 
             return $this->userModel->create($values);
         } catch (LdapException $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
     }
@@ -122,14 +126,15 @@ class UserProcedure extends BaseProcedure
     public function updateUser($id, $username = null, $name = null, $email = null, $role = null)
     {
         $values = $this->filterValues([
-            'id' => $id,
+            'id'       => $id,
             'username' => $username,
-            'name' => $name,
-            'email' => $email,
-            'role' => $role,
+            'name'     => $name,
+            'email'    => $email,
+            'role'     => $role,
         ]);
 
-        list($valid, ) = $this->userValidator->validateApiModification($values);
+        list($valid) = $this->userValidator->validateApiModification($values);
+
         return $valid && $this->userModel->update($values);
     }
 }

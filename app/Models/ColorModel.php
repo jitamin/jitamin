@@ -14,104 +14,103 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Color model
+ * Color model.
  */
 class ColorModel extends Base
 {
     /**
-     * Default colors
+     * Default colors.
      *
-     * @access private
      * @var array
      */
     private $default_colors = [
         'yellow' => [
-            'name' => 'Yellow',
+            'name'       => 'Yellow',
             'background' => 'rgb(245, 247, 196)',
-            'border' => 'rgb(223, 227, 45)',
+            'border'     => 'rgb(223, 227, 45)',
         ],
         'blue' => [
-            'name' => 'Blue',
+            'name'       => 'Blue',
             'background' => 'rgb(219, 235, 255)',
-            'border' => 'rgb(168, 207, 255)',
+            'border'     => 'rgb(168, 207, 255)',
         ],
         'green' => [
-            'name' => 'Green',
+            'name'       => 'Green',
             'background' => 'rgb(189, 244, 203)',
-            'border' => 'rgb(74, 227, 113)',
+            'border'     => 'rgb(74, 227, 113)',
         ],
         'purple' => [
-            'name' => 'Purple',
+            'name'       => 'Purple',
             'background' => 'rgb(223, 176, 255)',
-            'border' => 'rgb(205, 133, 254)',
+            'border'     => 'rgb(205, 133, 254)',
         ],
         'red' => [
-            'name' => 'Red',
+            'name'       => 'Red',
             'background' => 'rgb(255, 187, 187)',
-            'border' => 'rgb(255, 151, 151)',
+            'border'     => 'rgb(255, 151, 151)',
         ],
         'orange' => [
-            'name' => 'Orange',
+            'name'       => 'Orange',
             'background' => 'rgb(255, 215, 179)',
-            'border' => 'rgb(255, 172, 98)',
+            'border'     => 'rgb(255, 172, 98)',
         ],
         'grey' => [
-            'name' => 'Grey',
+            'name'       => 'Grey',
             'background' => 'rgb(238, 238, 238)',
-            'border' => 'rgb(204, 204, 204)',
+            'border'     => 'rgb(204, 204, 204)',
         ],
         'brown' => [
-            'name' => 'Brown',
+            'name'       => 'Brown',
             'background' => '#d7ccc8',
-            'border' => '#4e342e',
+            'border'     => '#4e342e',
         ],
         'deep_orange' => [
-            'name' => 'Deep Orange',
+            'name'       => 'Deep Orange',
             'background' => '#ffab91',
-            'border' => '#e64a19',
+            'border'     => '#e64a19',
         ],
         'dark_grey' => [
-            'name' => 'Dark Grey',
+            'name'       => 'Dark Grey',
             'background' => '#cfd8dc',
-            'border' => '#455a64',
+            'border'     => '#455a64',
         ],
         'pink' => [
-            'name' => 'Pink',
+            'name'       => 'Pink',
             'background' => '#f48fb1',
-            'border' => '#d81b60',
+            'border'     => '#d81b60',
         ],
         'teal' => [
-            'name' => 'Teal',
+            'name'       => 'Teal',
             'background' => '#80cbc4',
-            'border' => '#00695c',
+            'border'     => '#00695c',
         ],
         'cyan' => [
-            'name' => 'Cyan',
+            'name'       => 'Cyan',
             'background' => '#b2ebf2',
-            'border' => '#00bcd4',
+            'border'     => '#00bcd4',
         ],
         'lime' => [
-            'name' => 'Lime',
+            'name'       => 'Lime',
             'background' => '#e6ee9c',
-            'border' => '#afb42b',
+            'border'     => '#afb42b',
         ],
         'light_green' => [
-            'name' => 'Light Green',
+            'name'       => 'Light Green',
             'background' => '#dcedc8',
-            'border' => '#689f38',
+            'border'     => '#689f38',
         ],
         'amber' => [
-            'name' => 'Amber',
+            'name'       => 'Amber',
             'background' => '#ffe082',
-            'border' => '#ffa000',
+            'border'     => '#ffa000',
         ],
     ];
 
     /**
-     * Find a color id from the name or the id
+     * Find a color id from the name or the id.
      *
-     * @access public
-     * @param  string  $color
+     * @param string $color
+     *
      * @return string
      */
     public function find($color)
@@ -130,10 +129,10 @@ class ColorModel extends Base
     }
 
     /**
-     * Get color properties
+     * Get color properties.
      *
-     * @access public
-     * @param  string  $color_id
+     * @param string $color_id
+     *
      * @return array
      */
     public function getColorProperties($color_id)
@@ -146,10 +145,10 @@ class ColorModel extends Base
     }
 
     /**
-     * Get available colors
+     * Get available colors.
      *
-     * @access public
-     * @param  bool $prepend
+     * @param bool $prepend
+     *
      * @return array
      */
     public function getList($prepend = false)
@@ -166,9 +165,8 @@ class ColorModel extends Base
     }
 
     /**
-     * Get the default color
+     * Get the default color.
      *
-     * @access public
      * @return string
      */
     public function getDefaultColor()
@@ -177,9 +175,8 @@ class ColorModel extends Base
     }
 
     /**
-     * Get the default colors
+     * Get the default colors.
      *
-     * @access public
      * @return array
      */
     public function getDefaultColors()
@@ -188,35 +185,36 @@ class ColorModel extends Base
     }
 
     /**
-     * Get border color from string
+     * Get border color from string.
      *
-     * @access public
-     * @param  string   $color_id   Color id
+     * @param string $color_id Color id
+     *
      * @return string
      */
     public function getBorderColor($color_id)
     {
         $color = $this->getColorProperties($color_id);
+
         return $color['border'];
     }
 
     /**
-     * Get background color from the color_id
+     * Get background color from the color_id.
      *
-     * @access public
-     * @param  string   $color_id   Color id
+     * @param string $color_id Color id
+     *
      * @return string
      */
     public function getBackgroundColor($color_id)
     {
         $color = $this->getColorProperties($color_id);
+
         return $color['background'];
     }
 
     /**
-     * Get CSS stylesheet of all colors
+     * Get CSS stylesheet of all colors.
      *
-     * @access public
      * @return string
      */
     public function getCss()

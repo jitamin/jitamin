@@ -13,54 +13,53 @@ namespace Hiject\Model;
 
 use Exception;
 use Hiject\Core\Base;
-use Hiject\Core\Thumbnail;
 use Hiject\Core\ObjectStorage\ObjectStorageException;
+use Hiject\Core\Thumbnail;
 
 /**
- * Base File Model
+ * Base File Model.
  */
 abstract class FileModel extends Base
 {
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     abstract protected function getTable();
 
     /**
-     * Define the foreign key
+     * Define the foreign key.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     abstract protected function getForeignKey();
 
     /**
-     * Get the path prefix
+     * Get the path prefix.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     abstract protected function getPathPrefix();
 
     /**
-     * Fire file creation event
+     * Fire file creation event.
      *
      * @abstract
-     * @access protected
-     * @param  integer $file_id
+     *
+     * @param int $file_id
      */
     abstract protected function fireCreationEvent($file_id);
 
     /**
-     * Get PicoDb query to get all files
+     * Get PicoDb query to get all files.
      *
-     * @access protected
      * @return \PicoDb\Table
      */
     protected function getQuery()
@@ -83,10 +82,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Get a file by the id
+     * Get a file by the id.
      *
-     * @access public
-     * @param  integer   $file_id    File id
+     * @param int $file_id File id
+     *
      * @return array
      */
     public function getById($file_id)
@@ -95,10 +94,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Get all files
+     * Get all files.
      *
-     * @access public
-     * @param  integer   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getAll($id)
@@ -107,10 +106,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Get all images
+     * Get all images.
      *
-     * @access public
-     * @param  integer   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getAllImages($id)
@@ -119,10 +118,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Get all files without images
+     * Get all files without images.
      *
-     * @access public
-     * @param  integer   $id
+     * @param int $id
+     *
      * @return array
      */
     public function getAllDocuments($id)
@@ -131,25 +130,25 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Create a file entry in the database
+     * Create a file entry in the database.
      *
-     * @access public
-     * @param  integer $foreign_key_id Foreign key
-     * @param  string  $name           Filename
-     * @param  string  $path           Path on the disk
-     * @param  integer $size           File size
-     * @return bool|integer
+     * @param int    $foreign_key_id Foreign key
+     * @param string $name           Filename
+     * @param string $path           Path on the disk
+     * @param int    $size           File size
+     *
+     * @return bool|int
      */
     public function create($foreign_key_id, $name, $path, $size)
     {
         $values = [
             $this->getForeignKey() => $foreign_key_id,
-            'name' => substr($name, 0, 255),
-            'path' => $path,
-            'is_image' => $this->isImage($name) ? 1 : 0,
-            'size' => $size,
-            'user_id' => $this->userSession->getId() ?: 0,
-            'date' => time(),
+            'name'                 => substr($name, 0, 255),
+            'path'                 => $path,
+            'is_image'             => $this->isImage($name) ? 1 : 0,
+            'size'                 => $size,
+            'user_id'              => $this->userSession->getId() ?: 0,
+            'date'                 => time(),
         ];
 
         $result = $this->db->table($this->getTable())->insert($values);
@@ -157,6 +156,7 @@ abstract class FileModel extends Base
         if ($result) {
             $file_id = (int) $this->db->getLastId();
             $this->fireCreationEvent($file_id);
+
             return $file_id;
         }
 
@@ -164,10 +164,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Remove all files
+     * Remove all files.
      *
-     * @access public
-     * @param  integer   $id
+     * @param int $id
+     *
      * @return bool
      */
     public function removeAll($id)
@@ -179,14 +179,14 @@ abstract class FileModel extends Base
             $results[] = $this->remove($file_id);
         }
 
-        return ! in_array(false, $results, true);
+        return !in_array(false, $results, true);
     }
 
     /**
-     * Remove a file
+     * Remove a file.
      *
-     * @access public
-     * @param  integer   $file_id    File id
+     * @param int $file_id File id
+     *
      * @return bool
      */
     public function remove($file_id)
@@ -202,15 +202,16 @@ abstract class FileModel extends Base
             return $this->db->table($this->getTable())->eq('id', $file['id'])->remove();
         } catch (ObjectStorageException $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Check if a filename is an image (file types that can be shown as thumbnail)
+     * Check if a filename is an image (file types that can be shown as thumbnail).
      *
-     * @access public
-     * @param  string   $filename   Filename
+     * @param string $filename Filename
+     *
      * @return bool
      */
     public function isImage($filename)
@@ -229,10 +230,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Generate the path for a thumbnails
+     * Generate the path for a thumbnails.
      *
-     * @access public
-     * @param  string  $key  Storage key
+     * @param string $key Storage key
+     *
      * @return string
      */
     public function getThumbnailPath($key)
@@ -241,11 +242,11 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Generate the path for a new filename
+     * Generate the path for a new filename.
      *
-     * @access public
-     * @param  integer   $id            Foreign key
-     * @param  string    $filename      Filename
+     * @param int    $id       Foreign key
+     * @param string $filename Filename
+     *
      * @return string
      */
     public function generatePath($id, $filename)
@@ -254,11 +255,11 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Upload multiple files
+     * Upload multiple files.
      *
-     * @access public
-     * @param  integer  $id
-     * @param  array    $files
+     * @param int   $id
+     * @param array $files
+     *
      * @return bool
      */
     public function uploadFiles($id, array $files)
@@ -270,10 +271,10 @@ abstract class FileModel extends Base
 
             foreach (array_keys($files['error']) as $key) {
                 $file = [
-                    'name' => $files['name'][$key],
+                    'name'     => $files['name'][$key],
                     'tmp_name' => $files['tmp_name'][$key],
-                    'size' => $files['size'][$key],
-                    'error' => $files['error'][$key],
+                    'size'     => $files['size'][$key],
+                    'error'    => $files['error'][$key],
                 ];
 
                 $this->uploadFile($id, $file);
@@ -282,16 +283,17 @@ abstract class FileModel extends Base
             return true;
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Upload a file
+     * Upload a file.
      *
-     * @access public
-     * @param  integer $id
-     * @param  array   $file
+     * @param int   $id
+     * @param array $file
+     *
      * @throws Exception
      */
     public function uploadFile($id, array $file)
@@ -311,13 +313,13 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Handle file upload (base64 encoded content)
+     * Handle file upload (base64 encoded content).
      *
-     * @access public
-     * @param  integer  $id
-     * @param  string   $original_filename
-     * @param  string   $blob
-     * @return bool|integer
+     * @param int    $id
+     * @param string $original_filename
+     * @param string $blob
+     *
+     * @return bool|int
      */
     public function uploadContent($id, $original_filename, $blob)
     {
@@ -343,16 +345,16 @@ abstract class FileModel extends Base
             );
         } catch (ObjectStorageException $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
     }
 
     /**
-     * Generate thumbnail from a blob
+     * Generate thumbnail from a blob.
      *
-     * @access public
-     * @param  string   $destination_filename
-     * @param  string   $data
+     * @param string $destination_filename
+     * @param string $data
      */
     public function generateThumbnailFromData($destination_filename, &$data)
     {
@@ -364,11 +366,10 @@ abstract class FileModel extends Base
     }
 
     /**
-     * Generate thumbnail from a local file
+     * Generate thumbnail from a local file.
      *
-     * @access public
-     * @param  string   $uploaded_filename
-     * @param  string   $destination_filename
+     * @param string $uploaded_filename
+     * @param string $destination_filename
      */
     public function generateThumbnailFromFile($uploaded_filename, $destination_filename)
     {

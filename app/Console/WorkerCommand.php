@@ -15,7 +15,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Class WorkerCommand
+ * Class WorkerCommand.
  */
 class WorkerCommand extends BaseCommand
 {
@@ -23,8 +23,7 @@ class WorkerCommand extends BaseCommand
     {
         $this
             ->setName('worker')
-            ->setDescription('Execute queue worker')
-        ;
+            ->setDescription('Execute queue worker');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

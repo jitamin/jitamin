@@ -12,7 +12,7 @@
 namespace Hiject\Api\Authorization;
 
 /**
- * Class ColumnAuthorization
+ * Class ColumnAuthorization.
  */
 class ColumnAuthorization extends ProjectAuthorization
 {

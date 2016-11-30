@@ -11,21 +11,21 @@
 
 namespace Hiject\Validator;
 
+use Hiject\Model\GroupModel;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
-use Hiject\Model\GroupModel;
 
 /**
- * Group Validator
+ * Group Validator.
  */
 class GroupValidator extends BaseValidator
 {
     /**
-     * Validate creation
+     * Validate creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -33,16 +33,16 @@ class GroupValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate modification
+     * Validate modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -54,14 +54,13 @@ class GroupValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access private
      * @return array
      */
     private function commonValidationRules()

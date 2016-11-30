@@ -14,14 +14,13 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Task helpers
+ * Task helpers.
  */
 class TaskHelper extends Base
 {
     /**
-     * Local cache for project columns
+     * Local cache for project columns.
      *
-     * @access private
      * @var array
      */
     private $columns = [];
@@ -50,6 +49,7 @@ class TaskHelper extends Base
     {
         $html = $this->helper->form->label(t('Title'), 'title');
         $html .= $this->helper->form->text('title', $values, $errors, ['autofocus', 'required', 'maxlength="200"', 'tabindex="1"'], 'form-input-large');
+
         return $html;
     }
 
@@ -57,6 +57,7 @@ class TaskHelper extends Base
     {
         $html = $this->helper->form->label(t('Description'), 'description');
         $html .= $this->helper->form->textEditor('description', $values, $errors, ['tabindex' => 2]);
+
         return $html;
     }
 
@@ -87,6 +88,7 @@ class TaskHelper extends Base
         $colors = $this->colorModel->getList();
         $html = $this->helper->form->label(t('Color'), 'color_id');
         $html .= $this->helper->form->select('color_id', $colors, $values, [], [], 'color-picker');
+
         return $html;
     }
 
@@ -109,7 +111,7 @@ class TaskHelper extends Base
         $attributes = array_merge(['tabindex="4"'], $attributes);
         $html = '';
 
-        if (! (! $allow_one_item && count($categories) === 1 && key($categories) == 0)) {
+        if (!(!$allow_one_item && count($categories) === 1 && key($categories) == 0)) {
             $html .= $this->helper->form->label(t('Category'), 'category_id');
             $html .= $this->helper->form->select('category_id', $categories, $values, $errors, $attributes);
         }
@@ -122,7 +124,7 @@ class TaskHelper extends Base
         $attributes = array_merge(['tabindex="5"'], $attributes);
         $html = '';
 
-        if (! (count($swimlanes) === 1 && key($swimlanes) == 0)) {
+        if (!(count($swimlanes) === 1 && key($swimlanes) == 0)) {
             $html .= $this->helper->form->label(t('Swimlane'), 'swimlane_id');
             $html .= $this->helper->form->select('swimlane_id', $swimlanes, $values, $errors, $attributes);
         }
@@ -202,12 +204,14 @@ class TaskHelper extends Base
     public function selectStartDate(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="12"'], $attributes);
+
         return $this->helper->form->datetime(t('Start Date'), 'date_started', $values, $errors, $attributes);
     }
 
     public function selectDueDate(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="13"'], $attributes);
+
         return $this->helper->form->date(t('Due Date'), 'date_due', $values, $errors, $attributes);
     }
 
@@ -239,7 +243,7 @@ class TaskHelper extends Base
 
     public function getProgress($task)
     {
-        if (! isset($this->columns[$task['project_id']])) {
+        if (!isset($this->columns[$task['project_id']])) {
             $this->columns[$task['project_id']] = $this->columnModel->getList($task['project_id']);
         }
 

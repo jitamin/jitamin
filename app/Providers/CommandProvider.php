@@ -32,7 +32,7 @@ use Pimple\ServiceProviderInterface;
 use Symfony\Component\Console\Application;
 
 /**
- * Class CommandProvider
+ * Class CommandProvider.
  */
 class CommandProvider implements ServiceProviderInterface
 {
@@ -40,6 +40,7 @@ class CommandProvider implements ServiceProviderInterface
      * Registers services on the given container.
      *
      * @param Container $container
+     *
      * @return Container
      */
     public function register(Container $container)
@@ -63,6 +64,7 @@ class CommandProvider implements ServiceProviderInterface
         $application->add(new PluginUninstallCommand($container));
 
         $container['cli'] = $application;
+
         return $container;
     }
 }

@@ -11,35 +11,35 @@
 
 namespace Hiject\Providers;
 
-use JsonRPC\Server;
+use Hiject\Api\Middleware\AuthenticationMiddleware;
 use Hiject\Api\Procedure\ActionProcedure;
 use Hiject\Api\Procedure\AppProcedure;
 use Hiject\Api\Procedure\BoardProcedure;
 use Hiject\Api\Procedure\CategoryProcedure;
 use Hiject\Api\Procedure\ColumnProcedure;
 use Hiject\Api\Procedure\CommentProcedure;
-use Hiject\Api\Procedure\ProjectFileProcedure;
-use Hiject\Api\Procedure\TaskExternalLinkProcedure;
-use Hiject\Api\Procedure\TaskFileProcedure;
-use Hiject\Api\Procedure\GroupProcedure;
 use Hiject\Api\Procedure\GroupMemberProcedure;
+use Hiject\Api\Procedure\GroupProcedure;
 use Hiject\Api\Procedure\LinkProcedure;
 use Hiject\Api\Procedure\MeProcedure;
-use Hiject\Api\Middleware\AuthenticationMiddleware;
-use Hiject\Api\Procedure\ProjectProcedure;
+use Hiject\Api\Procedure\ProjectFileProcedure;
 use Hiject\Api\Procedure\ProjectPermissionProcedure;
+use Hiject\Api\Procedure\ProjectProcedure;
 use Hiject\Api\Procedure\SubtaskProcedure;
 use Hiject\Api\Procedure\SubtaskTimeTrackingProcedure;
 use Hiject\Api\Procedure\SwimlaneProcedure;
+use Hiject\Api\Procedure\TaskExternalLinkProcedure;
+use Hiject\Api\Procedure\TaskFileProcedure;
+use Hiject\Api\Procedure\TaskLinkProcedure;
 use Hiject\Api\Procedure\TaskMetadataProcedure;
 use Hiject\Api\Procedure\TaskProcedure;
-use Hiject\Api\Procedure\TaskLinkProcedure;
 use Hiject\Api\Procedure\UserProcedure;
+use JsonRPC\Server;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class ApiProvider
+ * Class ApiProvider.
  */
 class ApiProvider implements ServiceProviderInterface
 {
@@ -47,6 +47,7 @@ class ApiProvider implements ServiceProviderInterface
      * Registers services on the given container.
      *
      * @param Container $container
+     *
      * @return Container
      */
     public function register(Container $container)
@@ -54,8 +55,7 @@ class ApiProvider implements ServiceProviderInterface
         $server = new Server();
         $server->setAuthenticationHeader(API_AUTHENTICATION_HEADER);
         $server->getMiddlewareHandler()
-            ->withMiddleware(new AuthenticationMiddleware($container))
-        ;
+            ->withMiddleware(new AuthenticationMiddleware($container));
 
         $server->getProcedureHandler()
             ->withObject(new MeProcedure($container))
@@ -80,10 +80,10 @@ class ApiProvider implements ServiceProviderInterface
             ->withObject(new UserProcedure($container))
             ->withObject(new GroupProcedure($container))
             ->withObject(new GroupMemberProcedure($container))
-            ->withBeforeMethod('beforeProcedure')
-        ;
+            ->withBeforeMethod('beforeProcedure');
 
         $container['api'] = $server;
+
         return $container;
     }
 }

@@ -14,7 +14,7 @@ namespace Hiject\Core\Ldap;
 use Exception;
 
 /**
- * LDAP Client Exception
+ * LDAP Client Exception.
  */
 class ClientException extends Exception
 {

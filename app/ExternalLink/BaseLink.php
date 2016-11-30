@@ -14,22 +14,20 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\Base;
 
 /**
- * Base Link
+ * Base Link.
  */
 abstract class BaseLink extends Base
 {
     /**
-     * URL
+     * URL.
      *
-     * @access protected
      * @var string
      */
     protected $url = '';
 
     /**
-     * Get link URL
+     * Get link URL.
      *
-     * @access public
      * @return string
      */
     public function getUrl()
@@ -38,10 +36,9 @@ abstract class BaseLink extends Base
     }
 
     /**
-     * Set link URL
+     * Set link URL.
      *
-     * @access public
-     * @param  string $url
+     * @param string $url
      */
     public function setUrl($url)
     {

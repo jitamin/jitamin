@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\CommentCreationMoveTaskColumn;
 use Hiject\Bus\Event\TaskEvent;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Action\CommentCreationMoveTaskColumn;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class CommentCreationMoveTaskColumnTest extends Base
 {

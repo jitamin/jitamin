@@ -14,19 +14,19 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\ExternalLink\ExternalLinkInterface;
 
 /**
- * Attachment Link
+ * Attachment Link.
  */
 class AttachmentLink extends BaseLink implements ExternalLinkInterface
 {
     /**
-     * Get link title
+     * Get link title.
      *
-     * @access public
      * @return string
      */
     public function getTitle()
     {
         $path = parse_url($this->url, PHP_URL_PATH);
+
         return basename($path);
     }
 }

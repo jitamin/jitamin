@@ -16,15 +16,13 @@ use Hiject\Formatter\BoardFormatter;
 use Hiject\Model\TaskModel;
 
 /**
- * Board controller
+ * Board controller.
  */
 class BoardViewController extends BaseController
 {
     /**
      * Display the public version of a board
-     * Access checked by a simple token, no user login, read only, auto-refresh
-     *
-     * @access public
+     * Access checked by a simple token, no user login, read only, auto-refresh.
      */
     public function readonly()
     {
@@ -40,25 +38,23 @@ class BoardViewController extends BaseController
             ->eq(TaskModel::TABLE.'.is_active', TaskModel::STATUS_OPEN);
 
         $this->response->html($this->helper->layout->app('board/view_public', [
-            'project' => $project,
+            'project'   => $project,
             'swimlanes' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($project['id'])
                 ->withQuery($query)
                 ->format(),
-            'title' => $project['name'],
-            'description' => $project['description'],
-            'no_layout' => true,
-            'not_editable' => true,
-            'board_public_refresh_interval' => $this->configModel->get('board_public_refresh_interval'),
+            'title'                          => $project['name'],
+            'description'                    => $project['description'],
+            'no_layout'                      => true,
+            'not_editable'                   => true,
+            'board_public_refresh_interval'  => $this->configModel->get('board_public_refresh_interval'),
             'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-            'board_highlight_period' => $this->configModel->get('board_highlight_period'),
+            'board_highlight_period'         => $this->configModel->get('board_highlight_period'),
         ]));
     }
 
     /**
-     * Show a board for a given project
-     *
-     * @access public
+     * Show a board for a given project.
      */
     public function show()
     {
@@ -66,14 +62,14 @@ class BoardViewController extends BaseController
         $query = $this->helper->projectHeader->getSearchQuery($project);
 
         $this->response->html($this->helper->layout->app('board/view_private', [
-            'project' => $project,
-            'title' => $project['name'],
-            'description' => $this->helper->projectHeader->getDescription($project),
+            'project'                        => $project,
+            'title'                          => $project['name'],
+            'description'                    => $this->helper->projectHeader->getDescription($project),
             'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-            'board_highlight_period' => $this->configModel->get('board_highlight_period'),
-            'swimlanes' => $this->taskLexer
+            'board_highlight_period'         => $this->configModel->get('board_highlight_period'),
+            'swimlanes'                      => $this->taskLexer
                 ->build($query)
-                ->format(BoardFormatter::getInstance($this->container)->withProjectId($project['id']))
+                ->format(BoardFormatter::getInstance($this->container)->withProjectId($project['id'])),
         ]));
     }
 }

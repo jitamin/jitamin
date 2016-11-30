@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\ProjectActivityModel;
 
 /**
- * Filter activity events by creation date
+ * Filter activity events by creation date.
  */
 class ProjectActivityCreationDateFilter extends BaseDateFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,14 +30,14 @@ class ProjectActivityCreationDateFilter extends BaseDateFilter implements Filter
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->applyDateFilter(ProjectActivityModel::TABLE.'.date_creation');
+
         return $this;
     }
 }

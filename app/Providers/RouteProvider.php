@@ -11,21 +11,21 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
 use Hiject\Core\Http\Route;
 use Hiject\Core\Http\Router;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Route Provider
+ * Route Provider.
  */
 class RouteProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)

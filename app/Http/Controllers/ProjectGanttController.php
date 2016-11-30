@@ -18,12 +18,12 @@ use Hiject\Formatter\ProjectGanttFormatter;
 use Hiject\Model\ProjectModel;
 
 /**
- * Projects Gantt Controller
+ * Projects Gantt Controller.
  */
 class ProjectGanttController extends BaseController
 {
     /**
-     * Show Gantt chart for all projects
+     * Show Gantt chart for all projects.
      */
     public function show()
     {
@@ -37,27 +37,27 @@ class ProjectGanttController extends BaseController
 
         $this->response->html($this->helper->layout->app('project_gantt/show', [
             'projects' => $filter->format(new ProjectGanttFormatter($this->container)),
-            'title' => t('Gantt chart for all projects'),
+            'title'    => t('Gantt chart for all projects'),
         ]));
     }
 
     /**
-     * Save new project start date and end date
+     * Save new project start date and end date.
      */
     public function save()
     {
         $values = $this->request->getJson();
 
-        $result = $this->projectModel->update(array(
-            'id' => $values['id'],
+        $result = $this->projectModel->update([
+            'id'         => $values['id'],
             'start_date' => $this->dateParser->getIsoDate(strtotime($values['start'])),
-            'end_date' => $this->dateParser->getIsoDate(strtotime($values['end'])),
-        ));
+            'end_date'   => $this->dateParser->getIsoDate(strtotime($values['end'])),
+        ]);
 
-        if (! $result) {
-            $this->response->json(array('message' => 'Unable to save project'), 400);
+        if (!$result) {
+            $this->response->json(['message' => 'Unable to save project'], 400);
         } else {
-            $this->response->json(array('message' => 'OK'), 201);
+            $this->response->json(['message' => 'OK'], 201);
         }
     }
 }

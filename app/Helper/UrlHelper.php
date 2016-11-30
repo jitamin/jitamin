@@ -14,7 +14,7 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Url Helper
+ * Url Helper.
  */
 class UrlHelper extends Base
 {
@@ -22,11 +22,11 @@ class UrlHelper extends Base
     private $directory = '';
 
     /**
-     * Helper to generate a link to the documentation
+     * Helper to generate a link to the documentation.
      *
-     * @access public
-     * @param  string  $label
-     * @param  string  $file
+     * @param string $label
+     * @param string $file
+     *
      * @return string
      */
     public function doc($label, $file)
@@ -35,38 +35,39 @@ class UrlHelper extends Base
     }
 
     /**
-     * Button Link Element
+     * Button Link Element.
      *
-     * @access public
-     * @param  string  $icon       Font-Awesome icon
-     * @param  string  $label      Link label
-     * @param  string  $controller Controller name
-     * @param  string  $action     Action name
-     * @param  array   $params     Url parameters
-     * @param  string  $class      CSS class attribute
+     * @param string $icon       Font-Awesome icon
+     * @param string $label      Link label
+     * @param string $controller Controller name
+     * @param string $action     Action name
+     * @param array  $params     Url parameters
+     * @param string $class      CSS class attribute
+     *
      * @return string
      */
     public function button($icon, $label, $controller, $action, array $params = [], $class = '')
     {
         $icon = '<i class="fa '.$icon.' fa-fw"></i> ';
         $class = 'btn '.$class;
+
         return $this->link($icon.$label, $controller, $action, $params, false, $class);
     }
 
     /**
-     * Link element
+     * Link element.
      *
-     * @access public
-     * @param  string  $label       Link label
-     * @param  string  $controller  Controller name
-     * @param  string  $action      Action name
-     * @param  array   $params      Url parameters
-     * @param  boolean $csrf        Add a CSRF token
-     * @param  string  $class       CSS class attribute
-     * @param  string  $title       Link title
-     * @param  boolean $new_tab     Open the link in a new tab
-     * @param  string  $anchor      Link Anchor
-     * @param  bool    $absolute
+     * @param string $label      Link label
+     * @param string $controller Controller name
+     * @param string $action     Action name
+     * @param array  $params     Url parameters
+     * @param bool   $csrf       Add a CSRF token
+     * @param string $class      CSS class attribute
+     * @param string $title      Link title
+     * @param bool   $new_tab    Open the link in a new tab
+     * @param string $anchor     Link Anchor
+     * @param bool   $absolute
+     *
      * @return string
      */
     public function link($label, $controller, $action, array $params = [], $csrf = false, $class = '', $title = '', $new_tab = false, $anchor = '', $absolute = false)
@@ -75,12 +76,13 @@ class UrlHelper extends Base
     }
 
     /**
-     * Absolute link
+     * Absolute link.
      *
-     * @param  string $label
-     * @param  string $controller
-     * @param  string $action
-     * @param  array $params
+     * @param string $label
+     * @param string $controller
+     * @param string $action
+     * @param array  $params
+     *
      * @return string
      */
     public function absoluteLink($label, $controller, $action, array $params = [])
@@ -89,15 +91,15 @@ class UrlHelper extends Base
     }
 
     /**
-     * HTML Hyperlink
+     * HTML Hyperlink.
      *
-     * @access public
-     * @param  string   $controller  Controller name
-     * @param  string   $action      Action name
-     * @param  array    $params      Url parameters
-     * @param  boolean  $csrf        Add a CSRF token
-     * @param  string   $anchor      Link Anchor
-     * @param  boolean  $absolute    Absolute or relative link
+     * @param string $controller Controller name
+     * @param string $action     Action name
+     * @param array  $params     Url parameters
+     * @param bool   $csrf       Add a CSRF token
+     * @param string $anchor     Link Anchor
+     * @param bool   $absolute   Absolute or relative link
+     *
      * @return string
      */
     public function href($controller, $action, array $params = [], $csrf = false, $anchor = '', $absolute = false)
@@ -110,14 +112,14 @@ class UrlHelper extends Base
     }
 
     /**
-     * Generate controller/action url
+     * Generate controller/action url.
      *
-     * @access public
-     * @param  string   $controller  Controller name
-     * @param  string   $action      Action name
-     * @param  array    $params      Url parameters
-     * @param  string   $anchor      Link Anchor
-     * @param  boolean  $absolute    Absolute or relative link
+     * @param string $controller Controller name
+     * @param string $action     Action name
+     * @param array  $params     Url parameters
+     * @param string $anchor     Link Anchor
+     * @param bool   $absolute   Absolute or relative link
+     *
      * @return string
      */
     public function to($controller, $action, array $params = [], $anchor = '', $absolute = false)
@@ -126,9 +128,8 @@ class UrlHelper extends Base
     }
 
     /**
-     * Get application base url
+     * Get application base url.
      *
-     * @access public
      * @return string
      */
     public function base()
@@ -141,9 +142,8 @@ class UrlHelper extends Base
     }
 
     /**
-     * Get application base directory
+     * Get application base directory.
      *
-     * @access public
      * @return string
      */
     public function dir()
@@ -158,9 +158,8 @@ class UrlHelper extends Base
     }
 
     /**
-     * Get current server base url
+     * Get current server base url.
      *
-     * @access public
      * @return string
      */
     public function server()
@@ -178,16 +177,16 @@ class UrlHelper extends Base
     }
 
     /**
-     * Build relative url
+     * Build relative url.
      *
-     * @access protected
-     * @param  string   $separator   Querystring argument separator
-     * @param  string   $controller  Controller name
-     * @param  string   $action      Action name
-     * @param  array    $params      Url parameters
-     * @param  boolean  $csrf        Add a CSRF token
-     * @param  string   $anchor      Link Anchor
-     * @param  boolean  $absolute    Absolute or relative link
+     * @param string $separator  Querystring argument separator
+     * @param string $controller Controller name
+     * @param string $action     Action name
+     * @param array  $params     Url parameters
+     * @param bool   $csrf       Add a CSRF token
+     * @param string $anchor     Link Anchor
+     * @param bool   $absolute   Absolute or relative link
+     *
      * @return string
      */
     protected function build($separator, $controller, $action, array $params = [], $csrf = false, $anchor = '', $absolute = false)
@@ -207,7 +206,7 @@ class UrlHelper extends Base
             $qs['csrf_token'] = $this->token->getCSRFToken();
         }
 
-        if (! empty($qs)) {
+        if (!empty($qs)) {
             $path .= '?'.http_build_query($qs, '', $separator);
         }
 

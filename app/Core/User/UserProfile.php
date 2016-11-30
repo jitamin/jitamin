@@ -11,23 +11,23 @@
 
 namespace Hiject\Core\User;
 
-use Hiject\Core\Base;
 use Hiject\Bus\Event\UserProfileSyncEvent;
+use Hiject\Core\Base;
 
 /**
- * User Profile
+ * User Profile.
  */
 class UserProfile extends Base
 {
     const EVENT_USER_PROFILE_AFTER_SYNC = 'user_profile.after.sync';
 
     /**
-     * Assign provider data to the local user
+     * Assign provider data to the local user.
      *
-     * @access public
-     * @param  integer                $userId
-     * @param  UserProviderInterface  $user
-     * @return boolean
+     * @param int                   $userId
+     * @param UserProviderInterface $user
+     *
+     * @return bool
      */
     public function assign($userId, UserProviderInterface $user)
     {
@@ -39,6 +39,7 @@ class UserProfile extends Base
         if ($this->userModel->update($values)) {
             $profile = array_merge($profile, $values);
             $this->userSession->initialize($profile);
+
             return true;
         }
 
@@ -46,11 +47,11 @@ class UserProfile extends Base
     }
 
     /**
-     * Synchronize user properties with the local database and create the user session
+     * Synchronize user properties with the local database and create the user session.
      *
-     * @access public
-     * @param  UserProviderInterface $user
-     * @return boolean
+     * @param UserProviderInterface $user
+     *
+     * @return bool
      */
     public function initialize(UserProviderInterface $user)
     {
@@ -61,9 +62,10 @@ class UserProfile extends Base
             $this->groupSync->synchronize($profile['id'], $user->getExternalGroupIds());
         }
 
-        if (! empty($profile) && $profile['is_active'] == 1) {
+        if (!empty($profile) && $profile['is_active'] == 1) {
             $this->userSession->initialize($profile);
             $this->dispatcher->dispatch(self::EVENT_USER_PROFILE_AFTER_SYNC, new UserProfileSyncEvent($profile, $user));
+
             return true;
         }
 

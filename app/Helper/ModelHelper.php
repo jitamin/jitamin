@@ -14,16 +14,15 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Model Helper
+ * Model Helper.
  */
 class ModelHelper extends Base
 {
     /**
-     * Remove keys from an array
+     * Remove keys from an array.
      *
-     * @access public
-     * @param  array     $values    Input array
-     * @param  string[]  $keys      List of keys to remove
+     * @param array    $values Input array
+     * @param string[] $keys   List of keys to remove
      */
     public function removeFields(array &$values, array $keys)
     {
@@ -35,11 +34,10 @@ class ModelHelper extends Base
     }
 
     /**
-     * Remove keys from an array if empty
+     * Remove keys from an array if empty.
      *
-     * @access public
-     * @param  array     $values    Input array
-     * @param  string[]  $keys      List of keys to remove
+     * @param array    $values Input array
+     * @param string[] $keys   List of keys to remove
      */
     public function removeEmptyFields(array &$values, array $keys)
     {
@@ -51,11 +49,10 @@ class ModelHelper extends Base
     }
 
     /**
-     * Force fields to be at 0 if empty
+     * Force fields to be at 0 if empty.
      *
-     * @access public
-     * @param  array        $values    Input array
-     * @param  string[]     $keys      List of keys
+     * @param array    $values Input array
+     * @param string[] $keys   List of keys
      */
     public function resetFields(array &$values, array $keys)
     {
@@ -67,11 +64,10 @@ class ModelHelper extends Base
     }
 
     /**
-     * Force some fields to be integer
+     * Force some fields to be integer.
      *
-     * @access public
-     * @param  array        $values    Input array
-     * @param  string[]     $keys      List of keys
+     * @param array    $values Input array
+     * @param string[] $keys   List of keys
      */
     public function convertIntegerFields(array &$values, array $keys)
     {
@@ -83,11 +79,10 @@ class ModelHelper extends Base
     }
 
     /**
-     * Force some fields to be null if empty
+     * Force some fields to be null if empty.
      *
-     * @access public
-     * @param  array        $values    Input array
-     * @param  string[]     $keys      List of keys
+     * @param array    $values Input array
+     * @param string[] $keys   List of keys
      */
     public function convertNullFields(array &$values, array $keys)
     {

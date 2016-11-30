@@ -15,22 +15,22 @@ use DateTime;
 use Hiject\Core\Base;
 
 /**
- * Subtask time tracking
+ * Subtask time tracking.
  */
 class SubtaskTimeTrackingModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'subtask_time_tracking';
 
     /**
-     * Get query to check if a timer is started for the given user and subtask
+     * Get query to check if a timer is started for the given user and subtask.
      *
-     * @access public
-     * @param  integer    $user_id   User id
+     * @param int $user_id User id
+     *
      * @return string
      */
     public function getTimerQuery($user_id)
@@ -48,10 +48,10 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Get query for user timesheet (pagination)
+     * Get query for user timesheet (pagination).
      *
-     * @access public
-     * @param  integer    $user_id   User id
+     * @param int $user_id User id
+     *
      * @return \PicoDb\Table
      */
     public function getUserQuery($user_id)
@@ -76,10 +76,10 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Get query for task timesheet (pagination)
+     * Get query for task timesheet (pagination).
      *
-     * @access public
-     * @param  integer    $task_id    Task id
+     * @param int $task_id Task id
+     *
      * @return \PicoDb\Table
      */
     public function getTaskQuery($task_id)
@@ -106,10 +106,10 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Get query for project timesheet (pagination)
+     * Get query for project timesheet (pagination).
      *
-     * @access public
-     * @param  integer    $project_id   Project id
+     * @param int $project_id Project id
+     *
      * @return \PicoDb\Table
      */
     public function getProjectQuery($project_id)
@@ -138,10 +138,10 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Get all recorded time slots for a given user
+     * Get all recorded time slots for a given user.
      *
-     * @access public
-     * @param  integer    $user_id       User id
+     * @param int $user_id User id
+     *
      * @return array
      */
     public function getUserTimesheet($user_id)
@@ -153,12 +153,12 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Return true if a timer is started for this use and subtask
+     * Return true if a timer is started for this use and subtask.
      *
-     * @access public
-     * @param  integer  $subtask_id
-     * @param  integer  $user_id
-     * @return boolean
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function hasTimer($subtask_id, $user_id)
     {
@@ -166,13 +166,13 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Start or stop timer according to subtask status
+     * Start or stop timer according to subtask status.
      *
-     * @access public
-     * @param  integer $subtask_id
-     * @param  integer $user_id
-     * @param  integer $status
-     * @return boolean
+     * @param int $subtask_id
+     * @param int $user_id
+     * @param int $status
+     *
+     * @return bool
      */
     public function toggleTimer($subtask_id, $user_id, $status)
     {
@@ -188,29 +188,29 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Log start time
+     * Log start time.
      *
-     * @access public
-     * @param  integer   $subtask_id
-     * @param  integer   $user_id
-     * @return boolean
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function logStartTime($subtask_id, $user_id)
     {
         return
-            ! $this->hasTimer($subtask_id, $user_id) &&
+            !$this->hasTimer($subtask_id, $user_id) &&
             $this->db
                 ->table(self::TABLE)
-                ->insert(array('subtask_id' => $subtask_id, 'user_id' => $user_id, 'start' => time(), 'end' => 0));
+                ->insert(['subtask_id' => $subtask_id, 'user_id' => $user_id, 'start' => time(), 'end' => 0]);
     }
 
     /**
-     * Log end time
+     * Log end time.
      *
-     * @access public
-     * @param  integer   $subtask_id
-     * @param  integer   $user_id
-     * @return boolean
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return bool
      */
     public function logEndTime($subtask_id, $user_id)
     {
@@ -225,18 +225,18 @@ class SubtaskTimeTrackingModel extends Base
                     ->eq('subtask_id', $subtask_id)
                     ->eq('user_id', $user_id)
                     ->eq('end', 0)
-                    ->update(array(
-                        'end' => time(),
+                    ->update([
+                        'end'        => time(),
                         'time_spent' => $time_spent,
-                    ));
+                    ]);
     }
 
     /**
-     * Calculate the time spent when the clock is stopped
+     * Calculate the time spent when the clock is stopped.
      *
-     * @access public
-     * @param  integer   $subtask_id
-     * @param  integer   $user_id
+     * @param int $subtask_id
+     * @param int $user_id
+     *
      * @return float
      */
     public function getTimeSpent($subtask_id, $user_id)
@@ -253,15 +253,15 @@ class SubtaskTimeTrackingModel extends Base
             return 0;
         }
 
-        $end = new DateTime;
-        $start = new DateTime;
+        $end = new DateTime();
+        $start = new DateTime();
         $start->setTimestamp($start_time);
 
         if ($this->hook->exists($hook)) {
             return $this->hook->first($hook, [
                 'user_id' => $user_id,
-                'start' => $start,
-                'end' => $end,
+                'start'   => $start,
+                'end'     => $end,
             ]);
         }
 
@@ -269,29 +269,29 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Update subtask time spent
+     * Update subtask time spent.
      *
-     * @access public
-     * @param  integer   $subtask_id
-     * @param  float     $time_spent
+     * @param int   $subtask_id
+     * @param float $time_spent
+     *
      * @return bool
      */
     public function updateSubtaskTimeSpent($subtask_id, $time_spent)
     {
         $subtask = $this->subtaskModel->getById($subtask_id);
 
-        return $this->subtaskModel->update(array(
-            'id' => $subtask['id'],
+        return $this->subtaskModel->update([
+            'id'         => $subtask['id'],
             'time_spent' => $subtask['time_spent'] + $time_spent,
-            'task_id' => $subtask['task_id'],
-        ), false);
+            'task_id'    => $subtask['task_id'],
+        ], false);
     }
 
     /**
-     * Update task time tracking based on subtasks time tracking
+     * Update task time tracking based on subtasks time tracking.
      *
-     * @access public
-     * @param  integer   $task_id    Task id
+     * @param int $task_id Task id
+     *
      * @return bool
      */
     public function updateTaskTimeTracking($task_id)
@@ -305,10 +305,10 @@ class SubtaskTimeTrackingModel extends Base
     }
 
     /**
-     * Sum time spent and time estimated for all subtasks
+     * Sum time spent and time estimated for all subtasks.
      *
-     * @access public
-     * @param  integer   $task_id    Task id
+     * @param int $task_id Task id
+     *
      * @return array
      */
     public function calculateSubtaskTime($task_id)

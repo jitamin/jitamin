@@ -12,31 +12,28 @@
 namespace Hiject\Core\Ldap;
 
 /**
- * LDAP Query
+ * LDAP Query.
  */
 class Query
 {
     /**
-     * LDAP client
+     * LDAP client.
      *
-     * @access protected
      * @var Client
      */
     protected $client = null;
 
     /**
-     * Query result
+     * Query result.
      *
-     * @access protected
      * @var array
      */
     protected $entries = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  Client $client
+     * @param Client $client
      */
     public function __construct(Client $client)
     {
@@ -44,12 +41,12 @@ class Query
     }
 
     /**
-     * Execute query
+     * Execute query.
      *
-     * @access public
-     * @param  string    $baseDn
-     * @param  string    $filter
-     * @param  array     $attributes
+     * @param string $baseDn
+     * @param string $filter
+     * @param array  $attributes
+     *
      * @return Query
      */
     public function execute($baseDn, $filter, array $attributes)
@@ -80,20 +77,18 @@ class Query
     }
 
     /**
-     * Return true if the query returned a result
+     * Return true if the query returned a result.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function hasResult()
     {
-        return ! empty($this->entries);
+        return !empty($this->entries);
     }
 
     /**
-     * Get LDAP Entries
+     * Get LDAP Entries.
      *
-     * @access public
      * @return Entries
      */
     public function getEntries()

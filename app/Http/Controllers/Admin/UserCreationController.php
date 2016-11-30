@@ -15,14 +15,13 @@ use Hiject\Core\Security\Role;
 use Hiject\Notification\MailNotification;
 
 /**
- * Class UserCreationController
+ * Class UserCreationController.
  */
 class UserCreationController extends BaseController
 {
     /**
-     * Display a form to create a new user
+     * Display a form to create a new user.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -34,17 +33,15 @@ class UserCreationController extends BaseController
         $this->response->html($this->template->render($template, [
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
-            'roles' => $this->role->getApplicationRoles(),
-            'projects' => $this->projectModel->getList(),
-            'errors' => $errors,
-            'values' => $values + ['role' => Role::APP_USER],
+            'roles'     => $this->role->getApplicationRoles(),
+            'projects'  => $this->projectModel->getList(),
+            'errors'    => $errors,
+            'values'    => $values + ['role' => Role::APP_USER],
         ]));
     }
 
     /**
-     * Validate and save a new user
-     *
-     * @access public
+     * Validate and save a new user.
      */
     public function save()
     {
@@ -59,7 +56,7 @@ class UserCreationController extends BaseController
     }
 
     /**
-     * Create user
+     * Create user.
      *
      * @param array $values
      */
@@ -75,7 +72,7 @@ class UserCreationController extends BaseController
                 $this->projectUserRoleModel->addUser($project_id, $user_id, Role::PROJECT_MEMBER);
             }
 
-            if (! empty($values['notifications_enabled'])) {
+            if (!empty($values['notifications_enabled'])) {
                 $this->userNotificationTypeModel->saveSelectedTypes($user_id, [MailNotification::TYPE]);
             }
 

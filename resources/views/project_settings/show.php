@@ -63,7 +63,7 @@
     <tr>
         <td>
             <?= $this->text->e($column['title']) ?>
-            <?php if (! empty($column['description'])): ?>
+            <?php if (!empty($column['description'])): ?>
                 <span class="tooltip" title="<?= $this->text->markdownAttribute($column['description']) ?>">
                     <i class="fa fa-info-circle"></i>
                 </span>
@@ -82,7 +82,7 @@
     <?php endforeach ?>
 </table>
 
-<?php if (! empty($project['description'])): ?>
+<?php if (!empty($project['description'])): ?>
     <div class="page-header">
         <h2><?= t('Description') ?></h2>
     </div>

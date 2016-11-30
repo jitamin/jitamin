@@ -12,33 +12,29 @@
 namespace Hiject\Controller;
 
 /**
- * Config Controller
+ * Config Controller.
  */
 class ConfigController extends BaseController
 {
     /**
-     * Display the application settings page
-     *
-     * @access public
+     * Display the application settings page.
      */
     public function index()
     {
         $this->response->html($this->helper->layout->config('config/application', [
-            'mail_transports' => $this->emailClient->getAvailableTransports(),
-            'skins' => $this->skinModel->getSkins(),
-            'languages' => $this->languageModel->getLanguages(),
-            'timezones' => $this->timezoneModel->getTimezones(),
-            'date_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
+            'mail_transports'  => $this->emailClient->getAvailableTransports(),
+            'skins'            => $this->skinModel->getSkins(),
+            'languages'        => $this->languageModel->getLanguages(),
+            'timezones'        => $this->timezoneModel->getTimezones(),
+            'date_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
             'datetime_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateTimeFormats()),
-            'time_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
-            'title' => t('Settings').' &raquo; '.t('Application settings'),
+            'time_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
+            'title'            => t('Settings').' &raquo; '.t('Application settings'),
         ]));
     }
 
     /**
-     * Display the email settings page
-     *
-     * @access public
+     * Display the email settings page.
      */
     public function email()
     {
@@ -49,30 +45,26 @@ class ConfigController extends BaseController
         }
 
         $this->response->html($this->helper->layout->config('config/email', [
-            'values' => $values,
+            'values'          => $values,
             'mail_transports' => $this->emailClient->getAvailableTransports(),
-            'title' => t('Settings').' &raquo; '.t('Email settings'),
+            'title'           => t('Settings').' &raquo; '.t('Email settings'),
         ]));
     }
 
     /**
-     * Display the project settings page
-     *
-     * @access public
+     * Display the project settings page.
      */
     public function project()
     {
         $this->response->html($this->helper->layout->config('config/project', [
-            'colors' => $this->colorModel->getList(),
+            'colors'          => $this->colorModel->getList(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
-            'title' => t('Settings').' &raquo; '.t('Project settings'),
+            'title'           => t('Settings').' &raquo; '.t('Project settings'),
         ]));
     }
 
     /**
-     * Display the board settings page
-     *
-     * @access public
+     * Display the board settings page.
      */
     public function board()
     {
@@ -82,9 +74,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Display the calendar settings page
-     *
-     * @access public
+     * Display the calendar settings page.
      */
     public function calendar()
     {
@@ -94,9 +84,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Display the integration settings page
-     *
-     * @access public
+     * Display the integration settings page.
      */
     public function integrations()
     {
@@ -106,9 +94,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Display the webhook settings page
-     *
-     * @access public
+     * Display the webhook settings page.
      */
     public function webhook()
     {
@@ -118,9 +104,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Display the api settings page
-     *
-     * @access public
+     * Display the api settings page.
      */
     public function api()
     {
@@ -130,42 +114,37 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Display the help page
-     *
-     * @access public
+     * Display the help page.
      */
     public function help()
     {
         $this->response->html($this->helper->layout->config('config/help', [
-            'db_size' => $this->configModel->getDatabaseSize(),
+            'db_size'    => $this->configModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title' => t('Settings').' &raquo; '.t('About'),
+            'title'      => t('Settings').' &raquo; '.t('About'),
         ]));
     }
 
     /**
-     * Display the about page
-     *
-     * @access public
+     * Display the about page.
      */
     public function about()
     {
         $this->response->html($this->helper->layout->config('config/about', [
-            'db_size' => $this->configModel->getDatabaseSize(),
+            'db_size'    => $this->configModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title' => t('Settings').' &raquo; '.t('About'),
+            'title'      => t('Settings').' &raquo; '.t('About'),
         ]));
     }
 
     /**
-     * Save settings
-     *
+     * Save settings.
      */
     public function save()
     {
-        $values =  $this->request->getValues();
+        $values = $this->request->getValues();
         $redirect = $this->request->getStringParam('redirect', 'index');
 
         switch ($redirect) {
@@ -174,10 +153,10 @@ class ConfigController extends BaseController
                 break;
             case 'project':
                 $values += [
-                    'subtask_restriction' => 0,
-                    'subtask_time_tracking' => 0,
+                    'subtask_restriction'      => 0,
+                    'subtask_time_tracking'    => 0,
                     'cfd_include_closed_tasks' => 0,
-                    'disable_private_project' => 0,
+                    'disable_private_project'  => 0,
                 ];
                 break;
             case 'integrations':
@@ -199,9 +178,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Download the Sqlite database
-     *
-     * @access public
+     * Download the Sqlite database.
      */
     public function downloadDb()
     {
@@ -211,9 +188,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Optimize the Sqlite database
-     *
-     * @access public
+     * Optimize the Sqlite database.
      */
     public function optimizeDb()
     {
@@ -224,9 +199,7 @@ class ConfigController extends BaseController
     }
 
     /**
-     * Regenerate webhook token
-     *
-     * @access public
+     * Regenerate webhook token.
      */
     public function token()
     {

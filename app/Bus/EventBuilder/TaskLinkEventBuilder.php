@@ -15,28 +15,29 @@ use Hiject\Bus\Event\TaskLinkEvent;
 use Hiject\Model\TaskLinkModel;
 
 /**
- * Class TaskLinkEventBuilder
+ * Class TaskLinkEventBuilder.
  */
 class TaskLinkEventBuilder extends BaseEventBuilder
 {
     protected $taskLinkId = 0;
 
     /**
-     * Set taskLinkId
+     * Set taskLinkId.
      *
-     * @param  int $taskLinkId
+     * @param int $taskLinkId
+     *
      * @return $this
      */
     public function withTaskLinkId($taskLinkId)
     {
         $this->taskLinkId = $taskLinkId;
+
         return $this;
     }
 
     /**
-     * Build event data
+     * Build event data.
      *
-     * @access public
      * @return TaskLinkEvent|null
      */
     public function buildEvent()
@@ -45,22 +46,23 @@ class TaskLinkEventBuilder extends BaseEventBuilder
 
         if (empty($taskLink)) {
             $this->logger->debug(__METHOD__.': TaskLink not found');
-            return null;
+
+            return;
         }
 
         return new TaskLinkEvent([
             'task_link' => $taskLink,
-            'task' => $this->taskFinderModel->getDetails($taskLink['task_id']),
+            'task'      => $this->taskFinderModel->getDetails($taskLink['task_id']),
         ]);
     }
 
     /**
-     * Get event title with author
+     * Get event title with author.
      *
-     * @access public
-     * @param  string $author
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $author
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     public function buildTitleWithAuthor($author, $eventName, array $eventData)
@@ -75,11 +77,11 @@ class TaskLinkEventBuilder extends BaseEventBuilder
     }
 
     /**
-     * Get event title without author
+     * Get event title without author.
      *
-     * @access public
-     * @param  string $eventName
-     * @param  array  $eventData
+     * @param string $eventName
+     * @param array  $eventData
+     *
      * @return string
      */
     public function buildTitleWithoutAuthor($eventName, array $eventData)

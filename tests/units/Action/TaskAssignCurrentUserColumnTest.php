@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignCurrentUserColumn;
 use Hiject\Bus\Event\TaskEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignCurrentUserColumn;
 
 class TaskAssignCurrentUserColumnTest extends Base
 {
@@ -33,10 +33,10 @@ class TaskAssignCurrentUserColumnTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 2,
-            ]
+                'column_id'  => 2,
+            ],
         ]);
 
         $action = new TaskAssignCurrentUserColumn($this->container);
@@ -62,10 +62,10 @@ class TaskAssignCurrentUserColumnTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 3,
-            ]
+                'column_id'  => 3,
+            ],
         ]);
 
         $action = new TaskAssignCurrentUserColumn($this->container);
@@ -85,10 +85,10 @@ class TaskAssignCurrentUserColumnTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'column_id' => 2,
-            ]
+                'column_id'  => 2,
+            ],
         ]);
 
         $action = new TaskAssignCurrentUserColumn($this->container);

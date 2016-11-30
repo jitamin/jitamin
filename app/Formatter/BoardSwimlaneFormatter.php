@@ -14,7 +14,7 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Board Swimlane Formatter
+ * Board Swimlane Formatter.
  */
 class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
 {
@@ -24,61 +24,64 @@ class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
     protected $tags = [];
 
     /**
-     * Set swimlanes
+     * Set swimlanes.
      *
-     * @access public
-     * @param  array $swimlanes
+     * @param array $swimlanes
+     *
      * @return $this
      */
     public function withSwimlanes(array $swimlanes)
     {
         $this->swimlanes = $swimlanes;
+
         return $this;
     }
 
     /**
-     * Set columns
+     * Set columns.
      *
-     * @access public
-     * @param  array $columns
+     * @param array $columns
+     *
      * @return $this
      */
     public function withColumns(array $columns)
     {
         $this->columns = $columns;
+
         return $this;
     }
 
     /**
-     * Set tasks
+     * Set tasks.
      *
-     * @access public
-     * @param  array $tasks
+     * @param array $tasks
+     *
      * @return $this
      */
     public function withTasks(array $tasks)
     {
         $this->tasks = $tasks;
+
         return $this;
     }
 
     /**
-     * Set tags
+     * Set tags.
      *
-     * @access public
-     * @param  array $tags
+     * @param array $tags
+     *
      * @return $this
      */
     public function withTags(array $tags)
     {
         $this->tags = $tags;
+
         return $this;
     }
 
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -107,15 +110,14 @@ class BoardSwimlaneFormatter extends BaseFormatter implements FormatterInterface
     }
 
     /**
-     * Calculate stats for each column acrosss all swimlanes
+     * Calculate stats for each column acrosss all swimlanes.
      *
-     * @access protected
-     * @param  array $columns
+     * @param array $columns
      */
     protected function calculateStatsByColumnAcrossSwimlanes(array $columns)
     {
         foreach ($columns as $columnIndex => $column) {
-            if (! isset($this->swimlanes[0]['columns'][$columnIndex]['column_nb_tasks'])) {
+            if (!isset($this->swimlanes[0]['columns'][$columnIndex]['column_nb_tasks'])) {
                 $this->swimlanes[0]['columns'][$columnIndex]['column_nb_tasks'] = 0;
                 $this->swimlanes[0]['columns'][$columnIndex]['column_score'] = 0;
             }

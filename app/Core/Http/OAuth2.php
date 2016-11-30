@@ -14,7 +14,7 @@ namespace Hiject\Core\Http;
 use Hiject\Core\Base;
 
 /**
- * OAuth2 Client
+ * OAuth2 Client.
  */
 class OAuth2 extends Base
 {
@@ -28,15 +28,15 @@ class OAuth2 extends Base
     protected $accessToken;
 
     /**
-     * Create OAuth2 service
+     * Create OAuth2 service.
      *
-     * @access public
-     * @param  string  $clientId
-     * @param  string  $secret
-     * @param  string  $callbackUrl
-     * @param  string  $authUrl
-     * @param  string  $tokenUrl
-     * @param  array   $scopes
+     * @param string $clientId
+     * @param string $secret
+     * @param string $callbackUrl
+     * @param string $authUrl
+     * @param string $tokenUrl
+     * @param array  $scopes
+     *
      * @return OAuth2
      */
     public function createService($clientId, $secret, $callbackUrl, $authUrl, $tokenUrl, array $scopes)
@@ -52,14 +52,13 @@ class OAuth2 extends Base
     }
 
     /**
-     * Generate OAuth2 state and return the token value
+     * Generate OAuth2 state and return the token value.
      *
-     * @access public
      * @return string
      */
     public function getState()
     {
-        if (! isset($this->sessionStorage->oauthState) || empty($this->sessionStorage->oauthState)) {
+        if (!isset($this->sessionStorage->oauthState) || empty($this->sessionStorage->oauthState)) {
             $this->sessionStorage->oauthState = $this->token->getToken();
         }
 
@@ -67,10 +66,10 @@ class OAuth2 extends Base
     }
 
     /**
-     * Check the validity of the state (CSRF token)
+     * Check the validity of the state (CSRF token).
      *
-     * @access public
-     * @param  string $state
+     * @param string $state
+     *
      * @return bool
      */
     public function isValidateState($state)
@@ -79,28 +78,26 @@ class OAuth2 extends Base
     }
 
     /**
-     * Get authorization url
+     * Get authorization url.
      *
-     * @access public
      * @return string
      */
     public function getAuthorizationUrl()
     {
         $params = [
             'response_type' => 'code',
-            'client_id' => $this->clientId,
-            'redirect_uri' => $this->callbackUrl,
-            'scope' => implode(' ', $this->scopes),
-            'state' => $this->getState(),
+            'client_id'     => $this->clientId,
+            'redirect_uri'  => $this->callbackUrl,
+            'scope'         => implode(' ', $this->scopes),
+            'state'         => $this->getState(),
         ];
 
         return $this->authUrl.'?'.http_build_query($params);
     }
 
     /**
-     * Get authorization header
+     * Get authorization header.
      *
-     * @access public
      * @return string
      */
     public function getAuthorizationHeader()
@@ -113,22 +110,22 @@ class OAuth2 extends Base
     }
 
     /**
-     * Get access token
+     * Get access token.
      *
-     * @access public
-     * @param  string  $code
+     * @param string $code
+     *
      * @return string
      */
     public function getAccessToken($code)
     {
-        if (empty($this->accessToken) && ! empty($code)) {
+        if (empty($this->accessToken) && !empty($code)) {
             $params = [
-                'code' => $code,
-                'client_id' => $this->clientId,
+                'code'          => $code,
+                'client_id'     => $this->clientId,
                 'client_secret' => $this->secret,
-                'redirect_uri' => $this->callbackUrl,
-                'grant_type' => 'authorization_code',
-                'state' => $this->getState(),
+                'redirect_uri'  => $this->callbackUrl,
+                'grant_type'    => 'authorization_code',
+                'state'         => $this->getState(),
             ];
 
             $response = json_decode($this->httpClient->postForm($this->tokenUrl, $params, ['Accept: application/json']), true);
@@ -141,11 +138,11 @@ class OAuth2 extends Base
     }
 
     /**
-     * Set access token
+     * Set access token.
      *
-     * @access public
-     * @param  string  $token
-     * @param  string  $type
+     * @param string $token
+     * @param string $type
+     *
      * @return string
      */
     public function setAccessToken($token, $type = 'bearer')

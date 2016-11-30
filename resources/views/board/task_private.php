@@ -23,7 +23,7 @@
                 <strong><?= '#'.$task['id'] ?></strong>
             <?php endif ?>
 
-            <?php if (! empty($task['assignee_username'])): ?>
+            <?php if (!empty($task['assignee_username'])): ?>
                 <span title="<?= $this->text->e($task['assignee_name'] ?: $task['assignee_username']) ?>">
                     <?= $this->text->e($this->user->getInitials($task['assignee_name'] ?: $task['assignee_username'])) ?>
                 </span> -
@@ -54,9 +54,9 @@
             <?= $this->hook->render('template:board:private:task:after-title', ['task' => $task]) ?>
 
             <?= $this->render('board/task_footer', [
-                'task' => $task,
+                'task'         => $task,
                 'not_editable' => $not_editable,
-                'project' => $project,
+                'project'      => $project,
             ]) ?>
         </div>
     <?php endif ?>

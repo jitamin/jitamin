@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignColorCategory;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\CategoryModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignColorCategory;
 
 class TaskAssignColorCategoryTest extends Base
 {
@@ -34,10 +34,10 @@ class TaskAssignColorCategoryTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
                 'category_id' => 1,
-            ]
+            ],
         ]);
 
         $action = new TaskAssignColorCategory($this->container);
@@ -62,10 +62,10 @@ class TaskAssignColorCategoryTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
-                'project_id' => 1,
+            'task'    => [
+                'project_id'  => 1,
                 'category_id' => 2,
-            ]
+            ],
         ]);
 
         $action = new TaskAssignColorCategory($this->container);

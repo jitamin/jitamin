@@ -12,7 +12,7 @@
 namespace Hiject\Bus\Event;
 
 /**
- * Comment event
+ * Comment event.
  */
 class CommentEvent extends GenericEvent
 {

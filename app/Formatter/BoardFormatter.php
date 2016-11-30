@@ -15,35 +15,34 @@ use Hiject\Core\Filter\FormatterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Board Formatter
+ * Board Formatter.
  */
 class BoardFormatter extends BaseFormatter implements FormatterInterface
 {
     /**
-     * Project id
+     * Project id.
      *
-     * @access protected
-     * @var integer
+     * @var int
      */
     protected $projectId;
 
     /**
-     * Set ProjectId
+     * Set ProjectId.
      *
-     * @access public
-     * @param  integer $projectId
+     * @param int $projectId
+     *
      * @return $this
      */
     public function withProjectId($projectId)
     {
         $this->projectId = $projectId;
+
         return $this;
     }
 
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()

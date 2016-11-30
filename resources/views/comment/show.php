@@ -3,7 +3,7 @@
     <?= $this->avatar->render($comment['user_id'], $comment['username'], $comment['name'], $comment['email'], $comment['avatar_path']) ?>
 
     <div class="comment-title">
-        <?php if (! empty($comment['username'])): ?>
+        <?php if (!empty($comment['username'])): ?>
             <strong class="comment-username"><?= $this->text->e($comment['name'] ?: $comment['username']) ?></strong>
         <?php endif ?>
 
@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <?php if (! isset($hide_actions)): ?>
+    <?php if (!isset($hide_actions)): ?>
         <div class="comment-actions">
             <ul>
                 <li>

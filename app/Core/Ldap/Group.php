@@ -11,27 +11,25 @@
 
 namespace Hiject\Core\Ldap;
 
-use LogicException;
 use Hiject\Group\LdapGroupProvider;
+use LogicException;
 
 /**
- * LDAP Group Finder
+ * LDAP Group Finder.
  */
 class Group
 {
     /**
-     * Query
+     * Query.
      *
-     * @access protected
      * @var Query
      */
     protected $query;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  Query   $query
+     * @param Query $query
      */
     public function __construct(Query $query)
     {
@@ -39,25 +37,27 @@ class Group
     }
 
     /**
-     * Get groups
+     * Get groups.
      *
      * @static
-     * @access public
-     * @param  Client    $client
-     * @param  string    $query
+     *
+     * @param Client $client
+     * @param string $query
+     *
      * @return LdapGroupProvider[]
      */
     public static function getGroups(Client $client, $query)
     {
         $self = new static(new Query($client));
+
         return $self->find($query);
     }
 
     /**
-     * Find groups
+     * Find groups.
      *
-     * @access public
-     * @param  string    $query
+     * @param string $query
+     *
      * @return array
      */
     public function find($query)
@@ -73,9 +73,8 @@ class Group
     }
 
     /**
-     * Build groups list
+     * Build groups list.
      *
-     * @access protected
      * @return array
      */
     protected function build()
@@ -90,11 +89,10 @@ class Group
     }
 
     /**
-     * Ge the list of attributes to fetch when reading the LDAP group entry
+     * Ge the list of attributes to fetch when reading the LDAP group entry.
      *
      * Must returns array with index that start at 0 otherwise ldap_search returns a warning "Array initialization wrong"
      *
-     * @access public
      * @return array
      */
     public function getAttributes()
@@ -105,14 +103,13 @@ class Group
     }
 
     /**
-     * Get LDAP group name attribute
+     * Get LDAP group name attribute.
      *
-     * @access public
      * @return string
      */
     public function getAttributeName()
     {
-        if (! LDAP_GROUP_ATTRIBUTE_NAME) {
+        if (!LDAP_GROUP_ATTRIBUTE_NAME) {
             throw new LogicException('LDAP full name attribute empty, check the parameter LDAP_GROUP_ATTRIBUTE_NAME');
         }
 
@@ -120,14 +117,13 @@ class Group
     }
 
     /**
-     * Get LDAP group base DN
+     * Get LDAP group base DN.
      *
-     * @access public
      * @return string
      */
     public function getBasDn()
     {
-        if (! LDAP_GROUP_BASE_DN) {
+        if (!LDAP_GROUP_BASE_DN) {
             throw new LogicException('LDAP group base DN empty, check the parameter LDAP_GROUP_BASE_DN');
         }
 

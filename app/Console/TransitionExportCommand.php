@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Transition export command class
+ * Transition export command class.
  */
 class TransitionExportCommand extends BaseCommand
 {

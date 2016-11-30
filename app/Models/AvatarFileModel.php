@@ -15,22 +15,22 @@ use Exception;
 use Hiject\Core\Base;
 
 /**
- * Avatar File
+ * Avatar File.
  */
 class AvatarFileModel extends Base
 {
     /**
-     * Path prefix
+     * Path prefix.
      *
      * @var string
      */
     const PATH_PREFIX = 'avatars';
 
     /**
-     * Get image filename
+     * Get image filename.
      *
-     * @access public
-     * @param  integer $user_id
+     * @param int $user_id
+     *
      * @return string
      */
     public function getFilename($user_id)
@@ -39,11 +39,11 @@ class AvatarFileModel extends Base
     }
 
     /**
-     * Add avatar in the user profile
+     * Add avatar in the user profile.
      *
-     * @access public
-     * @param  integer  $user_id    Foreign key
-     * @param  string   $path       Path on the disk
+     * @param int    $user_id Foreign key
+     * @param string $path    Path on the disk
+     *
      * @return bool
      */
     public function create($user_id, $path)
@@ -58,10 +58,10 @@ class AvatarFileModel extends Base
     }
 
     /**
-     * Remove avatar from the user profile
+     * Remove avatar from the user profile.
      *
-     * @access public
-     * @param  integer  $user_id    Foreign key
+     * @param int $user_id Foreign key
+     *
      * @return bool
      */
     public function remove($user_id)
@@ -69,12 +69,14 @@ class AvatarFileModel extends Base
         try {
             $filename = $this->getFilename($user_id);
 
-            if (! empty($filename)) {
+            if (!empty($filename)) {
                 $this->objectStorage->remove($filename);
+
                 return $this->db->table(UserModel::TABLE)->eq('id', $user_id)->update(['avatar_path' => '']);
             }
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
 
@@ -82,12 +84,12 @@ class AvatarFileModel extends Base
     }
 
     /**
-     * Upload avatar image file
+     * Upload avatar image file.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  array   $file
-     * @return boolean
+     * @param int   $user_id
+     * @param array $file
+     *
+     * @return bool
      */
     public function uploadImageFile($user_id, array $file)
     {
@@ -101,6 +103,7 @@ class AvatarFileModel extends Base
             }
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
 
@@ -108,12 +111,12 @@ class AvatarFileModel extends Base
     }
 
     /**
-     * Upload avatar image content
+     * Upload avatar image content.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  string  $blob
-     * @return boolean
+     * @param int    $user_id
+     * @param string $blob
+     *
+     * @return bool
      */
     public function uploadImageContent($user_id, &$blob)
     {
@@ -123,6 +126,7 @@ class AvatarFileModel extends Base
             $this->create($user_id, $destinationFilename);
         } catch (Exception $e) {
             $this->logger->error($e->getMessage());
+
             return false;
         }
 
@@ -130,11 +134,11 @@ class AvatarFileModel extends Base
     }
 
     /**
-     * Generate the path for a new filename
+     * Generate the path for a new filename.
      *
-     * @access public
-     * @param  integer   $user_id
-     * @param  string    $filename
+     * @param int    $user_id
+     * @param string $filename
+     *
      * @return string
      */
     public function generatePath($user_id, $filename)

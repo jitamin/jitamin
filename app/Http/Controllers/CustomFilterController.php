@@ -15,16 +15,16 @@ use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Security\Role;
 
 /**
- * Custom Filter Controller
+ * Custom Filter Controller.
  */
 class CustomFilterController extends BaseController
 {
     /**
-     * Display list of filters
+     * Display list of filters.
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     public function index(array $values = [], array $errors = [])
@@ -32,18 +32,16 @@ class CustomFilterController extends BaseController
         $project = $this->getProject();
 
         $this->response->html($this->helper->layout->project('custom_filter/index', [
-            'values' => $values + ['project_id' => $project['id']],
-            'errors' => $errors,
-            'project' => $project,
+            'values'         => $values + ['project_id' => $project['id']],
+            'errors'         => $errors,
+            'project'        => $project,
             'custom_filters' => $this->customFilterModel->getAll($project['id'], $this->userSession->getId()),
-            'title' => t('Custom filters'),
+            'title'          => t('Custom filters'),
         ]));
     }
 
     /**
-     * Save a new custom filter
-     *
-     * @access public
+     * Save a new custom filter.
      */
     public function save()
     {
@@ -57,6 +55,7 @@ class CustomFilterController extends BaseController
         if ($valid) {
             if ($this->customFilterModel->create($values) !== false) {
                 $this->flash->success(t('Your custom filter have been created successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to create your custom filter.'));
@@ -67,9 +66,7 @@ class CustomFilterController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a custom filter
-     *
-     * @access public
+     * Confirmation dialog before removing a custom filter.
      */
     public function confirm()
     {
@@ -78,15 +75,13 @@ class CustomFilterController extends BaseController
 
         $this->response->html($this->helper->layout->project('custom_filter/remove', [
             'project' => $project,
-            'filter' => $filter,
-            'title' => t('Remove a custom filter')
+            'filter'  => $filter,
+            'title'   => t('Remove a custom filter'),
         ]));
     }
 
     /**
-     * Remove a custom filter
-     *
-     * @access public
+     * Remove a custom filter.
      */
     public function remove()
     {
@@ -106,11 +101,11 @@ class CustomFilterController extends BaseController
     }
 
     /**
-     * Edit a custom filter (display the form)
+     * Edit a custom filter (display the form).
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
@@ -122,18 +117,16 @@ class CustomFilterController extends BaseController
         $this->checkPermission($project, $filter);
 
         $this->response->html($this->helper->layout->project('custom_filter/edit', [
-            'values' => empty($values) ? $filter : $values,
-            'errors' => $errors,
+            'values'  => empty($values) ? $filter : $values,
+            'errors'  => $errors,
             'project' => $project,
-            'filter' => $filter,
-            'title' => t('Edit custom filter')
+            'filter'  => $filter,
+            'title'   => t('Edit custom filter'),
         ]));
     }
 
     /**
-     * Edit a custom filter (validate the form and update the database)
-     *
-     * @access public
+     * Edit a custom filter (validate the form and update the database).
      */
     public function update()
     {
@@ -144,11 +137,11 @@ class CustomFilterController extends BaseController
 
         $values = $this->request->getValues();
 
-        if (! isset($values['is_shared'])) {
+        if (!isset($values['is_shared'])) {
             $values += ['is_shared' => 0];
         }
 
-        if (! isset($values['append'])) {
+        if (!isset($values['append'])) {
             $values += ['append' => 0];
         }
 
@@ -157,6 +150,7 @@ class CustomFilterController extends BaseController
         if ($valid) {
             if ($this->customFilterModel->update($values)) {
                 $this->flash->success(t('Your custom filter have been updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('CustomFilterController', 'index', ['project_id' => $project['id']]));
             } else {
                 $this->flash->failure(t('Unable to update custom filter.'));
@@ -170,7 +164,7 @@ class CustomFilterController extends BaseController
     {
         $user_id = $this->userSession->getId();
 
-        if ($filter['user_id'] != $user_id && ($this->projectUserRoleModel->getUserRole($project['id'], $user_id) === Role::PROJECT_MANAGER || ! $this->userSession->isAdmin())) {
+        if ($filter['user_id'] != $user_id && ($this->projectUserRoleModel->getUserRole($project['id'], $user_id) === Role::PROJECT_MANAGER || !$this->userSession->isAdmin())) {
             throw new AccessForbiddenException();
         }
     }

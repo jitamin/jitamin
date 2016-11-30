@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-use Hiject\Core\Security\Role;
 use Hiject\Bus\Event\UserProfileSyncEvent;
-use Hiject\Model\UserModel;
 use Hiject\Bus\Subscriber\LdapUserPhotoSubscriber;
+use Hiject\Core\Security\Role;
+use Hiject\Model\UserModel;
 use Hiject\User\DatabaseUserProvider;
 use Hiject\User\LdapUserProvider;
 

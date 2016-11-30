@@ -11,11 +11,11 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectDailyColumnStatsModel;
 use Hiject\Model\ConfigModel;
-use Hiject\Model\TaskModel;
+use Hiject\Model\ProjectDailyColumnStatsModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class ProjectDailyColumnStatsTest extends Base
 {
@@ -41,11 +41,11 @@ class ProjectDailyColumnStatsTest extends Base
 
         $expected = [
             [
-                'day' => '2016-01-16',
+                'day'        => '2016-01-16',
                 'project_id' => 1,
-                'column_id' => 1,
-                'total' => 1,
-                'score' => 0,
+                'column_id'  => 1,
+                'total'      => 1,
+                'score'      => 0,
             ],
         ];
 
@@ -85,39 +85,39 @@ class ProjectDailyColumnStatsTest extends Base
 
         $expected = [
             [
-                'day' => '2016-01-16',
+                'day'        => '2016-01-16',
                 'project_id' => 1,
-                'column_id' => 1,
-                'total' => 4,
-                'score' => 11,
+                'column_id'  => 1,
+                'total'      => 4,
+                'score'      => 11,
             ],
             [
-                'day' => '2016-01-16',
+                'day'        => '2016-01-16',
                 'project_id' => 1,
-                'column_id' => 2,
-                'total' => 4,
-                'score' => 13,
+                'column_id'  => 2,
+                'total'      => 4,
+                'score'      => 13,
             ],
             [
-                'day' => '2016-01-17',
+                'day'        => '2016-01-17',
                 'project_id' => 1,
-                'column_id' => 1,
-                'total' => 4,
-                'score' => 11,
+                'column_id'  => 1,
+                'total'      => 4,
+                'score'      => 11,
             ],
             [
-                'day' => '2016-01-17',
+                'day'        => '2016-01-17',
                 'project_id' => 1,
-                'column_id' => 2,
-                'total' => 4,
-                'score' => 13,
+                'column_id'  => 2,
+                'total'      => 4,
+                'score'      => 13,
             ],
             [
-                'day' => '2016-01-17',
+                'day'        => '2016-01-17',
                 'project_id' => 1,
-                'column_id' => 3,
-                'total' => 1,
-                'score' => 0,
+                'column_id'  => 3,
+                'total'      => 1,
+                'score'      => 0,
             ],
         ];
 
@@ -161,39 +161,39 @@ class ProjectDailyColumnStatsTest extends Base
 
         $expected = [
             [
-                'day' => '2016-01-16',
+                'day'        => '2016-01-16',
                 'project_id' => 1,
-                'column_id' => 1,
-                'total' => 2,
-                'score' => 11,
+                'column_id'  => 1,
+                'total'      => 2,
+                'score'      => 11,
             ],
             [
-                'day' => '2016-01-16',
+                'day'        => '2016-01-16',
                 'project_id' => 1,
-                'column_id' => 2,
-                'total' => 2,
-                'score' => 13,
+                'column_id'  => 2,
+                'total'      => 2,
+                'score'      => 13,
             ],
             [
-                'day' => '2016-01-17',
+                'day'        => '2016-01-17',
                 'project_id' => 1,
-                'column_id' => 1,
-                'total' => 2,
-                'score' => 11,
+                'column_id'  => 1,
+                'total'      => 2,
+                'score'      => 11,
             ],
             [
-                'day' => '2016-01-17',
+                'day'        => '2016-01-17',
                 'project_id' => 1,
-                'column_id' => 2,
-                'total' => 2,
-                'score' => 13,
+                'column_id'  => 2,
+                'total'      => 2,
+                'score'      => 13,
             ],
             [
-                'day' => '2016-01-17',
+                'day'        => '2016-01-17',
                 'project_id' => 1,
-                'column_id' => 3,
-                'total' => 1,
-                'score' => 0,
+                'column_id'  => 3,
+                'total'      => 1,
+                'score'      => 0,
             ],
         ];
 

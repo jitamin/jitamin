@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * User Status Controller
+ * User Status Controller.
  */
 class UserStatusController extends BaseController
 {
     /**
-     * Confirm remove a user
-     *
-     * @access public
+     * Confirm remove a user.
      */
     public function confirmRemove()
     {
@@ -31,9 +29,7 @@ class UserStatusController extends BaseController
     }
 
     /**
-     * Remove a user
-     *
-     * @access public
+     * Remove a user.
      */
     public function remove()
     {
@@ -50,9 +46,7 @@ class UserStatusController extends BaseController
     }
 
     /**
-     * Confirm enable a user
-     *
-     * @access public
+     * Confirm enable a user.
      */
     public function confirmEnable()
     {
@@ -64,9 +58,7 @@ class UserStatusController extends BaseController
     }
 
     /**
-     * Enable a user
-     *
-     * @access public
+     * Enable a user.
      */
     public function enable()
     {
@@ -83,9 +75,7 @@ class UserStatusController extends BaseController
     }
 
     /**
-     * Confirm disable a user
-     *
-     * @access public
+     * Confirm disable a user.
      */
     public function confirmDisable()
     {
@@ -97,9 +87,7 @@ class UserStatusController extends BaseController
     }
 
     /**
-     * Disable a user
-     *
-     * @access public
+     * Disable a user.
      */
     public function disable()
     {

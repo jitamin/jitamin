@@ -12,58 +12,58 @@
 namespace Hiject\Core;
 
 /**
- * Translator class
+ * Translator class.
  */
 class Translator
 {
     /**
-     * Locale path
+     * Locale path.
      *
      * @var string
      */
     const PATH = '../resources/lang';
 
     /**
-     * Locale
+     * Locale.
      *
      * @static
-     * @access private
+     *
      * @var array
      */
     private static $locales = [];
 
     /**
-     * Instance
+     * Instance.
      *
      * @static
-     * @access private
+     *
      * @var Translator
      */
     private static $instance = null;
 
     /**
-     * Get instance
+     * Get instance.
      *
      * @static
-     * @access public
+     *
      * @return Translator
      */
     public static function getInstance()
     {
         if (self::$instance === null) {
-            self::$instance = new self;
+            self::$instance = new self();
         }
 
         return self::$instance;
     }
 
     /**
-     * Get a translation
+     * Get a translation.
      *
      * $translator->translate('I have %d kids', 5);
      *
-     * @access public
-     * @param  string   $identifier       Default string
+     * @param string $identifier Default string
+     *
      * @return string
      */
     public function translate($identifier)
@@ -84,12 +84,12 @@ class Translator
     }
 
     /**
-     * Get a translation with no HTML escaping
+     * Get a translation with no HTML escaping.
      *
      * $translator->translateNoEscaping('I have %d kids', 5);
      *
-     * @access public
-     * @param  string   $identifier       Default string
+     * @param string $identifier Default string
+     *
      * @return string
      */
     public function translateNoEscaping($identifier)
@@ -106,12 +106,12 @@ class Translator
     }
 
     /**
-     * Get a formatted number
+     * Get a formatted number.
      *
      * $translator->number(1234.56);
      *
-     * @access public
-     * @param  float    $number   Number to format
+     * @param float $number Number to format
+     *
      * @return string
      */
     public function number($number)
@@ -125,12 +125,12 @@ class Translator
     }
 
     /**
-     * Get a formatted currency number
+     * Get a formatted currency number.
      *
      * $translator->currency(1234.56);
      *
-     * @access public
-     * @param  float    $amount   Number to format
+     * @param float $amount Number to format
+     *
      * @return string
      */
     public function currency($amount)
@@ -153,11 +153,11 @@ class Translator
     }
 
     /**
-     * Get an identifier from the translations or return the default
+     * Get an identifier from the translations or return the default.
      *
-     * @access public
-     * @param  string   $identifier   Locale identifier
-     * @param  string   $default      Default value
+     * @param string $identifier Locale identifier
+     * @param string $default    Default value
+     *
      * @return string
      */
     public function get($identifier, $default = '')
@@ -170,12 +170,12 @@ class Translator
     }
 
     /**
-     * Load translations
+     * Load translations.
      *
      * @static
-     * @access public
-     * @param  string   $language   Locale code: fr_FR
-     * @param  string   $path       Locale folder
+     *
+     * @param string $language Locale code: fr_FR
+     * @param string $path     Locale folder
      */
     public static function load($language, $path = self::PATH)
     {
@@ -187,10 +187,9 @@ class Translator
     }
 
     /**
-     * Clear locales stored in memory
+     * Clear locales stored in memory.
      *
      * @static
-     * @access public
      */
     public static function unload()
     {

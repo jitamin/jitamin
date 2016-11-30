@@ -14,15 +14,15 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Class Timezone
+ * Class Timezone.
  */
 class TimezoneModel extends Base
 {
     /**
-     * Get available timezones
+     * Get available timezones.
      *
-     * @access public
-     * @param  boolean   $prepend  Prepend a default value
+     * @param bool $prepend Prepend a default value
+     *
      * @return array
      */
     public function getTimezones($prepend = false)
@@ -38,14 +38,13 @@ class TimezoneModel extends Base
     }
 
     /**
-     * Get current timezone
+     * Get current timezone.
      *
-     * @access public
      * @return string
      */
     public function getCurrentTimezone()
     {
-        if ($this->userSession->isLogged() && ! empty($this->sessionStorage->user['timezone'])) {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['timezone'])) {
             return $this->sessionStorage->user['timezone'];
         }
 
@@ -53,9 +52,7 @@ class TimezoneModel extends Base
     }
 
     /**
-     * Set timezone
-     *
-     * @access public
+     * Set timezone.
      */
     public function setCurrentTimezone()
     {

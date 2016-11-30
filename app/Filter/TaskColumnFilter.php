@@ -16,14 +16,13 @@ use Hiject\Model\ColumnModel;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by column
+ * Filter tasks by column.
  */
 class TaskColumnFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -32,9 +31,8 @@ class TaskColumnFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

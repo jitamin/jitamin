@@ -14,23 +14,23 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Category model
+ * Category model.
  */
 class CategoryModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'project_has_categories';
 
     /**
-     * Return true if a category exists for a given project
+     * Return true if a category exists for a given project.
      *
-     * @access public
-     * @param  integer   $category_id    Category id
-     * @return boolean
+     * @param int $category_id Category id
+     *
+     * @return bool
      */
     public function exists($category_id)
     {
@@ -38,10 +38,10 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get a category by the id
+     * Get a category by the id.
      *
-     * @access public
-     * @param  integer   $category_id    Category id
+     * @param int $category_id Category id
+     *
      * @return array
      */
     public function getById($category_id)
@@ -50,10 +50,10 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get the category name by the id
+     * Get the category name by the id.
      *
-     * @access public
-     * @param  integer   $category_id    Category id
+     * @param int $category_id Category id
+     *
      * @return string
      */
     public function getNameById($category_id)
@@ -62,11 +62,11 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get the projectId by the category id
+     * Get the projectId by the category id.
      *
-     * @access public
-     * @param  integer   $category_id    Category id
-     * @return integer
+     * @param int $category_id Category id
+     *
+     * @return int
      */
     public function getProjectId($category_id)
     {
@@ -74,11 +74,11 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get the first category id for a given project
+     * Get the first category id for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @return integer
+     * @param int $project_id Project id
+     *
+     * @return int
      */
     public function getFirstCategoryId($project_id)
     {
@@ -86,11 +86,11 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get the last category id for a given project
+     * Get the last category id for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @return integer
+     * @param int $project_id Project id
+     *
+     * @return int
      */
     public function getLastCategoryId($project_id)
     {
@@ -98,11 +98,11 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get the position of the last category for a given project
+     * Get the position of the last category for a given project.
      *
-     * @access public
-     * @param  integer  $project_id   Project id
-     * @return integer
+     * @param int $project_id Project id
+     *
+     * @return int
      */
     public function getLastCategoryPosition($project_id)
     {
@@ -114,12 +114,12 @@ class CategoryModel extends Base
     }
 
     /**
-     * Get a category id by the category name and project id
+     * Get a category id by the category name and project id.
      *
-     * @access public
-     * @param  integer   $project_id      Project id
-     * @param  string    $category_name   Category name
-     * @return integer
+     * @param int    $project_id    Project id
+     * @param string $category_name Category name
+     *
+     * @return int
      */
     public function getIdByName($project_id, $category_name)
     {
@@ -130,12 +130,12 @@ class CategoryModel extends Base
     }
 
     /**
-     * Return the list of all categories
+     * Return the list of all categories.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
-     * @param  bool      $prepend_none  If true, prepend to the list the value 'None'
-     * @param  bool      $prepend_all   If true, prepend to the list the value 'All'
+     * @param int  $project_id   Project id
+     * @param bool $prepend_none If true, prepend to the list the value 'None'
+     * @param bool $prepend_all  If true, prepend to the list the value 'All'
+     *
      * @return array
      */
     public function getList($project_id, $prepend_none = true, $prepend_all = false)
@@ -159,10 +159,10 @@ class CategoryModel extends Base
     }
 
     /**
-     * Return all categories for a given project
+     * Return all categories for a given project.
      *
-     * @access public
-     * @param  integer   $project_id    Project id
+     * @param int $project_id Project id
+     *
      * @return array
      */
     public function getAll($project_id)
@@ -174,11 +174,11 @@ class CategoryModel extends Base
     }
 
     /**
-     * Create default categories during project creation (transaction already started in Project::create())
+     * Create default categories during project creation (transaction already started in Project::create()).
      *
-     * @access public
-     * @param  integer  $project_id
-     * @return boolean
+     * @param int $project_id
+     *
+     * @return bool
      */
     public function createDefaultCategories($project_id)
     {
@@ -189,11 +189,11 @@ class CategoryModel extends Base
         foreach ($categories as $category) {
             $category = trim($category);
 
-            if (! empty($category)) {
+            if (!empty($category)) {
                 $results[] = $this->db->table(self::TABLE)->insert([
                     'project_id' => $project_id,
-                    'name' => $category,
-                    'position' => $position,
+                    'name'       => $category,
+                    'position'   => $position,
                 ]);
 
                 $position++;
@@ -204,11 +204,11 @@ class CategoryModel extends Base
     }
 
     /**
-     * Create a category (run inside a transaction)
+     * Create a category (run inside a transaction).
      *
-     * @access public
-     * @param  array    $values    Form values
-     * @return bool|integer
+     * @param array $values Form values
+     *
+     * @return bool|int
      */
     public function create(array $values)
     {
@@ -218,10 +218,10 @@ class CategoryModel extends Base
     }
 
     /**
-     * Update a category
+     * Update a category.
      *
-     * @access public
-     * @param  array    $values    Form values
+     * @param array $values Form values
+     *
      * @return bool
      */
     public function update(array $values)
@@ -230,10 +230,10 @@ class CategoryModel extends Base
     }
 
     /**
-     * Remove a category
+     * Remove a category.
      *
-     * @access public
-     * @param  integer   $category_id    Category id
+     * @param int $category_id Category id
+     *
      * @return bool
      */
     public function remove($category_id)
@@ -242,8 +242,9 @@ class CategoryModel extends Base
 
         $this->db->table(TaskModel::TABLE)->eq('category_id', $category_id)->update(['category_id' => 0]);
 
-        if (! $this->db->table(self::TABLE)->eq('id', $category_id)->remove()) {
+        if (!$this->db->table(self::TABLE)->eq('id', $category_id)->remove()) {
             $this->db->cancelTransaction();
+
             return false;
         }
 
@@ -253,12 +254,14 @@ class CategoryModel extends Base
     }
 
     /**
-     * Duplicate categories from a project to another one, must be executed inside a transaction
+     * Duplicate categories from a project to another one, must be executed inside a transaction.
      *
      * @author Antonio Rabelo
-     * @param  integer    $src_project_id        Source project id
-     * @param  integer    $dst_project_id        Destination project id
-     * @return boolean
+     *
+     * @param int $src_project_id Source project id
+     * @param int $dst_project_id Destination project id
+     *
+     * @return bool
      */
     public function duplicate($src_project_id, $dst_project_id)
     {
@@ -272,7 +275,7 @@ class CategoryModel extends Base
         foreach ($categories as $category) {
             $category['project_id'] = $dst_project_id;
 
-            if (! $this->db->table(self::TABLE)->save($category)) {
+            if (!$this->db->table(self::TABLE)->save($category)) {
                 return false;
             }
         }
@@ -281,13 +284,13 @@ class CategoryModel extends Base
     }
 
     /**
-     * Change category position
+     * Change category position.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  integer  $category_id
-     * @param  integer  $position
-     * @return boolean
+     * @param int $project_id
+     * @param int $category_id
+     * @param int $position
+     *
+     * @return bool
      */
     public function changePosition($project_id, $category_id, $position)
     {

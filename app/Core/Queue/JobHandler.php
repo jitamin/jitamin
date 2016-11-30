@@ -12,35 +12,34 @@
 namespace Hiject\Core\Queue;
 
 use Exception;
-use Hiject\Core\Base;
 use Hiject\Bus\Job\BaseJob;
+use Hiject\Core\Base;
 use SimpleQueue\Job;
 
 /**
- * Class JobHandler
+ * Class JobHandler.
  */
 class JobHandler extends Base
 {
     /**
-     * Serialize a job
+     * Serialize a job.
      *
-     * @access public
-     * @param  BaseJob $job
+     * @param BaseJob $job
+     *
      * @return Job
      */
     public function serializeJob(BaseJob $job)
     {
         return new Job([
-            'class' => get_class($job),
-            'params' => $job->getJobParams(),
+            'class'   => get_class($job),
+            'params'  => $job->getJobParams(),
             'user_id' => $this->userSession->getId(),
         ]);
     }
 
     /**
-     * Execute a job
+     * Execute a job.
      *
-     * @access public
      * @param Job $job
      */
     public function executeJob(Job $job)
@@ -61,15 +60,14 @@ class JobHandler extends Base
             call_user_func_array([$worker, 'execute'], $payload['params']);
         } catch (Exception $e) {
             $this->logger->error(__METHOD__.': Error during job execution: '.$e->getMessage());
-            $this->logger->error(__METHOD__ .' => '.json_encode($payload));
+            $this->logger->error(__METHOD__.' => '.json_encode($payload));
         }
     }
 
     /**
-     * Create the session for the job
+     * Create the session for the job.
      *
-     * @access protected
-     * @param integer $user_id
+     * @param int $user_id
      */
     protected function prepareJobSession($user_id)
     {
@@ -83,9 +81,7 @@ class JobHandler extends Base
     }
 
     /**
-     * Flush in-memory caching and specific events
-     *
-     * @access protected
+     * Flush in-memory caching and specific events.
      */
     protected function prepareJobEnvironment()
     {

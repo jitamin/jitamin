@@ -14,15 +14,15 @@ namespace Hiject\Bus\Subscriber;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Bootstrap Subscriber
+ * Bootstrap Subscriber.
  */
 class BootstrapSubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -33,9 +33,7 @@ class BootstrapSubscriber extends BaseSubscriber implements EventSubscriberInter
     }
 
     /**
-     * Execute
-     *
-     * @access public
+     * Execute.
      */
     public function execute()
     {
@@ -50,15 +48,13 @@ class BootstrapSubscriber extends BaseSubscriber implements EventSubscriberInter
     }
 
     /**
-     * Destruct of the subscriber
-     *
-     * @access public
+     * Destruct of the subscriber.
      */
     public function __destruct()
     {
         if (DEBUG) {
             foreach ($this->db->getLogMessages() as $message) {
-                $this->logger->debug('SQL: ' . $message);
+                $this->logger->debug('SQL: '.$message);
             }
 
             $this->logger->debug('APP: nb_queries={nb}', ['nb' => $this->db->getStatementHandler()->getNbQueries()]);

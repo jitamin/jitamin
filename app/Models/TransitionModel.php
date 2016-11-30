@@ -14,23 +14,23 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Transition
+ * Transition.
  */
 class TransitionModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'transitions';
 
     /**
-     * Save transition event
+     * Save transition event.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  array   $task_event
+     * @param int   $user_id
+     * @param array $task_event
+     *
      * @return bool
      */
     public function save($user_id, array $task_event)
@@ -38,21 +38,21 @@ class TransitionModel extends Base
         $time = time();
 
         return $this->db->table(self::TABLE)->insert([
-            'user_id' => $user_id,
-            'project_id' => $task_event['project_id'],
-            'task_id' => $task_event['task_id'],
+            'user_id'       => $user_id,
+            'project_id'    => $task_event['project_id'],
+            'task_id'       => $task_event['task_id'],
             'src_column_id' => $task_event['src_column_id'],
             'dst_column_id' => $task_event['dst_column_id'],
-            'date' => $time,
-            'time_spent' => $time - $task_event['date_moved']
+            'date'          => $time,
+            'time_spent'    => $time - $task_event['date_moved'],
         ]);
     }
 
     /**
-     * Get time spent by task for each column
+     * Get time spent by task for each column.
      *
-     * @access public
-     * @param  integer  $task_id
+     * @param int $task_id
+     *
      * @return array
      */
     public function getTimeSpentByTask($task_id)
@@ -65,10 +65,10 @@ class TransitionModel extends Base
     }
 
     /**
-     * Get all transitions by task
+     * Get all transitions by task.
      *
-     * @access public
-     * @param  integer   $task_id
+     * @param int $task_id
+     *
      * @return array
      */
     public function getAllByTask($task_id)
@@ -92,21 +92,21 @@ class TransitionModel extends Base
     }
 
     /**
-     * Get all transitions by project
+     * Get all transitions by project.
      *
-     * @access public
-     * @param  integer    $project_id
-     * @param  mixed      $from            Start date (timestamp or user formatted date)
-     * @param  mixed      $to              End date (timestamp or user formatted date)
+     * @param int   $project_id
+     * @param mixed $from       Start date (timestamp or user formatted date)
+     * @param mixed $to         End date (timestamp or user formatted date)
+     *
      * @return array
      */
     public function getAllByProjectAndDate($project_id, $from, $to)
     {
-        if (! is_numeric($from)) {
+        if (!is_numeric($from)) {
             $from = $this->dateParser->removeTimeFromTimestamp($this->dateParser->getTimestamp($from));
         }
 
-        if (! is_numeric($to)) {
+        if (!is_numeric($to)) {
             $to = $this->dateParser->removeTimeFromTimestamp(strtotime('+1 day', $this->dateParser->getTimestamp($to)));
         }
 

@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Validator\UserValidator;
 use Hiject\Core\Security\Role;
+use Hiject\Validator\UserValidator;
 
 class UserValidatorTest extends Base
 {
@@ -21,8 +21,8 @@ class UserValidatorTest extends Base
         $userValidator = new UserValidator($this->container);
 
         $this->container['sessionStorage']->user = [
-            'id' => 1,
-            'role' => Role::APP_ADMIN,
+            'id'       => 1,
+            'role'     => Role::APP_ADMIN,
             'username' => 'admin',
         ];
 

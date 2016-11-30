@@ -14,16 +14,16 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Layout Helper
+ * Layout Helper.
  */
 class LayoutHelper extends Base
 {
     /**
-     * Render a template without the layout if Ajax request
+     * Render a template without the layout if Ajax request.
      *
-     * @access public
-     * @param  string $template Template name
-     * @param  array  $params   Template parameters
+     * @param string $template Template name
+     * @param array  $params   Template parameters
+     *
      * @return string
      */
     public function app($template, array $params = [])
@@ -32,7 +32,7 @@ class LayoutHelper extends Base
             return $this->template->render($template, $params);
         }
 
-        if (! isset($params['no_layout']) && ! isset($params['board_selector'])) {
+        if (!isset($params['no_layout']) && !isset($params['board_selector'])) {
             $params['board_selector'] = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
         }
 
@@ -40,11 +40,11 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for user views
+     * Common layout for user views.
      *
-     * @access public
-     * @param  string $template Template name
-     * @param  array  $params   Template parameters
+     * @param string $template Template name
+     * @param array  $params   Template parameters
+     *
      * @return string
      */
     public function user($template, array $params)
@@ -57,27 +57,28 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for task views
+     * Common layout for task views.
      *
-     * @access public
-     * @param  string $template Template name
-     * @param  array  $params   Template parameters
+     * @param string $template Template name
+     * @param array  $params   Template parameters
+     *
      * @return string
      */
     public function task($template, array $params)
     {
         $params['page_title'] = $params['task']['project_name'].', #'.$params['task']['id'].' - '.$params['task']['title'];
         $params['title'] = $params['task']['project_name'];
+
         return $this->subLayout('task/layout', 'task/sidebar', $template, $params);
     }
 
     /**
-     * Common layout for project views
+     * Common layout for project views.
      *
-     * @access public
-     * @param  string $template
-     * @param  array  $params
-     * @param  string $sidebar
+     * @param string $template
+     * @param array  $params
+     * @param string $sidebar
+     *
      * @return string
      */
     public function project($template, array $params, $sidebar = 'project/sidebar')
@@ -92,34 +93,35 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for project user views
+     * Common layout for project user views.
      *
-     * @access public
-     * @param  string $template
-     * @param  array  $params
+     * @param string $template
+     * @param array  $params
+     *
      * @return string
      */
     public function projectUser($template, array $params)
     {
         $params['filter'] = ['user_id' => $params['user_id']];
+
         return $this->subLayout('project_user_overview/layout', 'project_user_overview/sidebar', $template, $params);
     }
 
     /**
-     * Common layout for config views
+     * Common layout for config views.
      *
-     * @access public
-     * @param  string $template
-     * @param  array  $params
+     * @param string $template
+     * @param array  $params
+     *
      * @return string
      */
     public function config($template, array $params)
     {
-        if (! isset($params['values'])) {
+        if (!isset($params['values'])) {
             $params['values'] = $this->configModel->getAll();
         }
 
-        if (! isset($params['errors'])) {
+        if (!isset($params['errors'])) {
             $params['errors'] = [];
         }
 
@@ -127,11 +129,11 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for plugin views
+     * Common layout for plugin views.
      *
-     * @access public
-     * @param  string $template
-     * @param  array  $params
+     * @param string $template
+     * @param array  $params
+     *
      * @return string
      */
     public function plugin($template, array $params)
@@ -140,11 +142,11 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for dashboard views
+     * Common layout for dashboard views.
      *
-     * @access public
-     * @param  string $template
-     * @param  array  $params
+     * @param string $template
+     * @param array  $params
+     *
      * @return string
      */
     public function dashboard($template, array $params)
@@ -153,11 +155,11 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for analytic views
+     * Common layout for analytic views.
      *
-     * @access public
-     * @param  string $template
-     * @param  array  $params
+     * @param string $template
+     * @param array  $params
+     *
      * @return string
      */
     public function analytic($template, array $params)
@@ -170,12 +172,12 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Render page layout
+     * Render page layout.
      *
-     * @access public
-     * @param  string   $template   Template name
-     * @param  array    $params     Key/value dictionary
-     * @param  string   $layout     Layout name
+     * @param string $template Template name
+     * @param array  $params   Key/value dictionary
+     * @param string $layout   Layout name
+     *
      * @return string
      */
     public function pageLayout($template, array $params = [], $layout = 'layout')
@@ -187,13 +189,13 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common method to generate a sub-layout
+     * Common method to generate a sub-layout.
      *
-     * @access public
-     * @param  string $sublayout
-     * @param  string $sidebar
-     * @param  string $template
-     * @param  array  $params
+     * @param string $sublayout
+     * @param string $sidebar
+     * @param string $template
+     * @param array  $params
+     *
      * @return string
      */
     public function subLayout($sublayout, $sidebar, $template, array $params = [])

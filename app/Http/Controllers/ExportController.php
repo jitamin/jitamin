@@ -12,19 +12,19 @@
 namespace Hiject\Controller;
 
 /**
- * Export Controller
+ * Export Controller.
  */
 class ExportController extends BaseController
 {
     /**
-     * Common export method
+     * Common export method.
      *
-     * @access private
-     * @param  string $model
-     * @param  string $method
-     * @param  string $filename
-     * @param  string $action
-     * @param  string $page_title
+     * @param string $model
+     * @param string $method
+     * @param string $filename
+     * @param string $action
+     * @param string $page_title
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     private function common($model, $method, $filename, $action, $page_title)
@@ -41,22 +41,20 @@ class ExportController extends BaseController
             $this->response->html($this->helper->layout->project('export/'.$action, [
                 'values' => [
                     'controller' => 'ExportController',
-                    'action' => $action,
+                    'action'     => $action,
                     'project_id' => $project['id'],
-                    'from' => $from,
-                    'to' => $to,
+                    'from'       => $from,
+                    'to'         => $to,
                 ],
-                'errors' => [],
+                'errors'  => [],
                 'project' => $project,
-                'title' => $page_title,
+                'title'   => $page_title,
             ], 'export/sidebar'));
         }
     }
 
     /**
-     * Task export
-     *
-     * @access public
+     * Task export.
      */
     public function tasks()
     {
@@ -64,9 +62,7 @@ class ExportController extends BaseController
     }
 
     /**
-     * Subtask export
-     *
-     * @access public
+     * Subtask export.
      */
     public function subtasks()
     {
@@ -74,9 +70,7 @@ class ExportController extends BaseController
     }
 
     /**
-     * Daily project summary export
-     *
-     * @access public
+     * Daily project summary export.
      */
     public function summary()
     {
@@ -84,9 +78,7 @@ class ExportController extends BaseController
     }
 
     /**
-     * Transition export
-     *
-     * @access public
+     * Transition export.
      */
     public function transitions()
     {

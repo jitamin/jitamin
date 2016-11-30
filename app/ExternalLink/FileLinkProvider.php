@@ -14,19 +14,18 @@ namespace Hiject\ExternalLink;
 use Hiject\Core\ExternalLink\ExternalLinkProviderInterface;
 
 /**
- * File Link Provider
+ * File Link Provider.
  */
 class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderInterface
 {
-    protected $excludedPrefixes= [
+    protected $excludedPrefixes = [
         'http',
         'ftp',
     ];
 
     /**
-     * Get provider name
+     * Get provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -35,9 +34,8 @@ class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderI
     }
 
     /**
-     * Get link type
+     * Get link type.
      *
-     * @access public
      * @return string
      */
     public function getType()
@@ -46,9 +44,8 @@ class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderI
     }
 
     /**
-     * Get a dictionary of supported dependency types by the provider
+     * Get a dictionary of supported dependency types by the provider.
      *
-     * @access public
      * @return array
      */
     public function getDependencies()
@@ -59,10 +56,9 @@ class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderI
     }
 
     /**
-     * Return true if the provider can parse correctly the user input
+     * Return true if the provider can parse correctly the user input.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function match()
     {
@@ -80,9 +76,8 @@ class FileLinkProvider extends BaseLinkProvider implements ExternalLinkProviderI
     }
 
     /**
-     * Get the link found with the properties
+     * Get the link found with the properties.
      *
-     * @access public
      * @return \Hiject\Core\ExternalLink\ExternalLinkInterface
      */
     public function getLink()

@@ -16,15 +16,15 @@ use Hiject\Model\TaskModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
- * Project modification date  Subscriber
+ * Project modification date  Subscriber.
  */
 class ProjectModificationDateSubscriber extends BaseSubscriber implements EventSubscriberInterface
 {
     /**
-     * Get event listeners
+     * Get event listeners.
      *
      * @static
-     * @access public
+     *
      * @return array
      */
     public static function getSubscribedEvents()
@@ -42,9 +42,8 @@ class ProjectModificationDateSubscriber extends BaseSubscriber implements EventS
     }
 
     /**
-     * Handle the event
+     * Handle the event.
      *
-     * @access public
      * @param GenericEvent $event
      */
     public function execute(GenericEvent $event)

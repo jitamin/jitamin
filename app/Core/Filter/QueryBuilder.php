@@ -14,62 +14,64 @@ namespace Hiject\Core\Filter;
 use PicoDb\Table;
 
 /**
- * Class QueryBuilder
+ * Class QueryBuilder.
  */
 class QueryBuilder
 {
     /**
-     * Query object
+     * Query object.
      *
-     * @access protected
      * @var Table
      */
     protected $query;
 
     /**
-     * Set the query
+     * Set the query.
      *
-     * @access public
-     * @param  Table $query
+     * @param Table $query
+     *
      * @return QueryBuilder
      */
     public function withQuery(Table $query)
     {
         $this->query = $query;
+
         return $this;
     }
 
     /**
-     * Set a filter
+     * Set a filter.
      *
-     * @access public
-     * @param  FilterInterface $filter
+     * @param FilterInterface $filter
+     *
      * @return QueryBuilder
      */
     public function withFilter(FilterInterface $filter)
     {
         $filter->withQuery($this->query)->apply();
+
         return $this;
     }
 
     /**
-     * Set a criteria
+     * Set a criteria.
      *
-     * @access public
-     * @param  CriteriaInterface $criteria
+     * @param CriteriaInterface $criteria
+     *
      * @return QueryBuilder
      */
     public function withCriteria(CriteriaInterface $criteria)
     {
         $criteria->withQuery($this->query)->apply();
+
         return $this;
     }
 
     /**
-     * Set a formatter
+     * Set a formatter.
      *
-     * @access public
-     * @param  FormatterInterface $formatter
+     * @param FormatterInterface $formatter
+     *
      * @return string|array
      */
     public function format(FormatterInterface $formatter)
@@ -78,9 +80,8 @@ class QueryBuilder
     }
 
     /**
-     * Get the query result as array
+     * Get the query result as array.
      *
-     * @access public
      * @return array
      */
     public function toArray()
@@ -89,9 +90,8 @@ class QueryBuilder
     }
 
     /**
-     * Get Query object
+     * Get Query object.
      *
-     * @access public
      * @return Table
      */
     public function getQuery()
@@ -100,7 +100,7 @@ class QueryBuilder
     }
 
     /**
-     * Clone object with deep copy
+     * Clone object with deep copy.
      */
     public function __clone()
     {

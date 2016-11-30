@@ -56,7 +56,7 @@ class UserProcedureTest extends BaseProcedureTest
     public function assertUpdateUser()
     {
         $this->assertTrue($this->app->updateUser([
-            'id' => $this->userId,
+            'id'   => $this->userId,
             'name' => 'My user',
         ]));
 

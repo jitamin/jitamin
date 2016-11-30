@@ -12,7 +12,7 @@
 namespace Hiject\Bus\Event;
 
 /**
- * Subtask event
+ * Subtask event.
  */
 class SubtaskEvent extends GenericEvent
 {

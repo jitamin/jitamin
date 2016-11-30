@@ -14,30 +14,33 @@ namespace Hiject\Bus\Job;
 use Hiject\Bus\EventBuilder\SubtaskEventBuilder;
 
 /**
- * Class SubtaskEventJob
+ * Class SubtaskEventJob.
  */
 class SubtaskEventJob extends BaseJob
 {
     /**
-     * Set job params
+     * Set job params.
      *
-     * @param  int     $subtaskId
-     * @param  string  $eventName
-     * @param  array   $values
+     * @param int    $subtaskId
+     * @param string $eventName
+     * @param array  $values
+     *
      * @return $this
      */
     public function withParams($subtaskId, $eventName, array $values = [])
     {
         $this->jobParams = [$subtaskId, $eventName, $values];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @param  int    $subtaskId
-     * @param  string $eventName
-     * @param  array  $values
+     * @param int    $subtaskId
+     * @param string $eventName
+     * @param array  $values
+     *
      * @return $this
      */
     public function execute($subtaskId, $eventName, array $values = [])

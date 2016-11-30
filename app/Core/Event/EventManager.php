@@ -11,40 +11,39 @@
 
 namespace Hiject\Core\Event;
 
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskLinkModel;
+use Hiject\Model\TaskModel;
 
 /**
- * Event Manager
+ * Event Manager.
  */
 class EventManager
 {
     /**
-     * Extended events
+     * Extended events.
      *
-     * @access private
      * @var array
      */
     private $events = [];
 
     /**
-     * Add new event
+     * Add new event.
      *
-     * @access public
-     * @param  string  $event
-     * @param  string  $description
+     * @param string $event
+     * @param string $description
+     *
      * @return EventManager
      */
     public function register($event, $description)
     {
         $this->events[$event] = $description;
+
         return $this;
     }
 
     /**
-     * Get the list of events and description that can be used from the user interface
+     * Get the list of events and description that can be used from the user interface.
      *
-     * @access public
      * @return array
      */
     public function getAll()

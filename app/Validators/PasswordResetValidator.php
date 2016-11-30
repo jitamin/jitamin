@@ -11,21 +11,21 @@
 
 namespace Hiject\Validator;
 
+use Gregwar\Captcha\CaptchaBuilder;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
-use Gregwar\Captcha\CaptchaBuilder;
 
 /**
- * Password Reset Validator
+ * Password Reset Validator.
  */
 class PasswordResetValidator extends BaseValidator
 {
     /**
-     * Validate creation
+     * Validate creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -33,11 +33,11 @@ class PasswordResetValidator extends BaseValidator
     }
 
     /**
-     * Validate modification
+     * Validate modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -50,11 +50,11 @@ class PasswordResetValidator extends BaseValidator
     }
 
     /**
-     * Validate fields
+     * Validate fields.
      *
-     * @access protected
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     protected function validateFields(array $values)
     {
@@ -71,24 +71,24 @@ class PasswordResetValidator extends BaseValidator
     }
 
     /**
-     * Validate captcha
+     * Validate captcha.
      *
-     * @access protected
-     * @param  array   $values           Form values
-     * @return boolean
+     * @param array $values Form values
+     *
+     * @return bool
      */
     protected function validateCaptcha(array $values)
     {
         $errors = [];
 
-        if (! isset($this->sessionStorage->captcha)) {
+        if (!isset($this->sessionStorage->captcha)) {
             $result = false;
         } else {
-            $builder = new CaptchaBuilder;
+            $builder = new CaptchaBuilder();
             $builder->setPhrase($this->sessionStorage->captcha);
             $result = $builder->testPhrase(isset($values['captcha']) ? $values['captcha'] : '');
 
-            if (! $result) {
+            if (!$result) {
                 $errors['captcha'] = [t('Invalid captcha')];
             }
         }

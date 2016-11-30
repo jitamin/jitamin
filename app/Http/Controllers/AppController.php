@@ -14,16 +14,15 @@ namespace Hiject\Controller;
 use Hiject\Core\Base;
 
 /**
- * Class AppController
+ * Class AppController.
  */
 class AppController extends Base
 {
     /**
-     * Forbidden page
+     * Forbidden page.
      *
-     * @access public
-     * @param  bool   $withoutLayout
-     * @param  string $message
+     * @param bool   $withoutLayout
+     * @param string $message
      */
     public function accessForbidden($withoutLayout = false, $message = '')
     {
@@ -31,22 +30,21 @@ class AppController extends Base
             $this->response->json(['message' => $message ?: t('Access Forbidden')], 403);
         } else {
             $this->response->html($this->helper->layout->app('app/forbidden', [
-                'title' => t('Access Forbidden'),
+                'title'     => t('Access Forbidden'),
                 'no_layout' => $withoutLayout,
             ]));
         }
     }
 
     /**
-     * Page not found
+     * Page not found.
      *
-     * @access public
-     * @param  boolean $withoutLayout
+     * @param bool $withoutLayout
      */
     public function notFound($withoutLayout = false)
     {
         $this->response->html($this->helper->layout->app('app/notfound', [
-            'title' => t('Page not found'),
+            'title'     => t('Page not found'),
             'no_layout' => $withoutLayout,
         ]));
     }

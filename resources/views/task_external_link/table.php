@@ -1,4 +1,4 @@
-<?php if (! empty($links)): ?>
+<?php if (!empty($links)): ?>
 <table class="table-striped table-scrolling">
     <tr>
         <th class="column-10"><?= t('Type') ?></th>

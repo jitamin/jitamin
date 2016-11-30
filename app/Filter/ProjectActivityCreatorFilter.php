@@ -15,35 +15,34 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\ProjectActivityModel;
 
 /**
- * Filter activity events by creator
+ * Filter activity events by creator.
  */
 class ProjectActivityCreatorFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Current user id
+     * Current user id.
      *
-     * @access private
      * @var int
      */
     private $currentUserId = 0;
 
     /**
-     * Set current user id
+     * Set current user id.
      *
-     * @access public
-     * @param  integer $userId
+     * @param int $userId
+     *
      * @return TaskAssigneeFilter
      */
     public function setCurrentUserId($userId)
     {
         $this->currentUserId = $userId;
+
         return $this;
     }
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -52,15 +51,14 @@ class ProjectActivityCreatorFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return string
      */
     public function apply()
     {
         if ($this->value === 'me') {
-            $this->query->eq(ProjectActivityModel::TABLE . '.creator_id', $this->currentUserId);
+            $this->query->eq(ProjectActivityModel::TABLE.'.creator_id', $this->currentUserId);
         } else {
             $this->query->beginOr();
             $this->query->ilike('uc.username', '%'.$this->value.'%');

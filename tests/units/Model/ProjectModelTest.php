@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\Translator;
 use Hiject\Bus\Subscriber\ProjectModificationDateSubscriber;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\UserModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\ConfigModel;
+use Hiject\Core\Translator;
 use Hiject\Model\CategoryModel;
+use Hiject\Model\ConfigModel;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
+use Hiject\Model\UserModel;
 
 class ProjectModelTest extends Base
 {
@@ -58,9 +58,9 @@ class ProjectModelTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
         $this->assertTrue($projectModel->update([
-            'id' => 1,
+            'id'         => 1,
             'start_date' => '2016-08-31',
-            'end_date' => '08/31/2016',
+            'end_date'   => '08/31/2016',
         ]));
 
         $project = $projectModel->getById(1);

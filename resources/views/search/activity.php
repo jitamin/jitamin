@@ -35,7 +35,7 @@
             </ul>
             <p><i class="fa fa-external-link fa-fw"></i><?= $this->url->doc(t('View advanced search syntax'), 'search') ?></p>
         </div>
-    <?php elseif (! empty($values['q']) && $nb_events === 0): ?>
+    <?php elseif (!empty($values['q']) && $nb_events === 0): ?>
         <p class="alert"><?= t('Nothing found.') ?></p>
     <?php else: ?>
         <?= $this->render('event/events', ['events' => $events]) ?>

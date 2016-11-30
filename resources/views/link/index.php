@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Link labels') ?></h2>
 </div>
-<?php if (! empty($links)): ?>
+<?php if (!empty($links)): ?>
 <table class="table-striped table-scrolling">
     <tr>
         <th class="column-70"><?= t('Link labels') ?></th>
@@ -12,7 +12,7 @@
         <td>
             <strong><?= t($link['label']) ?></strong>
 
-            <?php if (! empty($link['opposite_label'])): ?>
+            <?php if (!empty($link['opposite_label'])): ?>
                 | <?= t($link['opposite_label']) ?>
             <?php endif ?>
         </td>

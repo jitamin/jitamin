@@ -14,14 +14,13 @@ namespace Hiject\Action;
 use Hiject\Model\TaskModel;
 
 /**
- * Assign a color to a specific user
+ * Assign a color to a specific user.
  */
 class TaskAssignColorUser extends Base
 {
     /**
-     * Get automatic action description
+     * Get automatic action description.
      *
-     * @access public
      * @return string
      */
     public function getDescription()
@@ -30,9 +29,8 @@ class TaskAssignColorUser extends Base
     }
 
     /**
-     * Get the list of compatible events
+     * Get the list of compatible events.
      *
-     * @access public
      * @return array
      */
     public function getCompatibleEvents()
@@ -44,23 +42,21 @@ class TaskAssignColorUser extends Base
     }
 
     /**
-     * Get the required parameter for the action (defined by the user)
+     * Get the required parameter for the action (defined by the user).
      *
-     * @access public
      * @return array
      */
     public function getActionRequiredParameters()
     {
         return [
             'color_id' => t('Color'),
-            'user_id' => t('Assignee'),
+            'user_id'  => t('Assignee'),
         ];
     }
 
     /**
-     * Get the required parameter for the event
+     * Get the required parameter for the event.
      *
-     * @access public
      * @return string[]
      */
     public function getEventRequiredParameters()
@@ -75,16 +71,16 @@ class TaskAssignColorUser extends Base
     }
 
     /**
-     * Execute the action (change the task color)
+     * Execute the action (change the task color).
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
-     * @return bool            True if the action was executed or false when not executed
+     * @param array $data Event data dictionary
+     *
+     * @return bool True if the action was executed or false when not executed
      */
     public function doAction(array $data)
     {
         $values = [
-            'id' => $data['task_id'],
+            'id'       => $data['task_id'],
             'color_id' => $this->getParam('color_id'),
         ];
 
@@ -92,10 +88,10 @@ class TaskAssignColorUser extends Base
     }
 
     /**
-     * Check if the event data meet the action condition
+     * Check if the event data meet the action condition.
      *
-     * @access public
-     * @param  array   $data   Event data dictionary
+     * @param array $data Event data dictionary
+     *
      * @return bool
      */
     public function hasRequiredCondition(array $data)

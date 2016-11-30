@@ -10,8 +10,8 @@
  */
 
 use Hiject\Filter\ProjectActivityCreatorFilter;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectActivityModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;

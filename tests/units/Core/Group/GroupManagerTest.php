@@ -11,16 +11,16 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Model\GroupModel;
 use Hiject\Core\Group\GroupManager;
 use Hiject\Group\DatabaseBackendGroupProvider;
+use Hiject\Model\GroupModel;
 
 class GroupManagerTest extends Base
 {
     public function testFind()
     {
         $groupModel = new GroupModel($this->container);
-        $groupManager = new GroupManager;
+        $groupManager = new GroupManager();
 
         $this->assertEquals(1, $groupModel->create('Group 1'));
         $this->assertEquals(2, $groupModel->create('Group 2'));

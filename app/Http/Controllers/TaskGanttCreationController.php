@@ -12,16 +12,16 @@
 namespace Hiject\Controller;
 
 /**
- * Class TaskGanttCreationController
+ * Class TaskGanttCreationController.
  */
 class TaskGanttCreationController extends BaseController
 {
     /**
-     * Simplified form to create a new task
+     * Simplified form to create a new task.
      *
-     * @access public
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
     public function show(array $values = [], array $errors = [])
@@ -30,27 +30,25 @@ class TaskGanttCreationController extends BaseController
 
         $values = $values + [
             'project_id' => $project['id'],
-            'column_id' => $this->columnModel->getFirstColumnId($project['id']),
-            'position' => 1
+            'column_id'  => $this->columnModel->getFirstColumnId($project['id']),
+            'position'   => 1,
         ];
 
         $values = $this->hook->merge('controller:task:form:default', $values, ['default_values' => $values]);
         $values = $this->hook->merge('controller:gantt:task:form:default', $values, ['default_values' => $values]);
 
         $this->response->html($this->template->render('task_gantt_creation/show', [
-            'project' => $project,
-            'errors' => $errors,
-            'values' => $values,
-            'users_list' => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
+            'project'         => $project,
+            'errors'          => $errors,
+            'values'          => $values,
+            'users_list'      => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true, false, true),
             'categories_list' => $this->categoryModel->getList($project['id']),
-            'swimlanes_list' => $this->swimlaneModel->getList($project['id'], false, true),
+            'swimlanes_list'  => $this->swimlaneModel->getList($project['id'], false, true),
         ]));
     }
 
     /**
-     * Validate and save a new task
-     *
-     * @access public
+     * Validate and save a new task.
      */
     public function save()
     {

@@ -109,7 +109,7 @@ class LexerBuilderTest extends Base
         $builder->withFilter(new TaskTitleFilter());
         $builder->withQuery($query);
 
-        $clone = clone($builder);
+        $clone = clone $builder;
         $this->assertFalse($builder === $clone);
         $this->assertFalse($builder->build('test')->getQuery() === $clone->build('test')->getQuery());
     }
@@ -142,7 +142,7 @@ class LexerBuilderTest extends Base
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'email'=>'foobar@here', 'name' => 'Foo Bar']));
+        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'email' => 'foobar@here', 'name' => 'Foo Bar']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskCreation->create(['title' => 'Test 1', 'project_id' => 1, 'owner_id' => 2]));
         $this->assertEquals(2, $taskCreation->create(['title' => 'Test 2', 'project_id' => 1, 'owner_id' => 1]));

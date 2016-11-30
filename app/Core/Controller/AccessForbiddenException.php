@@ -12,7 +12,7 @@
 namespace Hiject\Core\Controller;
 
 /**
- * Class AccessForbiddenException
+ * Class AccessForbiddenException.
  */
 class AccessForbiddenException extends BaseException
 {

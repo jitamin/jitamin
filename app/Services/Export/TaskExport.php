@@ -20,17 +20,17 @@ use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 /**
- * Task Export
+ * Task Export.
  */
 class TaskExport extends Base
 {
     /**
-     * Fetch tasks and return the prepared CSV
+     * Fetch tasks and return the prepared CSV.
      *
-     * @access public
-     * @param  integer $project_id Project id
-     * @param  mixed   $from       Start date (timestamp or user formatted date)
-     * @param  mixed   $to         End date (timestamp or user formatted date)
+     * @param int   $project_id Project id
+     * @param mixed $from       Start date (timestamp or user formatted date)
+     * @param mixed $to         End date (timestamp or user formatted date)
+     *
      * @return array
      */
     public function export($project_id, $from, $to)
@@ -49,12 +49,12 @@ class TaskExport extends Base
     }
 
     /**
-     * Get the list of tasks for a given project and date range
+     * Get the list of tasks for a given project and date range.
      *
-     * @access protected
-     * @param  integer $project_id Project id
-     * @param  mixed   $from       Start date (timestamp or user formatted date)
-     * @param  mixed   $to         End date (timestamp or user formatted date)
+     * @param int   $project_id Project id
+     * @param mixed $from       Start date (timestamp or user formatted date)
+     * @param mixed $to         End date (timestamp or user formatted date)
+     *
      * @return array
      */
     protected function getTasks($project_id, $from, $to)
@@ -69,28 +69,28 @@ class TaskExport extends Base
 
         return $this->db->table(TaskModel::TABLE)
             ->columns(
-                TaskModel::TABLE . '.id',
-                TaskModel::TABLE . '.reference',
-                ProjectModel::TABLE . '.name AS project_name',
-                TaskModel::TABLE . '.is_active',
-                CategoryModel::TABLE . '.name AS category_name',
-                SwimlaneModel::TABLE . '.name AS swimlane_name',
-                ColumnModel::TABLE . '.title AS column_title',
-                TaskModel::TABLE . '.position',
-                TaskModel::TABLE . '.color_id',
-                TaskModel::TABLE . '.date_due',
+                TaskModel::TABLE.'.id',
+                TaskModel::TABLE.'.reference',
+                ProjectModel::TABLE.'.name AS project_name',
+                TaskModel::TABLE.'.is_active',
+                CategoryModel::TABLE.'.name AS category_name',
+                SwimlaneModel::TABLE.'.name AS swimlane_name',
+                ColumnModel::TABLE.'.title AS column_title',
+                TaskModel::TABLE.'.position',
+                TaskModel::TABLE.'.color_id',
+                TaskModel::TABLE.'.date_due',
                 'uc.username AS creator_username',
                 'uc.name AS creator_name',
-                UserModel::TABLE . '.username AS assignee_username',
-                UserModel::TABLE . '.name AS assignee_name',
-                TaskModel::TABLE . '.score',
-                TaskModel::TABLE . '.title',
-                TaskModel::TABLE . '.date_creation',
-                TaskModel::TABLE . '.date_modification',
-                TaskModel::TABLE . '.date_completed',
-                TaskModel::TABLE . '.date_started',
-                TaskModel::TABLE . '.time_estimated',
-                TaskModel::TABLE . '.time_spent'
+                UserModel::TABLE.'.username AS assignee_username',
+                UserModel::TABLE.'.name AS assignee_name',
+                TaskModel::TABLE.'.score',
+                TaskModel::TABLE.'.title',
+                TaskModel::TABLE.'.date_creation',
+                TaskModel::TABLE.'.date_modification',
+                TaskModel::TABLE.'.date_completed',
+                TaskModel::TABLE.'.date_started',
+                TaskModel::TABLE.'.time_estimated',
+                TaskModel::TABLE.'.time_spent'
             )
             ->join(UserModel::TABLE, 'id', 'owner_id', TaskModel::TABLE)
             ->left(UserModel::TABLE, 'uc', 'id', TaskModel::TABLE, 'creator_id')
@@ -98,20 +98,20 @@ class TaskExport extends Base
             ->join(ColumnModel::TABLE, 'id', 'column_id', TaskModel::TABLE)
             ->join(SwimlaneModel::TABLE, 'id', 'swimlane_id', TaskModel::TABLE)
             ->join(ProjectModel::TABLE, 'id', 'project_id', TaskModel::TABLE)
-            ->gte(TaskModel::TABLE . '.date_creation', $from)
-            ->lte(TaskModel::TABLE . '.date_creation', $to)
-            ->eq(TaskModel::TABLE . '.project_id', $project_id)
+            ->gte(TaskModel::TABLE.'.date_creation', $from)
+            ->lte(TaskModel::TABLE.'.date_creation', $to)
+            ->eq(TaskModel::TABLE.'.project_id', $project_id)
             ->asc(TaskModel::TABLE.'.id')
             ->findAll();
     }
 
     /**
-     * Format the output of a task array
+     * Format the output of a task array.
      *
-     * @access protected
-     * @param  array  $task
-     * @param  string $defaultSwimlaneName
-     * @param  array   $colors
+     * @param array  $task
+     * @param string $defaultSwimlaneName
+     * @param array  $colors
+     *
      * @return array
      */
     protected function format(array &$task, $defaultSwimlaneName, array $colors)
@@ -131,9 +131,8 @@ class TaskExport extends Base
     }
 
     /**
-     * Get column titles
+     * Get column titles.
      *
-     * @access protected
      * @return string[]
      */
     protected function getColumns()

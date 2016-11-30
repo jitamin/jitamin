@@ -8,9 +8,9 @@
     </p>
 
     <?= $this->render('comment/show', [
-        'comment' => $comment,
-        'task' => $task,
-        'hide_actions' => true
+        'comment'      => $comment,
+        'task'         => $task,
+        'hide_actions' => true,
     ]) ?>
 
     <div class="form-actions">

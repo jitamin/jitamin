@@ -14,15 +14,16 @@ namespace Hiject\Helper;
 use Hiject\Core\Base;
 
 /**
- * Asset Helper
+ * Asset Helper.
  */
 class AssetHelper extends Base
 {
     /**
-     * Add a Javascript asset
+     * Add a Javascript asset.
      *
-     * @param  string $filename Filename
-     * @param  bool   $async
+     * @param string $filename Filename
+     * @param bool   $async
+     *
      * @return string
      */
     public function js($filename, $async = false)
@@ -31,11 +32,12 @@ class AssetHelper extends Base
     }
 
     /**
-     * Add a stylesheet asset
+     * Add a stylesheet asset.
      *
-     * @param  string   $filename   Filename
-     * @param  boolean  $is_file    Add file timestamp
-     * @param  string   $media      Media
+     * @param string $filename Filename
+     * @param bool   $is_file  Add file timestamp
+     * @param string $media    Media
+     *
      * @return string
      */
     public function css($filename, $is_file = true, $media = 'screen')
@@ -44,9 +46,8 @@ class AssetHelper extends Base
     }
 
     /**
-     * Get custom css
+     * Get custom css.
      *
-     * @access public
      * @return string
      */
     public function customCss()
@@ -59,9 +60,8 @@ class AssetHelper extends Base
     }
 
     /**
-     * Get CSS for task colors
+     * Get CSS for task colors.
      *
-     * @access public
      * @return string
      */
     public function colorCss()

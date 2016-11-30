@@ -36,7 +36,7 @@ class LexerTest extends Base
     public function testTokenizeWithCustomToken()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(assignee:)/", 'T_USER');
+        $lexer->addToken('/^(assignee:)/', 'T_USER');
 
         $expected = [
             'T_USER' => ['admin'],
@@ -49,10 +49,10 @@ class LexerTest extends Base
     {
         $lexer = new Lexer();
         $lexer->setDefaultToken('myDefaultToken');
-        $lexer->addToken("/^(assignee:)/", 'T_USER');
+        $lexer->addToken('/^(assignee:)/', 'T_USER');
 
         $expected = [
-            'T_USER' => ['admin'],
+            'T_USER'         => ['admin'],
             'myDefaultToken' => ['something else'],
         ];
 
@@ -62,7 +62,7 @@ class LexerTest extends Base
     public function testTokenizeWithQuotedString()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(assignee:)/", 'T_USER');
+        $lexer->addToken('/^(assignee:)/', 'T_USER');
 
         $expected = [
             'T_USER' => ['Foo Bar'],
@@ -86,7 +86,7 @@ class LexerTest extends Base
     public function testTokenizeWithStringDate()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['today'],
@@ -98,7 +98,7 @@ class LexerTest extends Base
     public function testTokenizeWithStringDateWithSpaces()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['last month'],
@@ -110,7 +110,7 @@ class LexerTest extends Base
     public function testTokenizeWithStringDateWithSpacesAndOperator()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['<=last month'],
@@ -119,7 +119,7 @@ class LexerTest extends Base
         $this->assertSame($expected, $lexer->tokenize('date:<="last month" something else'));
 
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['>=next month'],
@@ -128,7 +128,7 @@ class LexerTest extends Base
         $this->assertSame($expected, $lexer->tokenize('date:>="next month" something else'));
 
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['<+2 days'],
@@ -137,7 +137,7 @@ class LexerTest extends Base
         $this->assertSame($expected, $lexer->tokenize('date:<"+2 days" something else'));
 
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['<-1 hour'],
@@ -149,7 +149,7 @@ class LexerTest extends Base
     public function testTokenizeWithStringDateAndOperator()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['<=today'],
@@ -158,7 +158,7 @@ class LexerTest extends Base
         $this->assertSame($expected, $lexer->tokenize('date:<=today something else'));
 
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['>now'],
@@ -167,7 +167,7 @@ class LexerTest extends Base
         $this->assertSame($expected, $lexer->tokenize('date:>now something else'));
 
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['>=now'],
@@ -179,7 +179,7 @@ class LexerTest extends Base
     public function testTokenizeWithIsoDate()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(date:)/", 'T_MY_DATE');
+        $lexer->addToken('/^(date:)/', 'T_MY_DATE');
 
         $expected = [
             'T_MY_DATE' => ['<=2016-01-01'],
@@ -215,7 +215,7 @@ class LexerTest extends Base
     public function testTokenizeWithMultipleValues()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(tag:)/", 'T_TAG');
+        $lexer->addToken('/^(tag:)/', 'T_TAG');
 
         $expected = [
             'T_TAG' => ['tag 1', 'tag2'],
@@ -227,7 +227,7 @@ class LexerTest extends Base
     public function testTokenizeWithDash()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(test:)/", 'T_TEST');
+        $lexer->addToken('/^(test:)/', 'T_TEST');
 
         $expected = [
             'T_TEST' => ['PO-123'],
@@ -248,7 +248,7 @@ class LexerTest extends Base
     public function testTokenizeWithUnderscore()
     {
         $lexer = new Lexer();
-        $lexer->addToken("/^(test:)/", 'T_TEST');
+        $lexer->addToken('/^(test:)/', 'T_TEST');
 
         $expected = [
             'T_TEST' => ['PO_123'],
@@ -257,11 +257,11 @@ class LexerTest extends Base
         $this->assertSame($expected, $lexer->tokenize('test:PO_123'));
 
         $lexer = new Lexer();
-        $lexer->addToken("/^(test:)/", 'T_TEST');
+        $lexer->addToken('/^(test:)/', 'T_TEST');
         $lexer->setDefaultToken('myDefaultToken');
 
         $expected = [
-            'T_TEST' => ['ABC-123'],
+            'T_TEST'         => ['ABC-123'],
             'myDefaultToken' => ['PO_123'],
         ];
 

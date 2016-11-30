@@ -12,14 +12,13 @@
 namespace Hiject\Controller;
 
 /**
- * Class GroupModificationController
+ * Class GroupModificationController.
  */
 class GroupModificationController extends BaseController
 {
     /**
-     * Display a form to update a group
+     * Display a form to update a group.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -36,9 +35,7 @@ class GroupModificationController extends BaseController
     }
 
     /**
-     * Validate and save a group
-     *
-     * @access public
+     * Validate and save a group.
      */
     public function save()
     {
@@ -48,6 +45,7 @@ class GroupModificationController extends BaseController
         if ($valid) {
             if ($this->groupModel->update($values) !== false) {
                 $this->flash->success(t('Group updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('GroupListController', 'index'), true);
             } else {
                 $this->flash->failure(t('Unable to update your group.'));

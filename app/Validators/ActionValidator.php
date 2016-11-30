@@ -15,16 +15,16 @@ use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 
 /**
- * Action Validator
+ * Action Validator.
  */
 class ActionValidator extends BaseValidator
 {
     /**
-     * Validate action creation
+     * Validate action creation.
      *
-     * @access public
-     * @param  array   $values           Required parameters to save an action
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Required parameters to save an action
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -38,7 +38,7 @@ class ActionValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 }

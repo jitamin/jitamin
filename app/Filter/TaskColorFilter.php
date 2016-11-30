@@ -16,35 +16,34 @@ use Hiject\Model\ColorModel;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by color
+ * Filter tasks by color.
  */
 class TaskColorFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Color object
+     * Color object.
      *
-     * @access private
-     * @var    ColorModel
+     * @var ColorModel
      */
     private $colorModel;
 
     /**
-     * Set color model object
+     * Set color model object.
      *
-     * @access public
-     * @param  ColorModel $colorModel
+     * @param ColorModel $colorModel
+     *
      * @return TaskColorFilter
      */
     public function setColorModel(ColorModel $colorModel)
     {
         $this->colorModel = $colorModel;
+
         return $this;
     }
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -53,14 +52,14 @@ class TaskColorFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->query->eq(TaskModel::TABLE.'.color_id', $this->colorModel->find($this->value));
+
         return $this;
     }
 }

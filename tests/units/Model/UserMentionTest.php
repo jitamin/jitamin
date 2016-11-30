@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\Security\Role;
 use Hiject\Bus\Event\GenericEvent;
-use Hiject\Model\UserModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Core\Security\Role;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserMentionModel;
+use Hiject\Model\UserModel;
 
 class UserMentionTest extends Base
 {

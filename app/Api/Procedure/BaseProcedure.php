@@ -17,7 +17,7 @@ use Hiject\Core\Base;
 use ReflectionClass;
 
 /**
- * Base class
+ * Base class.
  */
 abstract class BaseProcedure extends Base
 {
@@ -29,7 +29,7 @@ abstract class BaseProcedure extends Base
 
     protected function formatTask($task)
     {
-        if (! empty($task)) {
+        if (!empty($task)) {
             $task['url'] = $this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], '', true);
             $task['color'] = $this->colorModel->getColorProperties($task['color_id']);
         }
@@ -39,7 +39,7 @@ abstract class BaseProcedure extends Base
 
     protected function formatTasks($tasks)
     {
-        if (! empty($tasks)) {
+        if (!empty($tasks)) {
             foreach ($tasks as &$task) {
                 $task = $this->formatTask($task);
             }
@@ -50,11 +50,11 @@ abstract class BaseProcedure extends Base
 
     protected function formatProject($project)
     {
-        if (! empty($project)) {
+        if (!empty($project)) {
             $project['url'] = [
-                'board' => $this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']], '', true),
+                'board'    => $this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']], '', true),
                 'calendar' => $this->helper->url->to('CalendarController', 'show', ['project_id' => $project['id']], '', true),
-                'list' => $this->helper->url->to('TaskListController', 'show', ['project_id' => $project['id']], '', true),
+                'list'     => $this->helper->url->to('TaskListController', 'show', ['project_id' => $project['id']], '', true),
             ];
         }
 
@@ -63,7 +63,7 @@ abstract class BaseProcedure extends Base
 
     protected function formatProjects($projects)
     {
-        if (! empty($projects)) {
+        if (!empty($projects)) {
             foreach ($projects as &$project) {
                 $project = $this->formatProject($project);
             }
@@ -86,6 +86,7 @@ abstract class BaseProcedure extends Base
     protected function getClassName()
     {
         $reflection = new ReflectionClass(get_called_class());
+
         return $reflection->getShortName();
     }
 }

@@ -15,15 +15,15 @@ use Hiject\Core\Base;
 use Hiject\Core\Translator;
 
 /**
- * Class Language
+ * Class Language.
  */
 class LanguageModel extends Base
 {
     /**
-     * Get all language codes
+     * Get all language codes.
      *
      * @static
-     * @access public
+     *
      * @return string[]
      */
     public static function getCodes()
@@ -35,24 +35,26 @@ class LanguageModel extends Base
     }
 
     /**
-     * Find language code
+     * Find language code.
      *
      * @static
-     * @access public
-     * @param  string $code
+     *
+     * @param string $code
+     *
      * @return string
      */
     public static function findCode($code)
     {
         $code = str_replace('-', '_', $code);
+
         return in_array($code, self::getCodes()) ? $code : '';
     }
 
     /**
-     * Get available languages
+     * Get available languages.
      *
-     * @access public
-     * @param  boolean   $prepend  Prepend a default value
+     * @param bool $prepend Prepend a default value
+     *
      * @return array
      */
     public function getLanguages($prepend = false)
@@ -71,9 +73,8 @@ class LanguageModel extends Base
     }
 
     /**
-     * Get javascript language code
+     * Get javascript language code.
      *
-     * @access public
      * @return string
      */
     public function getJsLanguageCode()
@@ -89,14 +90,13 @@ class LanguageModel extends Base
     }
 
     /**
-     * Get current language
+     * Get current language.
      *
-     * @access public
      * @return string
      */
     public function getCurrentLanguage()
     {
-        if ($this->userSession->isLogged() && ! empty($this->sessionStorage->user['language'])) {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['language'])) {
             return $this->sessionStorage->user['language'];
         }
 
@@ -104,9 +104,7 @@ class LanguageModel extends Base
     }
 
     /**
-     * Load translations for the current language
-     *
-     * @access public
+     * Load translations for the current language.
      */
     public function loadCurrentLanguage()
     {

@@ -12,36 +12,36 @@
 namespace Hiject\Bus\Job;
 
 /**
- * Class EmailJob
+ * Class EmailJob.
  */
 class EmailJob extends BaseJob
 {
     /**
-     * Set job parameters
+     * Set job parameters.
      *
-     * @access public
-     * @param  string $email
-     * @param  string $name
-     * @param  string $subject
-     * @param  string $html
-     * @param  string $author
+     * @param string $email
+     * @param string $name
+     * @param string $subject
+     * @param string $html
+     * @param string $author
+     *
      * @return $this
      */
     public function withParams($email, $name, $subject, $html, $author)
     {
         $this->jobParams = [$email, $name, $subject, $html, $author];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @access public
-     * @param  string $email
-     * @param  string $name
-     * @param  string $subject
-     * @param  string $html
-     * @param  string $author
+     * @param string $email
+     * @param string $name
+     * @param string $subject
+     * @param string $html
+     * @param string $author
      */
     public function execute($email, $name, $subject, $html, $author)
     {
@@ -51,8 +51,7 @@ class EmailJob extends BaseJob
 
         $this->emailClient
             ->getTransport($transport)
-            ->sendEmail($email, $name, $subject, $html, $author)
-        ;
+            ->sendEmail($email, $name, $subject, $html, $author);
 
         if (DEBUG) {
             $this->logger->debug('Email sent in '.round(microtime(true) - $startTime, 6).' seconds');

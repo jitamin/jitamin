@@ -14,16 +14,16 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * TaskInternalLink Controller
+ * TaskInternalLink Controller.
  */
 class TaskInternalLinkController extends BaseController
 {
     /**
-     * Get the current link
+     * Get the current link.
      *
-     * @access private
-     * @return array
      * @throws PageNotFoundException
+     *
+     * @return array
      */
     private function getTaskLink()
     {
@@ -37,11 +37,11 @@ class TaskInternalLinkController extends BaseController
     }
 
     /**
-     * Creation form
+     * Creation form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
@@ -52,15 +52,13 @@ class TaskInternalLinkController extends BaseController
         $this->response->html($this->template->render('task_internal_link/create', [
             'values' => $values,
             'errors' => $errors,
-            'task' => $task,
+            'task'   => $task,
             'labels' => $this->linkModel->getList(0, false),
         ]));
     }
 
     /**
-     * Validation and creation
-     *
-     * @access public
+     * Validation and creation.
      */
     public function save()
     {
@@ -72,6 +70,7 @@ class TaskInternalLinkController extends BaseController
         if ($valid) {
             if ($this->taskLinkModel->create($values['task_id'], $values['opposite_task_id'], $values['link_id'])) {
                 $this->flash->success(t('Link added successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
             }
 
@@ -83,11 +82,11 @@ class TaskInternalLinkController extends BaseController
     }
 
     /**
-     * Edit form
+     * Edit form.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws PageNotFoundException
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      */
@@ -103,18 +102,16 @@ class TaskInternalLinkController extends BaseController
         }
 
         $this->response->html($this->template->render('task_internal_link/edit', [
-            'values' => $values,
-            'errors' => $errors,
+            'values'    => $values,
+            'errors'    => $errors,
             'task_link' => $task_link,
-            'task' => $task,
-            'labels' => $this->linkModel->getList(0, false)
+            'task'      => $task,
+            'labels'    => $this->linkModel->getList(0, false),
         ]));
     }
 
     /**
-     * Validation and update
-     *
-     * @access public
+     * Validation and update.
      */
     public function update()
     {
@@ -126,6 +123,7 @@ class TaskInternalLinkController extends BaseController
         if ($valid) {
             if ($this->taskLinkModel->update($values['id'], $values['task_id'], $values['opposite_task_id'], $values['link_id'])) {
                 $this->flash->success(t('Link updated successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]).'#links');
             }
 
@@ -136,9 +134,7 @@ class TaskInternalLinkController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a link
-     *
-     * @access public
+     * Confirmation dialog before removing a link.
      */
     public function confirm()
     {
@@ -152,9 +148,7 @@ class TaskInternalLinkController extends BaseController
     }
 
     /**
-     * Remove a link
-     *
-     * @access public
+     * Remove a link.
      */
     public function remove()
     {

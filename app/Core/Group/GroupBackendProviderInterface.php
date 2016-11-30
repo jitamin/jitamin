@@ -12,15 +12,15 @@
 namespace Hiject\Core\Group;
 
 /**
- * Group Backend Provider Interface
+ * Group Backend Provider Interface.
  */
 interface GroupBackendProviderInterface
 {
     /**
-     * Find a group from a search query
+     * Find a group from a search query.
      *
-     * @access public
-     * @param  string $input
+     * @param string $input
+     *
      * @return GroupProviderInterface[]
      */
     public function find($input);

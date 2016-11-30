@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Board Popover Controller
+ * Board Popover Controller.
  */
 class BoardPopoverController extends BaseController
 {
     /**
-     * Confirmation before to close all column tasks
-     *
-     * @access public
+     * Confirmation before to close all column tasks.
      */
     public function confirmCloseColumnTasks()
     {
@@ -28,18 +26,16 @@ class BoardPopoverController extends BaseController
         $swimlane_id = $this->request->getIntegerParam('swimlane_id');
 
         $this->response->html($this->template->render('board_popover/close_all_tasks_column', [
-            'project' => $project,
+            'project'  => $project,
             'nb_tasks' => $this->taskFinderModel->countByColumnAndSwimlaneId($project['id'], $column_id, $swimlane_id),
-            'column' => $this->columnModel->getColumnTitleById($column_id),
+            'column'   => $this->columnModel->getColumnTitleById($column_id),
             'swimlane' => $this->swimlaneModel->getNameById($swimlane_id) ?: t($project['default_swimlane']),
-            'values' => ['column_id' => $column_id, 'swimlane_id' => $swimlane_id],
+            'values'   => ['column_id' => $column_id, 'swimlane_id' => $swimlane_id],
         ]));
     }
 
     /**
-     * Close all column tasks
-     *
-     * @access public
+     * Close all column tasks.
      */
     public function closeColumnTasks()
     {

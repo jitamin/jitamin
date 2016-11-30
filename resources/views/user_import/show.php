@@ -31,7 +31,7 @@
     <?= $this->form->label(t('CSV File'), 'file') ?>
     <?= $this->form->file('file', $errors) ?>
 
-    <p class="form-help"><?= t('Maximum size: ') ?><?= is_integer($max_size) ? $this->text->bytes($max_size) : $max_size ?></p>
+    <p class="form-help"><?= t('Maximum size: ') ?><?= is_int($max_size) ? $this->text->bytes($max_size) : $max_size ?></p>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Import') ?></button>

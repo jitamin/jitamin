@@ -12,28 +12,28 @@
 namespace Hiject\Bus\Job;
 
 /**
- * Class ProjectMetricJob
+ * Class ProjectMetricJob.
  */
 class ProjectMetricJob extends BaseJob
 {
     /**
-     * Set job parameters
+     * Set job parameters.
      *
-     * @access public
-     * @param  integer $projectId
+     * @param int $projectId
+     *
      * @return $this
      */
     public function withParams($projectId)
     {
         $this->jobParams = [$projectId];
+
         return $this;
     }
 
     /**
-     * Execute job
+     * Execute job.
      *
-     * @access public
-     * @param  integer $projectId
+     * @param int $projectId
      */
     public function execute($projectId)
     {

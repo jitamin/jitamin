@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * Reset two factor command class
+ * Reset two factor command class.
  */
 class ResetTwoFactorCommand extends BaseCommand
 {
@@ -35,11 +35,13 @@ class ResetTwoFactorCommand extends BaseCommand
 
         if (empty($userId)) {
             $output->writeln('<error>User not found</error>');
+
             return 1;
         }
 
-        if (!$this->userModel->update(array('id' => $userId, 'twofactor_activated' => 0, 'twofactor_secret' => ''))) {
+        if (!$this->userModel->update(['id' => $userId, 'twofactor_activated' => 0, 'twofactor_secret' => ''])) {
             $output->writeln('<error>Unable to update user profile</error>');
+
             return 1;
         }
 

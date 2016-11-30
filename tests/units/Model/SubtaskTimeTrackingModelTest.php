@@ -12,11 +12,11 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ConfigModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskTimeTrackingModel;
-use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskFinderModel;
 
 class SubtaskTimeTrackingModelTest extends Base
 {

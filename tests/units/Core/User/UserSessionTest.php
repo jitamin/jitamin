@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\User\UserSession;
 use Hiject\Core\Security\Role;
+use Hiject\Core\User\UserSession;
 
 class UserSessionTest extends Base
 {
@@ -21,15 +21,15 @@ class UserSessionTest extends Base
         $us = new UserSession($this->container);
 
         $user = [
-            'id' => '123',
-            'username' => 'john',
-            'password' => 'something',
-            'twofactor_secret' => 'something else',
-            'is_admin' => '1',
-            'is_project_admin' => '0',
-            'is_ldap_user' => '0',
+            'id'                  => '123',
+            'username'            => 'john',
+            'password'            => 'something',
+            'twofactor_secret'    => 'something else',
+            'is_admin'            => '1',
+            'is_project_admin'    => '0',
+            'is_ldap_user'        => '0',
             'twofactor_activated' => '0',
-            'role' => Role::APP_MANAGER,
+            'role'                => Role::APP_MANAGER,
         ];
 
         $us->initialize($user);

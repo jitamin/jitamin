@@ -14,7 +14,7 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Board Task Formatter
+ * Board Task Formatter.
  */
 class BoardTaskFormatter extends BaseFormatter implements FormatterInterface
 {
@@ -24,61 +24,64 @@ class BoardTaskFormatter extends BaseFormatter implements FormatterInterface
     protected $swimlaneId = 0;
 
     /**
-     * Set tags
+     * Set tags.
      *
-     * @access public
-     * @param  array $tags
+     * @param array $tags
+     *
      * @return $this
      */
     public function withTags(array $tags)
     {
         $this->tags = $tags;
+
         return $this;
     }
 
     /**
-     * Set tasks
+     * Set tasks.
      *
-     * @access public
-     * @param  array $tasks
+     * @param array $tasks
+     *
      * @return $this
      */
     public function withTasks(array $tasks)
     {
         $this->tasks = $tasks;
+
         return $this;
     }
 
     /**
-     * Set columnId
+     * Set columnId.
      *
-     * @access public
-     * @param  integer $columnId
+     * @param int $columnId
+     *
      * @return $this
      */
     public function withColumnId($columnId)
     {
         $this->columnId = $columnId;
+
         return $this;
     }
 
     /**
-     * Set swimlaneId
+     * Set swimlaneId.
      *
-     * @access public
-     * @param  integer $swimlaneId
+     * @param int $swimlaneId
+     *
      * @return $this
      */
     public function withSwimlaneId($swimlaneId)
     {
         $this->swimlaneId = $swimlaneId;
+
         return $this;
     }
 
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()
@@ -94,10 +97,10 @@ class BoardTaskFormatter extends BaseFormatter implements FormatterInterface
     }
 
     /**
-     * Keep only tasks of the given column and swimlane
+     * Keep only tasks of the given column and swimlane.
      *
-     * @access protected
-     * @param  array $task
+     * @param array $task
+     *
      * @return bool
      */
     protected function filterTasks(array $task)

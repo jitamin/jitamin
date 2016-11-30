@@ -12,24 +12,22 @@
 namespace Hiject\Core\Cache;
 
 /**
- * Memory Cache Driver
+ * Memory Cache Driver.
  */
 class MemoryCache extends BaseCache
 {
     /**
-     * Container
+     * Container.
      *
-     * @access private
      * @var array
      */
     private $storage = [];
 
     /**
-     * Store an item in the cache
+     * Store an item in the cache.
      *
-     * @access public
-     * @param  string  $key
-     * @param  mixed   $value
+     * @param string $key
+     * @param mixed  $value
      */
     public function set($key, $value)
     {
@@ -37,11 +35,11 @@ class MemoryCache extends BaseCache
     }
 
     /**
-     * Retrieve an item from the cache by key
+     * Retrieve an item from the cache by key.
      *
-     * @access public
-     * @param  string  $key
-     * @return mixed            Null when not found, cached value otherwise
+     * @param string $key
+     *
+     * @return mixed Null when not found, cached value otherwise
      */
     public function get($key)
     {
@@ -49,9 +47,7 @@ class MemoryCache extends BaseCache
     }
 
     /**
-     * Clear all cache
-     *
-     * @access public
+     * Clear all cache.
      */
     public function flush()
     {
@@ -59,10 +55,9 @@ class MemoryCache extends BaseCache
     }
 
     /**
-     * Remove cached value
+     * Remove cached value.
      *
-     * @access public
-     * @param  string  $key
+     * @param string $key
      */
     public function remove($key)
     {

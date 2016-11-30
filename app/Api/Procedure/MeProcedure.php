@@ -14,7 +14,7 @@ namespace Hiject\Api\Procedure;
 use Hiject\Model\SubtaskModel;
 
 /**
- * Me API controller
+ * Me API controller.
  */
 class MeProcedure extends BaseProcedure
 {
@@ -31,7 +31,7 @@ class MeProcedure extends BaseProcedure
 
         return [
             'projects' => $this->formatProjects($projects),
-            'tasks' => $this->formatTasks($tasks),
+            'tasks'    => $this->formatTasks($tasks),
             'subtasks' => $this->subtaskModel->getUserQuery($user_id, [SubtaskModel::STATUS_TODO, SubtaskModel::STATUS_INPROGRESS])->findAll(),
         ];
     }
@@ -39,6 +39,7 @@ class MeProcedure extends BaseProcedure
     public function getMyActivityStream()
     {
         $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
+
         return $this->helper->projectActivity->getProjectsEvents($project_ids, 100);
     }
 
@@ -49,12 +50,13 @@ class MeProcedure extends BaseProcedure
         }
 
         $values = [
-            'name' => $name,
+            'name'        => $name,
             'description' => $description,
-            'is_private' => 1,
+            'is_private'  => 1,
         ];
 
-        list($valid, ) = $this->projectValidator->validateCreation($values);
+        list($valid) = $this->projectValidator->validateCreation($values);
+
         return $valid ? $this->projectModel->create($values, $this->userSession->getId(), true) : false;
     }
 

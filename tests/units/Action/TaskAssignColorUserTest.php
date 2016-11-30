@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
+use Hiject\Action\TaskAssignColorUser;
 use Hiject\Bus\Event\TaskEvent;
+use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskModel;
-use Hiject\Action\TaskAssignColorUser;
 
 class TaskAssignColorUserTest extends Base
 {
@@ -31,10 +31,10 @@ class TaskAssignColorUserTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'owner_id' => 1,
-            ]
+                'owner_id'   => 1,
+            ],
         ]);
 
         $action = new TaskAssignColorUser($this->container);
@@ -59,10 +59,10 @@ class TaskAssignColorUserTest extends Base
 
         $event = new TaskEvent([
             'task_id' => 1,
-            'task' => [
+            'task'    => [
                 'project_id' => 1,
-                'owner_id' => 2,
-            ]
+                'owner_id'   => 2,
+            ],
         ]);
 
         $action = new TaskAssignColorUser($this->container);

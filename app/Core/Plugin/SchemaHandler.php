@@ -15,23 +15,24 @@ use PDOException;
 use RuntimeException;
 
 /**
- * Class SchemaHandler
+ * Class SchemaHandler.
  */
 class SchemaHandler extends \Hiject\Core\Base
 {
     /**
-     * Schema version table for plugins
+     * Schema version table for plugins.
      *
      * @var string
      */
     const TABLE_SCHEMA = 'plugin_schema_versions';
 
     /**
-     * Get schema filename
+     * Get schema filename.
      *
      * @static
-     * @access public
-     * @param  string $pluginName
+     *
+     * @param string $pluginName
+     *
      * @return string
      */
     public static function getSchemaFilename($pluginName)
@@ -40,12 +41,13 @@ class SchemaHandler extends \Hiject\Core\Base
     }
 
     /**
-     * Return true if the plugin has schema
+     * Return true if the plugin has schema.
      *
      * @static
-     * @access public
-     * @param  string $pluginName
-     * @return boolean
+     *
+     * @param string $pluginName
+     *
+     * @return bool
      */
     public static function hasSchema($pluginName)
     {
@@ -53,10 +55,9 @@ class SchemaHandler extends \Hiject\Core\Base
     }
 
     /**
-     * Load plugin schema
+     * Load plugin schema.
      *
-     * @access public
-     * @param  string $pluginName
+     * @param string $pluginName
      */
     public function loadSchema($pluginName)
     {
@@ -65,10 +66,9 @@ class SchemaHandler extends \Hiject\Core\Base
     }
 
     /**
-     * Execute plugin schema migrations
+     * Execute plugin schema migrations.
      *
-     * @access public
-     * @param  string $pluginName
+     * @param string $pluginName
      */
     public function migrateSchema($pluginName)
     {
@@ -98,11 +98,11 @@ class SchemaHandler extends \Hiject\Core\Base
     }
 
     /**
-     * Get current plugin schema version
+     * Get current plugin schema version.
      *
-     * @access public
-     * @param  string  $plugin
-     * @return integer
+     * @param string $plugin
+     *
+     * @return int
      */
     public function getSchemaVersion($plugin)
     {
@@ -110,17 +110,17 @@ class SchemaHandler extends \Hiject\Core\Base
     }
 
     /**
-     * Save last plugin schema version
+     * Save last plugin schema version.
      *
-     * @access public
-     * @param  string   $plugin
-     * @param  integer  $version
-     * @return boolean
+     * @param string $plugin
+     * @param int    $version
+     *
+     * @return bool
      */
     public function setSchemaVersion($plugin, $version)
     {
         $dictionary = [
-            strtolower($plugin) => $version
+            strtolower($plugin) => $version,
         ];
 
         return $this->db->getDriver()->upsert(self::TABLE_SCHEMA, 'plugin', 'version', $dictionary);

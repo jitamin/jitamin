@@ -14,27 +14,27 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Project Daily Column Stats
+ * Project Daily Column Stats.
  */
 class ProjectDailyColumnStatsModel extends Base
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'project_daily_column_stats';
 
     /**
-     * Update daily totals for the project and for each column
+     * Update daily totals for the project and for each column.
      *
      * "total" is the number open of tasks in the column
      * "score" is the sum of tasks score in the column
      *
-     * @access public
-     * @param  integer    $project_id    Project id
-     * @param  string     $date          Record date (YYYY-MM-DD)
-     * @return boolean
+     * @param int    $project_id Project id
+     * @param string $date       Record date (YYYY-MM-DD)
+     *
+     * @return bool
      */
     public function updateTotals($project_id, $date)
     {
@@ -43,11 +43,11 @@ class ProjectDailyColumnStatsModel extends Base
 
         foreach ($this->getStatsByColumns($project_id) as $column_id => $column) {
             $this->db->table(self::TABLE)->insert([
-                'day' => $date,
+                'day'        => $date,
                 'project_id' => $project_id,
-                'column_id' => $column_id,
-                'total' => $column['total'],
-                'score' => $column['score'],
+                'column_id'  => $column_id,
+                'total'      => $column['total'],
+                'score'      => $column['score'],
             ]);
         }
 
@@ -57,13 +57,13 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Count the number of recorded days for the data range
+     * Count the number of recorded days for the data range.
      *
-     * @access public
-     * @param  integer    $project_id    Project id
-     * @param  string     $from          Start date (ISO format YYYY-MM-DD)
-     * @param  string     $to            End date
-     * @return integer
+     * @param int    $project_id Project id
+     * @param string $from       Start date (ISO format YYYY-MM-DD)
+     * @param string $to         End date
+     *
+     * @return int
      */
     public function countDays($project_id, $from, $to)
     {
@@ -75,7 +75,7 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Get aggregated metrics for the project within a data range
+     * Get aggregated metrics for the project within a data range.
      *
      * [
      *    ['Date', 'Column1', 'Column2'],
@@ -83,27 +83,28 @@ class ProjectDailyColumnStatsModel extends Base
      *    ['2014-11-17', 20, 15],
      * ]
      *
-     * @access public
-     * @param  integer    $project_id    Project id
-     * @param  string     $from          Start date (ISO format YYYY-MM-DD)
-     * @param  string     $to            End date
-     * @param  string     $field         Column to aggregate
+     * @param int    $project_id Project id
+     * @param string $from       Start date (ISO format YYYY-MM-DD)
+     * @param string $to         End date
+     * @param string $field      Column to aggregate
+     *
      * @return array
      */
     public function getAggregatedMetrics($project_id, $from, $to, $field = 'total')
     {
         $columns = $this->columnModel->getList($project_id);
         $metrics = $this->getMetrics($project_id, $from, $to);
+
         return $this->buildAggregate($metrics, $columns, $field);
     }
 
     /**
-     * Fetch metrics
+     * Fetch metrics.
      *
-     * @access public
-     * @param  integer    $project_id    Project id
-     * @param  string     $from          Start date (ISO format YYYY-MM-DD)
-     * @param  string     $to            End date
+     * @param int    $project_id Project id
+     * @param string $from       Start date (ISO format YYYY-MM-DD)
+     * @param string $to         End date
+     *
      * @return array
      */
     public function getMetrics($project_id, $from, $to)
@@ -117,12 +118,12 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Build aggregate
+     * Build aggregate.
      *
-     * @access private
-     * @param  array   $metrics
-     * @param  array   $columns
-     * @param  string  $field
+     * @param array  $metrics
+     * @param array  $columns
+     * @param string $field
+     *
      * @return array
      */
     private function buildAggregate(array &$metrics, array &$columns, $field)
@@ -139,13 +140,13 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Build one row of the aggregate
+     * Build one row of the aggregate.
      *
-     * @access private
-     * @param  array   $metrics
-     * @param  array   $column_ids
-     * @param  string  $day
-     * @param  string  $field
+     * @param array  $metrics
+     * @param array  $column_ids
+     * @param string $day
+     * @param string $field
+     *
      * @return array
      */
     private function buildRowAggregate(array &$metrics, array &$column_ids, $day, $field)
@@ -160,14 +161,14 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Find the value in the metrics
+     * Find the value in the metrics.
      *
-     * @access private
-     * @param  array   $metrics
-     * @param  string  $day
-     * @param  string  $column_id
-     * @param  string  $field
-     * @return integer
+     * @param array  $metrics
+     * @param string $day
+     * @param string $column_id
+     * @param string $field
+     *
+     * @return int
      */
     private function findValueInMetrics(array &$metrics, $day, $column_id, $field)
     {
@@ -181,10 +182,10 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Get number of tasks and score by columns
+     * Get number of tasks and score by columns.
      *
-     * @access private
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     private function getStatsByColumns($project_id)
@@ -205,10 +206,10 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Get number of tasks and score by columns
+     * Get number of tasks and score by columns.
      *
-     * @access private
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     private function getScoreByColumns($project_id)
@@ -225,10 +226,10 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Get number of tasks and score by columns
+     * Get number of tasks and score by columns.
      *
-     * @access private
-     * @param  integer $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     private function getTotalByColumns($project_id)
@@ -244,9 +245,8 @@ class ProjectDailyColumnStatsModel extends Base
     }
 
     /**
-     * Get task status to use for total calculation
+     * Get task status to use for total calculation.
      *
-     * @access private
      * @return array
      */
     private function getTaskStatusConfig()

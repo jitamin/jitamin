@@ -15,14 +15,13 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\ProjectActivityModel;
 
 /**
- * Filter activity events by taskId
+ * Filter activity events by taskId.
  */
 class ProjectActivityTaskIdFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -31,14 +30,14 @@ class ProjectActivityTaskIdFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
     {
         $this->query->eq(ProjectActivityModel::TABLE.'.task_id', $this->value);
+
         return $this;
     }
 }

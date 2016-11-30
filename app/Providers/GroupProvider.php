@@ -11,27 +11,27 @@
 
 namespace Hiject\Providers;
 
-use Pimple\Container;
-use Pimple\ServiceProviderInterface;
 use Hiject\Core\Group\GroupManager;
 use Hiject\Group\DatabaseBackendGroupProvider;
 use Hiject\Group\LdapBackendGroupProvider;
+use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
 /**
- * Group Provider
+ * Group Provider.
  */
 class GroupProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
     {
-        $container['groupManager'] = new GroupManager;
+        $container['groupManager'] = new GroupManager();
 
         if (DB_GROUP_PROVIDER) {
             $container['groupManager']->register(new DatabaseBackendGroupProvider($container));

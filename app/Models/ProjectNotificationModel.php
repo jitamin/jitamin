@@ -14,17 +14,16 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Project Notification
+ * Project Notification.
  */
 class ProjectNotificationModel extends Base
 {
     /**
-     * Send notifications
+     * Send notifications.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  string   $event_name
-     * @param  array    $event_data
+     * @param int    $project_id
+     * @param string $event_name
+     * @param array  $event_data
      */
     public function sendNotifications($project_id, $event_name, array $event_data)
     {
@@ -41,11 +40,10 @@ class ProjectNotificationModel extends Base
     }
 
     /**
-     * Save settings for the given project
+     * Save settings for the given project.
      *
-     * @access public
-     * @param  integer   $project_id
-     * @param  array     $values
+     * @param int   $project_id
+     * @param array $values
      */
     public function saveSettings($project_id, array $values)
     {
@@ -58,10 +56,10 @@ class ProjectNotificationModel extends Base
     }
 
     /**
-     * Read user settings to display the form
+     * Read user settings to display the form.
      *
-     * @access public
-     * @param  integer   $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function readSettings($project_id)

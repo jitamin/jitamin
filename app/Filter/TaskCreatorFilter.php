@@ -15,35 +15,34 @@ use Hiject\Core\Filter\FilterInterface;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by creator
+ * Filter tasks by creator.
  */
 class TaskCreatorFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Current user id
+     * Current user id.
      *
-     * @access private
      * @var int
      */
     private $currentUserId = 0;
 
     /**
-     * Set current user id
+     * Set current user id.
      *
-     * @access public
-     * @param  integer $userId
+     * @param int $userId
+     *
      * @return TaskAssigneeFilter
      */
     public function setCurrentUserId($userId)
     {
         $this->currentUserId = $userId;
+
         return $this;
     }
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -52,9 +51,8 @@ class TaskCreatorFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return string
      */
     public function apply()

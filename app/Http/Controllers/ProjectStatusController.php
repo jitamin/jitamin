@@ -12,12 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Class ProjectStatusController
+ * Class ProjectStatusController.
  */
 class ProjectStatusController extends BaseController
 {
     /**
-     * Enable a project (confirmation dialog box)
+     * Enable a project (confirmation dialog box).
      */
     public function confirmEnable()
     {
@@ -25,12 +25,12 @@ class ProjectStatusController extends BaseController
 
         $this->response->html($this->template->render('project_status/enable', [
             'project' => $project,
-            'title' => t('Project activation')
+            'title'   => t('Project activation'),
         ]));
     }
 
     /**
-     * Enable the project
+     * Enable the project.
      */
     public function enable()
     {
@@ -47,7 +47,7 @@ class ProjectStatusController extends BaseController
     }
 
     /**
-     * Disable a project (confirmation dialog box)
+     * Disable a project (confirmation dialog box).
      */
     public function confirmDisable()
     {
@@ -55,12 +55,12 @@ class ProjectStatusController extends BaseController
 
         $this->response->html($this->template->render('project_status/disable', [
             'project' => $project,
-            'title' => t('Project activation')
+            'title'   => t('Project activation'),
         ]));
     }
 
     /**
-     * Disable a project
+     * Disable a project.
      */
     public function disable()
     {
@@ -77,7 +77,7 @@ class ProjectStatusController extends BaseController
     }
 
     /**
-     * Remove a project (confirmation dialog box)
+     * Remove a project (confirmation dialog box).
      */
     public function confirmRemove()
     {
@@ -85,12 +85,12 @@ class ProjectStatusController extends BaseController
 
         $this->response->html($this->template->render('project_status/remove', [
             'project' => $project,
-            'title' => t('Remove project')
+            'title'   => t('Remove project'),
         ]));
     }
 
     /**
-     * Remove a project
+     * Remove a project.
      */
     public function remove()
     {

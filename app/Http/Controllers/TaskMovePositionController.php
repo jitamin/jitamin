@@ -16,7 +16,7 @@ use Hiject\Formatter\BoardFormatter;
 use Hiject\Model\TaskModel;
 
 /**
- * Class TaskMovePositionController
+ * Class TaskMovePositionController.
  */
 class TaskMovePositionController extends BaseController
 {
@@ -25,14 +25,14 @@ class TaskMovePositionController extends BaseController
         $task = $this->getTask();
 
         $this->response->html($this->template->render('task_move_position/show', [
-            'task' => $task,
+            'task'  => $task,
             'board' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($task['project_id'])
                 ->withQuery($this->taskFinderModel->getExtendedQuery()
                     ->eq(TaskModel::TABLE.'.is_active', TaskModel::STATUS_OPEN)
                     ->neq(TaskModel::TABLE.'.id', $task['id'])
                 )
-                ->format()
+                ->format(),
         ]));
     }
 
@@ -41,7 +41,7 @@ class TaskMovePositionController extends BaseController
         $task = $this->getTask();
         $values = $this->request->getJson();
 
-        if (! $this->helper->projectRole->canMoveTask($task['project_id'], $task['column_id'], $values['column_id'])) {
+        if (!$this->helper->projectRole->canMoveTask($task['project_id'], $task['column_id'], $values['column_id'])) {
             throw new AccessForbiddenException(e('You are not allowed to move this task.'));
         }
 
@@ -53,6 +53,6 @@ class TaskMovePositionController extends BaseController
             $values['swimlane_id']
         );
 
-        $this->response->json(array('result' => $result));
+        $this->response->json(['result' => $result]);
     }
 }

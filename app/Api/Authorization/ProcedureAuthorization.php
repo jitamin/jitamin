@@ -11,11 +11,11 @@
 
 namespace Hiject\Api\Authorization;
 
-use JsonRPC\Exception\AccessDeniedException;
 use Hiject\Core\Base;
+use JsonRPC\Exception\AccessDeniedException;
 
 /**
- * Class ProcedureAuthorization
+ * Class ProcedureAuthorization.
  */
 class ProcedureAuthorization extends Base
 {
@@ -31,7 +31,7 @@ class ProcedureAuthorization extends Base
 
     public function check($procedure)
     {
-        if (! $this->userSession->isLogged() && in_array($procedure, $this->userSpecificProcedures)) {
+        if (!$this->userSession->isLogged() && in_array($procedure, $this->userSpecificProcedures)) {
             throw new AccessDeniedException('This procedure is not available with the API credentials');
         }
     }

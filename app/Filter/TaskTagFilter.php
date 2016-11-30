@@ -18,22 +18,20 @@ use Hiject\Model\TaskTagModel;
 use PicoDb\Database;
 
 /**
- * Class TaskTagFilter
+ * Class TaskTagFilter.
  */
 class TaskTagFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Database object
+     * Database object.
      *
-     * @access private
      * @var Database
      */
     private $db;
 
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -42,22 +40,22 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Set database object
+     * Set database object.
      *
-     * @access public
-     * @param  Database $db
+     * @param Database $db
+     *
      * @return $this
      */
     public function setDatabase(Database $db)
     {
         $this->db = $db;
+
         return $this;
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()
@@ -81,10 +79,10 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
     {
         return $this->db
             ->table(TaskModel::TABLE)
-            ->asc(TaskModel::TABLE . '.project_id')
+            ->asc(TaskModel::TABLE.'.project_id')
             ->left(TaskTagModel::TABLE, 'tg', 'task_id', TaskModel::TABLE, 'id')
             ->isNull('tg.tag_id')
-            ->findAllByColumn(TaskModel::TABLE . '.id');
+            ->findAllByColumn(TaskModel::TABLE.'.id');
     }
 
     protected function getTaskIdsWithGivenTag()

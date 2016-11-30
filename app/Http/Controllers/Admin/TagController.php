@@ -14,14 +14,14 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Class TagController
+ * Class TagController.
  */
 class TagController extends BaseController
 {
     public function index()
     {
         $this->response->html($this->helper->layout->config('tag/index', [
-            'tags' => $this->tagModel->getAllByProject(0),
+            'tags'  => $this->tagModel->getAllByProject(0),
             'title' => t('Settings').' &raquo; '.t('Global tags management'),
         ]));
     }
@@ -66,7 +66,7 @@ class TagController extends BaseController
         }
 
         $this->response->html($this->template->render('tag/edit', [
-            'tag' => $tag,
+            'tag'    => $tag,
             'values' => $values,
             'errors' => $errors,
         ]));

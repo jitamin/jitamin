@@ -14,14 +14,13 @@ namespace Hiject\Filter;
 use Hiject\Core\Filter\FilterInterface;
 
 /**
- * Filter activity events by task title
+ * Filter activity events by task title.
  */
 class ProjectActivityTaskTitleFilter extends TaskTitleFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()

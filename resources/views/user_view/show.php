@@ -14,7 +14,7 @@
 <ul class="listing">
     <li><?= t('Role:') ?> <?= $this->user->getRoleName($user['role']) ?></li>
     <li><?= t('Account type:') ?> <?= $user['is_ldap_user'] ? t('Remote') : t('Local') ?></li>
-    <li><?= $user['twofactor_activated'] == 1 ? t('Two factor authentication enabled') :  t('Two factor authentication disabled') ?></li>
+    <li><?= $user['twofactor_activated'] == 1 ? t('Two factor authentication enabled') : t('Two factor authentication disabled') ?></li>
     <li><?= t('Number of failed login:') ?> <?= $user['nb_failed_login'] ?></li>
     <?php if ($user['lock_expiration_date'] != 0): ?>
         <li><?= t('Account locked until:') ?> <?= $this->dt->datetime($user['lock_expiration_date']) ?></li>
@@ -35,7 +35,7 @@
     <li><?= t('Notifications:') ?> <?= $user['notifications_enabled'] == 1 ? t('Enabled') : t('Disabled') ?></li>
 </ul>
 
-<?php if (! empty($user['token'])): ?>
+<?php if (!empty($user['token'])): ?>
     <div class="page-header">
         <h2><?= t('Public access') ?></h2>
     </div>

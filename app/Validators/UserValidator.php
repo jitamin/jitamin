@@ -11,19 +11,18 @@
 
 namespace Hiject\Validator;
 
+use Hiject\Model\UserModel;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
-use Hiject\Model\UserModel;
 
 /**
- * User Validator
+ * User Validator.
  */
 class UserValidator extends BaseValidator
 {
     /**
-     * Common validation rules
+     * Common validation rules.
      *
-     * @access protected
      * @return array
      */
     protected function commonValidationRules()
@@ -39,11 +38,11 @@ class UserValidator extends BaseValidator
     }
 
     /**
-     * Validate user creation
+     * Validate user creation.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateCreation(array $values)
     {
@@ -59,16 +58,16 @@ class UserValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate user modification
+     * Validate user modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateModification(array $values)
     {
@@ -81,16 +80,16 @@ class UserValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate user API modification
+     * Validate user API modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validateApiModification(array $values)
     {
@@ -102,16 +101,16 @@ class UserValidator extends BaseValidator
 
         return [
             $v->execute(),
-            $v->getErrors()
+            $v->getErrors(),
         ];
     }
 
     /**
-     * Validate password modification
+     * Validate password modification.
      *
-     * @access public
-     * @param  array   $values           Form values
-     * @return array   $valid, $errors   [0] = Success or not, [1] = List of errors
+     * @param array $values Form values
+     *
+     * @return array $valid, $errors   [0] = Success or not, [1] = List of errors
      */
     public function validatePasswordModification(array $values)
     {

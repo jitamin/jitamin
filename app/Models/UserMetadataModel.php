@@ -12,7 +12,7 @@
 namespace Hiject\Model;
 
 /**
- * User Metadata
+ * User Metadata.
  */
 class UserMetadataModel extends MetadataModel
 {
@@ -20,10 +20,10 @@ class UserMetadataModel extends MetadataModel
     const KEY_BOARD_COLLAPSED = 'board.collapsed.';
 
     /**
-     * Get the table
+     * Get the table.
      *
      * @abstract
-     * @access protected
+     *
      * @return string
      */
     protected function getTable()
@@ -32,9 +32,8 @@ class UserMetadataModel extends MetadataModel
     }
 
     /**
-     * Define the entity key
+     * Define the entity key.
      *
-     * @access protected
      * @return string
      */
     protected function getEntityKey()

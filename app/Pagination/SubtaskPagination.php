@@ -17,17 +17,17 @@ use Hiject\Model\SubtaskModel;
 use Hiject\Model\TaskModel;
 
 /**
- * Class SubtaskPagination
+ * Class SubtaskPagination.
  */
 class SubtaskPagination extends Base
 {
     /**
-     * Get dashboard pagination
+     * Get dashboard pagination.
      *
-     * @access public
-     * @param  integer $user_id
-     * @param  string  $method
-     * @param  integer $max
+     * @param int    $user_id
+     * @param string $method
+     * @param int    $max
+     *
      * @return Paginator
      */
     public function getDashboardPaginator($user_id, $method, $max)

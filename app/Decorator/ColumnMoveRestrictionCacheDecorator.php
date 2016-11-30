@@ -15,7 +15,7 @@ use Hiject\Core\Cache\CacheInterface;
 use Hiject\Model\ColumnMoveRestrictionModel;
 
 /**
- * Class ColumnMoveRestrictionCacheDecorator
+ * Class ColumnMoveRestrictionCacheDecorator.
  */
 class ColumnMoveRestrictionCacheDecorator
 {
@@ -44,10 +44,11 @@ class ColumnMoveRestrictionCacheDecorator
     }
 
     /**
-     * Proxy method to get sortable columns
+     * Proxy method to get sortable columns.
      *
-     * @param  int    $project_id
-     * @param  string $role
+     * @param int    $project_id
+     * @param string $role
+     *
      * @return array|mixed
      */
     public function getSortableColumns($project_id, $role)

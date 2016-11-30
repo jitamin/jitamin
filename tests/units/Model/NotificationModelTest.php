@@ -11,16 +11,16 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskCreationModel;
-use Hiject\Model\SubtaskModel;
+use Hiject\Bus\Subscriber\NotificationSubscriber;
 use Hiject\Model\CommentModel;
+use Hiject\Model\NotificationModel;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\SubtaskModel;
+use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFileModel;
+use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\NotificationModel;
-use Hiject\Bus\Subscriber\NotificationSubscriber;
 
 class NotificationModelTest extends Base
 {
@@ -51,12 +51,12 @@ class NotificationModelTest extends Base
 
         foreach (NotificationSubscriber::getSubscribedEvents() as $eventName => $values) {
             $eventData = [
-                'task' => $task,
-                'comment' => $comment,
-                'subtask' => $subtask,
-                'file' => $file,
+                'task'      => $task,
+                'comment'   => $comment,
+                'subtask'   => $subtask,
+                'file'      => $file,
                 'task_link' => $tasklink,
-                'changes' => []
+                'changes'   => [],
             ];
 
             $this->assertNotEmpty($notificationModel->getTitleWithoutAuthor($eventName, $eventData));
@@ -97,12 +97,12 @@ class NotificationModelTest extends Base
 
         foreach (NotificationSubscriber::getSubscribedEvents() as $eventName => $values) {
             $task_id = $notificationModel->getTaskIdFromEvent($eventName, [
-                'task'    => $task,
-                'comment' => $comment,
-                'subtask' => $subtask,
-                'file'    => $file,
+                'task'      => $task,
+                'comment'   => $comment,
+                'subtask'   => $subtask,
+                'file'      => $file,
                 'task_link' => $tasklink,
-                'changes' => []
+                'changes'   => [],
             ]);
 
             $this->assertEquals($task_id, $task['id']);

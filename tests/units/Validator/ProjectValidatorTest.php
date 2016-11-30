@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Validator\ProjectValidator;
 use Hiject\Model\ProjectModel;
+use Hiject\Validator\ProjectValidator;
 
 class ProjectValidatorTest extends Base
 {

@@ -40,16 +40,16 @@ class OAuth2Test extends Base
         $oauth = new OAuth2($this->container);
 
         $params = [
-            'code' => 'something',
-            'client_id' => 'A',
+            'code'          => 'something',
+            'client_id'     => 'A',
             'client_secret' => 'B',
-            'redirect_uri' => 'C',
-            'grant_type' => 'authorization_code',
-            'state' => $oauth->getState(),
+            'redirect_uri'  => 'C',
+            'grant_type'    => 'authorization_code',
+            'state'         => $oauth->getState(),
         ];
 
         $response = json_encode([
-            'token_type' => 'bearer',
+            'token_type'   => 'bearer',
             'access_token' => 'plop',
         ]);
 

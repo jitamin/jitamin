@@ -12,19 +12,18 @@
 namespace Hiject\Core\Mail;
 
 /**
- * Mail Client Interface
+ * Mail Client Interface.
  */
 interface ClientInterface
 {
     /**
-     * Send a HTML email
+     * Send a HTML email.
      *
-     * @access public
-     * @param  string  $email
-     * @param  string  $name
-     * @param  string  $subject
-     * @param  string  $html
-     * @param  string  $author
+     * @param string $email
+     * @param string $name
+     * @param string $subject
+     * @param string $html
+     * @param string $author
      */
     public function sendEmail($email, $name, $subject, $html, $author);
 }

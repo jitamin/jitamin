@@ -15,17 +15,18 @@ use Hiject\Core\Controller\AccessForbiddenException;
 use Hiject\Core\Security\Role;
 
 /**
- * Project Permission Controller
+ * Project Permission Controller.
  */
 class ProjectPermissionController extends BaseController
 {
     /**
-     * Permissions are only available for team projects
+     * Permissions are only available for team projects.
      *
-     * @access protected
-     * @param  integer      $project_id    Default project id
-     * @return array
+     * @param int $project_id Default project id
+     *
      * @throws AccessForbiddenException
+     *
+     * @return array
      */
     protected function getProject($project_id = 0)
     {
@@ -39,11 +40,11 @@ class ProjectPermissionController extends BaseController
     }
 
     /**
-     * Show all permissions
+     * Show all permissions.
      *
-     * @access public
      * @param array $values
      * @param array $errors
+     *
      * @throws AccessForbiddenException
      */
     public function index(array $values = [], array $errors = [])
@@ -56,19 +57,17 @@ class ProjectPermissionController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_permission/index', [
             'project' => $project,
-            'users' => $this->projectUserRoleModel->getUsers($project['id']),
-            'groups' => $this->projectGroupRoleModel->getGroups($project['id']),
-            'roles' => $this->projectRoleModel->getList($project['id']),
-            'values' => $values,
-            'errors' => $errors,
-            'title' => t('Project Permissions'),
+            'users'   => $this->projectUserRoleModel->getUsers($project['id']),
+            'groups'  => $this->projectGroupRoleModel->getGroups($project['id']),
+            'roles'   => $this->projectRoleModel->getList($project['id']),
+            'values'  => $values,
+            'errors'  => $errors,
+            'title'   => t('Project Permissions'),
         ]));
     }
 
     /**
-     * Allow everybody
-     *
-     * @access public
+     * Allow everybody.
      */
     public function allowEverybody()
     {
@@ -85,9 +84,7 @@ class ProjectPermissionController extends BaseController
     }
 
     /**
-     * Add user to the project
-     *
-     * @access public
+     * Add user to the project.
      */
     public function addUser()
     {
@@ -106,9 +103,7 @@ class ProjectPermissionController extends BaseController
     }
 
     /**
-     * Revoke user access
-     *
-     * @access public
+     * Revoke user access.
      */
     public function removeUser()
     {
@@ -126,33 +121,29 @@ class ProjectPermissionController extends BaseController
     }
 
     /**
-     * Change user role
-     *
-     * @access public
+     * Change user role.
      */
     public function changeUserRole()
     {
         $project = $this->getProject();
         $values = $this->request->getJson();
 
-        if (! empty($project) && ! empty($values) && $this->projectUserRoleModel->changeUserRole($project['id'], $values['id'], $values['role'])) {
-            $this->response->json(array('status' => 'ok'));
+        if (!empty($project) && !empty($values) && $this->projectUserRoleModel->changeUserRole($project['id'], $values['id'], $values['role'])) {
+            $this->response->json(['status' => 'ok']);
         } else {
-            $this->response->json(array('status' => 'error'));
+            $this->response->json(['status' => 'error']);
         }
     }
 
     /**
-     * Add group to the project
-     *
-     * @access public
+     * Add group to the project.
      */
     public function addGroup()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();
 
-        if (empty($values['group_id']) && ! empty($values['external_id'])) {
+        if (empty($values['group_id']) && !empty($values['external_id'])) {
             $values['group_id'] = $this->groupModel->getOrCreateExternalGroupId($values['name'], $values['external_id']);
         }
 
@@ -166,9 +157,7 @@ class ProjectPermissionController extends BaseController
     }
 
     /**
-     * Revoke group access
-     *
-     * @access public
+     * Revoke group access.
      */
     public function removeGroup()
     {
@@ -186,19 +175,17 @@ class ProjectPermissionController extends BaseController
     }
 
     /**
-     * Change group role
-     *
-     * @access public
+     * Change group role.
      */
     public function changeGroupRole()
     {
         $project = $this->getProject();
         $values = $this->request->getJson();
 
-        if (! empty($project) && ! empty($values) && $this->projectGroupRoleModel->changeGroupRole($project['id'], $values['id'], $values['role'])) {
-            $this->response->json(array('status' => 'ok'));
+        if (!empty($project) && !empty($values) && $this->projectGroupRoleModel->changeGroupRole($project['id'], $values['id'], $values['role'])) {
+            $this->response->json(['status' => 'ok']);
         } else {
-            $this->response->json(array('status' => 'error'));
+            $this->response->json(['status' => 'error']);
         }
     }
 }

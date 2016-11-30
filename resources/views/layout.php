@@ -17,7 +17,7 @@
         <?= $this->asset->css('assets/css/app.min.css') ?>
         <?= $this->asset->customCss() ?>
 
-        <?php if (! isset($not_editable)): ?>
+        <?php if (!isset($not_editable)): ?>
             <?= $this->asset->js('assets/js/bootstrap.min.js') ?>
             <?= $this->asset->js('assets/js/base.min.js') ?>
             <?= $this->asset->js('assets/js/extra.min.js') ?>
@@ -60,10 +60,10 @@
         <section class="page container">
             <?= $this->app->flashMessage() ?>
             <?= $this->render('breadcrumb', [
-                    'project' => isset($project) ? $project : null,
-                    'task' => isset($task) ? $task : null,
+                    'project'     => isset($project) ? $project : null,
+                    'task'        => isset($task) ? $task : null,
                     'description' => isset($description) ? $description : null,
-                    'title' => $title,
+                    'title'       => $title,
             ]) ?>
             <?= $content_for_layout ?>
         </section>

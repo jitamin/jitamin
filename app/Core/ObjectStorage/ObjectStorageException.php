@@ -14,7 +14,7 @@ namespace Hiject\Core\ObjectStorage;
 use Exception;
 
 /**
- * Object storage exception
+ * Object storage exception.
  */
 class ObjectStorageException extends Exception
 {

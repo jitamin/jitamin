@@ -12,14 +12,12 @@
 namespace Hiject\Controller;
 
 /**
- * Group Controller
+ * Group Controller.
  */
 class GroupListController extends BaseController
 {
     /**
-     * List all groups
-     *
-     * @access public
+     * List all groups.
      */
     public function index()
     {
@@ -31,15 +29,13 @@ class GroupListController extends BaseController
             ->calculate();
 
         $this->response->html($this->helper->layout->app('group/index', [
-            'title' => t('Groups').' ('.$paginator->getTotal().')',
+            'title'     => t('Groups').' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
         ]));
     }
 
     /**
-     * List all users
-     *
-     * @access public
+     * List all users.
      */
     public function users()
     {
@@ -54,16 +50,15 @@ class GroupListController extends BaseController
             ->calculate();
 
         $this->response->html($this->helper->layout->app('group/users', [
-            'title' => t('Members of %s', $group['name']).' ('.$paginator->getTotal().')',
+            'title'     => t('Members of %s', $group['name']).' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
-            'group' => $group,
+            'group'     => $group,
         ]));
     }
 
     /**
-     * Form to associate a user to a group
+     * Form to associate a user to a group.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -77,17 +72,15 @@ class GroupListController extends BaseController
         }
 
         $this->response->html($this->template->render('group/associate', [
-            'users' => $this->userModel->prepareList($this->groupMemberModel->getNotMembers($group_id)),
-            'group' => $group,
+            'users'  => $this->userModel->prepareList($this->groupMemberModel->getNotMembers($group_id)),
+            'group'  => $group,
             'errors' => $errors,
             'values' => $values,
         ]));
     }
 
     /**
-     * Add user to a group
-     *
-     * @access public
+     * Add user to a group.
      */
     public function addUser()
     {
@@ -96,6 +89,7 @@ class GroupListController extends BaseController
         if (isset($values['group_id']) && isset($values['user_id'])) {
             if ($this->groupMemberModel->addUser($values['group_id'], $values['user_id'])) {
                 $this->flash->success(t('Group member added successfully.'));
+
                 return $this->response->redirect($this->helper->url->to('GroupListController', 'users', ['group_id' => $values['group_id']]), true);
             } else {
                 $this->flash->failure(t('Unable to add group member.'));
@@ -106,9 +100,7 @@ class GroupListController extends BaseController
     }
 
     /**
-     * Confirmation dialog to remove a user from a group
-     *
-     * @access public
+     * Confirmation dialog to remove a user from a group.
      */
     public function dissociate()
     {
@@ -119,14 +111,12 @@ class GroupListController extends BaseController
 
         $this->response->html($this->template->render('group/dissociate', [
             'group' => $group,
-            'user' => $user,
+            'user'  => $user,
         ]));
     }
 
     /**
-     * Remove a user from a group
-     *
-     * @access public
+     * Remove a user from a group.
      */
     public function removeUser()
     {
@@ -144,9 +134,7 @@ class GroupListController extends BaseController
     }
 
     /**
-     * Confirmation dialog to remove a group
-     *
-     * @access public
+     * Confirmation dialog to remove a group.
      */
     public function confirm()
     {
@@ -159,9 +147,7 @@ class GroupListController extends BaseController
     }
 
     /**
-     * Remove a group
-     *
-     * @access public
+     * Remove a group.
      */
     public function remove()
     {

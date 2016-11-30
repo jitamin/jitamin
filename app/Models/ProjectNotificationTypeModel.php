@@ -12,22 +12,22 @@
 namespace Hiject\Model;
 
 /**
- * Project Notification Type
+ * Project Notification Type.
  */
 class ProjectNotificationTypeModel extends NotificationTypeModel
 {
     /**
-     * SQL table name
+     * SQL table name.
      *
      * @var string
      */
     const TABLE = 'project_has_notification_types';
 
     /**
-     * Get selected notification types for a given project
+     * Get selected notification types for a given project.
      *
-     * @access public
-     * @param integer  $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function getSelectedTypes($project_id)
@@ -42,12 +42,12 @@ class ProjectNotificationTypeModel extends NotificationTypeModel
     }
 
     /**
-     * Save notification types for a given project
+     * Save notification types for a given project.
      *
-     * @access public
-     * @param  integer  $project_id
-     * @param  string[] $types
-     * @return boolean
+     * @param int      $project_id
+     * @param string[] $types
+     *
+     * @return bool
      */
     public function saveSelectedTypes($project_id, array $types)
     {
@@ -58,6 +58,6 @@ class ProjectNotificationTypeModel extends NotificationTypeModel
             $results[] = $this->db->table(self::TABLE)->insert(['project_id' => $project_id, 'notification_type' => $type]);
         }
 
-        return ! in_array(false, $results, true);
+        return !in_array(false, $results, true);
     }
 }

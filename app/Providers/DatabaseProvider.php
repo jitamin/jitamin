@@ -12,21 +12,21 @@
 namespace Hiject\Providers;
 
 use LogicException;
-use RuntimeException;
+use PicoDb\Database;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use PicoDb\Database;
+use RuntimeException;
 
 /**
- * Class DatabaseProvider
+ * Class DatabaseProvider.
  */
 class DatabaseProvider implements ServiceProviderInterface
 {
     /**
-     * Register provider
+     * Register provider.
      *
-     * @access public
-     * @param  Container $container
+     * @param Container $container
+     *
      * @return Container
      */
     public function register(Container $container)
@@ -36,17 +36,15 @@ class DatabaseProvider implements ServiceProviderInterface
         if (DEBUG) {
             $container['db']->getStatementHandler()
                 ->withLogging()
-                ->withStopWatch()
-            ;
+                ->withStopWatch();
         }
 
         return $container;
     }
 
     /**
-     * Setup the database driver and execute schema migration
+     * Setup the database driver and execute schema migration.
      *
-     * @access public
      * @return \PicoDb\Database
      */
     public function getInstance()
@@ -74,9 +72,8 @@ class DatabaseProvider implements ServiceProviderInterface
     }
 
     /**
-     * Setup the Sqlite database driver
+     * Setup the Sqlite database driver.
      *
-     * @access private
      * @return \PicoDb\Database
      */
     private function getSqliteInstance()
@@ -84,15 +81,14 @@ class DatabaseProvider implements ServiceProviderInterface
         require_once __DIR__.'/../Schema/Sqlite.php';
 
         return new Database([
-            'driver' => 'sqlite',
-            'filename' => DB_FILENAME
+            'driver'   => 'sqlite',
+            'filename' => DB_FILENAME,
         ]);
     }
 
     /**
-     * Setup the Mysql database driver
+     * Setup the Mysql database driver.
      *
-     * @access private
      * @return \PicoDb\Database
      */
     private function getMysqlInstance()
@@ -114,9 +110,8 @@ class DatabaseProvider implements ServiceProviderInterface
     }
 
     /**
-     * Setup the Postgres database driver
+     * Setup the Postgres database driver.
      *
-     * @access private
      * @return \PicoDb\Database
      */
     private function getPostgresInstance()

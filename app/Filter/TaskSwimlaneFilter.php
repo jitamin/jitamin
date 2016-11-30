@@ -17,14 +17,13 @@ use Hiject\Model\SwimlaneModel;
 use Hiject\Model\TaskModel;
 
 /**
- * Filter tasks by swimlane
+ * Filter tasks by swimlane.
  */
 class TaskSwimlaneFilter extends BaseFilter implements FilterInterface
 {
     /**
-     * Get search attribute
+     * Get search attribute.
      *
-     * @access public
      * @return string[]
      */
     public function getAttributes()
@@ -33,9 +32,8 @@ class TaskSwimlaneFilter extends BaseFilter implements FilterInterface
     }
 
     /**
-     * Apply filter
+     * Apply filter.
      *
-     * @access public
      * @return FilterInterface
      */
     public function apply()

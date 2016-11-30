@@ -11,41 +11,41 @@
 
 namespace Hiject\Core\Action;
 
-use RuntimeException;
-use Hiject\Core\Base;
 use Hiject\Action\Base as ActionBase;
+use Hiject\Core\Base;
+use RuntimeException;
 
 /**
- * Action Manager
+ * Action Manager.
  */
 class ActionManager extends Base
 {
     /**
-     * List of automatic actions
+     * List of automatic actions.
      *
-     * @access private
      * @var ActionBase[]
      */
     private $actions = [];
 
     /**
-     * Register a new automatic action
+     * Register a new automatic action.
      *
-     * @access public
-     * @param  ActionBase $action
+     * @param ActionBase $action
+     *
      * @return ActionManager
      */
     public function register(ActionBase $action)
     {
         $this->actions[$action->getName()] = $action;
+
         return $this;
     }
 
     /**
-     * Get automatic action instance
+     * Get automatic action instance.
      *
-     * @access public
-     * @param  string  $name  Absolute class name with namespace
+     * @param string $name Absolute class name with namespace
+     *
      * @return ActionBase
      */
     public function getAction($name)
@@ -58,9 +58,8 @@ class ActionManager extends Base
     }
 
     /**
-     * Get available automatic actions
+     * Get available automatic actions.
      *
-     * @access public
      * @return array
      */
     public function getAvailableActions()
@@ -79,10 +78,10 @@ class ActionManager extends Base
     }
 
     /**
-     * Get all available action parameters
+     * Get all available action parameters.
      *
-     * @access public
-     * @param  array  $actions
+     * @param array $actions
+     *
      * @return array
      */
     public function getAvailableParameters(array $actions)
@@ -98,10 +97,10 @@ class ActionManager extends Base
     }
 
     /**
-     * Get list of compatible events for a given action
+     * Get list of compatible events for a given action.
      *
-     * @access public
-     * @param  string $name
+     * @param string $name
+     *
      * @return array
      */
     public function getCompatibleEvents($name)
@@ -119,9 +118,8 @@ class ActionManager extends Base
     }
 
     /**
-     * Bind automatic actions to events
+     * Bind automatic actions to events.
      *
-     * @access public
      * @return ActionManager
      */
     public function attachEvents()
@@ -147,9 +145,7 @@ class ActionManager extends Base
     }
 
     /**
-     * Remove all listeners for automated actions
-     *
-     * @access public
+     * Remove all listeners for automated actions.
      */
     public function removeEvents()
     {

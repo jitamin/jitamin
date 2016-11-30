@@ -14,28 +14,29 @@ namespace Hiject\Model;
 use Hiject\Core\Base;
 
 /**
- * Project Task Priority Model
+ * Project Task Priority Model.
  */
 class ProjectTaskPriorityModel extends Base
 {
     /**
-     * Get Priority range from a project
+     * Get Priority range from a project.
      *
-     * @access public
-     * @param  array $project
+     * @param array $project
+     *
      * @return array
      */
     public function getPriorities(array $project)
     {
         $range = range($project['priority_start'], $project['priority_end']);
+
         return array_combine($range, $range);
     }
 
     /**
-     * Get task priority settings
+     * Get task priority settings.
      *
-     * @access public
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return array|null
      */
     public function getPrioritySettings($project_id)
@@ -48,10 +49,10 @@ class ProjectTaskPriorityModel extends Base
     }
 
     /**
-     * Get default task priority
+     * Get default task priority.
      *
-     * @access public
-     * @param  int $project_id
+     * @param int $project_id
+     *
      * @return int
      */
     public function getDefaultPriority($project_id)
@@ -60,12 +61,12 @@ class ProjectTaskPriorityModel extends Base
     }
 
     /**
-     * Get priority for a destination project
+     * Get priority for a destination project.
      *
-     * @access public
-     * @param  integer $dst_project_id
-     * @param  integer $priority
-     * @return integer
+     * @param int $dst_project_id
+     * @param int $priority
+     *
+     * @return int
      */
     public function getPriorityForProject($dst_project_id, $priority)
     {

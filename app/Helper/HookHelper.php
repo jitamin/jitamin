@@ -15,16 +15,16 @@ use Closure;
 use Hiject\Core\Base;
 
 /**
- * Template Hook helpers
+ * Template Hook helpers.
  */
 class HookHelper extends Base
 {
     /**
-     * Add assets JS or CSS
+     * Add assets JS or CSS.
      *
-     * @access public
-     * @param  string  $type
-     * @param  string  $hook
+     * @param string $type
+     * @param string $hook
+     *
      * @return string
      */
     public function asset($type, $hook)
@@ -39,11 +39,11 @@ class HookHelper extends Base
     }
 
     /**
-     * Render all attached hooks
+     * Render all attached hooks.
      *
-     * @access public
-     * @param  string  $hook
-     * @param  array   $variables
+     * @param string $hook
+     * @param array  $variables
+     *
      * @return string
      */
     public function render($hook, array $variables = [])
@@ -51,9 +51,9 @@ class HookHelper extends Base
         $buffer = '';
 
         foreach ($this->hook->getListeners($hook) as $params) {
-            if (! empty($params['variables'])) {
+            if (!empty($params['variables'])) {
                 $variables = array_merge($variables, $params['variables']);
-            } elseif (! empty($params['callable'])) {
+            } elseif (!empty($params['callable'])) {
                 $result = call_user_func_array($params['callable'], $variables);
 
                 if (is_array($result)) {
@@ -68,18 +68,18 @@ class HookHelper extends Base
     }
 
     /**
-     * Attach a template to a hook
+     * Attach a template to a hook.
      *
-     * @access public
-     * @param  string $hook
-     * @param  string $template
-     * @param  array  $variables
+     * @param string $hook
+     * @param string $template
+     * @param array  $variables
+     *
      * @return $this
      */
     public function attach($hook, $template, array $variables = [])
     {
         $this->hook->on($hook, [
-            'template' => $template,
+            'template'  => $template,
             'variables' => $variables,
         ]);
 
@@ -87,14 +87,14 @@ class HookHelper extends Base
     }
 
     /**
-     * Attach a template to a hook with a callable
+     * Attach a template to a hook with a callable.
      *
      * Arguments passed to the callback are the one passed to the hook
      *
-     * @access public
-     * @param  string   $hook
-     * @param  string   $template
-     * @param  Closure  $callable
+     * @param string  $hook
+     * @param string  $template
+     * @param Closure $callable
+     *
      * @return $this
      */
     public function attachCallable($hook, $template, Closure $callable)

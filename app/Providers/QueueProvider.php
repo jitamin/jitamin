@@ -16,20 +16,21 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class QueueProvider
+ * Class QueueProvider.
  */
 class QueueProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
     {
         $container['queueManager'] = new QueueManager($container);
+
         return $container;
     }
 }

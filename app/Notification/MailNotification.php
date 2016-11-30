@@ -15,28 +15,27 @@ use Hiject\Core\Base;
 use Hiject\Core\Notification\NotificationInterface;
 
 /**
- * Email Notification
+ * Email Notification.
  */
 class MailNotification extends Base implements NotificationInterface
 {
     /**
-     * Notification type
+     * Notification type.
      *
      * @var string
      */
     const TYPE = 'email';
 
     /**
-     * Send notification to a user
+     * Send notification to a user.
      *
-     * @access public
-     * @param  array     $user
-     * @param  string    $event_name
-     * @param  array     $event_data
+     * @param array  $user
+     * @param string $event_name
+     * @param array  $event_data
      */
     public function notifyUser(array $user, $event_name, array $event_data)
     {
-        if (! empty($user['email'])) {
+        if (!empty($user['email'])) {
             $this->emailClient->send(
                 $user['email'],
                 $user['name'] ?: $user['username'],
@@ -47,23 +46,22 @@ class MailNotification extends Base implements NotificationInterface
     }
 
     /**
-     * Send notification to a project
+     * Send notification to a project.
      *
-     * @access public
-     * @param  array     $project
-     * @param  string    $event_name
-     * @param  array     $event_data
+     * @param array  $project
+     * @param string $event_name
+     * @param array  $event_data
      */
     public function notifyProject(array $project, $event_name, array $event_data)
     {
     }
 
     /**
-     * Get the mail content for a given template name
+     * Get the mail content for a given template name.
      *
-     * @access public
-     * @param  string    $event_name  Event name
-     * @param  array     $event_data  Event data
+     * @param string $event_name Event name
+     * @param array  $event_data Event data
+     *
      * @return string
      */
     public function getMailContent($event_name, array $event_data)
@@ -75,11 +73,11 @@ class MailNotification extends Base implements NotificationInterface
     }
 
     /**
-     * Get the mail subject for a given template name
+     * Get the mail subject for a given template name.
      *
-     * @access public
-     * @param  string $eventName Event name
-     * @param  array  $eventData Event data
+     * @param string $eventName Event name
+     * @param array  $eventData Event data
+     *
      * @return string
      */
     public function getMailSubject($eventName, array $eventData)

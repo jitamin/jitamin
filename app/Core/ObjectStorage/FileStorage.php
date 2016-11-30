@@ -12,23 +12,21 @@
 namespace Hiject\Core\ObjectStorage;
 
 /**
- * Local File Storage
+ * Local File Storage.
  */
 class FileStorage implements ObjectStorageInterface
 {
     /**
-     * Base path
+     * Base path.
      *
-     * @access private
      * @var string
      */
     private $path = '';
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  string  $path
+     * @param string $path
      */
     public function __construct($path)
     {
@@ -36,18 +34,19 @@ class FileStorage implements ObjectStorageInterface
     }
 
     /**
-     * Fetch object contents
+     * Fetch object contents.
      *
-     * @access public
+     * @param string $key
+     *
      * @throws ObjectStorageException
-     * @param  string  $key
+     *
      * @return string
      */
     public function get($key)
     {
         $filename = $this->path.DIRECTORY_SEPARATOR.$key;
 
-        if (! file_exists($filename)) {
+        if (!file_exists($filename)) {
             throw new ObjectStorageException('File not found: '.$filename);
         }
 
@@ -55,12 +54,12 @@ class FileStorage implements ObjectStorageInterface
     }
 
     /**
-     * Save object
+     * Save object.
      *
-     * @access public
+     * @param string $key
+     * @param string $blob
+     *
      * @throws ObjectStorageException
-     * @param  string  $key
-     * @param  string  $blob
      */
     public function put($key, &$blob)
     {
@@ -72,17 +71,17 @@ class FileStorage implements ObjectStorageInterface
     }
 
     /**
-     * Output directly object content
+     * Output directly object content.
      *
-     * @access public
+     * @param string $key
+     *
      * @throws ObjectStorageException
-     * @param  string  $key
      */
     public function output($key)
     {
         $filename = $this->path.DIRECTORY_SEPARATOR.$key;
 
-        if (! file_exists($filename)) {
+        if (!file_exists($filename)) {
             throw new ObjectStorageException('File not found: '.$filename);
         }
 
@@ -90,20 +89,21 @@ class FileStorage implements ObjectStorageInterface
     }
 
     /**
-     * Move local file to object storage
+     * Move local file to object storage.
      *
-     * @access public
+     * @param string $src_filename
+     * @param string $key
+     *
      * @throws ObjectStorageException
-     * @param  string  $src_filename
-     * @param  string  $key
-     * @return boolean
+     *
+     * @return bool
      */
     public function moveFile($src_filename, $key)
     {
         $this->createFolder($key);
         $dst_filename = $this->path.DIRECTORY_SEPARATOR.$key;
 
-        if (! rename($src_filename, $dst_filename)) {
+        if (!rename($src_filename, $dst_filename)) {
             throw new ObjectStorageException('Unable to move the file: '.$src_filename.' to '.$dst_filename);
         }
 
@@ -111,25 +111,26 @@ class FileStorage implements ObjectStorageInterface
     }
 
     /**
-     * Move uploaded file to object storage
+     * Move uploaded file to object storage.
      *
-     * @access public
-     * @param  string  $filename
-     * @param  string  $key
-     * @return boolean
+     * @param string $filename
+     * @param string $key
+     *
+     * @return bool
      */
     public function moveUploadedFile($filename, $key)
     {
         $this->createFolder($key);
+
         return move_uploaded_file($filename, $this->path.DIRECTORY_SEPARATOR.$key);
     }
 
     /**
-     * Remove object
+     * Remove object.
      *
-     * @access public
-     * @param  string  $key
-     * @return boolean
+     * @param string $key
+     *
+     * @return bool
      */
     public function remove($key)
     {
@@ -143,17 +144,17 @@ class FileStorage implements ObjectStorageInterface
     }
 
     /**
-     * Create object folder
+     * Create object folder.
      *
-     * @access private
+     * @param string $key
+     *
      * @throws ObjectStorageException
-     * @param  string  $key
      */
     private function createFolder($key)
     {
         $folder = strpos($key, DIRECTORY_SEPARATOR) !== false ? $this->path.DIRECTORY_SEPARATOR.dirname($key) : $this->path;
 
-        if (! is_dir($folder) && ! mkdir($folder, 0755, true)) {
+        if (!is_dir($folder) && !mkdir($folder, 0755, true)) {
             throw new ObjectStorageException('Unable to create folder: '.$folder);
         }
     }

@@ -14,7 +14,7 @@ namespace Hiject\Core\Plugin;
 use Exception;
 
 /**
- * Class PluginInstallerException
+ * Class PluginInstallerException.
  */
 class PluginInstallerException extends Exception
 {

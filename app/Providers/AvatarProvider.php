@@ -11,31 +11,32 @@
 
 namespace Hiject\Providers;
 
+use Hiject\Core\User\Avatar\AvatarManager;
+use Hiject\User\Avatar\AvatarFileProvider;
+use Hiject\User\Avatar\GravatarProvider;
+use Hiject\User\Avatar\LetterAvatarProvider;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use Hiject\Core\User\Avatar\AvatarManager;
-use Hiject\User\Avatar\GravatarProvider;
-use Hiject\User\Avatar\AvatarFileProvider;
-use Hiject\User\Avatar\LetterAvatarProvider;
 
 /**
- * Avatar Provider
+ * Avatar Provider.
  */
 class AvatarProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)
     {
-        $container['avatarManager'] = new AvatarManager;
+        $container['avatarManager'] = new AvatarManager();
         $container['avatarManager']->register(new LetterAvatarProvider($container));
         $container['avatarManager']->register(new GravatarProvider($container));
         $container['avatarManager']->register(new AvatarFileProvider($container));
+
         return $container;
     }
 }

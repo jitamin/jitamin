@@ -11,11 +11,11 @@
 
 namespace Hiject\Api\Authorization;
 
-use JsonRPC\Exception\AccessDeniedException;
 use Hiject\Core\Base;
+use JsonRPC\Exception\AccessDeniedException;
 
 /**
- * Class ProjectAuthorization
+ * Class ProjectAuthorization.
  */
 class ProjectAuthorization extends Base
 {
@@ -25,16 +25,16 @@ class ProjectAuthorization extends Base
             $this->checkProjectPermission($class, $method, $project_id);
         }
     }
-    
+
     protected function checkProjectPermission($class, $method, $project_id)
     {
         if (empty($project_id)) {
             throw new AccessDeniedException('Project not found');
         }
-        
+
         $role = $this->projectUserRoleModel->getUserRole($project_id, $this->userSession->getId());
 
-        if (! $this->apiProjectAuthorization->isAllowed($class, $method, $role)) {
+        if (!$this->apiProjectAuthorization->isAllowed($class, $method, $role)) {
             throw new AccessDeniedException('Project access denied');
         }
     }

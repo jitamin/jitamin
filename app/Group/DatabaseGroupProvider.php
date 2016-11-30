@@ -14,23 +14,21 @@ namespace Hiject\Group;
 use Hiject\Core\Group\GroupProviderInterface;
 
 /**
- * Database Group Provider
+ * Database Group Provider.
  */
 class DatabaseGroupProvider implements GroupProviderInterface
 {
     /**
-     * Group properties
+     * Group properties.
      *
-     * @access private
      * @var array
      */
     private $group = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @access public
-     * @param  array $group
+     * @param array $group
      */
     public function __construct(array $group)
     {
@@ -38,10 +36,9 @@ class DatabaseGroupProvider implements GroupProviderInterface
     }
 
     /**
-     * Get internal id
+     * Get internal id.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getInternalId()
     {
@@ -49,9 +46,8 @@ class DatabaseGroupProvider implements GroupProviderInterface
     }
 
     /**
-     * Get external id
+     * Get external id.
      *
-     * @access public
      * @return string
      */
     public function getExternalId()
@@ -60,9 +56,8 @@ class DatabaseGroupProvider implements GroupProviderInterface
     }
 
     /**
-     * Get group name
+     * Get group name.
      *
-     * @access public
      * @return string
      */
     public function getName()

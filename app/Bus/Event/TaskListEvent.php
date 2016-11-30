@@ -12,19 +12,19 @@
 namespace Hiject\Bus\Event;
 
 /**
- * Task list event
+ * Task list event.
  */
 class TaskListEvent extends GenericEvent
 {
     /**
-     * Set tasks
+     * Set tasks.
      *
-     * @access public
-     * @param  array $tasks
+     * @param array $tasks
+     *
      * @return null
      */
     public function setTasks(array &$tasks)
     {
-        $this->container['tasks'] =& $tasks;
+        $this->container['tasks'] = &$tasks;
     }
 }

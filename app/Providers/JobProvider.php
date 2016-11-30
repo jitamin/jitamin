@@ -23,15 +23,15 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class JobProvider
+ * Class JobProvider.
  */
 class JobProvider implements ServiceProviderInterface
 {
     /**
-     * Register providers
+     * Register providers.
      *
-     * @access public
-     * @param  \Pimple\Container $container
+     * @param \Pimple\Container $container
+     *
      * @return \Pimple\Container
      */
     public function register(Container $container)

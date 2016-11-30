@@ -14,7 +14,7 @@ namespace Hiject\Formatter;
 use Hiject\Core\Filter\FormatterInterface;
 
 /**
- * Board Column Formatter
+ * Board Column Formatter.
  */
 class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
 {
@@ -24,61 +24,64 @@ class BoardColumnFormatter extends BaseFormatter implements FormatterInterface
     protected $tags = [];
 
     /**
-     * Set swimlaneId
+     * Set swimlaneId.
      *
-     * @access public
-     * @param  integer $swimlaneId
+     * @param int $swimlaneId
+     *
      * @return $this
      */
     public function withSwimlaneId($swimlaneId)
     {
         $this->swimlaneId = $swimlaneId;
+
         return $this;
     }
 
     /**
-     * Set columns
+     * Set columns.
      *
-     * @access public
-     * @param  array $columns
+     * @param array $columns
+     *
      * @return $this
      */
     public function withColumns(array $columns)
     {
         $this->columns = $columns;
+
         return $this;
     }
 
     /**
-     * Set tasks
+     * Set tasks.
      *
-     * @access public
-     * @param  array $tasks
+     * @param array $tasks
+     *
      * @return $this
      */
     public function withTasks(array $tasks)
     {
         $this->tasks = $tasks;
+
         return $this;
     }
 
     /**
-     * Set tags
+     * Set tags.
      *
-     * @access public
-     * @param  array $tags
+     * @param array $tags
+     *
      * @return $this
      */
     public function withTags(array $tags)
     {
         $this->tags = $tags;
+
         return $this;
     }
 
     /**
-     * Apply formatter
+     * Apply formatter.
      *
-     * @access public
      * @return array
      */
     public function format()

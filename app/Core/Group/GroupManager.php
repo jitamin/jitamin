@@ -12,36 +12,36 @@
 namespace Hiject\Core\Group;
 
 /**
- * Group Manager
+ * Group Manager.
  */
 class GroupManager
 {
     /**
-     * List of backend providers
+     * List of backend providers.
      *
-     * @access private
      * @var array
      */
     private $providers = [];
 
     /**
-     * Register a new group backend provider
+     * Register a new group backend provider.
      *
-     * @access public
-     * @param  GroupBackendProviderInterface $provider
+     * @param GroupBackendProviderInterface $provider
+     *
      * @return GroupManager
      */
     public function register(GroupBackendProviderInterface $provider)
     {
         $this->providers[] = $provider;
+
         return $this;
     }
 
     /**
-     * Find a group from a search query
+     * Find a group from a search query.
      *
-     * @access public
-     * @param  string $input
+     * @param string $input
+     *
      * @return GroupProviderInterface[]
      */
     public function find($input)
@@ -56,10 +56,10 @@ class GroupManager
     }
 
     /**
-     * Remove duplicated groups
+     * Remove duplicated groups.
      *
-     * @access private
-     * @param  array $groups
+     * @param array $groups
+     *
      * @return GroupProviderInterface[]
      */
     private function removeDuplicates(array $groups)
@@ -67,7 +67,7 @@ class GroupManager
         $result = [];
 
         foreach ($groups as $group) {
-            if (! isset($result[$group->getName()])) {
+            if (!isset($result[$group->getName()])) {
                 $result[$group->getName()] = $group;
             }
         }

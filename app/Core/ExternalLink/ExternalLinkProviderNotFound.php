@@ -14,7 +14,7 @@ namespace Hiject\Core\ExternalLink;
 use Exception;
 
 /**
- * External Link Provider Not Found Exception
+ * External Link Provider Not Found Exception.
  */
 class ExternalLinkProviderNotFound extends Exception
 {

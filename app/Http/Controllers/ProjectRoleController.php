@@ -14,12 +14,12 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\AccessForbiddenException;
 
 /**
- * Class ProjectRoleController
+ * Class ProjectRoleController.
  */
 class ProjectRoleController extends BaseController
 {
     /**
-     * Show roles and permissions
+     * Show roles and permissions.
      */
     public function show()
     {
@@ -27,16 +27,17 @@ class ProjectRoleController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_role/show', [
             'project' => $project,
-            'roles' => $this->projectRoleModel->getAllWithRestrictions($project['id']),
-            'title' => t('Custom Project Roles'),
+            'roles'   => $this->projectRoleModel->getAllWithRestrictions($project['id']),
+            'title'   => t('Custom Project Roles'),
         ]));
     }
 
     /**
-     * Show form to create new role
+     * Show form to create new role.
      *
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws AccessForbiddenException
      */
     public function create(array $values = [], array $errors = [])
@@ -45,13 +46,13 @@ class ProjectRoleController extends BaseController
 
         $this->response->html($this->template->render('project_role/create', [
             'project' => $project,
-            'values' => $values + ['project_id' => $project['id']],
-            'errors' => $errors,
+            'values'  => $values + ['project_id' => $project['id']],
+            'errors'  => $errors,
         ]));
     }
 
     /**
-     * Save new role
+     * Save new role.
      */
     public function save()
     {
@@ -76,10 +77,11 @@ class ProjectRoleController extends BaseController
     }
 
     /**
-     * Show form to change existing role
+     * Show form to change existing role.
      *
-     * @param  array $values
-     * @param  array $errors
+     * @param array $values
+     * @param array $errors
+     *
      * @throws AccessForbiddenException
      */
     public function edit(array $values = [], array $errors = [])
@@ -92,15 +94,15 @@ class ProjectRoleController extends BaseController
         }
 
         $this->response->html($this->template->render('project_role/edit', [
-            'role' => $role,
+            'role'    => $role,
             'project' => $project,
-            'values' => $values,
-            'errors' => $errors,
+            'values'  => $values,
+            'errors'  => $errors,
         ]));
     }
 
     /**
-     * Update role
+     * Update role.
      */
     public function update()
     {
@@ -125,9 +127,7 @@ class ProjectRoleController extends BaseController
     }
 
     /**
-     * Confirm suppression
-     *
-     * @access public
+     * Confirm suppression.
      */
     public function confirm()
     {
@@ -136,14 +136,12 @@ class ProjectRoleController extends BaseController
 
         $this->response->html($this->helper->layout->project('project_role/remove', [
             'project' => $project,
-            'role' => $role,
+            'role'    => $role,
         ]));
     }
 
     /**
-     * Remove a custom role
-     *
-     * @access public
+     * Remove a custom role.
      */
     public function remove()
     {
@@ -163,6 +161,7 @@ class ProjectRoleController extends BaseController
     protected function getRole($project_id)
     {
         $role_id = $this->request->getIntegerParam('role_id');
+
         return $this->projectRoleModel->getById($project_id, $role_id);
     }
 }

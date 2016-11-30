@@ -14,7 +14,7 @@ namespace Hiject\Core\Http;
 use Hiject\Core\Base;
 
 /**
- * Route Dispatcher
+ * Route Dispatcher.
  */
 class Router extends Base
 {
@@ -22,33 +22,29 @@ class Router extends Base
     const DEFAULT_METHOD = 'show';
 
     /**
-     * Plugin name
+     * Plugin name.
      *
-     * @access private
      * @var string
      */
     private $currentPluginName = '';
 
     /**
-     * Controller
+     * Controller.
      *
-     * @access private
      * @var string
      */
     private $currentControllerName = '';
 
     /**
-     * Action
+     * Action.
      *
-     * @access private
      * @var string
      */
     private $currentActionName = '';
 
     /**
-     * Get plugin name
+     * Get plugin name.
      *
-     * @access public
      * @return string
      */
     public function getPlugin()
@@ -57,9 +53,8 @@ class Router extends Base
     }
 
     /**
-     * Get controller
+     * Get controller.
      *
-     * @access public
      * @return string
      */
     public function getController()
@@ -68,9 +63,8 @@ class Router extends Base
     }
 
     /**
-     * Get action
+     * Get action.
      *
-     * @access public
      * @return string
      */
     public function getAction()
@@ -79,9 +73,8 @@ class Router extends Base
     }
 
     /**
-     * Get the path to compare patterns
+     * Get the path to compare patterns.
      *
-     * @access public
      * @return string
      */
     public function getPath()
@@ -89,10 +82,10 @@ class Router extends Base
         $path = substr($this->request->getUri(), strlen($this->helper->url->dir()));
 
         if ($this->request->getQueryString() !== '') {
-            $path = substr($path, 0, - strlen($this->request->getQueryString()) - 1);
+            $path = substr($path, 0, -strlen($this->request->getQueryString()) - 1);
         }
 
-        if ($path !== '' && $path{0} === '/') {
+        if ($path !== '' && $path[0] === '/') {
             $path = substr($path, 1);
         }
 
@@ -100,9 +93,7 @@ class Router extends Base
     }
 
     /**
-     * Find controller/action from the route table or from get arguments
-     *
-     * @access public
+     * Find controller/action from the route table or from get arguments.
      */
     public function dispatch()
     {
@@ -123,11 +114,11 @@ class Router extends Base
     }
 
     /**
-     * Check controller and action parameter
+     * Check controller and action parameter.
      *
-     * @access public
-     * @param  string $value
-     * @param  string $default
+     * @param string $value
+     * @param string $default
+     *
      * @return string
      */
     public function sanitize($value, $default = '')

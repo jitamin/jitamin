@@ -16,7 +16,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * project daily stats calculation command class
+ * project daily stats calculation command class.
  */
 class ProjectDailyStatsCalculationCommand extends BaseCommand
 {

@@ -16,22 +16,20 @@ use Hiject\Core\Security\PreAuthenticationProviderInterface;
 use Hiject\User\DatabaseUserProvider;
 
 /**
- * Rember Me Cookie Authentication Provider
+ * Rember Me Cookie Authentication Provider.
  */
 class RememberMeAuth extends Base implements PreAuthenticationProviderInterface
 {
     /**
-     * User properties
+     * User properties.
      *
-     * @access protected
      * @var array
      */
     protected $userInfo = [];
 
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -40,10 +38,9 @@ class RememberMeAuth extends Base implements PreAuthenticationProviderInterface
     }
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate()
     {
@@ -52,7 +49,7 @@ class RememberMeAuth extends Base implements PreAuthenticationProviderInterface
         if ($credentials !== false) {
             $session = $this->rememberMeSessionModel->find($credentials['token'], $credentials['sequence']);
 
-            if (! empty($session)) {
+            if (!empty($session)) {
                 $this->rememberMeCookie->write(
                     $session['token'],
                     $this->rememberMeSessionModel->updateSequence($session['token']),
@@ -69,15 +66,14 @@ class RememberMeAuth extends Base implements PreAuthenticationProviderInterface
     }
 
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return DatabaseUserProvider
      */
     public function getUser()
     {
         if (empty($this->userInfo)) {
-            return null;
+            return;
         }
 
         return new DatabaseUserProvider($this->userInfo);

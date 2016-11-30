@@ -21,12 +21,12 @@ use Hiject\Middleware\ProjectAuthorizationMiddleware;
 use RuntimeException;
 
 /**
- * Class Runner
+ * Class Runner.
  */
 class Runner extends Base
 {
     /**
-     * Execute middleware and controller
+     * Execute middleware and controller.
      */
     public function execute()
     {
@@ -46,7 +46,7 @@ class Runner extends Base
     }
 
     /**
-     * Execute all middleware
+     * Execute all middleware.
      */
     protected function executeMiddleware()
     {
@@ -69,7 +69,7 @@ class Runner extends Base
     }
 
     /**
-     * Execute the controller
+     * Execute the controller.
      */
     protected function executeController()
     {
@@ -84,11 +84,11 @@ class Runner extends Base
     }
 
     /**
-     * Get controller class name
+     * Get controller class name.
      *
-     * @access protected
-     * @return string
      * @throws RuntimeException
+     *
+     * @return string
      */
     protected function getControllerClassName()
     {
@@ -98,11 +98,11 @@ class Runner extends Base
             $className = '\Hiject\Controller\\'.$this->router->getController();
         }
 
-        if (! class_exists($className)) {
+        if (!class_exists($className)) {
             throw new RuntimeException('Controller not found');
         }
 
-        if (! method_exists($className, $this->router->getAction())) {
+        if (!method_exists($className, $this->router->getAction())) {
             throw new RuntimeException('Action not implemented');
         }
 

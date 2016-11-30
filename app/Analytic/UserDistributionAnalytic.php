@@ -14,15 +14,15 @@ namespace Hiject\Analytic;
 use Hiject\Core\Base;
 
 /**
- * User Distribution
+ * User Distribution.
  */
 class UserDistributionAnalytic extends Base
 {
     /**
-     * Build Report
+     * Build Report.
      *
-     * @access public
-     * @param  integer   $project_id
+     * @param int $project_id
+     *
      * @return array
      */
     public function build($project_id)
@@ -36,11 +36,11 @@ class UserDistributionAnalytic extends Base
             $user = isset($users[$task['owner_id']]) ? $users[$task['owner_id']] : $users[0];
             $total++;
 
-            if (! isset($metrics[$user])) {
+            if (!isset($metrics[$user])) {
                 $metrics[$user] = [
-                    'nb_tasks' => 0,
+                    'nb_tasks'   => 0,
                     'percentage' => 0,
-                    'user' => $user,
+                    'user'       => $user,
                 ];
             }
 

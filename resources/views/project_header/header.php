@@ -8,11 +8,11 @@
     </div>
     <div class="filter-box-component">
         <?= $this->render('project_header/search', [
-            'project' => $project,
-            'filters' => $filters,
+            'project'             => $project,
+            'filters'             => $filters,
             'custom_filters_list' => isset($custom_filters_list) ? $custom_filters_list : [],
-            'users_list' => isset($users_list) ? $users_list : [],
-            'categories_list' => isset($categories_list) ? $categories_list : [],
+            'users_list'          => isset($users_list) ? $users_list : [],
+            'categories_list'     => isset($categories_list) ? $categories_list : [],
         ]) ?>
     </div>
 

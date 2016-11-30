@@ -14,15 +14,15 @@ namespace Hiject\Controller;
 use Hiject\Core\ObjectStorage\ObjectStorageException;
 
 /**
- * File Viewer Controller
+ * File Viewer Controller.
  */
 class FileViewerController extends BaseController
 {
     /**
-     * Get file content from object storage
+     * Get file content from object storage.
      *
-     * @access private
-     * @param  array $file
+     * @param array $file
+     *
      * @return string
      */
     private function getFileContent(array $file)
@@ -41,9 +41,7 @@ class FileViewerController extends BaseController
     }
 
     /**
-     * Show file content in a popover
-     *
-     * @access public
+     * Show file content in a popover.
      */
     public function show()
     {
@@ -56,17 +54,15 @@ class FileViewerController extends BaseController
         }
 
         $this->response->html($this->template->render('file_viewer/show', [
-            'file' => $file,
-            'params' => $params,
-            'type' => $type,
+            'file'    => $file,
+            'params'  => $params,
+            'type'    => $type,
             'content' => $this->getFileContent($file),
         ]));
     }
 
     /**
-     * Display image
-     *
-     * @access public
+     * Display image.
      */
     public function image()
     {
@@ -88,9 +84,7 @@ class FileViewerController extends BaseController
     }
 
     /**
-     * Display image thumbnail
-     *
-     * @access public
+     * Display image thumbnail.
      */
     public function thumbnail()
     {
@@ -121,9 +115,7 @@ class FileViewerController extends BaseController
     }
 
     /**
-     * File download
-     *
-     * @access public
+     * File download.
      */
     public function download()
     {

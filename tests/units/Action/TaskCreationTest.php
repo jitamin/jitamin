@@ -11,10 +11,10 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Bus\Event\GenericEvent;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\ProjectModel;
 use Hiject\Action\TaskCreation as TaskCreationAction;
+use Hiject\Bus\Event\GenericEvent;
+use Hiject\Model\ProjectModel;
+use Hiject\Model\TaskFinderModel;
 
 class TaskCreationActionTest extends Base
 {

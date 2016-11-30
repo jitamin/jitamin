@@ -96,7 +96,7 @@ class ProjectProcedureTest extends BaseProcedureTest
     public function assertCreateProjectWithIdentifier()
     {
         $projectId = $this->app->createProject([
-            'name' => 'My project with an identifier',
+            'name'       => 'My project with an identifier',
             'identifier' => 'MYPROJECTWITHIDENTIFIER',
         ]);
 

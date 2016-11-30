@@ -64,7 +64,7 @@ class ReverseProxyAuthTest extends Base
             ->will($this->returnValue('admin'));
 
         $this->container['sessionStorage']->user = [
-            'username' => 'admin'
+            'username' => 'admin',
         ];
 
         $provider = new ReverseProxyAuth($this->container);
@@ -79,7 +79,7 @@ class ReverseProxyAuthTest extends Base
             ->will($this->returnValue('foobar'));
 
         $this->container['sessionStorage']->user = [
-            'username' => 'admin'
+            'username' => 'admin',
         ];
 
         $provider = new ReverseProxyAuth($this->container);
@@ -110,7 +110,7 @@ class ReverseProxyAuthTest extends Base
         $provider = new ReverseProxyAuth($this->container);
         $userModel = new UserModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'someone', 'email' =>'someone@here', 'role' => Role::APP_MANAGER]));
+        $this->assertEquals(2, $userModel->create(['username' => 'someone', 'email' => 'someone@here', 'role' => Role::APP_MANAGER]));
 
         $this->assertTrue($provider->authenticate());
 

@@ -12,14 +12,13 @@
 namespace Hiject\Controller;
 
 /**
- * Authentication Controller
+ * Authentication Controller.
  */
 class AuthController extends BaseController
 {
     /**
-     * Display the form login
+     * Display the form login.
      *
-     * @access public
      * @param array $values
      * @param array $errors
      */
@@ -29,24 +28,22 @@ class AuthController extends BaseController
             $this->response->redirect($this->helper->url->to('DashboardController', 'show'));
         } else {
             $this->response->html($this->helper->layout->app('auth/index', [
-                'captcha' => ! empty($values['username']) && $this->userLockingModel->hasCaptcha($values['username']),
-                'errors' => $errors,
-                'values' => $values,
+                'captcha'   => !empty($values['username']) && $this->userLockingModel->hasCaptcha($values['username']),
+                'errors'    => $errors,
+                'values'    => $values,
                 'no_layout' => true,
-                'title' => t('Login')
+                'title'     => t('Login'),
             ]));
         }
     }
 
     /**
-     * Check credentials
-     *
-     * @access public
+     * Check credentials.
      */
     public function check()
     {
         $values = $this->request->getValues();
-        $this->sessionStorage->hasRememberMe = ! empty($values['remember_me']);
+        $this->sessionStorage->hasRememberMe = !empty($values['remember_me']);
         list($valid, $errors) = $this->authValidator->validateForm($values);
 
         if ($valid) {
@@ -57,13 +54,11 @@ class AuthController extends BaseController
     }
 
     /**
-     * Logout and destroy session
-     *
-     * @access public
+     * Logout and destroy session.
      */
     public function logout()
     {
-        if (! DISABLE_LOGOUT) {
+        if (!DISABLE_LOGOUT) {
             $this->sessionManager->close();
             $this->response->redirect($this->helper->url->to('AuthController', 'login'));
         } else {
@@ -72,13 +67,11 @@ class AuthController extends BaseController
     }
 
     /**
-     * Redirect the user after the authentication
-     *
-     * @access private
+     * Redirect the user after the authentication.
      */
     private function redirectAfterLogin()
     {
-        if (isset($this->sessionStorage->redirectAfterLogin) && ! empty($this->sessionStorage->redirectAfterLogin) && ! filter_var($this->sessionStorage->redirectAfterLogin, FILTER_VALIDATE_URL)) {
+        if (isset($this->sessionStorage->redirectAfterLogin) && !empty($this->sessionStorage->redirectAfterLogin) && !filter_var($this->sessionStorage->redirectAfterLogin, FILTER_VALIDATE_URL)) {
             $redirect = $this->sessionStorage->redirectAfterLogin;
             unset($this->sessionStorage->redirectAfterLogin);
             $this->response->redirect($redirect);

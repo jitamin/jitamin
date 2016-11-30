@@ -11,46 +11,42 @@
 
 namespace Hiject\Auth;
 
-use LogicException;
 use Hiject\Core\Base;
 use Hiject\Core\Ldap\Client as LdapClient;
 use Hiject\Core\Ldap\ClientException as LdapException;
 use Hiject\Core\Ldap\User as LdapUser;
 use Hiject\Core\Security\PasswordAuthenticationProviderInterface;
+use LogicException;
 
 /**
- * LDAP Authentication Provider
+ * LDAP Authentication Provider.
  */
 class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
 {
     /**
-     * User properties
+     * User properties.
      *
-     * @access protected
      * @var \Hiject\User\LdapUserProvider
      */
     protected $userInfo = null;
 
     /**
-     * Username
+     * Username.
      *
-     * @access protected
      * @var string
      */
     protected $username = '';
 
     /**
-     * Password
+     * Password.
      *
-     * @access protected
      * @var string
      */
     protected $password = '';
 
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -59,10 +55,9 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     }
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate()
     {
@@ -74,6 +69,7 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
 
             if ($user === null) {
                 $this->logger->info('User ('.$this->username.') not found in LDAP server');
+
                 return false;
             }
 
@@ -85,6 +81,7 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
 
             if ($client->authenticate($user->getDn(), $this->password)) {
                 $this->userInfo = $user;
+
                 return true;
             }
         } catch (LdapException $e) {
@@ -95,9 +92,8 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     }
 
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return \Hiject\User\LdapUserProvider
      */
     public function getUser()
@@ -106,10 +102,9 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     }
 
     /**
-     * Set username
+     * Set username.
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -117,10 +112,9 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     }
 
     /**
-     * Set password
+     * Set password.
      *
-     * @access public
-     * @param  string $password
+     * @param string $password
      */
     public function setPassword($password)
     {
@@ -128,9 +122,8 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     }
 
     /**
-     * Get LDAP username (proxy auth)
+     * Get LDAP username (proxy auth).
      *
-     * @access public
      * @return string
      */
     public function getLdapUsername()
@@ -141,14 +134,13 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
             case 'user':
                 return sprintf(LDAP_USERNAME, $this->username);
             default:
-                return null;
+                return;
         }
     }
 
     /**
-     * Get LDAP password (proxy auth)
+     * Get LDAP password (proxy auth).
      *
-     * @access public
      * @return string
      */
     public function getLdapPassword()
@@ -159,15 +151,14 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
             case 'user':
                 return $this->password;
             default:
-                return null;
+                return;
         }
     }
 
     /**
-     * Get LDAP bind type
+     * Get LDAP bind type.
      *
-     * @access public
-     * @return integer
+     * @return int
      */
     public function getLdapBindType()
     {

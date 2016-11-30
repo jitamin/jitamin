@@ -12,9 +12,8 @@
 use Hiject\Filter\TaskMovedDateFilter;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
-use Hiject\Model\TaskModificationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\UserModel;
+use Hiject\Model\TaskModificationModel;
 
 require_once __DIR__.'/../Base.php';
 

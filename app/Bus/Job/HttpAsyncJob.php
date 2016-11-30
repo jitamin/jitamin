@@ -12,34 +12,35 @@
 namespace Hiject\Bus\Job;
 
 /**
- * Async HTTP Client (fire and forget)
+ * Async HTTP Client (fire and forget).
  */
 class HttpAsyncJob extends BaseJob
 {
     /**
-     * Set job parameters
+     * Set job parameters.
      *
-     * @access public
      * @param string $method
      * @param string $url
      * @param string $content
      * @param array  $headers
+     *
      * @return $this
      */
     public function withParams($method, $url, $content, array $headers)
     {
         $this->jobParams = [$method, $url, $content, $headers];
+
         return $this;
     }
 
     /**
-     * Set job parameters
+     * Set job parameters.
      *
-     * @access public
      * @param string $method
      * @param string $url
      * @param string $content
      * @param array  $headers
+     *
      * @return $this
      */
     public function execute($method, $url, $content, array $headers)

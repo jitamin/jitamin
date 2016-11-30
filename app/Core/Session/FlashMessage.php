@@ -14,15 +14,14 @@ namespace Hiject\Core\Session;
 use Hiject\Core\Base;
 
 /**
- * Session Flash Message
+ * Session Flash Message.
  */
 class FlashMessage extends Base
 {
     /**
-     * Add success message
+     * Add success message.
      *
-     * @access public
-     * @param  string  $message
+     * @param string $message
      */
     public function success($message)
     {
@@ -30,10 +29,9 @@ class FlashMessage extends Base
     }
 
     /**
-     * Add failure message
+     * Add failure message.
      *
-     * @access public
-     * @param  string  $message
+     * @param string $message
      */
     public function failure($message)
     {
@@ -41,15 +39,14 @@ class FlashMessage extends Base
     }
 
     /**
-     * Add new flash message
+     * Add new flash message.
      *
-     * @access public
-     * @param  string  $key
-     * @param  string  $message
+     * @param string $key
+     * @param string $message
      */
     public function setMessage($key, $message)
     {
-        if (! isset($this->sessionStorage->flash)) {
+        if (!isset($this->sessionStorage->flash)) {
             $this->sessionStorage->flash = [];
         }
 
@@ -57,10 +54,10 @@ class FlashMessage extends Base
     }
 
     /**
-     * Get flash message
+     * Get flash message.
      *
-     * @access public
-     * @param  string  $key
+     * @param string $key
+     *
      * @return string
      */
     public function getMessage($key)
