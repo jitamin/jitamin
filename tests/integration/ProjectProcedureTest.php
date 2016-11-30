@@ -70,7 +70,7 @@ class ProjectProcedureTest extends BaseProcedureTest
 
     public function assertUpdateProject()
     {
-        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => 'test', 'description' => 'test')]);
+        $this->assertTrue($this->app->updateProject(['project_id' => $this->projectId, 'name' => 'test', 'description' => 'test']);
 
         $project = $this->app->getProjectById($this->projectId);
         $this->assertNotNull($project);

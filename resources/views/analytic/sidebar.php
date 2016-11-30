@@ -19,7 +19,7 @@
             <?= $this->url->link(t('Lead and cycle time'), 'AnalyticController', 'leadAndCycleTime', ['project_id' => $project['id']]) ?>
         </li>
         <li <?= $this->app->checkMenuSelection('AnalyticController', 'timeComparison') ?>>
-            <?= $this->url->link(t('Estimated vs actual time'), 'AnalyticController', 'timeComparison', ['project_id' => $project['id'])) ?>
+            <?= $this->url->link(t('Estimated vs actual time'), 'AnalyticController', 'timeComparison', ['project_id' => $project['id']]) ?>
         </li>
 
         <?= $this->hook->render('template:analytic:sidebar', ['project' => $project]) ?>
