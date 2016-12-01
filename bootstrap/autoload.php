@@ -61,3 +61,4 @@ $container->register(new Hiject\Providers\QueueProvider());
 $container->register(new Hiject\Providers\ApiProvider());
 $container->register(new Hiject\Providers\CommandProvider());
 $container->register(new Hiject\Providers\PluginProvider());
+$container->register(new Hiject\Providers\UpdateProvider());
