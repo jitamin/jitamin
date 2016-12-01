@@ -43,7 +43,7 @@ class LatestRelease extends Base
 
             if (is_array($body)) {
                 $release = $body['tag_name'];
-                $this->container['cacheDriver']->set('hiject_latest_version', $release);
+                $this->container['cacheDriver']->set('hiject_latest_version', $release, $cache_for);
                 return $release;
             }
         }

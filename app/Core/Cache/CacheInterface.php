@@ -21,8 +21,9 @@ interface CacheInterface
      *
      * @param string $key
      * @param mixed  $value
+     * @param int $minutes
      */
-    public function set($key, $value);
+    public function set($key, $value, $minutes);
 
     /**
      * Retrieve an item from the cache by key.

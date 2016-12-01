@@ -36,7 +36,7 @@ define('PLUGINS_DIR', HIJECT_DIR.DIRECTORY_SEPARATOR.'plugins');
 // Available log drivers: syslog, stderr, stdout or file
 define('LOG_DRIVER', '');
 
-// Available cache drivers are "file" and "memory"
+// Available cache drivers are "file", "memory" and "memcached"
 define('CACHE_DRIVER', 'memory');
 
 // E-mail address for the "From" header (notifications)
@@ -81,6 +81,12 @@ define('DB_SSL_CERT', null);
 
 // Mysql SSL CA
 define('DB_SSL_CA', null);
+
+// Memcached servers
+define('MEMCACHED_SERVERS', [['host' => '127.0.0.1', 'port' => '11211', 'weight' => 0]]);
+
+// Memcached prefix
+define('MEMCACHED_PREFIX', '');
 
 // Enable LDAP authentication (false by default)
 define('LDAP_AUTH', false);

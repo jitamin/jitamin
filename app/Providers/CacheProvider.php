@@ -12,6 +12,7 @@
 namespace Hiject\Providers;
 
 use Hiject\Core\Cache\FileCache;
+use Hiject\Core\Cache\MemcachedCache;
 use Hiject\Core\Cache\MemoryCache;
 use Hiject\Decorator\ColumnMoveRestrictionCacheDecorator;
 use Hiject\Decorator\ColumnRestrictionCacheDecorator;
@@ -41,6 +42,10 @@ class CacheProvider implements ServiceProviderInterface
         if (CACHE_DRIVER === 'file') {
             $container['cacheDriver'] = function () {
                 return new FileCache();
+            };
+        } else if(CACHE_DRIVER === 'memcached') {
+            $container['cacheDriver'] = function ($c) {
+                return new MemcachedCache($c['memcached'], defined('MEMCACHED_PREFIX') ? MEMCACHED_PREFIX : '');
             };
         } else {
             $container['cacheDriver'] = $container['memoryCache'];
