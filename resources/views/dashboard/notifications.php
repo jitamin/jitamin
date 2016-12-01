@@ -63,7 +63,7 @@
             <?php if ($this->text->contains($notification['event_name'], 'comment')): ?>
                 <?= $notification['event_data']['comment']['username'] ?>
             <?php else: ?>
-                <?= $notification['event_data']['task']['creator_username'] ?>
+                <?= $notification['event_data']['task']['assignee_username'] ?: $notification['event_data']['task']['creator_username'] ?>
             <?php endif ?>
             </td>
             <td>
