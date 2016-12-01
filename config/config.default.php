@@ -15,8 +15,11 @@
 // Enable/Disable debug
 define('DEBUG', false);
 
+// Config folder
+define('CONFIG_DIR', __DIR__);
+
 // Hiject folder
-define('HIJECT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
+define('HIJECT_DIR', CONFIG_DIR.DIRECTORY_SEPARATOR.'..');
 
 // Data folder (must be writeable by the web server user)
 define('DATA_DIR', HIJECT_DIR.DIRECTORY_SEPARATOR.'storage');
@@ -38,6 +41,9 @@ define('LOG_DRIVER', '');
 
 // Available cache drivers are "file", "memory" and "memcached"
 define('CACHE_DRIVER', 'memory');
+
+// Cache prefix
+define('CACHE_PREFIX', '');
 
 // E-mail address for the "From" header (notifications)
 define('MAIL_FROM', 'replace-me@hiject.local');
@@ -81,12 +87,6 @@ define('DB_SSL_CERT', null);
 
 // Mysql SSL CA
 define('DB_SSL_CA', null);
-
-// Memcached servers
-define('MEMCACHED_SERVERS', [['host' => '127.0.0.1', 'port' => '11211', 'weight' => 0]]);
-
-// Memcached prefix
-define('MEMCACHED_PREFIX', '');
 
 // Enable LDAP authentication (false by default)
 define('LDAP_AUTH', false);
