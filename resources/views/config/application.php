@@ -1,3 +1,4 @@
+<?php echo $this->render('config/update', ['is_outdated' => $is_outdated, 'current_version' => $current_version, 'latest_version' => $latest_version]) ?>
 <div class="page-header">
     <h2><?= t('Application settings') ?></h2>
 </div>
