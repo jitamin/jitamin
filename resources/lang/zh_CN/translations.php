@@ -226,7 +226,7 @@ return [
     'Persistent connections' => '会话记录',
     'No session.' => '无会话',
     'Expiration date' => '过期日期',
-    'Remember Me' => '记住我',
+    'Remember Me' => '下次自动登录',
     'Creation date' => '创建日期',
     'Everybody' => '所有人',
     'Open' => '打开',

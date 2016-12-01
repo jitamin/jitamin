@@ -30,7 +30,7 @@
         <?php endif ?>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-success"><?= t('Sign in') ?></button>
+            <button type="submit" class="btn btn-primary btn-block"><?= t('Sign in') ?></button>
         </div>
         <?php if ($this->app->config('password_reset') == 1): ?>
             <div class="reset-password">
