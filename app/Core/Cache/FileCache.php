@@ -24,8 +24,9 @@ class FileCache extends BaseCache
      *
      * @param string $key
      * @param mixed  $value
+     * @param int $minutes
      */
-    public function set($key, $value)
+    public function set($key, $value, $minutes = 0)
     {
         $this->createCacheFolder();
         file_put_contents($this->getFilenameFromKey($key), serialize($value));

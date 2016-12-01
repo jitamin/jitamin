@@ -185,6 +185,19 @@ class ClassProvider implements ServiceProviderInterface
             return new HttpClient($c);
         };
 
+        if (CACHE_DRIVER === 'memcached' && defined('MEMCACHED_SERVERS')) {
+            $container['memcached'] = function ($c) {
+                $memcached = new \Memcached();
+
+                foreach (MEMCACHED_SERVERS as $server) {
+                    $memcached->addServer(
+                        $server['host'], $server['port'], $server['weight']
+                    );
+                }
+                return $memcached;
+            };
+        }
+
         $container['objectStorage'] = function () {
             return new FileStorage(FILES_DIR);
         };

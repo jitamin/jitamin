@@ -28,8 +28,9 @@ class MemoryCache extends BaseCache
      *
      * @param string $key
      * @param mixed  $value
+     * @param int $minutes
      */
-    public function set($key, $value)
+    public function set($key, $value, $minutes = 0)
     {
         $this->storage[$key] = $value;
     }
