@@ -180,7 +180,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function pageLayout($template, array $params = [], $layout = 'layout')
+    public function pageLayout($template, array $params = [], $layout = 'layouts/master')
     {
         return $this->template->render(
             $layout,

@@ -56,10 +56,10 @@
         <?= $content_for_layout ?>
     <?php else: ?>
         <?= $this->hook->render('template:layout:top') ?>
-        <?= $this->render('header') ?>
+        <?= $this->render('_partials/header') ?>
         <section class="page container">
             <?= $this->app->flashMessage() ?>
-            <?= $this->render('breadcrumb', [
+            <?= $this->render('_partials/breadcrumb', [
                     'project'     => isset($project) ? $project : null,
                     'task'        => isset($task) ? $task : null,
                     'description' => isset($description) ? $description : null,
@@ -67,7 +67,7 @@
             ]) ?>
             <?= $content_for_layout ?>
         </section>
-        <?= $this->render('footer', [
+        <?= $this->render('_partials/footer', [
         ]) ?>
         <?= $this->hook->render('template:layout:bottom') ?>
     <?php endif ?>

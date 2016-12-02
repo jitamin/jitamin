@@ -1106,7 +1106,7 @@ return [
     'Category filters' => '分类过滤器',
     'Upload a file' => '上传文件',
     'View file' => '查看文件',
-    'Last activity' => '最近动态',
+    'Last activities' => '最近动态',
     'Change subtask position' => '更改子任务位置',
     'This value must be greater than %d' => '当前输入值必须大于%d',
     'Another swimlane with the same name exists in the project' => '该里程碑已存在',
