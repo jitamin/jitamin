@@ -24,7 +24,7 @@ class CurrencyController extends BaseController
      */
     public function index(array $values = [], array $errors = [])
     {
-        $this->response->html($this->helper->layout->config('currency/index', [
+        $this->response->html($this->helper->layout->config('config/currency', [
             'config_values' => ['application_currency' => $this->configModel->get('application_currency')],
             'values'        => $values,
             'errors'        => $errors,

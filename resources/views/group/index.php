@@ -2,7 +2,7 @@
     <div class="page-header">
         <ul>
             <li><i class="fa fa-user fa-fw"></i><?= $this->url->link(t('All users'), 'UserListController', 'show') ?></li>
-            <li><i class="fa fa-user-plus fa-fw"></i><?= $this->url->link(t('New group'), 'GroupCreationController', 'show', [], false, 'popover') ?></li>
+            <li><i class="fa fa-user-plus fa-fw"></i><?= $this->url->link(t('New group'), 'GroupController', 'create', [], false, 'popover') ?></li>
         </ul>
     </div>
     <?php if ($paginator->isEmpty()): ?>
@@ -32,7 +32,7 @@
                     <ul>
                         <li><?= $this->url->link(t('Add group member'), 'GroupListController', 'associate', ['group_id' => $group['id']], false, 'popover') ?></li>
                         <li><?= $this->url->link(t('Members'), 'GroupListController', 'users', ['group_id' => $group['id']]) ?></li>
-                        <li><?= $this->url->link(t('Edit'), 'GroupModificationController', 'show', ['group_id' => $group['id']], false, 'popover') ?></li>
+                        <li><?= $this->url->link(t('Edit'), 'GroupController', 'edit', ['group_id' => $group['id']], false, 'popover') ?></li>
                         <li><?= $this->url->link(t('Remove'), 'GroupListController', 'confirm', ['group_id' => $group['id']], false, 'popover') ?></li>
                     </ul>
                     </div>

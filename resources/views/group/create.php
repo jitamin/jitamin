@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('New group') ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('GroupCreationController', 'save') ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('GroupController', 'store') ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Name'), 'name') ?>

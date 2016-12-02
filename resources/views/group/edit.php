@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit group') ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('GroupModificationController', 'save') ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('GroupController', 'update') ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->hidden('id', $values) ?>

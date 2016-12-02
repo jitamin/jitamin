@@ -158,6 +158,8 @@ $container['route']->addRoute('admin/users/create', 'UserCreationController', 's
 
 // Groups admin
 $container['route']->addRoute('admin/groups', 'GroupListController', 'index');
+$container['route']->addRoute('admin/groups/create', 'GroupController', 'create');
+$container['route']->addRoute('admin/groups/edit', 'GroupController', 'edit');
 $container['route']->addRoute('admin/group/:group_id/members', 'GroupListController', 'users');
 
 // Config admin
