@@ -151,7 +151,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('ProjectUserOverviewController', '*', Role::APP_MANAGER);
         $acl->add('TwoFactorController', 'disable', Role::APP_ADMIN);
         $acl->add('UserImportController', '*', Role::APP_ADMIN);
-        $acl->add('UserCreationController', '*', Role::APP_ADMIN);
+        $acl->add('UserController', '*', Role::APP_ADMIN);
         $acl->add('UserListController', '*', Role::APP_ADMIN);
         $acl->add('UserStatusController', '*', Role::APP_ADMIN);
         $acl->add('UserCredentialController', ['changeAuthentication', 'saveAuthentication', 'unlock'], Role::APP_ADMIN);

@@ -71,7 +71,7 @@ $ chmod -R 0777 storage
 
 ```shell
 $ git fetch --all
-$ git checkout {latest_tag} // 请将`{latest_tag}`修改为最新的tag，比如：0.0.6
+$ git checkout {latest_tag} // 请将 latest_tag} 修改为最新的tag，比如：0.0.6
 ```
 
 二. 更新依赖

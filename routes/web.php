@@ -154,7 +154,7 @@ $container['route']->addRoute('user/ajax/status', 'UserAjaxController', 'status'
 
 // Users admin
 $container['route']->addRoute('admin/users', 'UserListController', 'show');
-$container['route']->addRoute('admin/users/create', 'UserCreationController', 'show');
+$container['route']->addRoute('admin/users/create', 'UserController', 'create');
 
 // Groups admin
 $container['route']->addRoute('admin/groups', 'GroupListController', 'index');

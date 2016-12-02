@@ -15,9 +15,9 @@ use Hiject\Core\Security\Role;
 use Hiject\Notification\MailNotification;
 
 /**
- * Class UserCreationController.
+ * Class UserController.
  */
-class UserCreationController extends BaseController
+class UserController extends BaseController
 {
     /**
      * Display a form to create a new user.
@@ -25,10 +25,10 @@ class UserCreationController extends BaseController
      * @param array $values
      * @param array $errors
      */
-    public function show(array $values = [], array $errors = [])
+    public function create(array $values = [], array $errors = [])
     {
         $isRemote = $this->request->getIntegerParam('remote') == 1 || (isset($values['is_ldap_user']) && $values['is_ldap_user'] == 1);
-        $template = $isRemote ? 'user_creation/remote' : 'user_creation/local';
+        $template = $isRemote ? 'user/create_remote' : 'user/create_local';
 
         $this->response->html($this->template->render($template, [
             'timezones' => $this->timezoneModel->getTimezones(true),
@@ -43,7 +43,7 @@ class UserCreationController extends BaseController
     /**
      * Validate and save a new user.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         list($valid, $errors) = $this->userValidator->validateCreation($values);
