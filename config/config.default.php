@@ -15,11 +15,8 @@
 // Enable/Disable debug
 define('DEBUG', false);
 
-// Config folder
-define('CONFIG_DIR', __DIR__);
-
 // Hiject folder
-define('HIJECT_DIR', CONFIG_DIR.DIRECTORY_SEPARATOR.'..');
+define('HIJECT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // Data folder (must be writeable by the web server user)
 define('DATA_DIR', HIJECT_DIR.DIRECTORY_SEPARATOR.'storage');
