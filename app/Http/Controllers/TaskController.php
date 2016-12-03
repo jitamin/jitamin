@@ -14,9 +14,9 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\PageNotFoundException;
 
 /**
- * Task Creation Controller.
+ * Task Controller.
  */
-class TaskCreationController extends BaseController
+class TaskController extends BaseController
 {
     /**
      * Display a form to create a new task.
@@ -26,7 +26,7 @@ class TaskCreationController extends BaseController
      *
      * @throws PageNotFoundException
      */
-    public function show(array $values = [], array $errors = [])
+    public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
         $swimlanes_list = $this->swimlaneModel->getList($project['id'], false, true);
@@ -50,9 +50,9 @@ class TaskCreationController extends BaseController
     }
 
     /**
-     * Validate and save a new task.
+     * Validate and store a new task.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

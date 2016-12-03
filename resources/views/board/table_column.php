@@ -14,7 +14,7 @@
         <div class="board-column-expanded">
             <?php if (!$not_editable && $this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
                 <div class="board-add-icon">
-                    <?= $this->url->link('+', 'TaskCreationController', 'show', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover', t('Add a new task')) ?>
+                    <?= $this->url->link('+', 'TaskController', 'create', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover', t('Add a new task')) ?>
                 </div>
             <?php endif ?>
 

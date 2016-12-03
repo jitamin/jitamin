@@ -130,7 +130,7 @@ class ProjectRoleHelper extends Base
             }
         }
 
-        return $this->helper->user->hasProjectAccess('TaskCreationController', 'show', $project_id);
+        return $this->helper->user->hasProjectAccess('TaskController', 'create', $project_id);
     }
 
     /**

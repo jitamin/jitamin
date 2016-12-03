@@ -2,7 +2,7 @@
     <h2><?= $this->text->e($project['name']) ?> &gt; <?= t('New task') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('TaskCreationController', 'save', ['project_id' => $values['project_id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('TaskController', 'create', ['project_id' => $values['project_id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
 
     <div class="form-columns">
