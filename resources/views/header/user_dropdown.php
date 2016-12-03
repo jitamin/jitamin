@@ -3,7 +3,7 @@
     <ul>
          <li>
             <i class="fa fa-cubes"></i>
-            <?= $this->url->link(t('Project management'), 'ProjectListController', 'show') ?>
+            <?= $this->url->link(t('Project management'), 'ProjecController', 'index') ?>
          </li>
         <li>
             <i class="fa fa-vcard"></i>

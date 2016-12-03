@@ -12,10 +12,37 @@
 namespace Hiject\Controller;
 
 /**
- * Project Creation Controller.
+ * Class ProjectController.
  */
-class ProjectCreationController extends BaseController
+class ProjectController extends BaseController
 {
+    /**
+     * List of projects.
+     */
+    public function index()
+    {
+        if ($this->userSession->isAdmin()) {
+            $project_ids = $this->projectModel->getAllIds();
+        } else {
+            $project_ids = $this->projectPermissionModel->getProjectIds($this->userSession->getId());
+        }
+
+        $nb_projects = count($project_ids);
+
+        $paginator = $this->paginator
+            ->setUrl('ProjectController', 'index')
+            ->setMax(20)
+            ->setOrder('name')
+            ->setQuery($this->projectModel->getQueryColumnStats($project_ids))
+            ->calculate();
+
+        $this->response->html($this->helper->layout->app('project/index', [
+            'paginator'   => $paginator,
+            'nb_projects' => $nb_projects,
+            'title'       => t('Projects').' ('.$nb_projects.')',
+        ]));
+    }
+
     /**
      * Display a form to create a new project.
      *
@@ -27,7 +54,7 @@ class ProjectCreationController extends BaseController
         $is_private = isset($values['is_private']) && $values['is_private'] == 1;
         $projects_list = [0 => t('Do not duplicate anything')] + $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
 
-        $this->response->html($this->helper->layout->app('project_creation/create', [
+        $this->response->html($this->helper->layout->app('project/create', [
             'values'        => $values,
             'errors'        => $errors,
             'is_private'    => $is_private,
@@ -51,7 +78,7 @@ class ProjectCreationController extends BaseController
     /**
      * Validate and save a new project.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         list($valid, $errors) = $this->projectValidator->validateCreation($values);

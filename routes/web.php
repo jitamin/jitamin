@@ -26,12 +26,12 @@ $container['route']->addRoute('search', 'SearchController', 'index');
 $container['route']->addRoute('search/activity', 'SearchController', 'activity');
 
 // ProjectCreation routes
-$container['route']->addRoute('project/create', 'ProjectCreationController', 'create');
-$container['route']->addRoute('project/create/private', 'ProjectCreationController', 'createPrivate');
-$container['route']->addRoute('project/save', 'ProjectCreationController', 'save');
+$container['route']->addRoute('project/create', 'ProjectController', 'create');
+$container['route']->addRoute('project/create/private', 'ProjectController', 'createPrivate');
+$container['route']->addRoute('project/store', 'ProjectController', 'store');
 
 // Project routes
-$container['route']->addRoute('projects', 'ProjectListController', 'show');
+$container['route']->addRoute('projects', 'ProjectController', 'index');
 $container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('project/:project_id/customer-filters', 'CustomFilterController', 'index');
