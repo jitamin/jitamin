@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Add an action') ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('ActionCreationController', 'event', ['project_id' => $project['id']]) ?>">
+<form class="popover-form" method="post" action="<?= $this->url->href('ActionController', 'event', ['project_id' => $project['id']]) ?>">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('project_id', $values) ?>
 

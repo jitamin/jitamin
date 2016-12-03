@@ -2,7 +2,7 @@
     <h2><?= t('Choose an event') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('ActionCreationController', 'params', ['project_id' => $project['id']]) ?>">
+<form class="popover-form" method="post" action="<?= $this->url->href('ActionController', 'params', ['project_id' => $project['id']]) ?>">
 
     <?= $this->form->csrf() ?>
 
