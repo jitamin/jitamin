@@ -25,12 +25,11 @@ $container['route']->addRoute('dashboard/:user_id/notifications', 'DashboardCont
 $container['route']->addRoute('search', 'SearchController', 'index');
 $container['route']->addRoute('search/activity', 'SearchController', 'activity');
 
-// ProjectCreation routes
+// Project routes
 $container['route']->addRoute('project/create', 'ProjectController', 'create');
 $container['route']->addRoute('project/create/private', 'ProjectController', 'createPrivate');
 $container['route']->addRoute('project/store', 'ProjectController', 'store');
 
-// Project routes
 $container['route']->addRoute('projects', 'ProjectController', 'index');
 $container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
@@ -84,7 +83,7 @@ $container['route']->addRoute('project/:project_id/task/:task_id', 'TaskViewCont
 $container['route']->addRoute('t/:task_id', 'TaskViewController', 'show');
 $container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController', 'readonly');
 
-$container['route']->addRoute('task/:project_id/create', 'TaskCreationController', 'show');
+$container['route']->addRoute('task/:project_id/create', 'TaskController', 'create');
 $container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
 $container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
 $container['route']->addRoute('project/:project_id/task/:task_id/analytics', 'TaskViewController', 'analytics');
@@ -121,7 +120,7 @@ $container['route']->addRoute('l/:project_id', 'TaskListController', 'show');
 // Gantt routes
 $container['route']->addRoute('gantt/:project_id', 'TaskGanttController', 'show');
 $container['route']->addRoute('gantt/:project_id/sort/:sorting', 'TaskGanttController', 'show');
-$container['route']->addRoute('gantt/:project_id/create', 'TaskGanttCreationController', 'show');
+$container['route']->addRoute('gantt/:project_id/create', 'TaskGanttController', 'create');
 
 // Feed routes
 $container['route']->addRoute('feed/project/:token', 'FeedController', 'project');

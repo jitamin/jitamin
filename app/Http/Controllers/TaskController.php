@@ -38,7 +38,7 @@ class TaskController extends BaseController
         $values = $this->hook->merge('controller:task:form:default', $values, ['default_values' => $values]);
         $values = $this->hook->merge('controller:task-creation:form:default', $values, ['default_values' => $values]);
 
-        $this->response->html($this->template->render('task_creation/show', [
+        $this->response->html($this->template->render('task/create', [
             'project'         => $project,
             'errors'          => $errors,
             'values'          => $values + ['project_id' => $project['id']],
@@ -147,7 +147,7 @@ class TaskController extends BaseController
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
         unset($projects[$project['id']]);
 
-        $this->response->html($this->template->render('task_creation/duplicate_projects', [
+        $this->response->html($this->template->render('task/duplicate_projects', [
             'project'       => $project,
             'task'          => $task,
             'projects_list' => $projects,
