@@ -164,7 +164,7 @@
     </div>
 
     <?php if ($editable && empty($task['date_started'])): ?>
-        <?= $this->url->button('fa-play', t('Set start date'), 'TaskModificationController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-default btn-header') ?>
+        <?= $this->url->button('fa-play', t('Set start date'), 'TaskController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-default btn-header') ?>
     <?php endif ?>
 
     <?= $this->hook->render('template:task:details:bottom', ['task' => $task]) ?>

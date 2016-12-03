@@ -114,7 +114,7 @@ $container['route']->addRoute('calendar/:project_id', 'CalendarController', 'sho
 $container['route']->addRoute('c/:project_id', 'CalendarController', 'show');
 
 // Listing routes
-$container['route']->addRoute('list/:project_id', 'TaskListController', 'show');
+$container['route']->addRoute('list/:project_id', 'TaskController', 'index');
 $container['route']->addRoute('l/:project_id', 'TaskListController', 'show');
 
 // Gantt routes

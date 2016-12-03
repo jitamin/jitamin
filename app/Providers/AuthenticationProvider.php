@@ -108,7 +108,6 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('TaskImportController', '*', Role::PROJECT_MANAGER);
         $acl->add('TaskInternalLinkController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskExternalLinkController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskModificationController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskStatusController', '*', Role::PROJECT_MEMBER);
         $acl->add('UserAjaxController', ['mention'], Role::PROJECT_MEMBER);
 

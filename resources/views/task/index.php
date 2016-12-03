@@ -1,5 +1,5 @@
 <section id="main">
-    <?= $this->projectHeader->render($project, 'TaskListController', 'show') ?>
+    <?= $this->projectHeader->render($project, 'TaskController', 'index') ?>
 
     <?php if ($paginator->isEmpty()): ?>
         <p class="alert"><?= t('No tasks found.') ?></p>
@@ -18,7 +18,7 @@
             <?php foreach ($paginator->getCollection() as $task): ?>
             <tr>
                 <td class="task-table color-<?= $task['color_id'] ?>">
-                    <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
+                    <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
                         <?= $this->render('task/dropdown', ['task' => $task]) ?>
                     <?php else: ?>
                         #<?= $task['id'] ?>

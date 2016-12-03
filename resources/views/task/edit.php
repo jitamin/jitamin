@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= $this->text->e($project['name']) ?> &gt; <?= $this->text->e($task['title']) ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('TaskModificationController', 'update', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('TaskController', 'update', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('id', $values) ?>
     <?= $this->form->hidden('project_id', $values) ?>

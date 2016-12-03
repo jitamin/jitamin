@@ -12,12 +12,48 @@
 namespace Hiject\Controller;
 
 use Hiject\Core\Controller\PageNotFoundException;
+use Hiject\Filter\TaskIdExclusionFilter;
+use Hiject\Filter\TaskIdFilter;
+use Hiject\Filter\TaskProjectsFilter;
+use Hiject\Filter\TaskProjectFilter;
+use Hiject\Filter\TaskTitleFilter;
+use Hiject\Formatter\TaskAutoCompleteFormatter;
+use HIject\Model\TaskModel;
+
 
 /**
  * Task Controller.
  */
 class TaskController extends BaseController
 {
+    /**
+     * Show list view for projects.
+     */
+    public function index()
+    {
+        $project = $this->getProject();
+        $search = $this->helper->projectHeader->getSearchQuery($project);
+
+        $paginator = $this->paginator
+            ->setUrl('TaskController', 'index', ['project_id' => $project['id']])
+            ->setMax(30)
+            ->setOrder(TaskModel::TABLE.'.id')
+            ->setDirection('DESC')
+            ->setQuery($this->taskLexer
+                ->build($search)
+                ->withFilter(new TaskProjectFilter($project['id']))
+                ->getQuery()
+            )
+            ->calculate();
+
+        $this->response->html($this->helper->layout->app('task/index', [
+            'project'     => $project,
+            'title'       => $project['name'],
+            'description' => $this->helper->projectHeader->getDescription($project),
+            'paginator'   => $paginator,
+        ]));
+    }
+
     /**
      * Display a form to create a new task.
      *
@@ -73,6 +109,67 @@ class TaskController extends BaseController
     }
 
     /**
+     * Set automatically the start date.
+     */
+    public function start()
+    {
+        $task = $this->getTask();
+        $this->taskModificationModel->update(['id' => $task['id'], 'date_started' => time()]);
+        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
+    }
+
+    /**
+     * Display a form to edit a task.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Hiject\Core\Controller\PageNotFoundException
+     */
+    public function edit(array $values = [], array $errors = [])
+    {
+        $task = $this->getTask();
+        $project = $this->projectModel->getById($task['project_id']);
+
+        if (empty($values)) {
+            $values = $task;
+        }
+
+        $values = $this->hook->merge('controller:task:form:default', $values, ['default_values' => $values]);
+        $values = $this->hook->merge('controller:task-modification:form:default', $values, ['default_values' => $values]);
+
+        $this->response->html($this->template->render('task/edit', [
+            'project'         => $project,
+            'values'          => $values,
+            'errors'          => $errors,
+            'task'            => $task,
+            'tags'            => $this->taskTagModel->getList($task['id']),
+            'users_list'      => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
+            'categories_list' => $this->categoryModel->getList($task['project_id']),
+        ]));
+    }
+
+    /**
+     * Validate and update a task.
+     */
+    public function update()
+    {
+        $task = $this->getTask();
+        $values = $this->request->getValues();
+
+        list($valid, $errors) = $this->taskValidator->validateModification($values);
+
+        if ($valid && $this->taskModificationModel->update($values)) {
+            $this->flash->success(t('Task updated successfully.'));
+            $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+        } else {
+            $this->flash->failure(t('Unable to update your task.'));
+            $this->edit($values, $errors);
+        }
+    }
+
+    /**
      * Duplicate created tasks to multiple projects.
      *
      * @throws PageNotFoundException
@@ -89,6 +186,34 @@ class TaskController extends BaseController
         }
 
         $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
+    }
+
+    /**
+     * Task auto-completion (Ajax).
+     */
+    public function autocomplete()
+    {
+        $search = $this->request->getStringParam('term');
+        $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
+        $exclude_task_id = $this->request->getIntegerParam('exclude_task_id');
+
+        if (empty($project_ids)) {
+            $this->response->json([]);
+        } else {
+            $filter = $this->taskQuery->withFilter(new TaskProjectsFilter($project_ids));
+
+            if (!empty($exclude_task_id)) {
+                $filter->withFilter(new TaskIdExclusionFilter([$exclude_task_id]));
+            }
+
+            if (ctype_digit($search)) {
+                $filter->withFilter(new TaskIdFilter($search));
+            } else {
+                $filter->withFilter(new TaskTitleFilter($search));
+            }
+
+            $this->response->json($filter->format(new TaskAutoCompleteFormatter($this->container)));
+        }
     }
 
     /**

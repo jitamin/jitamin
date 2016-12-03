@@ -11,9 +11,9 @@
         <i class="fa fa-calendar"></i>
         <?= $this->url->link(t('Calendar'), 'CalendarController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-calendar', t('Keyboard shortcut: "%s"', 'v c')) ?>
     </li>
-    <li <?= $this->app->checkMenuSelection('TaskListController') ?>>
+    <li <?= $this->app->checkMenuSelection('TaskController') ?>>
         <i class="fa fa-list"></i>
-        <?= $this->url->link(t('List'), 'TaskListController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-listing', t('Keyboard shortcut: "%s"', 'v l')) ?>
+        <?= $this->url->link(t('List'), 'TaskController', 'index', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-listing', t('Keyboard shortcut: "%s"', 'v l')) ?>
     </li>
     <?php if ($this->user->hasProjectAccess('TaskGanttController', 'show', $project['id'])): ?>
     <li <?= $this->app->checkMenuSelection('TaskGanttController') ?>>

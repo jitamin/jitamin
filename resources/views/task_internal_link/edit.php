@@ -22,7 +22,7 @@
             'placeholder="'.t('Start to type task title...').'"',
             'title="'.t('Start to type task title...').'"',
             'data-dst-field="opposite_task_id"',
-            'data-search-url="'.$this->url->href('TaskAjaxController', 'autocomplete', ['exclude_task_id' => $task['id']]).'"',
+            'data-search-url="'.$this->url->href('TaskController', 'autocomplete', ['exclude_task_id' => $task['id']]).'"',
         ],
         'autocomplete') ?>
 
