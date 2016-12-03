@@ -9,7 +9,7 @@
             <li><strong><i class="fa fa-calendar"></i> <?= $this->url->link(t('iCal feed'), 'ICalendarController', 'user', ['token' => $user['token']], false, '', '', true) ?></strong></li>
         </ul>
     </div>
-    <?= $this->url->link(t('Disable public access'), 'UserViewController', 'share', ['user_id' => $user['id'], 'switch' => 'disable'], true, 'btn btn-danger') ?>
+    <?= $this->url->link(t('Disable public access'), 'ProfileController', 'share', ['user_id' => $user['id'], 'switch' => 'disable'], true, 'btn btn-danger') ?>
 <?php else: ?>
-    <?= $this->url->link(t('Enable public access'), 'UserViewController', 'share', ['user_id' => $user['id'], 'switch' => 'enable'], true, 'btn btn-info') ?>
+    <?= $this->url->link(t('Enable public access'), 'ProfileController', 'share', ['user_id' => $user['id'], 'switch' => 'enable'], true, 'btn btn-info') ?>
 <?php endif ?>

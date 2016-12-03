@@ -57,7 +57,7 @@ class UserCredentialController extends BaseController
                 $this->flash->failure(t('Unable to change the password.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
         }
 
         return $this->changePassword($values, $errors);
@@ -127,6 +127,6 @@ class UserCredentialController extends BaseController
             $this->flash->failure(t('Unable to unlock the user.'));
         }
 
-        $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
     }
 }

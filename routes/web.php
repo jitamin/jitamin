@@ -131,17 +131,17 @@ $container['route']->addRoute('ical/project/:token', 'ICalendarController', 'pro
 $container['route']->addRoute('ical/user/:token', 'ICalendarController', 'user');
 
 // Profile
-$container['route']->addRoute('profile/:user_id', 'UserViewController', 'profile');
-$container['route']->addRoute('user/show/:user_id', 'UserViewController', 'show');
-$container['route']->addRoute('user/show/:user_id/timesheet', 'UserViewController', 'timesheet');
-$container['route']->addRoute('user/show/:user_id/last-logins', 'UserViewController', 'lastLogin');
-$container['route']->addRoute('user/show/:user_id/sessions', 'UserViewController', 'sessions');
+$container['route']->addRoute('profile/:user_id', 'ProfileController', 'profile');
+$container['route']->addRoute('user/show/:user_id', 'ProfileController', 'show');
+$container['route']->addRoute('user/show/:user_id/timesheet', 'ProfileController', 'timesheet');
+$container['route']->addRoute('user/show/:user_id/last-logins', 'ProfileController', 'lastLogin');
+$container['route']->addRoute('user/show/:user_id/sessions', 'ProfileController', 'sessions');
 $container['route']->addRoute('user/:user_id/edit', 'ProfileController', 'edit');
 $container['route']->addRoute('user/:user_id/password', 'UserCredentialController', 'changePassword');
-$container['route']->addRoute('user/:user_id/share', 'UserViewController', 'share');
-$container['route']->addRoute('user/:user_id/notifications', 'UserViewController', 'notifications');
-$container['route']->addRoute('user/:user_id/accounts', 'UserViewController', 'external');
-$container['route']->addRoute('user/:user_id/integrations', 'UserViewController', 'integrations');
+$container['route']->addRoute('user/:user_id/share', 'ProfileController', 'share');
+$container['route']->addRoute('user/:user_id/notifications', 'ProfileController', 'notifications');
+$container['route']->addRoute('user/:user_id/accounts', 'ProfileController', 'external');
+$container['route']->addRoute('user/:user_id/integrations', 'ProfileController', 'integrations');
 $container['route']->addRoute('user/:user_id/authentication', 'UserCredentialController', 'changeAuthentication');
 
 $container['route']->addRoute('user/:user_id/2fa', 'TwoFactorController', 'index');

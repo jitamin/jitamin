@@ -53,7 +53,7 @@ class LayoutHelper extends Base
             $params['title'] = '#'.$params['user']['id'].' '.($params['user']['name'] ?: $params['user']['username']);
         }
 
-        return $this->subLayout('user_view/layout', 'user_view/sidebar', $template, $params);
+        return $this->subLayout('profile/layout', 'profile/sidebar', $template, $params);
     }
 
     /**

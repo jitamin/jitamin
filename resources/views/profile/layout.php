@@ -11,7 +11,7 @@
         <?php endif ?>
     </div>
     <section class="sidebar-container" id="user-section">
-        <?= $this->render('user_view/sidebar', ['user' => $user]) ?>
+        <?= $this->render('profile/sidebar', ['user' => $user]) ?>
         <div class="sidebar-content">
             <?= $content_for_sublayout ?>
         </div>

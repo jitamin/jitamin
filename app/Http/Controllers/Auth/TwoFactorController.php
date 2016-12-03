@@ -16,7 +16,7 @@ use Hiject\Core\Controller\AccessForbiddenException;
 /**
  * Two Factor Auth controller.
  */
-class TwoFactorController extends UserViewController
+class TwoFactorController extends ProfileController
 {
     /**
      * Only the current user can access to 2FA settings.
@@ -184,7 +184,7 @@ class TwoFactorController extends UserViewController
                 'twofactor_secret'    => '',
             ]);
 
-            return $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
         }
 
         return $this->response->html($this->helper->layout->user('twofactor/disable', [

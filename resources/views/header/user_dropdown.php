@@ -7,7 +7,7 @@
          </li>
         <li>
             <i class="fa fa-vcard"></i>
-            <?= $this->url->link(t('My profile'), 'UserViewController', 'show', ['user_id' => $this->user->getId()]) ?>
+            <?= $this->url->link(t('My profile'), 'ProfileController', 'show', ['user_id' => $this->user->getId()]) ?>
         </li>
         <li>
             <i class="fa fa-edit"></i>

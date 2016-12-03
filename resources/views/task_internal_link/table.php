@@ -52,7 +52,7 @@
             <td>
                 <?php if (!empty($link['task_assignee_username'])): ?>
                     <?php if ($editable): ?>
-                        <?= $this->url->link($this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']), 'UserViewController', 'show', ['user_id' => $link['task_assignee_id']]) ?>
+                        <?= $this->url->link($this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']), 'ProfileController', 'show', ['user_id' => $link['task_assignee_id']]) ?>
                     <?php else: ?>
                         <?= $this->text->e($link['task_assignee_name'] ?: $link['task_assignee_username']) ?>
                     <?php endif ?>

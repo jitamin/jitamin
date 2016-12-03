@@ -19,10 +19,10 @@
             <?php foreach ($paginator->getCollection() as $user): ?>
             <tr>
                 <td>
-                    <?= $this->url->link('#'.$user['id'], 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
+                    <?= $this->url->link('#'.$user['id'], 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($user['username']), 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
+                    <?= $this->url->link($this->text->e($user['username']), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
                 </td>
                 <td>
                     <?= $this->text->e($user['name']) ?>

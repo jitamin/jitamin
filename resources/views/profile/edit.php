@@ -34,6 +34,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
+        <?= $this->url->link(t('cancel'), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
     </div>
 </form>

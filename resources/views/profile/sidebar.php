@@ -3,30 +3,30 @@
         <h2><?= t('Profile') ?></h2>
     </div>
     <ul>
-        <?php if ($this->user->hasAccess('UserViewController', 'show')): ?>
-            <li <?= $this->app->checkMenuSelection('UserViewController', 'show') ?>>
-                <i class="fa fa-vcard"></i><?= $this->url->link(t('Summary'), 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
+        <?php if ($this->user->hasAccess('ProfileController', 'show')): ?>
+            <li <?= $this->app->checkMenuSelection('ProfileController', 'show') ?>>
+                <i class="fa fa-vcard"></i><?= $this->url->link(t('Summary'), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
             </li>
         <?php endif ?>
         <?php if ($this->user->isAdmin() || $this->user->isCurrentUser($user['id'])): ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'timesheet')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'timesheet') ?>>
-                    <i class="fa fa-history"></i><?= $this->url->link(t('Time tracking'), 'UserViewController', 'timesheet', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'timesheet')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'timesheet') ?>>
+                    <i class="fa fa-history"></i><?= $this->url->link(t('Time tracking'), 'ProfileController', 'timesheet', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'lastLogin')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'lastLogin') ?>>
-                    <i class="fa fa-sign-in"></i><?= $this->url->link(t('Last logins'), 'UserViewController', 'lastLogin', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'lastLogin')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'lastLogin') ?>>
+                    <i class="fa fa-sign-in"></i><?= $this->url->link(t('Last logins'), 'ProfileController', 'lastLogin', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'sessions')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'sessions') ?>>
-                    <i class="fa fa-heartbeat"></i><?= $this->url->link(t('Persistent connections'), 'UserViewController', 'sessions', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'sessions')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'sessions') ?>>
+                    <i class="fa fa-heartbeat"></i><?= $this->url->link(t('Persistent connections'), 'ProfileController', 'sessions', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'passwordReset')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'passwordReset') ?>>
-                    <i class="fa fa-key"></i><?= $this->url->link(t('Password reset history'), 'UserViewController', 'passwordReset', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'passwordReset')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'passwordReset') ?>>
+                    <i class="fa fa-key"></i><?= $this->url->link(t('Password reset history'), 'ProfileController', 'passwordReset', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
         <?php endif ?>
@@ -65,24 +65,24 @@
                 </li>
             <?php endif ?>
 
-            <?php if ($this->user->hasAccess('UserViewController', 'share')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'share') ?>>
-                    <i class="fa fa-external-link"></i><?= $this->url->link(t('Public access'), 'UserViewController', 'share', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'share')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'share') ?>>
+                    <i class="fa fa-external-link"></i><?= $this->url->link(t('Public access'), 'ProfileController', 'share', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'notifications')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'notifications') ?>>
-                    <i class="fa fa-bell"></i><?= $this->url->link(t('Notifications'), 'UserViewController', 'notifications', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'notifications')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'notifications') ?>>
+                    <i class="fa fa-bell"></i><?= $this->url->link(t('Notifications'), 'ProfileController', 'notifications', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'external')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'external') ?>>
-                    <i class="fa fa-user-secret"></i><?= $this->url->link(t('External accounts'), 'UserViewController', 'external', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'external')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'external') ?>>
+                    <i class="fa fa-user-secret"></i><?= $this->url->link(t('External accounts'), 'ProfileController', 'external', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
-            <?php if ($this->user->hasAccess('UserViewController', 'integrations')): ?>
-                <li <?= $this->app->checkMenuSelection('UserViewController', 'integrations') ?>>
-                    <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'UserViewController', 'integrations', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'integrations')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'integrations') ?>>
+                    <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'ProfileController', 'integrations', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
         <?php endif ?>
