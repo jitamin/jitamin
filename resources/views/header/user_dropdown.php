@@ -11,7 +11,7 @@
         </li>
         <li>
             <i class="fa fa-edit"></i>
-            <?= $this->url->link(t('Edit profile'), 'UserModificationController', 'show', ['user_id' => $this->user->getId()]) ?>
+            <?= $this->url->link(t('Edit profile'), 'ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
         </li>
 
         <?= $this->hook->render('template:header:dropdown') ?>

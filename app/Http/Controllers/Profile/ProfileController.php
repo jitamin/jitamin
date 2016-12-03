@@ -12,9 +12,9 @@
 namespace Hiject\Controller;
 
 /**
- * Class UserModificationController.
+ * Class ProfileController.
  */
-class UserModificationController extends BaseController
+class ProfileController extends BaseController
 {
     /**
      * Display a form to edit user information.
@@ -25,7 +25,7 @@ class UserModificationController extends BaseController
      * @throws \Hiject\Core\Controller\AccessForbiddenException
      * @throws \Hiject\Core\Controller\PageNotFoundException
      */
-    public function show(array $values = [], array $errors = [])
+    public function edit(array $values = [], array $errors = [])
     {
         $user = $this->getUser();
 
@@ -34,7 +34,7 @@ class UserModificationController extends BaseController
             unset($values['password']);
         }
 
-        return $this->response->html($this->helper->layout->user('user_modification/show', [
+        return $this->response->html($this->helper->layout->user('profile/edit', [
             'values'    => $values,
             'errors'    => $errors,
             'user'      => $user,
@@ -48,7 +48,7 @@ class UserModificationController extends BaseController
     /**
      * Save user information.
      */
-    public function save()
+    public function store()
     {
         $user = $this->getUser();
         $values = $this->request->getValues();

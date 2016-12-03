@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit user') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('UserModificationController', 'save', ['user_id' => $user['id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('ProfileController', 'store', ['user_id' => $user['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
@@ -11,20 +11,20 @@
     <?= $this->form->text('username', $values, $errors, ['required', isset($values['is_ldap_user']) && $values['is_ldap_user'] == 1 ? 'readonly' : '', 'maxlength="50"']) ?>
 
     <?= $this->form->label(t('Name:'), 'name') ?>
-    <?= $this->form->text('name', $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_name') ? '' : 'readonly']) ?>
+    <?= $this->form->text('name', $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_name') ? '' : 'readonly']) ?>
 
     <?= $this->form->label(t('Email:'), 'email') ?>
-    <?= $this->form->email('email', $values, $errors, ['required', $this->user->hasAccess('UserModificationController', 'show/edit_email') ? '' : 'readonly']) ?>
+    <?= $this->form->email('email', $values, $errors, ['required', $this->user->hasAccess('ProfileController', 'show/edit_email') ? '' : 'readonly']) ?>
 
     <?= $this->form->label(t('Skin:'), 'skin') ?>
-    <?= $this->form->select('skin', $skins, $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_skin') ? '' : 'disabled']) ?>
+    <?= $this->form->select('skin', $skins, $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_skin') ? '' : 'disabled']) ?>
 
 
     <?= $this->form->label(t('Timezone:'), 'timezone') ?>
-    <?= $this->form->select('timezone', $timezones, $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_timezone') ? '' : 'disabled']) ?>
+    <?= $this->form->select('timezone', $timezones, $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_timezone') ? '' : 'disabled']) ?>
 
     <?= $this->form->label(t('Language:'), 'language') ?>
-    <?= $this->form->select('language', $languages, $values, $errors, [$this->user->hasAccess('UserModificationController', 'show/edit_language') ? '' : 'disabled']) ?>
+    <?= $this->form->select('language', $languages, $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_language') ? '' : 'disabled']) ?>
 
     <?php if ($this->user->isAdmin()): ?>
         <?= $this->form->label(t('Role:'), 'role') ?>

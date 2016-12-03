@@ -131,12 +131,12 @@ $container['route']->addRoute('ical/project/:token', 'ICalendarController', 'pro
 $container['route']->addRoute('ical/user/:token', 'ICalendarController', 'user');
 
 // Profile
-$container['route']->addRoute('user/profile/:user_id', 'UserViewController', 'profile');
+$container['route']->addRoute('profile/:user_id', 'UserViewController', 'profile');
 $container['route']->addRoute('user/show/:user_id', 'UserViewController', 'show');
 $container['route']->addRoute('user/show/:user_id/timesheet', 'UserViewController', 'timesheet');
 $container['route']->addRoute('user/show/:user_id/last-logins', 'UserViewController', 'lastLogin');
 $container['route']->addRoute('user/show/:user_id/sessions', 'UserViewController', 'sessions');
-$container['route']->addRoute('user/:user_id/edit', 'UserModificationController', 'show');
+$container['route']->addRoute('user/:user_id/edit', 'ProfileController', 'edit');
 $container['route']->addRoute('user/:user_id/password', 'UserCredentialController', 'changePassword');
 $container['route']->addRoute('user/:user_id/share', 'UserViewController', 'share');
 $container['route']->addRoute('user/:user_id/notifications', 'UserViewController', 'notifications');

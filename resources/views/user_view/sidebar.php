@@ -40,9 +40,9 @@
     <ul>
         <?php if ($this->user->isAdmin() || $this->user->isCurrentUser($user['id'])): ?>
 
-            <?php if ($this->user->hasAccess('UserModificationController', 'show')): ?>
-                <li <?= $this->app->checkMenuSelection('UserModificationController', 'show') ?>>
-                    <i class="fa fa-edit"></i><?= $this->url->link(t('Edit profile'), 'UserModificationController', 'show', ['user_id' => $user['id']]) ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'edit')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'edit') ?>>
+                    <i class="fa fa-edit"></i><?= $this->url->link(t('Edit profile'), 'ProfileController', 'edit', ['user_id' => $user['id']]) ?>
                 </li>
                 <li <?= $this->app->checkMenuSelection('AvatarFile') ?>>
                     <i class="fa fa-user-circle-o"></i><?= $this->url->link(t('Avatar'), 'AvatarFileController', 'show', ['user_id' => $user['id']]) ?>
