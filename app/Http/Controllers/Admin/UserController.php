@@ -77,7 +77,7 @@ class UserController extends BaseController
             }
 
             $this->flash->success(t('User created successfully.'));
-            $this->response->redirect($this->helper->url->to('UserViewController', 'show', ['user_id' => $user_id]));
+            $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user_id]));
         } else {
             $this->flash->failure(t('Unable to create your user.'));
             $this->response->redirect($this->helper->url->to('UserListController', 'show'));

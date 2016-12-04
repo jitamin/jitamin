@@ -22,10 +22,10 @@
         </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('TaskCreationController', 'show', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('TaskController', 'create', $project['id'])): ?>
             <li>
                 <i class="fa fa-plus"></i>
-                <?= $this->url->link(t('Add a new task'), 'TaskCreationController', 'show', ['project_id' => $project['id']], false, 'popover') ?>
+                <?= $this->url->link(t('Add a new task'), 'TaskController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
             </li>
         <?php endif ?>
 

@@ -29,14 +29,14 @@
         <?= $this->hook->render('template:task:sidebar:information', ['task' => $task]) ?>
     </ul>
 
-    <?php if ($this->user->hasProjectAccess('TaskModificationController', 'edit', $task['project_id'])): ?>
+    <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
     <div class="sidebar-title">
         <h2><?= t('Actions') ?></h2>
     </div>
     <ul>
         <li>
             <i class="fa fa-pencil-square-o fa-fw"></i>
-            <?= $this->url->link(t('Edit the task'), 'TaskModificationController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Edit the task'), 'TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-refresh fa-rotate-90 fa-fw"></i>

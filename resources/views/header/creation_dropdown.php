@@ -1,4 +1,4 @@
-<?php $has_project_creation_access = $this->user->hasAccess('ProjectCreationController', 'create'); ?>
+<?php $has_project_creation_access = $this->user->hasAccess('ProjectController', 'create'); ?>
 <?php $is_private_project_enabled = $this->app->config('disable_private_project', 0) == 0; ?>
 
 <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
@@ -7,13 +7,13 @@
         <ul>
             <?php if ($has_project_creation_access): ?>
                 <li><i class="fa fa-cube"></i>
-                    <?= $this->url->link(t('New project'), 'ProjectCreationController', 'create', [], false, 'popover') ?>
+                    <?= $this->url->link(t('New project'), 'ProjectController', 'create', [], false, 'popover') ?>
                 </li>
             <?php endif ?>
             <?php if ($is_private_project_enabled): ?>
                 <li>
                     <i class="fa fa-lock"></i>
-                    <?= $this->url->link(t('New private project'), 'ProjectCreationController', 'createPrivate', [], false, 'popover') ?>
+                    <?= $this->url->link(t('New private project'), 'ProjectController', 'createPrivate', [], false, 'popover') ?>
                 </li>
             <?php endif ?>
             <?= $this->hook->render('template:header:creation-dropdown') ?>

@@ -3,7 +3,7 @@
     <ul>
         <li>
             <i class="fa fa-plus fa-fw"></i>
-            <?= $this->url->link(t('Add a new action'), 'ActionCreationController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a new action'), 'ActionController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-copy fa-fw"></i>

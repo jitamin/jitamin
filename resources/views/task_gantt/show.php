@@ -12,7 +12,7 @@
             </li>
             <li>
                 <i class="fa fa-plus fa-fw"></i>
-                <?= $this->url->link(t('Add task'), 'TaskGanttCreationController', 'show', ['project_id' => $project['id']], false, 'popover') ?>
+                <?= $this->url->link(t('Add task'), 'TaskGanttController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
             </li>
         </ul>
     </div>

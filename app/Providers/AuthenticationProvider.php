@@ -77,7 +77,6 @@ class AuthenticationProvider implements ServiceProviderInterface
 
         $acl->add('ActionController', '*', Role::PROJECT_MANAGER);
         $acl->add('ProjectActionDuplicationController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ActionCreationController', '*', Role::PROJECT_MANAGER);
         $acl->add('AnalyticController', '*', Role::PROJECT_MANAGER);
         $acl->add('BoardAjaxController', 'save', Role::PROJECT_MEMBER);
         $acl->add('BoardPopoverController', '*', Role::PROJECT_MEMBER);
@@ -90,7 +89,6 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('ExportController', '*', Role::PROJECT_MANAGER);
         $acl->add('TaskFileController', ['screenshot', 'create', 'save', 'remove', 'confirm'], Role::PROJECT_MEMBER);
         $acl->add('TaskGanttController', '*', Role::PROJECT_MANAGER);
-        $acl->add('TaskGanttCreationController', '*', Role::PROJECT_MANAGER);
         $acl->add('ProjectSettingsController', ['share', 'updateSharing', 'integrations', 'updateIntegrations', 'notifications', 'updateNotifications', 'duplicate', 'doDuplication'], Role::PROJECT_MANAGER);
         $acl->add('ProjectPermissionController', '*', Role::PROJECT_MANAGER);
         $acl->add('ProjectEditController', '*', Role::PROJECT_MANAGER);
@@ -103,14 +101,13 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('SubtaskStatusController', '*', Role::PROJECT_MEMBER);
         $acl->add('SwimlaneController', '*', Role::PROJECT_MANAGER);
         $acl->add('TaskSuppressionController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskCreationController', '*', Role::PROJECT_MEMBER);
+        $acl->add('TaskController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskBulkController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskDuplicationController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskRecurrenceController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskImportController', '*', Role::PROJECT_MANAGER);
         $acl->add('TaskInternalLinkController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskExternalLinkController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskModificationController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskStatusController', '*', Role::PROJECT_MEMBER);
         $acl->add('UserAjaxController', ['mention'], Role::PROJECT_MEMBER);
 
@@ -147,7 +144,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('GroupListController', '*', Role::APP_ADMIN);
         $acl->add('GroupController', '*', Role::APP_ADMIN);
         $acl->add('LinkController', '*', Role::APP_ADMIN);
-        $acl->add('ProjectCreationController', 'create', Role::APP_MANAGER);
+        $acl->add('ProjectController', 'create', Role::APP_MANAGER);
         $acl->add('ProjectUserOverviewController', '*', Role::APP_MANAGER);
         $acl->add('TwoFactorController', 'disable', Role::APP_ADMIN);
         $acl->add('UserImportController', '*', Role::APP_ADMIN);

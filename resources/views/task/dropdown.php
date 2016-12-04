@@ -4,12 +4,12 @@
         <?php if (array_key_exists('date_started', $task) && empty($task['date_started'])): ?>
         <li>
             <i class="fa fa-play fa-fw"></i>
-            <?= $this->url->link(t('Set automatically the start date'), 'TaskModificationController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
+            <?= $this->url->link(t('Set automatically the start date'), 'TaskController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>
         <?php endif ?>
         <li>
             <i class="fa fa-pencil-square-o fa-fw"></i>
-            <?= $this->url->link(t('Edit the task'), 'TaskModificationController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Edit the task'), 'TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-plus fa-fw"></i>

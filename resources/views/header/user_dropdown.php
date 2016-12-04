@@ -3,15 +3,15 @@
     <ul>
          <li>
             <i class="fa fa-cubes"></i>
-            <?= $this->url->link(t('Project management'), 'ProjectListController', 'show') ?>
+            <?= $this->url->link(t('Project management'), 'ProjectController', 'index') ?>
          </li>
         <li>
             <i class="fa fa-vcard"></i>
-            <?= $this->url->link(t('My profile'), 'UserViewController', 'show', ['user_id' => $this->user->getId()]) ?>
+            <?= $this->url->link(t('My profile'), 'ProfileController', 'show', ['user_id' => $this->user->getId()]) ?>
         </li>
         <li>
             <i class="fa fa-edit"></i>
-            <?= $this->url->link(t('Edit profile'), 'UserModificationController', 'show', ['user_id' => $this->user->getId()]) ?>
+            <?= $this->url->link(t('Edit profile'), 'ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
         </li>
 
         <?= $this->hook->render('template:header:dropdown') ?>

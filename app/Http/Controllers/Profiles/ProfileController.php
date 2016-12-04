@@ -1,0 +1,261 @@
+<?php
+
+/*
+ * This file is part of Hiject.
+ *
+ * Copyright (C) 2016 Hiject Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Hiject\Controller;
+
+use Hiject\Core\Controller\PageNotFoundException;
+use Hiject\Model\ProjectModel;
+
+/**
+ * Class ProfileController.
+ */
+class ProfileController extends BaseController
+{
+    /**
+     * Public user profile.
+     *
+     * @throws PageNotFoundException
+     */
+    public function profile()
+    {
+        $user = $this->userModel->getById($this->request->getIntegerParam('user_id'));
+
+        if (empty($user)) {
+            throw new PageNotFoundException();
+        }
+
+        $this->response->html($this->helper->layout->app('profile/profile', [
+            'title' => $user['name'] ?: $user['username'],
+            'user'  => $user,
+        ]));
+    }
+
+    /**
+     * Display user information.
+     */
+    public function show()
+    {
+        $user = $this->getUser();
+        $this->response->html($this->helper->layout->user('profile/show', [
+            'user'      => $user,
+            'timezones' => $this->timezoneModel->getTimezones(true),
+            'languages' => $this->languageModel->getLanguages(true),
+        ]));
+    }
+
+    /**
+     * Display timesheet.
+     */
+    public function timesheet()
+    {
+        $user = $this->getUser();
+
+        $subtask_paginator = $this->paginator
+            ->setUrl('ProfileController', 'timesheet', ['user_id' => $user['id'], 'pagination' => 'subtasks'])
+            ->setMax(20)
+            ->setOrder('start')
+            ->setDirection('DESC')
+            ->setQuery($this->subtaskTimeTrackingModel->getUserQuery($user['id']))
+            ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
+
+        $this->response->html($this->helper->layout->user('profile/timesheet', [
+            'subtask_paginator' => $subtask_paginator,
+            'user'              => $user,
+        ]));
+    }
+
+    /**
+     * Display last password reset.
+     */
+    public function passwordReset()
+    {
+        $user = $this->getUser();
+        $this->response->html($this->helper->layout->user('profile/password_reset', [
+            'tokens' => $this->passwordResetModel->getAll($user['id']),
+            'user'   => $user,
+        ]));
+    }
+
+    /**
+     * Display last connections.
+     */
+    public function lastLogin()
+    {
+        $user = $this->getUser();
+        $this->response->html($this->helper->layout->user('profile/last', [
+            'last_logins' => $this->lastLoginModel->getAll($user['id']),
+            'user'        => $user,
+        ]));
+    }
+
+    /**
+     * Display user sessions.
+     */
+    public function sessions()
+    {
+        $user = $this->getUser();
+        $this->response->html($this->helper->layout->user('profile/sessions', [
+            'sessions' => $this->rememberMeSessionModel->getAll($user['id']),
+            'user'     => $user,
+        ]));
+    }
+
+    /**
+     * Remove a "RememberMe" token.
+     */
+    public function removeSession()
+    {
+        $this->checkCSRFParam();
+        $user = $this->getUser();
+        $this->rememberMeSessionModel->remove($this->request->getIntegerParam('id'));
+        $this->response->redirect($this->helper->url->to('ProfileController', 'sessions', ['user_id' => $user['id']]));
+    }
+
+    /**
+     * Display user notifications.
+     */
+    public function notifications()
+    {
+        $user = $this->getUser();
+
+        if ($this->request->isPost()) {
+            $values = $this->request->getValues();
+            $this->userNotificationModel->saveSettings($user['id'], $values);
+            $this->flash->success(t('User updated successfully.'));
+
+            return $this->response->redirect($this->helper->url->to('ProfileController', 'notifications', ['user_id' => $user['id']]));
+        }
+
+        return $this->response->html($this->helper->layout->user('profile/notifications', [
+            'projects'      => $this->projectUserRoleModel->getProjectsByUser($user['id'], [ProjectModel::ACTIVE]),
+            'notifications' => $this->userNotificationModel->readSettings($user['id']),
+            'types'         => $this->userNotificationTypeModel->getTypes(),
+            'filters'       => $this->userNotificationFilterModel->getFilters(),
+            'user'          => $user,
+        ]));
+    }
+
+    /**
+     * Display user integrations.
+     */
+    public function integrations()
+    {
+        $user = $this->getUser();
+
+        if ($this->request->isPost()) {
+            $values = $this->request->getValues();
+            $this->userMetadataModel->save($user['id'], $values);
+            $this->flash->success(t('User updated successfully.'));
+            $this->response->redirect($this->helper->url->to('ProfileController', 'integrations', ['user_id' => $user['id']]));
+        }
+
+        $this->response->html($this->helper->layout->user('profile/integrations', [
+            'user'   => $user,
+            'values' => $this->userMetadataModel->getAll($user['id']),
+        ]));
+    }
+
+    /**
+     * Display external accounts.
+     */
+    public function external()
+    {
+        $user = $this->getUser();
+        $this->response->html($this->helper->layout->user('profile/external', [
+            'last_logins' => $this->lastLoginModel->getAll($user['id']),
+            'user'        => $user,
+        ]));
+    }
+
+    /**
+     * Public access management.
+     */
+    public function share()
+    {
+        $user = $this->getUser();
+        $switch = $this->request->getStringParam('switch');
+
+        if ($switch === 'enable' || $switch === 'disable') {
+            $this->checkCSRFParam();
+
+            if ($this->userModel->{$switch.'PublicAccess'}($user['id'])) {
+                $this->flash->success(t('User updated successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to update this user.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('ProfileController', 'share', ['user_id' => $user['id']]));
+        }
+
+        return $this->response->html($this->helper->layout->user('profile/share', [
+            'user'  => $user,
+            'title' => t('Public access'),
+        ]));
+    }
+
+    /**
+     * Display a form to edit user information.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Hiject\Core\Controller\PageNotFoundException
+     */
+    public function edit(array $values = [], array $errors = [])
+    {
+        $user = $this->getUser();
+
+        if (empty($values)) {
+            $values = $user;
+            unset($values['password']);
+        }
+
+        return $this->response->html($this->helper->layout->user('profile/edit', [
+            'values'    => $values,
+            'errors'    => $errors,
+            'user'      => $user,
+            'skins'     => $this->skinModel->getSkins(true),
+            'timezones' => $this->timezoneModel->getTimezones(true),
+            'languages' => $this->languageModel->getLanguages(true),
+            'roles'     => $this->role->getApplicationRoles(),
+        ]));
+    }
+
+    /**
+     * Save user information.
+     */
+    public function store()
+    {
+        $user = $this->getUser();
+        $values = $this->request->getValues();
+
+        if (!$this->userSession->isAdmin()) {
+            if (isset($values['role'])) {
+                unset($values['role']);
+            }
+        }
+
+        list($valid, $errors) = $this->userValidator->validateModification($values);
+
+        if ($valid) {
+            if ($this->userModel->update($values)) {
+                $this->flash->success(t('User updated successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to update your user.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+        }
+
+        return $this->show($values, $errors);
+    }
+}

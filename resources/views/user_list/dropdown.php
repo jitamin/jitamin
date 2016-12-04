@@ -3,12 +3,12 @@
     <ul>
         <li>
             <i class="fa fa-user fa-fw"></i>
-            <?= $this->url->link(t('View profile'), 'UserViewController', 'show', ['user_id' => $user['id']]) ?>
+            <?= $this->url->link(t('View profile'), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
         </li>
-        <?php if ($this->user->hasAccess('UserModificationController', 'show')): ?>
+        <?php if ($this->user->hasAccess('ProfileController', 'edit')): ?>
                 <li>
                 <i class="fa fa-edit fa-fw"></i>
-                    <?= $this->url->link(t('Edit user'), 'UserModificationController', 'show', ['user_id' => $user['id']]) ?>
+                    <?= $this->url->link(t('Edit user'), 'ProfileController', 'edit', ['user_id' => $user['id']]) ?>
                 </li>
         <?php endif ?>
         <?php if ($user['is_active'] == 1 && $this->user->hasAccess('UserStatusController', 'disable') && !$this->user->isCurrentUser($user['id'])): ?>

@@ -11,7 +11,7 @@
         </li>
         <li>
             <i class="fa fa-list"></i>
-            <?= $this->url->link(t('Listing'), 'TaskListController', 'show', ['project_id' => $project['id']]) ?>
+            <?= $this->url->link(t('Listing'), 'TaskController', 'index', ['project_id' => $project['id']]) ?>
         </li>
         <?php if ($this->user->hasProjectAccess('TaskGanttController', 'show', $project['id'])): ?>
         <li>

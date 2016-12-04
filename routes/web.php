@@ -25,13 +25,12 @@ $container['route']->addRoute('dashboard/:user_id/notifications', 'DashboardCont
 $container['route']->addRoute('search', 'SearchController', 'index');
 $container['route']->addRoute('search/activity', 'SearchController', 'activity');
 
-// ProjectCreation routes
-$container['route']->addRoute('project/create', 'ProjectCreationController', 'create');
-$container['route']->addRoute('project/create/private', 'ProjectCreationController', 'createPrivate');
-$container['route']->addRoute('project/save', 'ProjectCreationController', 'save');
-
 // Project routes
-$container['route']->addRoute('projects', 'ProjectListController', 'show');
+$container['route']->addRoute('project/create', 'ProjectController', 'create');
+$container['route']->addRoute('project/create/private', 'ProjectController', 'createPrivate');
+$container['route']->addRoute('project/store', 'ProjectController', 'store');
+
+$container['route']->addRoute('projects', 'ProjectController', 'index');
 $container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('project/:project_id/customer-filters', 'CustomFilterController', 'index');
@@ -84,7 +83,7 @@ $container['route']->addRoute('project/:project_id/task/:task_id', 'TaskViewCont
 $container['route']->addRoute('t/:task_id', 'TaskViewController', 'show');
 $container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController', 'readonly');
 
-$container['route']->addRoute('task/:project_id/create', 'TaskCreationController', 'show');
+$container['route']->addRoute('task/:project_id/create', 'TaskController', 'create');
 $container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
 $container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
 $container['route']->addRoute('project/:project_id/task/:task_id/analytics', 'TaskViewController', 'analytics');
@@ -115,13 +114,13 @@ $container['route']->addRoute('calendar/:project_id', 'CalendarController', 'sho
 $container['route']->addRoute('c/:project_id', 'CalendarController', 'show');
 
 // Listing routes
-$container['route']->addRoute('list/:project_id', 'TaskListController', 'show');
+$container['route']->addRoute('list/:project_id', 'TaskController', 'index');
 $container['route']->addRoute('l/:project_id', 'TaskListController', 'show');
 
 // Gantt routes
 $container['route']->addRoute('gantt/:project_id', 'TaskGanttController', 'show');
 $container['route']->addRoute('gantt/:project_id/sort/:sorting', 'TaskGanttController', 'show');
-$container['route']->addRoute('gantt/:project_id/create', 'TaskGanttCreationController', 'show');
+$container['route']->addRoute('gantt/:project_id/create', 'TaskGanttController', 'create');
 
 // Feed routes
 $container['route']->addRoute('feed/project/:token', 'FeedController', 'project');
@@ -132,17 +131,17 @@ $container['route']->addRoute('ical/project/:token', 'ICalendarController', 'pro
 $container['route']->addRoute('ical/user/:token', 'ICalendarController', 'user');
 
 // Profile
-$container['route']->addRoute('user/profile/:user_id', 'UserViewController', 'profile');
-$container['route']->addRoute('user/show/:user_id', 'UserViewController', 'show');
-$container['route']->addRoute('user/show/:user_id/timesheet', 'UserViewController', 'timesheet');
-$container['route']->addRoute('user/show/:user_id/last-logins', 'UserViewController', 'lastLogin');
-$container['route']->addRoute('user/show/:user_id/sessions', 'UserViewController', 'sessions');
-$container['route']->addRoute('user/:user_id/edit', 'UserModificationController', 'show');
+$container['route']->addRoute('profile/:user_id', 'ProfileController', 'profile');
+$container['route']->addRoute('user/show/:user_id', 'ProfileController', 'show');
+$container['route']->addRoute('user/show/:user_id/timesheet', 'ProfileController', 'timesheet');
+$container['route']->addRoute('user/show/:user_id/last-logins', 'ProfileController', 'lastLogin');
+$container['route']->addRoute('user/show/:user_id/sessions', 'ProfileController', 'sessions');
+$container['route']->addRoute('user/:user_id/edit', 'ProfileController', 'edit');
 $container['route']->addRoute('user/:user_id/password', 'UserCredentialController', 'changePassword');
-$container['route']->addRoute('user/:user_id/share', 'UserViewController', 'share');
-$container['route']->addRoute('user/:user_id/notifications', 'UserViewController', 'notifications');
-$container['route']->addRoute('user/:user_id/accounts', 'UserViewController', 'external');
-$container['route']->addRoute('user/:user_id/integrations', 'UserViewController', 'integrations');
+$container['route']->addRoute('user/:user_id/share', 'ProfileController', 'share');
+$container['route']->addRoute('user/:user_id/notifications', 'ProfileController', 'notifications');
+$container['route']->addRoute('user/:user_id/accounts', 'ProfileController', 'external');
+$container['route']->addRoute('user/:user_id/integrations', 'ProfileController', 'integrations');
 $container['route']->addRoute('user/:user_id/authentication', 'UserCredentialController', 'changeAuthentication');
 
 $container['route']->addRoute('user/:user_id/2fa', 'TwoFactorController', 'index');
