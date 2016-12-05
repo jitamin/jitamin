@@ -66,7 +66,7 @@ class TaskGanttController extends BaseController
         $values = $this->hook->merge('controller:task:form:default', $values, ['default_values' => $values]);
         $values = $this->hook->merge('controller:gantt:task:form:default', $values, ['default_values' => $values]);
 
-        $this->response->html($this->template->render('task_gantt_creation/show', [
+        $this->response->html($this->template->render('task_gantt/create', [
             'project'         => $project,
             'errors'          => $errors,
             'values'          => $values,
