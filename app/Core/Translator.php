@@ -179,10 +179,8 @@ class Translator
      */
     public static function load($language, $path = self::PATH)
     {
-        $filename = $path.DIRECTORY_SEPARATOR.$language.DIRECTORY_SEPARATOR.'translations.php';
-
-        if (file_exists($filename)) {
-            self::$locales = array_merge(self::$locales, require($filename));
+        foreach (glob($path.DIRECTORY_SEPARATOR.$language.DIRECTORY_SEPARATOR . '*.php') as $file) {
+            self::$locales = array_merge(self::$locales, require($file));
         }
     }
 

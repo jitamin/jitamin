@@ -41,6 +41,7 @@ $container['route']->addRoute('project/:project_id/notifications', 'ProjectSetti
 $container['route']->addRoute('project/:project_id/integrations', 'ProjectSettingsController', 'integrations');
 $container['route']->addRoute('project/:project_id/duplicate', 'ProjectSettingsController', 'duplicate');
 $container['route']->addRoute('project/:project_id/permissions', 'ProjectPermissionController', 'index');
+$container['route']->addRoute('project/:project_id/roles', 'ProjectRoleController', 'show');
 $container['route']->addRoute('project/:project_id/activity', 'ActivityController', 'project');
 $container['route']->addRoute('project/:project_id/tags', 'ProjectTagController', 'index');
 

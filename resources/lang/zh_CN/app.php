@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'number.decimals_separator' => '.',
+    'number.thousands_separator' => ',',
+    'None' => '无',
+    'edit' => '编辑',
+    'Edit' => '编辑',
+    'remove' => '删除',
+    'Remove' => '删除',
+    'Yes' => '是',
+    'No' => '否',
+    'cancel' => '取消',
+    'or' => '或者',
+    'None' => '无',
+    'Preview' => '预览',
+    'Write' => '编辑',
+    'Save' => '保存',
+    'Login' => '登录',
+    'Logout' => '退出',
+    'Sign in' => '登录',
+    'Disable' => '禁用',
+    'Enable' => '启用',
+    'Open' => '打开',
+    'Closed' => '关闭',
+    'open' => '打开',
+    'closed' => '已关闭',
+];
