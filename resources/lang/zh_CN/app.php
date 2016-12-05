@@ -21,8 +21,11 @@ return [
     'Sign in' => '登录',
     'Disable' => '禁用',
     'Enable' => '启用',
+    'Enabled' => '启用',
+    'Disabled' => '禁用',
     'Open' => '打开',
     'Closed' => '关闭',
     'open' => '打开',
     'closed' => '已关闭',
+    'Add' => '添加',
 ];
