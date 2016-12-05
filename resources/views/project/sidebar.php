@@ -4,9 +4,9 @@
             <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
         </li>
 
-        <?php if ($this->user->hasProjectAccess('ProjectEditController', 'edit', $project['id'])): ?>
-            <li <?= $this->app->checkMenuSelection('ProjectEditController') ?>>
-                <i class="fa fa-edit"></i><?= $this->url->link(t('Edit project'), 'ProjectEditController', 'edit', ['project_id' => $project['id']]) ?>
+        <?php if ($this->user->hasProjectAccess('ProjectController', 'edit', $project['id'])): ?>
+            <li <?= $this->app->checkMenuSelection('ProjectController') ?>>
+                <i class="fa fa-edit"></i><?= $this->url->link(t('Edit project'), 'ProjectController', 'edit', ['project_id' => $project['id']]) ?>
             </li>
             <?php if ($project['is_private'] == 0): ?>
             <li <?= $this->app->checkMenuSelection('ProjectPermissionController') ?>>

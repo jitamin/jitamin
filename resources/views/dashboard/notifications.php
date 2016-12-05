@@ -29,7 +29,7 @@
                 <?php if (isset($notification['event_data']['task']['project_name'])): ?>
                     <?= $this->url->link(
                             $this->text->e($notification['event_data']['task']['project_name']),
-                            'ProjectViewController',
+                            'ProjectController',
                             'show',
                             ['project_id' => $notification['event_data']['task']['project_id']]
                         )

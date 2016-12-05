@@ -44,6 +44,26 @@ class ProjectController extends BaseController
     }
 
     /**
+     * Show project overview.
+     */
+    public function show()
+    {
+        $project = $this->getProject();
+        $this->projectModel->getColumnStats($project);
+
+        $this->response->html($this->helper->layout->app('project/show', [
+            'project'     => $project,
+            'title'       => $project['name'],
+            'description' => $this->helper->projectHeader->getDescription($project),
+            'users'       => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
+            'roles'       => $this->projectRoleModel->getList($project['id']),
+            'events'      => $this->helper->projectActivity->getProjectEvents($project['id'], 10),
+            'images'      => $this->projectFileModel->getAllImages($project['id']),
+            'files'       => $this->projectFileModel->getAllDocuments($project['id']),
+        ]));
+    }
+
+    /**
      * Display a form to create a new project.
      *
      * @param array $values
@@ -96,6 +116,95 @@ class ProjectController extends BaseController
         }
 
         return $this->create($values, $errors);
+    }
+
+    /**
+     * General edition (most common operations).
+     *
+     * @param array $values
+     * @param array $errors
+     */
+    public function edit(array $values = [], array $errors = [])
+    {
+        $project = $this->getProject();
+
+        $this->response->html($this->helper->layout->project('project/edit', [
+            'owners'  => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
+            'values'  => empty($values) ? $project : $values,
+            'errors'  => $errors,
+            'project' => $project,
+            'title'   => t('Edit project'),
+        ]));
+    }
+
+    /**
+     * Change project description.
+     *
+     * @param array $values
+     * @param array $errors
+     */
+    public function edit_description(array $values = [], array $errors = [])
+    {
+        $project = $this->getProject();
+
+        $this->response->html($this->helper->layout->project('project/edit_description', [
+            'owners'  => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
+            'values'  => empty($values) ? $project : $values,
+            'errors'  => $errors,
+            'project' => $project,
+            'title'   => t('Edit project'),
+        ]));
+    }
+
+    /**
+     * Validate and update a project.
+     */
+    public function update()
+    {
+        $project = $this->getProject();
+        $values = $this->request->getValues();
+        $redirect = $this->request->getStringParam('redirect', 'edit');
+
+        $values = $this->prepareValues($redirect, $project, $values);
+        list($valid, $errors) = $this->projectValidator->validateModification($values);
+
+        if ($valid) {
+            if ($this->projectModel->update($values)) {
+                $this->flash->success(t('Project updated successfully.'));
+
+                return $this->response->redirect($this->helper->url->to('ProjectController', $redirect, ['project_id' => $project['id']]), true);
+            } else {
+                $this->flash->failure(t('Unable to update this project.'));
+            }
+        }
+
+        return $this->$redirect($values, $errors);
+    }
+
+    /**
+     * Prepare form values.
+     *
+     * @param string $redirect
+     * @param array  $project
+     * @param array  $values
+     *
+     * @return array
+     */
+    private function prepareValues($redirect, array $project, array $values)
+    {
+        if ($redirect === 'edit') {
+            if (isset($values['is_private'])) {
+                if (!$this->helper->user->hasProjectAccess('ProjectController', 'create', $project['id'])) {
+                    unset($values['is_private']);
+                }
+            } elseif ($project['is_private'] == 1 && !isset($values['is_private'])) {
+                if ($this->helper->user->hasProjectAccess('ProjectController', 'create', $project['id'])) {
+                    $values += ['is_private' => 0];
+                }
+            }
+        }
+
+        return $values;
     }
 
     /**

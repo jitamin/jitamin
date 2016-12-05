@@ -40,7 +40,7 @@ class ProjectFileController extends BaseController
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', ['project_id' => $project['id']]), true);
+        $this->response->redirect($this->helper->url->to('ProjectController', 'show', ['project_id' => $project['id']]), true);
     }
 
     /**
@@ -58,7 +58,7 @@ class ProjectFileController extends BaseController
             $this->flash->failure(t('Unable to remove this file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectViewController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('ProjectController', 'show', ['project_id' => $project['id']]));
     }
 
     /**

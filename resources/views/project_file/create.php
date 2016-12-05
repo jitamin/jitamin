@@ -4,7 +4,7 @@
 <div id="file-done" style="display:none">
     <p class="alert alert-success">
         <?= t('All files have been uploaded successfully.') ?>
-        <?= $this->url->link(t('View uploaded files'), 'ProjectViewController', 'show', ['project_id' => $project['id']]) ?>
+        <?= $this->url->link(t('View uploaded files'), 'ProjectController', 'show', ['project_id' => $project['id']]) ?>
     </p>
 </div>
 
@@ -31,5 +31,5 @@
 <div class="form-actions">
     <input type="submit" value="<?= t('Upload files') ?>" class="btn btn-info" id="file-upload-button" disabled>
     <?= t('or') ?>
-    <?= $this->url->link(t('cancel'), 'ProjectViewController', 'show', ['project_id' => $project['id']], false, 'btn btn-default close-popover') ?>
+    <?= $this->url->link(t('cancel'), 'ProjectController', 'show', ['project_id' => $project['id']], false, 'btn btn-default close-popover') ?>
 </div>

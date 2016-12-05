@@ -18,7 +18,7 @@
                 <?= $this->render('project/dropdown', ['project' => $project]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($project['name']), 'ProjectViewController', 'show', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link($this->text->e($project['name']), 'ProjectController', 'show', ['project_id' => $project['id']]) ?>
                 <?php if ($project['is_private']): ?>
                     <i class="fa fa-lock" title="<?= t('Private project') ?>"></i>
                 <?php endif ?>

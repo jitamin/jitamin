@@ -91,7 +91,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('TaskGanttController', '*', Role::PROJECT_MANAGER);
         $acl->add('ProjectSettingsController', ['share', 'updateSharing', 'integrations', 'updateIntegrations', 'notifications', 'updateNotifications', 'duplicate', 'doDuplication'], Role::PROJECT_MANAGER);
         $acl->add('ProjectPermissionController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectEditController', '*', Role::PROJECT_MANAGER);
+        $acl->add('ProjectController', ['edit', 'edit_description', 'update'], Role::PROJECT_MANAGER);
         $acl->add('ProjectFileController', '*', Role::PROJECT_MEMBER);
         $acl->add('ProjectUserOverviewController', '*', Role::PROJECT_MANAGER);
         $acl->add('ProjectStatusController', '*', Role::PROJECT_MANAGER);

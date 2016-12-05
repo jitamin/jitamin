@@ -29,8 +29,10 @@ $container['route']->addRoute('search/activity', 'SearchController', 'activity')
 $container['route']->addRoute('project/create', 'ProjectController', 'create');
 $container['route']->addRoute('project/create/private', 'ProjectController', 'createPrivate');
 $container['route']->addRoute('project/store', 'ProjectController', 'store');
-
+$container['route']->addRoute('project/:project_id/edit', 'ProjectController', 'edit');
+$container['route']->addRoute('project/:project_id/edit/description', 'ProjectController', 'edit_description');
 $container['route']->addRoute('projects', 'ProjectController', 'index');
+$container['route']->addRoute('project/:project_id', 'ProjectController', 'show');
 $container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('project/:project_id/customer-filters', 'CustomFilterController', 'index');
@@ -41,15 +43,6 @@ $container['route']->addRoute('project/:project_id/duplicate', 'ProjectSettingsC
 $container['route']->addRoute('project/:project_id/permissions', 'ProjectPermissionController', 'index');
 $container['route']->addRoute('project/:project_id/activity', 'ActivityController', 'project');
 $container['route']->addRoute('project/:project_id/tags', 'ProjectTagController', 'index');
-
-// Project View
-$container['route']->addRoute('project/:project_id', 'ProjectViewController', 'show');
-
-// ProjectEdit routes
-$container['route']->addRoute('project/:project_id/edit', 'ProjectEditController', 'edit');
-$container['route']->addRoute('project/:project_id/edit/dates', 'ProjectEditController', 'dates');
-$container['route']->addRoute('project/:project_id/edit/description', 'ProjectEditController', 'description');
-$container['route']->addRoute('project/:project_id/edit/priority', 'ProjectEditController', 'priority');
 
 // ProjectUser routes
 $container['route']->addRoute('projects/managers/:user_id', 'ProjectUserOverviewController', 'managers');

@@ -71,7 +71,7 @@
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('ProjectEditController', 'edit', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('ProjectController', 'edit', $project['id'])): ?>
             <li>
                 <i class="fa fa-cog"></i>
                 <?= $this->url->link(t('Settings'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>

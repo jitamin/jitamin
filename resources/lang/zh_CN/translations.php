@@ -570,7 +570,7 @@ return [
     'Compact/wide view' => '紧凑/宽视图',
     'No results match:' => '无匹配结果:',
     'Currency' => '货币',
-    'Private project' => '私人项目',
+    'Private project' => '私有项目',
     'AUD - Australian Dollar' => '澳元',
     'CAD - Canadian Dollar' => '加元',
     'CHF - Swiss Francs' => '瑞士法郎',

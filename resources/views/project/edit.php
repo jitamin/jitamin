@@ -1,12 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit project') ?></h2>
-    <ul>
-        <li class="active"><?= $this->url->link(t('General'), 'ProjectEditController', 'edit', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li><?= $this->url->link(t('Dates'), 'ProjectEditController', 'dates', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-        <li><?= $this->url->link(t('Task priority'), 'ProjectEditController', 'priority', ['project_id' => $project['id']], false, 'popover-link') ?></li>
-    </ul>
 </div>
-<form method="post" class="popover-form" action="<?= $this->url->href('ProjectEditController', 'update', ['project_id' => $project['id'], 'redirect' => 'edit']) ?>" autocomplete="off">
+<form method="post" class="popover-form" action="<?= $this->url->href('ProjectController', 'update', ['project_id' => $project['id'], 'redirect' => 'edit']) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('id', $values) ?>
 
@@ -17,6 +12,18 @@
     <?= $this->form->text('identifier', $values, $errors, ['maxlength="50"']) ?>
     <p class="form-help"><?= t('The project identifier is optional and must be alphanumeric, example: MYPROJECT.') ?></p>
     <?= $this->form->textEditor('description', $values, $errors, ['autofocus' => true]) ?>
+    <hr>
+    <?= $this->form->date(t('Start date'), 'start_date', $values, $errors) ?>
+    <?= $this->form->date(t('End date'), 'end_date', $values, $errors) ?>
+    <hr>
+    <?= $this->form->label(t('Default priority'), 'priority_default') ?>
+    <?= $this->form->number('priority_default', $values, $errors) ?>
+
+    <?= $this->form->label(t('Lowest priority'), 'priority_start') ?>
+    <?= $this->form->number('priority_start', $values, $errors) ?>
+
+    <?= $this->form->label(t('Highest priority'), 'priority_end') ?>
+    <?= $this->form->number('priority_end', $values, $errors) ?>
     <hr>
     <div class="form-inline">
         <?= $this->form->label(t('Project owner'), 'owner_id') ?>
@@ -32,6 +39,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'ProjectViewController', 'show', ['project_id' => $project['id']], false, 'btn btn-default close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'ProjectController', 'show', ['project_id' => $project['id']], false, 'btn btn-default close-popover') ?>
     </div>
 </form>
