@@ -9,7 +9,7 @@
         </li>
         <li <?= $this->app->checkMenuSelection('ActivityController', 'task') ?>>
             <i class="fa fa-history fa-fw"></i>
-            <?= $this->url->link(t('Activity stream'), 'ActivityController', 'task', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
+            <?= $this->url->link(t('Activities'), 'ActivityController', 'task', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>
         <li <?= $this->app->checkMenuSelection('TaskViewController', 'transitions') ?>>
             <i class="fa fa-arrows-h fa-fw"></i>

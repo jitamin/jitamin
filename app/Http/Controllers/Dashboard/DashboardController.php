@@ -81,7 +81,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/activities', [
-            'title'  => t('Activity stream for %s', $this->helper->user->getFullname($user)),
+            'title'  => t('Activities for %s', $this->helper->user->getFullname($user)),
             'events' => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 100),
             'user'   => $user,
         ]));

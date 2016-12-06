@@ -65,7 +65,7 @@ class SearchController extends BaseController
                 'controller' => 'SearchController',
                 'action'     => 'activity',
             ],
-            'title'     => t('Search in activity stream').($nb_events > 0 ? ' ('.$nb_events.')' : ''),
+            'title'     => t('Search in activities').($nb_events > 0 ? ' ('.$nb_events.')' : ''),
             'nb_events' => $nb_events,
             'events'    => $events,
         ]));

@@ -15,9 +15,9 @@ use Hiject\Core\Base;
 use Hiject\Core\Notification\NotificationInterface;
 
 /**
- * Activity Stream Notification.
+ * Activity Notification.
  */
-class ActivityStreamNotification extends Base implements NotificationInterface
+class ActivityNotification extends Base implements NotificationInterface
 {
     /**
      * Send notification to a user.

@@ -43,7 +43,7 @@ class NotificationProvider implements ServiceProviderInterface
         $container['projectNotificationTypeModel'] = function ($container) {
             $type = new ProjectNotificationTypeModel($container);
             $type->setType('webhook', 'Webhook', '\Hiject\Notification\WebhookNotification', true);
-            $type->setType('activity_stream', 'ActivityStream', '\Hiject\Notification\ActivityStreamNotification', true);
+            $type->setType('activity', 'Activity', '\Hiject\Notification\ActivityNotification', true);
 
             return $type;
         };

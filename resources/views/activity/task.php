@@ -6,7 +6,7 @@
 ]) ?>
 
 <div class="page-header">
-    <h2><?= t('Activity stream') ?></h2>
+    <h2><?= t('Activities') ?></h2>
 </div>
 
 <?= $this->render('event/events', ['events' => $events]) ?>

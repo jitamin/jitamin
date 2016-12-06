@@ -36,7 +36,7 @@ class MeProcedure extends BaseProcedure
         ];
     }
 
-    public function getMyActivityStream()
+    public function getMyActivity()
     {
         $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
 

@@ -22,7 +22,7 @@ class ProcedureAuthorization extends Base
     private $userSpecificProcedures = [
         'getMe',
         'getMyDashboard',
-        'getMyActivityStream',
+        'getMyActivity',
         'createMyPrivateProject',
         'getMyProjectsList',
         'getMyProjects',
