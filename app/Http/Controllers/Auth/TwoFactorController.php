@@ -145,7 +145,7 @@ class TwoFactorController extends ProfileController
         if ($provider->authenticate()) {
             $this->userSession->validatePostAuthentication();
             $this->flash->success(t('The two factor authentication code is valid.'));
-            $this->response->redirect($this->helper->url->to('DashboardController', 'show'));
+            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
         } else {
             $this->flash->failure(t('The two factor authentication code is not valid.'));
             $this->response->redirect($this->helper->url->to('TwoFactorController', 'code'));

@@ -692,7 +692,6 @@ return [
     'Stop timer' => '停止计时器',
     'Start timer' => '开启计时器',
     'Add project member' => '添加项目成员',
-    'My activity stream' => '我的动态',
     'My calendar' => '我的日程表',
     'Search tasks' => '搜索任务',
     'Reset filters' => '重置过滤器',

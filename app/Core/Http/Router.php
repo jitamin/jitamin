@@ -19,7 +19,7 @@ use Hiject\Core\Base;
 class Router extends Base
 {
     const DEFAULT_CONTROLLER = 'DashboardController';
-    const DEFAULT_METHOD = 'show';
+    const DEFAULT_METHOD = 'index';
 
     /**
      * Plugin name.

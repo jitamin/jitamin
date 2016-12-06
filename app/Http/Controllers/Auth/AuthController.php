@@ -25,7 +25,7 @@ class AuthController extends BaseController
     public function login(array $values = [], array $errors = [])
     {
         if ($this->userSession->isLogged()) {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'show'));
+            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
         } else {
             $this->response->html($this->helper->layout->app('auth/index', [
                 'captcha'   => !empty($values['username']) && $this->userLockingModel->hasCaptcha($values['username']),
@@ -62,7 +62,7 @@ class AuthController extends BaseController
             $this->sessionManager->close();
             $this->response->redirect($this->helper->url->to('AuthController', 'login'));
         } else {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'show'));
+            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
         }
     }
 
@@ -76,7 +76,7 @@ class AuthController extends BaseController
             unset($this->sessionStorage->redirectAfterLogin);
             $this->response->redirect($redirect);
         } else {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'show'));
+            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
         }
     }
 }

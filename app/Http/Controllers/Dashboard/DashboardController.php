@@ -19,13 +19,13 @@ class DashboardController extends BaseController
     /**
      * Dashboard overview.
      */
-    public function show()
+    public function index()
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->dashboard('dashboard/show', [
+        $this->response->html($this->helper->layout->dashboard('dashboard/index', [
             'title'             => t('Dashboard for %s', $this->helper->user->getFullname($user)),
-            'project_paginator' => $this->projectPagination->getDashboardPaginator($user['id'], 'show', 10),
+            'project_paginator' => $this->projectPagination->getDashboardPaginator($user['id'], 'index', 10),
             'events'            => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 10),
             'user'              => $user,
         ]));
@@ -74,13 +74,13 @@ class DashboardController extends BaseController
     }
 
     /**
-     * My activity stream.
+     * My activities.
      */
-    public function activity()
+    public function activities()
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->dashboard('dashboard/activity', [
+        $this->response->html($this->helper->layout->dashboard('dashboard/activities', [
             'title'  => t('Activity stream for %s', $this->helper->user->getFullname($user)),
             'events' => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 100),
             'user'   => $user,

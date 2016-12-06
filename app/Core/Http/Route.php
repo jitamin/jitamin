@@ -124,7 +124,7 @@ class Route extends Base
 
         return [
                 'controller' => 'DashboardController',
-                'action'     => 'show',
+                'action'     => 'index',
                 'plugin'     => '',
             ];
     }
