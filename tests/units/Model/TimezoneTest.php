@@ -24,7 +24,7 @@ class TimezoneTest extends Base
         $this->assertArrayNotHasKey('', $timezoneModel->getTimezones());
 
         $this->assertArrayHasKey('', $timezoneModel->getTimezones(true));
-        $this->assertContains('Application default', $timezoneModel->getTimezones(true));
+        $this->assertContains('Use system timezone', $timezoneModel->getTimezones(true));
     }
 
     public function testGetCurrentTimezone()

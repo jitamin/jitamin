@@ -62,6 +62,6 @@ class LanguageTest extends Base
         $this->assertArrayNotHasKey('', $languageModel->getLanguages());
 
         $this->assertArrayHasKey('', $languageModel->getLanguages(true));
-        $this->assertContains('Application default', $languageModel->getLanguages(true));
+        $this->assertContains('Use system language', $languageModel->getLanguages(true));
     }
 }
