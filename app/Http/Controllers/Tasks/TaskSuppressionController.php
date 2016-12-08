@@ -54,6 +54,6 @@ class TaskSuppressionController extends BaseController
         }
 
         $redirect = $this->request->getStringParam('redirect') === '';
-        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $task['project_id']]), $redirect);
+        $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $task['project_id']]), $redirect);
     }
 }

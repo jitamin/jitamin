@@ -52,7 +52,7 @@ abstract class BaseProcedure extends Base
     {
         if (!empty($project)) {
             $project['url'] = [
-                'board'    => $this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']], '', true),
+                'board'    => $this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']], '', true),
                 'calendar' => $this->helper->url->to('CalendarController', 'show', ['project_id' => $project['id']], '', true),
                 'list'     => $this->helper->url->to('TaskController', 'index', ['project_id' => $project['id']], '', true),
             ];

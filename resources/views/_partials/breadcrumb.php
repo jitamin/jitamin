@@ -1,6 +1,6 @@
 <div class="breadcrumb"><a href="/"><?= t('Home') ?></a> &raquo; 
     <?php if (!empty($project) && !empty($task)): ?>
-        <?= $this->url->link($this->text->e($project['name']), 'BoardViewController', 'show', ['project_id' => $project['id']]) ?>
+        <?= $this->url->link($this->text->e($project['name']), 'BoardController', 'show', ['project_id' => $project['id']]) ?>
     <?php else: ?>
         <?= $this->text->e($title) ?>
     <?php endif ?>

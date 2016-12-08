@@ -21,7 +21,7 @@
                 <?= $this->render('task/dropdown', ['task' => $task]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['project_name']), 'BoardViewController', 'show', ['project_id' => $task['project_id']]) ?>
+                <?= $this->url->link($this->text->e($task['project_name']), 'BoardController', 'show', ['project_id' => $task['project_id']]) ?>
             </td>
             <td>
                 <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>

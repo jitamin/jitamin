@@ -100,9 +100,9 @@ $container['route']->addRoute('analytics/lead-cycle-time/:project_id', 'Analytic
 $container['route']->addRoute('analytics/estimated-spent-time/:project_id', 'AnalyticController', 'compareHours');
 
 // Board routes
-$container['route']->addRoute('board/:project_id', 'BoardViewController', 'show');
-$container['route']->addRoute('b/:project_id', 'BoardViewController', 'show');
-$container['route']->addRoute('public/board/:token', 'BoardViewController', 'readonly');
+$container['route']->addRoute('board/:project_id', 'BoardController', 'show');
+$container['route']->addRoute('b/:project_id', 'BoardController', 'show');
+$container['route']->addRoute('public/board/:token', 'BoardController', 'readonly');
 
 // Calendar routes
 $container['route']->addRoute('calendar/:project_id', 'CalendarController', 'show');

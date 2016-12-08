@@ -13,7 +13,7 @@
     <?php foreach ($paginator->getCollection() as $task): ?>
     <tr>
         <td>
-            <?= $this->url->link($this->text->e($task['project_name']), 'BoardViewController', 'show', ['project_id' => $task['project_id']]) ?>
+            <?= $this->url->link($this->text->e($task['project_name']), 'BoardController', 'show', ['project_id' => $task['project_id']]) ?>
         </td>
         <td class="task-table color-<?= $task['color_id'] ?>">
             <?= $this->url->link('#'.$this->text->e($task['id']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>

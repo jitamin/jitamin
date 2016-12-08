@@ -44,7 +44,7 @@
         <?php if ($project['is_public']): ?>
             <li>
                 <i class="fa fa-share-alt"></i>
-                <?= $this->url->link(t('Public link'), 'BoardViewController', 'readonly', ['token' => $project['token']], false, '', '', true) ?>
+                <?= $this->url->link(t('Public link'), 'BoardController', 'readonly', ['token' => $project['token']], false, '', '', true) ?>
             </li>
         <?php endif ?>
 

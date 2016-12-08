@@ -18,7 +18,7 @@ use Hiject\Model\TaskModel;
 /**
  * Board controller.
  */
-class BoardViewController extends BaseController
+class BoardController extends BaseController
 {
     /**
      * Display the public version of a board

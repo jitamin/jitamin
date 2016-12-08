@@ -13,7 +13,7 @@
     <?php endif ?>
 
     <?php if ($project['is_public']): ?>
-        <li><i class="fa fa-share-alt"></i> <?= $this->url->link(t('Public link'), 'BoardViewController', 'readonly', ['token' => $project['token']], false, '', '', true) ?></li>
+        <li><i class="fa fa-share-alt"></i> <?= $this->url->link(t('Public link'), 'BoardController', 'readonly', ['token' => $project['token']], false, '', '', true) ?></li>
         <li><i class="fa fa-rss-square"></i> <?= $this->url->link(t('RSS feed'), 'FeedController', 'project', ['token' => $project['token']], false, '', '', true) ?></li>
         <li><i class="fa fa-calendar"></i> <?= $this->url->link(t('iCal feed'), 'ICalendarController', 'project', ['token' => $project['token']]) ?></li>
     <?php else: ?>
@@ -35,7 +35,7 @@
     <?php if ($stats['nb_tasks'] > 0): ?>
 
         <?php if ($stats['nb_active_tasks'] > 0): ?>
-            <li><?= $this->url->link(t('%d tasks on the board', $stats['nb_active_tasks']), 'BoardViewController', 'show', ['project_id' => $project['id'], 'search' => 'status:open']) ?></li>
+            <li><?= $this->url->link(t('%d tasks on the board', $stats['nb_active_tasks']), 'BoardController', 'show', ['project_id' => $project['id'], 'search' => 'status:open']) ?></li>
         <?php endif ?>
 
         <?php if ($stats['nb_inactive_tasks'] > 0): ?>

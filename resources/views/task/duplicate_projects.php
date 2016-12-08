@@ -5,7 +5,7 @@
 <?php if (empty($projects_list)): ?>
     <p class="alert"><?= t('There is no destination project available.') ?></p>
     <div class="form-actions">
-        <?= $this->url->link(t('cancel'), 'BoardViewController', 'show', ['project_id' => $task['project_id']], false, 'close-popover btn') ?>
+        <?= $this->url->link(t('cancel'), 'BoardController', 'show', ['project_id' => $task['project_id']], false, 'close-popover btn') ?>
     </div>
 <?php else: ?>
     <form class="popover-form" method="post" action="<?= $this->url->href('TaskController', 'duplicateProjects', ['project_id' => $task['project_id']]) ?>" autocomplete="off">
@@ -22,7 +22,7 @@
 
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Duplicate') ?></button>
-            <?= t('or') ?> <?= $this->url->link(t('cancel'), 'BoardViewController', 'show', ['project_id' => $task['project_id']], false, 'close-popover') ?>
+            <?= t('or') ?> <?= $this->url->link(t('cancel'), 'BoardController', 'show', ['project_id' => $task['project_id']], false, 'close-popover') ?>
         </div>
     </form>
 <?php endif ?>

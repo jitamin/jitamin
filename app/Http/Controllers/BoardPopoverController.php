@@ -44,6 +44,6 @@ class BoardPopoverController extends BaseController
 
         $this->taskStatusModel->closeTasksBySwimlaneAndColumn($values['swimlane_id'], $values['column_id']);
         $this->flash->success(t('All tasks of the column "%s" and the swimlane "%s" have been closed successfully.', $this->columnModel->getColumnTitleById($values['column_id']), $this->swimlaneModel->getNameById($values['swimlane_id']) ?: t($project['default_swimlane'])));
-        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']]));
     }
 }

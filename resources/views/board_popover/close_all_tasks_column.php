@@ -12,7 +12,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-danger"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'BoardViewController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'BoardController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
         </div>
     </form>
 </section>

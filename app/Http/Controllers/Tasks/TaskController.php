@@ -100,7 +100,7 @@ class TaskController extends BaseController
             $this->show($values, $errors);
         } elseif (!$this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
             $this->flash->failure(t('You cannot create tasks in this column.'));
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
+            $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']]), true);
         } else {
             $task_id = $this->taskCreationModel->create($values);
             $this->flash->success(t('Task created successfully.'));
@@ -185,7 +185,7 @@ class TaskController extends BaseController
             }
         }
 
-        $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
+        $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']]), true);
     }
 
     /**
@@ -237,7 +237,7 @@ class TaskController extends BaseController
                 'another_task' => 1,
             ]);
         } else {
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
+            $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']]), true);
         }
     }
 

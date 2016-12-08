@@ -57,11 +57,11 @@ class TaskBulkController extends BaseController
             $this->show($values, $errors);
         } elseif (!$this->helper->projectRole->canCreateTaskInColumn($project['id'], $values['column_id'])) {
             $this->flash->failure(t('You cannot create tasks in this column.'));
-            $this->response->redirect($this->helper->url->to('BoardViewController', 'show', ['project_id' => $project['id']]), true);
+            $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']]), true);
         } else {
             $this->createTasks($project, $values);
             $this->response->redirect($this->helper->url->to(
-                'BoardViewController',
+                'BoardController',
                 'show',
                 ['project_id' => $project['id']],
                 'swimlane-'.$values['swimlane_id']
