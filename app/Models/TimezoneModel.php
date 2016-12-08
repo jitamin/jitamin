@@ -31,7 +31,7 @@ class TimezoneModel extends Base
         $listing = array_combine(array_values($timezones), $timezones);
 
         if ($prepend) {
-            return ['' => t('Application default')] + $listing;
+            return ['' => t('Use system timezone')] + $listing;
         }
 
         return $listing;

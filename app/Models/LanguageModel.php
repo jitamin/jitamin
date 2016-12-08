@@ -66,7 +66,7 @@ class LanguageModel extends Base
         ];
 
         if ($prepend) {
-            return ['' => t('Application default')] + $languages;
+            return ['' => t('Use system language')] + $languages;
         }
 
         return $languages;

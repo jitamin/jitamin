@@ -39,7 +39,7 @@ class SkinModel extends Base
         ];
 
         if ($prepend) {
-            return ['' => t('Application default')] + $skins;
+            return ['' => t('Use system skin')] + $skins;
         }
 
         return $skins;
