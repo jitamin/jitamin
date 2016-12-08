@@ -78,6 +78,7 @@ $container['route']->addRoute('t/:task_id', 'TaskViewController', 'show');
 $container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController', 'readonly');
 
 $container['route']->addRoute('task/:project_id/create', 'TaskController', 'create');
+$container['route']->addRoute('task/:project_id/:column_id/:swimlane_id/create', 'TaskController', 'create');
 $container['route']->addRoute('task/:project_id/store', 'TaskController', 'store');
 $container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
 $container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
