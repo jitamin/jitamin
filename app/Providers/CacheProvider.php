@@ -43,7 +43,7 @@ class CacheProvider implements ServiceProviderInterface
             $container['cacheDriver'] = function () {
                 return new FileCache();
             };
-        } else if(CACHE_DRIVER === 'memcached') {
+        } elseif (CACHE_DRIVER === 'memcached') {
             $container['cacheDriver'] = function ($c) {
                 return new MemcachedCache($c['memcached'], defined('CACHE_PREFIX') ? CACHE_PREFIX : '');
             };

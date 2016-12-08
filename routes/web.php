@@ -146,7 +146,6 @@ $container['route']->addRoute('user/:user_id/avatar/:size/image', 'AvatarFileCon
 
 $container['route']->addRoute('user/ajax/status', 'UserAjaxController', 'status');
 
-
 // Users admin
 $container['route']->addRoute('admin/users', 'UserListController', 'show');
 $container['route']->addRoute('admin/users/create', 'UserController', 'create');

@@ -14,12 +14,11 @@ namespace Hiject\Controller;
 use Hiject\Core\Controller\PageNotFoundException;
 use Hiject\Filter\TaskIdExclusionFilter;
 use Hiject\Filter\TaskIdFilter;
-use Hiject\Filter\TaskProjectsFilter;
 use Hiject\Filter\TaskProjectFilter;
+use Hiject\Filter\TaskProjectsFilter;
 use Hiject\Filter\TaskTitleFilter;
 use Hiject\Formatter\TaskAutoCompleteFormatter;
 use HIject\Model\TaskModel;
-
 
 /**
  * Task Controller.

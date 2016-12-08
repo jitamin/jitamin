@@ -162,7 +162,6 @@ class ActionModelTest extends Base
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 1, 'color_id' => 'red'], $actions[0]['params']);
 
-
         $actions = $actionModel->getAllByProject(2);
         $this->assertCount(1, $actions);
 

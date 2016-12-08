@@ -189,13 +189,14 @@ class ClassProvider implements ServiceProviderInterface
             $container['memcached'] = function ($c) {
                 $memcached = new \Memcached();
 
-                $config = require HIJECT_DIR . DIRECTORY_SEPARATOR . 'config' .DIRECTORY_SEPARATOR. 'memcached.php';
+                $config = require HIJECT_DIR.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'memcached.php';
 
                 foreach ($config['servers'] as $server) {
                     $memcached->addServer(
                         $server['host'], $server['port'], $server['weight']
                     );
                 }
+
                 return $memcached;
             };
         }

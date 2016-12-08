@@ -21,7 +21,7 @@ interface CacheInterface
      *
      * @param string $key
      * @param mixed  $value
-     * @param int $minutes
+     * @param int    $minutes
      */
     public function set($key, $value, $minutes);
 

@@ -11,18 +11,16 @@
 
 namespace Hiject\Services\Update;
 
-use Httpful\Request;
 use Hiject\Core\Base;
-use Hiject\Core\Cache\FileCache;
 
 /**
  * A class to get the latest release tag for Github.
  */
-class LatestRelease extends Base 
+class LatestRelease extends Base
 {
-     const CACHE_TIME_IN_HOURS = 1;
+    const CACHE_TIME_IN_HOURS = 1;
 
-     /**
+    /**
      * @var string
      */
     private $github_url = 'https://api.github.com/repos/hiject/hiject/releases/latest';
@@ -44,10 +42,10 @@ class LatestRelease extends Base
             if (is_array($body)) {
                 $release = $body['tag_name'];
                 $this->container['cacheDriver']->set('hiject_latest_version', $release, $cache_for);
+
                 return $release;
             }
         }
-
 
         return false;
     }

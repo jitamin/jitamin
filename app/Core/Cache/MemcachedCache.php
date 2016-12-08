@@ -10,6 +10,7 @@
  */
 
 namespace Hiject\Core\Cache;
+
 use Carbon\Carbon;
 
 /**
@@ -41,8 +42,9 @@ class MemcachedCache extends BaseCache
     /**
      * Create a new Memcached store.
      *
-     * @param  \Memcached  $memcached
-     * @param  string      $prefix
+     * @param \Memcached $memcached
+     * @param string     $prefix
+     *
      * @return void
      */
     public function __construct($memcached, $prefix = '')
@@ -50,12 +52,13 @@ class MemcachedCache extends BaseCache
         $this->setPrefix($prefix);
         $this->memcached = $memcached;
     }
+
     /**
      * Store an item in the cache.
      *
      * @param string $key
      * @param mixed  $value
-     * @param int $minutes
+     * @param int    $minutes
      */
     public function set($key, $value, $minutes = 0)
     {
@@ -99,6 +102,7 @@ class MemcachedCache extends BaseCache
      * Get the UNIX timestamp for the given number of minutes.
      *
      * @parma  int  $minutes
+     *
      * @return int
      */
     protected function toTimestamp($minutes)
@@ -119,11 +123,12 @@ class MemcachedCache extends BaseCache
     /**
      * Set the cache key prefix.
      *
-     * @param  string  $prefix
+     * @param string $prefix
+     *
      * @return void
      */
     public function setPrefix($prefix)
     {
-        $this->prefix = ! empty($prefix) ? $prefix.':' : '';
+        $this->prefix = !empty($prefix) ? $prefix.':' : '';
     }
 }

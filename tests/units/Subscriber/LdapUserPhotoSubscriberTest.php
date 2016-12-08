@@ -47,7 +47,6 @@ class LdapUserPhotoSubscriberTest extends Base
             ->method('put')
             ->with($this->anything(), 'my photo');
 
-
         $subscriber->syncUserPhoto(new UserProfileSyncEvent($user, $userProvider));
 
         $user = $userModel->getById(1);
