@@ -32,6 +32,7 @@ $container['route']->addRoute('project/store', 'ProjectController', 'store');
 $container['route']->addRoute('project/:project_id/edit', 'ProjectController', 'edit');
 $container['route']->addRoute('project/:project_id/edit/description', 'ProjectController', 'edit_description');
 $container['route']->addRoute('projects', 'ProjectController', 'index');
+$container['route']->addRoute('projects/:order/:direction/:page', 'ProjectController', 'index');
 $container['route']->addRoute('project/:project_id', 'ProjectController', 'show');
 $container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
 $container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
@@ -48,8 +49,8 @@ $container['route']->addRoute('project/:project_id/tags', 'ProjectTagController'
 // ProjectUser routes
 $container['route']->addRoute('projects/managers/:user_id', 'ProjectUserOverviewController', 'managers');
 $container['route']->addRoute('projects/members/:user_id', 'ProjectUserOverviewController', 'members');
-$container['route']->addRoute('projects/tasks/:user_id/opens', 'ProjectUserOverviewController', 'opens');
-$container['route']->addRoute('projects/tasks/:user_id/closed', 'ProjectUserOverviewController', 'closed');
+$container['route']->addRoute('projects/tasks_opened/:user_id', 'ProjectUserOverviewController', 'opens');
+$container['route']->addRoute('projects/tasks_closed/:user_id', 'ProjectUserOverviewController', 'closed');
 $container['route']->addRoute('projects/managers', 'ProjectUserOverviewController', 'managers');
 $container['route']->addRoute('projects/gantt', 'ProjectGanttController', 'show');
 
@@ -132,6 +133,7 @@ $container['route']->addRoute('user/show/:user_id', 'ProfileController', 'show')
 $container['route']->addRoute('user/show/:user_id/timesheet', 'ProfileController', 'timesheet');
 $container['route']->addRoute('user/show/:user_id/last-logins', 'ProfileController', 'lastLogin');
 $container['route']->addRoute('user/show/:user_id/sessions', 'ProfileController', 'sessions');
+$container['route']->addRoute('user/show/:user_id/password-resets', 'ProfileController', 'passwordReset');
 $container['route']->addRoute('user/:user_id/edit', 'ProfileController', 'edit');
 $container['route']->addRoute('user/:user_id/password', 'UserCredentialController', 'changePassword');
 $container['route']->addRoute('user/:user_id/share', 'ProfileController', 'share');
@@ -149,12 +151,16 @@ $container['route']->addRoute('user/ajax/status', 'UserAjaxController', 'status'
 // Users admin
 $container['route']->addRoute('admin/users', 'UserListController', 'show');
 $container['route']->addRoute('admin/users/create', 'UserController', 'create');
+$container['route']->addRoute('admin/users/create/:remote', 'UserController', 'create');
+$container['route']->addRoute('admin/users/import', 'UserImportController', 'show');
 
 // Groups admin
 $container['route']->addRoute('admin/groups', 'GroupListController', 'index');
 $container['route']->addRoute('admin/groups/create', 'GroupController', 'create');
-$container['route']->addRoute('admin/groups/edit', 'GroupController', 'edit');
+$container['route']->addRoute('admin/groups/:group_id/edit', 'GroupController', 'edit');
+$container['route']->addRoute('admin/groups/:group_id/remove', 'GroupListController', 'confirm');
 $container['route']->addRoute('admin/group/:group_id/members', 'GroupListController', 'users');
+$container['route']->addRoute('admin/group/:group_id/associate', 'GroupListController', 'associate');
 
 // Config admin
 $container['route']->addRoute('admin/settings', 'ConfigController', 'index');
