@@ -42,7 +42,7 @@ class UserStatusController extends BaseController
             $this->flash->failure(t('Unable to remove this user.'));
         }
 
-        $this->response->redirect($this->helper->url->to('UserListController', 'show'));
+        $this->response->redirect($this->helper->url->to('UserController', 'index'));
     }
 
     /**
@@ -71,7 +71,7 @@ class UserStatusController extends BaseController
             $this->flash->failure(t('Unable to enable this user.'));
         }
 
-        $this->response->redirect($this->helper->url->to('UserListController', 'show'));
+        $this->response->redirect($this->helper->url->to('UserController', 'index'));
     }
 
     /**
@@ -100,6 +100,6 @@ class UserStatusController extends BaseController
             $this->flash->failure(t('Unable to disable this user.'));
         }
 
-        $this->response->redirect($this->helper->url->to('UserListController', 'show'));
+        $this->response->redirect($this->helper->url->to('UserController', 'index'));
     }
 }

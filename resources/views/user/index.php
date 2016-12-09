@@ -5,7 +5,7 @@
             <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'UserController', 'create', [], false, 'popover') ?></li>
             <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'UserController', 'create', ['remote' => 1], false, 'popover') ?></li>
             <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'UserImportController', 'show', [], false, 'popover') ?></li>
-            <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'GroupListController', 'index') ?></li>
+            <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'GroupController', 'index') ?></li>
         </ul>
         <?php endif ?>
     </div>
@@ -55,7 +55,7 @@
                     <?php endif ?>
                 </td>
                 <td>
-                    <?= $this->render('user_list/dropdown', ['user' => $user]) ?>
+                    <?= $this->render('user/dropdown', ['user' => $user]) ?>
                 </td>
             </tr>
             <?php endforeach ?>

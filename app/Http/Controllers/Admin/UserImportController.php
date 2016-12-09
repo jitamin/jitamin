@@ -26,7 +26,7 @@ class UserImportController extends BaseController
      */
     public function show(array $values = [], array $errors = [])
     {
-        $this->response->html($this->template->render('user_import/show', [
+        $this->response->html($this->template->render('user/import', [
             'values'     => $values,
             'errors'     => $errors,
             'max_size'   => get_upload_max_size(),
@@ -49,7 +49,7 @@ class UserImportController extends BaseController
             $this->importFile($values, $filename);
         }
 
-        $this->response->redirect($this->helper->url->to('UserListController', 'show'));
+        $this->response->redirect($this->helper->url->to('UserController', 'index'));
     }
 
     /**

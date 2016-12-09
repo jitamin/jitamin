@@ -10,6 +10,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'GroupListController', 'index', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'GroupController', 'index', [], false, 'close-popover') ?>
     </div>
 </form>

@@ -152,18 +152,18 @@ $container['route']->addRoute('user/:user_id/avatar/:size/image', 'AvatarFileCon
 $container['route']->addRoute('user/ajax/status', 'UserAjaxController', 'status');
 
 // Users admin
-$container['route']->addRoute('admin/users', 'UserListController', 'show');
+$container['route']->addRoute('admin/users', 'UserController', 'index');
 $container['route']->addRoute('admin/users/create', 'UserController', 'create');
 $container['route']->addRoute('admin/users/create/:remote', 'UserController', 'create');
 $container['route']->addRoute('admin/users/import', 'UserImportController', 'show');
 
 // Groups admin
-$container['route']->addRoute('admin/groups', 'GroupListController', 'index');
+$container['route']->addRoute('admin/groups', 'GroupController', 'index');
 $container['route']->addRoute('admin/groups/create', 'GroupController', 'create');
 $container['route']->addRoute('admin/groups/:group_id/edit', 'GroupController', 'edit');
-$container['route']->addRoute('admin/groups/:group_id/remove', 'GroupListController', 'confirm');
-$container['route']->addRoute('admin/group/:group_id/members', 'GroupListController', 'users');
-$container['route']->addRoute('admin/group/:group_id/associate', 'GroupListController', 'associate');
+$container['route']->addRoute('admin/groups/:group_id/remove', 'GroupController', 'confirm');
+$container['route']->addRoute('admin/group/:group_id/members', 'GroupController', 'users');
+$container['route']->addRoute('admin/group/:group_id/associate', 'GroupController', 'associate');
 
 // Config admin
 $container['route']->addRoute('admin/settings', 'ConfigController', 'index');

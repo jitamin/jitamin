@@ -4,11 +4,11 @@
     <ul>
             <li>
                 <i class="fa fa-user"></i>
-                <?= $this->url->link(t('Users management'), 'UserListController', 'show') ?>
+                <?= $this->url->link(t('Users management'), 'UserController', 'index') ?>
             </li>
             <li>
                 <i class="fa fa-group"></i>
-                <?= $this->url->link(t('Groups management'), 'GroupListController', 'index') ?>
+                <?= $this->url->link(t('Groups management'), 'GroupController', 'index') ?>
             </li>
             <li>
                 <i class="fa fa-plug"></i>

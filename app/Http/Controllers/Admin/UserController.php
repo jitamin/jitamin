@@ -20,6 +20,19 @@ use Hiject\Notification\MailNotification;
 class UserController extends BaseController
 {
     /**
+     * List all users.
+     */
+    public function index()
+    {
+        $paginator = $this->userPagination->getListingPaginator();
+
+        $this->response->html($this->helper->layout->app('user/index', [
+            'title'     => t('Users').' ('.$paginator->getTotal().')',
+            'paginator' => $paginator,
+        ]));
+    }
+
+    /**
      * Display a form to create a new user.
      *
      * @param array $values
@@ -80,7 +93,7 @@ class UserController extends BaseController
             $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user_id]));
         } else {
             $this->flash->failure(t('Unable to create your user.'));
-            $this->response->redirect($this->helper->url->to('UserListController', 'show'));
+            $this->response->redirect($this->helper->url->to('UserController', 'index'));
         }
     }
 }

@@ -1,7 +1,7 @@
 <section id="main">
     <div class="page-header">
         <ul>
-            <li><i class="fa fa-user fa-fw"></i><?= $this->url->link(t('All users'), 'UserListController', 'show') ?></li>
+            <li><i class="fa fa-user fa-fw"></i><?= $this->url->link(t('All users'), 'UserController', 'index') ?></li>
             <li><i class="fa fa-user-plus fa-fw"></i><?= $this->url->link(t('New group'), 'GroupController', 'create', [], false, 'popover') ?></li>
         </ul>
     </div>
@@ -24,16 +24,16 @@
                     <?= $this->text->e($group['external_id']) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($group['name']), 'GroupListController', 'users', ['group_id' => $group['id']]) ?>
+                    <?= $this->url->link($this->text->e($group['name']), 'GroupController', 'users', ['group_id' => $group['id']]) ?>
                 </td>
                 <td>
                     <div class="dropdown">
                     <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog fa-fw"></i><i class="fa fa-caret-down"></i></a>
                     <ul>
-                        <li><?= $this->url->link(t('Add group member'), 'GroupListController', 'associate', ['group_id' => $group['id']], false, 'popover') ?></li>
-                        <li><?= $this->url->link(t('Members'), 'GroupListController', 'users', ['group_id' => $group['id']]) ?></li>
+                        <li><?= $this->url->link(t('Add group member'), 'GroupController', 'associate', ['group_id' => $group['id']], false, 'popover') ?></li>
+                        <li><?= $this->url->link(t('Members'), 'GroupController', 'users', ['group_id' => $group['id']]) ?></li>
                         <li><?= $this->url->link(t('Edit'), 'GroupController', 'edit', ['group_id' => $group['id']], false, 'popover') ?></li>
-                        <li><?= $this->url->link(t('Remove'), 'GroupListController', 'confirm', ['group_id' => $group['id']], false, 'popover') ?></li>
+                        <li><?= $this->url->link(t('Remove'), 'GroupController', 'confirm', ['group_id' => $group['id']], false, 'popover') ?></li>
                     </ul>
                     </div>
                 </td>

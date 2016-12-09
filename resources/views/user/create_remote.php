@@ -40,7 +40,7 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'UserListController', 'show', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'UserController', 'index', [], false, 'close-popover') ?>
     </div>
 </form>
 <div class="alert alert-info">
