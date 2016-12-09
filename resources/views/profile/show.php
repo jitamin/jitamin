@@ -20,7 +20,7 @@
         <li><?= t('Account locked until:') ?> <?= $this->dt->datetime($user['lock_expiration_date']) ?></li>
         <?php if ($this->user->isAdmin()): ?>
             <li>
-                <?= $this->url->link(t('Unlock this user'), 'UserCredentialController', 'unlock', ['user_id' => $user['id']], true) ?>
+                <?= $this->url->link(t('Unlock this user'), 'UserController', 'unlock', ['user_id' => $user['id']], true) ?>
             </li>
         <?php endif ?>
     <?php endif ?>

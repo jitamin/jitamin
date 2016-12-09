@@ -258,4 +258,51 @@ class ProfileController extends BaseController
 
         return $this->show($values, $errors);
     }
+
+    /**
+     * Password modification form.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Hiject\Core\Controller\PageNotFoundException
+     */
+    public function changePassword(array $values = [], array $errors = [])
+    {
+        $user = $this->getUser();
+
+        return $this->response->html($this->helper->layout->user('profile/change_password', [
+            'values' => $values + ['id' => $user['id']],
+            'errors' => $errors,
+            'user'   => $user,
+        ]));
+    }
+
+    /**
+     * Save new password.
+     *
+     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Hiject\Core\Controller\PageNotFoundException
+     */
+    public function savePassword()
+    {
+        $user = $this->getUser();
+        $values = $this->request->getValues();
+
+        list($valid, $errors) = $this->userValidator->validatePasswordModification($values);
+
+        if ($valid) {
+            if ($this->userModel->update($values)) {
+                $this->flash->success(t('Password modified successfully.'));
+                $this->userLockingModel->resetFailedLogin($user['username']);
+            } else {
+                $this->flash->failure(t('Unable to change the password.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+        }
+
+        return $this->changePassword($values, $errors);
+    }
 }

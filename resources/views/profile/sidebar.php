@@ -49,9 +49,9 @@
                 </li>
             <?php endif ?>
 
-            <?php if ($user['is_ldap_user'] == 0 && $this->user->hasAccess('UserCredentialController', 'changePassword')): ?>
-                <li <?= $this->app->checkMenuSelection('UserCredentialController', 'changePassword') ?>>
-                    <i class="fa fa-key"></i><?= $this->url->link(t('Change password'), 'UserCredentialController', 'changePassword', ['user_id' => $user['id']]) ?>
+            <?php if ($user['is_ldap_user'] == 0 && $this->user->hasAccess('ProfileController', 'changePassword')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'changePassword') ?>>
+                    <i class="fa fa-key"></i><?= $this->url->link(t('Change password'), 'ProfileController', 'changePassword', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
 
@@ -87,9 +87,9 @@
             <?php endif ?>
         <?php endif ?>
 
-        <?php if ($this->user->hasAccess('UserCredentialController', 'changeAuthentication')): ?>
-            <li <?= $this->app->checkMenuSelection('UserCredentialController', 'changeAuthentication') ?>>
-                <i class="fa fa-street-view"></i><?= $this->url->link(t('Edit Authentication'), 'UserCredentialController', 'changeAuthentication', ['user_id' => $user['id']]) ?>
+        <?php if ($this->user->hasAccess('UserController', 'changeAuthentication')): ?>
+            <li <?= $this->app->checkMenuSelection('UserController', 'changeAuthentication') ?>>
+                <i class="fa fa-street-view"></i><?= $this->url->link(t('Edit Authentication'), 'UserController', 'changeAuthentication', ['user_id' => $user['id']]) ?>
             </li>
         <?php endif ?>
 

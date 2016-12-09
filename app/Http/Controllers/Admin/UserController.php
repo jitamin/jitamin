@@ -96,4 +96,71 @@ class UserController extends BaseController
             $this->response->redirect($this->helper->url->to('UserController', 'index'));
         }
     }
+
+    /**
+     * Display a form to edit authentication.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Hiject\Core\Controller\PageNotFoundException
+     */
+    public function changeAuthentication(array $values = [], array $errors = [])
+    {
+        $user = $this->getUser();
+
+        if (empty($values)) {
+            $values = $user;
+            unset($values['password']);
+        }
+
+        return $this->response->html($this->helper->layout->user('user/authentication', [
+            'values' => $values,
+            'errors' => $errors,
+            'user'   => $user,
+        ]));
+    }
+
+    /**
+     * Save authentication.
+     *
+     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Hiject\Core\Controller\PageNotFoundException
+     */
+    public function saveAuthentication()
+    {
+        $user = $this->getUser();
+        $values = $this->request->getValues() + ['disable_login_form' => 0, 'is_ldap_user' => 0];
+        list($valid, $errors) = $this->userValidator->validateModification($values);
+
+        if ($valid) {
+            if ($this->userModel->update($values)) {
+                $this->flash->success(t('User updated successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to update your user.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('UserController', 'changeAuthentication', ['user_id' => $user['id']]));
+        }
+
+        return $this->changeAuthentication($values, $errors);
+    }
+
+    /**
+     * Unlock user.
+     */
+    public function unlock()
+    {
+        $user = $this->getUser();
+        $this->checkCSRFParam();
+
+        if ($this->userLockingModel->resetFailedLogin($user['username'])) {
+            $this->flash->success(t('User unlocked successfully.'));
+        } else {
+            $this->flash->failure(t('Unable to unlock the user.'));
+        }
+
+        $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+    }
 }
