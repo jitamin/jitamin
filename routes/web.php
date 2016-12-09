@@ -11,7 +11,7 @@
 
 $container['route']->enable();
 
-// Dashboard
+// Dashboard routes
 $container['route']->addRoute('dashboard', 'DashboardController', 'index');
 $container['route']->addRoute('dashboard/:user_id', 'DashboardController', 'index');
 $container['route']->addRoute('dashboard/:user_id/projects', 'DashboardController', 'projects');
@@ -20,6 +20,9 @@ $container['route']->addRoute('dashboard/:user_id/subtasks', 'DashboardControlle
 $container['route']->addRoute('dashboard/:user_id/calendar', 'DashboardController', 'calendar');
 $container['route']->addRoute('dashboard/:user_id/activities', 'DashboardController', 'activities');
 $container['route']->addRoute('dashboard/:user_id/notifications', 'DashboardController', 'notifications');
+
+// WebNotification routes
+$container['route']->addRoute('notification/:user_id/:notification_id', 'WebNotificationController', 'redirect');
 
 // Search routes
 $container['route']->addRoute('search', 'SearchController', 'index');
