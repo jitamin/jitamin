@@ -100,7 +100,7 @@ class LanguageModel extends Base
             return $this->sessionStorage->user['language'];
         }
 
-        return $this->configModel->get('application_language', 'en_US');
+        return $this->settingModel->get('application_language', 'en_US');
     }
 
     /**

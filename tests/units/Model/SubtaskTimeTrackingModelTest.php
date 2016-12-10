@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskTimeTrackingModel;
@@ -38,8 +38,8 @@ class SubtaskTimeTrackingModelTest extends Base
 
     public function testToggleTimerWhenFeatureDisabled()
     {
-        $configModel = new ConfigModel($this->container);
-        $configModel->save(['subtask_time_tracking' => '0']);
+        $settingModel = new SettingModel($this->container);
+        $settingModel->save(['subtask_time_tracking' => '0']);
         $this->container['memoryCache']->flush();
 
         $taskCreationModel = new TaskCreationModel($this->container);

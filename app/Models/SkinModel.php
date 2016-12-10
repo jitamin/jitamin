@@ -56,6 +56,6 @@ class SkinModel extends Base
             return $this->sessionStorage->user['skin'];
         }
 
-        return $this->configModel->get('application_skin', 'default');
+        return $this->settingModel->get('application_skin', 'default');
     }
 }

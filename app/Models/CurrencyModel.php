@@ -71,7 +71,7 @@ class CurrencyModel extends Base
     public function getPrice($currency, $price)
     {
         static $rates = null;
-        $reference = $this->configModel->get('application_currency', 'USD');
+        $reference = $this->settingModel->get('application_currency', 'USD');
 
         if ($reference !== $currency) {
             $rates = $rates === null ? $this->db->hashtable(self::TABLE)->getAll('currency', 'rate') : $rates;

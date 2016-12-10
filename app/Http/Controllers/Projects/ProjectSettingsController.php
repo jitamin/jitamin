@@ -74,7 +74,7 @@ class ProjectSettingsController extends BaseController
         $this->response->html($this->helper->layout->project('project_settings/integrations', [
             'project'       => $project,
             'title'         => t('Integrations'),
-            'webhook_token' => $this->configModel->get('webhook_token'),
+            'webhook_token' => $this->settingModel->get('webhook_token'),
             'values'        => $this->projectMetadataModel->getAll($project['id']),
             'errors'        => [],
         ]));

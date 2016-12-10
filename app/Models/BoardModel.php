@@ -35,7 +35,7 @@ class BoardModel extends Base
      */
     public function getUserColumns()
     {
-        $column_names = explode(',', $this->configModel->get('board_columns', implode(',', $this->getDefaultColumns())));
+        $column_names = explode(',', $this->settingModel->get('board_columns', implode(',', $this->getDefaultColumns())));
         $columns = [];
 
         foreach ($column_names as $column_name) {

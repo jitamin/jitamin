@@ -32,7 +32,7 @@ class CalendarController extends BaseController
             'project'        => $project,
             'title'          => $project['name'],
             'description'    => $this->helper->projectHeader->getDescription($project),
-            'check_interval' => $this->configModel->get('board_private_refresh_interval'),
+            'check_interval' => $this->settingModel->get('board_private_refresh_interval'),
         ]));
     }
 
@@ -74,7 +74,7 @@ class CalendarController extends BaseController
         $events = $this->helper->calendar->getTaskDateDueEvents(clone $queryBuilder, $start, $end);
         $events = array_merge($events, $this->helper->calendar->getTaskEvents(clone $queryBuilder, $start, $end));
 
-        if ($this->configModel->get('calendar_user_subtasks_time_tracking') == 1) {
+        if ($this->settingModel->get('calendar_user_subtasks_time_tracking') == 1) {
             $events = array_merge($events, $this->helper->calendar->getSubtaskTimeTrackingEvents($user_id, $start, $end));
         }
 

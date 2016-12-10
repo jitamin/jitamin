@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\CategoryModel;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
@@ -163,9 +163,9 @@ class CategoryModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
-        $configModel = new ConfigModel($this->container);
+        $settingModel = new SettingModel($this->container);
 
-        $this->assertTrue($configModel->save(['project_categories' => 'C1, C2, C3']));
+        $this->assertTrue($settingModel->save(['project_categories' => 'C1, C2, C3']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertTrue($categoryModel->createDefaultCategories(1));
 

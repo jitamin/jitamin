@@ -12,11 +12,12 @@
 namespace Hiject\Model;
 
 use Hiject\Core\Base;
+use Hiject\Core\Security\Token;
 
 /**
- * Application Settings.
+ * Setting model.
  */
-abstract class SettingModel extends Base
+class SettingModel extends Base
 {
     /**
      * SQL table name.
@@ -26,15 +27,19 @@ abstract class SettingModel extends Base
     const TABLE = 'settings';
 
     /**
-     * Prepare data before save.
+     * Get a config variable with in-memory caching.
      *
-     * @abstract
+     * @param string $name          Parameter name
+     * @param string $default_value Default value of the parameter
      *
-     * @param array $values
-     *
-     * @return array
+     * @return string
      */
-    abstract public function prepare(array $values);
+    public function get($name, $default_value = '')
+    {
+        $options = $this->memoryCache->proxy($this, 'getAll');
+
+        return isset($options[$name]) && $options[$name] !== '' ? $options[$name] : $default_value;
+    }
 
     /**
      * Get all settings.
@@ -115,5 +120,63 @@ abstract class SettingModel extends Base
         $this->db->closeTransaction();
 
         return !in_array(false, $results, true);
+    }
+
+    /**
+     * Optimize the Sqlite database.
+     *
+     * @return bool
+     */
+    public function optimizeDatabase()
+    {
+        return $this->db->getConnection()->exec('VACUUM');
+    }
+
+    /**
+     * Compress the Sqlite database.
+     *
+     * @return string
+     */
+    public function downloadDatabase()
+    {
+        return gzencode(file_get_contents(DB_FILENAME));
+    }
+
+    /**
+     * Get the Sqlite database size in bytes.
+     *
+     * @return int
+     */
+    public function getDatabaseSize()
+    {
+        return DB_DRIVER === 'sqlite' ? filesize(DB_FILENAME) : 0;
+    }
+
+    /**
+     * Regenerate a token.
+     *
+     * @param string $option Parameter name
+     *
+     * @return bool
+     */
+    public function regenerateToken($option)
+    {
+        return $this->save([$option => Token::getToken()]);
+    }
+
+    /**
+     * Prepare data before save.
+     *
+     * @param array $values
+     *
+     * @return array
+     */
+    public function prepare(array $values)
+    {
+        if (!empty($values['application_url']) && substr($values['application_url'], -1) !== '/') {
+            $values['application_url'] = $values['application_url'].'/';
+        }
+
+        return $values;
     }
 }

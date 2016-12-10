@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ColorModel;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 
 class ColorTest extends Base
 {
@@ -62,12 +62,12 @@ class ColorTest extends Base
     public function testGetDefaultColor()
     {
         $colorModel = new ColorModel($this->container);
-        $configModel = new ConfigModel($this->container);
+        $settingModel = new SettingModel($this->container);
 
         $this->assertEquals('yellow', $colorModel->getDefaultColor());
 
         $this->container['memoryCache']->flush();
-        $this->assertTrue($configModel->save(['default_color' => 'red']));
+        $this->assertTrue($settingModel->save(['default_color' => 'red']));
         $this->assertEquals('red', $colorModel->getDefaultColor());
     }
 

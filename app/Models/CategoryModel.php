@@ -183,7 +183,7 @@ class CategoryModel extends Base
     public function createDefaultCategories($project_id)
     {
         $results = [];
-        $categories = explode(',', $this->configModel->get('project_categories'));
+        $categories = explode(',', $this->settingModel->get('project_categories'));
         $position = 1;
 
         foreach ($categories as $category) {

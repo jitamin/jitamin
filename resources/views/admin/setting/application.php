@@ -1,8 +1,8 @@
-<?php echo $this->render('settings/update', ['is_outdated' => $is_outdated, 'current_version' => $current_version, 'latest_version' => $latest_version]) ?>
+<?php echo $this->render('admin/setting/update', ['is_outdated' => $is_outdated, 'current_version' => $current_version, 'latest_version' => $latest_version]) ?>
 <div class="page-header">
     <h2><?= t('Application settings') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('SettingsController', 'save', ['redirect' => 'index']) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('ConfigController', 'save', ['redirect' => 'index']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 

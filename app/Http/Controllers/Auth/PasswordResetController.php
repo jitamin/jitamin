@@ -133,7 +133,7 @@ class PasswordResetController extends BaseController
      */
     private function checkActivation()
     {
-        if ($this->configModel->get('password_reset', 0) == 0) {
+        if ($this->settingModel->get('password_reset', 0) == 0) {
             throw AccessForbiddenException::getInstance()->withoutLayout();
         }
     }

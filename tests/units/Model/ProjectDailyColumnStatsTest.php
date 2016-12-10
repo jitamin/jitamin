@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectDailyColumnStatsModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
@@ -126,12 +126,12 @@ class ProjectDailyColumnStatsTest extends Base
 
     public function testUpdateTotalsWithOnlyOpenTasks()
     {
-        $configModel = new ConfigModel($this->container);
+        $settingModel = new SettingModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
-        $this->assertTrue($configModel->save(['cfd_include_closed_tasks' => 0]));
+        $this->assertTrue($settingModel->save(['cfd_include_closed_tasks' => 0]));
         $this->container['memoryCache']->flush();
 
         $this->createTasks(1, 2, 1);

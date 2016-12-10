@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ColumnModel;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
 
 class BoardTest extends Base
@@ -21,7 +21,7 @@ class BoardTest extends Base
     {
         $p = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         // Default columns
 

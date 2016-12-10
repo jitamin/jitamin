@@ -130,8 +130,8 @@ class BoardAjaxController extends BaseController
     {
         return $this->template->render('board/table_container', [
             'project'                        => $this->projectModel->getById($project_id),
-            'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-            'board_highlight_period'         => $this->configModel->get('board_highlight_period'),
+            'board_private_refresh_interval' => $this->settingModel->get('board_private_refresh_interval'),
+            'board_highlight_period'         => $this->settingModel->get('board_highlight_period'),
             'swimlanes'                      => $this->taskLexer
                 ->build($this->userSession->getFilters($project_id))
                 ->format(BoardFormatter::getInstance($this->container)->withProjectId($project_id)),

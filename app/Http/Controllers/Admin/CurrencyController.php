@@ -24,8 +24,8 @@ class CurrencyController extends BaseController
      */
     public function index(array $values = [], array $errors = [])
     {
-        $this->response->html($this->helper->layout->config('config/currency', [
-            'config_values' => ['application_currency' => $this->configModel->get('application_currency')],
+        $this->response->html($this->helper->layout->setting('admin/setting/currency', [
+            'config_values' => ['application_currency' => $this->settingModel->get('application_currency')],
             'values'        => $values,
             'errors'        => $errors,
             'rates'         => $this->currencyModel->getAll(),
@@ -62,7 +62,7 @@ class CurrencyController extends BaseController
     {
         $values = $this->request->getValues();
 
-        if ($this->configModel->save($values)) {
+        if ($this->settingModel->save($values)) {
             $this->flash->success(t('Settings saved successfully.'));
         } else {
             $this->flash->failure(t('Unable to save your settings.'));

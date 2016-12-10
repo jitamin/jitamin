@@ -35,7 +35,7 @@ class DocumentationController extends BaseController
      */
     public function shortcuts()
     {
-        $this->response->html($this->template->render('config/keyboard_shortcuts'));
+        $this->response->html($this->template->render('admin/setting/keyboard_shortcuts'));
     }
 
     /**

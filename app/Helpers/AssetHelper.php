@@ -52,8 +52,8 @@ class AssetHelper extends Base
      */
     public function customCss()
     {
-        if ($this->configModel->get('application_stylesheet')) {
-            return '<style>'.$this->configModel->get('application_stylesheet').'</style>';
+        if ($this->settingModel->get('application_stylesheet')) {
+            return '<style>'.$this->settingModel->get('application_stylesheet').'</style>';
         }
 
         return '';

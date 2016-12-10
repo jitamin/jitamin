@@ -14,7 +14,7 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Bus\Subscriber\ProjectModificationDateSubscriber;
 use Hiject\Core\Translator;
 use Hiject\Model\CategoryModel;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
@@ -91,12 +91,12 @@ class ProjectModelTest extends Base
     public function testCreationWithDefaultCategories()
     {
         $projectModel = new ProjectModel($this->container);
-        $configModel = new ConfigModel($this->container);
+        $settingModel = new SettingModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
         // Multiple categories correctly formatted
 
-        $this->assertTrue($configModel->save(['project_categories' => 'Test1, Test2']));
+        $this->assertTrue($settingModel->save(['project_categories' => 'Test1, Test2']));
         $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest1']));
 
         $project = $projectModel->getById(1);
@@ -110,7 +110,7 @@ class ProjectModelTest extends Base
 
         // Single category
 
-        $this->assertTrue($configModel->save(['project_categories' => 'Test1']));
+        $this->assertTrue($settingModel->save(['project_categories' => 'Test1']));
         $this->container['memoryCache']->flush();
         $this->assertEquals(2, $projectModel->create(['name' => 'UnitTest2']));
 
@@ -124,7 +124,7 @@ class ProjectModelTest extends Base
 
         // Multiple categories badly formatted
 
-        $this->assertTrue($configModel->save(['project_categories' => 'ABC, , DEF 3,  ']));
+        $this->assertTrue($settingModel->save(['project_categories' => 'ABC, , DEF 3,  ']));
         $this->container['memoryCache']->flush();
         $this->assertEquals(3, $projectModel->create(['name' => 'UnitTest3']));
 
@@ -138,7 +138,7 @@ class ProjectModelTest extends Base
         $this->assertEquals('DEF 3', $categories[1]['name']);
 
         // No default categories
-        $this->assertTrue($configModel->save(['project_categories' => '  ']));
+        $this->assertTrue($settingModel->save(['project_categories' => '  ']));
         $this->container['memoryCache']->flush();
         $this->assertEquals(4, $projectModel->create(['name' => 'UnitTest4']));
 

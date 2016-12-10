@@ -171,7 +171,7 @@ class ColorModel extends Base
      */
     public function getDefaultColor()
     {
-        return $this->configModel->get('default_color', 'yellow');
+        return $this->settingModel->get('default_color', 'yellow');
     }
 
     /**

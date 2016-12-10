@@ -51,7 +51,7 @@ class UserNotificationModel extends Base
         if (!empty($user['language'])) {
             Translator::load($user['language']);
         } else {
-            Translator::load($this->configModel->get('application_language', 'en_US'));
+            Translator::load($this->settingModel->get('application_language', 'en_US'));
         }
 
         foreach ($this->userNotificationTypeModel->getSelectedTypes($user['id']) as $type) {

@@ -43,7 +43,7 @@ class DateParserTest extends Base
         $dates = $dateParser->getDateFormats(true);
         $this->assertEquals('m/d/Y', $dates[0]);
 
-        $this->container['configModel']->save(['application_date_format' => 'd/m/Y']);
+        $this->container['settingModel']->save(['application_date_format' => 'd/m/Y']);
         $this->container['memoryCache']->flush();
 
         $dates = $dateParser->getDateFormats();
@@ -73,7 +73,7 @@ class DateParserTest extends Base
         $dates = $dateParser->getDateTimeFormats(true);
         $this->assertEquals('m/d/Y H:i', $dates[0]);
 
-        $this->container['configModel']->save(['application_datetime_format' => 'd/m/Y g:i a']);
+        $this->container['settingModel']->save(['application_datetime_format' => 'd/m/Y g:i a']);
         $this->container['memoryCache']->flush();
 
         $dates = $dateParser->getDateTimeFormats();
@@ -128,7 +128,7 @@ class DateParserTest extends Base
 
     public function testGetTimestampFromUserDateFormats()
     {
-        $this->container['configModel']->save([
+        $this->container['settingModel']->save([
             'application_date_format'     => 'd/m/Y',
             'application_datetime_format' => 'd/m/Y g:i a',
         ]);
@@ -145,7 +145,7 @@ class DateParserTest extends Base
 
     public function testGetTimestampFromAnotherUserDateFormats()
     {
-        $this->container['configModel']->save([
+        $this->container['settingModel']->save([
             'application_date_format'     => 'd.m.Y',
             'application_datetime_format' => 'd.m.Y H:i',
         ]);

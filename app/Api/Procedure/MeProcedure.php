@@ -45,7 +45,7 @@ class MeProcedure extends BaseProcedure
 
     public function createMyPrivateProject($name, $description = null)
     {
-        if ($this->configModel->get('disable_private_project', 0) == 1) {
+        if ($this->settingModel->get('disable_private_project', 0) == 1) {
             return false;
         }
 

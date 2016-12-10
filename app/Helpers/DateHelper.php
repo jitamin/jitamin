@@ -28,7 +28,7 @@ class DateHelper extends Base
      */
     public function time($value)
     {
-        return date($this->configModel->get('application_time_format', 'H:i'), $value);
+        return date($this->settingModel->get('application_time_format', 'H:i'), $value);
     }
 
     /**
@@ -48,7 +48,7 @@ class DateHelper extends Base
             $value = strtotime($value);
         }
 
-        return date($this->configModel->get('application_date_format', 'm/d/Y'), $value);
+        return date($this->settingModel->get('application_date_format', 'm/d/Y'), $value);
     }
 
     /**
@@ -60,7 +60,7 @@ class DateHelper extends Base
      */
     public function datetime($value)
     {
-        return date($this->configModel->get('application_datetime_format', 'm/d/Y H:i'), $value);
+        return date($this->settingModel->get('application_datetime_format', 'm/d/Y H:i'), $value);
     }
 
     /**

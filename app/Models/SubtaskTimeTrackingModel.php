@@ -176,7 +176,7 @@ class SubtaskTimeTrackingModel extends Base
      */
     public function toggleTimer($subtask_id, $user_id, $status)
     {
-        if ($this->configModel->get('subtask_time_tracking') == 1) {
+        if ($this->settingModel->get('subtask_time_tracking') == 1) {
             if ($status == SubtaskModel::STATUS_INPROGRESS) {
                 return $this->subtaskTimeTrackingModel->logStartTime($subtask_id, $user_id);
             } elseif ($status == SubtaskModel::STATUS_DONE) {

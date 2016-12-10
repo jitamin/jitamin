@@ -11,21 +11,21 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 
-class ConfigTest extends Base
+class SettingTest extends Base
 {
     public function testRegenerateToken()
     {
-        $configModel = new ConfigModel($this->container);
-        $token = $configModel->getOption('api_token');
-        $this->assertTrue($configModel->regenerateToken('api_token'));
-        $this->assertNotEquals($token, $configModel->getOption('api_token'));
+        $settingModel = new SettingModel($this->container);
+        $token = $settingModel->getOption('api_token');
+        $this->assertTrue($settingModel->regenerateToken('api_token'));
+        $this->assertNotEquals($token, $settingModel->getOption('api_token'));
     }
 
     public function testCRUDOperations()
     {
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         $this->assertTrue($c->save(['key1' => 'value1']));
         $this->assertTrue($c->save(['key1' => 'value2']));
@@ -50,7 +50,7 @@ class ConfigTest extends Base
 
     public function testSaveApplicationUrl()
     {
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         $this->assertTrue($c->save(['application_url' => 'http://localhost/']));
         $this->assertEquals('http://localhost/', $c->getOption('application_url'));
@@ -64,7 +64,7 @@ class ConfigTest extends Base
 
     public function testDefaultValues()
     {
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         $this->assertEquals(172800, $c->getOption('board_highlight_period'));
         $this->assertEquals(60, $c->getOption('board_public_refresh_interval'));
@@ -101,7 +101,7 @@ class ConfigTest extends Base
 
     public function testGetOption()
     {
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         $this->assertEquals('', $c->getOption('board_columns'));
         $this->assertEquals('test', $c->getOption('board_columns', 'test'));
@@ -110,7 +110,7 @@ class ConfigTest extends Base
 
     public function testGetWithCaching()
     {
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         $this->assertEquals('UTC', $c->get('application_timezone'));
         $this->assertTrue($c->save(['application_timezone' => 'Europe/Paris']));

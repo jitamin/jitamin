@@ -44,7 +44,7 @@ class LinkController extends BaseController
      */
     public function index(array $values = [], array $errors = [])
     {
-        $this->response->html($this->helper->layout->config('link/index', [
+        $this->response->html($this->helper->layout->setting('admin/link/index', [
             'links'  => $this->linkModel->getMergedList(),
             'values' => $values,
             'errors' => $errors,
@@ -53,9 +53,9 @@ class LinkController extends BaseController
     }
 
     /**
-     * Validate and save a new link.
+     * Validate and store a new link.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         list($valid, $errors) = $this->linkValidator->validateCreation($values);
@@ -86,7 +86,7 @@ class LinkController extends BaseController
         $link = $this->getLink();
         $link['label'] = t($link['label']);
 
-        $this->response->html($this->helper->layout->config('link/edit', [
+        $this->response->html($this->helper->layout->setting('admin/link/edit', [
             'values' => $values ?: $link,
             'errors' => $errors,
             'labels' => $this->linkModel->getList($link['id']),
@@ -123,7 +123,7 @@ class LinkController extends BaseController
     {
         $link = $this->getLink();
 
-        $this->response->html($this->helper->layout->config('link/remove', [
+        $this->response->html($this->helper->layout->setting('admin/link/remove', [
             'link'  => $link,
             'title' => t('Remove a link'),
         ]));

@@ -31,7 +31,7 @@ class ConfigController extends BaseController
             $latest_version = $latest_tag;
         }
 
-        $this->response->html($this->helper->layout->config('config/application', [
+        $this->response->html($this->helper->layout->setting('admin/setting/application', [
             'is_outdated'      => $is_outdated,
             'current_version'  => $current_version,
             'latest_version'   => $latest_version,
@@ -51,13 +51,13 @@ class ConfigController extends BaseController
      */
     public function email()
     {
-        $values = $this->configModel->getAll();
+        $values = $this->settingModel->getAll();
 
         if (empty($values['mail_transport'])) {
             $values['mail_transport'] = MAIL_TRANSPORT;
         }
 
-        $this->response->html($this->helper->layout->config('config/email', [
+        $this->response->html($this->helper->layout->setting('admin/setting/email', [
             'values'          => $values,
             'mail_transports' => $this->emailClient->getAvailableTransports(),
             'title'           => t('Settings').' &raquo; '.t('Email settings'),
@@ -69,7 +69,7 @@ class ConfigController extends BaseController
      */
     public function project()
     {
-        $this->response->html($this->helper->layout->config('config/project', [
+        $this->response->html($this->helper->layout->setting('admin/setting/project', [
             'colors'          => $this->colorModel->getList(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
             'title'           => t('Settings').' &raquo; '.t('Project settings'),
@@ -81,7 +81,7 @@ class ConfigController extends BaseController
      */
     public function board()
     {
-        $this->response->html($this->helper->layout->config('config/board', [
+        $this->response->html($this->helper->layout->setting('admin/setting/board', [
             'title' => t('Settings').' &raquo; '.t('Board settings'),
         ]));
     }
@@ -91,7 +91,7 @@ class ConfigController extends BaseController
      */
     public function calendar()
     {
-        $this->response->html($this->helper->layout->config('config/calendar', [
+        $this->response->html($this->helper->layout->setting('admin/setting/calendar', [
             'title' => t('Settings').' &raquo; '.t('Calendar settings'),
         ]));
     }
@@ -101,7 +101,7 @@ class ConfigController extends BaseController
      */
     public function integrations()
     {
-        $this->response->html($this->helper->layout->config('config/integrations', [
+        $this->response->html($this->helper->layout->setting('admin/setting/integrations', [
             'title' => t('Settings').' &raquo; '.t('Integrations'),
         ]));
     }
@@ -111,7 +111,7 @@ class ConfigController extends BaseController
      */
     public function webhook()
     {
-        $this->response->html($this->helper->layout->config('config/webhook', [
+        $this->response->html($this->helper->layout->setting('admin/setting/webhook', [
             'title' => t('Settings').' &raquo; '.t('Webhook settings'),
         ]));
     }
@@ -121,7 +121,7 @@ class ConfigController extends BaseController
      */
     public function api()
     {
-        $this->response->html($this->helper->layout->config('config/api', [
+        $this->response->html($this->helper->layout->setting('admin/setting/api', [
             'title' => t('Settings').' &raquo; '.t('API'),
         ]));
     }
@@ -131,8 +131,8 @@ class ConfigController extends BaseController
      */
     public function help()
     {
-        $this->response->html($this->helper->layout->config('config/help', [
-            'db_size'    => $this->configModel->getDatabaseSize(),
+        $this->response->html($this->helper->layout->setting('admin/setting/help', [
+            'db_size'    => $this->settingModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title'      => t('Settings').' &raquo; '.t('About'),
@@ -144,8 +144,8 @@ class ConfigController extends BaseController
      */
     public function about()
     {
-        $this->response->html($this->helper->layout->config('config/about', [
-            'db_size'    => $this->configModel->getDatabaseSize(),
+        $this->response->html($this->helper->layout->setting('admin/setting/about', [
+            'db_size'    => $this->settingModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title'      => t('Settings').' &raquo; '.t('About'),
@@ -180,7 +180,7 @@ class ConfigController extends BaseController
                 break;
         }
 
-        if ($this->configModel->save($values)) {
+        if ($this->settingModel->save($values)) {
             $this->languageModel->loadCurrentLanguage();
             $this->flash->success(t('Settings saved successfully.'));
         } else {
@@ -197,7 +197,7 @@ class ConfigController extends BaseController
     {
         $this->checkCSRFParam();
         $this->response->withFileDownload('db.sqlite.gz');
-        $this->response->binary($this->configModel->downloadDatabase());
+        $this->response->binary($this->settingModel->downloadDatabase());
     }
 
     /**
@@ -206,7 +206,7 @@ class ConfigController extends BaseController
     public function optimizeDb()
     {
         $this->checkCSRFParam();
-        $this->configModel->optimizeDatabase();
+        $this->settingModel->optimizeDatabase();
         $this->flash->success(t('Database optimization done.'));
         $this->response->redirect($this->helper->url->to('ConfigController', 'index'));
     }
@@ -219,7 +219,7 @@ class ConfigController extends BaseController
         $type = $this->request->getStringParam('type');
 
         $this->checkCSRFParam();
-        $this->configModel->regenerateToken($type.'_token');
+        $this->settingModel->regenerateToken($type.'_token');
 
         $this->flash->success(t('Token regenerated.'));
         $this->response->redirect($this->helper->url->to('ConfigController', $type));

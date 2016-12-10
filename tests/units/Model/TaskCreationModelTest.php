@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
@@ -380,7 +380,7 @@ class TaskCreationModelTest extends Base
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
-        $configModel = new ConfigModel($this->container);
+        $settingModel = new SettingModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
         $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
@@ -389,7 +389,7 @@ class TaskCreationModelTest extends Base
         $this->assertNotEmpty($task);
         $this->assertEquals('yellow', $task['color_id']);
 
-        $this->assertTrue($configModel->save(['default_color' => 'orange']));
+        $this->assertTrue($settingModel->save(['default_color' => 'orange']));
         $this->container['memoryCache']->flush();
 
         $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));

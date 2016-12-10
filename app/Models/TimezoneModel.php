@@ -48,7 +48,7 @@ class TimezoneModel extends Base
             return $this->sessionStorage->user['timezone'];
         }
 
-        return $this->configModel->get('application_timezone', 'UTC');
+        return $this->settingModel->get('application_timezone', 'UTC');
     }
 
     /**

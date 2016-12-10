@@ -47,9 +47,9 @@ class BoardController extends BaseController
             'description'                    => $project['description'],
             'no_layout'                      => true,
             'not_editable'                   => true,
-            'board_public_refresh_interval'  => $this->configModel->get('board_public_refresh_interval'),
-            'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-            'board_highlight_period'         => $this->configModel->get('board_highlight_period'),
+            'board_public_refresh_interval'  => $this->settingModel->get('board_public_refresh_interval'),
+            'board_private_refresh_interval' => $this->settingModel->get('board_private_refresh_interval'),
+            'board_highlight_period'         => $this->settingModel->get('board_highlight_period'),
         ]));
     }
 
@@ -65,8 +65,8 @@ class BoardController extends BaseController
             'project'                        => $project,
             'title'                          => $project['name'],
             'description'                    => $this->helper->projectHeader->getDescription($project),
-            'board_private_refresh_interval' => $this->configModel->get('board_private_refresh_interval'),
-            'board_highlight_period'         => $this->configModel->get('board_highlight_period'),
+            'board_private_refresh_interval' => $this->settingModel->get('board_private_refresh_interval'),
+            'board_highlight_period'         => $this->settingModel->get('board_highlight_period'),
             'swimlanes'                      => $this->taskLexer
                 ->build($query)
                 ->format(BoardFormatter::getInstance($this->container)->withProjectId($project['id'])),

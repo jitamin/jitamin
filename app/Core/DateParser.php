@@ -29,7 +29,7 @@ class DateParser extends Base
      */
     public function getUserDateFormat()
     {
-        return $this->configModel->get('application_date_format', self::DATE_FORMAT);
+        return $this->settingModel->get('application_date_format', self::DATE_FORMAT);
     }
 
     /**
@@ -39,7 +39,7 @@ class DateParser extends Base
      */
     public function getUserDateTimeFormat()
     {
-        return $this->configModel->get('application_datetime_format', self::DATE_TIME_FORMAT);
+        return $this->settingModel->get('application_datetime_format', self::DATE_TIME_FORMAT);
     }
 
     /**
@@ -49,7 +49,7 @@ class DateParser extends Base
      */
     public function getUserTimeFormat()
     {
-        return $this->configModel->get('application_time_format', self::TIME_FORMAT);
+        return $this->settingModel->get('application_time_format', self::TIME_FORMAT);
     }
 
     /**

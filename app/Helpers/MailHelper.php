@@ -59,7 +59,7 @@ class MailHelper extends Base
      */
     public function getMailSenderAddress()
     {
-        $email = $this->configModel->get('mail_sender_address');
+        $email = $this->settingModel->get('mail_sender_address');
 
         if (!empty($email)) {
             return $email;
@@ -75,7 +75,7 @@ class MailHelper extends Base
      */
     public function getMailTransport()
     {
-        $transport = $this->configModel->get('mail_transport');
+        $transport = $this->settingModel->get('mail_transport');
 
         if (!empty($transport)) {
             return $transport;

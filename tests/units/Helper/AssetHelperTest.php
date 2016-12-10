@@ -12,14 +12,14 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Helper\AssetHelper;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 
 class AssetHelperTest extends Base
 {
     public function testCustomCss()
     {
         $h = new AssetHelper($this->container);
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
 
         $this->assertEmpty($h->customCss());
 

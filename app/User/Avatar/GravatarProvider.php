@@ -44,6 +44,6 @@ class GravatarProvider extends Base implements AvatarProviderInterface
      */
     public function isActive(array $user)
     {
-        return !empty($user['email']) && $this->configModel->get('integration_gravatar') == 1;
+        return !empty($user['email']) && $this->settingModel->get('integration_gravatar') == 1;
     }
 }

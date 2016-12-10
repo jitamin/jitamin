@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Bus\Subscriber\NotificationSubscriber;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskCreationModel;
 
@@ -20,12 +20,12 @@ class WebhookNotificationTest extends Base
 {
     public function testTaskCreation()
     {
-        $configModel = new ConfigModel($this->container);
+        $settingModel = new SettingModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskCreationModel = new TaskCreationModel($this->container);
         $this->container['dispatcher']->addSubscriber(new NotificationSubscriber($this->container));
 
-        $configModel->save(['webhook_url' => 'http://localhost/?task-creation']);
+        $settingModel->save(['webhook_url' => 'http://localhost/?task-creation']);
 
         $this->container['httpClient']
             ->expects($this->once())

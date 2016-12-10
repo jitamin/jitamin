@@ -135,7 +135,7 @@ class UrlHelper extends Base
     public function base()
     {
         if (empty($this->base)) {
-            $this->base = $this->configModel->get('application_url') ?: $this->server();
+            $this->base = $this->settingModel->get('application_url') ?: $this->server();
         }
 
         return $this->base;

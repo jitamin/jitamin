@@ -28,7 +28,7 @@ class AppHelper extends Base
      */
     public function config($param, $default_value = '')
     {
-        return $this->configModel->get($param, $default_value);
+        return $this->settingModel->get($param, $default_value);
     }
 
     /**

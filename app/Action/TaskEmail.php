@@ -89,7 +89,7 @@ class TaskEmail extends Base
                 $this->getParam('subject'),
                 $this->template->render('notification/task_create', [
                     'task'            => $data['task'],
-                    'application_url' => $this->configModel->get('application_url'),
+                    'application_url' => $this->settingModel->get('application_url'),
                 ])
             );
 

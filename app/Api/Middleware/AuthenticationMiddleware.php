@@ -82,6 +82,6 @@ class AuthenticationMiddleware extends Base implements MiddlewareInterface
             return API_AUTHENTICATION_TOKEN;
         }
 
-        return $this->configModel->get('api_token');
+        return $this->settingModel->get('api_token');
     }
 }

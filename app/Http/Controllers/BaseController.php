@@ -35,7 +35,7 @@ abstract class BaseController extends Base
      */
     protected function checkWebhookToken()
     {
-        if ($this->configModel->get('webhook_token') !== $this->request->getStringParam('token')) {
+        if ($this->settingModel->get('webhook_token') !== $this->request->getStringParam('token')) {
             throw AccessForbiddenException::getInstance()->withoutLayout();
         }
     }

@@ -53,7 +53,7 @@ class CalendarHelper extends Base
      */
     public function getTaskEvents(QueryBuilder $queryBuilder, $start, $end)
     {
-        $startColumn = $this->configModel->get('calendar_project_tasks', 'date_started');
+        $startColumn = $this->settingModel->get('calendar_project_tasks', 'date_started');
 
         $queryBuilder->getQuery()->addCondition($this->getCalendarCondition(
             $this->dateParser->getTimestampFromIsoFormat($start),

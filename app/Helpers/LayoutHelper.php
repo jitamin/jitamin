@@ -108,24 +108,24 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for config views.
+     * Common layout for setting views.
      *
      * @param string $template
      * @param array  $params
      *
      * @return string
      */
-    public function config($template, array $params)
+    public function setting($template, array $params)
     {
         if (!isset($params['values'])) {
-            $params['values'] = $this->configModel->getAll();
+            $params['values'] = $this->settingModel->getAll();
         }
 
         if (!isset($params['errors'])) {
             $params['errors'] = [];
         }
 
-        return $this->subLayout('config/layout', 'config/sidebar', $template, $params);
+        return $this->subLayout('admin/setting/layout', 'admin/setting/sidebar', $template, $params);
     }
 
     /**

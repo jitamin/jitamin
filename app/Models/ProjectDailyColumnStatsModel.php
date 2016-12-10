@@ -251,7 +251,7 @@ class ProjectDailyColumnStatsModel extends Base
      */
     private function getTaskStatusConfig()
     {
-        if ($this->configModel->get('cfd_include_closed_tasks') == 1) {
+        if ($this->settingModel->get('cfd_include_closed_tasks') == 1) {
             return [TaskModel::STATUS_OPEN, TaskModel::STATUS_CLOSED];
         }
 

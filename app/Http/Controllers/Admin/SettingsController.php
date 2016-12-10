@@ -51,7 +51,7 @@ class SettingsController extends BaseController
      */
     public function email()
     {
-        $values = $this->configModel->getAll();
+        $values = $this->settingModel->getAll();
 
         if (empty($values['mail_transport'])) {
             $values['mail_transport'] = MAIL_TRANSPORT;
@@ -132,7 +132,7 @@ class SettingsController extends BaseController
     public function help()
     {
         $this->response->html($this->helper->layout->settings('settings/help', [
-            'db_size'    => $this->configModel->getDatabaseSize(),
+            'db_size'    => $this->settingModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title'      => t('Settings').' &raquo; '.t('About'),
@@ -145,7 +145,7 @@ class SettingsController extends BaseController
     public function about()
     {
         $this->response->html($this->helper->layout->settings('settings/about', [
-            'db_size'    => $this->configModel->getDatabaseSize(),
+            'db_size'    => $this->settingModel->getDatabaseSize(),
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title'      => t('Settings').' &raquo; '.t('About'),
@@ -180,7 +180,7 @@ class SettingsController extends BaseController
                 break;
         }
 
-        if ($this->configModel->save($values)) {
+        if ($this->settingModel->save($values)) {
             $this->languageModel->loadCurrentLanguage();
             $this->flash->success(t('Settings saved successfully.'));
         } else {
@@ -197,7 +197,7 @@ class SettingsController extends BaseController
     {
         $this->checkCSRFParam();
         $this->response->withFileDownload('db.sqlite.gz');
-        $this->response->binary($this->configModel->downloadDatabase());
+        $this->response->binary($this->settingModel->downloadDatabase());
     }
 
     /**
@@ -206,7 +206,7 @@ class SettingsController extends BaseController
     public function optimizeDb()
     {
         $this->checkCSRFParam();
-        $this->configModel->optimizeDatabase();
+        $this->settingModel->optimizeDatabase();
         $this->flash->success(t('Database optimization done.'));
         $this->response->redirect($this->helper->url->to('ConfigController', 'index'));
     }
@@ -219,7 +219,7 @@ class SettingsController extends BaseController
         $type = $this->request->getStringParam('type');
 
         $this->checkCSRFParam();
-        $this->configModel->regenerateToken($type.'_token');
+        $this->settingModel->regenerateToken($type.'_token');
 
         $this->flash->success(t('Token regenerated.'));
         $this->response->redirect($this->helper->url->to('ConfigController', $type));

@@ -30,4 +30,4 @@
     <?= t('There is no link.') ?>
 <?php endif ?>
 
-<?= $this->render('link/create', ['values' => $values, 'errors' => $errors]) ?>
+<?= $this->render('admin/link/create', ['values' => $values, 'errors' => $errors]) ?>

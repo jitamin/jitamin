@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Core\Http\Request;
 use Hiject\Helper\UrlHelper;
-use Hiject\Model\ConfigModel;
+use Hiject\Model\SettingModel;
 
 class UrlHelperTest extends Base
 {
@@ -124,7 +124,7 @@ class UrlHelperTest extends Base
         $h = new UrlHelper($this->container);
         $this->assertEquals('http://hj:1234/', $h->base());
 
-        $c = new ConfigModel($this->container);
+        $c = new SettingModel($this->container);
         $c->save(['application_url' => 'https://myhiject/']);
         $this->container['memoryCache']->flush();
 

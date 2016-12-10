@@ -42,7 +42,7 @@ class SubtaskStatusModel extends Base
      */
     public function hasSubtaskInProgress($user_id)
     {
-        return $this->configModel->get('subtask_restriction') == 1 &&
+        return $this->settingModel->get('subtask_restriction') == 1 &&
             $this->db->table(SubtaskModel::TABLE)
                 ->eq('status', SubtaskModel::STATUS_INPROGRESS)
                 ->eq('user_id', $user_id)
