@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskTimeTrackingModel;
 use Hiject\Model\TaskCreationModel;

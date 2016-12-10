@@ -12,8 +12,8 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Bus\Subscriber\NotificationSubscriber;
-use Hiject\Model\SettingModel;
 use Hiject\Model\ProjectModel;
+use Hiject\Model\SettingModel;
 use Hiject\Model\TaskCreationModel;
 
 class WebhookNotificationTest extends Base
