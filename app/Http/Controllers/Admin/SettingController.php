@@ -12,9 +12,9 @@
 namespace Hiject\Controller;
 
 /**
- * Config Controller.
+ * Setting Controller.
  */
-class ConfigController extends BaseController
+class SettingController extends BaseController
 {
     /**
      * Display the application settings page.
@@ -187,7 +187,7 @@ class ConfigController extends BaseController
             $this->flash->failure(t('Unable to save your settings.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ConfigController', $redirect));
+        $this->response->redirect($this->helper->url->to('SettingController', $redirect));
     }
 
     /**
@@ -208,7 +208,7 @@ class ConfigController extends BaseController
         $this->checkCSRFParam();
         $this->settingModel->optimizeDatabase();
         $this->flash->success(t('Database optimization done.'));
-        $this->response->redirect($this->helper->url->to('ConfigController', 'index'));
+        $this->response->redirect($this->helper->url->to('SettingController', 'index'));
     }
 
     /**
@@ -222,6 +222,6 @@ class ConfigController extends BaseController
         $this->settingModel->regenerateToken($type.'_token');
 
         $this->flash->success(t('Token regenerated.'));
-        $this->response->redirect($this->helper->url->to('ConfigController', $type));
+        $this->response->redirect($this->helper->url->to('SettingController', $type));
     }
 }

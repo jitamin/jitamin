@@ -19,14 +19,14 @@ use Hiject\Core\Base;
 class AppHelper extends Base
 {
     /**
-     * Get config variable.
+     * Get setting variable.
      *
      * @param string $param
      * @param mixed  $default_value
      *
      * @return mixed
      */
-    public function config($param, $default_value = '')
+    public function setting($param, $default_value = '')
     {
         return $this->settingModel->get($param, $default_value);
     }

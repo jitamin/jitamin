@@ -12,7 +12,7 @@
             <input type="text" class="auto-select" readonly="readonly" value="<?= $this->url->base().'jsonrpc.php' ?>">
         </li>
         <li>
-            <?= $this->url->link(t('Reset token'), 'ConfigController', 'token', ['type' => 'api'], true) ?>
+            <?= $this->url->link(t('Reset token'), 'SettingController', 'token', ['type' => 'api'], true) ?>
         </li>
     </ul>
 </section>

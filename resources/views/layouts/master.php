@@ -37,7 +37,7 @@
             <?php else: ?>
                 Hiject
             <?php endif ?>
-            - <?= $this->app->config('application_name') ?: 'Hiject' ?>
+            - <?= $this->app->setting('application_name') ?: 'Hiject' ?>
         </title>
 
         <?= $this->hook->render('template:layout:head') ?>

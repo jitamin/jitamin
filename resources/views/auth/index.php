@@ -6,7 +6,7 @@
         <p class="alert alert-error"><?= $this->text->e($errors['login']) ?></p>
     <?php endif ?>
 
-    <h2><?= t('Sign in to %s', $this->app->config('application_name') ?: 'Hiject') ?></h2>
+    <h2><?= t('Sign in to %s', $this->app->setting('application_name') ?: 'Hiject') ?></h2>
 
     <?php if (!HIDE_LOGIN_FORM) : ?>
     <form method="post" action="<?= $this->url->href('AuthController', 'check') ?>">
@@ -32,7 +32,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-primary btn-block"><?= t('Sign in') ?></button>
         </div>
-        <?php if ($this->app->config('password_reset') == 1): ?>
+        <?php if ($this->app->setting('password_reset') == 1): ?>
             <div class="reset-password">
                 <?= $this->url->link(t('Forgot password?'), 'PasswordResetController', 'create') ?>
             </div>

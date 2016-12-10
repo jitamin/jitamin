@@ -1,5 +1,5 @@
 <?php $has_project_creation_access = $this->user->hasAccess('ProjectController', 'create'); ?>
-<?php $is_private_project_enabled = $this->app->config('disable_private_project', 0) == 0; ?>
+<?php $is_private_project_enabled = $this->app->setting('disable_private_project', 0) == 0; ?>
 
 <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
     <li class="dropdown">

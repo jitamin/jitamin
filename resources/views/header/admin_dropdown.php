@@ -1,4 +1,4 @@
-<?php if ($this->user->hasAccess('ConfigController', 'index')): ?>
+<?php if ($this->user->hasAccess('SettingController', 'index')): ?>
 <li class="dropdown">
     <a href="#" class="dropdown-menu"><i class="fa fa-wrench"></i> <i class="fa fa-caret-down"></i></a>
     <ul>
@@ -16,7 +16,7 @@
             </li>
             <li>
                 <i class="fa fa-gears"></i>
-                <?= $this->url->link(t('Application settings'), 'ConfigController', 'index') ?>
+                <?= $this->url->link(t('Application settings'), 'SettingController', 'index') ?>
             </li>
     </ul>
 </li>
