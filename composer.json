@@ -9,7 +9,7 @@
         "discard-changes": true
     },
     "require" : {
-        "php" : ">=5.3.9",
+        "php" : ">=5.5.9",
         "ext-gd" : "*",
         "ext-mbstring" : "*",
         "ext-memcached" : "*",
