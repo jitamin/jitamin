@@ -34,7 +34,10 @@ class RouteProvider implements ServiceProviderInterface
         $container['route'] = new Route($container);
 
         if (ENABLE_URL_REWRITE) {
-            require_once __DIR__.'/../../routes/web.php';
+            $container['route']->enable();
+            foreach (glob(HIJECT_DIR . DIRECTORY_SEPARATOR . 'routes'.DIRECTORY_SEPARATOR . '*.php') as $file) {
+                require $file;
+            }
         }
 
         return $container;
