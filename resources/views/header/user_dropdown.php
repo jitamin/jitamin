@@ -10,12 +10,8 @@
             <?= $this->url->link(t('Edit profile'), 'ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
         </li>
         <li>
-            <i class="fa fa-star"></i>
-            <?= $this->url->link(t('My stars'), 'DashboardController', 'stars', ['user_id' => $this->user->getId()]) ?>
-        </li>
-        <li>
             <i class="fa fa-cubes"></i>
-            <?= $this->url->link(t('Project management'), 'ProjectController', 'index') ?>
+            <?= $this->url->link(t('My projects'), 'DashboardController', 'index', ['user_id' => $this->user->getId()]) ?>
         </li>
         <?= $this->hook->render('template:header:dropdown') ?>
 

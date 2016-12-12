@@ -59,20 +59,6 @@ class DashboardController extends BaseController
     }
 
     /**
-     * My projects.
-     */
-    public function projects()
-    {
-        $user = $this->getUser();
-
-        $this->response->html($this->helper->layout->dashboard('dashboard/projects', [
-            'title'     => t('Projects overview for %s', $this->helper->user->getFullname($user)),
-            'paginator' => $this->projectPagination->getDashboardPaginator($user['id'], 'projects', 25),
-            'user'      => $user,
-        ]));
-    }
-
-    /**
      * My stars.
      */
     public function stars()

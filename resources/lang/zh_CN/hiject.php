@@ -412,7 +412,7 @@ return [
     'API' => 'API',
     'Create a comment from an external provider' => '从外部创建一个评论',
     'My' => '我的',
-    'My stars' => '我的按赞项目',
+    'My stars' => '按赞项目',
     'Project star' => '按赞',
     'Project unstar' => '取消按赞',
     'Star' => '按赞',
