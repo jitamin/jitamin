@@ -40,13 +40,13 @@ class ProjectStarModel extends Base
     }
 
     /**
-     * Get query to fetch all users.
+     * Get query to fetch all stargazers.
      *
      * @param int $project_id
      *
      * @return \PicoDb\Table
      */
-    public function getQuery2($project_id)
+    public function getQueryForStargazers($project_id)
     {
         return $this->db->table(self::TABLE)
             ->join(UserModel::TABLE, 'id', 'user_id')
@@ -76,7 +76,7 @@ class ProjectStarModel extends Base
      */
     public function getStargazers($project_id)
     {
-        return $this->getQuery2($project_id)->findAll();
+        return $this->getQueryForStargazers($project_id)->findAll();
     }
 
     /**
