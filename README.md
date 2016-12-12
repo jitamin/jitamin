@@ -2,6 +2,8 @@ Hiject
 ========
 
 [![Build Status](https://travis-ci.org/Hiject/Hiject.svg?branch=master)](https://travis-ci.org/Hiject/Hiject)
+[![StyleCI](https://styleci.io/repos/72176201/shield?branch=master)](https://styleci.io/repos/72176201/)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Hiject/Hiject/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Hiject/Hiject/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 Hiject 是一款免费、开源，使用PHP语言开发的项目管理系统。
