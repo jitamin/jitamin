@@ -62,7 +62,9 @@ class ProjectStarModel extends Base
      */
     public function getProjectIds($user_id)
     {
-        return array_map(function($project){ return $project['id']; }, $this->getProjects($user_id));
+        return array_map(function ($project) {
+            return $project['id'];
+        }, $this->getProjects($user_id));
     }
 
     /**
@@ -89,7 +91,7 @@ class ProjectStarModel extends Base
     {
         return $this->db->table(self::TABLE)->insert([
             'project_id' => $project_id,
-            'user_id'  => $user_id,
+            'user_id'    => $user_id,
         ]);
     }
 

@@ -25,7 +25,7 @@ class DashboardController extends BaseController
 
         $this->response->html($this->helper->layout->dashboard('dashboard/index', [
             'title'             => t('Dashboard for %s', $this->helper->user->getFullname($user)),
-            'paginator' => $this->projectPagination->getDashboardPaginator($user['id'], 'index', 10),
+            'paginator'         => $this->projectPagination->getDashboardPaginator($user['id'], 'index', 10),
             'user'              => $user,
         ]));
     }
@@ -81,7 +81,7 @@ class DashboardController extends BaseController
 
         $this->response->html($this->helper->layout->dashboard('dashboard/stars', [
             'title'             => t('Dashboard for %s', $this->helper->user->getFullname($user)),
-            'paginator' => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 10),
+            'paginator'         => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 10),
             'user'              => $user,
         ]));
     }
