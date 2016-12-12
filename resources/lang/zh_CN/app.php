@@ -10,6 +10,7 @@ return [
     'Remove' => '删除',
     'Yes' => '是',
     'No' => '否',
+    'Confirm' => '确定',
     'cancel' => '取消',
     'or' => '或者',
     'None' => '无',

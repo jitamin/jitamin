@@ -64,6 +64,7 @@ class ClassProvider implements ServiceProviderInterface
             'ProjectGroupRoleModel',
             'ProjectRoleModel',
             'ProjectRoleRestrictionModel',
+            'ProjectStarModel',
             'ProjectTaskDuplicationModel',
             'ProjectTaskPriorityModel',
             'ProjectUserRoleModel',
@@ -138,6 +139,7 @@ class ClassProvider implements ServiceProviderInterface
         ],
         'Pagination' => [
             'TaskPagination',
+            'StarPagination',
             'SubtaskPagination',
             'ProjectPagination',
             'UserPagination',

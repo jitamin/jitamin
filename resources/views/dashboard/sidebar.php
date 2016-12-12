@@ -3,6 +3,9 @@
         <li <?= $this->app->checkMenuSelection('DashboardController', 'index') ?>>
             <i class="fa fa-cubes"></i><?= $this->url->link(t('My projects'), 'DashboardController', 'index', ['user_id' => $user['id']]) ?>
         </li>
+        <li <?= $this->app->checkMenuSelection('DashboardController', 'stars') ?>>
+            <i class="fa fa-star"></i><?= $this->url->link(t('My stars'), 'DashboardController', 'stars', ['user_id' => $user['id']]) ?>
+        </li>
         <li <?= $this->app->checkMenuSelection('DashboardController', 'tasks') ?>>
             <i class="fa fa-tasks"></i><?= $this->url->link(t('My tasks'), 'DashboardController', 'tasks', ['user_id' => $user['id']]) ?>
         </li>
