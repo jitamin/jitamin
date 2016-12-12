@@ -15,7 +15,20 @@ use Hiject\Core\Security\Role;
 use Hiject\Core\Security\Token;
 use PDO;
 
-const VERSION = 119;
+const VERSION = 120;
+
+function version_120(PDO $pdo)
+{
+     $pdo->exec('
+        CREATE TABLE project_has_stars (
+            project_id INT NOT NULL,
+            user_id INT NOT NULL,
+            FOREIGN KEY(project_id) REFERENCES projects(id) ON DELETE CASCADE,
+            FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+            UNIQUE(project_id, user_id)
+        ) ENGINE=InnoDB CHARSET=utf8
+    ');
+}
 
 function version_119(PDO $pdo)
 {

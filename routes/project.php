@@ -15,6 +15,7 @@ $container['route']->addRoute('project/create/private', 'ProjectController', 'cr
 $container['route']->addRoute('project/store', 'ProjectController', 'store');
 $container['route']->addRoute('project/:project_id/edit', 'ProjectController', 'edit');
 $container['route']->addRoute('project/:project_id/edit/description', 'ProjectController', 'edit_description');
+
 $container['route']->addRoute('projects', 'ProjectController', 'index');
 $container['route']->addRoute('projects/:order/:direction/:page', 'ProjectController', 'index');
 $container['route']->addRoute('project/:project_id', 'ProjectController', 'show');
@@ -65,6 +66,8 @@ $container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController
 $container['route']->addRoute('task/:project_id/create', 'TaskController', 'create');
 $container['route']->addRoute('task/:project_id/:column_id/:swimlane_id/create', 'TaskController', 'create');
 $container['route']->addRoute('task/:project_id/store', 'TaskController', 'store');
+$container['route']->addRoute('project/:project_id/task/:task_id/edit', 'TaskController', 'edit');
+$container['route']->addRoute('project/:project_id/task/:task_id/update', 'TaskController', 'update');
 $container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
 $container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
 $container['route']->addRoute('project/:project_id/task/:task_id/analytics', 'TaskViewController', 'analytics');

@@ -150,4 +150,17 @@ class UserHelper extends Base
 
         return $result;
     }
+
+    /**
+     * Check if a user is stargazer.
+     *
+     * @param int $project_id
+     * @param int $user_id
+     *
+     * @return bool
+     */
+    public function isStargazer($project_id, $user_id)
+    {
+        return $this->projectStarModel->isStargazer($project_id, $user_id);
+    }
 }

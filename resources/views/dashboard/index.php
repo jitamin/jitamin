@@ -12,6 +12,6 @@
     </form>
 </div>
 
-<?= $this->render('dashboard/projects', ['paginator' => $project_paginator, 'user' => $user]) ?>
+<?= $this->render('dashboard/projects', ['paginator' => $paginator, 'user' => $user]) ?>
 
 <?= $this->hook->render('template:dashboard:show', ['user' => $user]) ?>
