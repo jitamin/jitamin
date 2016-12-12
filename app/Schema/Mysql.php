@@ -19,7 +19,7 @@ const VERSION = 120;
 
 function version_120(PDO $pdo)
 {
-     $pdo->exec('
+    $pdo->exec('
         CREATE TABLE project_has_stars (
             project_id INT NOT NULL,
             user_id INT NOT NULL,
