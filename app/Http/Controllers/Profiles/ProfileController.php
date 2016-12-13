@@ -26,15 +26,19 @@ class ProfileController extends BaseController
      */
     public function profile()
     {
-        $user = $this->userModel->getById($this->request->getIntegerParam('user_id'));
+        $column = $this->request->getStringParam('user_id');
+        $method = is_numeric($column) ? 'getById' : 'getByUsername';
+
+        $user = $this->userModel->{$method}($column);
 
         if (empty($user)) {
             throw new PageNotFoundException();
         }
 
         $this->response->html($this->helper->layout->app('profile/profile', [
-            'title' => $user['name'] ?: $user['username'],
-            'user'  => $user,
+            'title'  => $user['name'] ?: $user['username'],
+            'events' => $this->helper->projectActivity->searchEvents('creator:'.$user['username'], 20),
+            'user'   => $user,
         ]));
     }
 
