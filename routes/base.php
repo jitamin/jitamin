@@ -58,5 +58,5 @@ $container['route']->addRoute('ical/project/:token', 'ICalendarController', 'pro
 $container['route']->addRoute('ical/user/:token', 'ICalendarController', 'user');
 
 // Doc
-$container['route']->addRoute('documentation/:file', 'DocumentationController', 'show');
-$container['route']->addRoute('documentation', 'DocumentationController', 'show');
+$container['route']->addRoute('help/:file', 'DocumentationController', 'show');
+$container['route']->addRoute('help', 'DocumentationController', 'show');

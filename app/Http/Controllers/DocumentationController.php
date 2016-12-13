@@ -48,7 +48,7 @@ class DocumentationController extends BaseController
     private function render($filename)
     {
         $data = file_get_contents($filename);
-        $content = preg_replace_callback('/\((.*.markdown)\)/', [$this, 'replaceMarkdownUrl'], $data);
+        $content = preg_replace_callback('/\((.*.md)\)/', [$this, 'replaceMarkdownUrl'], $data);
         $content = preg_replace_callback('/\((screenshots.*\.png)\)/', [$this, 'replaceImageUrl'], $content);
 
         list($title) = explode("\n", $data, 2);
@@ -68,7 +68,7 @@ class DocumentationController extends BaseController
      */
     public function replaceMarkdownUrl(array $matches)
     {
-        return '('.$this->helper->url->to('DocumentationController', 'show', ['file' => str_replace('.markdown', '', $matches[1])]).')';
+        return '('.$this->helper->url->to('DocumentationController', 'show', ['file' => str_replace('.md', '', $matches[1])]).')';
     }
 
     /**
@@ -92,8 +92,8 @@ class DocumentationController extends BaseController
      */
     private function getPageFilename($page)
     {
-        return $this->getFileLocation($page.'.markdown') ?:
-            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', 'index.markdown']);
+        return $this->getFileLocation($page.'.md') ?:
+            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', 'index.md']);
     }
 
     /**
