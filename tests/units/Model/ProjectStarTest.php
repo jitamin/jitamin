@@ -51,12 +51,12 @@ class ProjectStarTest extends Base
         $this->assertEquals(4, $userModel->create(['username' => 'user3', 'email' => 'user3@here']));
         $this->assertEquals(5, $userModel->create(['username' => 'user4', 'email' => 'user4@here']));
 
-        $this->assertTrue($projectStarModel->addUser(1, 1));
-        $this->assertTrue($projectStarModel->addUser(1, 2));
-        $this->assertTrue($projectStarModel->addUser(1, 5));
-        $this->assertTrue($projectStarModel->addUser(2, 3));
-        $this->assertTrue($projectStarModel->addUser(2, 4));
-        $this->assertTrue($projectStarModel->addUser(2, 5));
+        $this->assertTrue($projectStarModel->addStargazer(1, 1));
+        $this->assertTrue($projectStarModel->addStargazer(1, 2));
+        $this->assertTrue($projectStarModel->addStargazer(1, 5));
+        $this->assertTrue($projectStarModel->addStargazer(2, 3));
+        $this->assertTrue($projectStarModel->addStargazer(2, 4));
+        $this->assertTrue($projectStarModel->addStargazer(2, 5));
 
         $users = $projectStarModel->getStargazers(1);
         $this->assertCount(3, $users);
