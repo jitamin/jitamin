@@ -107,6 +107,7 @@ class FileHelper extends Base
                 return 'application/pdf';
         }
     }
+
     /**
      * Get the preview type.
      *
