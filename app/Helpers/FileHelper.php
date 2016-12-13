@@ -106,7 +106,7 @@ class FileHelper extends Base
             case 'pdf':
                 return 'application/pdf';
             default:
-                return null;
+                return;
         }
     }
 
@@ -128,7 +128,7 @@ class FileHelper extends Base
             case 'txt':
                 return 'text';
             default:
-                return null;
+                return;
         }
     }
 }
