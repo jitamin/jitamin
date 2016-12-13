@@ -6,7 +6,7 @@
 <?php else: ?>
     <table class="table-striped table-small table-scrolling">
         <tr>
-            <th class="column-5"><?= $paginator->order(t('Id'), \Hiject\Model\TaskModel::TABLE.'.id') ?></th>
+            <th class="column-8"><?= $paginator->order(t('Id'), \Hiject\Model\TaskModel::TABLE.'.id') ?></th>
             <th class="column-10"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <th class="column-22"><?= $paginator->order(t('Title'), \Hiject\Model\TaskModel::TABLE.'.title') ?></th>
             <th class="column-8"><?= $paginator->order(t('Priority'), \Hiject\Model\TaskModel::TABLE.'.priority') ?></th>
