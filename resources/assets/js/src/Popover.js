@@ -44,7 +44,7 @@ Hiject.Popover.prototype.open = function(link) {
     if (!self.isOpen()) {
         $.get(link, function(content) {
             $("body").prepend('<div id="popover-container"><div id="popover-content">' + content + '</div></div>');
-            $('#popover-content h2').append('<a href="#" class="pull-right close-popover"><i class="fa fa-close"></i></a>');
+            $('#popover-content h2').eq(0).append('<a href="#" class="pull-right close-popover"><i class="fa fa-close"></i></a>');
             self.executeOnOpenedListeners();
         });
     }
