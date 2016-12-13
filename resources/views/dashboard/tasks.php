@@ -9,8 +9,8 @@
             <th class="column-8"><?= $paginator->order(t('Id'), \Hiject\Model\TaskModel::TABLE.'.id') ?></th>
             <th class="column-10"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <th class="column-22"><?= $paginator->order(t('Title'), \Hiject\Model\TaskModel::TABLE.'.title') ?></th>
-            <th class="column-8"><?= $paginator->order(t('Priority'), \Hiject\Model\TaskModel::TABLE.'.priority') ?></th>
-            <th class="column-8"><?= $paginator->order(t('Status'), \Hiject\Model\TaskModel::TABLE.'.is_active') ?></th>
+            <th class="column-6"><?= $paginator->order(t('Priority'), \Hiject\Model\TaskModel::TABLE.'.priority') ?></th>
+            <th class="column-6"><?= $paginator->order(t('Status'), \Hiject\Model\TaskModel::TABLE.'.is_active') ?></th>
             <th class="column-25"><?= t('Time tracking') ?></th>
             <th class="column-12"><?= $paginator->order(t('Due date'), \Hiject\Model\TaskModel::TABLE.'.date_due') ?></th>
             <th><?= $paginator->order(t('Column'), 'column_title') ?></th>
