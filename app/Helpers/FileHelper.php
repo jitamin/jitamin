@@ -105,8 +105,11 @@ class FileHelper extends Base
         switch ($extension) {
             case 'pdf':
                 return 'application/pdf';
+            default:
+                return;
         }
     }
+
     /**
      * Get the preview type.
      *
@@ -124,6 +127,8 @@ class FileHelper extends Base
                 return 'markdown';
             case 'txt':
                 return 'text';
+            default:
+                return;
         }
     }
 }
