@@ -30,16 +30,16 @@ class ColorTest extends Base
         $colorModel = new ColorModel($this->container);
         $expected = [
             'name'       => 'Light Green',
-            'background' => '#dcedc8',
-            'border'     => '#689f38',
+            'background' => '#DCEDC8',
+            'border'     => '#689F38',
         ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('light_green'));
 
         $expected = [
             'name'       => 'Yellow',
-            'background' => 'rgb(245, 247, 196)',
-            'border'     => 'rgb(223, 227, 45)',
+            'background' => '#F5F7C4',
+            'border'     => '#DFE32D',
         ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('foobar'));
@@ -50,11 +50,11 @@ class ColorTest extends Base
         $colorModel = new ColorModel($this->container);
 
         $colors = $colorModel->getList();
-        $this->assertCount(16, $colors);
+        $this->assertCount(17, $colors);
         $this->assertEquals('Yellow', $colors['yellow']);
 
         $colors = $colorModel->getList(true);
-        $this->assertCount(17, $colors);
+        $this->assertCount(18, $colors);
         $this->assertEquals('All colors', $colors['']);
         $this->assertEquals('Yellow', $colors['yellow']);
     }
@@ -76,19 +76,19 @@ class ColorTest extends Base
         $colorModel = new ColorModel($this->container);
 
         $colors = $colorModel->getDefaultColors();
-        $this->assertCount(16, $colors);
+        $this->assertCount(17, $colors);
     }
 
     public function testGetBorderColor()
     {
         $colorModel = new ColorModel($this->container);
-        $this->assertEquals('rgb(74, 227, 113)', $colorModel->getBorderColor('green'));
+        $this->assertEquals('#4AE371', $colorModel->getBorderColor('green'));
     }
 
     public function testGetBackgroundColor()
     {
         $colorModel = new ColorModel($this->container);
-        $this->assertEquals('rgb(189, 244, 203)', $colorModel->getBackgroundColor('green'));
+        $this->assertEquals('#BDF4CB', $colorModel->getBackgroundColor('green'));
     }
 
     public function testGetCss()
@@ -96,7 +96,7 @@ class ColorTest extends Base
         $colorModel = new ColorModel($this->container);
         $css = $colorModel->getCss();
 
-        $this->assertStringStartsWith('div.color-yellow {', $css);
-        $this->assertStringEndsWith('td.color-amber { background-color: #ffe082}', $css);
+        $this->assertStringStartsWith('div.color-white {', $css);
+        $this->assertStringEndsWith('td.color-amber { background-color: #FFE082}', $css);
     }
 }
