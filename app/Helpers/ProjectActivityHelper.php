@@ -27,10 +27,11 @@ class ProjectActivityHelper extends Base
      * Search events.
      *
      * @param string $search
+     * @param int $limit
      *
      * @return array
      */
-    public function searchEvents($search)
+    public function searchEvents($search, $limit = 50)
     {
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
         $events = [];
@@ -41,7 +42,7 @@ class ProjectActivityHelper extends Base
                 ->withFilter(new ProjectActivityProjectIdsFilter(array_keys($projects)))
                 ->getQuery()
                 ->desc(ProjectActivityModel::TABLE.'.id')
-                ->limit(500);
+                ->limit($limit);
 
             $events = $queryBuilder->format(new ProjectActivityEventFormatter($this->container));
         }
