@@ -105,6 +105,8 @@ class FileHelper extends Base
         switch ($extension) {
             case 'pdf':
                 return 'application/pdf';
+            default:
+                return null;
         }
     }
 
@@ -125,6 +127,8 @@ class FileHelper extends Base
                 return 'markdown';
             case 'txt':
                 return 'text';
+            default:
+                return null;
         }
     }
 }
