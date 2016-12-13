@@ -901,7 +901,7 @@ return [
     'Add group member to "%s"' => '添加到团队 "%s"',
     'Group member added successfully.' => '成功添加团队成员',
     'Unable to add group member.' => '无法添加团队成员',
-    'Remove user from group "%s"' => '从 "%s" 组中删除用户',
+    'Remove user from group "%s"' => '从 "%s" 团队中删除用户',
     'User removed successfully from this group.' => '用户已从该团队中删除',
     'Unable to remove this user from the group.' => '无法从该团队中删除用户',
     'Remove group' => '删除团队',
