@@ -13,6 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectStarModel;
+use Hiject\Model\UserModel;
 
 class ProjectStarTest extends Base
 {
@@ -61,6 +62,12 @@ class ProjectStarTest extends Base
         $this->assertCount(3, $users);
         $this->assertEquals('admin', $users[0]['username']);
         $this->assertEquals('user1', $users[1]['username']);
+        $this->assertEquals('user4', $users[2]['username']);
+
+        $users = $groupMemberModel->getStargazers(2);
+        $this->assertCount(3, $users);
+        $this->assertEquals('user2', $users[0]['username']);
+        $this->assertEquals('user3', $users[1]['username']);
         $this->assertEquals('user4', $users[2]['username']);
     }
 }
