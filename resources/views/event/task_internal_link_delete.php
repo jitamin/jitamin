@@ -1,6 +1,6 @@
 <p class="activity-title">
     <?= e('%s removed an internal link for the task %s',
-        $this->text->e($author),
+        $this->url->link($author, 'ProfileController', 'profile', ['user_id' => $author_username]),
         $this->url->link(t('#%d', $task['id']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']])
     ) ?>
     <small class="activity-date"><?= $this->dt->datetime($date_creation) ?></small>
