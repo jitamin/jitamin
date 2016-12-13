@@ -27,7 +27,7 @@ class ProjectActivityHelper extends Base
      * Search events.
      *
      * @param string $search
-     * @param int $limit
+     * @param int    $limit
      *
      * @return array
      */

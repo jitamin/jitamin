@@ -36,9 +36,9 @@ class ProfileController extends BaseController
         }
 
         $this->response->html($this->helper->layout->app('profile/profile', [
-            'title' => $user['name'] ?: $user['username'],
+            'title'  => $user['name'] ?: $user['username'],
             'events' => $this->helper->projectActivity->searchEvents('creator:'.$user['username'], 20),
-            'user'  => $user,
+            'user'   => $user,
         ]));
     }
 
