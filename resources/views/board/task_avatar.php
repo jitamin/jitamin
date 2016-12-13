@@ -3,7 +3,7 @@
     <span
         <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
         class="task-board-assignee task-board-change-assignee"
-        data-url="<?= $this->url->href('TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
+        data-url="<?= $this->url->href('ProfileController', 'profile', ['user_id' => $task['assignee_username']]) ?>">
     <?php else: ?>
         class="task-board-assignee">
     <?php endif ?>
