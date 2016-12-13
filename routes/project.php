@@ -42,6 +42,7 @@ $container['route']->addRoute('projects/gantt', 'ProjectGanttController', 'show'
 // ProjectFile routes
 $container['route']->addRoute('project/:project_id/file/upload', 'ProjectFileController', 'create');
 $container['route']->addRoute('project/:project_id/file/:file_id', 'FileViewerController', 'show');
+$container['route']->addRoute('project/:project_id/browser/:file_id', 'FileViewerController', 'browser');
 
 // Action routes
 $container['route']->addRoute('project/:project_id/actions', 'ActionController', 'index');

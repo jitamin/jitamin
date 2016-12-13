@@ -19,6 +19,12 @@
                                     <?= $this->url->link(t('View file'), 'FileViewerController', 'show', ['project_id' => $project['id'], 'file_id' => $file['id']], false, 'popover') ?>
                                 </li>
                             <?php endif ?>
+                            <?php if ($this->file->getBrowserViewType($file['name']) !== null): ?>
+                                <li>
+                                    <i class="fa fa-eye fa-fw"></i>
+                                    <?= $this->url->link(t('View file'), 'FileViewerController', 'browser', ['project_id' => $project['id'], 'file_id' => $file['id']], false, '', '', true) ?>
+                                </li>
+                            <?php endif ?>
                             <li>
                                 <i class="fa fa-download fa-fw"></i>
                                 <?= $this->url->link(t('Download'), 'FileViewerController', 'download', ['project_id' => $project['id'], 'file_id' => $file['id']]) ?>
