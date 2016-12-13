@@ -43,7 +43,7 @@ var vendor = {
         'vendor/bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js',
     ],
     base: [
-        'vendor/bower_components/moment/min/moment-with-locales.min.js',
+        'vendor/bower_components/moment/min/moment.min.js',
         'vendor/bower_components/fullcalendar/dist/fullcalendar.min.js',
     ],
     extra: [
