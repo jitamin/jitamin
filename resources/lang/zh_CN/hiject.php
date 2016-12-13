@@ -420,7 +420,7 @@ return [
     'My projects' => '我的项目',
     'Columns' => '栏目',
     'Task' => '任务',
-    'Your are not member of any project.' => '您尚未加入任何项目',
+    'No projects to show.' => '暂无项目',
     'Percentage' => '百分比',
     'Number of tasks' => '任务数',
     'Task distribution' => '任务分布',

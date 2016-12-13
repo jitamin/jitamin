@@ -1,7 +1,7 @@
 <?= $this->render('dashboard/_partials/subnav', ['user' => $user]) ?>
 
 <?php if ($paginator->isEmpty()): ?>
-    <p class="alert"><?= t('Your are not member of any project.') ?></p>
+    <p class="alert"><?= t('No projects to show.') ?></p>
 <?php else: ?>
     <table class="table-striped table-small table-scrolling">
         <tr>
