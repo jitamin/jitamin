@@ -26,12 +26,6 @@
                         <i class="fa fa-info-circle"></i>
                     </span>
                 <?php endif ?>
-                <?php if ($this->user->isStargazer($project['id'], $this->user->getId())): ?>
-                    <?= $this->url->link('<i class="fa fa-star-o"></i> '.t('Unstar'), 'ProjectController', 'confirmUnstar', ['project_id' => $project['id']], true, 'popover btn-warning btn-xs') ?>
-
-                <?php else: ?>
-                    <?= $this->url->link('<i class="fa fa-star"></i> '.t('Star'), 'ProjectController', 'confirmStar', ['project_id' => $project['id']], true, 'popover btn-primary btn-xs') ?>
-                <?php endif ?>
             </td>
             <td>
                 <?= $project['nb_active_tasks'] ?>
