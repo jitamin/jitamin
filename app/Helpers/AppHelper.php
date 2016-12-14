@@ -159,13 +159,15 @@ class AppHelper extends Base
         if (!empty($success_message)) {
             return '<div class="alert alert-success alert-dismissible alert-fade-out">'.
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.
-                    $this->helper->text->e($success_message).'</div>';
+                    $this->helper->text->e($success_message).
+                    '</div>';
         }
 
         if (!empty($failure_message)) {
             return '<div class="alert alert-error alert-dismissible">'.
                     '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.
-                    $this->helper->text->e($failure_message).'</div>';
+                    $this->helper->text->e($failure_message).
+                    '</div>';
         }
 
         return '';
