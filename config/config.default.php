@@ -33,6 +33,12 @@ define('FILES_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'files');
 // Plugins directory
 define('PLUGINS_DIR', HIJECT_DIR.DIRECTORY_SEPARATOR.'plugins');
 
+// Plugins directory URL
+define('PLUGIN_API_URL', 'https://hiject.com/plugins.json');
+
+// Enable/Disable plugin installer
+define('PLUGIN_INSTALLER', true);
+
 // Available log drivers: syslog, stderr, stdout or file
 define('LOG_DRIVER', '');
 

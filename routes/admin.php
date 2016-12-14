@@ -42,5 +42,5 @@ $container['route']->addRoute('admin/settings/currencies', 'CurrencyController',
 $container['route']->addRoute('admin/settings/tags', 'TagController', 'index');
 
 // Plugins admin
-$container['route']->addRoute('admin/extensions', 'PluginController', 'show');
-$container['route']->addRoute('admin/extensions/directory', 'PluginController', 'directory');
+$container['route']->addRoute('admin/plugins', 'PluginController', 'show');
+$container['route']->addRoute('admin/plugins/market', 'PluginController', 'directory');
