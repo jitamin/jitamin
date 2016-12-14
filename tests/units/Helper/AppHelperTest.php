@@ -36,11 +36,11 @@ class AppHelperTest extends Base
         $this->assertEmpty($h->flashMessage());
 
         $f->success('test & test');
-        $this->assertEquals('<div class="alert alert-success alert-fade-out">test &amp; test</div>', $h->flashMessage());
+        $this->assertEquals('<div class="alert alert-success alert-dismissible alert-fade-out"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>test &amp; test</div>', $h->flashMessage());
         $this->assertEmpty($h->flashMessage());
 
         $f->failure('test & test');
-        $this->assertEquals('<div class="alert alert-error">test &amp; test</div>', $h->flashMessage());
+        $this->assertEquals('<div class="alert alert-error alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>test &amp; test</div>', $h->flashMessage());
         $this->assertEmpty($h->flashMessage());
     }
 }

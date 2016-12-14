@@ -38,9 +38,20 @@
 
 .alert-fade-out
   text-align: center
-  padding-top: 5px
-  padding-bottom: 5px
+  position: fixed
+  top: 60px
+  width: 60%
+  left: 20%
+  padding-top: 10px
+  padding-bottom: 10px
   margin-top: 0
   margin-bottom: 15px
-  border-width: 1px 0 0
   z-index: 9999
+  opacity: 1
+  animation: fadeout 5s linear forwards
+
+@keyframes fadeout
+  0%
+    opacity: 1
+  100%
+    opacity: 0

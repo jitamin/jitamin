@@ -57,14 +57,14 @@
     <?php else: ?>
         <?= $this->hook->render('template:layout:top') ?>
         <?= $this->render('_partials/header') ?>
-        <section class="page container">
-            <?= $this->app->flashMessage() ?>
-            <?= $this->render('_partials/breadcrumb', [
+        <?= $this->render('_partials/breadcrumb', [
                     'project'     => isset($project) ? $project : null,
                     'task'        => isset($task) ? $task : null,
                     'description' => isset($description) ? $description : null,
                     'title'       => $title,
             ]) ?>
+        <section class="page container">
+            <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>
         <?= $this->render('_partials/footer', [
