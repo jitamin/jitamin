@@ -126,6 +126,7 @@ class FileHelper extends Base
             case 'markdown':
                 return 'markdown';
             case 'txt':
+            case 'log':
                 return 'text';
             default:
                 return;
