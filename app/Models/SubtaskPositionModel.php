@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class SubtaskPositionModel.
  */
-class SubtaskPositionModel extends Base
+class SubtaskPositionModel extends Model
 {
     /**
      * Change subtask position.

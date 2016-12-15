@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use PDO;
 
 /**
  * Link model.
  */
-class LinkModel extends Base
+class LinkModel extends Model
 {
     /**
      * SQL table name.

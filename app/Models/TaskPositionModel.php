@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Position.
  */
-class TaskPositionModel extends Base
+class TaskPositionModel extends Model
 {
     /**
      * Move a task to another column or to another position.

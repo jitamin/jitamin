@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class SubtaskStatusModel.
  */
-class SubtaskStatusModel extends Base
+class SubtaskStatusModel extends Model
 {
     /**
      * Get the subtask in progress for this user.

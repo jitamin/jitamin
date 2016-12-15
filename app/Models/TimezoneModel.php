@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class Timezone.
  */
-class TimezoneModel extends Base
+class TimezoneModel extends Model
 {
     /**
      * Get available timezones.

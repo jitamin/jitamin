@@ -17,12 +17,12 @@ use Hiject\Bus\EventBuilder\SubtaskEventBuilder;
 use Hiject\Bus\EventBuilder\TaskEventBuilder;
 use Hiject\Bus\EventBuilder\TaskFileEventBuilder;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Notification Model.
  */
-class NotificationModel extends Base
+class NotificationModel extends Model
 {
     /**
      * Get the event title with author.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Comment model.
  */
-class CommentModel extends Base
+class CommentModel extends Model
 {
     /**
      * SQL table name.

@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Translator;
 
 /**
  * User Notification.
  */
-class UserNotificationModel extends Base
+class UserNotificationModel extends Model
 {
     /**
      * Send notifications to people.

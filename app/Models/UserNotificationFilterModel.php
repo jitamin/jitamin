@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * User Notification Filter.
  */
-class UserNotificationFilterModel extends Base
+class UserNotificationFilterModel extends Model
 {
     /**
      * SQL table name.

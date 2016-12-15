@@ -12,12 +12,12 @@
 namespace Hiject\Model;
 
 use Hiject\Bus\Event\GenericEvent;
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * User Mention.
  */
-class UserMentionModel extends Base
+class UserMentionModel extends Model
 {
     /**
      * Get list of mentioned users.

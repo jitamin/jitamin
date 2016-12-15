@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Model.
  */
-class TaskModel extends Base
+class TaskModel extends Model
 {
     /**
      * SQL table name.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class Skin.
  */
-class SkinModel extends Base
+class SkinModel extends Model
 {
     /**
      * Get available skins.

@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Translator;
 
 /**
  * Class Language.
  */
-class LanguageModel extends Base
+class LanguageModel extends Model
 {
     /**
      * Get all language codes.

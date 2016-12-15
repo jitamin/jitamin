@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Token;
 
 /**
  * Remember Me Model.
  */
-class RememberMeSessionModel extends Base
+class RememberMeSessionModel extends Model
 {
     /**
      * SQL table name.

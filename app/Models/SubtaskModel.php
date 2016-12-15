@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use PicoDb\Database;
 
 /**
  * Subtask Model.
  */
-class SubtaskModel extends Base
+class SubtaskModel extends Model
 {
     /**
      * SQL table name.

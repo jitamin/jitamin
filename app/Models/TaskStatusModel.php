@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Status.
  */
-class TaskStatusModel extends Base
+class TaskStatusModel extends Model
 {
     /**
      * Return true if the task is closed.

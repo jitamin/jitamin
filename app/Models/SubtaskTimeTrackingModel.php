@@ -12,12 +12,12 @@
 namespace Hiject\Model;
 
 use DateTime;
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Subtask time tracking.
  */
-class SubtaskTimeTrackingModel extends Base
+class SubtaskTimeTrackingModel extends Model
 {
     /**
      * SQL table name.

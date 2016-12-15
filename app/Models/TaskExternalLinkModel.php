@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task External Link Model.
  */
-class TaskExternalLinkModel extends Base
+class TaskExternalLinkModel extends Model
 {
     /**
      * SQL table name.

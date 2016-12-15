@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Currency.
  */
-class CurrencyModel extends Base
+class CurrencyModel extends Model
 {
     /**
      * SQL table name.

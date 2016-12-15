@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Board model.
  */
-class BoardModel extends Base
+class BoardModel extends Model
 {
     /**
      * Get Hiject default columns.

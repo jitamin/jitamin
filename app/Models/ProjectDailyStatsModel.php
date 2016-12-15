@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Project Daily Stats.
  */
-class ProjectDailyStatsModel extends Base
+class ProjectDailyStatsModel extends Model
 {
     /**
      * SQL table name.

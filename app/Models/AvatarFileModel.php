@@ -12,12 +12,12 @@
 namespace Hiject\Model;
 
 use Exception;
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Avatar File.
  */
-class AvatarFileModel extends Base
+class AvatarFileModel extends Model
 {
     /**
      * Path prefix.

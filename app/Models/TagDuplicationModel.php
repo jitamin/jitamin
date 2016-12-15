@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Tag Duplication.
  */
-class TagDuplicationModel extends Base
+class TagDuplicationModel extends Model
 {
     /**
      * Duplicate project tags to another project.

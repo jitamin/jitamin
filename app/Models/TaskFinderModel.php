@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Finder model.
  */
-class TaskFinderModel extends Base
+class TaskFinderModel extends Model
 {
     /**
      * Get query for project user overview.
