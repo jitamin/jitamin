@@ -749,7 +749,7 @@ return [
     'The lead time is the duration between the task creation and the completion.' => '交付时间指任务从创建到完成的时间。',
     'The cycle time is the duration between the start date and the completion.' => '开发时间指任务从开始到完成的时间。',
     'If the task is not closed the current time is used instead of the completion date.' => '假如任务未被关闭，用当前时间代替完成时间。',
-    'Set automatically the start date' => '自动设置开始日期',
+    'Set automatically the start date' => '现在开始',
     'Edit Authentication' => '编辑认证信息',
     'Remote user' => '绑定用户',
     'Remote users do not store their password in Hiject database, examples: LDAP, Google and Github accounts.' => '绑定用户不会在看板数据库保存密码，例如：LDAP,GOOGLE,GitHub。',
