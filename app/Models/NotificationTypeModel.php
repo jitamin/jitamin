@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Pimple\Container;
 
 /**
  * Notification Type.
  */
-abstract class NotificationTypeModel extends Base
+abstract class NotificationTypeModel extends Model
 {
     /**
      * Container.

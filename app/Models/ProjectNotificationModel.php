@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Project Notification.
  */
-class ProjectNotificationModel extends Base
+class ProjectNotificationModel extends Model
 {
     /**
      * Send notifications.

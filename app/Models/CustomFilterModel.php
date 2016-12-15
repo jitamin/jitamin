@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Custom Filter model.
  */
-class CustomFilterModel extends Base
+class CustomFilterModel extends Model
 {
     /**
      * SQL table name.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class ProjectRoleRestrictionModel.
  */
-class ProjectRoleRestrictionModel extends Base
+class ProjectRoleRestrictionModel extends Model
 {
     const TABLE = 'project_role_has_restrictions';
 

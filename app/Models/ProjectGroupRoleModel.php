@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Role;
 
 /**
  * Project Group Role.
  */
-class ProjectGroupRoleModel extends Base
+class ProjectGroupRoleModel extends Model
 {
     /**
      * SQL table name.

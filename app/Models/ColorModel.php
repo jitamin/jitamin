@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Color model.
  */
-class ColorModel extends Base
+class ColorModel extends Model
 {
     /**
      * Default colors.

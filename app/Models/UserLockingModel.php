@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * User Locking Model.
  */
-class UserLockingModel extends Base
+class UserLockingModel extends Model
 {
     /**
      * Get the number of failed login for the user.

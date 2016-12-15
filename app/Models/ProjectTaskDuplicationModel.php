@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Project Task Duplication Model.
  */
-class ProjectTaskDuplicationModel extends Base
+class ProjectTaskDuplicationModel extends Model
 {
     /**
      * Duplicate all tasks to another project.

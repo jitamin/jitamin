@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class SubtaskTaskConversionModel.
  */
-class SubtaskTaskConversionModel extends Base
+class SubtaskTaskConversionModel extends Model
 {
     /**
      * Convert a subtask to a task.

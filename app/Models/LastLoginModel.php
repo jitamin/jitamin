@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * LastLogin model.
  */
-class LastLoginModel extends Base
+class LastLoginModel extends Model
 {
     /**
      * SQL table name.

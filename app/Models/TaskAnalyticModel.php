@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Analytic.
  */
-class TaskAnalyticModel extends Base
+class TaskAnalyticModel extends Model
 {
     /**
      * Get the time between date_creation and date_completed or now if empty.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Transition.
  */
-class TransitionModel extends Base
+class TransitionModel extends Model
 {
     /**
      * SQL table name.

@@ -11,7 +11,7 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Role;
 use Hiject\Filter\ProjectGroupRoleProjectFilter;
 use Hiject\Filter\ProjectGroupRoleUsernameFilter;
@@ -21,7 +21,7 @@ use Hiject\Filter\ProjectUserRoleUsernameFilter;
 /**
  * Project Permission.
  */
-class ProjectPermissionModel extends Base
+class ProjectPermissionModel extends Model
 {
     /**
      * Get query for project users overview.

@@ -12,14 +12,14 @@
 namespace Hiject\Model;
 
 use Exception;
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\ObjectStorage\ObjectStorageException;
 use Hiject\Core\Thumbnail;
 
 /**
  * Base File Model.
  */
-abstract class FileModel extends Base
+abstract class FileModel extends Model
 {
     /**
      * Get the table.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Modification.
  */
-class TaskModificationModel extends Base
+class TaskModificationModel extends Model
 {
     /**
      * Update a task.

@@ -11,14 +11,14 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Role;
 use Hiject\Core\Security\Token;
 
 /**
  * Project model.
  */
-class ProjectModel extends Base
+class ProjectModel extends Model
 {
     /**
      * SQL table name for projects.

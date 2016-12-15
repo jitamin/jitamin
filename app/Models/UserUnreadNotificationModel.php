@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * User Unread Notification.
  */
-class UserUnreadNotificationModel extends Base
+class UserUnreadNotificationModel extends Model
 {
     /**
      * SQL table name.

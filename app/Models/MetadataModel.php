@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Metadata.
  */
-abstract class MetadataModel extends Base
+abstract class MetadataModel extends Model
 {
     /**
      * Get the table.

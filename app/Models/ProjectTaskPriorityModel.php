@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Project Task Priority Model.
  */
-class ProjectTaskPriorityModel extends Base
+class ProjectTaskPriorityModel extends Model
 {
     /**
      * Get Priority range from a project.

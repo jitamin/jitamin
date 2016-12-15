@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Group Member Model.
  */
-class GroupMemberModel extends Base
+class GroupMemberModel extends Model
 {
     /**
      * SQL table name.

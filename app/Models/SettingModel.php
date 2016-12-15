@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Token;
 
 /**
  * Setting model.
  */
-class SettingModel extends Base
+class SettingModel extends Model
 {
     /**
      * SQL table name.

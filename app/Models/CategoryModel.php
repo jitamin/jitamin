@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Category model.
  */
-class CategoryModel extends Base
+class CategoryModel extends Model
 {
     /**
      * SQL table name.

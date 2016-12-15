@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Role;
 
 /**
  * Project Duplication.
  */
-class ProjectDuplicationModel extends Base
+class ProjectDuplicationModel extends Model
 {
     /**
      * Get list of optional models to duplicate.

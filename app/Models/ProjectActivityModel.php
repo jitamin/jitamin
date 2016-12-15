@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use PicoDb\Table;
 
 /**
  * Project activity model.
  */
-class ProjectActivityModel extends Base
+class ProjectActivityModel extends Model
 {
     /**
      * SQL table name.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Duplication.
  */
-class TaskDuplicationModel extends Base
+class TaskDuplicationModel extends Model
 {
     /**
      * Fields to copy when duplicating a task.

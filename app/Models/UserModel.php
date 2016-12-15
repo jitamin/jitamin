@@ -11,7 +11,7 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Role;
 use Hiject\Core\Security\Token;
 use PicoDb\Database;
@@ -19,7 +19,7 @@ use PicoDb\Database;
 /**
  * User model.
  */
-class UserModel extends Base
+class UserModel extends Model
 {
     /**
      * SQL table name.

@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Class ColumnMoveRestrictionModel.
  */
-class ColumnMoveRestrictionModel extends Base
+class ColumnMoveRestrictionModel extends Model
 {
     const TABLE = 'column_has_move_restrictions';
 

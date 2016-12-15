@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Task Creation.
  */
-class TaskCreationModel extends Base
+class TaskCreationModel extends Model
 {
     /**
      * Create a task.

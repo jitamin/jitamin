@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Action Parameter Model.
  */
-class ActionParameterModel extends Base
+class ActionParameterModel extends Model
 {
     /**
      * SQL table name.

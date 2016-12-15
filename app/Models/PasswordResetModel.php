@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Password Reset Model.
  */
-class PasswordResetModel extends Base
+class PasswordResetModel extends Model
 {
     /**
      * SQL table name.

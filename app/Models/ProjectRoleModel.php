@@ -11,13 +11,13 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 use Hiject\Core\Security\Role;
 
 /**
  * Class ProjectRoleModel.
  */
-class ProjectRoleModel extends Base
+class ProjectRoleModel extends Model
 {
     const TABLE = 'project_has_roles';
 

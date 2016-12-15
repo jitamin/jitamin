@@ -11,12 +11,12 @@
 
 namespace Hiject\Model;
 
-use Hiject\Core\Base;
+use Hiject\Core\Database\Model;
 
 /**
  * Swimlanes.
  */
-class SwimlaneModel extends Base
+class SwimlaneModel extends Model
 {
     /**
      * SQL table name.
