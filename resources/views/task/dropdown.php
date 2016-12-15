@@ -20,28 +20,12 @@
             <?= $this->url->link(t('Add internal link'), 'TaskInternalLinkController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
-            <i class="fa fa-external-link fa-fw"></i>
-            <?= $this->url->link(t('Add external link'), 'TaskExternalLinkController', 'find', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
-        </li>
-        <li>
             <i class="fa fa-comment-o fa-fw"></i>
             <?= $this->url->link(t('Add a comment'), 'CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-camera fa-fw"></i>
             <?= $this->url->link(t('Add a screenshot'), 'TaskPopoverController', 'screenshot', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
-        </li>
-        <li>
-            <i class="fa fa-files-o fa-fw"></i>
-            <?= $this->url->link(t('Duplicate'), 'TaskDuplicationController', 'duplicate', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
-        </li>
-        <li>
-            <i class="fa fa-clipboard fa-fw"></i>
-            <?= $this->url->link(t('Duplicate to another project'), 'TaskDuplicationController', 'copy', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
-        </li>
-        <li>
-            <i class="fa fa-clone fa-fw"></i>
-            <?= $this->url->link(t('Move to another project'), 'TaskDuplicationController', 'move', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <?php if ($this->projectRole->canRemoveTask($task)): ?>
             <li>
