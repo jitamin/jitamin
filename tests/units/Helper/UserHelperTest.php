@@ -172,7 +172,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
         $this->assertEquals(2, $project->create(['name' => 'My project']));
-        $this->assertEquals(2, $user->create(['username' => 'user']));
+        $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MANAGER));
 
         $this->assertTrue($helper->hasProjectAccess('ProjectController', 'edit', 1));
@@ -200,7 +200,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
         $this->assertEquals(2, $project->create(['name' => 'My project']));
-        $this->assertEquals(2, $user->create(['username' => 'user']));
+        $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MANAGER));
 
         $this->assertTrue($helper->hasProjectAccess('ProjectController', 'edit', 1));
@@ -228,7 +228,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
         $this->assertEquals(2, $project->create(['name' => 'My project']));
-        $this->assertEquals(2, $user->create(['username' => 'user']));
+        $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
 
         $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
@@ -256,7 +256,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
         $this->assertEquals(2, $project->create(['name' => 'My project']));
-        $this->assertEquals(2, $user->create(['username' => 'user']));
+        $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_VIEWER));
 
         $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
@@ -285,7 +285,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
         $this->assertEquals(2, $project->create(['name' => 'My project']));
-        $this->assertEquals(2, $user->create(['username' => 'user']));
+        $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertEquals(1, $projectRole->create(1, 'Custom Role'));
 
         $this->assertTrue($projectUserRole->addUser(1, 2, 'Custom Role'));

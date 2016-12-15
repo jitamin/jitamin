@@ -35,7 +35,7 @@ class UserNotificationTest extends Base
         $pp = new ProjectUserRoleModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'UnitTest1']));
-        $this->assertEquals(2, $u->create(['username' => 'user1']));
+        $this->assertEquals(2, $u->create(['username' => 'user1', 'email' => 'user1@user1']));
         $this->assertTrue($pp->addUser(1, 2, Role::PROJECT_MEMBER));
 
         $this->assertEmpty($n->getUsersWithNotificationEnabled(1));
@@ -165,7 +165,7 @@ class UserNotificationTest extends Base
         $this->assertEquals(5, $u->create(['username' => 'user4', 'email' => 'user4@here', 'notifications_enabled' => 1, 'is_active' => 0]));
 
         // No email + notifications disabled
-        $this->assertEquals(6, $u->create(['username' => 'user5']));
+        $this->assertEquals(6, $u->create(['username' => 'user5', 'email' => 'user5@here']));
 
         // Nobody is member of any projects
         $this->assertEmpty($pp->getUsers(1));

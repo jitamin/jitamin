@@ -34,21 +34,21 @@ class UserModelTest extends Base
     public function testGetByExternalId()
     {
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user1', 'password' => '123456', 'gitlab_id' => '1234']));
+        $this->assertNotFalse($userModel->create(['username' => 'user1', 'email' => 'user1@user1', 'password' => '123456', 'gitlab_id' => '1234']));
 
         $this->assertNotEmpty($userModel->getByExternalId('gitlab_id', '1234'));
         $this->assertEmpty($userModel->getByExternalId('gitlab_id', ''));
 
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user2', 'password' => '123456', 'github_id' => 'plop']));
-        $this->assertNotFalse($userModel->create(['username' => 'user3', 'password' => '123456', 'github_id' => '']));
+        $this->assertNotFalse($userModel->create(['username' => 'user2', 'email' => 'user2@user2', 'password' => '123456', 'github_id' => 'plop']));
+        $this->assertNotFalse($userModel->create(['username' => 'user3', 'email' => 'user3@user3', 'password' => '123456', 'github_id' => '']));
 
         $this->assertNotEmpty($userModel->getByExternalId('github_id', 'plop'));
         $this->assertEmpty($userModel->getByExternalId('github_id', ''));
 
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user4', 'password' => '123456', 'google_id' => '1234']));
-        $this->assertNotFalse($userModel->create(['username' => 'user5', 'password' => '123456', 'google_id' => '']));
+        $this->assertNotFalse($userModel->create(['username' => 'user4', 'email' => 'user4@user4', 'password' => '123456', 'google_id' => '1234']));
+        $this->assertNotFalse($userModel->create(['username' => 'user5', 'email' => 'user5@user5', 'password' => '123456', 'google_id' => '']));
 
         $this->assertNotEmpty($userModel->getByExternalId('google_id', '1234'));
         $this->assertEmpty($userModel->getByExternalId('google_id', ''));
@@ -57,8 +57,8 @@ class UserModelTest extends Base
     public function testGetByToken()
     {
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user1', 'token' => 'random']));
-        $this->assertNotFalse($userModel->create(['username' => 'user2', 'token' => '']));
+        $this->assertNotFalse($userModel->create(['username' => 'user1', 'email' => 'user1@user1', 'token' => 'random']));
+        $this->assertNotFalse($userModel->create(['username' => 'user2', 'email' => 'user2@user2', 'token' => '']));
 
         $this->assertNotEmpty($userModel->getByToken('random'));
         $this->assertEmpty($userModel->getByToken(''));
@@ -67,7 +67,7 @@ class UserModelTest extends Base
     public function testGetByUsername()
     {
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user1']));
+        $this->assertNotFalse($userModel->create(['username' => 'user1', 'email' => 'user1@user1']));
 
         $this->assertNotEmpty($userModel->getByUsername('user1'));
         $this->assertEmpty($userModel->getByUsername('user2'));
@@ -77,7 +77,7 @@ class UserModelTest extends Base
     public function testExists()
     {
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user1']));
+        $this->assertNotFalse($userModel->create(['username' => 'user1', 'email' => 'user1@user1']));
 
         $this->assertTrue($userModel->exists(1));
         $this->assertTrue($userModel->exists(2));
@@ -87,15 +87,15 @@ class UserModelTest extends Base
     public function testCount()
     {
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'user1']));
+        $this->assertNotFalse($userModel->create(['username' => 'user1', 'email' => 'user1@user1']));
         $this->assertEquals(2, $userModel->count());
     }
 
     public function testGetAll()
     {
         $userModel = new UserModel($this->container);
-        $this->assertEquals(2, $userModel->create(['username' => 'you']));
-        $this->assertEquals(3, $userModel->create(['username' => 'me', 'name' => 'Me']));
+        $this->assertEquals(2, $userModel->create(['username' => 'you', 'email' => 'you@you']));
+        $this->assertEquals(3, $userModel->create(['username' => 'me', 'email' => 'me@me', 'name' => 'Me']));
 
         $users = $userModel->getAll();
         $this->assertCount(3, $users);
@@ -107,9 +107,9 @@ class UserModelTest extends Base
     public function testGetActiveUsersList()
     {
         $userModel = new UserModel($this->container);
-        $this->assertEquals(2, $userModel->create(['username' => 'you']));
-        $this->assertEquals(3, $userModel->create(['username' => 'me', 'name' => 'Me too']));
-        $this->assertEquals(4, $userModel->create(['username' => 'foobar', 'is_active' => 0]));
+        $this->assertEquals(2, $userModel->create(['username' => 'you', 'email' => 'you@you']));
+        $this->assertEquals(3, $userModel->create(['username' => 'me', 'email' => 'me@me', 'name' => 'Me too']));
+        $this->assertEquals(4, $userModel->create(['username' => 'foobar', 'email' => 'foobar@foobar', 'is_active' => 0]));
 
         $users = $userModel->getActiveUsersList();
 
@@ -136,7 +136,7 @@ class UserModelTest extends Base
     public function testIsAdmin()
     {
         $userModel = new UserModel($this->container);
-        $this->assertEquals(2, $userModel->create(['username' => 'user1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@user1']));
 
         $this->assertTrue($userModel->isAdmin(1));
         $this->assertFalse($userModel->isAdmin(2));
@@ -231,12 +231,12 @@ class UserModelTest extends Base
     public function testCreate()
     {
         $userModel = new UserModel($this->container);
-        $this->assertEquals(2, $userModel->create(['username' => 'user #1', 'password' => '123456', 'name' => 'User']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user #2', 'is_ldap_user' => 1]));
-        $this->assertEquals(4, $userModel->create(['username' => 'user #3', 'role' => Role::APP_MANAGER]));
-        $this->assertEquals(5, $userModel->create(['username' => 'user #4', 'gitlab_id' => '', 'role' => Role::APP_ADMIN]));
-        $this->assertEquals(6, $userModel->create(['username' => 'user #5', 'gitlab_id' => '1234']));
-        $this->assertFalse($userModel->create(['username' => 'user #1']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user #1', 'email' => 'user1@user1', 'password' => '123456', 'name' => 'User']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user #2', 'email' => 'user2@user2', 'is_ldap_user' => 1]));
+        $this->assertEquals(4, $userModel->create(['username' => 'user #3', 'email' => 'user3@user3', 'role' => Role::APP_MANAGER]));
+        $this->assertEquals(5, $userModel->create(['username' => 'user #4', 'email' => 'user4@user4', 'gitlab_id' => '', 'role' => Role::APP_ADMIN]));
+        $this->assertEquals(6, $userModel->create(['username' => 'user #5', 'email' => 'user5@user5', 'gitlab_id' => '1234']));
+        $this->assertFalse($userModel->create(['username' => 'user #1', 'email' => 'user1@user1']));
 
         $user = $userModel->getById(1);
         $this->assertEquals('admin', $user['username']);
@@ -274,8 +274,8 @@ class UserModelTest extends Base
     public function testUpdate()
     {
         $userModel = new UserModel($this->container);
-        $this->assertEquals(2, $userModel->create(['username' => 'toto', 'password' => '123456', 'name' => 'Toto']));
-        $this->assertEquals(3, $userModel->create(['username' => 'plop', 'gitlab_id' => '123']));
+        $this->assertEquals(2, $userModel->create(['username' => 'toto', 'email' => 'toto@toto', 'password' => '123456', 'name' => 'Toto']));
+        $this->assertEquals(3, $userModel->create(['username' => 'plop', 'email' => 'plop@plop', 'gitlab_id' => '123']));
 
         $this->assertTrue($userModel->update(['id' => 2, 'username' => 'biloute']));
         $this->assertTrue($userModel->update(['id' => 3, 'gitlab_id' => '']));
@@ -300,7 +300,7 @@ class UserModelTest extends Base
         $subtaskModel = new SubtaskModel($this->container);
         $commentModel = new CommentModel($this->container);
 
-        $this->assertNotFalse($userModel->create(['username' => 'toto', 'password' => '123456', 'name' => 'Toto']));
+        $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' => 'to@to', 'password' => '123456', 'name' => 'Toto']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'owner_id' => 2]));
         $this->assertEquals(1, $subtaskModel->create(['title' => 'Subtask #1', 'user_id' => 2, 'task_id' => 1]));
@@ -331,8 +331,8 @@ class UserModelTest extends Base
         $this->assertEquals(0, $comment['user_id']);
 
         // Make sure that private projects are also removed
-        $user_id1 = $userModel->create(['username' => 'toto1', 'password' => '123456', 'name' => 'Toto']);
-        $user_id2 = $userModel->create(['username' => 'toto2', 'password' => '123456', 'name' => 'Toto']);
+        $user_id1 = $userModel->create(['username' => 'toto1', 'email' => 'toto1@toto1', 'password' => '123456', 'name' => 'Toto']);
+        $user_id2 = $userModel->create(['username' => 'toto2', 'email' => 'toto2@toto2', 'password' => '123456', 'name' => 'Toto']);
         $this->assertNotFalse($user_id1);
         $this->assertNotFalse($user_id2);
         $this->assertEquals(2, $projectModel->create(['name' => 'Private project #1', 'is_private' => 1], $user_id1, true));
@@ -349,7 +349,7 @@ class UserModelTest extends Base
     public function testEnableDisablePublicAccess()
     {
         $userModel = new UserModel($this->container);
-        $this->assertNotFalse($userModel->create(['username' => 'toto', 'password' => '123456']));
+        $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' => 'toto@toto', 'password' => '123456']));
 
         $user = $userModel->getById(2);
         $this->assertNotEmpty($user);
@@ -374,7 +374,7 @@ class UserModelTest extends Base
     public function testEnableDisable()
     {
         $userModel = new UserModel($this->container);
-        $this->assertEquals(2, $userModel->create(['username' => 'toto']));
+        $this->assertEquals(2, $userModel->create(['username' => 'toto', 'email' => 'toto@toto']));
 
         $this->assertTrue($userModel->isActive(2));
         $user = $userModel->getById(2);

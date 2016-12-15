@@ -127,7 +127,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create a new user for our project
-        $this->assertNotFalse($userModel->create(['username' => 'unittest#1', 'password' => 'unittest']));
+        $this->assertNotFalse($userModel->create(['username' => 'unittest#1', 'email' => 'unittest@unittest', 'password' => 'unittest']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 
@@ -160,7 +160,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create a new user for our project
-        $this->assertNotFalse($userModel->create(['username' => 'unittest#1', 'password' => 'unittest']));
+        $this->assertNotFalse($userModel->create(['username' => 'unittest#1', 'email' => 'unittest@unittest', 'password' => 'unittest']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 

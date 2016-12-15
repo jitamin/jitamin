@@ -102,7 +102,7 @@ class TaskAssigneeFilterTest extends Base
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
-        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'name' => 'Foo Bar']));
+        $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'email' => 'foobar@foobar', 'name' => 'Foo Bar']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 2]));
 

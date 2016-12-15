@@ -294,7 +294,7 @@ class TaskProjectDuplicationModelTest extends Base
 
         // We create a new user for our project
         $user = new UserModel($this->container);
-        $this->assertNotFalse($user->create(['username' => 'unittest#1', 'password' => 'unittest']));
+        $this->assertNotFalse($user->create(['username' => 'unittest#1', 'email' => 'unittest@unittest', 'password' => 'unittest']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 

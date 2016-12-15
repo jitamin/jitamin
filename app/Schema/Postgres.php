@@ -1336,8 +1336,8 @@ function version_1(PDO $pdo)
 
     $pdo->exec("
         INSERT INTO users
-        (username, password, is_admin)
-        VALUES ('admin', '".\password_hash('admin', PASSWORD_BCRYPT)."', '1')
+        (username, password, email, is_admin)
+        VALUES ('admin', '".\password_hash('admin', PASSWORD_BCRYPT)."', 'admin@admin.com', '1')
     ");
 
     $pdo->exec("

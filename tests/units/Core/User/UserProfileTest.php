@@ -40,7 +40,7 @@ class UserProfileTest extends Base
     public function testInitializeRemoteUser()
     {
         $userProfile = new UserProfile($this->container);
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', 'bob@bob', Role::APP_MANAGER, []);
 
         $this->assertTrue($userProfile->initialize($user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);
@@ -48,7 +48,7 @@ class UserProfileTest extends Base
         $this->assertEquals('bob', $this->container['sessionStorage']->user['username']);
         $this->assertEquals(Role::APP_MANAGER, $this->container['sessionStorage']->user['role']);
 
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', 'bob@bob', Role::APP_MANAGER, []);
 
         $this->assertTrue($userProfile->initialize($user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);
@@ -59,14 +59,14 @@ class UserProfileTest extends Base
     public function testAssignRemoteUser()
     {
         $userProfile = new UserProfile($this->container);
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', 'bob@bob', Role::APP_MANAGER, []);
 
         $this->assertTrue($userProfile->assign(1, $user));
         $this->assertNotEmpty($this->container['sessionStorage']->user);
         $this->assertEquals(1, $this->container['sessionStorage']->user['id']);
         $this->assertEquals('admin', $this->container['sessionStorage']->user['username']);
         $this->assertEquals('Bob', $this->container['sessionStorage']->user['name']);
-        $this->assertEquals('', $this->container['sessionStorage']->user['email']);
+        $this->assertEquals('bob@bob', $this->container['sessionStorage']->user['email']);
         $this->assertEquals(Role::APP_MANAGER, $this->container['sessionStorage']->user['role']);
     }
 }

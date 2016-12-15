@@ -19,14 +19,14 @@ class UserSyncTest extends Base
 {
     public function testSynchronizeNewUser()
     {
-        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', '', Role::APP_MANAGER, []);
+        $user = new LdapUserProvider('ldapId', 'bob', 'Bob', 'bob@bob', Role::APP_MANAGER, []);
         $userSync = new UserSync($this->container);
 
         $profile = [
             'id'           => 2,
             'username'     => 'bob',
             'name'         => 'Bob',
-            'email'        => '',
+            'email'        => 'bob@bob',
             'role'         => Role::APP_MANAGER,
             'is_ldap_user' => 1,
         ];

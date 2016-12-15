@@ -21,7 +21,7 @@ class UserMetadataTest extends Base
         $m = new UserMetadataModel($this->container);
         $u = new UserModel($this->container);
 
-        $this->assertEquals(2, $u->create(['username' => 'foobar']));
+        $this->assertEquals(2, $u->create(['username' => 'foobar', 'email' => 'foobar@foobar']));
 
         $this->assertTrue($m->save(1, ['key1' => 'value1']));
         $this->assertTrue($m->save(1, ['key1' => 'value2']));

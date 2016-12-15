@@ -104,28 +104,4 @@ class MailNotificationTest extends Base
 
         $mailNotification->notifyUser($userModel->getById(1), TaskModel::EVENT_CREATE, ['task' => $taskFinderModel->getDetails(1)]);
     }
-
-    public function testSendWithoutEmailAddress()
-    {
-        $mailNotification = new MailNotification($this->container);
-        $projectModel = new ProjectModel($this->container);
-        $taskFinderModel = new TaskFinderModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
-        $userModel = new UserModel($this->container);
-
-        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
-
-        $this->container['emailClient'] = $this
-            ->getMockBuilder('\Hiject\Core\Mail\Client')
-            ->setConstructorArgs([$this->container])
-            ->setMethods(['send'])
-            ->getMock();
-
-        $this->container['emailClient']
-            ->expects($this->never())
-            ->method('send');
-
-        $mailNotification->notifyUser($userModel->getById(1), TaskModel::EVENT_CREATE, ['task' => $taskFinderModel->getDetails(1)]);
-    }
 }

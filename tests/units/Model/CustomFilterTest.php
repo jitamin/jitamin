@@ -70,7 +70,7 @@ class CustomFilterTest extends Base
         $this->assertEquals(1, $p->create(['name' => 'UnitTest 1']));
         $this->assertEquals(2, $p->create(['name' => 'UnitTest 2']));
 
-        $this->assertEquals(2, $u->create(['username' => 'user 2']));
+        $this->assertEquals(2, $u->create(['username' => 'user 2', 'email' => 'user2@user2']));
 
         $this->assertEquals(1, $cf->create(['name' => 'My filter 1', 'filter' => 'color:blue', 'project_id' => 1, 'user_id' => 1]));
         $this->assertEquals(2, $cf->create(['name' => 'My filter 2', 'filter' => 'color:red', 'project_id' => 1, 'user_id' => 1, 'is_shared' => 1]));

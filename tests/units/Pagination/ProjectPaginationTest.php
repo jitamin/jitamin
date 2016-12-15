@@ -31,7 +31,7 @@ class ProjectPaginationTest extends Base
         $this->assertEquals(3, $projectModel->create(['name' => 'Project #3']));
         $this->assertEquals(4, $projectModel->create(['name' => 'Project #4', 'is_private' => 1]));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'test']));
+        $this->assertEquals(2, $userModel->create(['username' => 'test', 'email' => 'test@test']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MANAGER));
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MANAGER));
 

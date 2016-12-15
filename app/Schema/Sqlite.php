@@ -1180,7 +1180,6 @@ function version_15(PDO $pdo)
 function version_14(PDO $pdo)
 {
     $pdo->exec('ALTER TABLE users ADD COLUMN name TEXT');
-    $pdo->exec('ALTER TABLE users ADD COLUMN email TEXT');
     $pdo->exec('ALTER TABLE users ADD COLUMN google_id TEXT');
 }
 
@@ -1343,6 +1342,7 @@ function version_1(PDO $pdo)
             id INTEGER PRIMARY KEY,
             username TEXT NOT NULL,
             password TEXT,
+            email TEXT NOT NULL,
             is_admin INTEGER DEFAULT 0
         )
     ');
@@ -1385,8 +1385,8 @@ function version_1(PDO $pdo)
 
     $pdo->exec("
         INSERT INTO users
-        (username, password, is_admin)
-        VALUES ('admin', '".\password_hash('admin', PASSWORD_BCRYPT)."', '1')
+        (username, password, email, is_admin)
+        VALUES ('admin', '".\password_hash('admin', PASSWORD_BCRYPT)."', 'admin@admin.com', '1')
     ");
 
     $pdo->exec("

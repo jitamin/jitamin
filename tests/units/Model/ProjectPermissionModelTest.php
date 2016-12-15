@@ -227,10 +227,10 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
-        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
-        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'email' => 'user1@user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'email' => 'user2@user2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3', 'email' => 'user3@user3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4', 'email' => 'user4@user4']));
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
@@ -261,8 +261,8 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'email' => 'user1@user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'email' => 'user2@user2']));
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project 2', 'is_active' => 0]));
@@ -283,8 +283,8 @@ class ProjectPermissionModelTest extends Base
         $userRoleModel = new ProjectUserRoleModel($this->container);
         $projectPermission = new ProjectPermissionModel($this->container);
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user 1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'email' => 'user1@user1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'email' => 'user2@user2']));
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project 2', 'is_active' => 0]));
@@ -312,11 +312,11 @@ class ProjectPermissionModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'Project 1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project 2']));
 
-        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'name' => 'User #1']));
-        $this->assertEquals(3, $userModel->create(['username' => 'user 2']));
-        $this->assertEquals(4, $userModel->create(['username' => 'user 3']));
-        $this->assertEquals(5, $userModel->create(['username' => 'user 4']));
-        $this->assertEquals(6, $userModel->create(['username' => 'user 5', 'name' => 'User #5']));
+        $this->assertEquals(2, $userModel->create(['username' => 'user 1', 'email' => 'user1@user1', 'name' => 'User #1']));
+        $this->assertEquals(3, $userModel->create(['username' => 'user 2', 'email' => 'user2@user2']));
+        $this->assertEquals(4, $userModel->create(['username' => 'user 3', 'email' => 'user3@user3']));
+        $this->assertEquals(5, $userModel->create(['username' => 'user 4', 'email' => 'user4@user4']));
+        $this->assertEquals(6, $userModel->create(['username' => 'user 5', 'email' => 'user5@user5', 'name' => 'User #5']));
 
         $this->assertEquals(1, $groupModel->create('Group C'));
         $this->assertEquals(2, $groupModel->create('Group B'));

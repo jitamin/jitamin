@@ -49,7 +49,7 @@ class ActionController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('action_creation/create', [
+        $this->response->html($this->template->render('action/create', [
             'project'           => $project,
             'values'            => ['project_id' => $project['id']],
             'available_actions' => $this->actionManager->getAvailableActions(),
@@ -68,7 +68,7 @@ class ActionController extends BaseController
             return $this->create();
         }
 
-        return $this->response->html($this->template->render('action_creation/event', [
+        return $this->response->html($this->template->render('action/event', [
             'values'            => $values,
             'project'           => $project,
             'available_actions' => $this->actionManager->getAvailableActions(),
@@ -98,7 +98,7 @@ class ActionController extends BaseController
         $projects_list = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
         unset($projects_list[$project['id']]);
 
-        return $this->response->html($this->template->render('action_creation/params', [
+        return $this->response->html($this->template->render('action/params', [
             'values'            => $values,
             'action_params'     => $action_params,
             'columns_list'      => $this->columnModel->getList($project['id']),

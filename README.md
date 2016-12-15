@@ -69,6 +69,15 @@ $ cp config/config{.default,}.php // 根据实际情况修改config.php相关配
 $ chmod -R 0777 storage
 ```
 
+五. 通过浏览器访问
+
+安装完成后，请通过浏览器访问你的Hiject网址，如：http://hiject.dev
+
+初始管理员的用户名和密码：
+
+- **用户名:** `admin` or `admin@admin.com`
+- **密码:** `admin`
+
 ## 升级步骤
 
 一. 获取最新代码

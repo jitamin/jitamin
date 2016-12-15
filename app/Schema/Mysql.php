@@ -1298,7 +1298,6 @@ function version_15(PDO $pdo)
 function version_14(PDO $pdo)
 {
     $pdo->exec('ALTER TABLE users ADD COLUMN name VARCHAR(255)');
-    $pdo->exec('ALTER TABLE users ADD COLUMN email VARCHAR(255)');
     $pdo->exec('ALTER TABLE users ADD COLUMN google_id VARCHAR(30)');
 }
 
@@ -1354,6 +1353,7 @@ function version_1(PDO $pdo)
             id INT NOT NULL AUTO_INCREMENT,
             username VARCHAR(50),
             password VARCHAR(255),
+            email VARCHAR(255),
             is_admin TINYINT DEFAULT 0,
             default_project_id INT DEFAULT 0,
             PRIMARY KEY (id)
@@ -1454,8 +1454,8 @@ function version_1(PDO $pdo)
 
     $pdo->exec("
         INSERT INTO users
-        (username, password, is_admin)
-        VALUES ('admin', '".\password_hash('admin', PASSWORD_BCRYPT)."', '1')
+        (username, password, email, is_admin)
+        VALUES ('admin', '".\password_hash('admin', PASSWORD_BCRYPT)."', 'admin@admin.com', '1')
     ");
 
     $pdo->exec("
