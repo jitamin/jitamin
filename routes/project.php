@@ -67,9 +67,16 @@ $container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController
 $container['route']->addRoute('task/:project_id/create', 'TaskController', 'create');
 $container['route']->addRoute('task/:project_id/:column_id/:swimlane_id/create', 'TaskController', 'create');
 $container['route']->addRoute('task/:project_id/store', 'TaskController', 'store');
+$container['route']->addRoute('project/:project_id/task/:task_id/start', 'TaskController', 'start');
 $container['route']->addRoute('project/:project_id/task/:task_id/edit', 'TaskController', 'edit');
 $container['route']->addRoute('project/:project_id/task/:task_id/update', 'TaskController', 'update');
+$container['route']->addRoute('project/:project_id/task/:task_id/remove', 'TaskSuppressionController', 'confirm');
+$container['route']->addRoute('project/:project_id/task/:task_id/close', 'TaskStatusController', 'close');
+$container['route']->addRoute('project/:project_id/task/:task_id/screenshot', 'TaskPopoverController', 'screenshot');
 $container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
 $container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
 $container['route']->addRoute('project/:project_id/task/:task_id/analytics', 'TaskViewController', 'analytics');
 $container['route']->addRoute('project/:project_id/task/:task_id/time-tracking', 'TaskViewController', 'timetracking');
+$container['route']->addRoute('project/:project_id/task/:task_id/subtask/create', 'SubtaskController', 'create');
+$container['route']->addRoute('project/:project_id/task/:task_id/link/create', 'TaskInternalLinkController', 'create');
+$container['route']->addRoute('project/:project_id/task/:task_id/comment/create', 'CommentController', 'create');
