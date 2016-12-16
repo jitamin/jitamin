@@ -1156,7 +1156,7 @@ return [
     'Do you really want to convert this sub-task to a task?' => '你确定要将该子任务转换为任务吗？',
     'My task title' => '我的任务标题',
     'Enter one task by line.' => '每条任务占一行',
-    'Number of failed login:' => '登录失败数',
+    'Number of failed login:' => '登录失败数：',
     'Account locked until:' => '账号锁定到：',
     'Email settings' => '邮箱设置',
     'Email sender address' => '发件人邮箱',

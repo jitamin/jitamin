@@ -29,7 +29,7 @@ class SkinModel extends Model
     {
         // Sorted by value
         $skins = [
-            'default' => t('None'),
+            'default' => t('Default'),
             'blue'    => t('Blue'),
             'green'   => t('Green'),
             'purple'  => t('Purple'),
