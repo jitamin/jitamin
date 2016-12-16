@@ -29,7 +29,7 @@ Hiject.Task.prototype.onPopoverOpened = function() {
     var self = this;
     var reloadingProjectId = 0;
 
-    self.renderColorPicker();
+    self.renderPickers();
 
     // Assign to me
     $(document).on("click", ".assign-me", function(e) {
@@ -67,7 +67,8 @@ Hiject.Task.prototype.onPopoverOpened = function() {
     });
 };
 
-Hiject.Task.prototype.renderColorPicker = function() {
+Hiject.Task.prototype.renderPickers = function() {
+
     function renderColorOption(color) {
         return $(
             '<div class="color-picker-option">' +
@@ -77,9 +78,24 @@ Hiject.Task.prototype.renderColorPicker = function() {
         );
     }
 
+    function renderPriorityOption(priority) {
+        return $(
+            '<div class="priority-picker-option">' +
+            '<div class="priority-picker-circle color-priority-' + priority.id + '"></div>' +
+            '<div class="priority-picker-label">' + priority.text + '</div>' +
+            '</div>'
+        );
+    }
+
     $(".color-picker").select2({
         minimumResultsForSearch: Infinity,
         templateResult: renderColorOption,
         templateSelection: renderColorOption
+    });
+
+    $(".priority-picker").select2({
+        minimumResultsForSearch: Infinity,
+        templateResult: renderPriorityOption,
+        templateSelection: renderPriorityOption
     });
 };

@@ -153,7 +153,7 @@ class TaskHelper extends Base
             $values += ['priority' => $project['priority_default']];
 
             $html .= $this->helper->form->label(t('Priority'), 'priority');
-            $html .= $this->helper->form->select('priority', $options, $values, [], ['tabindex="7"']);
+            $html .= $this->helper->form->select('priority', $options, $values, [], ['tabindex="7"'], 'priority-picker');
         }
 
         return $html;
