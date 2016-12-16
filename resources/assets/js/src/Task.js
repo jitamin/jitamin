@@ -71,8 +71,8 @@ Hiject.Task.prototype.renderColorPicker = function() {
     function renderColorOption(color) {
         return $(
             '<div class="color-picker-option">' +
-            '<div class="color-picker-square color-' + color.id + '"></div>' +
-            '<div class="color-picker-label">' + color.text + '</div>' +
+            '<div class="color-picker-rectangle color-' + color.id + '">' + color.text + 
+            '</div>' +
             '</div>'
         );
     }
