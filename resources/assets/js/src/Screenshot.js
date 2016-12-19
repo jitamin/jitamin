@@ -9,6 +9,10 @@ Hiject.Screenshot.prototype.onPopoverOpened = function() {
     }
 };
 
+Hiject.Screenshot.prototype.onPopoverClosed = function() {
+    this.destroy();
+};
+
 // Setup event listener and workarounds
 Hiject.Screenshot.prototype.initialize = function() {
     this.destroy();
