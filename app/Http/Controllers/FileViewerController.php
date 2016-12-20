@@ -19,28 +19,6 @@ use Hiject\Core\ObjectStorage\ObjectStorageException;
 class FileViewerController extends BaseController
 {
     /**
-     * Get file content from object storage.
-     *
-     * @param array $file
-     *
-     * @return string
-     */
-    private function getFileContent(array $file)
-    {
-        $content = '';
-
-        try {
-            if ($file['is_image'] == 0) {
-                $content = $this->objectStorage->get($file['path']);
-            }
-        } catch (ObjectStorageException $e) {
-            $this->logger->error($e->getMessage());
-        }
-
-        return $content;
-    }
-
-    /**
      * Show file content in a popover.
      */
     public function show()
@@ -67,20 +45,7 @@ class FileViewerController extends BaseController
     public function image()
     {
         $file = $this->getFile();
-        $etag = md5($file['path']);
-        $this->response->withContentType($this->helper->file->getImageMimeType($file['name']));
-        $this->response->withCache(5 * 86400, $etag);
-
-        if ($this->request->getHeader('If-None-Match') === '"'.$etag.'"') {
-            $this->response->status(304);
-        } else {
-            try {
-                $this->response->send();
-                $this->objectStorage->output($file['path']);
-            } catch (ObjectStorageException $e) {
-                $this->logger->error($e->getMessage());
-            }
-        }
+        $this->renderFileWithCache($file, $this->helper->file->getImageMimeType($file['name']));
     }
 
     /**
@@ -89,20 +54,7 @@ class FileViewerController extends BaseController
     public function browser()
     {
         $file = $this->getFile();
-        $etag = md5($file['path']);
-        $this->response->withContentType($this->helper->file->getBrowserViewType($file['name']));
-        $this->response->withCache(5 * 86400, $etag);
-
-        if ($this->request->getHeader('If-None-Match') === '"'.$etag.'"') {
-            $this->response->status(304);
-        } else {
-            try {
-                $this->response->send();
-                $this->objectStorage->output($file['path']);
-            } catch (ObjectStorageException $e) {
-                $this->logger->error($e->getMessage());
-            }
-        }
+        $this->renderFileWithCache($file, $this->helper->file->getBrowserViewType($file['name']));
     }
 
     /**
@@ -148,6 +100,51 @@ class FileViewerController extends BaseController
             $this->objectStorage->output($file['path']);
         } catch (ObjectStorageException $e) {
             $this->logger->error($e->getMessage());
+        }
+    }
+
+    /**
+     * Get file content from object storage.
+     *
+     * @param array $file
+     *
+     * @return string
+     */
+    protected function getFileContent(array $file)
+    {
+        $content = '';
+
+        try {
+            if ($file['is_image'] == 0) {
+                $content = $this->objectStorage->get($file['path']);
+            }
+        } catch (ObjectStorageException $e) {
+            $this->logger->error($e->getMessage());
+        }
+
+        return $content;
+    }
+
+    /**
+     * Output file with cache
+     *
+     * @param array $file
+     * @param $mimetype
+     */
+    protected function renderFileWithCache(array $file, $mimetype)
+    {
+        $etag = md5($file['path']);
+        if ($this->request->getHeader('If-None-Match') === '"'.$etag.'"') {
+            $this->response->status(304);
+        } else {
+            try {
+                $this->response->withContentType($mimetype);
+                $this->response->withCache(5 * 86400, $etag);
+                $this->response->send();
+                $this->objectStorage->output($file['path']);
+            } catch (ObjectStorageException $e) {
+                $this->logger->error($e->getMessage());
+            }
         }
     }
 }
