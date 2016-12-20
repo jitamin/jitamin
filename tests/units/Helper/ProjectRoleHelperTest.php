@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
 
-use Hiject\Core\Security\Role;
 use Hiject\Core\Identity\UserSession;
+use Hiject\Core\Security\Role;
 use Hiject\Helper\ProjectRoleHelper;
 use Hiject\Model\ColumnMoveRestrictionModel;
 use Hiject\Model\ColumnRestrictionModel;

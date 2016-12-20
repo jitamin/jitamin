@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Security\Role;
 use Hiject\Core\Identity\UserSession;
+use Hiject\Core\Security\Role;
 
 class UserSessionTest extends Base
 {

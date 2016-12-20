@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Security\Role;
 use Hiject\Core\Identity\UserSync;
+use Hiject\Core\Security\Role;
 use Hiject\Services\Identity\LdapUserProvider;
 
 class UserSyncTest extends Base
