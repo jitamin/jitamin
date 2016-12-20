@@ -143,12 +143,12 @@ assigne:me due:tomorrow my title
 - 在默认泳道中搜索: `swimlane:default`
 - 在多个泳道中搜索: `swimlane:"Version 1.2" swimlane:"Version 1.3"`
 
-### 按任务连接搜索
+### 按任务`关联`搜索
 
 属性: **link**
 
-- 按连接名称搜索: `link:"is a milestone of"`
-- 在多个连接中搜索: `link:"is a milestone of" link:"relates to"`
+- 按关联名称搜索: `link:"is a milestone of"`
+- 在多个关联中搜索: `link:"is a milestone of" link:"relates to"`
 
 ### 按评论搜索
 
