@@ -9,39 +9,30 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\User;
+namespace Hiject\Services\Identity;
 
-use Hiject\Core\Security\Role;
-use Hiject\Core\User\UserProviderInterface;
+use Hiject\Core\Identity\UserProviderInterface;
 
 /**
- * Reverse Proxy User Provider.
+ * Database User Provider.
  */
-class ReverseProxyUserProvider implements UserProviderInterface
+class DatabaseUserProvider implements UserProviderInterface
 {
     /**
-     * Username.
-     *
-     * @var string
-     */
-    protected $username = '';
-
-    /**
-     * User profile if the user already exists.
+     * User properties.
      *
      * @var array
      */
-    private $userProfile = [];
+    protected $user = [];
 
     /**
      * Constructor.
      *
-     * @param string $username
+     * @param array $user
      */
-    public function __construct($username, array $userProfile = [])
+    public function __construct(array $user)
     {
-        $this->username = $username;
-        $this->userProfile = $userProfile;
+        $this->user = $user;
     }
 
     /**
@@ -51,7 +42,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function isUserCreationAllowed()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -61,7 +52,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getInternalId()
     {
-        return '';
+        return $this->user['id'];
     }
 
     /**
@@ -71,7 +62,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getExternalIdColumn()
     {
-        return 'username';
+        return '';
     }
 
     /**
@@ -81,7 +72,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getExternalId()
     {
-        return $this->username;
+        return '';
     }
 
     /**
@@ -91,15 +82,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getRole()
     {
-        if (REVERSE_PROXY_DEFAULT_ADMIN === $this->username) {
-            return Role::APP_ADMIN;
-        }
-
-        if (isset($this->userProfile['role'])) {
-            return $this->userProfile['role'];
-        }
-
-        return Role::APP_USER;
+        return '';
     }
 
     /**
@@ -109,7 +92,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getUsername()
     {
-        return $this->username;
+        return '';
     }
 
     /**
@@ -129,7 +112,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getEmail()
     {
-        return REVERSE_PROXY_DEFAULT_DOMAIN !== '' ? $this->username.'@'.REVERSE_PROXY_DEFAULT_DOMAIN : '';
+        return '';
     }
 
     /**
@@ -149,9 +132,6 @@ class ReverseProxyUserProvider implements UserProviderInterface
      */
     public function getExtraAttributes()
     {
-        return [
-            'is_ldap_user'       => 1,
-            'disable_login_form' => 1,
-        ];
+        return [];
     }
 }

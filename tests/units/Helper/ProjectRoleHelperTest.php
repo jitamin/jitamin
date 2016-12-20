@@ -10,7 +10,7 @@
  */
 
 use Hiject\Core\Security\Role;
-use Hiject\Core\User\UserSession;
+use Hiject\Core\Identity\UserSession;
 use Hiject\Helper\ProjectRoleHelper;
 use Hiject\Model\ColumnMoveRestrictionModel;
 use Hiject\Model\ColumnRestrictionModel;

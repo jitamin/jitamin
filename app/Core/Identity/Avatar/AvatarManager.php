@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\User\Avatar;
+namespace Hiject\Core\Identity\Avatar;
 
 /**
  * Avatar Manager.

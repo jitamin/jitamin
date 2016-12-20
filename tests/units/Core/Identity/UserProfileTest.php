@@ -12,9 +12,9 @@
 require_once __DIR__.'/../../Base.php';
 
 use Hiject\Core\Security\Role;
-use Hiject\Core\User\UserProfile;
-use Hiject\User\DatabaseUserProvider;
-use Hiject\User\LdapUserProvider;
+use Hiject\Identity\UserProfile;
+use Hiject\Services\Identity\DatabaseUserProvider;
+use Hiject\Services\Identity\LdapUserProvider;
 
 class UserProfileTest extends Base
 {

@@ -11,10 +11,10 @@
 
 namespace Hiject\Providers;
 
-use Hiject\Core\User\Avatar\AvatarManager;
-use Hiject\User\Avatar\AvatarFileProvider;
-use Hiject\User\Avatar\GravatarProvider;
-use Hiject\User\Avatar\LetterAvatarProvider;
+use Hiject\Core\Identity\Avatar\AvatarManager;
+use Hiject\Services\Identity\Avatar\AvatarFileProvider;
+use Hiject\Services\Identity\Avatar\GravatarProvider;
+use Hiject\Services\Identity\Avatar\LetterAvatarProvider;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\User;
+namespace Hiject\Services\Identity;
 
-use Hiject\Core\User\UserProviderInterface;
+use Hiject\Core\Identity\UserProviderInterface;
 
 /**
  * OAuth User Provider.

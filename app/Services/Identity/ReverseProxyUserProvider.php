@@ -9,30 +9,39 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\User;
+namespace Hiject\Services\Identity;
 
-use Hiject\Core\User\UserProviderInterface;
+use Hiject\Core\Security\Role;
+use Hiject\Core\Identity\UserProviderInterface;
 
 /**
- * Database User Provider.
+ * Reverse Proxy User Provider.
  */
-class DatabaseUserProvider implements UserProviderInterface
+class ReverseProxyUserProvider implements UserProviderInterface
 {
     /**
-     * User properties.
+     * Username.
+     *
+     * @var string
+     */
+    protected $username = '';
+
+    /**
+     * User profile if the user already exists.
      *
      * @var array
      */
-    protected $user = [];
+    private $userProfile = [];
 
     /**
      * Constructor.
      *
-     * @param array $user
+     * @param string $username
      */
-    public function __construct(array $user)
+    public function __construct($username, array $userProfile = [])
     {
-        $this->user = $user;
+        $this->username = $username;
+        $this->userProfile = $userProfile;
     }
 
     /**
@@ -42,7 +51,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function isUserCreationAllowed()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -52,7 +61,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getInternalId()
     {
-        return $this->user['id'];
+        return '';
     }
 
     /**
@@ -62,7 +71,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getExternalIdColumn()
     {
-        return '';
+        return 'username';
     }
 
     /**
@@ -72,7 +81,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getExternalId()
     {
-        return '';
+        return $this->username;
     }
 
     /**
@@ -82,7 +91,15 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getRole()
     {
-        return '';
+        if (REVERSE_PROXY_DEFAULT_ADMIN === $this->username) {
+            return Role::APP_ADMIN;
+        }
+
+        if (isset($this->userProfile['role'])) {
+            return $this->userProfile['role'];
+        }
+
+        return Role::APP_USER;
     }
 
     /**
@@ -92,7 +109,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getUsername()
     {
-        return '';
+        return $this->username;
     }
 
     /**
@@ -112,7 +129,7 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getEmail()
     {
-        return '';
+        return REVERSE_PROXY_DEFAULT_DOMAIN !== '' ? $this->username.'@'.REVERSE_PROXY_DEFAULT_DOMAIN : '';
     }
 
     /**
@@ -132,6 +149,9 @@ class DatabaseUserProvider implements UserProviderInterface
      */
     public function getExtraAttributes()
     {
-        return [];
+        return [
+            'is_ldap_user'       => 1,
+            'disable_login_form' => 1,
+        ];
     }
 }
