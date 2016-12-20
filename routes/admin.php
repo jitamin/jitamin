@@ -38,7 +38,6 @@ $container['route']->addRoute('admin/settings/api', 'SettingController', 'api');
 $container['route']->addRoute('admin/settings/help', 'SettingController', 'help');
 $container['route']->addRoute('admin/settings/about', 'SettingController', 'about');
 $container['route']->addRoute('admin/settings/links', 'LinkController', 'index');
-$container['route']->addRoute('admin/settings/currencies', 'CurrencyController', 'index');
 $container['route']->addRoute('admin/settings/tags', 'TagController', 'index');
 
 // Plugins admin
