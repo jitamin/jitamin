@@ -11,8 +11,8 @@
 
 namespace Hiject\Bus\Event;
 
-use Hiject\Core\User\UserProviderInterface;
-use Hiject\User\LdapUserProvider;
+use Hiject\Core\Identity\UserProviderInterface;
+use Hiject\Services\Identity\LdapUserProvider;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
