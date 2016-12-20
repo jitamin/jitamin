@@ -21,9 +21,6 @@
         <li <?= $this->app->checkMenuSelection('LinkController') ?>>
             <i class="fa fa-link"></i><?= $this->url->link(t('Link settings'), 'LinkController', 'index') ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('CurrencyController', 'index') ?>>
-            <i class="fa fa-money"></i><?= $this->url->link(t('Currency rates'), 'CurrencyController', 'index') ?>
-        </li>
         <li <?= $this->app->checkMenuSelection('SettingController', 'integrations') ?>>
             <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'SettingController', 'integrations') ?>
         </li>

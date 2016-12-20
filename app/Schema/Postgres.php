@@ -748,10 +748,7 @@ function version_39(PDO $pdo)
 
 function version_38(PDO $pdo)
 {
-    $pdo->exec('CREATE TABLE currencies ("currency" CHAR(3) NOT NULL UNIQUE, "rate" REAL DEFAULT 0)');
-
-    $rq = $pdo->prepare('INSERT INTO settings VALUES (?, ?)');
-    $rq->execute(['application_currency', 'USD']);
+    //
 }
 
 function version_37(PDO $pdo)
