@@ -126,7 +126,7 @@ class FileViewerController extends BaseController
     }
 
     /**
-     * Output file with cache
+     * Output file with cache.
      *
      * @param array $file
      * @param $mimetype
