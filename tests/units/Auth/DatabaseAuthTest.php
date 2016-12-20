@@ -45,7 +45,7 @@ class DatabaseAuthTest extends Base
         $provider->setPassword('admin');
 
         $this->assertTrue($provider->authenticate());
-        $this->assertInstanceOf('Hiject\User\DatabaseUserProvider', $provider->getUser());
+        $this->assertInstanceOf('Hiject\Services\Identity\DatabaseUserProvider', $provider->getUser());
     }
 
     public function testIsvalidSession()
