@@ -77,7 +77,6 @@ class SettingTest extends Base
         $this->assertEquals('m/d/Y', $c->getOption('application_date_format'));
         $this->assertEmpty($c->getOption('application_url'));
         $this->assertEmpty($c->getOption('application_stylesheet'));
-        $this->assertEquals('USD', $c->getOption('application_currency'));
 
         $this->assertEquals(0, $c->getOption('calendar_user_subtasks_time_tracking'));
         $this->assertEquals('date_started', $c->getOption('calendar_user_tasks'));

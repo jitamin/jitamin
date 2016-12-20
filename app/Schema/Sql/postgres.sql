@@ -156,16 +156,6 @@ ALTER SEQUENCE "comments_id_seq" OWNED BY "comments"."id";
 
 
 --
--- Name: currencies; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE "currencies" (
-    "currency" character(3) NOT NULL,
-    "rate" real DEFAULT 0
-);
-
-
---
 -- Name: custom_filters; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -1377,14 +1367,6 @@ ALTER TABLE ONLY "comments"
 
 
 --
--- Name: currencies_currency_key; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY "currencies"
-    ADD CONSTRAINT "currencies_currency_key" UNIQUE ("currency");
-
-
---
 -- Name: custom_filters_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -2252,7 +2234,6 @@ INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('applicatio
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('project_categories', '', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('subtask_restriction', '0', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('application_stylesheet', '', 0, 0);
-INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('application_currency', 'USD', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('integration_gravatar', '0', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('calendar_user_subtasks_time_tracking', '0', 0, 0);
 INSERT INTO settings (option, value, changed_by, changed_on) VALUES ('calendar_user_tasks', 'date_started', 0, 0);

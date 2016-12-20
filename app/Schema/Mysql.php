@@ -781,10 +781,7 @@ function version_58(PDO $pdo)
 
 function version_57(PDO $pdo)
 {
-    $pdo->exec('CREATE TABLE currencies (`currency` CHAR(3) NOT NULL UNIQUE, `rate` FLOAT DEFAULT 0) ENGINE=InnoDB CHARSET=utf8');
-
-    $rq = $pdo->prepare('INSERT INTO settings VALUES (?, ?)');
-    $rq->execute(['application_currency', 'USD']);
+    //
 }
 
 function version_56(PDO $pdo)
