@@ -27,9 +27,7 @@ class FileHelper extends Base
      */
     public function icon($filename)
     {
-        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-        switch ($extension) {
+        switch ($this->getFileExtension($filename)) {
             case 'jpeg':
             case 'jpg':
             case 'png':
@@ -76,9 +74,7 @@ class FileHelper extends Base
      */
     public function getImageMimeType($filename)
     {
-        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-        switch ($extension) {
+        switch ($this->getFileExtension($filename)) {
             case 'jpeg':
             case 'jpg':
                 return 'image/jpeg';
@@ -100,9 +96,7 @@ class FileHelper extends Base
      */
     public function getBrowserViewType($filename)
     {
-        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-        switch ($extension) {
+        switch ($this->getFileExtension($filename)) {
             case 'pdf':
                 return 'application/pdf';
             default:
@@ -119,9 +113,7 @@ class FileHelper extends Base
      */
     public function getPreviewType($filename)
     {
-        $extension = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-
-        switch ($extension) {
+        switch ($this->getFileExtension($filename)) {
             case 'md':
             case 'markdown':
                 return 'markdown';
@@ -131,5 +123,17 @@ class FileHelper extends Base
             default:
                 return;
         }
+    }
+
+    /**
+     * Get file extension.
+     *
+     * @param  $filename
+     *
+     * @return string
+     */
+    protected function getFileExtension($filename)
+    {
+        return strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     }
 }
