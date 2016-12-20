@@ -11,8 +11,8 @@
 
 namespace Hiject\Services\Identity;
 
-use Hiject\Core\Security\Role;
 use Hiject\Core\Identity\UserProviderInterface;
+use Hiject\Core\Security\Role;
 
 /**
  * Reverse Proxy User Provider.
