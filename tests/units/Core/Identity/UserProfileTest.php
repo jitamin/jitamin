@@ -12,7 +12,7 @@
 require_once __DIR__.'/../../Base.php';
 
 use Hiject\Core\Security\Role;
-use Hiject\Identity\UserProfile;
+use Hiject\Core\Identity\UserProfile;
 use Hiject\Services\Identity\DatabaseUserProvider;
 use Hiject\Services\Identity\LdapUserProvider;
 
