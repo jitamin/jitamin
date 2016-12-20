@@ -13,7 +13,7 @@ namespace Hiject\Auth;
 
 use Hiject\Core\Base;
 use Hiject\Core\Security\PreAuthenticationProviderInterface;
-use Hiject\User\DatabaseUserProvider;
+use Hiject\Services\Identity\DatabaseUserProvider;
 
 /**
  * Rember Me Cookie Authentication Provider.

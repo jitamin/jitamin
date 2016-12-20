@@ -15,7 +15,7 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\PasswordAuthenticationProviderInterface;
 use Hiject\Core\Security\SessionCheckProviderInterface;
 use Hiject\Model\UserModel;
-use Hiject\User\DatabaseUserProvider;
+use Hiject\Services\Identity\DatabaseUserProvider;
 
 /**
  * Database Authentication Provider.

@@ -14,7 +14,7 @@ namespace Hiject\Auth;
 use Hiject\Core\Base;
 use Hiject\Core\Security\PreAuthenticationProviderInterface;
 use Hiject\Core\Security\SessionCheckProviderInterface;
-use Hiject\User\ReverseProxyUserProvider;
+use Hiject\Services\Identity\ReverseProxyUserProvider;
 
 /**
  * Reverse-Proxy Authentication Provider.
