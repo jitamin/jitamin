@@ -140,7 +140,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('uid=my_ldap_user,ou=People,dc=hiject,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
@@ -215,7 +215,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('my photo', $user->getPhoto());
     }
 
@@ -304,7 +304,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('uid=my_ldap_user,ou=People,dc=hiject,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
@@ -400,7 +400,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('uid=my_ldap_user,ou=People,dc=hiject,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
@@ -553,7 +553,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue($groups));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('uid=my_ldap_user,ou=Users,dc=hiject,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
@@ -659,7 +659,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue($groups));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('uid=my_ldap_user,ou=Users,dc=hiject,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
@@ -770,7 +770,7 @@ class LdapUserTest extends Base
             ->will($this->returnValue($groups));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\User\LdapUserProvider', $user);
+        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('uid=my_ldap_user,ou=Users,dc=hiject,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());

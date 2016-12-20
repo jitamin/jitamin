@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\User;
+namespace Hiject\Services\Identity;
 
+use Hiject\Core\Identity\UserProviderInterface;
 use Hiject\Core\Security\Role;
-use Hiject\Core\User\UserProviderInterface;
 
 /**
  * Reverse Proxy User Provider.

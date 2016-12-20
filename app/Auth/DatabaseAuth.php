@@ -15,7 +15,7 @@ use Hiject\Core\Base;
 use Hiject\Core\Security\PasswordAuthenticationProviderInterface;
 use Hiject\Core\Security\SessionCheckProviderInterface;
 use Hiject\Model\UserModel;
-use Hiject\User\DatabaseUserProvider;
+use Hiject\Services\Identity\DatabaseUserProvider;
 
 /**
  * Database Authentication Provider.
@@ -91,7 +91,7 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     /**
      * Get user object.
      *
-     * @return \Hiject\User\DatabaseUserProvider
+     * @return \Hiject\Services\User\DatabaseUserProvider
      */
     public function getUser()
     {

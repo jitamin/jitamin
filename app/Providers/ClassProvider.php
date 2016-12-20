@@ -161,7 +161,7 @@ class ClassProvider implements ServiceProviderInterface
             'Token',
             'Role',
         ],
-        'Core\User' => [
+        'Core\Identity' => [
             'GroupSync',
             'UserSync',
             'UserSession',

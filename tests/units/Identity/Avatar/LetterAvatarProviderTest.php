@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\User\Avatar\LetterAvatarProvider;
+use Hiject\Services\Identity\Avatar\LetterAvatarProvider;
 
 class LetterAvatarProviderTest extends Base
 {

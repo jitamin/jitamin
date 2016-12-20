@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
+use Hiject\Core\Identity\UserProperty;
 use Hiject\Core\Security\Role;
-use Hiject\Core\User\UserProperty;
-use Hiject\User\LdapUserProvider;
+use Hiject\Services\Identity\LdapUserProvider;
 
 class UserPropertyTest extends Base
 {

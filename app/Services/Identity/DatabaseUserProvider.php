@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\User;
+namespace Hiject\Services\Identity;
 
-use Hiject\Core\User\UserProviderInterface;
+use Hiject\Core\Identity\UserProviderInterface;
 
 /**
- * OAuth User Provider.
+ * Database User Provider.
  */
-abstract class OAuthUserProvider implements UserProviderInterface
+class DatabaseUserProvider implements UserProviderInterface
 {
     /**
      * User properties.
@@ -52,6 +52,16 @@ abstract class OAuthUserProvider implements UserProviderInterface
      */
     public function getInternalId()
     {
+        return $this->user['id'];
+    }
+
+    /**
+     * Get external id column name.
+     *
+     * @return string
+     */
+    public function getExternalIdColumn()
+    {
         return '';
     }
 
@@ -62,7 +72,7 @@ abstract class OAuthUserProvider implements UserProviderInterface
      */
     public function getExternalId()
     {
-        return isset($this->user['id']) ? $this->user['id'] : '';
+        return '';
     }
 
     /**
@@ -92,7 +102,7 @@ abstract class OAuthUserProvider implements UserProviderInterface
      */
     public function getName()
     {
-        return isset($this->user['name']) ? $this->user['name'] : '';
+        return '';
     }
 
     /**
@@ -102,7 +112,7 @@ abstract class OAuthUserProvider implements UserProviderInterface
      */
     public function getEmail()
     {
-        return isset($this->user['email']) ? $this->user['email'] : '';
+        return '';
     }
 
     /**

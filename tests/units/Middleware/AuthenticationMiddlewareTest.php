@@ -43,7 +43,7 @@ class AuthenticationMiddlewareTest extends Base
             ->getMock();
 
         $this->container['userSession'] = $this
-            ->getMockBuilder('Hiject\Core\User\UserSession')
+            ->getMockBuilder('Hiject\Core\Identity\UserSession')
             ->setConstructorArgs([$this->container])
             ->setMethods(['isLogged'])
             ->getMock();

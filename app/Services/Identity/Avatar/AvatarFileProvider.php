@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Hiject\User\Avatar;
+namespace Hiject\Services\Identity\Avatar;
 
 use Hiject\Core\Base;
-use Hiject\Core\User\Avatar\AvatarProviderInterface;
+use Hiject\Core\Identity\Avatar\AvatarProviderInterface;
 
 /**
  * Avatar Local Image File Provider.

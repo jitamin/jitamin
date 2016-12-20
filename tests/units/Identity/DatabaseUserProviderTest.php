@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\User\DatabaseUserProvider;
+use Hiject\Services\Identity\DatabaseUserProvider;
 
 class DatabaseUserProviderTest extends Base
 {

@@ -14,7 +14,7 @@ namespace Hiject\Auth;
 use Hiject\Core\Base;
 use Hiject\Core\Security\PreAuthenticationProviderInterface;
 use Hiject\Core\Security\SessionCheckProviderInterface;
-use Hiject\User\ReverseProxyUserProvider;
+use Hiject\Services\Identity\ReverseProxyUserProvider;
 
 /**
  * Reverse-Proxy Authentication Provider.
@@ -24,7 +24,7 @@ class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterfac
     /**
      * User properties.
      *
-     * @var \Hiject\User\ReverseProxyUserProvider
+     * @var \Hiject\Services\User\ReverseProxyUserProvider
      */
     protected $userInfo = null;
 
