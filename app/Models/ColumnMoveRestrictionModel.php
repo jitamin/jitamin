@@ -18,6 +18,11 @@ use Hiject\Core\Database\Model;
  */
 class ColumnMoveRestrictionModel extends Model
 {
+    /**
+     * SQL table name.
+     *
+     * @var string
+     */
     const TABLE = 'column_has_move_restrictions';
 
     /**

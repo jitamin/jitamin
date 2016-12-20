@@ -18,6 +18,11 @@ use Hiject\Core\Database\Model;
  */
 class ColumnRestrictionModel extends Model
 {
+    /**
+     * SQL table name.
+     *
+     * @var string
+     */
     const TABLE = 'column_has_restrictions';
 
     const RULE_ALLOW_TASK_CREATION = 'allow.task_creation';

@@ -19,6 +19,11 @@ use Hiject\Core\Security\Role;
  */
 class ProjectRoleModel extends Model
 {
+    /**
+     * SQL table name.
+     *
+     * @var string
+     */
     const TABLE = 'project_has_roles';
 
     /**

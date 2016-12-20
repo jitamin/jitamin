@@ -18,6 +18,11 @@ use Hiject\Core\Database\Model;
  */
 class ProjectRoleRestrictionModel extends Model
 {
+    /**
+     * SQL table name.
+     *
+     * @var string
+     */
     const TABLE = 'project_role_has_restrictions';
 
     const RULE_TASK_CREATION = 'task_creation';
