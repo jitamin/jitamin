@@ -15,9 +15,6 @@
         <li <?= $this->app->checkMenuSelection('DashboardController', 'activities') ?>>
             <i class="fa fa-history"></i><?= $this->url->link(t('My activities'), 'DashboardController', 'activities', ['user_id' => $user['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('DashboardController', 'notifications') ?>>
-            <i class="fa fa-bell"></i><?= $this->url->link(t('My notifications'), 'DashboardController', 'notifications', ['user_id' => $user['id']]) ?>
-        </li>
         <?= $this->hook->render('template:dashboard:sidebar', ['user' => $user]) ?>
     </ul>
 </div>
