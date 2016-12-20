@@ -91,7 +91,7 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     /**
      * Get user object.
      *
-     * @return \Hiject\User\DatabaseUserProvider
+     * @return \Hiject\Services\User\DatabaseUserProvider
      */
     public function getUser()
     {

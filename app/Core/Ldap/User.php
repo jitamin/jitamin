@@ -12,7 +12,7 @@
 namespace Hiject\Core\Ldap;
 
 use Hiject\Core\Security\Role;
-use Hiject\User\LdapUserProvider;
+use Hiject\Services\Identity\LdapUserProvider;
 use LogicException;
 
 /**

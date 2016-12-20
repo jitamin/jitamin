@@ -24,7 +24,7 @@ class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterfac
     /**
      * User properties.
      *
-     * @var \Hiject\User\ReverseProxyUserProvider
+     * @var \Hiject\Services\User\ReverseProxyUserProvider
      */
     protected $userInfo = null;
 

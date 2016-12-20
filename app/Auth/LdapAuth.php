@@ -26,7 +26,7 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     /**
      * User properties.
      *
-     * @var \Hiject\User\LdapUserProvider
+     * @var \Hiject\Services\User\LdapUserProvider
      */
     protected $userInfo = null;
 
@@ -94,7 +94,7 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     /**
      * Get user object.
      *
-     * @return \Hiject\User\LdapUserProvider
+     * @return \Hiject\Services\User\LdapUserProvider
      */
     public function getUser()
     {

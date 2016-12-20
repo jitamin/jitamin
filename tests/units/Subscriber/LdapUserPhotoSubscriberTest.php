@@ -13,8 +13,8 @@ use Hiject\Bus\Event\UserProfileSyncEvent;
 use Hiject\Bus\Subscriber\LdapUserPhotoSubscriber;
 use Hiject\Core\Security\Role;
 use Hiject\Model\UserModel;
-use Hiject\User\DatabaseUserProvider;
-use Hiject\User\LdapUserProvider;
+use Hiject\Services\Identity\DatabaseUserProvider;
+use Hiject\Services\Identity\LdapUserProvider;
 
 require_once __DIR__.'/../Base.php';
 
