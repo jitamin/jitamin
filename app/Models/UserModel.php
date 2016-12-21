@@ -239,7 +239,7 @@ class UserModel extends Model
     {
         if (isset($values['password'])) {
             if (!empty($values['password'])) {
-                $values['password'] = \password_hash($values['password'], PASSWORD_BCRYPT);
+                $values['password'] = bcrypt($values['password']);
             } else {
                 unset($values['password']);
             }

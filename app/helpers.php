@@ -98,6 +98,25 @@ function get_upload_max_size()
 }
 
 /**
+ * Hash the given value.
+ *
+ * @param  string  $value
+ * @param  array   $options
+ *
+ * @return string
+ */
+function bcypt($value, array $options = [])
+{
+    $cost = isset($options['rounds']) ? $options['rounds'] : 10;
+    $hash = password_hash($value, PASSWORD_BCRYPT, ['cost' => $cost]);
+    if ($hash === false) {
+        trigger_error('Bcrypt hashing not supported.', E_USER_WARNING);
+        return;
+    }
+    return $hash;
+}
+
+/**
  * Translate a string.
  *
  * @return string
