@@ -1270,4 +1270,5 @@ return [
     'Do you really want to unstar this project: "%s"?' => '你确定要对 "%s" 取消按赞么？',
     'Project starred successfully.' => '按赞成功',
     'Project unstarred successfully.' => '取消按赞成功',
+    'Showing %d-%d of %d' => '本页显示 %d-%d 条，共有: %d 条',
 ];

@@ -227,6 +227,26 @@ class Paginator
     }
 
     /**
+     * Get the number of current page.
+     *
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->page;
+    }
+
+    /**
+     * Get the total number of pages.
+     *
+     * @return int
+     */
+    public function getPageTotal()
+    {
+        return ceil($this->getTotal() / $this->getMax());
+    }
+
+    /**
      * Set the default column order.
      *
      * @param string $order
@@ -266,6 +286,17 @@ class Paginator
         $this->limit = $limit;
 
         return $this;
+    }
+
+
+    /**
+     * Get the maximum number of items per page.
+     *
+     * @return int
+     */
+    public function getMax()
+    {
+        return $this->limit;
     }
 
     /**
@@ -315,90 +346,6 @@ class Paginator
     }
 
     /**
-     * Get url params for link generation.
-     *
-     * @param int    $page
-     * @param string $order
-     * @param string $direction
-     *
-     * @return string
-     */
-    public function getUrlParams($page, $order, $direction)
-    {
-        $params = [
-            'page'      => $page,
-            'order'     => $order,
-            'direction' => $direction,
-        ];
-
-        return array_merge($this->params, $params);
-    }
-
-    /**
-     * Generate the previous link.
-     *
-     * @return string
-     */
-    public function generatePreviousLink()
-    {
-        $html = '<span class="pagination-previous">';
-
-        if ($this->offset > 0) {
-            $html .= $this->container['helper']->url->link(
-                '&laquo; '.t('Previous'),
-                $this->controller,
-                $this->action,
-                $this->getUrlParams($this->page - 1, $this->order, $this->direction),
-                false,
-                'btn btn-info'
-            );
-        } else {
-            $html .= '<span class="btn btn-default">&laquo; '.t('Previous').'</span>';
-        }
-
-        $html .= '</span>';
-
-        return $html;
-    }
-
-    /**
-     * Generate the next link.
-     *
-     * @return string
-     */
-    public function generateNextLink()
-    {
-        $html = '<span class="pagination-next">';
-
-        if (($this->total - $this->offset) > $this->limit) {
-            $html .= $this->container['helper']->url->link(
-                t('Next').' &raquo;',
-                $this->controller,
-                $this->action,
-                $this->getUrlParams($this->page + 1, $this->order, $this->direction),
-                false,
-                'btn btn-info'
-            );
-        } else {
-            $html .= '<span class="btn btn-default">'.t('Next').' &raquo;</span>';
-        }
-
-        $html .= '</span>';
-
-        return $html;
-    }
-
-    /**
-     * Return true if there is no pagination to show.
-     *
-     * @return bool
-     */
-    public function hasNothingtoShow()
-    {
-        return $this->offset === 0 && ($this->total - $this->offset) <= $this->limit;
-    }
-
-    /**
      * Generation pagination links.
      *
      * @return string
@@ -409,6 +356,7 @@ class Paginator
 
         if (!$this->hasNothingtoShow()) {
             $html .= '<div class="pagination">';
+            $html .= $this->generatPageShowing();
             $html .= $this->generatePreviousLink();
             $html .= $this->generateNextLink();
             $html .= '</div>';
@@ -451,5 +399,99 @@ class Paginator
             $this->action,
             $this->getUrlParams($this->page, $column, $direction)
         );
+    }
+
+    /**
+     * Get url params for link generation.
+     *
+     * @param int    $page
+     * @param string $order
+     * @param string $direction
+     *
+     * @return string
+     */
+    protected function getUrlParams($page, $order, $direction)
+    {
+        $params = [
+            'page'      => $page,
+            'order'     => $order,
+            'direction' => $direction,
+        ];
+
+        return array_merge($this->params, $params);
+    }
+
+    /**
+     * Generate the previous link.
+     *
+     * @return string
+     */
+    protected function generatePreviousLink()
+    {
+        $html = '<span class="pagination-previous">';
+
+        if ($this->offset > 0) {
+            $html .= $this->container['helper']->url->link(
+                '&laquo; '.t('Previous'),
+                $this->controller,
+                $this->action,
+                $this->getUrlParams($this->page - 1, $this->order, $this->direction),
+                false,
+                'btn btn-info'
+            );
+        } else {
+            $html .= '<span class="btn btn-default">&laquo; '.t('Previous').'</span>';
+        }
+
+        $html .= '</span>';
+
+        return $html;
+    }
+
+    /**
+     * Generate the next link.
+     *
+     * @return string
+     */
+    protected function generateNextLink()
+    {
+        $html = '<span class="pagination-next">';
+
+        if (($this->total - $this->offset) > $this->limit) {
+            $html .= $this->container['helper']->url->link(
+                t('Next').' &raquo;',
+                $this->controller,
+                $this->action,
+                $this->getUrlParams($this->page + 1, $this->order, $this->direction),
+                false,
+                'btn btn-info'
+            );
+        } else {
+            $html .= '<span class="btn btn-default">'.t('Next').' &raquo;</span>';
+        }
+
+        $html .= '</span>';
+
+        return $html;
+    }
+
+    /**
+     * Generate the page showing.
+     *
+     * @return string
+     */
+    protected function generatPageShowing()
+    {
+        return '<span class="btn">'. t('Showing %d-%d of %d', (($this->getPage()-1) * $this->getMax() + 1), min($this->getTotal(), $this->getPage()*$this->getMax()), $this->getTotal()) . '</span>';
+    }
+
+    /**
+     * Return true if there is no pagination to show.
+     *
+     * @return bool
+     */
+    protected function hasNothingtoShow()
+    {
+        return $this->offset === 0 && ($this->total - $this->offset) <= $this->limit;
     }
 }
