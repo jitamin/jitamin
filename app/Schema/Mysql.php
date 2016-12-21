@@ -1452,7 +1452,7 @@ function version_1(PDO $pdo)
     $pdo->exec("
         INSERT INTO users
         (username, password, email, is_admin)
-        VALUES ('admin', '".bcrypt('admin')."', 'admin@admin.com', '1')
+        VALUES ('admin', '".\bcrypt('admin')."', 'admin@admin.com', '1')
     ");
 
     $pdo->exec("
