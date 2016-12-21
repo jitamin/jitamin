@@ -15,8 +15,8 @@ use Hiject\Core\Filter\LexerBuilder;
 use Hiject\Filter\TaskAssigneeFilter;
 use Hiject\Filter\TaskTitleFilter;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 class LexerBuilderTest extends Base

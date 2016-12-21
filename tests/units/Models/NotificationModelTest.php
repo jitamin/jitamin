@@ -16,10 +16,10 @@ use Hiject\Model\CommentModel;
 use Hiject\Model\NotificationModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFileModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskModel;
 
 class NotificationModelTest extends Base

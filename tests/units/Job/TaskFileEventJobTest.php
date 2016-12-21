@@ -11,8 +11,8 @@
 
 use Hiject\Bus\Job\TaskFileEventJob;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFileModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 

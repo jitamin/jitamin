@@ -18,8 +18,8 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectRoleModel;
 use Hiject\Model\ProjectRoleRestrictionModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskStatusModel;
 use Hiject\Model\UserModel;
 

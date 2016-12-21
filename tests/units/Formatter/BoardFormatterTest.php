@@ -13,8 +13,8 @@ use Hiject\Formatter\BoardFormatter;
 use Hiject\Model\ColumnModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskTagModel;
 
 require_once __DIR__.'/../Base.php';

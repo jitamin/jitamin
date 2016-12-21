@@ -15,8 +15,8 @@ use Hiject\Core\Security\Role;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 class UserModelTest extends Base

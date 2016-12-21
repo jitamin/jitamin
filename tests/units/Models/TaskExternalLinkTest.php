@@ -14,8 +14,8 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Core\ExternalLink\ExternalLinkManager;
 use Hiject\ExternalLink\WebLinkProvider;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskExternalLinkModel;
+use Hiject\Model\TaskModel;
 
 class TaskExternalLinkTest extends Base
 {
