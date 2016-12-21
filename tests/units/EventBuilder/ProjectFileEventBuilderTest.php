@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\EventBuilder\ProjectFileEventBuilder;
-use Hiject\Model\ProjectFileModel;
-use Hiject\Model\ProjectModel;
+use Jitamin\Bus\EventBuilder\ProjectFileEventBuilder;
+use Jitamin\Model\ProjectFileModel;
+use Jitamin\Model\ProjectModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -35,7 +35,7 @@ class ProjectFileEventBuilderTest extends Base
 
         $event = $projectFileEventBuilder->withFileId(1)->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\ProjectFileEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\ProjectFileEvent', $event);
         $this->assertNotEmpty($event['file']);
         $this->assertNotEmpty($event['project']);
     }

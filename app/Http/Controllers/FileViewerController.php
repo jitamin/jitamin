@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\ObjectStorage\ObjectStorageException;
+use Jitamin\Core\ObjectStorage\ObjectStorageException;
 
 /**
  * File Viewer Controller.
@@ -80,7 +80,7 @@ class FileViewerController extends BaseController
             } catch (ObjectStorageException $e) {
                 $this->logger->error($e->getMessage());
 
-                // Try to generate thumbnail on the fly for images uploaded before Hiject < 1.0.19
+                // Try to generate thumbnail on the fly for images uploaded before Jitamin < 1.0.19
                 $data = $this->objectStorage->get($file['path']);
                 $this->$model->generateThumbnailFromData($file['path'], $data);
                 $this->objectStorage->output($this->$model->getThumbnailPath($file['path']));

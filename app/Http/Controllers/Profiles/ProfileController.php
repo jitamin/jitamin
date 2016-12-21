@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Controller\PageNotFoundException;
-use Hiject\Model\ProjectModel;
+use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Model\ProjectModel;
 
 /**
  * Class ProfileController.
@@ -211,8 +211,8 @@ class ProfileController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {
@@ -269,8 +269,8 @@ class ProfileController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function changePassword(array $values = [], array $errors = [])
     {
@@ -286,8 +286,8 @@ class ProfileController extends BaseController
     /**
      * Save new password.
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function savePassword()
     {

@@ -5,7 +5,7 @@
     <ul>
         <li>
             <?= t('Official website:') ?>
-            <a href="http://hiject.com/" target="_blank" rel="noreferer">hiject.com</a>
+            <a href="http://jitamin.com/" target="_blank" rel="noreferer">jitamin.com</a>
         </li>
         <li>
             <?= t('License:') ?>

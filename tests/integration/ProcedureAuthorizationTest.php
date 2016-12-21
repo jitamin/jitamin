@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -96,7 +96,7 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
         $this->assertNotFalse($projectId);
 
-        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
+        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Jitamin\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
 
         $this->setExpectedException('JsonRPC\Exception\AccessDeniedException');
@@ -112,7 +112,7 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
         $this->assertNotFalse($projectId);
 
-        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
+        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Jitamin\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
 
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-member'));
@@ -130,7 +130,7 @@ class ProcedureAuthorizationTest extends BaseProcedureTest
 
         $this->assertNotFalse($projectId);
 
-        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
+        $actionId = $this->manager->createAction($projectId, 'task.move.column', '\Jitamin\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
 
         $this->assertTrue($this->manager->addProjectUser($projectId, $this->userUserId, 'project-manager'));

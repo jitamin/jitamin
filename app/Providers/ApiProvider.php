@@ -1,39 +1,39 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Api\Middleware\AuthenticationMiddleware;
-use Hiject\Api\Procedure\ActionProcedure;
-use Hiject\Api\Procedure\AppProcedure;
-use Hiject\Api\Procedure\BoardProcedure;
-use Hiject\Api\Procedure\CategoryProcedure;
-use Hiject\Api\Procedure\ColumnProcedure;
-use Hiject\Api\Procedure\CommentProcedure;
-use Hiject\Api\Procedure\GroupMemberProcedure;
-use Hiject\Api\Procedure\GroupProcedure;
-use Hiject\Api\Procedure\LinkProcedure;
-use Hiject\Api\Procedure\MeProcedure;
-use Hiject\Api\Procedure\ProjectFileProcedure;
-use Hiject\Api\Procedure\ProjectPermissionProcedure;
-use Hiject\Api\Procedure\ProjectProcedure;
-use Hiject\Api\Procedure\SubtaskProcedure;
-use Hiject\Api\Procedure\SubtaskTimeTrackingProcedure;
-use Hiject\Api\Procedure\SwimlaneProcedure;
-use Hiject\Api\Procedure\TaskExternalLinkProcedure;
-use Hiject\Api\Procedure\TaskFileProcedure;
-use Hiject\Api\Procedure\TaskLinkProcedure;
-use Hiject\Api\Procedure\TaskMetadataProcedure;
-use Hiject\Api\Procedure\TaskProcedure;
-use Hiject\Api\Procedure\UserProcedure;
+use Jitamin\Api\Middleware\AuthenticationMiddleware;
+use Jitamin\Api\Procedure\ActionProcedure;
+use Jitamin\Api\Procedure\AppProcedure;
+use Jitamin\Api\Procedure\BoardProcedure;
+use Jitamin\Api\Procedure\CategoryProcedure;
+use Jitamin\Api\Procedure\ColumnProcedure;
+use Jitamin\Api\Procedure\CommentProcedure;
+use Jitamin\Api\Procedure\GroupMemberProcedure;
+use Jitamin\Api\Procedure\GroupProcedure;
+use Jitamin\Api\Procedure\LinkProcedure;
+use Jitamin\Api\Procedure\MeProcedure;
+use Jitamin\Api\Procedure\ProjectFileProcedure;
+use Jitamin\Api\Procedure\ProjectPermissionProcedure;
+use Jitamin\Api\Procedure\ProjectProcedure;
+use Jitamin\Api\Procedure\SubtaskProcedure;
+use Jitamin\Api\Procedure\SubtaskTimeTrackingProcedure;
+use Jitamin\Api\Procedure\SwimlaneProcedure;
+use Jitamin\Api\Procedure\TaskExternalLinkProcedure;
+use Jitamin\Api\Procedure\TaskFileProcedure;
+use Jitamin\Api\Procedure\TaskLinkProcedure;
+use Jitamin\Api\Procedure\TaskMetadataProcedure;
+use Jitamin\Api\Procedure\TaskProcedure;
+use Jitamin\Api\Procedure\UserProcedure;
 use JsonRPC\Server;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

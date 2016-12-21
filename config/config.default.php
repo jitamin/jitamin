@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,11 +15,11 @@
 // Enable/Disable debug
 define('DEBUG', false);
 
-// Hiject folder
-define('HIJECT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
+// Jitamin folder
+define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // Data folder (must be writeable by the web server user)
-define('DATA_DIR', HIJECT_DIR.DIRECTORY_SEPARATOR.'storage');
+define('DATA_DIR', JITAMIN_DIR.DIRECTORY_SEPARATOR.'storage');
 
 // Log filename if the log driver is "file"
 define('LOG_FILE', DATA_DIR.DIRECTORY_SEPARATOR.'debug.log');
@@ -31,10 +31,10 @@ define('CACHE_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'cache');
 define('FILES_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'files');
 
 // Plugins directory
-define('PLUGINS_DIR', HIJECT_DIR.DIRECTORY_SEPARATOR.'plugins');
+define('PLUGINS_DIR', JITAMIN_DIR.DIRECTORY_SEPARATOR.'plugins');
 
 // Plugins directory URL
-define('PLUGIN_API_URL', 'https://hiject.com/plugins.json');
+define('PLUGIN_API_URL', 'https://jitamin.com/plugins.json');
 
 // Enable/Disable plugin installer
 define('PLUGIN_INSTALLER', true);
@@ -49,7 +49,7 @@ define('CACHE_DRIVER', 'memory');
 define('CACHE_PREFIX', '');
 
 // E-mail address for the "From" header (notifications)
-define('MAIL_FROM', 'replace-me@hiject.local');
+define('MAIL_FROM', 'replace-me@jitamin.local');
 
 // Mail transport available: "smtp", "sendmail", "mail" (PHP mail function), "postmark", "mailgun", "sendgrid"
 define('MAIL_TRANSPORT', 'mail');
@@ -77,7 +77,7 @@ define('DB_PASSWORD', '');
 define('DB_HOSTNAME', 'localhost');
 
 // Mysql/Postgres database name
-define('DB_NAME', 'hiject');
+define('DB_NAME', 'jitamin');
 
 // Mysql/Postgres custom port (null = default port)
 define('DB_PORT', null);
@@ -106,7 +106,7 @@ define('LDAP_SSL_VERIFY', true);
 // Enable LDAP START_TLS
 define('LDAP_START_TLS', false);
 
-// By default Hiject lowercase the ldap username to avoid duplicate users (the database is case sensitive)
+// By default Jitamin lowercase the ldap username to avoid duplicate users (the database is case sensitive)
 // Set to true if you want to preserve the case
 define('LDAP_USERNAME_CASE_SENSITIVE', false);
 
@@ -121,7 +121,7 @@ define('LDAP_USERNAME', null);
 define('LDAP_PASSWORD', null);
 
 // LDAP DN for users
-// Example for ActiveDirectory: CN=Users,DC=hiject,DC=local
+// Example for ActiveDirectory: CN=Users,DC=jitamin,DC=local
 // Example for OpenLDAP: ou=People,dc=example,dc=com
 define('LDAP_USER_BASE_DN', '');
 
@@ -157,11 +157,11 @@ define('LDAP_USER_ATTRIBUTE_LANGUAGE', '');
 define('LDAP_USER_CREATION', true);
 
 // LDAP DN for administrators
-// Example: CN=Hiject-Admins,CN=Users,DC=hiject,DC=local
+// Example: CN=Jitamin-Admins,CN=Users,DC=jitamin,DC=local
 define('LDAP_GROUP_ADMIN_DN', '');
 
 // LDAP DN for managers
-// Example: CN=Hiject Managers,CN=Users,DC=hiject,DC=local
+// Example: CN=Jitamin Managers,CN=Users,DC=jitamin,DC=local
 define('LDAP_GROUP_MANAGER_DN', '');
 
 // Enable LDAP group provider for project permissions
@@ -176,7 +176,7 @@ define('LDAP_GROUP_BASE_DN', '');
 define('LDAP_GROUP_FILTER', '');
 
 // LDAP user group filter
-// If this filter is configured, Hiject will search user groups in LDAP_GROUP_BASE_DN with this filter
+// If this filter is configured, Jitamin will search user groups in LDAP_GROUP_BASE_DN with this filter
 // Example for OpenLDAP: (&(objectClass=posixGroup)(memberUid=%s))
 define('LDAP_GROUP_USER_FILTER', '');
 

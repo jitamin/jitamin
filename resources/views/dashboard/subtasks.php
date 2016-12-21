@@ -6,10 +6,10 @@
 <?php else: ?>
     <table class="table-striped table-small table-scrolling">
         <tr>
-            <th class="column-8"><?= $paginator->order(t('Id'), \Hiject\Model\TaskModel::TABLE.'.id') ?></th>
+            <th class="column-8"><?= $paginator->order(t('Id'), \Jitamin\Model\TaskModel::TABLE.'.id') ?></th>
             <th class="column-20"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <th><?= $paginator->order(t('Task'), 'task_name') ?></th>
-            <th><?= $paginator->order(t('Subtask'), \Hiject\Model\SubtaskModel::TABLE.'.title') ?></th>
+            <th><?= $paginator->order(t('Subtask'), \Jitamin\Model\SubtaskModel::TABLE.'.title') ?></th>
             <?= $this->hook->render('template:dashboard:subtasks:header:before-timetracking', ['paginator' => $paginator]) ?>
             <th class="column-20"><?= t('Time tracking') ?></th>
         </tr>

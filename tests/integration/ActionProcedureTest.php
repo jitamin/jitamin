@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,7 +20,7 @@ class ActionProcedureTest extends BaseProcedureTest
         $actions = $this->app->getAvailableActions();
         $this->assertNotEmpty($actions);
         $this->assertInternalType('array', $actions);
-        $this->assertArrayHasKey('\Hiject\Action\TaskCloseColumn', $actions);
+        $this->assertArrayHasKey('\Jitamin\Action\TaskCloseColumn', $actions);
     }
 
     public function testGetAvailableActionEvents()
@@ -33,7 +33,7 @@ class ActionProcedureTest extends BaseProcedureTest
 
     public function testGetCompatibleActionEvents()
     {
-        $events = $this->app->getCompatibleActionEvents('\Hiject\Action\TaskCloseColumn');
+        $events = $this->app->getCompatibleActionEvents('\Jitamin\Action\TaskCloseColumn');
         $this->assertNotEmpty($events);
         $this->assertInternalType('array', $events);
         $this->assertArrayHasKey('task.move.column', $events);
@@ -49,7 +49,7 @@ class ActionProcedureTest extends BaseProcedureTest
 
     public function assertCreateAction()
     {
-        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
+        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Jitamin\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertNotFalse($actionId);
         $this->assertTrue($actionId > 0);
     }
@@ -69,7 +69,7 @@ class ActionProcedureTest extends BaseProcedureTest
 
     public function assertRemoveAction()
     {
-        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Hiject\Action\TaskCloseColumn', ['column_id' => 1]);
+        $actionId = $this->app->createAction($this->projectId, 'task.move.column', '\Jitamin\Action\TaskCloseColumn', ['column_id' => 1]);
         $this->assertTrue($this->app->removeAction($actionId));
     }
 }

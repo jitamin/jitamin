@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Helper\FileHelper;
+use Jitamin\Helper\FileHelper;
 
 class FileHelperTest extends Base
 {
@@ -46,7 +46,7 @@ class FileHelperTest extends Base
     public function testGetBrowserViewType()
     {
         $helper = new FileHelper($this->container);
-        $this->assertEquals('pdf', $helper->getBrowserViewType('Hiject.pdf'));
-        $this->assertEquals(null, $helper->getBrowserViewType('Hiject.doc'));
+        $this->assertEquals('pdf', $helper->getBrowserViewType('Jitamin.pdf'));
+        $this->assertEquals(null, $helper->getBrowserViewType('Jitamin.doc'));
     }
 }

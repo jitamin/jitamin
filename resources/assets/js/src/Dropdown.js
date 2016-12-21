@@ -1,8 +1,8 @@
-Hiject.Dropdown = function(app) {
+Jitamin.Dropdown = function(app) {
     this.app = app;
 };
 
-Hiject.Dropdown.prototype.listen = function() {
+Jitamin.Dropdown.prototype.listen = function() {
     var self = this;
 
     $(document).on('click', function() {
@@ -49,10 +49,10 @@ Hiject.Dropdown.prototype.listen = function() {
     });
 };
 
-Hiject.Dropdown.prototype.close = function() {
+Jitamin.Dropdown.prototype.close = function() {
     $("#dropdown").remove();
 };
 
-Hiject.Dropdown.prototype.onPopoverOpened = function() {
+Jitamin.Dropdown.prototype.onPopoverOpened = function() {
     this.close();
 };

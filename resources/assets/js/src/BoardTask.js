@@ -1,8 +1,8 @@
-Hiject.BoardTask = function(app) {
+Jitamin.BoardTask = function(app) {
     this.app = app;
 };
 
-Hiject.BoardTask.prototype.listen = function() {
+Jitamin.BoardTask.prototype.listen = function() {
     var self = this;
 
     $(document).on("click", ".task-board-change-assignee", function(e) {
@@ -18,7 +18,7 @@ Hiject.BoardTask.prototype.listen = function() {
     });
 };
 
-Hiject.BoardTask.prototype.keyboardShortcuts = function() {
+Jitamin.BoardTask.prototype.keyboardShortcuts = function() {
     var self = this;
 
     if (self.app.hasId("board")) {

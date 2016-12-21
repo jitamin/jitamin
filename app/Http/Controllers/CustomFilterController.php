@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Controller\AccessForbiddenException;
-use Hiject\Core\Security\Role;
+use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Core\Security\Role;
 
 /**
  * Custom Filter Controller.
@@ -25,7 +25,7 @@ class CustomFilterController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function index(array $values = [], array $errors = [])
     {
@@ -107,7 +107,7 @@ class CustomFilterController extends BaseController
      * @param array $errors
      *
      * @throws AccessForbiddenException
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {

@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Bus\Event\GenericEvent;
-use Hiject\Core\Security\Role;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\UserMentionModel;
-use Hiject\Model\UserModel;
+use Jitamin\Bus\Event\GenericEvent;
+use Jitamin\Core\Security\Role;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\ProjectUserRoleModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\UserMentionModel;
+use Jitamin\Model\UserModel;
 
 class UserMentionTest extends Base
 {
@@ -116,7 +116,7 @@ class UserMentionTest extends Base
 
     public function onUserMention($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\GenericEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\GenericEvent', $event);
         $this->assertEquals(['id' => '3', 'username' => 'user2', 'name' => 'User 2', 'email' => 'user2@user2', 'language' => null], $event['mention']);
     }
 }

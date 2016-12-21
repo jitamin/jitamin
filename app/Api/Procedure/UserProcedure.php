@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Api\Procedure;
+namespace Jitamin\Api\Procedure;
 
-use Hiject\Core\Ldap\Client as LdapClient;
-use Hiject\Core\Ldap\ClientException as LdapException;
-use Hiject\Core\Ldap\User as LdapUser;
-use Hiject\Core\Security\Role;
+use Jitamin\Core\Ldap\Client as LdapClient;
+use Jitamin\Core\Ldap\ClientException as LdapException;
+use Jitamin\Core\Ldap\User as LdapUser;
+use Jitamin\Core\Security\Role;
 use LogicException;
 
 /**

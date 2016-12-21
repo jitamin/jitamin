@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,11 +11,11 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Ldap\Entries;
-use Hiject\Core\Ldap\Query;
-use Hiject\Core\Ldap\User;
-use Hiject\Core\Security\Role;
-use Hiject\Group\LdapGroupProvider;
+use Jitamin\Core\Ldap\Entries;
+use Jitamin\Core\Ldap\Query;
+use Jitamin\Core\Ldap\User;
+use Jitamin\Core\Security\Role;
+use Jitamin\Group\LdapGroupProvider;
 
 class LdapUserTest extends Base
 {
@@ -29,14 +29,14 @@ class LdapUserTest extends Base
         parent::setUp();
 
         $this->client = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Client')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Client')
             ->setMethods([
                 'getConnection',
             ])
             ->getMock();
 
         $this->query = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Query')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Query')
             ->setConstructorArgs([$this->client])
             ->setMethods([
                 'execute',
@@ -46,7 +46,7 @@ class LdapUserTest extends Base
             ->getMock();
 
         $this->group = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Group')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Group')
             ->setConstructorArgs([new Query($this->client)])
             ->setMethods([
                 'find',
@@ -54,7 +54,7 @@ class LdapUserTest extends Base
             ->getMock();
 
         $this->user = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\User')
+            ->getMockBuilder('\Jitamin\Core\Ldap\User')
             ->setConstructorArgs([$this->query, $this->group])
             ->setMethods([
                 'getAttributeUsername',
@@ -76,7 +76,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count'       => 2,
-                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=jitamin,dc=local',
                 'displayname' => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -105,7 +105,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -137,11 +137,11 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
+            ->will($this->returnValue('ou=People,dc=jitamin,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
-        $this->assertEquals('uid=my_ldap_user,ou=People,dc=hiject,dc=local', $user->getDn());
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
+        $this->assertEquals('uid=my_ldap_user,ou=People,dc=jitamin,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
@@ -157,7 +157,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count'       => 2,
-                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=jitamin,dc=local',
                 'displayname' => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -190,7 +190,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -212,10 +212,10 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
+            ->will($this->returnValue('ou=People,dc=jitamin,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
         $this->assertEquals('my photo', $user->getPhoto());
     }
 
@@ -225,7 +225,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count'       => 2,
-                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=jitamin,dc=local',
                 'displayname' => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -241,7 +241,7 @@ class LdapUserTest extends Base
                 ],
                 'memberof' => [
                     'count' => 1,
-                    0       => 'CN=Hiject-Admins,CN=Users,DC=hiject,DC=local',
+                    0       => 'CN=Jitamin-Admins,CN=Users,DC=jitamin,DC=local',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
@@ -259,7 +259,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -296,21 +296,21 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getGroupAdminDn')
-            ->will($this->returnValue('CN=Hiject-Admins,CN=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('CN=Jitamin-Admins,CN=Users,DC=jitamin,DC=local'));
 
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
+            ->will($this->returnValue('ou=People,dc=jitamin,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
-        $this->assertEquals('uid=my_ldap_user,ou=People,dc=hiject,dc=local', $user->getDn());
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
+        $this->assertEquals('uid=my_ldap_user,ou=People,dc=jitamin,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(Role::APP_ADMIN, $user->getRole());
-        $this->assertEquals(['CN=Hiject-Admins,CN=Users,DC=hiject,DC=local'], $user->getExternalGroupIds());
+        $this->assertEquals(['CN=Jitamin-Admins,CN=Users,DC=jitamin,DC=local'], $user->getExternalGroupIds());
         $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
@@ -320,7 +320,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count'       => 2,
-                'dn'          => 'uid=my_ldap_user,ou=People,dc=hiject,dc=local',
+                'dn'          => 'uid=my_ldap_user,ou=People,dc=jitamin,dc=local',
                 'displayname' => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -336,8 +336,8 @@ class LdapUserTest extends Base
                 ],
                 'memberof' => [
                     'count' => 2,
-                    0       => 'CN=Hiject-Users,CN=Users,DC=hiject,DC=local',
-                    1       => 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local',
+                    0       => 'CN=Jitamin-Users,CN=Users,DC=jitamin,DC=local',
+                    1       => 'CN=Jitamin-Managers,CN=Users,DC=jitamin,DC=local',
                 ],
                 0 => 'displayname',
                 1 => 'mail',
@@ -355,7 +355,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -392,21 +392,21 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getGroupManagerDn')
-            ->will($this->returnValue('CN=Hiject-Managers,CN=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('CN=Jitamin-Managers,CN=Users,DC=jitamin,DC=local'));
 
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
+            ->will($this->returnValue('ou=People,dc=jitamin,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
-        $this->assertEquals('uid=my_ldap_user,ou=People,dc=hiject,dc=local', $user->getDn());
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
+        $this->assertEquals('uid=my_ldap_user,ou=People,dc=jitamin,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(Role::APP_MANAGER, $user->getRole());
-        $this->assertEquals(['CN=Hiject-Users,CN=Users,DC=hiject,DC=local', 'CN=Hiject-Managers,CN=Users,DC=hiject,DC=local'], $user->getExternalGroupIds());
+        $this->assertEquals(['CN=Jitamin-Users,CN=Users,DC=jitamin,DC=local', 'CN=Jitamin-Managers,CN=Users,DC=jitamin,DC=local'], $user->getExternalGroupIds());
         $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
 
@@ -421,7 +421,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -452,7 +452,7 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('ou=People,dc=hiject,dc=local'));
+            ->will($this->returnValue('ou=People,dc=jitamin,dc=local'));
 
         $user = $this->user->find('(uid=my_ldap_user)');
         $this->assertEquals(null, $user);
@@ -464,7 +464,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count' => 2,
-                'dn'    => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
+                'dn'    => 'uid=my_ldap_user,ou=Users,dc=jitamin,dc=local',
                 'cn'    => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -485,7 +485,7 @@ class LdapUserTest extends Base
         ]);
 
         $groups = [
-            new LdapGroupProvider('CN=Hiject Admins,OU=Groups,DC=hiject,DC=local', 'Hiject Admins'),
+            new LdapGroupProvider('CN=Jitamin Admins,OU=Groups,DC=jitamin,DC=local', 'Jitamin Admins'),
         ];
 
         $this->client
@@ -497,7 +497,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('OU=Users,DC=hiject,DC=local'),
+                $this->equalTo('OU=Users,DC=jitamin,DC=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -539,12 +539,12 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getGroupAdminDn')
-            ->will($this->returnValue('cn=Hiject Admins,ou=Groups,dc=hiject,dc=local'));
+            ->will($this->returnValue('cn=Jitamin Admins,ou=Groups,dc=jitamin,dc=local'));
 
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('OU=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('OU=Users,DC=jitamin,DC=local'));
 
         $this->group
             ->expects($this->once())
@@ -553,12 +553,12 @@ class LdapUserTest extends Base
             ->will($this->returnValue($groups));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
-        $this->assertEquals('uid=my_ldap_user,ou=Users,dc=hiject,dc=local', $user->getDn());
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
+        $this->assertEquals('uid=my_ldap_user,ou=Users,dc=jitamin,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
-        $this->assertEquals(['CN=Hiject Admins,OU=Groups,DC=hiject,DC=local'], $user->getExternalGroupIds());
+        $this->assertEquals(['CN=Jitamin Admins,OU=Groups,DC=jitamin,DC=local'], $user->getExternalGroupIds());
         $this->assertEquals(Role::APP_ADMIN, $user->getRole());
         $this->assertEquals(['is_ldap_user' => 1], $user->getExtraAttributes());
     }
@@ -569,7 +569,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count' => 2,
-                'dn'    => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
+                'dn'    => 'uid=my_ldap_user,ou=Users,dc=jitamin,dc=local',
                 'cn'    => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -590,8 +590,8 @@ class LdapUserTest extends Base
         ]);
 
         $groups = [
-            new LdapGroupProvider('CN=Hiject Users,OU=Groups,DC=hiject,DC=local', 'Hiject Users'),
-            new LdapGroupProvider('CN=Hiject Managers,OU=Groups,DC=hiject,DC=local', 'Hiject Managers'),
+            new LdapGroupProvider('CN=Jitamin Users,OU=Groups,DC=jitamin,DC=local', 'Jitamin Users'),
+            new LdapGroupProvider('CN=Jitamin Managers,OU=Groups,DC=jitamin,DC=local', 'Jitamin Managers'),
         ];
 
         $this->client
@@ -603,7 +603,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('OU=Users,DC=hiject,DC=local'),
+                $this->equalTo('OU=Users,DC=jitamin,DC=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -645,12 +645,12 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getGroupManagerDn')
-            ->will($this->returnValue('cn=Hiject Managers,ou=Groups,dc=hiject,dc=local'));
+            ->will($this->returnValue('cn=Jitamin Managers,ou=Groups,dc=jitamin,dc=local'));
 
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('OU=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('OU=Users,DC=jitamin,DC=local'));
 
         $this->group
             ->expects($this->once())
@@ -659,15 +659,15 @@ class LdapUserTest extends Base
             ->will($this->returnValue($groups));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
-        $this->assertEquals('uid=my_ldap_user,ou=Users,dc=hiject,dc=local', $user->getDn());
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
+        $this->assertEquals('uid=my_ldap_user,ou=Users,dc=jitamin,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(
             [
-                'CN=Hiject Users,OU=Groups,DC=hiject,DC=local',
-                'CN=Hiject Managers,OU=Groups,DC=hiject,DC=local',
+                'CN=Jitamin Users,OU=Groups,DC=jitamin,DC=local',
+                'CN=Jitamin Managers,OU=Groups,DC=jitamin,DC=local',
             ],
             $user->getExternalGroupIds()
         );
@@ -681,7 +681,7 @@ class LdapUserTest extends Base
             'count' => 1,
             0       => [
                 'count' => 2,
-                'dn'    => 'uid=my_ldap_user,ou=Users,dc=hiject,dc=local',
+                'dn'    => 'uid=my_ldap_user,ou=Users,dc=jitamin,dc=local',
                 'cn'    => [
                     'count' => 1,
                     0       => 'My LDAP user',
@@ -702,7 +702,7 @@ class LdapUserTest extends Base
         ]);
 
         $groups = [
-            new LdapGroupProvider('CN=Hiject Users,OU=Groups,DC=hiject,DC=local', 'Hiject Users'),
+            new LdapGroupProvider('CN=Jitamin Users,OU=Groups,DC=jitamin,DC=local', 'Jitamin Users'),
         ];
 
         $this->client
@@ -714,7 +714,7 @@ class LdapUserTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('OU=Users,DC=hiject,DC=local'),
+                $this->equalTo('OU=Users,DC=jitamin,DC=local'),
                 $this->equalTo('(uid=my_ldap_user)')
             );
 
@@ -756,12 +756,12 @@ class LdapUserTest extends Base
         $this->user
             ->expects($this->any())
             ->method('getGroupManagerDn')
-            ->will($this->returnValue('cn=Hiject Managers,ou=Groups,dc=hiject,dc=local'));
+            ->will($this->returnValue('cn=Jitamin Managers,ou=Groups,dc=jitamin,dc=local'));
 
         $this->user
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('OU=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('OU=Users,DC=jitamin,DC=local'));
 
         $this->group
             ->expects($this->once())
@@ -770,14 +770,14 @@ class LdapUserTest extends Base
             ->will($this->returnValue($groups));
 
         $user = $this->user->find('(uid=my_ldap_user)');
-        $this->assertInstanceOf('Hiject\Services\Identity\LdapUserProvider', $user);
-        $this->assertEquals('uid=my_ldap_user,ou=Users,dc=hiject,dc=local', $user->getDn());
+        $this->assertInstanceOf('Jitamin\Services\Identity\LdapUserProvider', $user);
+        $this->assertEquals('uid=my_ldap_user,ou=Users,dc=jitamin,dc=local', $user->getDn());
         $this->assertEquals('my_ldap_user', $user->getUsername());
         $this->assertEquals('My LDAP user', $user->getName());
         $this->assertEquals('user1@localhost', $user->getEmail());
         $this->assertEquals(
             [
-                'CN=Hiject Users,OU=Groups,DC=hiject,DC=local',
+                'CN=Jitamin Users,OU=Groups,DC=jitamin,DC=local',
             ],
             $user->getExternalGroupIds()
         );

@@ -1,8 +1,8 @@
-Hiject.Subtask = function(app) {
+Jitamin.Subtask = function(app) {
     this.app = app;
 };
 
-Hiject.Subtask.prototype.listen = function() {
+Jitamin.Subtask.prototype.listen = function() {
     var self = this;
     this.dragAndDrop();
 
@@ -40,7 +40,7 @@ Hiject.Subtask.prototype.listen = function() {
     });
 };
 
-Hiject.Subtask.prototype.dragAndDrop = function() {
+Jitamin.Subtask.prototype.dragAndDrop = function() {
     var self = this;
 
     $(".draggable-row-handle").mouseenter(function() {
@@ -70,7 +70,7 @@ Hiject.Subtask.prototype.dragAndDrop = function() {
     }).disableSelection();
 };
 
-Hiject.Subtask.prototype.savePosition = function(subtaskId, position) {
+Jitamin.Subtask.prototype.savePosition = function(subtaskId, position) {
     var url = $(".subtasks-table").data("save-position-url");
     var self = this;
 

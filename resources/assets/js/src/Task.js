@@ -1,8 +1,8 @@
-Hiject.Task = function(app) {
+Jitamin.Task = function(app) {
     this.app = app;
 };
 
-Hiject.Task.prototype.keyboardShortcuts = function() {
+Jitamin.Task.prototype.keyboardShortcuts = function() {
     var taskView = $("#task-view");
     var self = this;
 
@@ -25,7 +25,7 @@ Hiject.Task.prototype.keyboardShortcuts = function() {
     }
 };
 
-Hiject.Task.prototype.onPopoverOpened = function() {
+Jitamin.Task.prototype.onPopoverOpened = function() {
     var self = this;
     var reloadingProjectId = 0;
 
@@ -67,7 +67,7 @@ Hiject.Task.prototype.onPopoverOpened = function() {
     });
 };
 
-Hiject.Task.prototype.renderPickers = function() {
+Jitamin.Task.prototype.renderPickers = function() {
 
     function renderColorOption(color) {
         return $(

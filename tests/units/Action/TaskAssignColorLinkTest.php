@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Action\TaskAssignColorLink;
-use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskLinkModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Action\TaskAssignColorLink;
+use Jitamin\Bus\EventBuilder\TaskLinkEventBuilder;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskLinkModel;
+use Jitamin\Model\TaskModel;
 
 class TaskAssignColorLinkTest extends Base
 {

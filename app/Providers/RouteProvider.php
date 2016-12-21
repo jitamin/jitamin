@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Core\Http\Route;
-use Hiject\Core\Http\Router;
+use Jitamin\Core\Http\Route;
+use Jitamin\Core\Http\Router;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -35,7 +35,7 @@ class RouteProvider implements ServiceProviderInterface
 
         if (ENABLE_URL_REWRITE) {
             $container['route']->enable();
-            foreach (glob(HIJECT_DIR.DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'*.php') as $file) {
+            foreach (glob(JITAMIN_DIR.DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'*.php') as $file) {
                 require $file;
             }
         }

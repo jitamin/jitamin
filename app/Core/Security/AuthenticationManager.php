@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Security;
+namespace Jitamin\Core\Security;
 
-use Hiject\Bus\Event\AuthFailureEvent;
-use Hiject\Bus\Event\AuthSuccessEvent;
-use Hiject\Core\Base;
+use Jitamin\Bus\Event\AuthFailureEvent;
+use Jitamin\Bus\Event\AuthSuccessEvent;
+use Jitamin\Core\Base;
 use LogicException;
 
 /**
@@ -184,7 +184,7 @@ class AuthenticationManager extends Base
      */
     private function filterProviders($interface)
     {
-        $interface = '\Hiject\Core\Security\\'.$interface;
+        $interface = '\Jitamin\Core\Security\\'.$interface;
 
         return array_filter($this->providers, function (AuthenticationProviderInterface $provider) use ($interface) {
             return is_a($provider, $interface);

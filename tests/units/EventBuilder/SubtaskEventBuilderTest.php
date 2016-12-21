@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\EventBuilder\SubtaskEventBuilder;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Bus\EventBuilder\SubtaskEventBuilder;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SubtaskModel;
+use Jitamin\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -38,7 +38,7 @@ class SubtaskEventBuilderTest extends Base
 
         $event = $subtaskEventBuilder->withSubtaskId(1)->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\SubtaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\SubtaskEvent', $event);
         $this->assertNotEmpty($event['subtask']);
         $this->assertNotEmpty($event['task']);
         $this->assertArrayNotHasKey('changes', $event);
@@ -60,7 +60,7 @@ class SubtaskEventBuilderTest extends Base
             ->withValues(['title' => 'new title', 'user_id' => 1])
             ->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\SubtaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\SubtaskEvent', $event);
         $this->assertNotEmpty($event['subtask']);
         $this->assertNotEmpty($event['task']);
         $this->assertNotEmpty($event['changes']);

@@ -1,12 +1,12 @@
-Hiject.Session = function(app) {
+Jitamin.Session = function(app) {
     this.app = app;
 };
 
-Hiject.Session.prototype.execute = function() {
+Jitamin.Session.prototype.execute = function() {
     window.setInterval(this.checkSession, 60000);
 };
 
-Hiject.Session.prototype.checkSession = function() {
+Jitamin.Session.prototype.checkSession = function() {
     if (! $(".form-login").length) {
         $.ajax({
             cache: false,

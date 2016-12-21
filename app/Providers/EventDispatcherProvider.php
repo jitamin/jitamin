@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Bus\Subscriber\AuthSubscriber;
-use Hiject\Bus\Subscriber\BootstrapSubscriber;
-use Hiject\Bus\Subscriber\LdapUserPhotoSubscriber;
-use Hiject\Bus\Subscriber\NotificationSubscriber;
-use Hiject\Bus\Subscriber\ProjectDailySummarySubscriber;
-use Hiject\Bus\Subscriber\ProjectModificationDateSubscriber;
-use Hiject\Bus\Subscriber\RecurringTaskSubscriber;
-use Hiject\Bus\Subscriber\TransitionSubscriber;
+use Jitamin\Bus\Subscriber\AuthSubscriber;
+use Jitamin\Bus\Subscriber\BootstrapSubscriber;
+use Jitamin\Bus\Subscriber\LdapUserPhotoSubscriber;
+use Jitamin\Bus\Subscriber\NotificationSubscriber;
+use Jitamin\Bus\Subscriber\ProjectDailySummarySubscriber;
+use Jitamin\Bus\Subscriber\ProjectModificationDateSubscriber;
+use Jitamin\Bus\Subscriber\RecurringTaskSubscriber;
+use Jitamin\Bus\Subscriber\TransitionSubscriber;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;

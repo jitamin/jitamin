@@ -1,14 +1,14 @@
-Hiject.BurndownChart = function(app) {
+Jitamin.BurndownChart = function(app) {
     this.app = app;
 };
 
-Hiject.BurndownChart.prototype.execute = function() {
+Jitamin.BurndownChart.prototype.execute = function() {
     if (this.app.hasId("analytic-burndown")) {
         this.show();
     }
 };
 
-Hiject.BurndownChart.prototype.show = function() {
+Jitamin.BurndownChart.prototype.show = function() {
     var chart = $("#chart");
     var metrics = chart.data("metrics");
     var columns = [[chart.data("label-total")]];

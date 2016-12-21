@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Bus\Subscriber\ProjectModificationDateSubscriber;
-use Hiject\Core\Translator;
-use Hiject\Model\CategoryModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SettingModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\UserModel;
+use Jitamin\Bus\Subscriber\ProjectModificationDateSubscriber;
+use Jitamin\Core\Translator;
+use Jitamin\Model\CategoryModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SettingModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\UserModel;
 
 class ProjectModelTest extends Base
 {
@@ -199,7 +199,7 @@ class ProjectModelTest extends Base
         $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
-        $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.Hiject\Bus\Subscriber\ProjectModificationDateSubscriber::execute', $called);
+        $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.Jitamin\Bus\Subscriber\ProjectModificationDateSubscriber::execute', $called);
 
         $project = $projectModel->getById(1);
         $this->assertNotEmpty($project);

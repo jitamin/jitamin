@@ -1,8 +1,8 @@
-Hiject.BoardCollapsedMode = function(app) {
+Jitamin.BoardCollapsedMode = function(app) {
     this.app = app;
 };
 
-Hiject.BoardCollapsedMode.prototype.keyboardShortcuts = function() {
+Jitamin.BoardCollapsedMode.prototype.keyboardShortcuts = function() {
     var self = this;
 
     if (self.app.hasId("board")) {
@@ -12,7 +12,7 @@ Hiject.BoardCollapsedMode.prototype.keyboardShortcuts = function() {
     }
 };
 
-Hiject.BoardCollapsedMode.prototype.toggle = function() {
+Jitamin.BoardCollapsedMode.prototype.toggle = function() {
     var self = this;
     this.app.showLoadingIcon();
 

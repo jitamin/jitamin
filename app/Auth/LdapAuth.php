@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Auth;
+namespace Jitamin\Auth;
 
-use Hiject\Core\Base;
-use Hiject\Core\Ldap\Client as LdapClient;
-use Hiject\Core\Ldap\ClientException as LdapException;
-use Hiject\Core\Ldap\User as LdapUser;
-use Hiject\Core\Security\PasswordAuthenticationProviderInterface;
+use Jitamin\Core\Base;
+use Jitamin\Core\Ldap\Client as LdapClient;
+use Jitamin\Core\Ldap\ClientException as LdapException;
+use Jitamin\Core\Ldap\User as LdapUser;
+use Jitamin\Core\Security\PasswordAuthenticationProviderInterface;
 use LogicException;
 
 /**
@@ -26,7 +26,7 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     /**
      * User properties.
      *
-     * @var \Hiject\Services\User\LdapUserProvider
+     * @var \Jitamin\Services\User\LdapUserProvider
      */
     protected $userInfo = null;
 
@@ -94,7 +94,7 @@ class LdapAuth extends Base implements PasswordAuthenticationProviderInterface
     /**
      * Get user object.
      *
-     * @return \Hiject\Services\User\LdapUserProvider
+     * @return \Jitamin\Services\User\LdapUserProvider
      */
     public function getUser()
     {

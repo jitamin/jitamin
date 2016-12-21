@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Filter\UserNameFilter;
-use Hiject\Formatter\UserAutoCompleteFormatter;
-use Hiject\Model\UserModel;
+use Jitamin\Filter\UserNameFilter;
+use Jitamin\Formatter\UserAutoCompleteFormatter;
+use Jitamin\Model\UserModel;
 
 /**
  * User Ajax Controller.

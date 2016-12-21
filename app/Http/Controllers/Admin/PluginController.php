@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Plugin\Directory;
-use Hiject\Core\Plugin\Installer;
-use Hiject\Core\Plugin\PluginInstallerException;
+use Jitamin\Core\Plugin\Directory;
+use Jitamin\Core\Plugin\Installer;
+use Jitamin\Core\Plugin\PluginInstallerException;
 
 /**
  * Class PluginController.
@@ -54,7 +54,7 @@ class PluginController extends BaseController
     /**
      * Install plugin from URL.
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function install()
     {
@@ -75,7 +75,7 @@ class PluginController extends BaseController
     /**
      * Update plugin from URL.
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function update()
     {
@@ -110,7 +110,7 @@ class PluginController extends BaseController
     /**
      * Remove a plugin.
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function uninstall()
     {

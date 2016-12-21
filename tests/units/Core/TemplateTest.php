@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\Template;
+use Jitamin\Core\Template;
 
 class TemplateTest extends Base
 {
@@ -26,7 +26,7 @@ class TemplateTest extends Base
 
         $this->assertStringEndsWith(
             implode(DIRECTORY_SEPARATOR, ['app', 'Core', '../..', 'resources/views', 'a', 'b.php']),
-            $template->getTemplateFile('hiject:a'.DIRECTORY_SEPARATOR.'b')
+            $template->getTemplateFile('jitamin:a'.DIRECTORY_SEPARATOR.'b')
         );
     }
 

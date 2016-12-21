@@ -1,17 +1,17 @@
-Hiject.Markdown = function(app) {
+Jitamin.Markdown = function(app) {
     this.app = app;
     this.editor = null;
 };
 
-Hiject.Markdown.prototype.onPopoverOpened = function() {
+Jitamin.Markdown.prototype.onPopoverOpened = function() {
     this.listen();
 };
 
-Hiject.Markdown.prototype.onPopoverClosed = function() {
+Jitamin.Markdown.prototype.onPopoverClosed = function() {
     this.listen();
 };
 
-Hiject.Markdown.prototype.listen = function() {
+Jitamin.Markdown.prototype.listen = function() {
     var editors = $(".markdown-editor");
 
     if (this.editor) {
@@ -23,7 +23,7 @@ Hiject.Markdown.prototype.listen = function() {
     }
 };
 
-Hiject.Markdown.prototype.destroy = function() {
+Jitamin.Markdown.prototype.destroy = function() {
     var cm = this.editor.codemirror;
     var wrapper = cm.getWrapperElement();
 
@@ -37,7 +37,7 @@ Hiject.Markdown.prototype.destroy = function() {
     this.editor = null;
 };
 
-Hiject.Markdown.prototype.show = function(textarea) {
+Jitamin.Markdown.prototype.show = function(textarea) {
     var toolbar = ["bold", "italic", "strikethrough", "heading", "|", "unordered-list", "ordered-list", "link", "|", "code", "table"];
 
     this.editor = new SimpleMDE({

@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Core\Security\Role;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\UserModel;
-use Hiject\Pagination\ProjectPagination;
+use Jitamin\Core\Security\Role;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\ProjectUserRoleModel;
+use Jitamin\Model\UserModel;
+use Jitamin\Pagination\ProjectPagination;
 
 require_once __DIR__.'/../Base.php';
 

@@ -1,14 +1,14 @@
-Hiject.LeadCycleTimeChart = function(app) {
+Jitamin.LeadCycleTimeChart = function(app) {
     this.app = app;
 };
 
-Hiject.LeadCycleTimeChart.prototype.execute = function() {
+Jitamin.LeadCycleTimeChart.prototype.execute = function() {
     if (this.app.hasId("analytic-lead-cycle-time")) {
         this.show();
     }
 };
 
-Hiject.LeadCycleTimeChart.prototype.show = function() {
+Jitamin.LeadCycleTimeChart.prototype.show = function() {
     var chart = $("#chart");
     var metrics = chart.data("metrics");
     var cycle = [chart.data("label-cycle")];

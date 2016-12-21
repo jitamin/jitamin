@@ -1,5 +1,5 @@
 {
-  "name": "hiject",
+  "name": "jitamin",
   "ignore": [
     "**/.*",
     "node_modules",

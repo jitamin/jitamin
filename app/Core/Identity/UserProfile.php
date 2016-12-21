@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Identity;
+namespace Jitamin\Core\Identity;
 
-use Hiject\Bus\Event\UserProfileSyncEvent;
-use Hiject\Core\Base;
+use Jitamin\Bus\Event\UserProfileSyncEvent;
+use Jitamin\Core\Base;
 
 /**
  * User Profile.

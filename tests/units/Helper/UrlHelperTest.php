@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\Http\Request;
-use Hiject\Helper\UrlHelper;
-use Hiject\Model\SettingModel;
+use Jitamin\Core\Http\Request;
+use Jitamin\Helper\UrlHelper;
+use Jitamin\Model\SettingModel;
 
 class UrlHelperTest extends Base
 {
@@ -68,13 +68,13 @@ class UrlHelperTest extends Base
     public function testDir()
     {
         $this->container['request'] = new Request($this->container, [
-                'PHP_SELF'       => '/hiject/index.php',
+                'PHP_SELF'       => '/jitamin/index.php',
                 'REQUEST_METHOD' => 'GET',
             ]
         );
 
         $h = new UrlHelper($this->container);
-        $this->assertEquals('/hiject/', $h->dir());
+        $this->assertEquals('/jitamin/', $h->dir());
 
         $this->container['request'] = new Request($this->container, [
                 'PHP_SELF'       => '/index.php',
@@ -125,11 +125,11 @@ class UrlHelperTest extends Base
         $this->assertEquals('http://hj:1234/', $h->base());
 
         $c = new SettingModel($this->container);
-        $c->save(['application_url' => 'https://myhiject/']);
+        $c->save(['application_url' => 'https://myjitamin/']);
         $this->container['memoryCache']->flush();
 
         $h = new UrlHelper($this->container);
-        $this->assertEquals('https://myhiject/', $c->get('application_url'));
-        $this->assertEquals('https://myhiject/', $h->base());
+        $this->assertEquals('https://myjitamin/', $c->get('application_url'));
+        $this->assertEquals('https://myjitamin/', $h->base());
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\ExternalLink\FileLinkProvider;
+use Jitamin\ExternalLink\FileLinkProvider;
 
 class FileLinkProviderTest extends Base
 {
@@ -62,6 +62,6 @@ class FileLinkProviderTest extends Base
     public function testGetLink()
     {
         $attachmentLinkProvider = new FileLinkProvider($this->container);
-        $this->assertInstanceOf('\Hiject\ExternalLink\FileLink', $attachmentLinkProvider->getLink());
+        $this->assertInstanceOf('\Jitamin\ExternalLink\FileLink', $attachmentLinkProvider->getLink());
     }
 }

@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Controller\AccessForbiddenException;
-use Hiject\Formatter\BoardFormatter;
-use Hiject\Model\UserMetadataModel;
+use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Formatter\BoardFormatter;
+use Jitamin\Model\UserMetadataModel;
 
 /**
  * Class BoardAjaxController.

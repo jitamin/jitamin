@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Plugin;
+namespace Jitamin\Core\Plugin;
 
 use Composer\Autoload\ClassLoader;
 use DirectoryIterator;
-use Hiject\Core\Tool;
+use Jitamin\Core\Tool;
 use LogicException;
 
 /**
  * Plugin Loader.
  */
-class Loader extends \Hiject\Core\Base
+class Loader extends \Jitamin\Core\Base
 {
     /**
      * Plugin instances.
@@ -45,7 +45,7 @@ class Loader extends \Hiject\Core\Base
     {
         if (file_exists(PLUGINS_DIR)) {
             $loader = new ClassLoader();
-            $loader->addPsr4('Hiject\Plugin\\', PLUGINS_DIR);
+            $loader->addPsr4('Jitamin\Plugin\\', PLUGINS_DIR);
             $loader->register();
 
             $dir = new DirectoryIterator(PLUGINS_DIR);
@@ -84,7 +84,7 @@ class Loader extends \Hiject\Core\Base
      */
     public function loadPlugin($pluginName)
     {
-        $className = '\Hiject\Plugin\\'.$pluginName.'\\Plugin';
+        $className = '\Jitamin\Plugin\\'.$pluginName.'\\Plugin';
 
         if (!class_exists($className)) {
             throw new LogicException('Unable to load this plugin class '.$className);

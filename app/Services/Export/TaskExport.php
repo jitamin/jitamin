@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Export;
+namespace Jitamin\Export;
 
-use Hiject\Core\Base;
-use Hiject\Model\CategoryModel;
-use Hiject\Model\ColumnModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\UserModel;
+use Jitamin\Core\Base;
+use Jitamin\Model\CategoryModel;
+use Jitamin\Model\ColumnModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SwimlaneModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\UserModel;
 
 /**
  * Task Export.

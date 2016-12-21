@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Core\ExternalLink\ExternalLinkManager;
-use Hiject\ExternalLink\AttachmentLinkProvider;
-use Hiject\ExternalLink\FileLinkProvider;
-use Hiject\ExternalLink\WebLinkProvider;
+use Jitamin\Core\ExternalLink\ExternalLinkManager;
+use Jitamin\ExternalLink\AttachmentLinkProvider;
+use Jitamin\ExternalLink\FileLinkProvider;
+use Jitamin\ExternalLink\WebLinkProvider;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

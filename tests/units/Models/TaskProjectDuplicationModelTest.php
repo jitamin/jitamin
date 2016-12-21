@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,17 +11,17 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\Security\Role;
-use Hiject\Model\CategoryModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TagModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskProjectDuplicationModel;
-use Hiject\Model\TaskTagModel;
-use Hiject\Model\UserModel;
+use Jitamin\Core\Security\Role;
+use Jitamin\Model\CategoryModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\ProjectUserRoleModel;
+use Jitamin\Model\SwimlaneModel;
+use Jitamin\Model\TagModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\TaskProjectDuplicationModel;
+use Jitamin\Model\TaskTagModel;
+use Jitamin\Model\UserModel;
 
 class TaskProjectDuplicationModelTest extends Base
 {

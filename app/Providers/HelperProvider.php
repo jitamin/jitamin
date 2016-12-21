@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Core\Helper;
-use Hiject\Core\Template;
+use Jitamin\Core\Helper;
+use Jitamin\Core\Template;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -24,27 +24,27 @@ class HelperProvider implements ServiceProviderInterface
     public function register(Container $container)
     {
         $container['helper'] = new Helper($container);
-        $container['helper']->register('app', '\Hiject\Helper\AppHelper');
-        $container['helper']->register('calendar', '\Hiject\Helper\CalendarHelper');
-        $container['helper']->register('asset', '\Hiject\Helper\AssetHelper');
-        $container['helper']->register('board', '\Hiject\Helper\BoardHelper');
-        $container['helper']->register('dt', '\Hiject\Helper\DateHelper');
-        $container['helper']->register('file', '\Hiject\Helper\FileHelper');
-        $container['helper']->register('form', '\Hiject\Helper\FormHelper');
-        $container['helper']->register('hook', '\Hiject\Helper\HookHelper');
-        $container['helper']->register('ical', '\Hiject\Helper\ICalHelper');
-        $container['helper']->register('layout', '\Hiject\Helper\LayoutHelper');
-        $container['helper']->register('model', '\Hiject\Helper\ModelHelper');
-        $container['helper']->register('subtask', '\Hiject\Helper\SubtaskHelper');
-        $container['helper']->register('task', '\Hiject\Helper\TaskHelper');
-        $container['helper']->register('text', '\Hiject\Helper\TextHelper');
-        $container['helper']->register('url', '\Hiject\Helper\UrlHelper');
-        $container['helper']->register('user', '\Hiject\Helper\UserHelper');
-        $container['helper']->register('avatar', '\Hiject\Helper\AvatarHelper');
-        $container['helper']->register('projectRole', '\Hiject\Helper\ProjectRoleHelper');
-        $container['helper']->register('projectHeader', '\Hiject\Helper\ProjectHeaderHelper');
-        $container['helper']->register('projectActivity', '\Hiject\Helper\ProjectActivityHelper');
-        $container['helper']->register('mail', '\Hiject\Helper\MailHelper');
+        $container['helper']->register('app', '\Jitamin\Helper\AppHelper');
+        $container['helper']->register('calendar', '\Jitamin\Helper\CalendarHelper');
+        $container['helper']->register('asset', '\Jitamin\Helper\AssetHelper');
+        $container['helper']->register('board', '\Jitamin\Helper\BoardHelper');
+        $container['helper']->register('dt', '\Jitamin\Helper\DateHelper');
+        $container['helper']->register('file', '\Jitamin\Helper\FileHelper');
+        $container['helper']->register('form', '\Jitamin\Helper\FormHelper');
+        $container['helper']->register('hook', '\Jitamin\Helper\HookHelper');
+        $container['helper']->register('ical', '\Jitamin\Helper\ICalHelper');
+        $container['helper']->register('layout', '\Jitamin\Helper\LayoutHelper');
+        $container['helper']->register('model', '\Jitamin\Helper\ModelHelper');
+        $container['helper']->register('subtask', '\Jitamin\Helper\SubtaskHelper');
+        $container['helper']->register('task', '\Jitamin\Helper\TaskHelper');
+        $container['helper']->register('text', '\Jitamin\Helper\TextHelper');
+        $container['helper']->register('url', '\Jitamin\Helper\UrlHelper');
+        $container['helper']->register('user', '\Jitamin\Helper\UserHelper');
+        $container['helper']->register('avatar', '\Jitamin\Helper\AvatarHelper');
+        $container['helper']->register('projectRole', '\Jitamin\Helper\ProjectRoleHelper');
+        $container['helper']->register('projectHeader', '\Jitamin\Helper\ProjectHeaderHelper');
+        $container['helper']->register('projectActivity', '\Jitamin\Helper\ProjectActivityHelper');
+        $container['helper']->register('mail', '\Jitamin\Helper\MailHelper');
 
         $container['template'] = new Template($container['helper']);
 

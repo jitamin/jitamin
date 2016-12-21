@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,11 +11,11 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\ExternalLink\ExternalLinkManager;
-use Hiject\ExternalLink\WebLinkProvider;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskExternalLinkModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Core\ExternalLink\ExternalLinkManager;
+use Jitamin\ExternalLink\WebLinkProvider;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskExternalLinkModel;
+use Jitamin\Model\TaskModel;
 
 class TaskExternalLinkTest extends Base
 {
@@ -27,12 +27,12 @@ class TaskExternalLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://jitamin.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $link = $taskExternalLinkModel->getById(1);
         $this->assertNotEmpty($link);
         $this->assertEquals('My website', $link['title']);
-        $this->assertEquals('https://hiject.net/', $link['url']);
+        $this->assertEquals('https://jitamin.net/', $link['url']);
         $this->assertEquals('related', $link['dependency']);
         $this->assertEquals('weblink', $link['link_type']);
         $this->assertEquals(0, $link['creator_id']);
@@ -50,12 +50,12 @@ class TaskExternalLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://jitamin.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $link = $taskExternalLinkModel->getById(1);
         $this->assertNotEmpty($link);
         $this->assertEquals('My website', $link['title']);
-        $this->assertEquals('https://hiject.net/', $link['url']);
+        $this->assertEquals('https://jitamin.net/', $link['url']);
         $this->assertEquals('related', $link['dependency']);
         $this->assertEquals('weblink', $link['link_type']);
         $this->assertEquals(1, $link['creator_id']);
@@ -71,15 +71,15 @@ class TaskExternalLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://jitamin.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         sleep(1);
 
-        $this->assertTrue($taskExternalLinkModel->update(['id' => 1, 'url' => 'https://hiject.net/']));
+        $this->assertTrue($taskExternalLinkModel->update(['id' => 1, 'url' => 'https://jitamin.net/']));
 
         $link = $taskExternalLinkModel->getById(1);
         $this->assertNotEmpty($link);
-        $this->assertEquals('https://hiject.net/', $link['url']);
+        $this->assertEquals('https://jitamin.net/', $link['url']);
         $this->assertEquals(time(), $link['date_modification'], '', 2);
     }
 
@@ -91,7 +91,7 @@ class TaskExternalLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://hiject.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
+        $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'id' => '', 'url' => 'https://jitamin.net/', 'title' => 'My website', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $this->assertTrue($taskExternalLinkModel->remove(1));
         $this->assertFalse($taskExternalLinkModel->remove(1));
@@ -114,7 +114,7 @@ class TaskExternalLinkTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
         $this->assertEquals(1, $taskExternalLinkModel->create(['task_id' => 1, 'url' => 'https://miniflux.net/', 'title' => 'MX', 'link_type' => 'weblink', 'dependency' => 'related']));
-        $this->assertEquals(2, $taskExternalLinkModel->create(['task_id' => 1, 'url' => 'https://hiject.net/', 'title' => 'KB', 'link_type' => 'weblink', 'dependency' => 'related']));
+        $this->assertEquals(2, $taskExternalLinkModel->create(['task_id' => 1, 'url' => 'https://jitamin.net/', 'title' => 'KB', 'link_type' => 'weblink', 'dependency' => 'related']));
 
         $links = $taskExternalLinkModel->getAll(1);
         $this->assertCount(2, $links);

@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Middleware\ProjectAuthorizationMiddleware;
+use Jitamin\Middleware\ProjectAuthorizationMiddleware;
 
 require_once __DIR__.'/../Base.php';
 
@@ -28,19 +28,19 @@ class ProjectAuthorizationMiddlewareMiddlewareTest extends Base
         $this->container['helper'] = new stdClass();
 
         $this->container['helper']->user = $this
-            ->getMockBuilder('Hiject\Helper\UserHelper')
+            ->getMockBuilder('Jitamin\Helper\UserHelper')
             ->setConstructorArgs([$this->container])
             ->setMethods(['hasProjectAccess'])
             ->getMock();
 
         $this->container['request'] = $this
-            ->getMockBuilder('Hiject\Core\Http\Request')
+            ->getMockBuilder('Jitamin\Core\Http\Request')
             ->setConstructorArgs([$this->container])
             ->setMethods(['getIntegerParam'])
             ->getMock();
 
         $this->nextMiddleware = $this
-            ->getMockBuilder('Hiject\Middleware\ProjectAuthorizationMiddleware')
+            ->getMockBuilder('Jitamin\Middleware\ProjectAuthorizationMiddleware')
             ->setConstructorArgs([$this->container])
             ->setMethods(['execute'])
             ->getMock();
@@ -65,7 +65,7 @@ class ProjectAuthorizationMiddlewareMiddlewareTest extends Base
             ->expects($this->never())
             ->method('execute');
 
-        $this->setExpectedException('Hiject\Core\Controller\AccessForbiddenException');
+        $this->setExpectedException('Jitamin\Core\Controller\AccessForbiddenException');
         $this->middleware->execute();
     }
 

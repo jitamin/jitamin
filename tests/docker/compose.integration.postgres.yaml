@@ -5,7 +5,7 @@ services:
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: hiject
+        POSTGRES_DB: jitamin
     ports:
       - "5432:5432"
   app:

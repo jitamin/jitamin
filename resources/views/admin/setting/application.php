@@ -7,12 +7,12 @@
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Application URL'), 'application_url') ?>
-    <?= $this->form->text('application_url', $values, $errors, ['placeholder="http://example.hiject.com/"']) ?>
-    <p class="form-help"><?= t('Example: http://example.hiject.com/ (used to generate absolute URLs)') ?></p>
+    <?= $this->form->text('application_url', $values, $errors, ['placeholder="http://example.jitamin.com/"']) ?>
+    <p class="form-help"><?= t('Example: http://example.jitamin.com/ (used to generate absolute URLs)') ?></p>
 
     <?= $this->form->label(t('Application Name'), 'application_name') ?>
-    <?= $this->form->text('application_name', $values, $errors, ['placeholder="Hiject"']) ?>
-    <p class="form-help"><?= t('Example: Hiject (used to show on the navbar)') ?></p>
+    <?= $this->form->text('application_name', $values, $errors, ['placeholder="Jitamin"']) ?>
+    <p class="form-help"><?= t('Example: Jitamin (used to show on the navbar)') ?></p>
 
 
     <?= $this->form->label(t('Skin'), 'application_skin') ?>

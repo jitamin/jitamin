@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\ExternalLink\AttachmentLinkProvider;
+use Jitamin\ExternalLink\AttachmentLinkProvider;
 
 class AttachmentLinkProviderTest extends Base
 {
@@ -37,16 +37,16 @@ class AttachmentLinkProviderTest extends Base
     {
         $attachmentLinkProvider = new AttachmentLinkProvider($this->container);
 
-        $attachmentLinkProvider->setUserTextInput('https://hiject.net/FILE.DOC');
+        $attachmentLinkProvider->setUserTextInput('https://jitamin.net/FILE.DOC');
         $this->assertTrue($attachmentLinkProvider->match());
 
-        $attachmentLinkProvider->setUserTextInput('https://hiject.net/folder/document.PDF');
+        $attachmentLinkProvider->setUserTextInput('https://jitamin.net/folder/document.PDF');
         $this->assertTrue($attachmentLinkProvider->match());
 
-        $attachmentLinkProvider->setUserTextInput('https://hiject.net/archive.zip');
+        $attachmentLinkProvider->setUserTextInput('https://jitamin.net/archive.zip');
         $this->assertTrue($attachmentLinkProvider->match());
 
-        $attachmentLinkProvider->setUserTextInput('  https://hiject.net/folder/archive.tar ');
+        $attachmentLinkProvider->setUserTextInput('  https://jitamin.net/folder/archive.tar ');
         $this->assertTrue($attachmentLinkProvider->match());
 
         $attachmentLinkProvider->setUserTextInput('http:// invalid url');
@@ -55,19 +55,19 @@ class AttachmentLinkProviderTest extends Base
         $attachmentLinkProvider->setUserTextInput('');
         $this->assertFalse($attachmentLinkProvider->match());
 
-        $attachmentLinkProvider->setUserTextInput('https://hiject.net/folder/document.html');
+        $attachmentLinkProvider->setUserTextInput('https://jitamin.net/folder/document.html');
         $this->assertFalse($attachmentLinkProvider->match());
 
-        $attachmentLinkProvider->setUserTextInput('https://hiject.net/folder/DOC.HTML');
+        $attachmentLinkProvider->setUserTextInput('https://jitamin.net/folder/DOC.HTML');
         $this->assertFalse($attachmentLinkProvider->match());
 
-        $attachmentLinkProvider->setUserTextInput('https://hiject.net/folder/document.do');
+        $attachmentLinkProvider->setUserTextInput('https://jitamin.net/folder/document.do');
         $this->assertFalse($attachmentLinkProvider->match());
     }
 
     public function testGetLink()
     {
         $attachmentLinkProvider = new AttachmentLinkProvider($this->container);
-        $this->assertInstanceOf('\Hiject\ExternalLink\AttachmentLink', $attachmentLinkProvider->getLink());
+        $this->assertInstanceOf('\Jitamin\ExternalLink\AttachmentLink', $attachmentLinkProvider->getLink());
     }
 }

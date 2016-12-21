@@ -1,5 +1,5 @@
 {
-  "name": "hiject",
+  "name": "jitamin",
   "dependencies": {
     "bower": "^1.7.9",
     "gulp": "^3.9.1",

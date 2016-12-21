@@ -1,8 +1,8 @@
-Hiject.Popover = function(app) {
+Jitamin.Popover = function(app) {
     this.app = app;
 };
 
-Hiject.Popover.prototype.listen = function() {
+Jitamin.Popover.prototype.listen = function() {
     var self = this;
 
     $(document).on("click", ".popover", function(e) {
@@ -18,7 +18,7 @@ Hiject.Popover.prototype.listen = function() {
     });
 };
 
-Hiject.Popover.prototype.onClick = function(e) {
+Jitamin.Popover.prototype.onClick = function(e) {
     e.preventDefault();
     e.stopPropagation();
 
@@ -34,11 +34,11 @@ Hiject.Popover.prototype.onClick = function(e) {
     }
 };
 
-Hiject.Popover.prototype.isOpen = function() {
+Jitamin.Popover.prototype.isOpen = function() {
     return $('#popover-container').size() > 0;
 };
 
-Hiject.Popover.prototype.open = function(link) {
+Jitamin.Popover.prototype.open = function(link) {
     var self = this;
 
     if (!self.isOpen()) {
@@ -50,7 +50,7 @@ Hiject.Popover.prototype.open = function(link) {
     }
 };
 
-Hiject.Popover.prototype.close = function(e) {
+Jitamin.Popover.prototype.close = function(e) {
     if (this.isOpen()) {
         if (e) {
             e.preventDefault();
@@ -61,7 +61,7 @@ Hiject.Popover.prototype.close = function(e) {
     }
 };
 
-Hiject.Popover.prototype.ajaxReload = function(data, request, self) {
+Jitamin.Popover.prototype.ajaxReload = function(data, request, self) {
     var redirect = request.getResponseHeader("X-Ajax-Redirect");
 
     if (redirect === 'self') {
@@ -77,7 +77,7 @@ Hiject.Popover.prototype.ajaxReload = function(data, request, self) {
     }
 };
 
-Hiject.Popover.prototype.executeOnOpenedListeners = function() {
+Jitamin.Popover.prototype.executeOnOpenedListeners = function() {
     for (var className in this.app.controllers) {
         var controller = this.app.get(className);
 
@@ -89,7 +89,7 @@ Hiject.Popover.prototype.executeOnOpenedListeners = function() {
     this.afterOpen();
 };
 
-Hiject.Popover.prototype.executeOnClosedListeners = function() {
+Jitamin.Popover.prototype.executeOnClosedListeners = function() {
     for (var className in this.app.controllers) {
         var controller = this.app.get(className);
 
@@ -99,7 +99,7 @@ Hiject.Popover.prototype.executeOnClosedListeners = function() {
     }
 };
 
-Hiject.Popover.prototype.afterOpen = function() {
+Jitamin.Popover.prototype.afterOpen = function() {
     var self = this;
     var popoverForm = $("#popover-content .popover-form");
 

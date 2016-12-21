@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ColumnModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskPositionModel;
-use Hiject\Model\TaskStatusModel;
+use Jitamin\Model\ColumnModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SwimlaneModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\TaskPositionModel;
+use Jitamin\Model\TaskStatusModel;
 
 class TaskPositionModelTest extends Base
 {
@@ -597,7 +597,7 @@ class TaskPositionModelTest extends Base
 
     public function onMoveColumn($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);
@@ -609,7 +609,7 @@ class TaskPositionModelTest extends Base
 
     public function onMovePosition($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);
@@ -621,7 +621,7 @@ class TaskPositionModelTest extends Base
 
     public function onMoveSwimlane($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);

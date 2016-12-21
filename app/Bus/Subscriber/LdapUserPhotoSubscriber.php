@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Bus\Subscriber;
+namespace Jitamin\Bus\Subscriber;
 
-use Hiject\Bus\Event\UserProfileSyncEvent;
-use Hiject\Core\Identity\UserProfile;
+use Jitamin\Bus\Event\UserProfileSyncEvent;
+use Jitamin\Core\Identity\UserProfile;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -41,7 +41,7 @@ class LdapUserPhotoSubscriber extends BaseSubscriber implements EventSubscriberI
      */
     public function syncUserPhoto(UserProfileSyncEvent $event)
     {
-        if (is_a($event->getUser(), 'Hiject\Services\Identity\LdapUserProvider')) {
+        if (is_a($event->getUser(), 'Jitamin\Services\Identity\LdapUserProvider')) {
             $profile = $event->getProfile();
             $photo = $event->getUser()->getPhoto();
 

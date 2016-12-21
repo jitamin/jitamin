@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\ExternalLink\WebLinkProvider;
+use Jitamin\ExternalLink\WebLinkProvider;
 
 class WebLinkProviderTest extends Base
 {
@@ -37,13 +37,13 @@ class WebLinkProviderTest extends Base
     {
         $webLinkProvider = new WebLinkProvider($this->container);
 
-        $webLinkProvider->setUserTextInput('https://hiject.net/');
+        $webLinkProvider->setUserTextInput('https://jitamin.net/');
         $this->assertTrue($webLinkProvider->match());
 
-        $webLinkProvider->setUserTextInput('https://hiject.net/mypage');
+        $webLinkProvider->setUserTextInput('https://jitamin.net/mypage');
         $this->assertTrue($webLinkProvider->match());
 
-        $webLinkProvider->setUserTextInput('  https://hiject.net/ ');
+        $webLinkProvider->setUserTextInput('  https://jitamin.net/ ');
         $this->assertTrue($webLinkProvider->match());
 
         $webLinkProvider->setUserTextInput('http:// invalid url');
@@ -56,6 +56,6 @@ class WebLinkProviderTest extends Base
     public function testGetLink()
     {
         $webLinkProvider = new WebLinkProvider($this->container);
-        $this->assertInstanceOf('\Hiject\ExternalLink\WebLink', $webLinkProvider->getLink());
+        $this->assertInstanceOf('\Jitamin\ExternalLink\WebLink', $webLinkProvider->getLink());
     }
 }

@@ -1,14 +1,14 @@
-Hiject.BoardHorizontalScrolling = function(app) {
+Jitamin.BoardHorizontalScrolling = function(app) {
     this.app = app;
 };
 
-Hiject.BoardHorizontalScrolling.prototype.execute = function() {
+Jitamin.BoardHorizontalScrolling.prototype.execute = function() {
     if (this.app.hasId("board")) {
         this.render();
     }
 };
 
-Hiject.BoardHorizontalScrolling.prototype.listen = function() {
+Jitamin.BoardHorizontalScrolling.prototype.listen = function() {
     var self = this;
 
     $(document).on('click', ".filter-toggle-scrolling", function(e) {
@@ -17,7 +17,7 @@ Hiject.BoardHorizontalScrolling.prototype.listen = function() {
     });
 };
 
-Hiject.BoardHorizontalScrolling.prototype.keyboardShortcuts = function() {
+Jitamin.BoardHorizontalScrolling.prototype.keyboardShortcuts = function() {
     var self = this;
 
     if (self.app.hasId("board")) {
@@ -27,17 +27,17 @@ Hiject.BoardHorizontalScrolling.prototype.keyboardShortcuts = function() {
     }
 };
 
-Hiject.BoardHorizontalScrolling.prototype.onBoardRendered = function() {
+Jitamin.BoardHorizontalScrolling.prototype.onBoardRendered = function() {
     this.render();
 };
 
-Hiject.BoardHorizontalScrolling.prototype.toggle = function() {
+Jitamin.BoardHorizontalScrolling.prototype.toggle = function() {
     var scrolling = localStorage.getItem("horizontal_scroll") || 1;
     localStorage.setItem("horizontal_scroll", scrolling == 0 ? 1 : 0);
     this.render();
 };
 
-Hiject.BoardHorizontalScrolling.prototype.render = function() {
+Jitamin.BoardHorizontalScrolling.prototype.render = function() {
     if (localStorage.getItem("horizontal_scroll") == 0) {
         $(".filter-wide").show();
         $(".filter-compact").hide();

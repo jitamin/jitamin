@@ -1,12 +1,12 @@
-Hiject.Column = function(app) {
+Jitamin.Column = function(app) {
     this.app = app;
 };
 
-Hiject.Column.prototype.listen = function() {
+Jitamin.Column.prototype.listen = function() {
     this.dragAndDrop();
 };
 
-Hiject.Column.prototype.dragAndDrop = function() {
+Jitamin.Column.prototype.dragAndDrop = function() {
     var self = this;
 
     $(".draggable-row-handle").mouseenter(function() {
@@ -36,7 +36,7 @@ Hiject.Column.prototype.dragAndDrop = function() {
     }).disableSelection();
 };
 
-Hiject.Column.prototype.savePosition = function(columnId, position) {
+Jitamin.Column.prototype.savePosition = function(columnId, position) {
     var url = $(".columns-table").data("save-position-url");
     var self = this;
 

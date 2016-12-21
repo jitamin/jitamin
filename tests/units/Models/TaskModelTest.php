@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,17 +11,17 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SettingModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskTagModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SettingModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\TaskTagModel;
 
 class TaskModelTest extends Base
 {
     public function onCreate($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);
@@ -415,7 +415,7 @@ class TaskModelTest extends Base
 
     public function onCreateUpdate($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);
@@ -426,7 +426,7 @@ class TaskModelTest extends Base
 
     public function onUpdate($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);
@@ -436,7 +436,7 @@ class TaskModelTest extends Base
 
     public function onAssigneeChange($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
 
         $event_data = $event->getAll();
         $this->assertNotEmpty($event_data);

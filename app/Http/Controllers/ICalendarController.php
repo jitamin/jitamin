@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
 use Eluceo\iCal\Component\Calendar as iCalendar;
-use Hiject\Core\Controller\AccessForbiddenException;
-use Hiject\Core\Filter\QueryBuilder;
-use Hiject\Filter\TaskAssigneeFilter;
-use Hiject\Filter\TaskProjectFilter;
-use Hiject\Filter\TaskStatusFilter;
-use Hiject\Formatter\TaskICalFormatter;
-use Hiject\Model\TaskModel;
+use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Core\Filter\QueryBuilder;
+use Jitamin\Filter\TaskAssigneeFilter;
+use Jitamin\Filter\TaskProjectFilter;
+use Jitamin\Filter\TaskStatusFilter;
+use Jitamin\Formatter\TaskICalFormatter;
+use Jitamin\Model\TaskModel;
 
 /**
  * iCalendar Controller.
@@ -46,7 +46,7 @@ class ICalendarController extends BaseController
             ->withFilter(new TaskAssigneeFilter($user['id']));
 
         // Calendar properties
-        $calendar = new iCalendar('Hiject');
+        $calendar = new iCalendar('Jitamin');
         $calendar->setName($user['name'] ?: $user['username']);
         $calendar->setDescription($user['name'] ?: $user['username']);
         $calendar->setPublishedTTL('PT1H');
@@ -75,7 +75,7 @@ class ICalendarController extends BaseController
             ->withFilter(new TaskProjectFilter($project['id']));
 
         // Calendar properties
-        $calendar = new iCalendar('Hiject');
+        $calendar = new iCalendar('Jitamin');
         $calendar->setName($project['name']);
         $calendar->setDescription($project['name']);
         $calendar->setPublishedTTL('PT1H');

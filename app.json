@@ -1,8 +1,8 @@
 {
-  "name": "Hiject",
-  "description": "Hiject is a free and open source web project management system",
-  "repository": "https://github.com/Hiject/Hiject",
-  "logo": "https://Hiject.com/assets/img/icon.svg",
-  "keywords": ["hiject", "php", "agile"],
+  "name": "Jitamin",
+  "description": "Jitamin is a free and open source web project management system",
+  "repository": "https://github.com/Jitamin/Jitamin",
+  "logo": "https://jitamin.com/assets/img/icon.svg",
+  "keywords": ["jitamin", "php", "agile"],
   "addons": ["heroku-postgresql:hobby-dev"]
 }

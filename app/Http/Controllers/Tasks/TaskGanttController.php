@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Filter\TaskProjectFilter;
-use Hiject\Formatter\TaskGanttFormatter;
-use Hiject\Model\TaskModel;
+use Jitamin\Filter\TaskProjectFilter;
+use Jitamin\Formatter\TaskGanttFormatter;
+use Jitamin\Model\TaskModel;
 
 /**
  * Tasks Gantt Controller.
@@ -51,7 +51,7 @@ class TaskGanttController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function create(array $values = [], array $errors = [])
     {

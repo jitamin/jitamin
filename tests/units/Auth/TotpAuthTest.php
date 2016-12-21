@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Auth\TotpAuth;
+use Jitamin\Auth\TotpAuth;
 
 class TotpAuthTest extends Base
 {
@@ -50,11 +50,11 @@ class TotpAuthTest extends Base
 
         $provider->setSecret('mySecret');
         $this->assertEquals(
-            'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=M|0&chl=otpauth%3A%2F%2Ftotp%2Fme%3Fsecret%3DmySecret%26issuer%3DHiject',
+            'https://chart.googleapis.com/chart?chs=200x200&cht=qr&chld=M|0&chl=otpauth%3A%2F%2Ftotp%2Fme%3Fsecret%3DmySecret%26issuer%3DJitamin',
             $provider->getQrCodeUrl('me')
         );
 
-        $this->assertEquals('otpauth://totp/me?secret=mySecret&issuer=Hiject', $provider->getKeyUrl('me'));
+        $this->assertEquals('otpauth://totp/me?secret=mySecret&issuer=Jitamin', $provider->getKeyUrl('me'));
     }
 
     public function testAuthentication()

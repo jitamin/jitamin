@@ -1,8 +1,8 @@
-Hiject.Search = function(app) {
+Jitamin.Search = function(app) {
     this.app = app;
 };
 
-Hiject.Search.prototype.focus = function() {
+Jitamin.Search.prototype.focus = function() {
 
     // Place cursor at the end when focusing on the search box
     $(document).on("focus", "#form-q", function() {
@@ -15,7 +15,7 @@ Hiject.Search.prototype.focus = function() {
     });
 };
 
-Hiject.Search.prototype.listen = function() {
+Jitamin.Search.prototype.listen = function() {
     $(document).on("click", ".filter-helper", function (e) {
         e.preventDefault();
 
@@ -39,7 +39,7 @@ Hiject.Search.prototype.listen = function() {
     });
 };
 
-Hiject.Search.prototype.goToView = function(label) {
+Jitamin.Search.prototype.goToView = function(label) {
     var link = $(label);
 
     if (link.length) {
@@ -47,7 +47,7 @@ Hiject.Search.prototype.goToView = function(label) {
     }
 };
 
-Hiject.Search.prototype.keyboardShortcuts = function() {
+Jitamin.Search.prototype.keyboardShortcuts = function() {
     var self = this;
 
     // Switch view mode for projects: go to the overview page

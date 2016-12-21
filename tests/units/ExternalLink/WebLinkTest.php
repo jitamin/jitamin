@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\ExternalLink\WebLink;
+use Jitamin\ExternalLink\WebLink;
 
 class WebLinkTest extends Base
 {
     public function testGetTitleFromHtml()
     {
-        $url = 'https://hiject.net/something';
+        $url = 'https://jitamin.net/something';
         $title = 'My title';
         $html = '<!DOCTYPE html><html><head><title>  '.$title.'  </title></head><body>Test</body></html>';
 
@@ -36,7 +36,7 @@ class WebLinkTest extends Base
 
     public function testGetTitleFromUrl()
     {
-        $url = 'https://hiject.net/something';
+        $url = 'https://jitamin.net/something';
         $html = '<!DOCTYPE html><html><head></head><body>Test</body></html>';
 
         $webLink = new WebLink($this->container);
@@ -49,6 +49,6 @@ class WebLinkTest extends Base
             ->with($url)
             ->will($this->returnValue($html));
 
-        $this->assertEquals('hiject.net/something', $webLink->getTitle());
+        $this->assertEquals('jitamin.net/something', $webLink->getTitle());
     }
 }

@@ -1,14 +1,14 @@
-Hiject.TaskTimeColumnChart = function(app) {
+Jitamin.TaskTimeColumnChart = function(app) {
     this.app = app;
 };
 
-Hiject.TaskTimeColumnChart.prototype.execute = function() {
+Jitamin.TaskTimeColumnChart.prototype.execute = function() {
     if (this.app.hasId("analytic-task-time-column")) {
         this.show();
     }
 };
 
-Hiject.TaskTimeColumnChart.prototype.show = function() {
+Jitamin.TaskTimeColumnChart.prototype.show = function() {
     var chart = $("#chart");
     var metrics = chart.data("metrics");
     var plots = [chart.data("label")];

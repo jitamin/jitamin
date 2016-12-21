@@ -1,25 +1,25 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Auth\DatabaseAuth;
-use Hiject\Auth\LdapAuth;
-use Hiject\Auth\RememberMeAuth;
-use Hiject\Auth\ReverseProxyAuth;
-use Hiject\Auth\TotpAuth;
-use Hiject\Core\Security\AccessMap;
-use Hiject\Core\Security\AuthenticationManager;
-use Hiject\Core\Security\Authorization;
-use Hiject\Core\Security\Role;
+use Jitamin\Auth\DatabaseAuth;
+use Jitamin\Auth\LdapAuth;
+use Jitamin\Auth\RememberMeAuth;
+use Jitamin\Auth\ReverseProxyAuth;
+use Jitamin\Auth\TotpAuth;
+use Jitamin\Core\Security\AccessMap;
+use Jitamin\Core\Security\AuthenticationManager;
+use Jitamin\Core\Security\Authorization;
+use Jitamin\Core\Security\Role;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

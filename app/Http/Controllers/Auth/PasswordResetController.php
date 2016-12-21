@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Controller\AccessForbiddenException;
+use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Password Reset Controller.
@@ -24,7 +24,7 @@ class PasswordResetController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\BaseException
+     * @throws \Jitamin\Core\Controller\BaseException
      */
     public function create(array $values = [], array $errors = [])
     {
@@ -61,7 +61,7 @@ class PasswordResetController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\BaseException
+     * @throws \Jitamin\Core\Controller\BaseException
      */
     public function change(array $values = [], array $errors = [])
     {
@@ -122,7 +122,7 @@ class PasswordResetController extends BaseController
             $this->emailClient->send(
                 $user['email'],
                 $user['name'] ?: $user['username'],
-                t('Password Reset for Hiject'),
+                t('Password Reset for Jitamin'),
                 $this->template->render('password_reset/email', ['token' => $token])
             );
         }

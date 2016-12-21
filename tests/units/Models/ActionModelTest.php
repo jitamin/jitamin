@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Core\Security\Role;
-use Hiject\Model\ActionModel;
-use Hiject\Model\CategoryModel;
-use Hiject\Model\ColumnModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\UserModel;
+use Jitamin\Core\Security\Role;
+use Jitamin\Model\ActionModel;
+use Jitamin\Model\CategoryModel;
+use Jitamin\Model\ColumnModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\ProjectUserRoleModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\UserModel;
 
 class ActionModelTest extends Base
 {
@@ -32,7 +32,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
     }
@@ -47,7 +47,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
@@ -66,14 +66,14 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $action = $actionModel->getById(1);
         $this->assertNotEmpty($action);
         $this->assertEquals(1, $action['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $action['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $action['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $action['event_name']);
         $this->assertEquals(['column_id' => 1, 'color_id' => 'red'], $action['params']);
     }
@@ -88,7 +88,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
@@ -107,14 +107,14 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
             'project_id'  => 2,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 6, 'color_id' => 'blue'],
         ]));
 
@@ -122,12 +122,12 @@ class ActionModelTest extends Base
         $this->assertCount(2, $actions);
 
         $this->assertEquals(1, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 1, 'color_id' => 'red'], $actions[0]['params']);
 
         $this->assertEquals(2, $actions[1]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[1]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[1]['action_name']);
         $this->assertEquals(TaskModel::EVENT_MOVE_COLUMN, $actions[1]['event_name']);
         $this->assertEquals(['column_id' => 6, 'color_id' => 'blue'], $actions[1]['params']);
     }
@@ -143,14 +143,14 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
             'project_id'  => 2,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 6, 'color_id' => 'blue'],
         ]));
 
@@ -158,7 +158,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(1, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 1, 'color_id' => 'red'], $actions[0]['params']);
 
@@ -166,7 +166,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_MOVE_COLUMN, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 6, 'color_id' => 'blue'], $actions[0]['params']);
     }
@@ -192,21 +192,21 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
             'project_id'  => 2,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 6, 'color_id' => 'blue'],
         ]));
 
         $this->assertEquals(3, $actionModel->create([
             'project_id'  => 3,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 10, 'color_id' => 'green'],
         ]));
 
@@ -217,7 +217,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(1, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 1, 'color_id' => 'red'], $actions[0]['params']);
 
@@ -225,7 +225,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_MOVE_COLUMN, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 6, 'color_id' => 'blue'], $actions[0]['params']);
     }
@@ -241,7 +241,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
@@ -251,7 +251,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 5, 'color_id' => 'red'], $actions[0]['params']);
     }
@@ -267,7 +267,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['src_column_id' => 1, 'dst_column_id' => 2, 'dest_column_id' => 3],
         ]));
 
@@ -277,7 +277,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['src_column_id' => 5, 'dst_column_id' => 6, 'dest_column_id' => 7], $actions[0]['params']);
     }
@@ -296,14 +296,14 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 1, 'color_id' => 'red'],
         ]));
 
         $this->assertEquals(2, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignColorColumn',
+            'action_name' => '\Jitamin\Action\TaskAssignColorColumn',
             'params'      => ['column_id' => 2, 'color_id' => 'green'],
         ]));
 
@@ -313,7 +313,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorColumn', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorColumn', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 5, 'color_id' => 'red'], $actions[0]['params']);
     }
@@ -330,7 +330,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CLOSE,
-            'action_name' => '\Hiject\Action\TaskDuplicateAnotherProject',
+            'action_name' => '\Jitamin\Action\TaskDuplicateAnotherProject',
             'params'      => ['column_id' => 1, 'project_id' => 3],
         ]));
 
@@ -340,7 +340,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskDuplicateAnotherProject', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskDuplicateAnotherProject', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CLOSE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 5, 'project_id' => 3], $actions[0]['params']);
     }
@@ -356,7 +356,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CLOSE,
-            'action_name' => '\Hiject\Action\TaskDuplicateAnotherProject',
+            'action_name' => '\Jitamin\Action\TaskDuplicateAnotherProject',
             'params'      => ['column_id' => 1, 'project_id' => 2],
         ]));
 
@@ -384,7 +384,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignSpecificUser',
+            'action_name' => '\Jitamin\Action\TaskAssignSpecificUser',
             'params'      => ['column_id' => 1, 'user_id' => 2],
         ]));
 
@@ -394,7 +394,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignSpecificUser', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignSpecificUser', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_MOVE_COLUMN, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 5, 'user_id' => 2], $actions[0]['params']);
     }
@@ -417,7 +417,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignSpecificUser',
+            'action_name' => '\Jitamin\Action\TaskAssignSpecificUser',
             'params'      => ['column_id' => 1, 'user_id' => 2],
         ]));
 
@@ -444,7 +444,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_MOVE_COLUMN,
-            'action_name' => '\Hiject\Action\TaskAssignSpecificUser',
+            'action_name' => '\Jitamin\Action\TaskAssignSpecificUser',
             'params'      => ['column_id' => 1, 'owner_id' => 2],
         ]));
 
@@ -469,7 +469,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorCategory',
+            'action_name' => '\Jitamin\Action\TaskAssignColorCategory',
             'params'      => ['column_id' => 1, 'category_id' => 1],
         ]));
 
@@ -479,7 +479,7 @@ class ActionModelTest extends Base
         $this->assertCount(1, $actions);
 
         $this->assertEquals(2, $actions[0]['project_id']);
-        $this->assertEquals('\Hiject\Action\TaskAssignColorCategory', $actions[0]['action_name']);
+        $this->assertEquals('\Jitamin\Action\TaskAssignColorCategory', $actions[0]['action_name']);
         $this->assertEquals(TaskModel::EVENT_CREATE_UPDATE, $actions[0]['event_name']);
         $this->assertEquals(['column_id' => 5, 'category_id' => 2], $actions[0]['params']);
     }
@@ -499,7 +499,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorCategory',
+            'action_name' => '\Jitamin\Action\TaskAssignColorCategory',
             'params'      => ['column_id' => 1, 'category_id' => 1],
         ]));
 
@@ -523,7 +523,7 @@ class ActionModelTest extends Base
         $this->assertEquals(1, $actionModel->create([
             'project_id'  => 1,
             'event_name'  => TaskModel::EVENT_CREATE_UPDATE,
-            'action_name' => '\Hiject\Action\TaskAssignColorCategory',
+            'action_name' => '\Jitamin\Action\TaskAssignColorCategory',
             'params'      => ['column_id' => 1, 'category_id' => 1],
         ]));
 

@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectFileModel;
-use Hiject\Model\ProjectModel;
+use Jitamin\Model\ProjectFileModel;
+use Jitamin\Model\ProjectModel;
 
 class ProjectFileTest extends Base
 {
@@ -124,7 +124,7 @@ class ProjectFileTest extends Base
     public function testUploadFiles()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\ProjectFileModel')
+            ->getMockBuilder('\Jitamin\Model\ProjectFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
@@ -244,7 +244,7 @@ class ProjectFileTest extends Base
             ->expects($this->at(0))
             ->method('moveUploadedFile')
             ->with($this->equalTo('/tmp/phpYzdqkD'), $this->anything())
-            ->will($this->throwException(new \Hiject\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
 
         $fileModel = new ProjectFileModel($this->container);
         $this->assertFalse($fileModel->uploadFiles(1, $files));
@@ -253,7 +253,7 @@ class ProjectFileTest extends Base
     public function testUploadFileContent()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\ProjectFileModel')
+            ->getMockBuilder('\Jitamin\Model\ProjectFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
@@ -285,7 +285,7 @@ class ProjectFileTest extends Base
     public function testUploadImageContent()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\ProjectFileModel')
+            ->getMockBuilder('\Jitamin\Model\ProjectFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromData'])
             ->getMock();

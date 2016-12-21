@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Decorator\MetadataCacheDecorator;
+use Jitamin\Decorator\MetadataCacheDecorator;
 
 require_once __DIR__.'/../Base.php';
 
@@ -38,7 +38,7 @@ class MetadataCacheDecoratorTest extends Base
         parent::setUp();
 
         $this->cacheMock = $this
-            ->getMockBuilder('\Hiject\Core\Cache\MemoryCache')
+            ->getMockBuilder('\Jitamin\Core\Cache\MemoryCache')
             ->setMethods([
                 'set',
                 'get',
@@ -46,7 +46,7 @@ class MetadataCacheDecoratorTest extends Base
             ->getMock();
 
         $this->metadataModelMock = $this
-            ->getMockBuilder('\Hiject\Model\UserMetadataModel')
+            ->getMockBuilder('\Jitamin\Model\UserMetadataModel')
             ->setConstructorArgs([$this->container])
             ->setMethods([
                 'getAll',

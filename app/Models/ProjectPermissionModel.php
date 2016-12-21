@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Model;
+namespace Jitamin\Model;
 
-use Hiject\Core\Database\Model;
-use Hiject\Core\Security\Role;
-use Hiject\Filter\ProjectGroupRoleProjectFilter;
-use Hiject\Filter\ProjectGroupRoleUsernameFilter;
-use Hiject\Filter\ProjectUserRoleProjectFilter;
-use Hiject\Filter\ProjectUserRoleUsernameFilter;
+use Jitamin\Core\Database\Model;
+use Jitamin\Core\Security\Role;
+use Jitamin\Filter\ProjectGroupRoleProjectFilter;
+use Jitamin\Filter\ProjectGroupRoleUsernameFilter;
+use Jitamin\Filter\ProjectUserRoleProjectFilter;
+use Jitamin\Filter\ProjectUserRoleUsernameFilter;
 
 /**
  * Project Permission.

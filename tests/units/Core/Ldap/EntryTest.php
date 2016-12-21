@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Ldap\Entry;
+use Jitamin\Core\Ldap\Entry;
 
 class EntryTest extends Base
 {
     private $entry = [
         'count'       => 2,
-        'dn'          => 'uid=my_user,ou=People,dc=hiject,dc=local',
+        'dn'          => 'uid=my_user,ou=People,dc=jitamin,dc=local',
         'displayname' => [
             'count' => 1,
             0       => 'My LDAP user',
@@ -62,7 +62,7 @@ class EntryTest extends Base
     public function testGetDn()
     {
         $entry = new Entry($this->entry);
-        $this->assertEquals('uid=my_user,ou=People,dc=hiject,dc=local', $entry->getDn());
+        $this->assertEquals('uid=my_user,ou=People,dc=jitamin,dc=local', $entry->getDn());
 
         $entry = new Entry([]);
         $this->assertEquals('', $entry->getDn());

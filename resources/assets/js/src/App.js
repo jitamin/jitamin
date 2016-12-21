@@ -1,15 +1,15 @@
-Hiject.App = function() {
+Jitamin.App = function() {
     this.controllers = {};
 };
 
-Hiject.App.prototype.get = function(controller) {
+Jitamin.App.prototype.get = function(controller) {
     return this.controllers[controller];
 };
 
-Hiject.App.prototype.execute = function() {
-    for (var className in Hiject) {
+Jitamin.App.prototype.execute = function() {
+    for (var className in Jitamin) {
         if (className !== "App") {
-            var controller = new Hiject[className](this);
+            var controller = new Jitamin[className](this);
             this.controllers[className] = controller;
 
             if (typeof controller.execute === "function") {
@@ -42,7 +42,7 @@ Hiject.App.prototype.execute = function() {
     });
 };
 
-Hiject.App.prototype.keyboardShortcuts = function() {
+Jitamin.App.prototype.keyboardShortcuts = function() {
     var self = this;
 
     // Submit form
@@ -78,7 +78,7 @@ Hiject.App.prototype.keyboardShortcuts = function() {
     });
 };
 
-Hiject.App.prototype.focus = function() {
+Jitamin.App.prototype.focus = function() {
     // Auto-select input fields
     $(document).on('focus', '.auto-select', function() {
         $(this).select();
@@ -90,7 +90,7 @@ Hiject.App.prototype.focus = function() {
     });
 };
 
-Hiject.App.prototype.chosen = function() {
+Jitamin.App.prototype.chosen = function() {
     $(".chosen-select").each(function() {
         var searchThreshold = $(this).data("search-threshold");
 
@@ -111,7 +111,7 @@ Hiject.App.prototype.chosen = function() {
     });
 };
 
-Hiject.App.prototype.datePicker = function() {
+Jitamin.App.prototype.datePicker = function() {
     var bodyElement = $("body");
     var dateFormat = bodyElement.data("js-date-format");
     var timeFormat = bodyElement.data("js-time-format");
@@ -136,13 +136,13 @@ Hiject.App.prototype.datePicker = function() {
     });
 };
 
-Hiject.App.prototype.tagAutoComplete = function() {
+Jitamin.App.prototype.tagAutoComplete = function() {
     $(".tag-autocomplete").select2({
         tags: true
     })
 };
 
-Hiject.App.prototype.autoComplete = function() {
+Jitamin.App.prototype.autoComplete = function() {
     $(".autocomplete").each(function() {
         var input = $(this);
         var field = input.data("dst-field");
@@ -168,19 +168,19 @@ Hiject.App.prototype.autoComplete = function() {
     });
 };
 
-Hiject.App.prototype.hasId = function(id) {
+Jitamin.App.prototype.hasId = function(id) {
     return !!document.getElementById(id);
 };
 
-Hiject.App.prototype.showLoadingIcon = function() {
+Jitamin.App.prototype.showLoadingIcon = function() {
     $("body").append('<span id="app-loading-icon">&nbsp;<i class="fa fa-spinner fa-spin"></i></span>');
 };
 
-Hiject.App.prototype.hideLoadingIcon = function() {
+Jitamin.App.prototype.hideLoadingIcon = function() {
     $("#app-loading-icon").remove();
 };
 
-Hiject.App.prototype.formatDuration = function(d) {
+Jitamin.App.prototype.formatDuration = function(d) {
     if (d >= 86400) {
         return Math.round(d/86400) + "d";
     }
@@ -194,7 +194,7 @@ Hiject.App.prototype.formatDuration = function(d) {
     return d + "s";
 };
 
-Hiject.App.prototype.isVisible = function() {
+Jitamin.App.prototype.isVisible = function() {
     var property = "";
 
     if (typeof document.hidden !== "undefined") {

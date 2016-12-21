@@ -1,12 +1,12 @@
-Hiject.Category = function(app) {
+Jitamin.Category = function(app) {
     this.app = app;
 };
 
-Hiject.Category.prototype.listen = function() {
+Jitamin.Category.prototype.listen = function() {
     this.dragAndDrop();
 };
 
-Hiject.Category.prototype.dragAndDrop = function() {
+Jitamin.Category.prototype.dragAndDrop = function() {
     var self = this;
 
     $(".draggable-row-handle").mouseenter(function() {
@@ -36,7 +36,7 @@ Hiject.Category.prototype.dragAndDrop = function() {
     }).disableSelection();
 };
 
-Hiject.Category.prototype.savePosition = function(categoryId, position) {
+Jitamin.Category.prototype.savePosition = function(categoryId, position) {
     var url = $(".categories-table").data("save-position-url");
     var self = this;
 

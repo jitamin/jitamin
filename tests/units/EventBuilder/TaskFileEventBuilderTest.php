@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\EventBuilder\TaskFileEventBuilder;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskFileModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Bus\EventBuilder\TaskFileEventBuilder;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskFileModel;
+use Jitamin\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -38,7 +38,7 @@ class TaskFileEventBuilderTest extends Base
 
         $event = $taskFileEventBuilder->withFileId(1)->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskFileEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskFileEvent', $event);
         $this->assertNotEmpty($event['file']);
         $this->assertNotEmpty($event['task']);
     }

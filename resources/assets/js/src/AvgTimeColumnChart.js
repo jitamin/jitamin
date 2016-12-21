@@ -1,14 +1,14 @@
-Hiject.AvgTimeColumnChart = function(app) {
+Jitamin.AvgTimeColumnChart = function(app) {
     this.app = app;
 };
 
-Hiject.AvgTimeColumnChart.prototype.execute = function() {
+Jitamin.AvgTimeColumnChart.prototype.execute = function() {
     if (this.app.hasId("analytic-avg-time-column")) {
         this.show();
     }
 };
 
-Hiject.AvgTimeColumnChart.prototype.show = function() {
+Jitamin.AvgTimeColumnChart.prototype.show = function() {
     var chart = $("#chart");
     var metrics = chart.data("metrics");
     var plots = [chart.data("label")];

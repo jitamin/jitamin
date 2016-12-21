@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Auth;
+namespace Jitamin\Auth;
 
-use Hiject\Core\Base;
-use Hiject\Core\Security\PreAuthenticationProviderInterface;
-use Hiject\Core\Security\SessionCheckProviderInterface;
-use Hiject\Services\Identity\ReverseProxyUserProvider;
+use Jitamin\Core\Base;
+use Jitamin\Core\Security\PreAuthenticationProviderInterface;
+use Jitamin\Core\Security\SessionCheckProviderInterface;
+use Jitamin\Services\Identity\ReverseProxyUserProvider;
 
 /**
  * Reverse-Proxy Authentication Provider.
@@ -24,7 +24,7 @@ class ReverseProxyAuth extends Base implements PreAuthenticationProviderInterfac
     /**
      * User properties.
      *
-     * @var \Hiject\Services\User\ReverseProxyUserProvider
+     * @var \Jitamin\Services\User\ReverseProxyUserProvider
      */
     protected $userInfo = null;
 

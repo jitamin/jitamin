@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Action;
+namespace Jitamin\Action;
 
-use Hiject\Bus\Event\GenericEvent;
+use Jitamin\Bus\Event\GenericEvent;
 
 /**
  * Base class for automatic actions.
  */
-abstract class Base extends \Hiject\Core\Base
+abstract class Base extends \Jitamin\Core\Base
 {
     /**
      * Extended events.
@@ -248,8 +248,8 @@ abstract class Base extends \Hiject\Core\Base
     /**
      * Execute the action.
      *
-     * @param \Hiject\Event\GenericEvent $event
-     * @param string                     $eventName
+     * @param \Jitamin\Event\GenericEvent $event
+     * @param string                      $eventName
      *
      * @return bool
      */

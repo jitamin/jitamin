@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskLinkModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Bus\EventBuilder\TaskLinkEventBuilder;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskLinkModel;
+use Jitamin\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -39,7 +39,7 @@ class TaskLinkEventBuilderTest extends Base
 
         $event = $taskLinkEventBuilder->withTaskLinkId(1)->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskLinkEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskLinkEvent', $event);
         $this->assertNotEmpty($event['task_link']);
         $this->assertNotEmpty($event['task']);
     }

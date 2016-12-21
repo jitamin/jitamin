@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Services\Identity\Avatar;
+namespace Jitamin\Services\Identity\Avatar;
 
-use Hiject\Core\Base;
-use Hiject\Core\Identity\Avatar\AvatarProviderInterface;
+use Jitamin\Core\Base;
+use Jitamin\Core\Identity\Avatar\AvatarProviderInterface;
 
 /**
  * Gravatar Avatar Provider.
