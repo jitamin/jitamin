@@ -32,7 +32,7 @@ class LetterAvatarProviderTest extends Base
     {
         $provider = new LetterAvatarProvider($this->container);
         $user = ['id' => 123, 'name' => 'Jitamin Admin', 'username' => 'bob', 'email' => ''];
-        $expected = '<div class="avatar-letter" style="background-color: rgb(172, 129, 83)" title="Jitamin Admin">HA</div>';
+        $expected = '<div class="avatar-letter" style="background-color: rgb(128, 134, 45)" title="Jitamin Admin">JA</div>';
         $this->assertEquals($expected, $provider->render($user, 48));
     }
 
