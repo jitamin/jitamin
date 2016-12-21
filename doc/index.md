@@ -1,7 +1,7 @@
 Help
 ====
 
-Using Hiject
+Using Jitamin
 ------------
 
 ### Search

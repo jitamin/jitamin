@@ -1,7 +1,7 @@
 Advanced Search Syntax
 ======================
 
-Hiject uses a simple query language for advanced search. 
+Jitamin uses a simple query language for advanced search. 
 You can search in tasks, comments, subtasks, links but also in the activity stream.
 
 Example of query
