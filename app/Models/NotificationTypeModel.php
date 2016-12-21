@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Model;
+namespace Jitamin\Model;
 
-use Hiject\Core\Database\Model;
+use Jitamin\Core\Database\Model;
 use Pimple\Container;
 
 /**
@@ -83,7 +83,7 @@ abstract class NotificationTypeModel extends Model
      *
      * @param string $type
      *
-     * @return \Hiject\Core\Notification\NotificationInterface
+     * @return \Jitamin\Core\Notification\NotificationInterface
      */
     public function getType($type)
     {

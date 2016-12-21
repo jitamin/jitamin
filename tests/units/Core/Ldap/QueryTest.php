@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Ldap;
+namespace Jitamin\Core\Ldap;
 
 require_once __DIR__.'/../../Base.php';
 
@@ -41,7 +41,7 @@ class QueryTest extends \Base
             ->getMock();
 
         $this->client = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Client')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Client')
             ->setMethods([
                 'getConnection',
             ])
@@ -60,7 +60,7 @@ class QueryTest extends \Base
             'count' => 1,
             0       => [
                 'count'       => 2,
-                'dn'          => 'uid=my_user,ou=People,dc=hiject,dc=local',
+                'dn'          => 'uid=my_user,ou=People,dc=jitamin,dc=local',
                 'displayname' => [
                     'count' => 1,
                     0       => 'My user',
@@ -85,7 +85,7 @@ class QueryTest extends \Base
             ->method('ldap_search')
             ->with(
                 $this->equalTo('my_ldap_resource'),
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('uid=my_user'),
                 $this->equalTo(['displayname'])
             )
@@ -101,14 +101,14 @@ class QueryTest extends \Base
             ->will($this->returnValue($entries));
 
         $query = new Query($this->client);
-        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', ['displayname']);
+        $query->execute('ou=People,dc=jitamin,dc=local', 'uid=my_user', ['displayname']);
         $this->assertTrue($query->hasResult());
 
         $this->assertEquals('My user', $query->getEntries()->getFirstEntry()->getFirstValue('displayname'));
         $this->assertEquals('user1@localhost', $query->getEntries()->getFirstEntry()->getFirstValue('mail'));
         $this->assertEquals('', $query->getEntries()->getFirstEntry()->getFirstValue('not_found'));
 
-        $this->assertEquals('uid=my_user,ou=People,dc=hiject,dc=local', $query->getEntries()->getFirstEntry()->getDn());
+        $this->assertEquals('uid=my_user,ou=People,dc=jitamin,dc=local', $query->getEntries()->getFirstEntry()->getDn());
         $this->assertEquals('', $query->getEntries()->getFirstEntry()->getFirstValue('missing'));
     }
 
@@ -124,7 +124,7 @@ class QueryTest extends \Base
             ->method('ldap_search')
             ->with(
                 $this->equalTo('my_ldap_resource'),
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('uid=my_user'),
                 $this->equalTo(['displayname'])
             )
@@ -140,7 +140,7 @@ class QueryTest extends \Base
             ->will($this->returnValue([]));
 
         $query = new Query($this->client);
-        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', ['displayname']);
+        $query->execute('ou=People,dc=jitamin,dc=local', 'uid=my_user', ['displayname']);
         $this->assertFalse($query->hasResult());
     }
 
@@ -156,14 +156,14 @@ class QueryTest extends \Base
             ->method('ldap_search')
             ->with(
                 $this->equalTo('my_ldap_resource'),
-                $this->equalTo('ou=People,dc=hiject,dc=local'),
+                $this->equalTo('ou=People,dc=jitamin,dc=local'),
                 $this->equalTo('uid=my_user'),
                 $this->equalTo(['displayname'])
             )
             ->will($this->returnValue(false));
 
         $query = new Query($this->client);
-        $query->execute('ou=People,dc=hiject,dc=local', 'uid=my_user', ['displayname']);
+        $query->execute('ou=People,dc=jitamin,dc=local', 'uid=my_user', ['displayname']);
         $this->assertFalse($query->hasResult());
     }
 }

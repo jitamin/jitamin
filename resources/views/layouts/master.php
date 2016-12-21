@@ -35,9 +35,9 @@
             <?php elseif (isset($title)): ?>
                 <?= $this->text->e($title) ?>
             <?php else: ?>
-                Hiject
+                Jitamin
             <?php endif ?>
-            - <?= $this->app->setting('application_name') ?: 'Hiject' ?>
+            - <?= $this->app->setting('application_name') ?: 'Jitamin' ?>
         </title>
 
         <?= $this->hook->render('template:layout:head') ?>

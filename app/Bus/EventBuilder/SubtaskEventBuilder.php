@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Bus\EventBuilder;
+namespace Jitamin\Bus\EventBuilder;
 
-use Hiject\Bus\Event\GenericEvent;
-use Hiject\Bus\Event\SubtaskEvent;
-use Hiject\Model\SubtaskModel;
+use Jitamin\Bus\Event\GenericEvent;
+use Jitamin\Bus\Event\SubtaskEvent;
+use Jitamin\Model\SubtaskModel;
 
 /**
  * Class SubtaskEventBuilder.

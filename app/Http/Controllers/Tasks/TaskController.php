@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Controller\PageNotFoundException;
-use Hiject\Filter\TaskIdExclusionFilter;
-use Hiject\Filter\TaskIdFilter;
-use Hiject\Filter\TaskProjectFilter;
-use Hiject\Filter\TaskProjectsFilter;
-use Hiject\Filter\TaskTitleFilter;
-use Hiject\Formatter\TaskAutoCompleteFormatter;
-use HIject\Model\TaskModel;
+use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Filter\TaskIdExclusionFilter;
+use Jitamin\Filter\TaskIdFilter;
+use Jitamin\Filter\TaskProjectFilter;
+use Jitamin\Filter\TaskProjectsFilter;
+use Jitamin\Filter\TaskTitleFilter;
+use Jitamin\Formatter\TaskAutoCompleteFormatter;
+use Jitamin\Model\TaskModel;
 
 /**
  * Task Controller.
@@ -123,8 +123,8 @@ class TaskController extends BaseController
      * @param array $values
      * @param array $errors
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {

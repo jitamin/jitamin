@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskFileModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskFileModel;
+use Jitamin\Model\TaskModel;
 
 class TaskFileModelTest extends Base
 {
@@ -149,7 +149,7 @@ class TaskFileModelTest extends Base
     public function testUploadFiles()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\TaskFileModel')
+            ->getMockBuilder('\Jitamin\Model\TaskFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
@@ -271,7 +271,7 @@ class TaskFileModelTest extends Base
             ->expects($this->at(0))
             ->method('moveUploadedFile')
             ->with($this->equalTo('/tmp/phpYzdqkD'), $this->anything())
-            ->will($this->throwException(new \Hiject\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
 
         $fileModel = new TaskFileModel($this->container);
         $this->assertFalse($fileModel->uploadFiles(1, $files));
@@ -280,7 +280,7 @@ class TaskFileModelTest extends Base
     public function testUploadFileContent()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\TaskFileModel')
+            ->getMockBuilder('\Jitamin\Model\TaskFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
@@ -314,7 +314,7 @@ class TaskFileModelTest extends Base
     public function testUploadFileContentWithObjectStorageError()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\TaskFileModel')
+            ->getMockBuilder('\Jitamin\Model\TaskFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromFile'])
             ->getMock();
@@ -330,7 +330,7 @@ class TaskFileModelTest extends Base
             ->expects($this->once())
             ->method('put')
             ->with($this->anything(), $this->equalTo($data))
-            ->will($this->throwException(new \Hiject\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
 
         $this->assertFalse($fileModel->uploadContent(1, 'test.doc', base64_encode($data)));
     }
@@ -338,7 +338,7 @@ class TaskFileModelTest extends Base
     public function testUploadScreenshot()
     {
         $fileModel = $this
-            ->getMockBuilder('\Hiject\Model\TaskFileModel')
+            ->getMockBuilder('\Jitamin\Model\TaskFileModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['generateThumbnailFromData'])
             ->getMock();
@@ -405,7 +405,7 @@ class TaskFileModelTest extends Base
             ->expects($this->once())
             ->method('remove')
             ->with('tmp/foo')
-            ->will($this->throwException(new \Hiject\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
 
         $this->assertFalse($fileModel->remove(1));
     }

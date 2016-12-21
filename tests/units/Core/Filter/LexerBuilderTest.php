@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,13 +11,13 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Filter\LexerBuilder;
-use Hiject\Filter\TaskAssigneeFilter;
-use Hiject\Filter\TaskTitleFilter;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\UserModel;
+use Jitamin\Core\Filter\LexerBuilder;
+use Jitamin\Filter\TaskAssigneeFilter;
+use Jitamin\Filter\TaskTitleFilter;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\UserModel;
 
 class LexerBuilderTest extends Base
 {

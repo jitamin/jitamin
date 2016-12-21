@@ -1,8 +1,8 @@
-Hiject.BoardPolling = function(app) {
+Jitamin.BoardPolling = function(app) {
     this.app = app;
 };
 
-Hiject.BoardPolling.prototype.execute = function() {
+Jitamin.BoardPolling.prototype.execute = function() {
     if (this.app.hasId("board")) {
         var interval = parseInt($("#board").attr("data-check-interval"));
 
@@ -12,7 +12,7 @@ Hiject.BoardPolling.prototype.execute = function() {
     }
 };
 
-Hiject.BoardPolling.prototype.check = function() {
+Jitamin.BoardPolling.prototype.check = function() {
     if (this.app.isVisible() && !this.app.get("BoardDragAndDrop").savingInProgress) {
         var self = this;
         this.app.showLoadingIcon();

@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,10 +11,10 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ColumnModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Model\ColumnModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
 
 class TaskFinderModelTest extends Base
 {
@@ -23,7 +23,7 @@ class TaskFinderModelTest extends Base
         $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $categoryModel = new \Hiject\Model\CategoryModel($this->container);
+        $categoryModel = new \Jitamin\Model\CategoryModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $categoryModel->create(['project_id' => 1, 'name' => 'C1']));

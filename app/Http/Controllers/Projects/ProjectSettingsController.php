@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
 /**
  * Class ProjectSettingsController.
@@ -46,8 +46,8 @@ class ProjectSettingsController extends BaseController
     /**
      * Change project sharing.
      *
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function updateSharing()
     {
@@ -83,7 +83,7 @@ class ProjectSettingsController extends BaseController
     /**
      * Update integrations.
      *
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function updateIntegrations()
     {
@@ -112,7 +112,7 @@ class ProjectSettingsController extends BaseController
     /**
      * Update notifications.
      *
-     * @throws \Hiject\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
      */
     public function updateNotifications()
     {

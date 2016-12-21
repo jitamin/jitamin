@@ -1,14 +1,14 @@
-Hiject.CumulativeFlowDiagram = function(app) {
+Jitamin.CumulativeFlowDiagram = function(app) {
     this.app = app;
 };
 
-Hiject.CumulativeFlowDiagram.prototype.execute = function() {
+Jitamin.CumulativeFlowDiagram.prototype.execute = function() {
     if (this.app.hasId("analytic-cfd")) {
         this.show();
     }
 };
 
-Hiject.CumulativeFlowDiagram.prototype.show = function() {
+Jitamin.CumulativeFlowDiagram.prototype.show = function() {
     var chart = $("#chart");
     var metrics = chart.data("metrics");
     var columns = [];

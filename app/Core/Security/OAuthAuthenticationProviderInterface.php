@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Security;
+namespace Jitamin\Core\Security;
 
 /**
  * OAuth2 Authentication Provider Interface.
@@ -19,7 +19,7 @@ interface OAuthAuthenticationProviderInterface extends AuthenticationProviderInt
     /**
      * Get user object.
      *
-     * @return \Hiject\Core\User\UserProviderInterface
+     * @return \Jitamin\Core\User\UserProviderInterface
      */
     public function getUser();
 
@@ -35,7 +35,7 @@ interface OAuthAuthenticationProviderInterface extends AuthenticationProviderInt
     /**
      * Get configured OAuth2 service.
      *
-     * @return \Hiject\Core\Http\OAuth2
+     * @return \Jitamin\Core\Http\OAuth2
      */
     public function getService();
 

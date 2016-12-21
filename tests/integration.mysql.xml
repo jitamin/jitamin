@@ -1,6 +1,6 @@
 <phpunit stopOnError="true" stopOnFailure="true" colors="true">
     <testsuites>
-        <testsuite name="Hiject">
+        <testsuite name="Jitamin">
             <directory>integration</directory>
         </testsuite>
     </testsuites>

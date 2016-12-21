@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Plugin;
+namespace Jitamin\Core\Plugin;
 
 use PDOException;
 use RuntimeException;
@@ -17,7 +17,7 @@ use RuntimeException;
 /**
  * Class SchemaHandler.
  */
-class SchemaHandler extends \Hiject\Core\Base
+class SchemaHandler extends \Jitamin\Core\Base
 {
     /**
      * Schema version table for plugins.
@@ -72,7 +72,7 @@ class SchemaHandler extends \Hiject\Core\Base
      */
     public function migrateSchema($pluginName)
     {
-        $lastVersion = constant('\Hiject\Plugin\\'.$pluginName.'\Schema\VERSION');
+        $lastVersion = constant('\Jitamin\Plugin\\'.$pluginName.'\Schema\VERSION');
         $currentVersion = $this->getSchemaVersion($pluginName);
 
         try {
@@ -80,7 +80,7 @@ class SchemaHandler extends \Hiject\Core\Base
             $this->db->getDriver()->disableForeignKeys();
 
             for ($i = $currentVersion + 1; $i <= $lastVersion; $i++) {
-                $functionName = '\Hiject\Plugin\\'.$pluginName.'\Schema\version_'.$i;
+                $functionName = '\Jitamin\Plugin\\'.$pluginName.'\Schema\version_'.$i;
 
                 if (function_exists($functionName)) {
                     call_user_func($functionName, $this->db->getConnection());

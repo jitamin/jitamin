@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Model;
+namespace Jitamin\Model;
 
 use Exception;
-use Hiject\Core\Database\Model;
-use Hiject\Core\ObjectStorage\ObjectStorageException;
-use Hiject\Core\Thumbnail;
+use Jitamin\Core\Database\Model;
+use Jitamin\Core\ObjectStorage\ObjectStorageException;
+use Jitamin\Core\Thumbnail;
 
 /**
  * Base File Model.

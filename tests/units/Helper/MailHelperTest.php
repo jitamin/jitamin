@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Helper\MailHelper;
+use Jitamin\Helper\MailHelper;
 
 class MailHelperTest extends Base
 {
@@ -34,7 +34,7 @@ class MailHelperTest extends Base
     public function testGetSenderAddress()
     {
         $helper = new MailHelper($this->container);
-        $this->assertEquals('notifications@hiject.local', $helper->getMailSenderAddress());
+        $this->assertEquals('notifications@jitamin.local', $helper->getMailSenderAddress());
 
         $this->container['settingModel']->save(['mail_sender_address' => 'me@here']);
         $this->container['memoryCache']->flush();

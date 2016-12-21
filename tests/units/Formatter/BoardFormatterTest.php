@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Formatter\BoardFormatter;
-use Hiject\Model\ColumnModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskTagModel;
+use Jitamin\Formatter\BoardFormatter;
+use Jitamin\Model\ColumnModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SwimlaneModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\TaskTagModel;
 
 require_once __DIR__.'/../Base.php';
 

@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Ldap;
+namespace Jitamin\Core\Ldap;
 
 require_once __DIR__.'/../../Base.php';
 
@@ -92,7 +92,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->open('my_ldap_server');
@@ -142,7 +142,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->open('my_ldap_server', 389, true);
@@ -167,7 +167,7 @@ class ClientTest extends \Base
             ->method('ldap_bind')
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->useAnonymousAuthentication();
@@ -220,7 +220,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Hiject\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->open('my_ldap_server');

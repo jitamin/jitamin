@@ -1,32 +1,32 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Console\CronjobCommand;
-use Hiject\Console\LocaleComparatorCommand;
-use Hiject\Console\LocaleSyncCommand;
-use Hiject\Console\PluginInstallCommand;
-use Hiject\Console\PluginUninstallCommand;
-use Hiject\Console\PluginUpgradeCommand;
-use Hiject\Console\ProjectDailyColumnStatsExportCommand;
-use Hiject\Console\ProjectDailyStatsCalculationCommand;
-use Hiject\Console\ResetPasswordCommand;
-use Hiject\Console\ResetTwoFactorCommand;
-use Hiject\Console\SubtaskExportCommand;
-use Hiject\Console\TaskExportCommand;
-use Hiject\Console\TaskOverdueNotificationCommand;
-use Hiject\Console\TaskTriggerCommand;
-use Hiject\Console\TransitionExportCommand;
-use Hiject\Console\WorkerCommand;
+use Jitamin\Console\CronjobCommand;
+use Jitamin\Console\LocaleComparatorCommand;
+use Jitamin\Console\LocaleSyncCommand;
+use Jitamin\Console\PluginInstallCommand;
+use Jitamin\Console\PluginUninstallCommand;
+use Jitamin\Console\PluginUpgradeCommand;
+use Jitamin\Console\ProjectDailyColumnStatsExportCommand;
+use Jitamin\Console\ProjectDailyStatsCalculationCommand;
+use Jitamin\Console\ResetPasswordCommand;
+use Jitamin\Console\ResetTwoFactorCommand;
+use Jitamin\Console\SubtaskExportCommand;
+use Jitamin\Console\TaskExportCommand;
+use Jitamin\Console\TaskOverdueNotificationCommand;
+use Jitamin\Console\TaskTriggerCommand;
+use Jitamin\Console\TransitionExportCommand;
+use Jitamin\Console\WorkerCommand;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 use Symfony\Component\Console\Application;
@@ -45,7 +45,7 @@ class CommandProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $application = new Application('Hiject', APP_VERSION);
+        $application = new Application('Jitamin', APP_VERSION);
         $application->add(new TaskOverdueNotificationCommand($container));
         $application->add(new SubtaskExportCommand($container));
         $application->add(new TaskExportCommand($container));

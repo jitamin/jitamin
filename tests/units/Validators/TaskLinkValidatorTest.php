@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,10 +11,10 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskLinkModel;
-use Hiject\Model\TaskModel;
-use Hiject\Validator\TaskLinkValidator;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskLinkModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Validator\TaskLinkValidator;
 
 class TaskLinkValidatorTest extends Base
 {

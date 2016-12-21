@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -125,7 +125,7 @@ function bcrypt($value, array $options = [])
  */
 function t()
 {
-    return call_user_func_array([\Hiject\Core\Translator::getInstance(), 'translate'], func_get_args());
+    return call_user_func_array([\Jitamin\Core\Translator::getInstance(), 'translate'], func_get_args());
 }
 
 /**
@@ -135,7 +135,7 @@ function t()
  */
 function e()
 {
-    return call_user_func_array([\Hiject\Core\Translator::getInstance(), 'translateNoEscaping'], func_get_args());
+    return call_user_func_array([\Jitamin\Core\Translator::getInstance(), 'translateNoEscaping'], func_get_args());
 }
 
 /**
@@ -147,5 +147,5 @@ function e()
  */
 function n($value)
 {
-    return \Hiject\Core\Translator::getInstance()->number($value);
+    return \Jitamin\Core\Translator::getInstance()->number($value);
 }

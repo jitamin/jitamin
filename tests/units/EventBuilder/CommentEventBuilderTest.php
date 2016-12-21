@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\EventBuilder\CommentEventBuilder;
-use Hiject\Model\CommentModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Bus\EventBuilder\CommentEventBuilder;
+use Jitamin\Model\CommentModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -39,7 +39,7 @@ class CommentEventBuilderTest extends Base
         $commentEventBuilder->withCommentId(1);
         $event = $commentEventBuilder->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\CommentEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\CommentEvent', $event);
         $this->assertNotEmpty($event['comment']);
         $this->assertNotEmpty($event['task']);
     }

@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Console;
+namespace Jitamin\Console;
 
-use Hiject\Core\Plugin\Base as BasePlugin;
-use Hiject\Core\Plugin\Directory;
-use Hiject\Core\Plugin\Installer;
+use Jitamin\Core\Plugin\Base as BasePlugin;
+use Jitamin\Core\Plugin\Directory;
+use Jitamin\Core\Plugin\Installer;
 use LogicException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -33,7 +33,7 @@ class PluginUpgradeCommand extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (!Installer::isConfigured()) {
-            throw new LogicException('Hiject is not configured to install plugins itself');
+            throw new LogicException('Jitamin is not configured to install plugins itself');
         }
 
         $installer = new Installer($this->container);

@@ -1,8 +1,8 @@
-Hiject.ProjectPermission = function(app) {
+Jitamin.ProjectPermission = function(app) {
     this.app = app;
 };
 
-Hiject.ProjectPermission.prototype.listen = function() {
+Jitamin.ProjectPermission.prototype.listen = function() {
     $('.project-change-role').on('change', function () {
         $.ajax({
             cache: false,

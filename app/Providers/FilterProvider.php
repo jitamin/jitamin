@@ -1,49 +1,49 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Core\Filter\LexerBuilder;
-use Hiject\Core\Filter\QueryBuilder;
-use Hiject\Filter\ProjectActivityCreationDateFilter;
-use Hiject\Filter\ProjectActivityCreatorFilter;
-use Hiject\Filter\ProjectActivityProjectNameFilter;
-use Hiject\Filter\ProjectActivityTaskStatusFilter;
-use Hiject\Filter\ProjectActivityTaskTitleFilter;
-use Hiject\Filter\TaskAssigneeFilter;
-use Hiject\Filter\TaskCategoryFilter;
-use Hiject\Filter\TaskColorFilter;
-use Hiject\Filter\TaskColumnFilter;
-use Hiject\Filter\TaskCommentFilter;
-use Hiject\Filter\TaskCreationDateFilter;
-use Hiject\Filter\TaskCreatorFilter;
-use Hiject\Filter\TaskDescriptionFilter;
-use Hiject\Filter\TaskDueDateFilter;
-use Hiject\Filter\TaskIdFilter;
-use Hiject\Filter\TaskLinkFilter;
-use Hiject\Filter\TaskModificationDateFilter;
-use Hiject\Filter\TaskMovedDateFilter;
-use Hiject\Filter\TaskPriorityFilter;
-use Hiject\Filter\TaskProjectFilter;
-use Hiject\Filter\TaskReferenceFilter;
-use Hiject\Filter\TaskStartDateFilter;
-use Hiject\Filter\TaskStatusFilter;
-use Hiject\Filter\TaskSubtaskAssigneeFilter;
-use Hiject\Filter\TaskSwimlaneFilter;
-use Hiject\Filter\TaskTagFilter;
-use Hiject\Filter\TaskTitleFilter;
-use Hiject\Model\ProjectGroupRoleModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\UserModel;
+use Jitamin\Core\Filter\LexerBuilder;
+use Jitamin\Core\Filter\QueryBuilder;
+use Jitamin\Filter\ProjectActivityCreationDateFilter;
+use Jitamin\Filter\ProjectActivityCreatorFilter;
+use Jitamin\Filter\ProjectActivityProjectNameFilter;
+use Jitamin\Filter\ProjectActivityTaskStatusFilter;
+use Jitamin\Filter\ProjectActivityTaskTitleFilter;
+use Jitamin\Filter\TaskAssigneeFilter;
+use Jitamin\Filter\TaskCategoryFilter;
+use Jitamin\Filter\TaskColorFilter;
+use Jitamin\Filter\TaskColumnFilter;
+use Jitamin\Filter\TaskCommentFilter;
+use Jitamin\Filter\TaskCreationDateFilter;
+use Jitamin\Filter\TaskCreatorFilter;
+use Jitamin\Filter\TaskDescriptionFilter;
+use Jitamin\Filter\TaskDueDateFilter;
+use Jitamin\Filter\TaskIdFilter;
+use Jitamin\Filter\TaskLinkFilter;
+use Jitamin\Filter\TaskModificationDateFilter;
+use Jitamin\Filter\TaskMovedDateFilter;
+use Jitamin\Filter\TaskPriorityFilter;
+use Jitamin\Filter\TaskProjectFilter;
+use Jitamin\Filter\TaskReferenceFilter;
+use Jitamin\Filter\TaskStartDateFilter;
+use Jitamin\Filter\TaskStatusFilter;
+use Jitamin\Filter\TaskSubtaskAssigneeFilter;
+use Jitamin\Filter\TaskSwimlaneFilter;
+use Jitamin\Filter\TaskTagFilter;
+use Jitamin\Filter\TaskTitleFilter;
+use Jitamin\Model\ProjectGroupRoleModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\ProjectUserRoleModel;
+use Jitamin\Model\UserModel;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

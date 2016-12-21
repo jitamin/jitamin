@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,12 +11,12 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SubtaskModel;
-use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskStatusModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SubtaskModel;
+use Jitamin\Model\SwimlaneModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\TaskStatusModel;
 
 class TaskStatusTest extends Base
 {
@@ -114,14 +114,14 @@ class TaskStatusTest extends Base
 
     public function onTaskOpen($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
         $this->assertArrayHasKey('task_id', $event);
         $this->assertNotEmpty($event['task_id']);
     }
 
     public function onTaskClose($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
         $this->assertArrayHasKey('task_id', $event);
         $this->assertNotEmpty($event['task_id']);
     }

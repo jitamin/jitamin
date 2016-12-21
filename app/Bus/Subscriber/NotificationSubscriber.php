@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Bus\Subscriber;
+namespace Jitamin\Bus\Subscriber;
 
-use Hiject\Bus\Event\GenericEvent;
-use Hiject\Model\CommentModel;
-use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskFileModel;
-use Hiject\Model\TaskLinkModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Bus\Event\GenericEvent;
+use Jitamin\Model\CommentModel;
+use Jitamin\Model\SubtaskModel;
+use Jitamin\Model\TaskFileModel;
+use Jitamin\Model\TaskLinkModel;
+use Jitamin\Model\TaskModel;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

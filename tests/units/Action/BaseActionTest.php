@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Bus\Event\GenericEvent;
+use Jitamin\Bus\Event\GenericEvent;
 
-class DummyAction extends Hiject\Action\Base
+class DummyAction extends Jitamin\Action\Base
 {
     public function getDescription()
     {

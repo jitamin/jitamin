@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Filter\Lexer;
+use Jitamin\Core\Filter\Lexer;
 
 class LexerTest extends Base
 {
     public function testTokenizeWithNoDefaultToken()
     {
         $lexer = new Lexer();
-        $this->assertSame([], $lexer->tokenize('This is Hiject'));
+        $this->assertSame([], $lexer->tokenize('This is Jitamin'));
     }
 
     public function testTokenizeWithDefaultToken()
@@ -27,10 +27,10 @@ class LexerTest extends Base
         $lexer->setDefaultToken('myDefaultToken');
 
         $expected = [
-            'myDefaultToken' => ['This is Hiject'],
+            'myDefaultToken' => ['This is Jitamin'],
         ];
 
-        $this->assertSame($expected, $lexer->tokenize('This is Hiject'));
+        $this->assertSame($expected, $lexer->tokenize('This is Jitamin'));
     }
 
     public function testTokenizeWithCustomToken()

@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\ObjectStorage;
+namespace Jitamin\Core\ObjectStorage;
 
 require_once __DIR__.'/../../Base.php';
 
@@ -155,7 +155,7 @@ class FileStorageTest extends \Base
     }
 
     /**
-     * @expectedException \Hiject\Core\ObjectStorage\ObjectStorageException
+     * @expectedException \Jitamin\Core\ObjectStorage\ObjectStorageException
      */
     public function testPutWhenNotAbleToCreateFolder()
     {
@@ -205,7 +205,7 @@ class FileStorageTest extends \Base
     }
 
     /**
-     * @expectedException \Hiject\Core\ObjectStorage\ObjectStorageException
+     * @expectedException \Jitamin\Core\ObjectStorage\ObjectStorageException
      */
     public function testGetWithFileNotFound()
     {

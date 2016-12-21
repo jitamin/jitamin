@@ -1,14 +1,14 @@
-Hiject
+Jitamin
 ========
 
-[![Build Status](https://travis-ci.org/Hiject/Hiject.svg?branch=master)](https://travis-ci.org/Hiject/Hiject)
+[![Build Status](https://travis-ci.org/Jitamin/Jitamin.svg?branch=master)](https://travis-ci.org/Jitamin/Jitamin)
 [![StyleCI](https://styleci.io/repos/72176201/shield?branch=master)](https://styleci.io/repos/72176201/)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Hiject/Hiject/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Hiject/Hiject/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jitamin/Jitamin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jitamin/Jitamin/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Hiject 是一款免费、开源，使用PHP语言开发的项目管理系统。
+Jitamin 是一款免费、开源，使用PHP语言开发的项目管理系统。
 
-![Screenshot](http://hiject.com/hiject.png)
+![Screenshot](http://jitamin.com/jitamin.png)
 
 ## 功能特性
 
@@ -48,7 +48,7 @@ Hiject 是一款免费、开源，使用PHP语言开发的项目管理系统。
 一. 克隆代码
 
 ```shell
-$ git clone https://github.com/Hiject/Hiject.git
+$ git clone https://github.com/Jitamin/Jitamin.git
 ```
 
 二. 安装依赖包
@@ -71,7 +71,7 @@ $ chmod -R 0777 storage
 
 五. 通过浏览器访问
 
-安装完成后，请通过浏览器访问你的Hiject网址，如：http://hiject.dev
+安装完成后，请通过浏览器访问你的Jitamin网址，如：http://jitamin.dev
 
 初始管理员的用户名和密码：
 
@@ -95,14 +95,14 @@ $ composer install -o --no-dev
 
 ## 系统演示
 
-体验Hiject, 请访问 [Hiject](http://hiject.com):
+体验Jitamin, 请访问 [Jitamin](http://jitamin.com):
 
-- **用户名:** `hiject` or `hiject@hiject.com`
-- **密码:** `hiject`
+- **用户名:** `jitamin` or `jitamin@jitamin.com`
+- **密码:** `jitamin`
 
 ## 开发相关
 
-Hiject代码里自带编译后的前端静态资源。如果你不想修改前端样式，请直接忽略本环节。
+Jitamin代码里自带编译后的前端静态资源。如果你不想修改前端样式，请直接忽略本环节。
 
 工具集：
 
@@ -118,7 +118,7 @@ gulp
 
 ## License
 
-Hiject is licensed under the license of MIT.  See the LICENSE for more details.
+Jitamin is licensed under the license of MIT.  See the LICENSE for more details.
 
-Hiject is a fork based on Kanboard. Kanboard is Copyright Frédéric Guillot and others.
+Jitamin is a fork based on Kanboard. Kanboard is Copyright Frédéric Guillot and others.
 

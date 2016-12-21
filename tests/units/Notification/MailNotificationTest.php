@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,16 +11,16 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Bus\Subscriber\NotificationSubscriber;
-use Hiject\Model\CommentModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskFileModel;
-use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskLinkModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\UserModel;
-use Hiject\Notification\MailNotification;
+use Jitamin\Bus\Subscriber\NotificationSubscriber;
+use Jitamin\Model\CommentModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SubtaskModel;
+use Jitamin\Model\TaskFileModel;
+use Jitamin\Model\TaskFinderModel;
+use Jitamin\Model\TaskLinkModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\UserModel;
+use Jitamin\Notification\MailNotification;
 
 class MailNotificationTest extends Base
 {
@@ -86,7 +86,7 @@ class MailNotificationTest extends Base
         $this->assertTrue($userModel->update(['id' => 1, 'email' => 'test@localhost']));
 
         $this->container['emailClient'] = $this
-            ->getMockBuilder('\Hiject\Core\Mail\Client')
+            ->getMockBuilder('\Jitamin\Core\Mail\Client')
             ->setConstructorArgs([$this->container])
             ->setMethods(['send'])
             ->getMock();

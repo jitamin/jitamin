@@ -1,20 +1,20 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Bus\Subscriber;
+namespace Jitamin\Bus\Subscriber;
 
-use Hiject\Bus\Event\AuthFailureEvent;
-use Hiject\Bus\Event\AuthSuccessEvent;
-use Hiject\Core\Security\AuthenticationManager;
-use Hiject\Core\Session\SessionManager;
+use Jitamin\Bus\Event\AuthFailureEvent;
+use Jitamin\Bus\Event\AuthSuccessEvent;
+use Jitamin\Core\Security\AuthenticationManager;
+use Jitamin\Core\Session\SessionManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

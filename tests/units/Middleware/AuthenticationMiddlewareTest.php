@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Middleware\AuthenticationMiddleware;
+use Jitamin\Middleware\AuthenticationMiddleware;
 
 require_once __DIR__.'/../Base.php';
 
@@ -26,30 +26,30 @@ class AuthenticationMiddlewareTest extends Base
         parent::setUp();
 
         $this->container['authenticationManager'] = $this
-            ->getMockBuilder('Hiject\Core\Security\AuthenticationManager')
+            ->getMockBuilder('Jitamin\Core\Security\AuthenticationManager')
             ->setConstructorArgs([$this->container])
             ->setMethods(['checkCurrentSession'])
             ->getMock();
 
         $this->container['applicationAuthorization'] = $this
-            ->getMockBuilder('Hiject\Core\Security\AccessMap')
+            ->getMockBuilder('Jitamin\Core\Security\AccessMap')
             ->setMethods(['isAllowed'])
             ->getMock();
 
         $this->container['response'] = $this
-            ->getMockBuilder('Hiject\Core\Http\Response')
+            ->getMockBuilder('Jitamin\Core\Http\Response')
             ->setConstructorArgs([$this->container])
             ->setMethods(['redirect'])
             ->getMock();
 
         $this->container['userSession'] = $this
-            ->getMockBuilder('Hiject\Core\Identity\UserSession')
+            ->getMockBuilder('Jitamin\Core\Identity\UserSession')
             ->setConstructorArgs([$this->container])
             ->setMethods(['isLogged'])
             ->getMock();
 
         $this->nextMiddleware = $this
-            ->getMockBuilder('Hiject\Middleware\AuthenticationMiddleware')
+            ->getMockBuilder('Jitamin\Middleware\AuthenticationMiddleware')
             ->setConstructorArgs([$this->container])
             ->setMethods(['execute'])
             ->getMock();
@@ -69,7 +69,7 @@ class AuthenticationMiddlewareTest extends Base
             ->expects($this->never())
             ->method('execute');
 
-        $this->setExpectedException('Hiject\Core\Controller\AccessForbiddenException');
+        $this->setExpectedException('Jitamin\Core\Controller\AccessForbiddenException');
         $this->middleware->execute();
     }
 

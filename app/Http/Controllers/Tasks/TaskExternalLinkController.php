@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Core\Controller\PageNotFoundException;
-use Hiject\Core\ExternalLink\ExternalLinkProviderNotFound;
+use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
  * Task External Link Controller.
@@ -26,7 +26,7 @@ class TaskExternalLinkController extends BaseController
      * @param array $errors
      *
      * @throws PageNotFoundException
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function find(array $values = [], array $errors = [])
     {
@@ -94,7 +94,7 @@ class TaskExternalLinkController extends BaseController
      *
      * @throws ExternalLinkProviderNotFound
      * @throws PageNotFoundException
-     * @throws \Hiject\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function edit(array $values = [], array $errors = [])
     {

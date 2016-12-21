@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,16 +11,16 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Action\TaskAssignColorColumn;
-use Hiject\Action\TaskClose;
-use Hiject\Action\TaskCloseColumn;
-use Hiject\Action\TaskUpdateStartDate;
-use Hiject\Core\Action\ActionManager;
-use Hiject\Core\Security\Role;
-use Hiject\Model\ActionModel;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Action\TaskAssignColorColumn;
+use Jitamin\Action\TaskClose;
+use Jitamin\Action\TaskCloseColumn;
+use Jitamin\Action\TaskUpdateStartDate;
+use Jitamin\Core\Action\ActionManager;
+use Jitamin\Core\Security\Role;
+use Jitamin\Model\ActionModel;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\ProjectUserRoleModel;
+use Jitamin\Model\TaskModel;
 
 class ActionManagerTest extends Base
 {
@@ -69,15 +69,15 @@ class ActionManagerTest extends Base
             ->register(new TaskUpdateStartDate($this->container));
 
         $params = $actionManager->getAvailableParameters([
-            ['action_name' => '\Hiject\Action\TaskCloseColumn'],
-            ['action_name' => '\Hiject\Action\TaskUpdateStartDate'],
+            ['action_name' => '\Jitamin\Action\TaskCloseColumn'],
+            ['action_name' => '\Jitamin\Action\TaskUpdateStartDate'],
         ]);
 
         $this->assertCount(2, $params);
-        $this->assertArrayHasKey('column_id', $params['\Hiject\Action\TaskCloseColumn']);
-        $this->assertArrayHasKey('column_id', $params['\Hiject\Action\TaskUpdateStartDate']);
-        $this->assertNotEmpty($params['\Hiject\Action\TaskCloseColumn']['column_id']);
-        $this->assertNotEmpty($params['\Hiject\Action\TaskUpdateStartDate']['column_id']);
+        $this->assertArrayHasKey('column_id', $params['\Jitamin\Action\TaskCloseColumn']);
+        $this->assertArrayHasKey('column_id', $params['\Jitamin\Action\TaskUpdateStartDate']);
+        $this->assertNotEmpty($params['\Jitamin\Action\TaskCloseColumn']['column_id']);
+        $this->assertNotEmpty($params['\Jitamin\Action\TaskUpdateStartDate']['column_id']);
     }
 
     public function testGetCompatibleEvents()

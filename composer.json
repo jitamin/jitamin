@@ -1,5 +1,5 @@
 {
-    "name": "hiject/hiject",
+    "name": "jitamin/jitamin",
     "type": "project",
     "description": "A web based project management system",
     "license": "MIT",
@@ -40,7 +40,7 @@
     "autoload" : {
         "classmap" : ["app/"],
         "psr-4" : {
-            "Hiject\\" : "app/"
+            "Jitamin\\" : "app/"
         },
         "files" : [
             "app/helpers.php"

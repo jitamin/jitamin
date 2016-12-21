@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Core\Http\Client as HttpClient;
-use Hiject\Core\Http\OAuth2;
-use Hiject\Core\ObjectStorage\FileStorage;
-use Hiject\Core\Paginator;
-use Hiject\Core\Tool;
+use Jitamin\Core\Http\Client as HttpClient;
+use Jitamin\Core\Http\OAuth2;
+use Jitamin\Core\ObjectStorage\FileStorage;
+use Jitamin\Core\Paginator;
+use Jitamin\Core\Tool;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -187,7 +187,7 @@ class ClassProvider implements ServiceProviderInterface
             $container['memcached'] = function ($c) {
                 $memcached = new \Memcached();
 
-                $config = require HIJECT_DIR.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'memcached.php';
+                $config = require JITAMIN_DIR.DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.'memcached.php';
 
                 foreach ($config['servers'] as $server) {
                     $memcached->addServer(

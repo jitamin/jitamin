@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,9 +13,9 @@ require __DIR__.'/../../vendor/autoload.php';
 require __DIR__.'/../../bootstrap/constants.php';
 
 use Composer\Autoload\ClassLoader;
-use Hiject\Core\Session\FlashMessage;
-use Hiject\Core\Session\SessionStorage;
-use Hiject\Providers\ActionProvider;
+use Jitamin\Core\Session\FlashMessage;
+use Jitamin\Core\Session\SessionStorage;
+use Jitamin\Providers\ActionProvider;
 use SimpleLogger\Logger;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcher;
@@ -47,17 +47,17 @@ abstract class Base extends PHPUnit_Framework_TestCase
         }
 
         $this->container = new Pimple\Container();
-        $this->container->register(new Hiject\Providers\CacheProvider());
-        $this->container->register(new Hiject\Providers\HelperProvider());
-        $this->container->register(new Hiject\Providers\AuthenticationProvider());
-        $this->container->register(new Hiject\Providers\DatabaseProvider());
-        $this->container->register(new Hiject\Providers\ClassProvider());
-        $this->container->register(new Hiject\Providers\NotificationProvider());
-        $this->container->register(new Hiject\Providers\RouteProvider());
-        $this->container->register(new Hiject\Providers\AvatarProvider());
-        $this->container->register(new Hiject\Providers\FilterProvider());
-        $this->container->register(new Hiject\Providers\JobProvider());
-        $this->container->register(new Hiject\Providers\QueueProvider());
+        $this->container->register(new Jitamin\Providers\CacheProvider());
+        $this->container->register(new Jitamin\Providers\HelperProvider());
+        $this->container->register(new Jitamin\Providers\AuthenticationProvider());
+        $this->container->register(new Jitamin\Providers\DatabaseProvider());
+        $this->container->register(new Jitamin\Providers\ClassProvider());
+        $this->container->register(new Jitamin\Providers\NotificationProvider());
+        $this->container->register(new Jitamin\Providers\RouteProvider());
+        $this->container->register(new Jitamin\Providers\AvatarProvider());
+        $this->container->register(new Jitamin\Providers\FilterProvider());
+        $this->container->register(new Jitamin\Providers\JobProvider());
+        $this->container->register(new Jitamin\Providers\QueueProvider());
 
         $this->container['dispatcher'] = new TraceableEventDispatcher(
             new EventDispatcher(),
@@ -70,25 +70,25 @@ abstract class Base extends PHPUnit_Framework_TestCase
         $this->container['logger'] = new Logger();
 
         $this->container['httpClient'] = $this
-            ->getMockBuilder('\Hiject\Core\Http\Client')
+            ->getMockBuilder('\Jitamin\Core\Http\Client')
             ->setConstructorArgs([$this->container])
             ->setMethods(['get', 'getJson', 'postJson', 'postJsonAsync', 'postForm', 'postFormAsync'])
             ->getMock();
 
         $this->container['emailClient'] = $this
-            ->getMockBuilder('\Hiject\Core\Mail\Client')
+            ->getMockBuilder('\Jitamin\Core\Mail\Client')
             ->setConstructorArgs([$this->container])
             ->setMethods(['send'])
             ->getMock();
 
         $this->container['userNotificationTypeModel'] = $this
-            ->getMockBuilder('\Hiject\Model\UserNotificationTypeModel')
+            ->getMockBuilder('\Jitamin\Model\UserNotificationTypeModel')
             ->setConstructorArgs([$this->container])
             ->setMethods(['getType', 'getSelectedTypes'])
             ->getMock();
 
         $this->container['objectStorage'] = $this
-            ->getMockBuilder('\Hiject\Core\ObjectStorage\FileStorage')
+            ->getMockBuilder('\Jitamin\Core\ObjectStorage\FileStorage')
             ->setConstructorArgs([$this->container])
             ->setMethods(['put', 'moveFile', 'remove', 'moveUploadedFile'])
             ->getMock();
@@ -101,7 +101,7 @@ abstract class Base extends PHPUnit_Framework_TestCase
         };
 
         $loader = new ClassLoader();
-        $loader->addPsr4('Hiject\Plugin\\', PLUGINS_DIR);
+        $loader->addPsr4('Jitamin\Plugin\\', PLUGINS_DIR);
         $loader->register();
     }
 

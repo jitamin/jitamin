@@ -1,16 +1,16 @@
-Hiject.BoardDragAndDrop = function(app) {
+Jitamin.BoardDragAndDrop = function(app) {
     this.app = app;
     this.savingInProgress = false;
 };
 
-Hiject.BoardDragAndDrop.prototype.execute = function() {
+Jitamin.BoardDragAndDrop.prototype.execute = function() {
     if (this.app.hasId("board")) {
         this.dragAndDrop();
         this.executeListeners();
     }
 };
 
-Hiject.BoardDragAndDrop.prototype.dragAndDrop = function() {
+Jitamin.BoardDragAndDrop.prototype.dragAndDrop = function() {
     var self = this;
     var dropzone = $(".board-task-list");
     var params = {
@@ -56,13 +56,13 @@ Hiject.BoardDragAndDrop.prototype.dragAndDrop = function() {
     dropzone.sortable(params);
 };
 
-Hiject.BoardDragAndDrop.prototype.changeTaskState = function(taskId) {
+Jitamin.BoardDragAndDrop.prototype.changeTaskState = function(taskId) {
     var task = $("div[data-task-id=" + taskId + "]");
     task.addClass('task-board-saving-state');
     task.find('.task-board-saving-icon').show();
 };
 
-Hiject.BoardDragAndDrop.prototype.save = function(taskId, srcColumnId, dstColumnId, position, swimlaneId) {
+Jitamin.BoardDragAndDrop.prototype.save = function(taskId, srcColumnId, dstColumnId, position, swimlaneId) {
     var self = this;
     self.app.showLoadingIcon();
     self.savingInProgress = true;
@@ -97,7 +97,7 @@ Hiject.BoardDragAndDrop.prototype.save = function(taskId, srcColumnId, dstColumn
     });
 };
 
-Hiject.BoardDragAndDrop.prototype.refresh = function(data) {
+Jitamin.BoardDragAndDrop.prototype.refresh = function(data) {
     $("#board-container").replaceWith(data);
 
     this.app.hideLoadingIcon();
@@ -105,7 +105,7 @@ Hiject.BoardDragAndDrop.prototype.refresh = function(data) {
     this.executeListeners();
 };
 
-Hiject.BoardDragAndDrop.prototype.executeListeners = function() {
+Jitamin.BoardDragAndDrop.prototype.executeListeners = function() {
     for (var className in this.app.controllers) {
         var controller = this.app.get(className);
 

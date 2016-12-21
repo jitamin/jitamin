@@ -1,19 +1,19 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Api\Procedure;
+namespace Jitamin\Api\Procedure;
 
-use Hiject\Api\Authorization\TaskAuthorization;
-use Hiject\Core\ExternalLink\ExternalLinkManager;
-use Hiject\Core\ExternalLink\ExternalLinkProviderNotFound;
+use Jitamin\Api\Authorization\TaskAuthorization;
+use Jitamin\Core\ExternalLink\ExternalLinkManager;
+use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
  * Task External Link API controller.

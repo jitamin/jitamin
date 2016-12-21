@@ -3,4 +3,4 @@
 <p><?= $this->url->to('PasswordResetController', 'change', ['token' => $token], '', true) ?></p>
 
 <hr>
-Hiject
+Jitamin

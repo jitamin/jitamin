@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\Job\TaskEventJob;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskModel;
-use Hiject\Model\TaskPositionModel;
-use Hiject\Model\TaskProjectMoveModel;
-use Hiject\Model\TaskStatusModel;
+use Jitamin\Bus\Job\TaskEventJob;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\SwimlaneModel;
+use Jitamin\Model\TaskModel;
+use Jitamin\Model\TaskPositionModel;
+use Jitamin\Model\TaskProjectMoveModel;
+use Jitamin\Model\TaskStatusModel;
 
 require_once __DIR__.'/../Base.php';
 

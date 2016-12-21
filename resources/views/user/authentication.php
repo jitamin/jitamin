@@ -20,7 +20,7 @@
 
     <div class="alert alert-info">
         <ul>
-            <li><?= t('Remote users do not store their password in Hiject database, examples: LDAP, Google and Github accounts.') ?></li>
+            <li><?= t('Remote users do not store their password in Jitamin database, examples: LDAP, Google and Github accounts.') ?></li>
             <li><?= t('If you check the box "Disallow login form", credentials entered in the login form will be ignored.') ?></li>
         </ul>
     </div>

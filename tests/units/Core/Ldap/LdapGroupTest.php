@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Core\Ldap\Entries;
-use Hiject\Core\Ldap\Group;
+use Jitamin\Core\Ldap\Entries;
+use Jitamin\Core\Ldap\Group;
 
 class LdapGroupTest extends Base
 {
@@ -25,14 +25,14 @@ class LdapGroupTest extends Base
         parent::setUp();
 
         $this->client = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Client')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Client')
             ->setMethods([
                 'getConnection',
             ])
             ->getMock();
 
         $this->query = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Query')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Query')
             ->setConstructorArgs([$this->client])
             ->setMethods([
                 'execute',
@@ -42,7 +42,7 @@ class LdapGroupTest extends Base
             ->getMock();
 
         $this->group = $this
-            ->getMockBuilder('\Hiject\Core\Ldap\Group')
+            ->getMockBuilder('\Jitamin\Core\Ldap\Group')
             ->setConstructorArgs([$this->query])
             ->setMethods([
                 'getAttributeName',
@@ -58,20 +58,20 @@ class LdapGroupTest extends Base
             0       => [
                 'cn' => [
                     'count' => 1,
-                    0       => 'Hiject Other Group',
+                    0       => 'Jitamin Other Group',
                 ],
                 0       => 'cn',
                 'count' => 1,
-                'dn'    => 'CN=Hiject Other Group,CN=Users,DC=hiject,DC=local',
+                'dn'    => 'CN=Jitamin Other Group,CN=Users,DC=jitamin,DC=local',
             ],
             1 => [
                 'cn' => [
                     'count' => 1,
-                    0       => 'Hiject Users',
+                    0       => 'Jitamin Users',
                 ],
                 0       => 'cn',
                 'count' => 1,
-                'dn'    => 'CN=Hiject Users,CN=Users,DC=hiject,DC=local',
+                'dn'    => 'CN=Jitamin Users,CN=Users,DC=jitamin,DC=local',
             ],
         ]);
 
@@ -84,8 +84,8 @@ class LdapGroupTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('CN=Users,DC=hiject,DC=local'),
-                $this->equalTo('(&(objectClass=group)(sAMAccountName=Hiject*))')
+                $this->equalTo('CN=Users,DC=jitamin,DC=local'),
+                $this->equalTo('(&(objectClass=group)(sAMAccountName=Jitamin*))')
             );
 
         $this->query
@@ -106,16 +106,16 @@ class LdapGroupTest extends Base
         $this->group
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('CN=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('CN=Users,DC=jitamin,DC=local'));
 
-        $groups = $this->group->find('(&(objectClass=group)(sAMAccountName=Hiject*))');
+        $groups = $this->group->find('(&(objectClass=group)(sAMAccountName=Jitamin*))');
         $this->assertCount(2, $groups);
-        $this->assertInstanceOf('Hiject\Group\LdapGroupProvider', $groups[0]);
-        $this->assertInstanceOf('Hiject\Group\LdapGroupProvider', $groups[1]);
-        $this->assertEquals('Hiject Other Group', $groups[0]->getName());
-        $this->assertEquals('Hiject Users', $groups[1]->getName());
-        $this->assertEquals('CN=Hiject Other Group,CN=Users,DC=hiject,DC=local', $groups[0]->getExternalId());
-        $this->assertEquals('CN=Hiject Users,CN=Users,DC=hiject,DC=local', $groups[1]->getExternalId());
+        $this->assertInstanceOf('Jitamin\Group\LdapGroupProvider', $groups[0]);
+        $this->assertInstanceOf('Jitamin\Group\LdapGroupProvider', $groups[1]);
+        $this->assertEquals('Jitamin Other Group', $groups[0]->getName());
+        $this->assertEquals('Jitamin Users', $groups[1]->getName());
+        $this->assertEquals('CN=Jitamin Other Group,CN=Users,DC=jitamin,DC=local', $groups[0]->getExternalId());
+        $this->assertEquals('CN=Jitamin Users,CN=Users,DC=jitamin,DC=local', $groups[1]->getExternalId());
     }
 
     public function testGetGroupsWithNoResult()
@@ -131,8 +131,8 @@ class LdapGroupTest extends Base
             ->expects($this->once())
             ->method('execute')
             ->with(
-                $this->equalTo('CN=Users,DC=hiject,DC=local'),
-                $this->equalTo('(&(objectClass=group)(sAMAccountName=Hiject*))')
+                $this->equalTo('CN=Users,DC=jitamin,DC=local'),
+                $this->equalTo('(&(objectClass=group)(sAMAccountName=Jitamin*))')
             );
 
         $this->query
@@ -152,9 +152,9 @@ class LdapGroupTest extends Base
         $this->group
             ->expects($this->any())
             ->method('getBasDn')
-            ->will($this->returnValue('CN=Users,DC=hiject,DC=local'));
+            ->will($this->returnValue('CN=Users,DC=jitamin,DC=local'));
 
-        $groups = $this->group->find('(&(objectClass=group)(sAMAccountName=Hiject*))');
+        $groups = $this->group->find('(&(objectClass=group)(sAMAccountName=Jitamin*))');
         $this->assertCount(0, $groups);
     }
 

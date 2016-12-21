@@ -1,24 +1,24 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Bus\Job\CommentEventJob;
-use Hiject\Bus\Job\NotificationJob;
-use Hiject\Bus\Job\ProjectFileEventJob;
-use Hiject\Bus\Job\ProjectMetricJob;
-use Hiject\Bus\Job\SubtaskEventJob;
-use Hiject\Bus\Job\TaskEventJob;
-use Hiject\Bus\Job\TaskFileEventJob;
-use Hiject\Bus\Job\TaskLinkEventJob;
+use Jitamin\Bus\Job\CommentEventJob;
+use Jitamin\Bus\Job\NotificationJob;
+use Jitamin\Bus\Job\ProjectFileEventJob;
+use Jitamin\Bus\Job\ProjectMetricJob;
+use Jitamin\Bus\Job\SubtaskEventJob;
+use Jitamin\Bus\Job\TaskEventJob;
+use Jitamin\Bus\Job\TaskFileEventJob;
+use Jitamin\Bus\Job\TaskLinkEventJob;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

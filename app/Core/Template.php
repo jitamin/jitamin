@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core;
+namespace Jitamin\Core;
 
 /**
  * Template.
@@ -87,7 +87,7 @@ class Template
     /**
      * Find template filename.
      *
-     * Core template: 'task/show' or 'hiject:task/show'
+     * Core template: 'task/show' or 'jitamin:task/show'
      * Plugin template: 'myplugin:task/show'
      *
      * @param string $template
@@ -103,7 +103,7 @@ class Template
             list($plugin, $template) = explode(':', $template);
         }
 
-        if ($plugin !== 'hiject' && $plugin !== '') {
+        if ($plugin !== 'jitamin' && $plugin !== '') {
             return implode(DIRECTORY_SEPARATOR, [PLUGINS_DIR, ucfirst($plugin), 'Template', $template.'.php']);
         }
 

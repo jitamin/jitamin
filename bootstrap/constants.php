@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,7 +28,7 @@ defined('CACHE_DIR') or define('CACHE_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'cache'
 
 // Plugins settings
 defined('PLUGINS_DIR') or define('PLUGINS_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'plugins');
-defined('PLUGIN_API_URL') or define('PLUGIN_API_URL', 'http://hiject.com/plugins.json');
+defined('PLUGIN_API_URL') or define('PLUGIN_API_URL', 'http://jitamin.com/plugins.json');
 defined('PLUGIN_INSTALLER') or define('PLUGIN_INSTALLER', true);
 
 // Enable/disable debug
@@ -53,7 +53,7 @@ defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.'db
 defined('DB_USERNAME') or define('DB_USERNAME', 'root');
 defined('DB_PASSWORD') or define('DB_PASSWORD', '');
 defined('DB_HOSTNAME') or define('DB_HOSTNAME', 'localhost');
-defined('DB_NAME') or define('DB_NAME', 'hiject');
+defined('DB_NAME') or define('DB_NAME', 'jitamin');
 defined('DB_PORT') or define('DB_PORT', null);
 defined('DB_SSL_KEY') or define('DB_SSL_KEY', null);
 defined('DB_SSL_CERT') or define('DB_SSL_CERT', null);
@@ -103,7 +103,7 @@ defined('REVERSE_PROXY_DEFAULT_DOMAIN') or define('REVERSE_PROXY_DEFAULT_DOMAIN'
 defined('REMEMBER_ME_AUTH') or define('REMEMBER_ME_AUTH', true);
 
 // Mail configuration
-defined('MAIL_FROM') or define('MAIL_FROM', 'notifications@hiject.local');
+defined('MAIL_FROM') or define('MAIL_FROM', 'notifications@jitamin.local');
 defined('MAIL_TRANSPORT') or define('MAIL_TRANSPORT', 'mail');
 defined('MAIL_SMTP_HOSTNAME') or define('MAIL_SMTP_HOSTNAME', '');
 defined('MAIL_SMTP_PORT') or define('MAIL_SMTP_PORT', 25);
@@ -149,4 +149,4 @@ defined('HTTP_PROXY_USERNAME') or define('HTTP_PROXY_USERNAME', '');
 defined('HTTP_PROXY_PASSWORD') or define('HTTP_PROXY_PASSWORD', '');
 defined('HTTP_VERIFY_SSL_CERTIFICATE') or define('HTTP_VERIFY_SSL_CERTIFICATE', true);
 
-defined('TOTP_ISSUER') or define('TOTP_ISSUER', 'Hiject');
+defined('TOTP_ISSUER') or define('TOTP_ISSUER', 'Jitamin');

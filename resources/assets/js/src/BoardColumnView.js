@@ -1,14 +1,14 @@
-Hiject.BoardColumnView = function(app) {
+Jitamin.BoardColumnView = function(app) {
     this.app = app;
 };
 
-Hiject.BoardColumnView.prototype.execute = function() {
+Jitamin.BoardColumnView.prototype.execute = function() {
     if (this.app.hasId("board")) {
         this.render();
     }
 };
 
-Hiject.BoardColumnView.prototype.listen = function() {
+Jitamin.BoardColumnView.prototype.listen = function() {
     var self = this;
 
     $(document).on("click", ".board-toggle-column-view", function() {
@@ -16,11 +16,11 @@ Hiject.BoardColumnView.prototype.listen = function() {
     });
 };
 
-Hiject.BoardColumnView.prototype.onBoardRendered = function() {
+Jitamin.BoardColumnView.prototype.onBoardRendered = function() {
     this.render();
 };
 
-Hiject.BoardColumnView.prototype.render = function() {
+Jitamin.BoardColumnView.prototype.render = function() {
     var self = this;
 
     $(".board-column-header").each(function() {
@@ -31,7 +31,7 @@ Hiject.BoardColumnView.prototype.render = function() {
     });
 };
 
-Hiject.BoardColumnView.prototype.toggle = function(columnId) {
+Jitamin.BoardColumnView.prototype.toggle = function(columnId) {
     if (localStorage.getItem("hidden_column_" + columnId)) {
         this.showColumn(columnId);
     }
@@ -40,7 +40,7 @@ Hiject.BoardColumnView.prototype.toggle = function(columnId) {
     }
 };
 
-Hiject.BoardColumnView.prototype.hideColumn = function(columnId) {
+Jitamin.BoardColumnView.prototype.hideColumn = function(columnId) {
     $(".board-column-" + columnId + " .board-column-expanded").hide();
     $(".board-column-" + columnId + " .board-column-collapsed").show();
     $(".board-column-header-" + columnId + " .board-column-expanded").hide();
@@ -62,7 +62,7 @@ Hiject.BoardColumnView.prototype.hideColumn = function(columnId) {
     localStorage.setItem("hidden_column_" + columnId, 1);
 };
 
-Hiject.BoardColumnView.prototype.showColumn = function(columnId) {
+Jitamin.BoardColumnView.prototype.showColumn = function(columnId) {
     $(".board-column-" + columnId + " .board-column-expanded").show();
     $(".board-column-" + columnId + " .board-column-collapsed").hide();
     $(".board-column-header-" + columnId + " .board-column-expanded").show();

@@ -1,17 +1,17 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-use Hiject\Bus\EventBuilder\TaskEventBuilder;
-use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
+use Jitamin\Bus\EventBuilder\TaskEventBuilder;
+use Jitamin\Model\ProjectModel;
+use Jitamin\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -39,7 +39,7 @@ class TaskEventBuilderTest extends Base
             ->withChanges(['title' => 'after'])
             ->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
         $this->assertNotEmpty($event['task']);
         $this->assertEquals(1, $event['task_id']);
         $this->assertEquals(['title' => 'after'], $event['changes']);
@@ -56,7 +56,7 @@ class TaskEventBuilderTest extends Base
 
         $event = $taskEventBuilder->withTaskId(1)->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
         $this->assertNotEmpty($event['task']);
         $this->assertEquals(1, $event['task_id']);
         $this->assertArrayNotHasKey('changes', $event);
@@ -76,7 +76,7 @@ class TaskEventBuilderTest extends Base
             ->withChanges(['title' => 'new title'])
             ->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
         $this->assertNotEmpty($event['task']);
         $this->assertNotEmpty($event['changes']);
         $this->assertEquals('new title', $event['changes']['title']);
@@ -97,7 +97,7 @@ class TaskEventBuilderTest extends Base
             ->withValues(['key' => 'value'])
             ->buildEvent();
 
-        $this->assertInstanceOf('Hiject\Bus\Event\TaskEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\TaskEvent', $event);
         $this->assertNotEmpty($event['task']);
         $this->assertNotEmpty($event['changes']);
         $this->assertNotEmpty($event['key']);

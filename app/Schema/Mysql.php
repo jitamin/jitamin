@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,8 +11,8 @@
 
 namespace Schema;
 
-use Hiject\Core\Security\Role;
-use Hiject\Core\Security\Token;
+use Jitamin\Core\Security\Role;
+use Jitamin\Core\Security\Token;
 use PDO;
 
 const VERSION = 120;
@@ -273,13 +273,13 @@ function version_99(PDO $pdo)
 
     foreach ($rows as $row) {
         if ($row['action_name'] === 'TaskAssignCurrentUser' && $row['event_name'] === 'task.move.column') {
-            $row['action_name'] = '\Hiject\Action\TaskAssignCurrentUserColumn';
+            $row['action_name'] = '\Jitamin\Action\TaskAssignCurrentUserColumn';
         } elseif ($row['action_name'] === 'TaskClose' && $row['event_name'] === 'task.move.column') {
-            $row['action_name'] = '\Hiject\Action\TaskCloseColumn';
+            $row['action_name'] = '\Jitamin\Action\TaskCloseColumn';
         } elseif ($row['action_name'] === 'TaskLogMoveAnotherColumn') {
-            $row['action_name'] = '\Hiject\Action\CommentCreationMoveTaskColumn';
+            $row['action_name'] = '\Jitamin\Action\CommentCreationMoveTaskColumn';
         } elseif ($row['action_name'][0] !== '\\') {
-            $row['action_name'] = '\Hiject\Action\\'.$row['action_name'];
+            $row['action_name'] = '\Jitamin\Action\\'.$row['action_name'];
         }
 
         $rq->execute([$row['action_name'], $row['id']]);
@@ -688,7 +688,7 @@ function version_68(PDO $pdo)
     $rq->execute(['integration_jabber_domain', '']);
     $rq->execute(['integration_jabber_username', '']);
     $rq->execute(['integration_jabber_password', '']);
-    $rq->execute(['integration_jabber_nickname', 'hiject']);
+    $rq->execute(['integration_jabber_nickname', 'jitamin']);
     $rq->execute(['integration_jabber_room', '']);
 
     $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber INTEGER DEFAULT '0'");
@@ -696,7 +696,7 @@ function version_68(PDO $pdo)
     $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber_domain VARCHAR(255) DEFAULT ''");
     $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber_username VARCHAR(255) DEFAULT ''");
     $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber_password VARCHAR(255) DEFAULT ''");
-    $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber_nickname VARCHAR(255) DEFAULT 'hiject'");
+    $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber_nickname VARCHAR(255) DEFAULT 'jitamin'");
     $pdo->exec("ALTER TABLE project_integrations ADD COLUMN jabber_room VARCHAR(255) DEFAULT ''");
 }
 
@@ -1117,7 +1117,7 @@ function version_29(PDO $pdo)
     $rq->execute(['api_token', $parameters['api_token']]);
     $rq->execute(['application_language', $parameters['language']]);
     $rq->execute(['application_timezone', $parameters['timezone']]);
-    $rq->execute(['application_url', defined('HIJECT_URL') ? HIJECT_URL : '']);
+    $rq->execute(['application_url', defined('JITAMIN_URL') ? JITAMIN_URL : '']);
 
     $pdo->exec('DROP TABLE config');
 }

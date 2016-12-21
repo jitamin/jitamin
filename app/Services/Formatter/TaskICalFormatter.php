@@ -1,22 +1,22 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Formatter;
+namespace Jitamin\Formatter;
 
 use DateTime;
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;
 use Eluceo\iCal\Property\Event\Attendees;
 use Eluceo\iCal\Property\Event\Organizer;
-use Hiject\Core\Filter\FormatterInterface;
+use Jitamin\Core\Filter\FormatterInterface;
 
 /**
  * iCal event formatter for tasks.
@@ -128,7 +128,7 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
         if (!empty($task['owner_id'])) {
             $attendees = new Attendees();
             $attendees->add(
-                'MAILTO:'.($task['assignee_email'] ?: $task['assignee_username'].'@hiject.local'),
+                'MAILTO:'.($task['assignee_email'] ?: $task['assignee_username'].'@jitamin.local'),
                 ['CN' => $task['assignee_name'] ?: $task['assignee_username']]
             );
             $vEvent->setAttendees($attendees);
@@ -136,7 +136,7 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
 
         if (!empty($task['creator_id'])) {
             $vEvent->setOrganizer(new Organizer(
-                'MAILTO:'.$task['creator_email'] ?: $task['creator_username'].'@hiject.local',
+                'MAILTO:'.$task['creator_email'] ?: $task['creator_username'].'@jitamin.local',
                 ['CN' => $task['creator_name'] ?: $task['creator_username']]
             ));
         }

@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Mail\Transport;
+namespace Jitamin\Core\Mail\Transport;
 
-use Hiject\Core\Base;
-use Hiject\Core\Mail\ClientInterface;
+use Jitamin\Core\Base;
+use Jitamin\Core\Mail\ClientInterface;
 use Swift_Mailer;
 use Swift_MailTransport;
 use Swift_Message;

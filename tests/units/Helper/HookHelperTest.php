@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,14 +11,14 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Helper\HookHelper;
+use Jitamin\Helper\HookHelper;
 
 class HookHelperTest extends Base
 {
     public function testAttachCallable()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Hiject\Core\Template')
+            ->getMockBuilder('\Jitamin\Core\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -45,7 +45,7 @@ class HookHelperTest extends Base
     public function testAttachCallableWithNoResult()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Hiject\Core\Template')
+            ->getMockBuilder('\Jitamin\Core\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -69,7 +69,7 @@ class HookHelperTest extends Base
     public function testAttachLocalVariables()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Hiject\Core\Template')
+            ->getMockBuilder('\Jitamin\Core\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -91,7 +91,7 @@ class HookHelperTest extends Base
     public function testMultipleHooks()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Hiject\Core\Template')
+            ->getMockBuilder('\Jitamin\Core\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -123,7 +123,7 @@ class HookHelperTest extends Base
     public function testAssetHooks()
     {
         $this->container['helper']->asset = $this
-            ->getMockBuilder('\Hiject\Helper\AssetHelper')
+            ->getMockBuilder('\Jitamin\Helper\AssetHelper')
             ->setConstructorArgs([$this->container])
             ->setMethods(['css', 'js'])
             ->getMock();

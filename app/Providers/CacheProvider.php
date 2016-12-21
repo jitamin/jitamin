@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Core\Cache\FileCache;
-use Hiject\Core\Cache\MemcachedCache;
-use Hiject\Core\Cache\MemoryCache;
-use Hiject\Decorator\ColumnMoveRestrictionCacheDecorator;
-use Hiject\Decorator\ColumnRestrictionCacheDecorator;
-use Hiject\Decorator\MetadataCacheDecorator;
-use Hiject\Decorator\ProjectRoleRestrictionCacheDecorator;
+use Jitamin\Core\Cache\FileCache;
+use Jitamin\Core\Cache\MemcachedCache;
+use Jitamin\Core\Cache\MemoryCache;
+use Jitamin\Decorator\ColumnMoveRestrictionCacheDecorator;
+use Jitamin\Decorator\ColumnRestrictionCacheDecorator;
+use Jitamin\Decorator\MetadataCacheDecorator;
+use Jitamin\Decorator\ProjectRoleRestrictionCacheDecorator;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

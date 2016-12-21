@@ -1,8 +1,8 @@
-Hiject.Accordion = function(app) {
+Jitamin.Accordion = function(app) {
     this.app = app;
 };
 
-Hiject.Accordion.prototype.listen = function() {
+Jitamin.Accordion.prototype.listen = function() {
     $(document).on("click", ".accordion-toggle", function(e) {
         var section = $(this).parents(".accordion-section");
         e.preventDefault();

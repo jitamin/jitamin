@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Auth;
+namespace Jitamin\Auth;
 
-use Hiject\Core\Base;
-use Hiject\Core\Security\PasswordAuthenticationProviderInterface;
-use Hiject\Core\Security\SessionCheckProviderInterface;
-use Hiject\Model\UserModel;
-use Hiject\Services\Identity\DatabaseUserProvider;
+use Jitamin\Core\Base;
+use Jitamin\Core\Security\PasswordAuthenticationProviderInterface;
+use Jitamin\Core\Security\SessionCheckProviderInterface;
+use Jitamin\Model\UserModel;
+use Jitamin\Services\Identity\DatabaseUserProvider;
 
 /**
  * Database Authentication Provider.
@@ -91,7 +91,7 @@ class DatabaseAuth extends Base implements PasswordAuthenticationProviderInterfa
     /**
      * Get user object.
      *
-     * @return \Hiject\Services\User\DatabaseUserProvider
+     * @return \Jitamin\Services\User\DatabaseUserProvider
      */
     public function getUser()
     {

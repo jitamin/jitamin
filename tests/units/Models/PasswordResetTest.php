@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Hiject\Model\PasswordResetModel;
-use Hiject\Model\UserModel;
+use Jitamin\Model\PasswordResetModel;
+use Jitamin\Model\UserModel;
 
 class PasswordResetTest extends Base
 {

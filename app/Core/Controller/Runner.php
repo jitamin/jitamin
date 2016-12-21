@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Controller;
+namespace Jitamin\Core\Controller;
 
-use Hiject\Controller\AppController;
-use Hiject\Core\Base;
-use Hiject\Middleware\ApplicationAuthorizationMiddleware;
-use Hiject\Middleware\AuthenticationMiddleware;
-use Hiject\Middleware\BootstrapMiddleware;
-use Hiject\Middleware\PostAuthenticationMiddleware;
-use Hiject\Middleware\ProjectAuthorizationMiddleware;
+use Jitamin\Controller\AppController;
+use Jitamin\Core\Base;
+use Jitamin\Middleware\ApplicationAuthorizationMiddleware;
+use Jitamin\Middleware\AuthenticationMiddleware;
+use Jitamin\Middleware\BootstrapMiddleware;
+use Jitamin\Middleware\PostAuthenticationMiddleware;
+use Jitamin\Middleware\ProjectAuthorizationMiddleware;
 use RuntimeException;
 
 /**
@@ -93,9 +93,9 @@ class Runner extends Base
     protected function getControllerClassName()
     {
         if ($this->router->getPlugin() !== '') {
-            $className = '\Hiject\Plugin\\'.$this->router->getPlugin().'\Controller\\'.$this->router->getController();
+            $className = '\Jitamin\Plugin\\'.$this->router->getPlugin().'\Controller\\'.$this->router->getController();
         } else {
-            $className = '\Hiject\Controller\\'.$this->router->getController();
+            $className = '\Jitamin\Controller\\'.$this->router->getController();
         }
 
         if (!class_exists($className)) {

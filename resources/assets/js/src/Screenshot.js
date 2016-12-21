@@ -1,20 +1,20 @@
-Hiject.Screenshot = function(app) {
+Jitamin.Screenshot = function(app) {
     this.app = app;
     this.pasteCatcher = null;
 };
 
-Hiject.Screenshot.prototype.onPopoverOpened = function() {
+Jitamin.Screenshot.prototype.onPopoverOpened = function() {
     if (this.app.hasId("screenshot-zone")) {
         this.initialize();
     }
 };
 
-Hiject.Screenshot.prototype.onPopoverClosed = function() {
+Jitamin.Screenshot.prototype.onPopoverClosed = function() {
     this.destroy();
 };
 
 // Setup event listener and workarounds
-Hiject.Screenshot.prototype.initialize = function() {
+Jitamin.Screenshot.prototype.initialize = function() {
     this.destroy();
 
     if (! window.Clipboard) {
@@ -47,7 +47,7 @@ Hiject.Screenshot.prototype.initialize = function() {
 };
 
 // Destroy contentEditable element
-Hiject.Screenshot.prototype.destroy = function() {
+Jitamin.Screenshot.prototype.destroy = function() {
     if (this.pasteCatcher != null) {
         document.body.removeChild(this.pasteCatcher);
     }
@@ -60,14 +60,14 @@ Hiject.Screenshot.prototype.destroy = function() {
 };
 
 // Set focus on contentEditable element
-Hiject.Screenshot.prototype.setFocus = function() {
+Jitamin.Screenshot.prototype.setFocus = function() {
     if (this.pasteCatcher !== null) {
         this.pasteCatcher.focus();
     }
 };
 
 // Paste event callback
-Hiject.Screenshot.prototype.pasteHandler = function(e) {
+Jitamin.Screenshot.prototype.pasteHandler = function(e) {
     // Firefox doesn't have the property e.clipboardData.items (only Chrome)
     if (e.clipboardData && e.clipboardData.items) {
 
@@ -102,7 +102,7 @@ Hiject.Screenshot.prototype.pasteHandler = function(e) {
 };
 
 // Parse the input in the paste catcher element
-Hiject.Screenshot.prototype.checkInput = function() {
+Jitamin.Screenshot.prototype.checkInput = function() {
     var child = this.pasteCatcher.childNodes[0];
 
     if (child) {
@@ -117,7 +117,7 @@ Hiject.Screenshot.prototype.checkInput = function() {
 };
 
 // Creates a new image from a given source
-Hiject.Screenshot.prototype.createImage = function(blob) {
+Jitamin.Screenshot.prototype.createImage = function(blob) {
     var pastedImage = new Image();
     pastedImage.src = blob;
 

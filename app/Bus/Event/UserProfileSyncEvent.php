@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Bus\Event;
+namespace Jitamin\Bus\Event;
 
-use Hiject\Core\Identity\UserProviderInterface;
-use Hiject\Services\Identity\LdapUserProvider;
+use Jitamin\Core\Identity\UserProviderInterface;
+use Jitamin\Services\Identity\LdapUserProvider;
 use Symfony\Component\EventDispatcher\Event;
 
 /**

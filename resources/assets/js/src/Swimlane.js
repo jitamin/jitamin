@@ -1,14 +1,14 @@
-Hiject.Swimlane = function(app) {
+Jitamin.Swimlane = function(app) {
     this.app = app;
 };
 
-Hiject.Swimlane.prototype.execute = function() {
+Jitamin.Swimlane.prototype.execute = function() {
     if ($(".swimlanes-table").length) {
         this.dragAndDrop();
     }
 };
 
-Hiject.Swimlane.prototype.listen = function() {
+Jitamin.Swimlane.prototype.listen = function() {
     var self = this;
 
     $(document).on('click', ".board-swimlane-toggle", function(e) {
@@ -25,7 +25,7 @@ Hiject.Swimlane.prototype.listen = function() {
     });
 };
 
-Hiject.Swimlane.prototype.onBoardRendered = function() {
+Jitamin.Swimlane.prototype.onBoardRendered = function() {
     var swimlaneIds = this.getAllCollapsed();
 
     for (var i = 0; i < swimlaneIds.length; i++) {
@@ -33,11 +33,11 @@ Hiject.Swimlane.prototype.onBoardRendered = function() {
     }
 };
 
-Hiject.Swimlane.prototype.getStorageKey = function() {
+Jitamin.Swimlane.prototype.getStorageKey = function() {
     return "hidden_swimlanes_" + $("#board").data("project-id");
 };
 
-Hiject.Swimlane.prototype.expand = function(swimlaneId) {
+Jitamin.Swimlane.prototype.expand = function(swimlaneId) {
     var swimlaneIds = this.getAllCollapsed();
     var index = swimlaneIds.indexOf(swimlaneId);
 
@@ -53,7 +53,7 @@ Hiject.Swimlane.prototype.expand = function(swimlaneId) {
     $('.show-icon-swimlane-' + swimlaneId).css('display', 'none');
 };
 
-Hiject.Swimlane.prototype.collapse = function(swimlaneId) {
+Jitamin.Swimlane.prototype.collapse = function(swimlaneId) {
     var swimlaneIds = this.getAllCollapsed();
 
     if (swimlaneIds.indexOf(swimlaneId) < 0) {
@@ -67,15 +67,15 @@ Hiject.Swimlane.prototype.collapse = function(swimlaneId) {
     $('.show-icon-swimlane-' + swimlaneId).css('display', 'inline');
 };
 
-Hiject.Swimlane.prototype.isCollapsed = function(swimlaneId) {
+Jitamin.Swimlane.prototype.isCollapsed = function(swimlaneId) {
     return this.getAllCollapsed().indexOf(swimlaneId) > -1;
 };
 
-Hiject.Swimlane.prototype.getAllCollapsed = function() {
+Jitamin.Swimlane.prototype.getAllCollapsed = function() {
     return JSON.parse(localStorage.getItem(this.getStorageKey())) || [];
 };
 
-Hiject.Swimlane.prototype.dragAndDrop = function() {
+Jitamin.Swimlane.prototype.dragAndDrop = function() {
     var self = this;
 
     $(".draggable-row-handle").mouseenter(function() {
@@ -105,7 +105,7 @@ Hiject.Swimlane.prototype.dragAndDrop = function() {
     }).disableSelection();
 };
 
-Hiject.Swimlane.prototype.savePosition = function(swimlaneId, position) {
+Jitamin.Swimlane.prototype.savePosition = function(swimlaneId, position) {
     var url = $(".swimlanes-table").data("save-position-url");
     var self = this;
 

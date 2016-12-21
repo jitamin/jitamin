@@ -1,23 +1,23 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Model;
+namespace Jitamin\Model;
 
-use Hiject\Bus\EventBuilder\CommentEventBuilder;
-use Hiject\Bus\EventBuilder\EventIteratorBuilder;
-use Hiject\Bus\EventBuilder\SubtaskEventBuilder;
-use Hiject\Bus\EventBuilder\TaskEventBuilder;
-use Hiject\Bus\EventBuilder\TaskFileEventBuilder;
-use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
-use Hiject\Core\Database\Model;
+use Jitamin\Bus\EventBuilder\CommentEventBuilder;
+use Jitamin\Bus\EventBuilder\EventIteratorBuilder;
+use Jitamin\Bus\EventBuilder\SubtaskEventBuilder;
+use Jitamin\Bus\EventBuilder\TaskEventBuilder;
+use Jitamin\Bus\EventBuilder\TaskFileEventBuilder;
+use Jitamin\Bus\EventBuilder\TaskLinkEventBuilder;
+use Jitamin\Core\Database\Model;
 
 /**
  * Notification Model.

@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Ldap;
+namespace Jitamin\Core\Ldap;
 
-use Hiject\Core\Security\Role;
-use Hiject\Services\Identity\LdapUserProvider;
+use Jitamin\Core\Security\Role;
+use Jitamin\Services\Identity\LdapUserProvider;
 use LogicException;
 
 /**

@@ -1,51 +1,51 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Providers;
+namespace Jitamin\Providers;
 
-use Hiject\Action\CommentCreation;
-use Hiject\Action\CommentCreationMoveTaskColumn;
-use Hiject\Action\TaskAssignCategoryColor;
-use Hiject\Action\TaskAssignCategoryLabel;
-use Hiject\Action\TaskAssignCategoryLink;
-use Hiject\Action\TaskAssignColorCategory;
-use Hiject\Action\TaskAssignColorColumn;
-use Hiject\Action\TaskAssignColorLink;
-use Hiject\Action\TaskAssignColorPriority;
-use Hiject\Action\TaskAssignColorSwimlane;
-use Hiject\Action\TaskAssignColorUser;
-use Hiject\Action\TaskAssignCurrentUser;
-use Hiject\Action\TaskAssignCurrentUserColumn;
-use Hiject\Action\TaskAssignDueDateOnCreation;
-use Hiject\Action\TaskAssignPrioritySwimlane;
-use Hiject\Action\TaskAssignSpecificUser;
-use Hiject\Action\TaskAssignUser;
-use Hiject\Action\TaskClose;
-use Hiject\Action\TaskCloseColumn;
-use Hiject\Action\TaskCloseNoActivity;
-use Hiject\Action\TaskCloseNoActivityColumn;
-use Hiject\Action\TaskCloseNotMovedColumn;
-use Hiject\Action\TaskCreation;
-use Hiject\Action\TaskDuplicateAnotherProject;
-use Hiject\Action\TaskEmail;
-use Hiject\Action\TaskEmailNoActivity;
-use Hiject\Action\TaskMoveAnotherProject;
-use Hiject\Action\TaskMoveColumnAssigned;
-use Hiject\Action\TaskMoveColumnCategoryChange;
-use Hiject\Action\TaskMoveColumnClosed;
-use Hiject\Action\TaskMoveColumnNotMovedPeriod;
-use Hiject\Action\TaskMoveColumnUnAssigned;
-use Hiject\Action\TaskOpen;
-use Hiject\Action\TaskUpdateStartDate;
-use Hiject\Core\Action\ActionManager;
+use Jitamin\Action\CommentCreation;
+use Jitamin\Action\CommentCreationMoveTaskColumn;
+use Jitamin\Action\TaskAssignCategoryColor;
+use Jitamin\Action\TaskAssignCategoryLabel;
+use Jitamin\Action\TaskAssignCategoryLink;
+use Jitamin\Action\TaskAssignColorCategory;
+use Jitamin\Action\TaskAssignColorColumn;
+use Jitamin\Action\TaskAssignColorLink;
+use Jitamin\Action\TaskAssignColorPriority;
+use Jitamin\Action\TaskAssignColorSwimlane;
+use Jitamin\Action\TaskAssignColorUser;
+use Jitamin\Action\TaskAssignCurrentUser;
+use Jitamin\Action\TaskAssignCurrentUserColumn;
+use Jitamin\Action\TaskAssignDueDateOnCreation;
+use Jitamin\Action\TaskAssignPrioritySwimlane;
+use Jitamin\Action\TaskAssignSpecificUser;
+use Jitamin\Action\TaskAssignUser;
+use Jitamin\Action\TaskClose;
+use Jitamin\Action\TaskCloseColumn;
+use Jitamin\Action\TaskCloseNoActivity;
+use Jitamin\Action\TaskCloseNoActivityColumn;
+use Jitamin\Action\TaskCloseNotMovedColumn;
+use Jitamin\Action\TaskCreation;
+use Jitamin\Action\TaskDuplicateAnotherProject;
+use Jitamin\Action\TaskEmail;
+use Jitamin\Action\TaskEmailNoActivity;
+use Jitamin\Action\TaskMoveAnotherProject;
+use Jitamin\Action\TaskMoveColumnAssigned;
+use Jitamin\Action\TaskMoveColumnCategoryChange;
+use Jitamin\Action\TaskMoveColumnClosed;
+use Jitamin\Action\TaskMoveColumnNotMovedPeriod;
+use Jitamin\Action\TaskMoveColumnUnAssigned;
+use Jitamin\Action\TaskOpen;
+use Jitamin\Action\TaskUpdateStartDate;
+use Jitamin\Core\Action\ActionManager;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

@@ -1,10 +1,10 @@
-Hiject.FileUpload = function(app) {
+Jitamin.FileUpload = function(app) {
     this.app = app;
     this.files = [];
     this.currentFile = 0;
 };
 
-Hiject.FileUpload.prototype.onPopoverOpened = function() {
+Jitamin.FileUpload.prototype.onPopoverOpened = function() {
     var dropzone = document.getElementById("file-dropzone");
     var self = this;
 
@@ -41,7 +41,7 @@ Hiject.FileUpload.prototype.onPopoverOpened = function() {
     }
 };
 
-Hiject.FileUpload.prototype.show = function() {
+Jitamin.FileUpload.prototype.show = function() {
     $("#file-list").remove();
 
     if (this.files.length > 0) {
@@ -69,7 +69,7 @@ Hiject.FileUpload.prototype.show = function() {
     }
 };
 
-Hiject.FileUpload.prototype.checkFiles = function() {
+Jitamin.FileUpload.prototype.checkFiles = function() {
     var max = parseInt($("#file-dropzone").data("max-size"));
 
     for (var i = 0; i < this.files.length; i++) {
@@ -84,13 +84,13 @@ Hiject.FileUpload.prototype.checkFiles = function() {
     this.uploadFiles();
 };
 
-Hiject.FileUpload.prototype.uploadFiles = function() {
+Jitamin.FileUpload.prototype.uploadFiles = function() {
     if (this.files.length > 0) {
         this.uploadFile(this.files[this.currentFile]);
     }
 };
 
-Hiject.FileUpload.prototype.uploadFile = function(file) {
+Jitamin.FileUpload.prototype.uploadFile = function(file) {
     var dropzone = document.getElementById("file-dropzone");
     var url = dropzone.dataset.url;
     var xhr = new XMLHttpRequest();
@@ -104,14 +104,14 @@ Hiject.FileUpload.prototype.uploadFile = function(file) {
     xhr.send(fd);
 };
 
-Hiject.FileUpload.prototype.updateProgress = function(e) {
+Jitamin.FileUpload.prototype.updateProgress = function(e) {
     if (e.lengthComputable) {
         $("#file-progress-" + this.currentFile).val(e.loaded / e.total);
         $("#file-percentage-" + this.currentFile).text('(' + Math.floor((e.loaded / e.total) * 100) + '%)');
     }
 };
 
-Hiject.FileUpload.prototype.transferComplete = function() {
+Jitamin.FileUpload.prototype.transferComplete = function() {
     this.currentFile++;
 
     if (this.currentFile < this.files.length) {

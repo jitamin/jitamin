@@ -1,11 +1,11 @@
 <phpunit stopOnError="true" stopOnFailure="true" colors="true">
     <testsuites>
-        <testsuite name="Hiject">
+        <testsuite name="Jitamin">
             <directory>units</directory>
         </testsuite>
     </testsuites>
     <php>
         <const name="DB_DRIVER" value="mysql" />
-        <const name="DB_NAME" value="hiject_unit_test" />
+        <const name="DB_NAME" value="jitamin_unit_test" />
     </php>
 </phpunit>

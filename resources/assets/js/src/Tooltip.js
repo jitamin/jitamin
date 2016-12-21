@@ -1,12 +1,12 @@
-Hiject.Tooltip = function(app) {
+Jitamin.Tooltip = function(app) {
     this.app = app;
 };
 
-Hiject.Tooltip.prototype.onBoardRendered = function() {
+Jitamin.Tooltip.prototype.onBoardRendered = function() {
     this.execute();
 };
 
-Hiject.Tooltip.prototype.execute = function() {
+Jitamin.Tooltip.prototype.execute = function() {
     $(".tooltip").tooltip({
         track: false,
         show: false,

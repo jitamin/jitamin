@@ -1,6 +1,6 @@
 'use strict';
 
-var Hiject = {};
+var Jitamin = {};
 
 
 var HJ = {

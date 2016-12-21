@@ -1,8 +1,8 @@
-Hiject.Calendar = function(app) {
+Jitamin.Calendar = function(app) {
     this.app = app;
 };
 
-Hiject.Calendar.prototype.execute = function() {
+Jitamin.Calendar.prototype.execute = function() {
     var calendar = $('#calendar');
 
     if (calendar.length == 1) {
@@ -10,7 +10,7 @@ Hiject.Calendar.prototype.execute = function() {
     }
 };
 
-Hiject.Calendar.prototype.show = function(calendar) {
+Jitamin.Calendar.prototype.show = function(calendar) {
     calendar.fullCalendar({
         lang: $("body").data("js-lang"),
         editable: true,

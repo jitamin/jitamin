@@ -4,7 +4,7 @@
 
 <?php if (!$is_configured): ?>
 <p class="alert alert-error">
-    <?= t('Your Hiject instance is not configured to install plugins from the user interface.') ?>
+    <?= t('Your Jitamin instance is not configured to install plugins from the user interface.') ?>
 </p>
 <?php endif ?>
 

@@ -1,21 +1,21 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Controller;
+namespace Jitamin\Controller;
 
-use Hiject\Filter\ProjectIdsFilter;
-use Hiject\Filter\ProjectStatusFilter;
-use Hiject\Filter\ProjectTypeFilter;
-use Hiject\Formatter\ProjectGanttFormatter;
-use Hiject\Model\ProjectModel;
+use Jitamin\Filter\ProjectIdsFilter;
+use Jitamin\Filter\ProjectStatusFilter;
+use Jitamin\Filter\ProjectTypeFilter;
+use Jitamin\Formatter\ProjectGanttFormatter;
+use Jitamin\Model\ProjectModel;
 
 /**
  * Projects Gantt Controller.

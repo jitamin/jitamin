@@ -1,18 +1,18 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Core\Http;
+namespace Jitamin\Core\Http;
 
-use Hiject\Bus\Job\HttpAsyncJob;
-use Hiject\Core\Base;
+use Jitamin\Bus\Job\HttpAsyncJob;
+use Jitamin\Core\Base;
 
 /**
  * HTTP client.
@@ -38,7 +38,7 @@ class Client extends Base
      *
      * @var string
      */
-    const HTTP_USER_AGENT = 'Hiject';
+    const HTTP_USER_AGENT = 'Jitamin';
 
     /**
      * Send a GET HTTP request.

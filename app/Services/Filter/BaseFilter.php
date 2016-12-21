@@ -1,15 +1,15 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Hiject\Filter;
+namespace Jitamin\Filter;
 
 use PicoDb\Table;
 
@@ -57,7 +57,7 @@ abstract class BaseFilter
      *
      * @param Table $query
      *
-     * @return \Hiject\Core\Filter\FilterInterface
+     * @return \Jitamin\Core\Filter\FilterInterface
      */
     public function withQuery(Table $query)
     {
@@ -71,7 +71,7 @@ abstract class BaseFilter
      *
      * @param string $value
      *
-     * @return \Hiject\Core\Filter\FilterInterface
+     * @return \Jitamin\Core\Filter\FilterInterface
      */
     public function withValue($value)
     {

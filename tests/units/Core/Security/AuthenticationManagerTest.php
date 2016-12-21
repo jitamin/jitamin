@@ -1,9 +1,9 @@
 <?php
 
 /*
- * This file is part of Hiject.
+ * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Hiject Team
+ * Copyright (C) 2016 Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,11 +11,11 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Hiject\Auth\DatabaseAuth;
-use Hiject\Auth\ReverseProxyAuth;
-use Hiject\Auth\TotpAuth;
-use Hiject\Core\Http\Request;
-use Hiject\Core\Security\AuthenticationManager;
+use Jitamin\Auth\DatabaseAuth;
+use Jitamin\Auth\ReverseProxyAuth;
+use Jitamin\Auth\TotpAuth;
+use Jitamin\Core\Http\Request;
+use Jitamin\Core\Security\AuthenticationManager;
 
 class AuthenticationManagerTest extends Base
 {
@@ -25,7 +25,7 @@ class AuthenticationManagerTest extends Base
         $authManager->register(new DatabaseAuth($this->container));
         $provider = $authManager->getProvider('Database');
 
-        $this->assertInstanceOf('Hiject\Core\Security\AuthenticationProviderInterface', $provider);
+        $this->assertInstanceOf('Jitamin\Core\Security\AuthenticationProviderInterface', $provider);
     }
 
     public function testGetProviderNotFound()
@@ -48,7 +48,7 @@ class AuthenticationManagerTest extends Base
         $authManager->register(new TotpAuth($this->container));
         $provider = $authManager->getPostAuthenticationProvider();
 
-        $this->assertInstanceOf('Hiject\Core\Security\PostAuthenticationProviderInterface', $provider);
+        $this->assertInstanceOf('Jitamin\Core\Security\PostAuthenticationProviderInterface', $provider);
     }
 
     public function testCheckSessionWhenNobodyIsLogged()
@@ -147,13 +147,13 @@ class AuthenticationManagerTest extends Base
 
     public function onSuccess($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\AuthSuccessEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\AuthSuccessEvent', $event);
         $this->assertTrue(in_array($event->getAuthType(), ['Database', 'ReverseProxy']));
     }
 
     public function onFailure($event)
     {
-        $this->assertInstanceOf('Hiject\Bus\Event\AuthFailureEvent', $event);
+        $this->assertInstanceOf('Jitamin\Bus\Event\AuthFailureEvent', $event);
         $this->assertEquals('admin', $event->getUsername());
     }
 }
