@@ -12,7 +12,6 @@
 use Hiject\Action\TaskMoveColumnClosed;
 use Hiject\Bus\EventBuilder\TaskEventBuilder;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,12 +22,12 @@ class TaskMoveColumnClosedTest extends Base
     public function testSuccess()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'is_active' => 0]));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test', 'is_active' => 0]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
@@ -49,12 +48,12 @@ class TaskMoveColumnClosedTest extends Base
     public function testWhenTaskIsOpen()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
@@ -75,12 +74,12 @@ class TaskMoveColumnClosedTest extends Base
     public function testWhenTaskIsAlreadyInDestinationColumn()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'is_active' => 0, 'column_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test', 'is_active' => 0, 'column_id' => 2]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)

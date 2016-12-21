@@ -84,7 +84,7 @@ class TaskAssignColorUser extends Base
             'color_id' => $this->getParam('color_id'),
         ];
 
-        return $this->taskModificationModel->update($values, false);
+        return $this->taskModel->update($values, false);
     }
 
     /**

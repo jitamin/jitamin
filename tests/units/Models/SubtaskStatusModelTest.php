@@ -12,7 +12,7 @@
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskStatusModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -20,13 +20,13 @@ class SubtaskStatusModelTest extends Base
 {
     public function testToggleStatusWithoutSession()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $subtaskStatusModel = new SubtaskStatusModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
 
@@ -63,13 +63,13 @@ class SubtaskStatusModelTest extends Base
 
     public function testToggleStatusWithSession()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskStatusModel = new SubtaskStatusModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
 
@@ -109,13 +109,13 @@ class SubtaskStatusModelTest extends Base
 
     public function testCloseAll()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskStatusModel = new SubtaskStatusModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
         $this->assertEquals(2, $subtaskModel->create(['title' => 'subtask #2', 'task_id' => 1]));

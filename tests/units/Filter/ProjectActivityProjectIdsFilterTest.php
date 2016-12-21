@@ -12,7 +12,6 @@
 use Hiject\Filter\ProjectActivityProjectIdsFilter;
 use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,7 +22,7 @@ class ProjectActivityProjectIdsFilterTest extends Base
     public function testFilterByProjectIds()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
@@ -32,9 +31,9 @@ class ProjectActivityProjectIdsFilterTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'P2']));
         $this->assertEquals(3, $projectModel->create(['name' => 'P3']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 2]));
-        $this->assertEquals(3, $taskCreation->create(['title' => 'Test', 'project_id' => 3]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test', 'project_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Test', 'project_id' => 3]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(2, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
@@ -48,7 +47,7 @@ class ProjectActivityProjectIdsFilterTest extends Base
     public function testWithEmptyArgument()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
@@ -57,9 +56,9 @@ class ProjectActivityProjectIdsFilterTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'P2']));
         $this->assertEquals(3, $projectModel->create(['name' => 'P3']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 2]));
-        $this->assertEquals(3, $taskCreation->create(['title' => 'Test', 'project_id' => 3]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test', 'project_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Test', 'project_id' => 3]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, $taskFinder->getById(1)));
         $this->assertNotFalse($projectActivityModel->createEvent(2, 2, 1, TaskModel::EVENT_CREATE, $taskFinder->getById(2)));

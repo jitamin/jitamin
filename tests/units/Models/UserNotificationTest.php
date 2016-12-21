@@ -18,7 +18,6 @@ use Hiject\Model\ProjectGroupRoleModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectPermissionModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
@@ -227,7 +226,7 @@ class UserNotificationTest extends Base
         $u = new UserModel($this->container);
         $n = new UserNotificationModel($this->container);
         $p = new ProjectModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
         $tf = new TaskFinderModel($this->container);
         $pp = new ProjectPermissionModel($this->container);
 

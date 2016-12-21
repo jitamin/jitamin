@@ -16,7 +16,6 @@ use Hiject\Core\Translator;
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SettingModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
@@ -182,7 +181,7 @@ class ProjectModelTest extends Base
     public function testIsLastModified()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $now = time();
 
@@ -197,7 +196,7 @@ class ProjectModelTest extends Base
         $listener = new ProjectModificationDateSubscriber($this->container);
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, [$listener, 'execute']);
 
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_CREATE_UPDATE.'.Hiject\Bus\Subscriber\ProjectModificationDateSubscriber::execute', $called);

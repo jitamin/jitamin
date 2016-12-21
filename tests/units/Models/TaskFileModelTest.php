@@ -12,8 +12,8 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFileModel;
+use Hiject\Model\TaskModel;
 
 class TaskFileModelTest extends Base
 {
@@ -21,10 +21,10 @@ class TaskFileModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $fileModel = new TaskFileModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $this->assertEquals(1, $fileModel->create(1, 'test', '/tmp/foo', 10));
 
@@ -49,10 +49,10 @@ class TaskFileModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $fileModel = new TaskFileModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $this->assertNotFalse($fileModel->create(1, 'test', '/tmp/foo', 10));
         $this->assertNotFalse($fileModel->create(1, str_repeat('a', 1000), '/tmp/foo', 10));
@@ -71,10 +71,10 @@ class TaskFileModelTest extends Base
 
         $projectModel = new ProjectModel($this->container);
         $fileModel = new TaskFileModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', '/tmp/foo', 10));
 
         $file = $fileModel->getById(1);
@@ -86,10 +86,10 @@ class TaskFileModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $fileModel = new TaskFileModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $this->assertEquals(1, $fileModel->create(1, 'B.pdf', '/tmp/foo', 10));
         $this->assertEquals(2, $fileModel->create(1, 'A.png', '/tmp/foo', 10));
@@ -155,10 +155,10 @@ class TaskFileModelTest extends Base
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $files = [
             'name' => [
@@ -286,11 +286,11 @@ class TaskFileModelTest extends Base
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $data = 'test';
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $this->container['objectStorage']
             ->expects($this->once())
@@ -320,11 +320,11 @@ class TaskFileModelTest extends Base
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $data = 'test';
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $this->container['objectStorage']
             ->expects($this->once())
@@ -344,11 +344,11 @@ class TaskFileModelTest extends Base
             ->getMock();
 
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $data = 'test';
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $fileModel
             ->expects($this->once())
@@ -377,10 +377,10 @@ class TaskFileModelTest extends Base
     {
         $fileModel = new TaskFileModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', 'tmp/foo', 10));
 
         $this->container['objectStorage']
@@ -395,10 +395,10 @@ class TaskFileModelTest extends Base
     {
         $fileModel = new TaskFileModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', 'tmp/foo', 10));
 
         $this->container['objectStorage']
@@ -414,10 +414,10 @@ class TaskFileModelTest extends Base
     {
         $fileModel = new TaskFileModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'image.gif', 'tmp/image.gif', 10));
 
         $this->container['objectStorage']
@@ -437,10 +437,10 @@ class TaskFileModelTest extends Base
     {
         $fileModel = new TaskFileModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', 'tmp/foo', 10));
         $this->assertEquals(2, $fileModel->create(1, 'test', 'tmp/foo', 10));
 
@@ -456,10 +456,10 @@ class TaskFileModelTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $fileModel = new TaskFileModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertEquals(1, $fileModel->create(1, 'test', '/tmp/foobar', 10));
         $this->assertEquals(1, $fileModel->getProjectId(1));
         $this->assertEquals(0, $fileModel->getProjectId(2));

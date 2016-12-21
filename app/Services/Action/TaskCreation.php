@@ -69,7 +69,7 @@ class TaskCreation extends Base
      */
     public function doAction(array $data)
     {
-        return (bool) $this->taskCreationModel->create([
+        return (bool) $this->taskModel->create([
             'project_id'  => $data['project_id'],
             'title'       => $data['title'],
             'reference'   => $data['reference'],

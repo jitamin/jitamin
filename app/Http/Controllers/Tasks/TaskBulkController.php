@@ -83,7 +83,7 @@ class TaskBulkController extends BaseController
             $title = trim($title);
 
             if (!empty($title)) {
-                $this->taskCreationModel->create([
+                $this->taskModel->create([
                     'title'       => $title,
                     'column_id'   => $values['column_id'],
                     'swimlane_id' => $values['swimlane_id'],

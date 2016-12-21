@@ -15,7 +15,6 @@ use Hiject\Action\CommentCreationMoveTaskColumn;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
 
 class CommentCreationMoveTaskColumnTest extends Base
@@ -26,10 +25,10 @@ class CommentCreationMoveTaskColumnTest extends Base
 
         $projectModel = new ProjectModel($this->container);
         $commentModel = new CommentModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new TaskEvent(['task' => ['project_id' => 1, 'column_id' => 2], 'task_id' => 1]);
 
@@ -49,10 +48,10 @@ class CommentCreationMoveTaskColumnTest extends Base
     public function testWithUserNotLogged()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new TaskEvent(['task' => ['project_id' => 1, 'column_id' => 3], 'task_id' => 1]);
 

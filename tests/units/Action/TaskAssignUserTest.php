@@ -16,8 +16,8 @@ use Hiject\Bus\Event\GenericEvent;
 use Hiject\Core\Security\Role;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 class TaskAssignUserTest extends Base
@@ -27,11 +27,11 @@ class TaskAssignUserTest extends Base
         $userModel = new UserModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => 0]));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => 0]));
         $this->assertEquals(2, $userModel->create(['username' => 'user1', 'email' => 'user1@here']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 2, Role::PROJECT_MEMBER));
 
@@ -51,10 +51,10 @@ class TaskAssignUserTest extends Base
     public function testWithNotAssignableUser()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new GenericEvent(['project_id' => 1, 'task_id' => 1, 'owner_id' => 1]);
 

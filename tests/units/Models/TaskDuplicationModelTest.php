@@ -13,7 +13,6 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskDuplicationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
@@ -24,12 +23,12 @@ class TaskDuplicationModelTest extends Base
     public function testThatDuplicateDefineCreator()
     {
         $taskDuplicationModel = new TaskDuplicationModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertNotEmpty($task);
@@ -51,7 +50,7 @@ class TaskDuplicationModelTest extends Base
     public function testDuplicateSameProject()
     {
         $taskDuplicationModel = new TaskDuplicationModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -65,7 +64,7 @@ class TaskDuplicationModelTest extends Base
         $this->assertTrue($categoryModel->exists(1));
         $this->assertTrue($categoryModel->exists(2));
 
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'       => 'test',
             'project_id'  => 1,
             'column_id'   => 3,
@@ -111,12 +110,12 @@ class TaskDuplicationModelTest extends Base
     public function testDuplicateSameProjectWithTags()
     {
         $taskDuplicationModel = new TaskDuplicationModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'      => 'test',
             'project_id' => 1,
             'tags'       => ['T1', 'T2'],
@@ -133,12 +132,12 @@ class TaskDuplicationModelTest extends Base
     public function testDuplicateSameProjectWithPriority()
     {
         $taskDuplicationModel = new TaskDuplicationModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'      => 'test',
             'project_id' => 1,
             'priority'   => 2,

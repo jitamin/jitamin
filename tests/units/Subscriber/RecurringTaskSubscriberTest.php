@@ -12,7 +12,6 @@
 use Hiject\Bus\EventBuilder\TaskEventBuilder;
 use Hiject\Bus\Subscriber\RecurringTaskSubscriber;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,12 +22,12 @@ class RecurringTaskSubscriberTest extends Base
     public function testWithNoRecurrence()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = TaskEventBuilder::getInstance($this->container)
             ->withTaskId(1)
@@ -43,12 +42,12 @@ class RecurringTaskSubscriberTest extends Base
     public function testWithRecurrenceFirstColumn()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'              => 'test',
             'project_id'         => 1,
             'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
@@ -69,12 +68,12 @@ class RecurringTaskSubscriberTest extends Base
     public function testWithRecurrenceFirstColumnWithWrongColumn()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'              => 'test',
             'project_id'         => 1,
             'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
@@ -96,12 +95,12 @@ class RecurringTaskSubscriberTest extends Base
     public function testWithRecurrenceLastColumn()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'              => 'test',
             'project_id'         => 1,
             'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
@@ -122,12 +121,12 @@ class RecurringTaskSubscriberTest extends Base
     public function testWithRecurrenceLastColumnWithWrongColumn()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'              => 'test',
             'project_id'         => 1,
             'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,
@@ -148,12 +147,12 @@ class RecurringTaskSubscriberTest extends Base
     public function testWithRecurrenceOnClose()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subscriber = new RecurringTaskSubscriber($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'              => 'test',
             'project_id'         => 1,
             'recurrence_status'  => TaskModel::RECURRING_STATUS_PENDING,

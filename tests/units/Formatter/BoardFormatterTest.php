@@ -13,8 +13,8 @@ use Hiject\Formatter\BoardFormatter;
 use Hiject\Model\ColumnModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskTagModel;
 
 require_once __DIR__.'/../Base.php';
@@ -25,7 +25,7 @@ class BoardFormatterTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
@@ -33,20 +33,20 @@ class BoardFormatterTest extends Base
         $this->assertEquals(2, $swimlaneModel->create(['name' => 'Swimlane 2', 'project_id' => 1]));
 
         // 2 task within the same column but no score
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1]));
 
         // 2 tasks in the same column with score
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 4]));
-        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 5]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 4]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 1, 'score' => 5]));
 
         // 1 task in 2nd column
-        $this->assertEquals(5, $taskCreationModel->create(['title' => 'Task 5', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 2]));
+        $this->assertEquals(5, $taskModel->create(['title' => 'Task 5', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 2]));
 
         // tasks in same column but different swimlanes
-        $this->assertEquals(6, $taskCreationModel->create(['title' => 'Task 6', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 3, 'score' => 1]));
-        $this->assertEquals(7, $taskCreationModel->create(['title' => 'Task 7', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 3, 'score' => 2]));
-        $this->assertEquals(8, $taskCreationModel->create(['title' => 'Task 8', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 3, 'score' => 3]));
+        $this->assertEquals(6, $taskModel->create(['title' => 'Task 6', 'project_id' => 1, 'swimlane_id' => 0, 'column_id' => 3, 'score' => 1]));
+        $this->assertEquals(7, $taskModel->create(['title' => 'Task 7', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 3, 'score' => 2]));
+        $this->assertEquals(8, $taskModel->create(['title' => 'Task 8', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 3, 'score' => 3]));
 
         $board = BoardFormatter::getInstance($this->container)
             ->withQuery($taskFinderModel->getExtendedQuery())
@@ -139,7 +139,7 @@ class BoardFormatterTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
@@ -147,10 +147,10 @@ class BoardFormatterTest extends Base
         $this->assertEquals(1, $swimlaneModel->create(['name' => 'Swimlane 1', 'project_id' => 1]));
         $this->assertEquals(2, $swimlaneModel->create(['name' => 'Swimlane 2', 'project_id' => 1]));
 
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 2]));
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 2, 'score' => 1]));
-        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task 1', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task 2', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Task 3', 'project_id' => 1, 'swimlane_id' => 1, 'column_id' => 2, 'score' => 1]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'Task 4', 'project_id' => 1, 'swimlane_id' => 2, 'column_id' => 1]));
 
         $board = BoardFormatter::getInstance($this->container)
             ->withQuery($taskFinderModel->getExtendedQuery())
@@ -330,13 +330,13 @@ class BoardFormatterTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskTagModel = new TaskTagModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2', 'column_id' => 3]));
-        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test3']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test2', 'column_id' => 3]));
+        $this->assertEquals(3, $taskModel->create(['project_id' => 1, 'title' => 'test3']));
 
         $this->assertTrue($taskTagModel->save(1, 1, ['My tag 1', 'My tag 2']));
         $this->assertTrue($taskTagModel->save(1, 2, ['My tag 3']));

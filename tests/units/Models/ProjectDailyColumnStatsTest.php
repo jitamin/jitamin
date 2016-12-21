@@ -14,7 +14,6 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Model\ProjectDailyColumnStatsModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SettingModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
 
 class ProjectDailyColumnStatsTest extends Base
@@ -23,10 +22,10 @@ class ProjectDailyColumnStatsTest extends Base
     {
         $projectModel = new ProjectModel($this->container);
         $projectDailyColumnStats = new ProjectDailyColumnStatsModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'UnitTest']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $projectDailyColumnStats->updateTotals(1, '2016-01-16');
 
@@ -267,7 +266,7 @@ class ProjectDailyColumnStatsTest extends Base
 
     private function createTasks($column_id, $score, $is_active)
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'score' => $score, 'is_active' => $is_active]));
+        $taskModel = new TaskModel($this->container);
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'score' => $score, 'is_active' => $is_active]));
     }
 }

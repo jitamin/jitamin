@@ -55,7 +55,7 @@ class TaskRecurrenceController extends BaseController
         list($valid, $errors) = $this->taskValidator->validateEditRecurrence($values);
 
         if ($valid) {
-            if ($this->taskModificationModel->update($values)) {
+            if ($this->taskModel->update($values)) {
                 $this->flash->success(t('Task updated successfully.'));
             } else {
                 $this->flash->failure(t('Unable to update your task.'));

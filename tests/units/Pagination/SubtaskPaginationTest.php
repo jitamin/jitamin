@@ -11,7 +11,6 @@
 
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
 use Hiject\Pagination\SubtaskPagination;
 
@@ -21,14 +20,14 @@ class SubtaskPaginationTest extends Base
 {
     public function testDashboardPagination()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $subtaskPagination = new SubtaskPagination($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['task_id' => 1, 'title' => 'subtask #1', 'user_id' => 1]));
         $this->assertEquals(2, $subtaskModel->create(['task_id' => 2, 'title' => 'subtask #1', 'user_id' => 1]));
         $this->assertEquals(3, $subtaskModel->create(['task_id' => 1, 'title' => 'subtask #1', 'user_id' => 1]));

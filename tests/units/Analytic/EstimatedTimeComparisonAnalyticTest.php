@@ -13,26 +13,26 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Analytic\EstimatedTimeComparisonAnalytic;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class EstimatedTimeComparisonAnalyticTest extends Base
 {
     public function testBuild()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $estimatedTimeComparisonAnalytic = new EstimatedTimeComparisonAnalytic($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test1']));
 
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 5.5]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.75]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.25, 'is_active' => 0]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 5.5]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.75]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.25, 'is_active' => 0]));
 
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 8.25]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.25]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.5, 'is_active' => 0]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 8.25]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.25]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.5, 'is_active' => 0]));
 
         $expected = [
             'open' => [
@@ -50,18 +50,18 @@ class EstimatedTimeComparisonAnalyticTest extends Base
 
     public function testBuildWithNoClosedTask()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $estimatedTimeComparisonAnalytic = new EstimatedTimeComparisonAnalytic($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test1']));
 
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 5.5]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.75]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 5.5]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.75]));
 
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 8.25]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.25]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 8.25]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.25]));
 
         $expected = [
             'open' => [
@@ -79,18 +79,18 @@ class EstimatedTimeComparisonAnalyticTest extends Base
 
     public function testBuildWithOnlyClosedTask()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $estimatedTimeComparisonAnalytic = new EstimatedTimeComparisonAnalytic($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test1']));
 
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 5.5, 'is_active' => 0]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.75, 'is_active' => 0]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 5.5, 'is_active' => 0]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_estimated' => 1.75, 'is_active' => 0]));
 
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 8.25, 'is_active' => 0]));
-        $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.25, 'is_active' => 0]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 8.25, 'is_active' => 0]));
+        $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'time_spent' => 0.25, 'is_active' => 0]));
 
         $expected = [
             'closed' => [

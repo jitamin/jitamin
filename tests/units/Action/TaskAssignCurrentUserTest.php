@@ -14,7 +14,6 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Action\TaskAssignCurrentUser;
 use Hiject\Bus\Event\GenericEvent;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -25,11 +24,11 @@ class TaskAssignCurrentUserTest extends Base
         $this->container['sessionStorage']->user = ['id' => 1];
 
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new GenericEvent(['project_id' => 1, 'task_id' => 1]);
 
@@ -46,10 +45,10 @@ class TaskAssignCurrentUserTest extends Base
     public function testWithNoUserSession()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new GenericEvent(['project_id' => 1, 'task_id' => 1]);
 

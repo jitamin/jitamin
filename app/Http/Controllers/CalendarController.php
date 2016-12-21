@@ -95,7 +95,7 @@ class CalendarController extends BaseController
         if ($this->request->isAjax() && $this->request->isPost()) {
             $values = $this->request->getJson();
 
-            $this->taskModificationModel->update([
+            $this->taskModel->update([
                 'id'       => $values['task_id'],
                 'date_due' => substr($values['date_due'], 0, 10),
             ]);

@@ -11,9 +11,8 @@
 
 use Hiject\Filter\TaskMovedDateFilter;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskFinderModel;
-use Hiject\Model\TaskModificationModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -22,17 +21,17 @@ class TaskMovedDateFilterTest extends Base
     public function test()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
-        $taskModification = new TaskModificationModel($this->container);
+        $taskModel = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
-        $this->assertTrue($taskModification->update(['id' => 1, 'date_moved' => time()]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
-        $this->assertTrue($taskModification->update(['id' => 2, 'date_moved' => strtotime('-1days')]));
-        $this->assertEquals(3, $taskCreation->create(['title' => 'Test3', 'project_id' => 1]));
-        $this->assertTrue($taskModification->update(['id' => 3, 'date_moved' => strtotime('-3days')]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertTrue($taskModel->update(['id' => 1, 'date_moved' => time()]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test2', 'project_id' => 1]));
+        $this->assertTrue($taskModel->update(['id' => 2, 'date_moved' => strtotime('-1days')]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Test3', 'project_id' => 1]));
+        $this->assertTrue($taskModel->update(['id' => 3, 'date_moved' => strtotime('-3days')]));
 
         $query = $taskFinder->getExtendedQuery();
         $filter = new TaskMovedDateFilter('>='.date('Y-m-d', strtotime('-1days')));

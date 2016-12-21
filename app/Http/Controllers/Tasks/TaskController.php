@@ -101,7 +101,7 @@ class TaskController extends BaseController
             $this->flash->failure(t('You cannot create tasks in this column.'));
             $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']]), true);
         } else {
-            $task_id = $this->taskCreationModel->create($values);
+            $task_id = $this->taskModel->create($values);
             $this->flash->success(t('Task created successfully.'));
             $this->afterSave($project, $values, $task_id);
         }
@@ -113,7 +113,7 @@ class TaskController extends BaseController
     public function start()
     {
         $task = $this->getTask();
-        $this->taskModificationModel->update(['id' => $task['id'], 'date_started' => time()]);
+        $this->taskModel->update(['id' => $task['id'], 'date_started' => time()]);
         $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
     }
 
@@ -159,7 +159,7 @@ class TaskController extends BaseController
 
         list($valid, $errors) = $this->taskValidator->validateModification($values);
 
-        if ($valid && $this->taskModificationModel->update($values)) {
+        if ($valid && $this->taskModel->update($values)) {
             $this->flash->success(t('Task updated successfully.'));
             $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         } else {

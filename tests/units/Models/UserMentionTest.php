@@ -15,7 +15,6 @@ use Hiject\Bus\Event\GenericEvent;
 use Hiject\Core\Security\Role;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\UserMentionModel;
 use Hiject\Model\UserModel;
@@ -94,7 +93,7 @@ class UserMentionTest extends Base
     {
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $userModel = new UserModel($this->container);
         $userMentionModel = new UserMentionModel($this->container);
         $event = new GenericEvent(['task_id' => 1]);
@@ -105,7 +104,7 @@ class UserMentionTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertTrue($projectUserRoleModel->addUser(1, 3, Role::PROJECT_MEMBER));
 
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'Task 1']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'Task 1']));
 
         $this->container['dispatcher']->addListener(TaskModel::EVENT_USER_MENTION, [$this, 'onUserMention']);
 

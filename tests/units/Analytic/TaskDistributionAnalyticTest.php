@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Analytic\TaskDistributionAnalytic;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class TaskDistributionAnalyticTest extends Base
 {
@@ -58,14 +58,14 @@ class TaskDistributionAnalyticTest extends Base
 
     private function createTasks($column_id, $nb_active, $nb_inactive)
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         for ($i = 0; $i < $nb_active; $i++) {
-            $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'is_active' => 1]));
+            $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'is_active' => 1]));
         }
 
         for ($i = 0; $i < $nb_inactive; $i++) {
-            $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'is_active' => 0]));
+            $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => $column_id, 'is_active' => 0]));
         }
     }
 }

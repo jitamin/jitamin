@@ -141,7 +141,7 @@ class TaskProcedure extends BaseProcedure
 
         list($valid) = $this->taskValidator->validateCreation($values);
 
-        return $valid ? $this->taskCreationModel->create($values) : false;
+        return $valid ? $this->taskModel->create($values) : false;
     }
 
     public function updateTask($id, $title = null, $color_id = null, $owner_id = null,
@@ -180,6 +180,6 @@ class TaskProcedure extends BaseProcedure
 
         list($valid) = $this->taskValidator->validateApiModification($values);
 
-        return $valid && $this->taskModificationModel->update($values);
+        return $valid && $this->taskModel->update($values);
     }
 }

@@ -11,8 +11,8 @@
 
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskLinkModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -28,13 +28,13 @@ class TaskLinkEventBuilderTest extends Base
     public function testBuild()
     {
         $taskLinkModel = new TaskLinkModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskLinkEventBuilder = new TaskLinkEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'task 1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'task 2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'task 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'task 2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $event = $taskLinkEventBuilder->withTaskLinkId(1)->buildEvent();
@@ -47,13 +47,13 @@ class TaskLinkEventBuilderTest extends Base
     public function testBuildTitle()
     {
         $taskLinkModel = new TaskLinkModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskLinkEventBuilder = new TaskLinkEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'task 1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'task 2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'task 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'task 2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $eventData = $taskLinkEventBuilder->withTaskLinkId(1)->buildEvent();

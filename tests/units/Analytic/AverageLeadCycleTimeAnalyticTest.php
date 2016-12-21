@@ -13,14 +13,13 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Analytic\AverageLeadCycleTimeAnalytic;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
 
 class AverageLeadCycleTimeAnalyticTest extends Base
 {
     public function testBuild()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $averageLeadCycleTimeAnalytic = new AverageLeadCycleTimeAnalytic($this->container);
         $now = time();
@@ -28,11 +27,11 @@ class AverageLeadCycleTimeAnalyticTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(4, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(5, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(3, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(4, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(5, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         // LT=3600 CT=1800
         $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(['date_completed' => $now + 3600, 'date_started' => $now + 1800]);

@@ -88,6 +88,97 @@ class TaskModel extends Model
     const RECURRING_BASEDATE_TRIGGERDATE = 1;
 
     /**
+     * Create a task.
+     *
+     * @param array $values Form values
+     *
+     * @return int
+     */
+    public function create(array $values)
+    {
+        $position = empty($values['position']) ? 0 : $values['position'];
+        $tags = [];
+
+        if (isset($values['tags'])) {
+            $tags = $values['tags'];
+            unset($values['tags']);
+        }
+
+        $this->prepare($values);
+        $task_id = $this->db->table(self::TABLE)->persist($values);
+
+        if ($task_id !== false) {
+            if ($position > 0 && $values['position'] > 1) {
+                $this->taskPositionModel->movePosition($values['project_id'], $task_id, $values['column_id'], $position, $values['swimlane_id'], false);
+            }
+
+            if (!empty($tags)) {
+                $this->taskTagModel->save($values['project_id'], $task_id, $tags);
+            }
+
+            $this->queueManager->push($this->taskEventJob->withParams(
+                $task_id,
+                [self::EVENT_CREATE_UPDATE, self::EVENT_CREATE]
+            ));
+        }
+
+        return (int) $task_id;
+    }
+
+    /**
+     * Update a task.
+     *
+     * @param array $values
+     * @param bool  $fire_events
+     *
+     * @return bool
+     */
+    public function update(array $values, $fire_events = true)
+    {
+        $task = $this->taskFinderModel->getById($values['id']);
+
+        if (isset($values['tags'])) {
+            $this->taskTagModel->save($task['project_id'], $values['id'], $values['tags']);
+            unset($values['tags']);
+        }
+
+        $values = $this->dateParser->convert($values, ['date_due']);
+        $values = $this->dateParser->convert($values, ['date_started'], true);
+
+        $this->helper->model->removeFields($values, ['id']);
+        $this->helper->model->resetFields($values, ['date_due', 'date_started', 'score', 'category_id', 'time_estimated', 'time_spent']);
+        $this->helper->model->convertIntegerFields($values, ['priority', 'is_active', 'recurrence_status', 'recurrence_trigger', 'recurrence_factor', 'recurrence_timeframe', 'recurrence_basedate']);
+
+        $values['date_modification'] = time();
+
+        $this->hook->reference('model:task:modification:prepare', $values);
+
+        $result = $this->db->table(self::TABLE)->eq('id', $task['id'])->update($values);
+
+        if ($fire_events && $result) {
+            $events = [];
+
+            $diff = array_diff_assoc($values, $task);
+            unset($diff['date_modification']);
+
+            if (isset($values['owner_id']) && $task['owner_id'] != $values['owner_id'] && count($diff) === 1) {
+                $events[] = self::EVENT_ASSIGNEE_CHANGE;
+            } elseif (count($diff) > 0) {
+                $events[] = self::EVENT_CREATE_UPDATE;
+                $events[] = self::EVENT_UPDATE;
+            }
+
+            if (!empty($events)) {
+                $this->queueManager->push($this->taskEventJob
+                    ->withParams($task['id'], $events, $values, [], $task)
+                );
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Remove a task.
      *
      * @param int $task_id Task id
@@ -151,5 +242,43 @@ class TaskModel extends Model
 
         return round(($position * 100) / count($columns), 1);
         */
+    }
+
+    /**
+     * Prepare data.
+     *
+     * @param array $values Form values
+     */
+    protected function prepare(array &$values)
+    {
+        $values = $this->dateParser->convert($values, ['date_due']);
+        $values = $this->dateParser->convert($values, ['date_started'], true);
+
+        $this->helper->model->removeFields($values, ['another_task', 'duplicate_multiple_projects']);
+        $this->helper->model->resetFields($values, ['creator_id', 'owner_id', 'swimlane_id', 'date_due', 'date_started', 'score', 'progress', 'category_id', 'time_estimated', 'time_spent']);
+
+        if (empty($values['column_id'])) {
+            $values['column_id'] = $this->columnModel->getFirstColumnId($values['project_id']);
+        }
+
+        if (empty($values['color_id'])) {
+            $values['color_id'] = $this->colorModel->getDefaultColor();
+        }
+
+        if (empty($values['title'])) {
+            $values['title'] = t('Untitled');
+        }
+
+        if ($this->userSession->isLogged()) {
+            $values['creator_id'] = $this->userSession->getId();
+        }
+
+        $values['swimlane_id'] = empty($values['swimlane_id']) ? 0 : $values['swimlane_id'];
+        $values['date_creation'] = time();
+        $values['date_modification'] = $values['date_creation'];
+        $values['date_moved'] = $values['date_creation'];
+        $values['position'] = $this->taskFinderModel->countByColumnAndSwimlaneId($values['project_id'], $values['column_id'], $values['swimlane_id']) + 1;
+
+        $this->hook->reference('model:task:creation:prepare', $values);
     }
 }

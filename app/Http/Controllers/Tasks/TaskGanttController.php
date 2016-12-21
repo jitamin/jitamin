@@ -86,7 +86,7 @@ class TaskGanttController extends BaseController
 
         list($valid, $errors) = $this->taskValidator->validateCreation($values);
 
-        if ($valid && $this->taskCreationModel->create($values)) {
+        if ($valid && $this->taskModel->create($values)) {
             $this->flash->success(t('Task created successfully.'));
             $this->response->redirect($this->helper->url->to('TaskGanttController', 'show', ['project_id' => $project['id']]));
         } else {
@@ -103,7 +103,7 @@ class TaskGanttController extends BaseController
         $this->getProject();
         $values = $this->request->getJson();
 
-        $result = $this->taskModificationModel->update([
+        $result = $this->taskModel->update([
             'id'           => $values['id'],
             'date_started' => strtotime($values['start']),
             'date_due'     => strtotime($values['end']),
