@@ -22,12 +22,12 @@ class TaskAssigneeFilterTest extends Base
     public function testWithIntegerAssigneeId()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
 
         $filter = new TaskAssigneeFilter();
         $filter->withQuery($query);
@@ -47,12 +47,12 @@ class TaskAssigneeFilterTest extends Base
     public function testWithStringAssigneeId()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
 
         $filter = new TaskAssigneeFilter();
         $filter->withQuery($query);
@@ -72,12 +72,12 @@ class TaskAssigneeFilterTest extends Base
     public function testWithUsername()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
 
         $filter = new TaskAssigneeFilter();
         $filter->withQuery($query);
@@ -97,14 +97,14 @@ class TaskAssigneeFilterTest extends Base
     public function testWithName()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(2, $userModel->create(['username' => 'foobar', 'email' => 'foobar@foobar', 'name' => 'Foo Bar']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 2]));
 
         $filter = new TaskAssigneeFilter();
         $filter->withQuery($query);
@@ -124,12 +124,12 @@ class TaskAssigneeFilterTest extends Base
     public function testWithNobody()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
 
         $filter = new TaskAssigneeFilter();
         $filter->withQuery($query);
@@ -142,12 +142,12 @@ class TaskAssigneeFilterTest extends Base
     public function testWithCurrentUser()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1, 'owner_id' => 1]));
 
         $filter = new TaskAssigneeFilter();
         $filter->setCurrentUserId(1);

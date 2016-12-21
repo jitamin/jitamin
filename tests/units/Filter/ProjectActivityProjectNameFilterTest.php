@@ -22,7 +22,7 @@ class ProjectActivityProjectNameFilterTest extends Base
     public function testFilterByProjectName()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
@@ -30,8 +30,8 @@ class ProjectActivityProjectNameFilterTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'P2']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test', 'project_id' => 2]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(2, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));

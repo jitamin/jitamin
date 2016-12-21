@@ -21,12 +21,12 @@ class TaskPriorityFilterTest extends Base
     public function testWithDefinedPriority()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1, 'priority' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1, 'priority' => 2]));
 
         $filter = new TaskPriorityFilter();
         $filter->withQuery($query);
@@ -39,12 +39,12 @@ class TaskPriorityFilterTest extends Base
     public function testWithNoPriority()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
 
         $filter = new TaskPriorityFilter();
         $filter->withQuery($query);

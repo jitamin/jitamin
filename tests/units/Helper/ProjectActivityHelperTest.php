@@ -23,15 +23,15 @@ class ProjectActivityHelperTest extends Base
     public function testGetProjectEvents()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(3, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
@@ -51,7 +51,7 @@ class ProjectActivityHelperTest extends Base
     public function testGetProjectsEvents()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -59,9 +59,9 @@ class ProjectActivityHelperTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'P2']));
         $this->assertEquals(3, $projectModel->create(['name' => 'P3']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 2]));
-        $this->assertEquals(3, $taskCreation->create(['title' => 'Test', 'project_id' => 3]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test', 'project_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Test', 'project_id' => 3]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(2, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
@@ -81,14 +81,14 @@ class ProjectActivityHelperTest extends Base
     public function testGetTaskEvents()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));

@@ -22,13 +22,13 @@ class ProjectActivityTest extends Base
     public function testCreation()
     {
         $projectActivity = new ProjectActivityModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Task #1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Task #2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 1]));
 
         $this->assertTrue($projectActivity->createEvent(1, 1, 1, TaskModel::EVENT_CLOSE, ['task' => $taskFinder->getById(1)]));
         $this->assertTrue($projectActivity->createEvent(1, 2, 1, TaskModel::EVENT_UPDATE, ['task' => $taskFinder->getById(2)]));
@@ -45,12 +45,12 @@ class ProjectActivityTest extends Base
     public function testCleanup()
     {
         $projectActivity = new ProjectActivityModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
 
         $max = 15;
         $nb_events = 100;

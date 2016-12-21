@@ -22,15 +22,15 @@ class ProjectActivityTaskTitleFilterTest extends Base
     public function testWithFullTitle()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test2', 'project_id' => 1]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
@@ -43,15 +43,15 @@ class ProjectActivityTaskTitleFilterTest extends Base
     public function testWithPartialTitle()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test2', 'project_id' => 1]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
@@ -64,15 +64,15 @@ class ProjectActivityTaskTitleFilterTest extends Base
     public function testWithId()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
 
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreation->create(['title' => 'Test2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Test2', 'project_id' => 1]));
 
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 2, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(2)]));
