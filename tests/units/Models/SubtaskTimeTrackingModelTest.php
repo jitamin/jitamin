@@ -15,8 +15,8 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\SettingModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskTimeTrackingModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 
 class SubtaskTimeTrackingModelTest extends Base
 {

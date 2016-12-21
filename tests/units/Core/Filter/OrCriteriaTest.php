@@ -13,8 +13,8 @@ use Hiject\Core\Filter\OrCriteria;
 use Hiject\Filter\TaskAssigneeFilter;
 use Hiject\Filter\TaskTitleFilter;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 require_once __DIR__.'/../../Base.php';

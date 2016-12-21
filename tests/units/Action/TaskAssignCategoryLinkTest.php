@@ -15,9 +15,9 @@ use Hiject\Action\TaskAssignCategoryLink;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
+use Hiject\Model\TaskModel;
 
 class TaskAssignCategoryLinkTest extends Base
 {

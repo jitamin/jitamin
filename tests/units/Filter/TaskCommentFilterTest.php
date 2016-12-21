@@ -12,8 +12,8 @@
 use Hiject\Filter\TaskCommentFilter;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 

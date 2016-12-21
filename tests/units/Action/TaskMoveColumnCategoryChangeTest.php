@@ -15,8 +15,8 @@ use Hiject\Action\TaskMoveColumnCategoryChange;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskModel;
 
 class TaskMoveColumnCategoryChangeTest extends Base

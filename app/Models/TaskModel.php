@@ -105,7 +105,7 @@ class TaskModel extends Model
         }
 
         $this->prepare($values);
-        $task_id = $this->db->table(TaskModel::TABLE)->persist($values);
+        $task_id = $this->db->table(self::TABLE)->persist($values);
 
         if ($task_id !== false) {
             if ($position > 0 && $values['position'] > 1) {
@@ -118,7 +118,7 @@ class TaskModel extends Model
 
             $this->queueManager->push($this->taskEventJob->withParams(
                 $task_id,
-                [TaskModel::EVENT_CREATE_UPDATE, TaskModel::EVENT_CREATE]
+                [self::EVENT_CREATE_UPDATE, self::EVENT_CREATE]
             ));
         }
 
@@ -153,8 +153,7 @@ class TaskModel extends Model
 
         $this->hook->reference('model:task:modification:prepare', $values);
 
-
-        $result = $this->db->table(TaskModel::TABLE)->eq('id', $task['id'])->update($values);
+        $result = $this->db->table(self::TABLE)->eq('id', $task['id'])->update($values);
 
         if ($fire_events && $result) {
             $events = [];
@@ -163,10 +162,10 @@ class TaskModel extends Model
             unset($diff['date_modification']);
 
             if (isset($values['owner_id']) && $task['owner_id'] != $values['owner_id'] && count($diff) === 1) {
-                $events[] = TaskModel::EVENT_ASSIGNEE_CHANGE;
+                $events[] = self::EVENT_ASSIGNEE_CHANGE;
             } elseif (count($diff) > 0) {
-                $events[] = TaskModel::EVENT_CREATE_UPDATE;
-                $events[] = TaskModel::EVENT_UPDATE;
+                $events[] = self::EVENT_CREATE_UPDATE;
+                $events[] = self::EVENT_UPDATE;
             }
 
             if (!empty($events)) {
