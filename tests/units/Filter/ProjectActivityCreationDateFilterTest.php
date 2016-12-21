@@ -14,7 +14,6 @@ use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -23,12 +22,12 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithToday()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
 
         $query = $projectActivityModel->getQuery();
@@ -43,12 +42,12 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithYesterday()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
 
         $query = $projectActivityModel->getQuery();
@@ -63,12 +62,12 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithStrtotimeString()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
 
         $query = $projectActivityModel->getQuery();
@@ -83,12 +82,12 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithIsoDate()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
 
         $query = $projectActivityModel->getQuery();
@@ -103,12 +102,12 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithOperatorAndIsoDate()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreation->create(['title' => 'Test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Test', 'project_id' => 1]));
         $this->assertNotFalse($projectActivityModel->createEvent(1, 1, 1, TaskModel::EVENT_CREATE, ['task' => $taskFinder->getById(1)]));
 
         $query = $projectActivityModel->getQuery();
