@@ -18,6 +18,7 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
+use Hiject\Model\UserModel;
 
 class TaskAssignUserTest extends Base
 {
