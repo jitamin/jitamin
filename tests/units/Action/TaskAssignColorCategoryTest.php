@@ -17,7 +17,6 @@ use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 
 class TaskAssignColorCategoryTest extends Base
 {

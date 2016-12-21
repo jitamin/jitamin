@@ -15,7 +15,6 @@ use Hiject\Analytic\AverageTimeSpentColumnAnalytic;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TransitionModel;
 
 class AverageTimeSpentColumnAnalyticTest extends Base
