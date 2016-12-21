@@ -43,8 +43,7 @@
             "Hiject\\" : "app/"
         },
         "files" : [
-            "app/helpers.php",
-            "app/Library/password.php"
+            "app/helpers.php"
         ]
     },
     "require-dev" : {

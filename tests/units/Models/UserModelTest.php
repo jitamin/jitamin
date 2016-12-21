@@ -145,7 +145,7 @@ class UserModelTest extends Base
     public function testPassword()
     {
         $password = 'test123';
-        $hash = password_hash($password, PASSWORD_BCRYPT);
+        $hash = bcrypt($password);
 
         $this->assertNotEmpty($hash);
         $this->assertTrue(password_verify($password, $hash));
