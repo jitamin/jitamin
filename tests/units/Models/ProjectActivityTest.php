@@ -15,7 +15,6 @@ use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 
 class ProjectActivityTest extends Base
 {

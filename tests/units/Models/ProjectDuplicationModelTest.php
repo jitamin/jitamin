@@ -24,7 +24,6 @@ use Hiject\Model\SwimlaneModel;
 use Hiject\Model\TagModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskTagModel;
 use Hiject\Model\UserModel;
 

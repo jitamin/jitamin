@@ -20,7 +20,6 @@ use Hiject\Model\TaskFileModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 
 class NotificationModelTest extends Base
 {

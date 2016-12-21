@@ -16,7 +16,6 @@ use Hiject\Core\Security\Role;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\UserMentionModel;
 use Hiject\Model\UserModel;
 

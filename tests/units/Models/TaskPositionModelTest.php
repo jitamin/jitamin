@@ -16,7 +16,6 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskPositionModel;
 use Hiject\Model\TaskStatusModel;
 

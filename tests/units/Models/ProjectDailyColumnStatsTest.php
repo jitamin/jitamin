@@ -15,7 +15,6 @@ use Hiject\Model\ProjectDailyColumnStatsModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SettingModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 
 class ProjectDailyColumnStatsTest extends Base
 {

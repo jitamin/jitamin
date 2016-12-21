@@ -17,7 +17,6 @@ use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SettingModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 class ProjectModelTest extends Base
