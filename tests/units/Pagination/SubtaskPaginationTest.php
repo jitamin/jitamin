@@ -12,7 +12,6 @@
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Pagination\SubtaskPagination;
 
 require_once __DIR__.'/../Base.php';

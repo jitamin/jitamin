@@ -13,7 +13,6 @@ use Hiject\Bus\Job\TaskEventJob;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModel;
 use Hiject\Model\TaskPositionModel;
 use Hiject\Model\TaskProjectMoveModel;
 use Hiject\Model\TaskStatusModel;
