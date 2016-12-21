@@ -29,7 +29,6 @@ class UserAutoCompleteFormatter extends BaseFormatter implements FormatterInterf
         $users = $this->query->columns(UserModel::TABLE.'.id', UserModel::TABLE.'.username', UserModel::TABLE.'.name')->findAll();
 
         foreach ($users as &$user) {
-
             if (empty($user['name'])) {
                 $user['value'] = $user['username'].' (#'.$user['id'].')';
                 $user['label'] = $user['username'];
