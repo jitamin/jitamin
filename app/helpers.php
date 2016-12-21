@@ -105,7 +105,7 @@ function get_upload_max_size()
  *
  * @return string
  */
-function bcypt($value, array $options = [])
+function bcrypt($value, array $options = [])
 {
     $cost = isset($options['rounds']) ? $options['rounds'] : 10;
     $hash = password_hash($value, PASSWORD_BCRYPT, ['cost' => $cost]);
