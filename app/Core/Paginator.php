@@ -288,7 +288,6 @@ class Paginator
         return $this;
     }
 
-
     /**
      * Get the maximum number of items per page.
      *
@@ -482,7 +481,7 @@ class Paginator
      */
     protected function generatPageShowing()
     {
-        return '<span class="btn">'. t('Showing %d-%d of %d', (($this->getPage()-1) * $this->getMax() + 1), min($this->getTotal(), $this->getPage()*$this->getMax()), $this->getTotal()) . '</span>';
+        return '<span class="btn">'.t('Showing %d-%d of %d', (($this->getPage() - 1) * $this->getMax() + 1), min($this->getTotal(), $this->getPage() * $this->getMax()), $this->getTotal()).'</span>';
     }
 
     /**
