@@ -12,7 +12,7 @@
 use Hiject\Filter\ProjectActivityCreatorFilter;
 use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,7 +23,7 @@ class ProjectActivityCreatorFilterTest extends Base
     public function testWithUsername()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -42,7 +42,7 @@ class ProjectActivityCreatorFilterTest extends Base
     public function testWithAnotherUsername()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -61,7 +61,7 @@ class ProjectActivityCreatorFilterTest extends Base
     public function testWithCurrentUser()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -81,7 +81,7 @@ class ProjectActivityCreatorFilterTest extends Base
     public function testWithAnotherCurrentUser()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 

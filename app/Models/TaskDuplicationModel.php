@@ -139,7 +139,7 @@ class TaskDuplicationModel extends Model
      */
     protected function save($task_id, array $values)
     {
-        $new_task_id = $this->taskCreationModel->create($values);
+        $new_task_id = $this->taskModel->create($values);
 
         if ($new_task_id !== false) {
             $this->subtaskModel->duplicate($task_id, $new_task_id);

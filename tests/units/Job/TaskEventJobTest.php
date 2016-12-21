@@ -12,9 +12,8 @@
 use Hiject\Bus\Job\TaskEventJob;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskCreationModel;
 use Hiject\Model\TaskModel;
-use Hiject\Model\TaskModificationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskPositionModel;
 use Hiject\Model\TaskProjectMoveModel;
 use Hiject\Model\TaskStatusModel;
@@ -53,11 +52,11 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_CREATE.'.closure', $called);
@@ -71,13 +70,13 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CREATE_UPDATE, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
-        $taskModificationModel = new TaskModificationModel($this->container);
+        $taskModel = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
-        $this->assertTrue($taskModificationModel->update(['id' => 1, 'title' => 'new title']));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertTrue($taskModel->update(['id' => 1, 'title' => 'new title']));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_UPDATE.'.closure', $called);
@@ -89,13 +88,13 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_ASSIGNEE_CHANGE, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
-        $taskModificationModel = new TaskModificationModel($this->container);
+        $taskModel = new TaskModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
-        $this->assertTrue($taskModificationModel->update(['id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertTrue($taskModel->update(['id' => 1, 'owner_id' => 1]));
 
         $called = $this->container['dispatcher']->getCalledListeners();
         $this->assertArrayHasKey(TaskModel::EVENT_ASSIGNEE_CHANGE.'.closure', $called);
@@ -106,12 +105,12 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_CLOSE, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskStatusModel = new TaskStatusModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertTrue($taskStatusModel->close(1));
 
         $called = $this->container['dispatcher']->getCalledListeners();
@@ -123,12 +122,12 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_OPEN, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskStatusModel = new TaskStatusModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertTrue($taskStatusModel->close(1));
         $this->assertTrue($taskStatusModel->open(1));
 
@@ -141,13 +140,13 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_POSITION, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskPositionModel = new TaskPositionModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'test 2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'test 2', 'project_id' => 1]));
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 1, 2));
 
         $called = $this->container['dispatcher']->getCalledListeners();
@@ -159,12 +158,12 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_COLUMN, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskPositionModel = new TaskPositionModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 2, 2));
 
         $called = $this->container['dispatcher']->getCalledListeners();
@@ -176,14 +175,14 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_SWIMLANE, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskPositionModel = new TaskPositionModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(1, $swimlaneModel->create(['name' => 'S1', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
         $this->assertTrue($taskPositionModel->movePosition(1, 1, 1, 1, 1));
 
         $called = $this->container['dispatcher']->getCalledListeners();
@@ -195,13 +194,13 @@ class TaskEventJobTest extends Base
         $this->container['dispatcher']->addListener(TaskModel::EVENT_MOVE_PROJECT, function () {
         });
 
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 1));
 
         $called = $this->container['dispatcher']->getCalledListeners();

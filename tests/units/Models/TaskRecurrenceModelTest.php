@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Core\DateParser;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\TaskRecurrenceModel;
@@ -89,7 +89,7 @@ class TaskRecurrenceModelTest extends Base
     public function testDuplicateRecurringTask()
     {
         $taskRecurrenceModel = new TaskRecurrenceModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $dateParser = new DateParser($this->container);
@@ -97,7 +97,7 @@ class TaskRecurrenceModelTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'                => 'test',
             'project_id'           => 1,
             'date_due'             => 1436561776,

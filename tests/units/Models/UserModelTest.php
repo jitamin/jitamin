@@ -15,7 +15,7 @@ use Hiject\Core\Security\Role;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\UserModel;
 
@@ -294,7 +294,7 @@ class UserModelTest extends Base
     public function testRemove()
     {
         $userModel = new UserModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
@@ -302,7 +302,7 @@ class UserModelTest extends Base
 
         $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' => 'to@to', 'password' => '123456', 'name' => 'Toto']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'owner_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'owner_id' => 2]));
         $this->assertEquals(1, $subtaskModel->create(['title' => 'Subtask #1', 'user_id' => 2, 'task_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['comment' => 'foobar', 'user_id' => 2, 'task_id' => 1]));
 

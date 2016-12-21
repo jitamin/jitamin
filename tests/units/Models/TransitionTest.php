@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TransitionModel;
 
 class TransitionTest extends Base
@@ -20,11 +20,11 @@ class TransitionTest extends Base
     public function testSave()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $transitionModel = new TransitionModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task_event = [
             'project_id'    => 1,
@@ -50,11 +50,11 @@ class TransitionTest extends Base
     public function testGetTimeSpentByTask()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $transitionModel = new TransitionModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task_event = [
             'project_id'    => 1,
@@ -87,12 +87,12 @@ class TransitionTest extends Base
     public function testGetAllByProject()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $transitionModel = new TransitionModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test1']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test2']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test1']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test2']));
 
         $task_event = [
             'project_id'    => 1,

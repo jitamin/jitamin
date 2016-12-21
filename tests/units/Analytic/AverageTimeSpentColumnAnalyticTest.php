@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Analytic\AverageTimeSpentColumnAnalytic;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\TransitionModel;
@@ -22,14 +22,14 @@ class AverageTimeSpentColumnAnalyticTest extends Base
 {
     public function testAverageWithNoTransitions()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $averageLeadCycleTimeAnalytic = new AverageTimeSpentColumnAnalytic($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $now = time();
 
@@ -63,14 +63,14 @@ class AverageTimeSpentColumnAnalyticTest extends Base
     {
         $transitionModel = new TransitionModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $averageLeadCycleTimeAnalytic = new AverageTimeSpentColumnAnalytic($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $now = time();
         $this->container['db']->table(TaskModel::TABLE)->eq('id', 1)->update(['date_completed' => $now + 3600]);

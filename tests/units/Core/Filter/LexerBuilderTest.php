@@ -15,7 +15,7 @@ use Hiject\Core\Filter\LexerBuilder;
 use Hiject\Filter\TaskAssigneeFilter;
 use Hiject\Filter\TaskTitleFilter;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\UserModel;
 
@@ -24,7 +24,7 @@ class LexerBuilderTest extends Base
     public function testBuilderThatReturnResult()
     {
         $project = new ProjectModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -44,7 +44,7 @@ class LexerBuilderTest extends Base
     public function testBuilderThatReturnNothing()
     {
         $project = new ProjectModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -63,7 +63,7 @@ class LexerBuilderTest extends Base
     public function testBuilderWithEmptyInput()
     {
         $project = new ProjectModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -82,7 +82,7 @@ class LexerBuilderTest extends Base
     public function testBuilderWithMultipleMatches()
     {
         $project = new ProjectModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -117,7 +117,7 @@ class LexerBuilderTest extends Base
     public function testBuilderWithMixedCaseSearchAttribute()
     {
         $project = new ProjectModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -137,7 +137,7 @@ class LexerBuilderTest extends Base
     public function testWithOrCriteria()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();

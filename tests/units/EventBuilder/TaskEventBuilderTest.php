@@ -11,7 +11,7 @@
 
 use Hiject\Bus\EventBuilder\TaskEventBuilder;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -26,12 +26,12 @@ class TaskEventBuilderTest extends Base
 
     public function testBuildWithTask()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'before', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'before', 'project_id' => 1]));
 
         $event = $taskEventBuilder
             ->withTaskId(1)
@@ -47,12 +47,12 @@ class TaskEventBuilderTest extends Base
 
     public function testBuildWithoutChanges()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = $taskEventBuilder->withTaskId(1)->buildEvent();
 
@@ -64,12 +64,12 @@ class TaskEventBuilderTest extends Base
 
     public function testBuildWithChanges()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = $taskEventBuilder
             ->withTaskId(1)
@@ -84,12 +84,12 @@ class TaskEventBuilderTest extends Base
 
     public function testBuildWithChangesAndValues()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskEventBuilder = new TaskEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
 
         $event = $taskEventBuilder
             ->withTaskId(1)

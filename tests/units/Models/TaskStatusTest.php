@@ -14,7 +14,7 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\TaskStatusModel;
@@ -23,7 +23,7 @@ class TaskStatusTest extends Base
 {
     public function testCloseBySwimlaneAndColumn()
     {
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
         $tf = new TaskFinderModel($this->container);
         $ts = new TaskStatusModel($this->container);
         $p = new ProjectModel($this->container);
@@ -65,7 +65,7 @@ class TaskStatusTest extends Base
 
     public function testStatus()
     {
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
         $tf = new TaskFinderModel($this->container);
         $ts = new TaskStatusModel($this->container);
         $p = new ProjectModel($this->container);
@@ -130,7 +130,7 @@ class TaskStatusTest extends Base
     public function testThatAllSubtasksAreClosed()
     {
         $ts = new TaskStatusModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
         $s = new SubtaskModel($this->container);
         $p = new ProjectModel($this->container);
 

@@ -15,13 +15,13 @@ use Hiject\Export\TaskExport;
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SwimlaneModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class TaskExportTest extends Base
 {
     public function testExport()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
         $taskExport = new TaskExport($this->container);
@@ -31,7 +31,7 @@ class TaskExportTest extends Base
         $this->assertEquals(1, $swimlaneModel->create(['project_id' => 1, 'name' => 'S1']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
 
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'project_id'     => 1,
             'column_id'      => 2,
             'category_id'    => 1,
@@ -41,7 +41,7 @@ class TaskExportTest extends Base
             'time_spent'     => 3,
         ]));
 
-        $this->assertEquals(2, $taskCreationModel->create([
+        $this->assertEquals(2, $taskModel->create([
             'project_id'  => 1,
             'swimlane_id' => 1,
             'title'       => 'Task 2',

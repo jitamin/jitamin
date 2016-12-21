@@ -14,14 +14,14 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SettingModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 
 class CategoryModelTest extends Base
 {
     public function testCreation()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -29,7 +29,7 @@ class CategoryModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
         $this->assertEquals(2, $categoryModel->create(['name' => 'Category #2', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'category_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'category_id' => 2]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(2, $task['category_id']);
@@ -193,7 +193,7 @@ class CategoryModelTest extends Base
 
     public function testRemove()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -201,7 +201,7 @@ class CategoryModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'Category #1', 'project_id' => 1]));
         $this->assertEquals(2, $categoryModel->create(['name' => 'Category #2', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'category_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'category_id' => 2]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(2, $task['category_id']);

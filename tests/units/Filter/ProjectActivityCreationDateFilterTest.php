@@ -12,7 +12,7 @@
 use Hiject\Filter\ProjectActivityCreationDateFilter;
 use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,7 +23,7 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithToday()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -43,7 +43,7 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithYesterday()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -63,7 +63,7 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithStrtotimeString()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -83,7 +83,7 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithIsoDate()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 
@@ -103,7 +103,7 @@ class ProjectActivityCreationDateFilterTest extends Base
     public function testWithOperatorAndIsoDate()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
 

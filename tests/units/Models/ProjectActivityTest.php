@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -22,7 +22,7 @@ class ProjectActivityTest extends Base
     public function testCreation()
     {
         $projectActivity = new ProjectActivityModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
@@ -45,7 +45,7 @@ class ProjectActivityTest extends Base
     public function testCleanup()
     {
         $projectActivity = new ProjectActivityModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskFinder = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 

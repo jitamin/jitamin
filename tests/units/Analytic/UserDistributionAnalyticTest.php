@@ -15,7 +15,7 @@ use Hiject\Analytic\UserDistributionAnalytic;
 use Hiject\Core\Security\Role;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
 
 class UserDistributionAnalyticTest extends Base
@@ -79,14 +79,14 @@ class UserDistributionAnalyticTest extends Base
 
     private function createTasks($user_id, $nb_active, $nb_inactive)
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         for ($i = 0; $i < $nb_active; $i++) {
-            $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 1]));
+            $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 1]));
         }
 
         for ($i = 0; $i < $nb_inactive; $i++) {
-            $this->assertNotFalse($taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 0]));
+            $this->assertNotFalse($taskModel->create(['project_id' => 1, 'title' => 'test', 'owner_id' => $user_id, 'is_active' => 0]));
         }
     }
 }

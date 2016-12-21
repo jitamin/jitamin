@@ -17,7 +17,7 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectUserRoleModel;
 use Hiject\Model\SwimlaneModel;
 use Hiject\Model\TagModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\TaskProjectMoveModel;
@@ -39,7 +39,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProject()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
@@ -48,7 +48,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'title'       => 'test',
             'project_id'  => 1,
             'owner_id'    => 1,
@@ -81,7 +81,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProjectWithCategory()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -96,7 +96,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertTrue($categoryModel->exists(2));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'category_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'category_id' => 1]));
 
         // We move our task to the 2nd project
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 2));
@@ -116,7 +116,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProjectWithUser()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
@@ -132,7 +132,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 2]));
 
         // We move our task to the 2nd project
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 2));
@@ -149,7 +149,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProjectWithForbiddenUser()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectUserRoleModel = new ProjectUserRoleModel($this->container);
@@ -165,7 +165,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertTrue($projectUserRoleModel->addUser(2, 2, Role::PROJECT_MEMBER));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 3]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 3]));
 
         // We move our task to the 2nd project
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 2));
@@ -182,7 +182,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProjectWithSwimlane()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
@@ -195,7 +195,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertNotFalse($swimlaneModel->create(['project_id' => 2, 'name' => 'Swimlane #1']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
 
         // We move our task to the 2nd project
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 2));
@@ -215,7 +215,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProjectWithoutSwimlane()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $swimlaneModel = new SwimlaneModel($this->container);
@@ -228,7 +228,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertNotFalse($swimlaneModel->create(['project_id' => 2, 'name' => 'Swimlane #2']));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 2, 'swimlane_id' => 1]));
 
         // We move our task to the 2nd project
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 2));
@@ -248,7 +248,7 @@ class TaskProjectMoveModelTest extends Base
     public function testMoveAnotherProjectWithDifferentTags()
     {
         $taskProjectMoveModel = new TaskProjectMoveModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $tagModel = new TagModel($this->container);
@@ -267,7 +267,7 @@ class TaskProjectMoveModelTest extends Base
         $this->assertEquals(6, $tagModel->create(0, 'T6'));
 
         // We create a task
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'tags' => ['T1', 'T5', 'T6']]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'tags' => ['T1', 'T5', 'T6']]));
 
         // We move our task to the 2nd project
         $this->assertTrue($taskProjectMoveModel->moveToProject(1, 2));

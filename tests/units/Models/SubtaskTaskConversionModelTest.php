@@ -12,7 +12,7 @@
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
 use Hiject\Model\SubtaskTaskConversionModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 
 require_once __DIR__.'/../Base.php';
@@ -21,14 +21,14 @@ class SubtaskTaskConversionModelTest extends Base
 {
     public function testConvertToTask()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskConversion = new SubtaskTaskConversionModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1, 'user_id' => 1, 'time_spent' => 2, 'time_estimated' => 3]));
         $task_id = $subtaskConversion->convertToTask(1, 1);

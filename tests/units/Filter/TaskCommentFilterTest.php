@@ -12,7 +12,7 @@
 use Hiject\Filter\TaskCommentFilter;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 
 require_once __DIR__.'/../Base.php';
@@ -22,7 +22,7 @@ class TaskCommentFilterTest extends Base
     public function testMatch()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $commentModel = new CommentModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
@@ -42,7 +42,7 @@ class TaskCommentFilterTest extends Base
     public function testNoMatch()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $commentModel = new CommentModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();

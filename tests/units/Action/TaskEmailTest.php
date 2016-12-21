@@ -14,7 +14,7 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Action\TaskEmail;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\UserModel;
@@ -25,11 +25,11 @@ class TaskEmailTest extends Base
     {
         $userModel = new UserModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertTrue($userModel->update(['id' => 1, 'email' => 'admin@localhost']));
 
         $event = new TaskEvent([

@@ -12,7 +12,7 @@
 use Hiject\Filter\ProjectActivityProjectIdsFilter;
 use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,7 +23,7 @@ class ProjectActivityProjectIdsFilterTest extends Base
     public function testFilterByProjectIds()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();
@@ -48,7 +48,7 @@ class ProjectActivityProjectIdsFilterTest extends Base
     public function testWithEmptyArgument()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);
         $query = $projectActivityModel->getQuery();

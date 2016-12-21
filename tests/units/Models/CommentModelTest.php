@@ -13,18 +13,18 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class CommentModelTest extends Base
 {
     public function testCreate()
     {
         $commentModel = new CommentModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'bla bla', 'user_id' => 1]));
         $this->assertEquals(2, $commentModel->create(['task_id' => 1, 'comment' => 'bla bla']));
 
@@ -48,11 +48,11 @@ class CommentModelTest extends Base
     public function testGetAll()
     {
         $commentModel = new CommentModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
         $this->assertEquals(2, $commentModel->create(['task_id' => 1, 'comment' => 'c2', 'user_id' => 1]));
         $this->assertEquals(3, $commentModel->create(['task_id' => 1, 'comment' => 'c3', 'user_id' => 1]));
@@ -71,11 +71,11 @@ class CommentModelTest extends Base
     public function testUpdate()
     {
         $commentModel = new CommentModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
         $this->assertTrue($commentModel->update(['id' => 1, 'comment' => 'bla']));
 
@@ -87,11 +87,11 @@ class CommentModelTest extends Base
     public function testRemove()
     {
         $commentModel = new CommentModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
 
         $this->assertTrue($commentModel->remove(1));
@@ -102,11 +102,11 @@ class CommentModelTest extends Base
     public function testGetProjectId()
     {
         $commentModel = new CommentModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1, 'column_id' => 3, 'owner_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['task_id' => 1, 'comment' => 'c1', 'user_id' => 1]));
 
         $this->assertEquals(1, $commentModel->getProjectId(1));

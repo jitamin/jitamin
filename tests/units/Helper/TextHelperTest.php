@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Helper\TextHelper;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 class TextHelperTest extends Base
 {
@@ -21,11 +21,11 @@ class TextHelperTest extends Base
     {
         $helper = new TextHelper($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertTrue($projectModel->enablePublicAccess(1));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
         $project = $projectModel->getById(1);
 
         $this->assertEquals('<p>Test</p>', $helper->markdown('Test'));

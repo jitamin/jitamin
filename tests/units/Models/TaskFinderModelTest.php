@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ColumnModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -21,14 +21,14 @@ class TaskFinderModelTest extends Base
 {
     public function testGetDetails()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new \Hiject\Model\CategoryModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(1, $categoryModel->create(['project_id' => 1, 'name' => 'C1']));
-        $this->assertEquals(1, $taskCreationModel->create([
+        $this->assertEquals(1, $taskModel->create([
             'project_id'  => 1,
             'title'       => 'Task #1',
             'reference'   => 'test',
@@ -81,14 +81,14 @@ class TaskFinderModelTest extends Base
 
     public function testGetTasksForDashboardWithHiddenColumn()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $columnModel = new ColumnModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 1, 'column_id' => 2, 'owner_id' => 1]));
 
         $tasks = $taskFinderModel->getUserQuery(1)->findAll();
         $this->assertCount(2, $tasks);
@@ -108,15 +108,15 @@ class TaskFinderModelTest extends Base
 
     public function testGetOverdueTasks()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'date_due' => strtotime('-1 day')]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 1, 'date_due' => strtotime('+1 day')]));
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'date_due' => 0]));
-        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'date_due' => strtotime('-1 day')]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 1, 'date_due' => strtotime('+1 day')]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Task #3', 'project_id' => 1, 'date_due' => 0]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'Task #3', 'project_id' => 1]));
 
         $tasks = $taskFinderModel->getOverdueTasks();
         $this->assertNotEmpty($tasks);
@@ -127,17 +127,17 @@ class TaskFinderModelTest extends Base
 
     public function testGetOverdueTasksByProject()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project #2']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'date_due' => strtotime('-1 day')]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 2, 'date_due' => strtotime('-1 day')]));
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'date_due' => strtotime('+1 day')]));
-        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #4', 'project_id' => 1, 'date_due' => 0]));
-        $this->assertEquals(5, $taskCreationModel->create(['title' => 'Task #5', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'date_due' => strtotime('-1 day')]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 2, 'date_due' => strtotime('-1 day')]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Task #3', 'project_id' => 1, 'date_due' => strtotime('+1 day')]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'Task #4', 'project_id' => 1, 'date_due' => 0]));
+        $this->assertEquals(5, $taskModel->create(['title' => 'Task #5', 'project_id' => 1]));
 
         $tasks = $taskFinderModel->getOverdueTasksByProject(1);
         $this->assertNotEmpty($tasks);
@@ -148,17 +148,17 @@ class TaskFinderModelTest extends Base
 
     public function testGetOverdueTasksByUser()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project #2']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1, 'owner_id' => 1, 'date_due' => strtotime('-1 day')]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 2, 'owner_id' => 1, 'date_due' => strtotime('-1 day')]));
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 1, 'date_due' => strtotime('+1 day')]));
-        $this->assertEquals(4, $taskCreationModel->create(['title' => 'Task #4', 'project_id' => 1, 'date_due' => 0]));
-        $this->assertEquals(5, $taskCreationModel->create(['title' => 'Task #5', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1, 'owner_id' => 1, 'date_due' => strtotime('-1 day')]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 2, 'owner_id' => 1, 'date_due' => strtotime('-1 day')]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Task #3', 'project_id' => 1, 'date_due' => strtotime('+1 day')]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'Task #4', 'project_id' => 1, 'date_due' => 0]));
+        $this->assertEquals(5, $taskModel->create(['title' => 'Task #5', 'project_id' => 1]));
 
         $tasks = $taskFinderModel->getOverdueTasksByUser(1);
         $this->assertNotEmpty($tasks);
@@ -178,15 +178,15 @@ class TaskFinderModelTest extends Base
 
     public function testCountByProject()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'Project #2']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 2]));
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'Task #3', 'project_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'Task #3', 'project_id' => 2]));
 
         $this->assertEquals(1, $taskFinderModel->countByProjectId(1));
         $this->assertEquals(2, $taskFinderModel->countByProjectId(2));
@@ -194,7 +194,7 @@ class TaskFinderModelTest extends Base
 
     public function testGetProjectToken()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
@@ -203,8 +203,8 @@ class TaskFinderModelTest extends Base
 
         $this->assertTrue($projectModel->enablePublicAccess(1));
 
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'Task #1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'Task #2', 'project_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'Task #1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'Task #2', 'project_id' => 2]));
 
         $project = $projectModel->getById(1);
         $this->assertEquals($project['token'], $taskFinderModel->getProjectToken(1));

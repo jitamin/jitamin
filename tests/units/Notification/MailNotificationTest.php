@@ -15,7 +15,7 @@ use Hiject\Bus\Subscriber\NotificationSubscriber;
 use Hiject\Model\CommentModel;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFileModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
@@ -30,15 +30,15 @@ class MailNotificationTest extends Base
         $mailNotification = new MailNotification($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $commentModel = new CommentModel($this->container);
         $fileModel = new TaskFileModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['title' => 'test', 'task_id' => 1]));
         $this->assertEquals(1, $commentModel->create(['comment' => 'test', 'task_id' => 1, 'user_id' => 1]));
         $this->assertEquals(1, $fileModel->create(1, 'test', 'blah', 123));
@@ -79,11 +79,11 @@ class MailNotificationTest extends Base
         $mailNotification = new MailNotification($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $userModel = new UserModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertTrue($userModel->update(['id' => 1, 'email' => 'test@localhost']));
 
         $this->container['emailClient'] = $this

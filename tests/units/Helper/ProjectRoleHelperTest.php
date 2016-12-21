@@ -18,7 +18,7 @@ use Hiject\Model\ProjectModel;
 use Hiject\Model\ProjectRoleModel;
 use Hiject\Model\ProjectRoleRestrictionModel;
 use Hiject\Model\ProjectUserRoleModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskStatusModel;
 use Hiject\Model\UserModel;
@@ -207,7 +207,7 @@ class ProjectRoleHelperTest extends Base
     {
         $projectRoleHelper = new ProjectRoleHelper($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectUserRole = new ProjectUserRoleModel($this->container);
         $userModel = new UserModel($this->container);
@@ -220,7 +220,7 @@ class ProjectRoleHelperTest extends Base
         $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $task = $taskFinderModel->getById(1);
         $this->assertTrue($projectRoleHelper->isDraggable($task));
@@ -230,7 +230,7 @@ class ProjectRoleHelperTest extends Base
     {
         $projectRoleHelper = new ProjectRoleHelper($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $taskStatusModel = new TaskStatusModel($this->container);
         $projectUserRole = new ProjectUserRoleModel($this->container);
@@ -244,7 +244,7 @@ class ProjectRoleHelperTest extends Base
         $this->assertEquals(2, $userModel->create(['username' => 'user', 'email' => 'user@here']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Test']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
         $this->assertTrue($taskStatusModel->close(1));
 
         $task = $taskFinderModel->getById(1);
@@ -255,7 +255,7 @@ class ProjectRoleHelperTest extends Base
     {
         $projectRoleHelper = new ProjectRoleHelper($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectUserRole = new ProjectUserRoleModel($this->container);
         $userModel = new UserModel($this->container);
@@ -274,10 +274,10 @@ class ProjectRoleHelperTest extends Base
         $this->assertEquals(1, $columnMoveRestrictionModel->create(1, 1, 2, 3));
 
         $this->assertTrue($projectUserRole->addUser(1, 2, 'Custom Role'));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
-        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 3]));
-        $this->assertEquals(4, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 4]));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 3]));
+        $this->assertEquals(4, $taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 4]));
 
         $task = $taskFinderModel->getById(1);
         $this->assertFalse($projectRoleHelper->isDraggable($task));
@@ -294,7 +294,7 @@ class ProjectRoleHelperTest extends Base
 
     public function testCanRemoveTask()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectRoleHelper = new ProjectRoleHelper($this->container);
         $projectModel = new ProjectModel($this->container);
@@ -304,10 +304,10 @@ class ProjectRoleHelperTest extends Base
         $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' => 'toto@here', 'password' => '123456']));
         $this->assertNotFalse($userModel->create(['username' => 'toto2', 'email' => 'toto2@here', 'password' => '123456']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'TaskViewController #1', 'project_id' => 1, 'creator_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'TaskViewController #2', 'project_id' => 1, 'creator_id' => 2]));
-        $this->assertEquals(3, $taskCreationModel->create(['title' => 'TaskViewController #3', 'project_id' => 1, 'creator_id' => 3]));
-        $this->assertEquals(4, $taskCreationModel->create(['title' => 'TaskViewController #4', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'TaskViewController #1', 'project_id' => 1, 'creator_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'TaskViewController #2', 'project_id' => 1, 'creator_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'TaskViewController #3', 'project_id' => 1, 'creator_id' => 3]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'TaskViewController #4', 'project_id' => 1]));
 
         // User #1 can remove everything
         $user = $userModel->getById(1);

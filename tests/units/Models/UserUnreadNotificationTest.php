@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\UserUnreadNotificationModel;
@@ -24,7 +24,7 @@ class UserUnreadNotificationTest extends Base
         $wn = new UserUnreadNotificationModel($this->container);
         $p = new ProjectModel($this->container);
         $tf = new TaskFinderModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'test']));
         $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));
@@ -41,7 +41,7 @@ class UserUnreadNotificationTest extends Base
         $wn = new UserUnreadNotificationModel($this->container);
         $p = new ProjectModel($this->container);
         $tf = new TaskFinderModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'test']));
         $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));
@@ -60,7 +60,7 @@ class UserUnreadNotificationTest extends Base
         $wn = new UserUnreadNotificationModel($this->container);
         $p = new ProjectModel($this->container);
         $tf = new TaskFinderModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'test']));
         $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));
@@ -81,7 +81,7 @@ class UserUnreadNotificationTest extends Base
         $wn = new UserUnreadNotificationModel($this->container);
         $p = new ProjectModel($this->container);
         $tf = new TaskFinderModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'test']));
         $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));
@@ -102,7 +102,7 @@ class UserUnreadNotificationTest extends Base
         $wn = new UserUnreadNotificationModel($this->container);
         $p = new ProjectModel($this->container);
         $tf = new TaskFinderModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'test']));
         $this->assertEquals(1, $tc->create(['title' => 'test', 'project_id' => 1]));

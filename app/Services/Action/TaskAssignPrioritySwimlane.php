@@ -84,7 +84,7 @@ class TaskAssignPrioritySwimlane extends Base
             'priority' => $this->getParam('priority'),
         ];
 
-        return $this->taskModificationModel->update($values);
+        return $this->taskModel->update($values);
     }
 
     /**

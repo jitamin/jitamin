@@ -86,7 +86,7 @@ class TaskAssignCurrentUserColumn extends Base
             'owner_id' => $this->userSession->getId(),
         ];
 
-        return $this->taskModificationModel->update($values);
+        return $this->taskModel->update($values);
     }
 
     /**

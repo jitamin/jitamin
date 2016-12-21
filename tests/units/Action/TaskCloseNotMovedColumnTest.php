@@ -14,7 +14,7 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Action\TaskCloseNotMovedColumn;
 use Hiject\Bus\Event\TaskListEvent;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -23,13 +23,13 @@ class TaskCloseNotMovedColumnTest extends Base
     public function testClose()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
-        $this->assertEquals(3, $taskCreationModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(3, $taskModel->create(['project_id' => 1, 'title' => 'test', 'column_id' => 2]));
 
         $this->container['db']->table(TaskModel::TABLE)->in('id', [1, 3])->update(['date_moved' => strtotime('-10days')]);
 

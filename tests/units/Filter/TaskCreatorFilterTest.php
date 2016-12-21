@@ -11,7 +11,7 @@
 
 use Hiject\Filter\TaskCreatorFilter;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\UserModel;
 
@@ -22,7 +22,7 @@ class TaskCreatorFilterTest extends Base
     public function testWithIntegerAssigneeId()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -47,7 +47,7 @@ class TaskCreatorFilterTest extends Base
     public function testWithStringAssigneeId()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -72,7 +72,7 @@ class TaskCreatorFilterTest extends Base
     public function testWithUsername()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -97,7 +97,7 @@ class TaskCreatorFilterTest extends Base
     public function testWithName()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $userModel = new UserModel($this->container);
         $query = $taskFinder->getExtendedQuery();
@@ -124,7 +124,7 @@ class TaskCreatorFilterTest extends Base
     public function testWithNobody()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -142,7 +142,7 @@ class TaskCreatorFilterTest extends Base
     public function testWithCurrentUser()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 

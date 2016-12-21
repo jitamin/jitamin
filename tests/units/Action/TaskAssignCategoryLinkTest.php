@@ -15,7 +15,7 @@ use Hiject\Action\TaskAssignCategoryLink;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
 
@@ -23,7 +23,7 @@ class TaskAssignCategoryLinkTest extends Base
 {
     public function testAssignCategory()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -36,8 +36,8 @@ class TaskAssignCategoryLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)
@@ -52,7 +52,7 @@ class TaskAssignCategoryLinkTest extends Base
 
     public function testWhenLinkDontMatch()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -65,8 +65,8 @@ class TaskAssignCategoryLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)
@@ -81,7 +81,7 @@ class TaskAssignCategoryLinkTest extends Base
 
     public function testThatExistingCategoryWillNotChange()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $categoryModel = new CategoryModel($this->container);
@@ -94,8 +94,8 @@ class TaskAssignCategoryLinkTest extends Base
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'C1', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1, 'category_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'T1', 'project_id' => 1, 'category_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)

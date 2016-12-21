@@ -15,7 +15,7 @@ use Hiject\Action\TaskMoveColumnCategoryChange;
 use Hiject\Bus\Event\TaskEvent;
 use Hiject\Model\CategoryModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 
@@ -24,14 +24,14 @@ class TaskMoveColumnCategoryChangeTest extends Base
     public function testSuccess()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new TaskEvent([
             'task_id' => 1,
@@ -60,13 +60,13 @@ class TaskMoveColumnCategoryChangeTest extends Base
     public function testWithWrongColumn()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new TaskEvent([
             'task_id' => 1,
@@ -88,14 +88,14 @@ class TaskMoveColumnCategoryChangeTest extends Base
     public function testWithWrongCategory()
     {
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $categoryModel = new CategoryModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
         $this->assertEquals(2, $projectModel->create(['name' => 'test2']));
         $this->assertEquals(1, $categoryModel->create(['name' => 'c1', 'project_id' => 1]));
         $this->assertEquals(2, $categoryModel->create(['name' => 'c2', 'project_id' => 1]));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test']));
 
         $event = new TaskEvent([
             'task_id' => 1,

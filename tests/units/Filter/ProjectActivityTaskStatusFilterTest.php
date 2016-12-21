@@ -12,7 +12,7 @@
 use Hiject\Filter\ProjectActivityTaskStatusFilter;
 use Hiject\Model\ProjectActivityModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskModel;
 use Hiject\Model\TaskStatusModel;
@@ -24,7 +24,7 @@ class ProjectActivityTaskStatusFilterTest extends Base
     public function testFilterByTaskStatus()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $taskStatus = new TaskStatusModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $projectActivityModel = new ProjectActivityModel($this->container);

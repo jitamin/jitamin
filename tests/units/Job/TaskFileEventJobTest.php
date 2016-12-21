@@ -11,7 +11,7 @@
 
 use Hiject\Bus\Job\TaskFileEventJob;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFileModel;
 
 require_once __DIR__.'/../Base.php';
@@ -44,11 +44,11 @@ class TaskFileEventJobTest extends Base
         });
 
         $taskFileModel = new TaskFileModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertEquals(1, $taskFileModel->create(1, 'Test', '/tmp/test', 123));
 
         $called = $this->container['dispatcher']->getCalledListeners();

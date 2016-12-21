@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskLinkModel;
 use Hiject\Validator\TaskLinkValidator;
 
@@ -23,11 +23,11 @@ class TaskLinkValidatorTest extends Base
         $taskLinkValidator = new TaskLinkValidator($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'B']));
 
         $links = $taskLinkModel->getAll(1);
         $this->assertEmpty($links);
@@ -56,11 +56,11 @@ class TaskLinkValidatorTest extends Base
     {
         $taskLinkValidator = new TaskLinkValidator($this->container);
         $projectModel = new ProjectModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['project_id' => 1, 'title' => 'A']));
-        $this->assertEquals(2, $taskCreationModel->create(['project_id' => 1, 'title' => 'B']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'A']));
+        $this->assertEquals(2, $taskModel->create(['project_id' => 1, 'title' => 'B']));
 
         // Check modification
         $r = $taskLinkValidator->validateModification(['id' => 1, 'task_id' => 1, 'link_id' => 1, 'opposite_task_id' => 2]);

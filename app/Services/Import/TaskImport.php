@@ -71,7 +71,7 @@ class TaskImport extends Base
         $row = $this->prepare($row);
 
         if ($this->validateCreation($row)) {
-            if ($this->taskCreationModel->create($row) > 0) {
+            if ($this->taskModel->create($row) > 0) {
                 $this->logger->debug('TaskImport: imported successfully line '.$line_number);
                 $this->counter++;
             } else {

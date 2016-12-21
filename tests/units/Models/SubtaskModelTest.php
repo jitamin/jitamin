@@ -13,19 +13,19 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 
 class SubtaskModelTest extends Base
 {
     public function testCreation()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
 
         $subtask = $subtaskModel->getById(1);
@@ -42,13 +42,13 @@ class SubtaskModelTest extends Base
 
     public function testCreationUpdateTaskTimeTracking()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1, 'time_estimated' => 2, 'time_spent' => 1]));
         $this->assertEquals(2, $subtaskModel->create(['title' => 'subtask #2', 'task_id' => 1, 'time_estimated' => 5, 'time_spent' => 5]));
@@ -60,12 +60,12 @@ class SubtaskModelTest extends Base
 
     public function testModification()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
         $this->assertTrue($subtaskModel->update(['id' => 1, 'task_id' => 1, 'user_id' => 1, 'status' => SubtaskModel::STATUS_INPROGRESS]));
@@ -84,13 +84,13 @@ class SubtaskModelTest extends Base
 
     public function testModificationUpdateTaskTimeTracking()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
         $this->assertEquals(2, $subtaskModel->create(['title' => 'subtask #2', 'task_id' => 1]));
@@ -105,12 +105,12 @@ class SubtaskModelTest extends Base
 
     public function testRemove()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
 
         $subtask = $subtaskModel->getById(1);
@@ -124,7 +124,7 @@ class SubtaskModelTest extends Base
 
     public function testDuplicate()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
@@ -132,8 +132,8 @@ class SubtaskModelTest extends Base
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
 
         // We create 2 tasks
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'test 2', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 0]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'test 2', 'project_id' => 1, 'column_id' => 1, 'owner_id' => 0]));
 
         // We create many subtasks for the first task
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1, 'time_estimated' => 5, 'time_spent' => 3, 'status' => 1, 'another_subtask' => 'on']));
@@ -170,12 +170,12 @@ class SubtaskModelTest extends Base
 
     public function testGetProjectId()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $subtaskModel = new SubtaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test 1', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test 1', 'project_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['title' => 'subtask #1', 'task_id' => 1]));
 
         $this->assertEquals(1, $subtaskModel->getProjectId(1));

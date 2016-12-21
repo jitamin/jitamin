@@ -14,7 +14,7 @@ require_once __DIR__.'/../Base.php';
 use Hiject\Action\TaskAssignColorLink;
 use Hiject\Bus\EventBuilder\TaskLinkEventBuilder;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 use Hiject\Model\TaskLinkModel;
 
@@ -22,7 +22,7 @@ class TaskAssignColorLinkTest extends Base
 {
     public function testChangeColor()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
@@ -33,8 +33,8 @@ class TaskAssignColorLinkTest extends Base
         $action->setParam('color_id', 'red');
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 2));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)
@@ -49,7 +49,7 @@ class TaskAssignColorLinkTest extends Base
 
     public function testWithWrongLink()
     {
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $taskFinderModel = new TaskFinderModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $taskLinkModel = new TaskLinkModel($this->container);
@@ -60,8 +60,8 @@ class TaskAssignColorLinkTest extends Base
         $action->setParam('color_id', 'red');
 
         $this->assertEquals(1, $projectModel->create(['name' => 'P1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'T1', 'project_id' => 1]));
-        $this->assertEquals(2, $taskCreationModel->create(['title' => 'T2', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'T1', 'project_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'T2', 'project_id' => 1]));
         $this->assertEquals(1, $taskLinkModel->create(1, 2, 1));
 
         $event = TaskLinkEventBuilder::getInstance($this->container)

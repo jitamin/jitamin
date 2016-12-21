@@ -13,7 +13,7 @@ require_once __DIR__.'/../Base.php';
 
 use Hiject\Model\ProjectDailyStatsModel;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskStatusModel;
 
 class ProjectDailyStatsTest extends Base
@@ -22,7 +22,7 @@ class ProjectDailyStatsTest extends Base
     {
         $p = new ProjectModel($this->container);
         $pds = new ProjectDailyStatsModel($this->container);
-        $tc = new TaskCreationModel($this->container);
+        $tc = new TaskModel($this->container);
         $ts = new TaskStatusModel($this->container);
 
         $this->assertEquals(1, $p->create(['name' => 'UnitTest']));

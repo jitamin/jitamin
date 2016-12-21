@@ -81,7 +81,7 @@ class TaskAssignDueDateOnCreation extends Base
             'date_due' => strtotime('+'.$this->getParam('duration').'days'),
         ];
 
-        return $this->taskModificationModel->update($values, false);
+        return $this->taskModel->update($values, false);
     }
 
     /**

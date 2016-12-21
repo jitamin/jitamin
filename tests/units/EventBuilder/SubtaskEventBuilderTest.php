@@ -12,7 +12,7 @@
 use Hiject\Bus\EventBuilder\SubtaskEventBuilder;
 use Hiject\Model\ProjectModel;
 use Hiject\Model\SubtaskModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 
 require_once __DIR__.'/../Base.php';
 
@@ -28,12 +28,12 @@ class SubtaskEventBuilderTest extends Base
     public function testBuildWithoutChanges()
     {
         $subtaskModel = new SubtaskModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskEventBuilder = new SubtaskEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['task_id' => 1, 'title' => 'test']));
 
         $event = $subtaskEventBuilder->withSubtaskId(1)->buildEvent();
@@ -47,12 +47,12 @@ class SubtaskEventBuilderTest extends Base
     public function testBuildWithChanges()
     {
         $subtaskModel = new SubtaskModel($this->container);
-        $taskCreationModel = new TaskCreationModel($this->container);
+        $taskModel = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $subtaskEventBuilder = new SubtaskEventBuilder($this->container);
 
         $this->assertEquals(1, $projectModel->create(['name' => 'test1']));
-        $this->assertEquals(1, $taskCreationModel->create(['title' => 'test', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
         $this->assertEquals(1, $subtaskModel->create(['task_id' => 1, 'title' => 'test']));
 
         $event = $subtaskEventBuilder

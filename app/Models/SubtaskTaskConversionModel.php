@@ -30,7 +30,7 @@ class SubtaskTaskConversionModel extends Model
     {
         $subtask = $this->subtaskModel->getById($subtask_id);
 
-        $task_id = $this->taskCreationModel->create([
+        $task_id = $this->taskModel->create([
             'project_id'     => $project_id,
             'title'          => $subtask['title'],
             'time_estimated' => $subtask['time_estimated'],

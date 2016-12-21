@@ -11,7 +11,7 @@
 
 use Hiject\Filter\TaskPriorityFilter;
 use Hiject\Model\ProjectModel;
-use Hiject\Model\TaskCreationModel;
+use Hiject\Model\TaskModel;
 use Hiject\Model\TaskFinderModel;
 
 require_once __DIR__.'/../Base.php';
@@ -21,7 +21,7 @@ class TaskPriorityFilterTest extends Base
     public function testWithDefinedPriority()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
@@ -39,7 +39,7 @@ class TaskPriorityFilterTest extends Base
     public function testWithNoPriority()
     {
         $taskFinder = new TaskFinderModel($this->container);
-        $taskCreation = new TaskCreationModel($this->container);
+        $taskCreation = new TaskModel($this->container);
         $projectModel = new ProjectModel($this->container);
         $query = $taskFinder->getExtendedQuery();
 
