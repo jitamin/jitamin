@@ -249,7 +249,7 @@ abstract class Base extends \Jitamin\Core\Base
      * Execute the action.
      *
      * @param \Jitamin\Event\GenericEvent $event
-     * @param string                     $eventName
+     * @param string                      $eventName
      *
      * @return bool
      */
