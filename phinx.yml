@@ -15,12 +15,12 @@ environments:
         charset: utf8
 
     travis:
-        adapter: mysql
+        adapter: postgres
         host: 127.0.0.1
         name: jitamin_unit_test
-        user: root
+        user: postgres
         pass: ''
-        port: 3306
+        port: 5432
         charset: utf8
 
     sqlite:

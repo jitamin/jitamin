@@ -9,11 +9,8 @@ php:
   - 7.0
   - 5.6
 
-env:
-  - DB=mysql
-
-matrix:
-  fast_finish: true
+services:
+  - postgresql
 
 before_script:
   - if [[ $TRAVIS_PHP_VERSION != 7.x ]]; then phpenv config-rm xdebug.ini; fi
@@ -21,7 +18,8 @@ before_script:
   - composer install
 
 script:
+  - psql -c 'create database jitamin_unit_test;' -U postgres
   - vendor/bin/phinx --configuration=phinx.yml migrate -e travis
   - vendor/bin/phinx --configuration=phinx.yml seed:run -e travis
-  - phpunit -c tests/units.$DB.xml
+  - phpunit -c tests/units.postgres.xml
   - phpunit tests/configtest
