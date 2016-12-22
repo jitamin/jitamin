@@ -25,4 +25,4 @@ environments:
 
     testing:
         adapter: sqlite
-        memory: true
+        name: storage/db.sqlite
