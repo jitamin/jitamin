@@ -1,0 +1,33 @@
+paths:
+    migrations: %%PHINX_CONFIG_DIR%%/database/migrations
+    seeds: %%PHINX_CONFIG_DIR%%/database/seeds
+
+environments:
+    default_migration_table: migrations
+    default_database: development
+    production:
+        adapter: mysql
+        host: 127.0.0.1
+        name: jitamin_unit_test
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
+
+    development:
+        adapter: mysql
+        host: 127.0.0.1
+        name: jitamin
+        user: root
+        pass: 'root12'
+        port: 3306
+        charset: utf8
+
+    testing:
+        adapter: mysql
+        host: 127.0.0.1
+        name: jitamin
+        user: root
+        pass: ''
+        port: 3306
+        charset: utf8
