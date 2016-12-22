@@ -22,7 +22,7 @@ class CreateProjectHasFilesTable extends AbstractMigration
         $table->addColumn('project_id', 'integer')
               ->addColumn('name', 'string')
               ->addColumn('path', 'string')
-              ->addColumn('is_image', 'boolean', ['null' => true, 'default' => 0])
+              ->addColumn('is_image', 'boolean', ['null' => true, 'default' => false])
               ->addColumn('size', 'integer', ['default' => 0])
               ->addColumn('user_id', 'integer', ['default' => 0])
               ->addColumn('date', 'integer', ['default' => 0])

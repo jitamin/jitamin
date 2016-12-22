@@ -21,7 +21,7 @@ class CreateTaskHasFilesTable extends AbstractMigration
         $table = $this->table('task_has_files');
         $table->addColumn('name', 'string')
               ->addColumn('path', 'string')
-              ->addColumn('is_image', 'boolean', ['null' => true, 'default' => 0])
+              ->addColumn('is_image', 'boolean', ['null' => true, 'default' => false])
               ->addColumn('task_id', 'integer')
               ->addColumn('date', 'integer', ['default' => 0])
               ->addColumn('user_id', 'integer', ['default' => 0])
