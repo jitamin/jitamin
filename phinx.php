@@ -18,8 +18,8 @@
             'default_database'        => 'dev',
             'dev'                     => [
                 'adapter' => $_ENV['DB'],
-                'host'    => $_ENV['DB_HOST'],
-                'name'    => $_ENV['DB_NAME'],
+                'host'    => '127.0.0.1',
+                'name'    => 'jitamin_unit_test',
                 'user'    => $_ENV['DB_USERNAME'],
                 'pass'    => $_ENV['DB_PASSWORD'],
                 'port'    => $_ENV['DB_PORT'],
