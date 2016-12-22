@@ -10,7 +10,7 @@ php:
   - 5.6
 
 env:
-  - DB=sqlite
+  - DB=mysql
 
 matrix:
   fast_finish: true
@@ -21,8 +21,7 @@ before_script:
   - composer install
 
 script:
-  - touch storage/jitamin.sqlite
-  - vendor/bin/phinx --configuration=phinx.yml migrate -e sqlite
-  - vendor/bin/phinx --configuration=phinx.yml seed:run -e sqlite
+  - vendor/bin/phinx --configuration=phinx.yml migrate -e travis
+  - vendor/bin/phinx --configuration=phinx.yml seed:run -e travis
   - phpunit -c tests/units.$DB.xml
   - phpunit tests/configtest

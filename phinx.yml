@@ -5,19 +5,19 @@ paths:
 environments:
     default_migration_table: migrations
     default_database: mysql
-    production:
+    mysql:
         adapter: mysql
         host: 127.0.0.1
-        name: jitamin_unit_test
+        name: jitamin
         user: root
         pass: ''
         port: 3306
         charset: utf8
 
-    mysql:
+    travis:
         adapter: mysql
         host: 127.0.0.1
-        name: jitamin
+        name: jitamin_unit_test
         user: root
         pass: ''
         port: 3306
