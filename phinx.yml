@@ -25,4 +25,5 @@ environments:
 
     testing:
         adapter: sqlite
-        name: storage/db.sqlite
+        name: ':memory:'
+        memory: true

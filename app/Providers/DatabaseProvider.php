@@ -74,7 +74,7 @@ class DatabaseProvider implements ServiceProviderInterface
     {
         return new Database([
             'driver'   => 'sqlite',
-            'filename' => DB_FILENAME,
+            'filename' => ':memory:',
         ]);
     }
 
