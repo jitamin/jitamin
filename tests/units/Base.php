@@ -40,10 +40,11 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo->exec('CREATE DATABASE '.DB_NAME);
             $pdo = null;
         } elseif (DB_DRIVER === 'postgres') {
-            $pdo = new PDO('pgsql:host='.DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
+            /*$pdo = new PDO('pgsql:host='.DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
             $pdo->exec('DROP DATABASE '.DB_NAME);
             $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
             $pdo = null;
+            */
         }
 
         $this->container = new Pimple\Container();
