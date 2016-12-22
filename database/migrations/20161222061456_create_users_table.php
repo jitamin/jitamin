@@ -35,7 +35,7 @@ class CreateUsersTable extends AbstractMigration
               ->addColumn('token', 'string', ['null'=> true, 'default' => ''])
               ->addColumn('notifications_filter', 'integer', ['null' => true, 'default' => 4])
               ->addColumn('nb_failed_login', 'integer', ['null' => true, 'default' => 0])
-              ->addColumn('lock_expiration_date', 'biginteger', ['null' => true, 'limit' => 20])
+              ->addColumn('lock_expiration_date', 'biginteger', ['null' => true])
               ->addColumn('gitlab_id', 'integer', ['null' => true])
               ->addColumn('role', 'string', ['limit' => 25, 'default' => 'app-user'])
               ->addColumn('is_active', 'boolean', ['null' => true, 'default' => true])
