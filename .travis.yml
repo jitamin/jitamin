@@ -21,7 +21,7 @@ before_script:
   - composer install
 
 script:
-  - vendor/bin/phinx --configuration=phinx.yml migrate -e testing
-  - vendor/bin/phinx --configuration=phinx.yml seed:run -e testing
+  - vendor/bin/phinx --configuration=phinx.yml migrate -e $DB
+  - vendor/bin/phinx --configuration=phinx.yml seed:run -e $DB
   - phpunit -c tests/units.$DB.xml
   - phpunit tests/configtest
