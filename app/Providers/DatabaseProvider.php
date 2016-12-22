@@ -15,7 +15,6 @@ use LogicException;
 use PicoDb\Database;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
-use RuntimeException;
 
 /**
  * Class DatabaseProvider.
@@ -73,7 +72,6 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     private function getSqliteInstance()
     {
-
         return new Database([
             'driver'   => 'sqlite',
             'filename' => DB_FILENAME,
@@ -87,7 +85,6 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     private function getMysqlInstance()
     {
-
         return new Database([
             'driver'   => 'mysql',
             'hostname' => DB_HOSTNAME,
@@ -109,7 +106,6 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     private function getPostgresInstance()
     {
-
         return new Database([
             'driver'   => 'postgres',
             'hostname' => DB_HOSTNAME,
