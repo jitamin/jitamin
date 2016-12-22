@@ -17,12 +17,12 @@
             'default_migration_table' => 'migrations',
             'default_database'        => 'dev',
             'dev'                     => [
-                'adapter' => $_ENV['DB_DRIVER'],
-                'host'    => $_ENV['DB_HOST'],
-                'name'    => $_ENV['DB_NAME'],
-                'user'    => $_ENV['DB_USER'],
-                'pass'    => $_ENV['DB_PASS'],
-                'port'    => $_ENV['DB_PORT'],
+                'adapter' => DB_DRIVER,
+                'host'    => DB_HOST,
+                'name'    => DB_NAME,
+                'user'    => DB_USERNAME,
+                'pass'    => DB_PASSWORD,
+                'port'    => DB_PORT,
             ],
         ],
     ];
