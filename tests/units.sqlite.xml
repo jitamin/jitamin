@@ -6,6 +6,6 @@
     </testsuites>
     <php>
         <const name="DB_DRIVER" value="sqlite" />
-        <const name="DB_NAME" value="jitamin" />
+        <const name="DB_NAME" value="storage/jitamin.sqlite" />
     </php>
 </phpunit>
