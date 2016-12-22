@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of Jitamin.
+ *
+ * Copyright (C) 2016 Jitamin Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use Phinx\Migration\AbstractMigration;
 
 class CreateSubtasksTable extends AbstractMigration
@@ -12,11 +21,11 @@ class CreateSubtasksTable extends AbstractMigration
         $table = $this->table('subtasks');
         $table->addColumn('title', 'string')
               ->addColumn('status', 'integer', ['null' => true, 'default' => 0])
-              ->addColumn('time_estimated','float', ['null' => true])
-              ->addColumn('time_spent','float', ['null' => true])
+              ->addColumn('time_estimated', 'float', ['null' => true])
+              ->addColumn('time_spent', 'float', ['null' => true])
               ->addColumn('task_id', 'integer')
-              ->addColumn('user_id','integer', ['null' => true])
-              ->addColumn('position','integer', ['null' => true, 'default' => 1])
+              ->addColumn('user_id', 'integer', ['null' => true])
+              ->addColumn('position', 'integer', ['null' => true, 'default' => 1])
               ->addForeignKey('task_id', 'tasks', 'id', ['delete' => 'CASCADE'])
               ->create();
     }
