@@ -1,14 +1,14 @@
 Jitamin
 ========
 
-[![Build Status](https://travis-ci.org/Jitamin/Jitamin.svg?branch=master)](https://travis-ci.org/Jitamin/Jitamin)
+[![Build Status](https://travis-ci.org/jitamin/jitamin.svg?branch=master)](https://travis-ci.org/jitamin/jitamin)
 [![StyleCI](https://styleci.io/repos/72176201/shield?branch=master)](https://styleci.io/repos/72176201/)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Jitamin/Jitamin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Jitamin/Jitamin/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jitamin/jitamin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jitamin/jitamin/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Jitamin 是一款免费、开源，使用PHP语言开发的项目管理系统。
+Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理过程中起重要作用的维他命。
 
-![Screenshot](http://jitamin.com/jitamin.png)
+![Screenshot](http://jitamin.com/screenshot.png)
 
 ## 功能特性
 
@@ -48,7 +48,7 @@ Jitamin 是一款免费、开源，使用PHP语言开发的项目管理系统。
 一. 克隆代码
 
 ```shell
-$ git clone https://github.com/Jitamin/Jitamin.git
+$ git clone https://github.com/jitamin/jitamin.git
 ```
 
 二. 安装依赖包
