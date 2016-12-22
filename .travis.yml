@@ -23,7 +23,7 @@ before_script:
   - composer install
 
 script:
-  - vendor/bin/phinx migrate -c phinx.php -e $DB
+  - vendor/bin/phinx migrate -e $DB
   - vendor/bin/phinx seed:run
   - phpunit -c tests/units.$DB.xml
   - phpunit tests/configtest
