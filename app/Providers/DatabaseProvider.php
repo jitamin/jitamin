@@ -63,12 +63,7 @@ class DatabaseProvider implements ServiceProviderInterface
                 throw new LogicException('Database driver not supported');
         }
 
-        if ($db->schema()->check(\Schema\VERSION)) {
-            return $db;
-        } else {
-            $messages = $db->getLogMessages();
-            throw new RuntimeException('Unable to run SQL migrations: '.implode(', ', $messages).' (You may have to fix it manually)');
-        }
+        return $db;
     }
 
     /**
@@ -78,7 +73,6 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     private function getSqliteInstance()
     {
-        require_once __DIR__.'/../Schema/Sqlite.php';
 
         return new Database([
             'driver'   => 'sqlite',
@@ -93,7 +87,6 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     private function getMysqlInstance()
     {
-        require_once __DIR__.'/../Schema/Mysql.php';
 
         return new Database([
             'driver'   => 'mysql',
@@ -116,7 +109,6 @@ class DatabaseProvider implements ServiceProviderInterface
      */
     private function getPostgresInstance()
     {
-        require_once __DIR__.'/../Schema/Postgres.php';
 
         return new Database([
             'driver'   => 'postgres',
