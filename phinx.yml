@@ -4,7 +4,7 @@ paths:
 
 environments:
     default_migration_table: migrations
-    default_database: development
+    default_database: sqlite
     production:
         adapter: mysql
         host: 127.0.0.1
@@ -23,7 +23,6 @@ environments:
         port: 3306
         charset: utf8
 
-    testing:
+    sqlite:
         adapter: sqlite
-        name: ':memory:'
-        memory: true
+        name: storage/jitamin.sqlite

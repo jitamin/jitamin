@@ -18,7 +18,7 @@ class CreateTaskHasLinksTable extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('project_has_links', ['id' => false]);
+        $table = $this->table('task_has_links', ['id' => false]);
         $table->addColumn('link_id', 'integer')
               ->addColumn('task_id', 'integer')
               ->addColumn('opposite_task_id', 'integer')

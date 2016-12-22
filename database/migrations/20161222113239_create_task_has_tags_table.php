@@ -18,7 +18,7 @@ class CreateTaskHasTagsTable extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('project_has_tags', ['id' => false]);
+        $table = $this->table('task_has_tags', ['id' => false]);
         $table->addColumn('task_id', 'integer')
               ->addColumn('tag_id', 'integer')
               ->addIndex(['task_id', 'tag_id'], ['unique' => true])
