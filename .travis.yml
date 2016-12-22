@@ -21,6 +21,7 @@ before_script:
   - composer install
 
 script:
+  - touch storage/jitamin.sqlite
   - vendor/bin/phinx --configuration=phinx.yml migrate -e sqlite
   - vendor/bin/phinx --configuration=phinx.yml seed:run -e sqlite
   - phpunit -c tests/units.$DB.xml
