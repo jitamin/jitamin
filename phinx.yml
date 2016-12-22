@@ -4,7 +4,7 @@ paths:
 
 environments:
     default_migration_table: migrations
-    default_database: sqlite
+    default_database: mysql
     production:
         adapter: mysql
         host: 127.0.0.1
@@ -14,12 +14,12 @@ environments:
         port: 3306
         charset: utf8
 
-    development:
+    mysql:
         adapter: mysql
         host: 127.0.0.1
         name: jitamin
         user: root
-        pass: 'root12'
+        pass: ''
         port: 3306
         charset: utf8
 

@@ -10,7 +10,7 @@ php:
   - 5.6
 
 env:
-  - DB=sqlite
+  - DB=mysql
 
 matrix:
   fast_finish: true
