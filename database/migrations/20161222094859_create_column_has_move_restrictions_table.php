@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of Jitamin.
+ *
+ * Copyright (C) 2016 Jitamin Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 use Phinx\Migration\AbstractMigration;
 
 class CreateColumnHasMoveRestrictionsTable extends AbstractMigration
@@ -10,7 +19,7 @@ class CreateColumnHasMoveRestrictionsTable extends AbstractMigration
     public function change()
     {
         $table = $this->table('column_has_move_restrictions', ['id' => 'restriction_id']);
-        $table->addColumn('project_id','integer')
+        $table->addColumn('project_id', 'integer')
               ->addColumn('role_id', 'integer')
               ->addColumn('src_column_id', 'integer')
               ->addColumn('dst_column_id', 'integer')
