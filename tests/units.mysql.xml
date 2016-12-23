@@ -6,6 +6,6 @@
     </testsuites>
     <php>
         <const name="DB_DRIVER" value="mysql" />
-        <const name="DB_NAME" value="jitamin_unit_test" />
+        <const name="DB_NAME" value="jitamin" />
     </php>
 </phpunit>

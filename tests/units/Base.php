@@ -19,6 +19,7 @@ use Jitamin\Providers\ActionProvider;
 use SimpleLogger\Logger;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 abstract class Base extends PHPUnit_Framework_TestCase
@@ -29,6 +30,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
      * @var EventDispatcher
      */
     protected $dispatcher;
+
+    protected $process;
 
     public function setUp()
     {
@@ -44,7 +47,17 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo->exec('DROP DATABASE '.DB_NAME);
             $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
             $pdo = null;
+        } elseif (DB_DRIVER === 'sqlite' && file_exists(DB_NAME)) {
+            unlink(DB_NAME);
         }
+
+        $this->process = new Process('');
+        $this->process->setTimeout(null);
+        $this->process->setCommandLine(implode(PHP_EOL, [
+                'php vendor/bin/phinx migrate -c phinx.php -e '.DB_DRIVER,
+                'php vendor/bin/phinx seed:run -c phinx.php -e '.DB_DRIVER,
+        ]));
+        $this->process->run();
 
         $this->container = new Pimple\Container();
         $this->container->register(new Jitamin\Providers\CacheProvider());

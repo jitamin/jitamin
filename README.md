@@ -35,7 +35,8 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 - [x] 支持Memcached缓存
 - [x] 可对项目进行按赞(亦可当收藏夹使用)
 - [x] 支持在线预览PDF和Log文件
-- [ ] 集成Phinx
+- [x] 引入phinx进行数据迁移管理
+- [ ] 集成twig模板引擎
 
 ## 安装环境要求
 
@@ -60,16 +61,29 @@ $ composer install -o --no-dev
 三. 设置配置文件
 
 ```shell
-$ cp config/config{.default,}.php // 根据实际情况修改config.php相关配置。
+$ cp config/database{.default,}.php
+```
+> 根据实际情况修改 `config/database.php`, `config/app.php`等相关配置文件。
+
+四. 安装数据库迁移，初始化化数据
+
+- 创建数据表
+```shell
+php vendor/bin/phinx migrate -c phinx.php
 ```
 
-四. 确保storage目录可写。
+- 安装初始化数据
+```shell
+php vendor/bin/phinx seed:run -c phinx.php
+```
+
+五. 确保storage目录可写。
 
 ```shell
 $ chmod -R 0777 storage
 ```
 
-五. 通过浏览器访问
+六. 通过浏览器访问
 
 安装完成后，请通过浏览器访问你的Jitamin网址，如：http://jitamin.dev
 
@@ -91,6 +105,12 @@ $ git checkout {latest_tag} // 请将 latest_tag} 修改为最新的tag，比如
 
 ```shell
 $ composer install -o --no-dev
+```
+
+三. 更新数据表
+
+```shell
+php vendor/bin/phinx migrate -c phinx.php
 ```
 
 ## 系统演示
