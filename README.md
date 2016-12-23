@@ -65,14 +65,14 @@ $ cp config/database{.default,}.php
 ```
 > 根据实际情况修改 `config/database.php`, `config/app.php`等相关配置文件。
 
-四. 安装数据库迁移，初始化化数据
+四. 安装数据库迁移和初始数据
 
 - 创建数据表
 ```shell
 php vendor/bin/phinx migrate -c phinx.php
 ```
 
-- 安装初始化数据
+- 安装初始数据
 ```shell
 php vendor/bin/phinx seed:run -c phinx.php
 ```
