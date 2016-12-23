@@ -17,7 +17,7 @@ return [
     'connections' => [
         'sqlite' => [
             'driver'   => 'sqlite',
-            'database' => 'jitamin',
+            'database' => ':memory:',
         ],
 
         'mysql' => [
