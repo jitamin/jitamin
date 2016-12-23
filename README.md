@@ -107,6 +107,12 @@ $ git checkout {latest_tag} // 请将 latest_tag} 修改为最新的tag，比如
 $ composer install -o --no-dev
 ```
 
+三. 更新数据表
+
+```shell
+php vendor/bin/phinx -c phinx.php migrate
+```
+
 ## 系统演示
 
 体验Jitamin, 请访问 [Jitamin](http://jitamin.com):
