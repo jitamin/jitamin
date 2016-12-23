@@ -39,7 +39,7 @@ $db = require __DIR__.'/config/database.php';
             ],
             'sqlite' => [
                 'adapter' => 'sqlite',
-                'name'    => 'jitamin',
+                'name'    => 'jitamin.sqlite',
             ],
         ],
     ];
