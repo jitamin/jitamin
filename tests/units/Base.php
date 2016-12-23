@@ -47,14 +47,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo->exec('DROP DATABASE '.DB_NAME);
             $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
             $pdo = null;
-        } elseif (DB_DRIVER === 'sqlite') {
-            //unlink('./jitamin');
-            $this->process = new Process('');
-            $this->process->setTimeout(null);
-            $command = 'find . -name "*jitamin*";';
-            $this->process->setCommandLine($command);
-            $this->process->run();
-            var_dump($this->process->getOutput());
+        } elseif (DB_DRIVER === 'sqlite' && file_exists(DB_NAME)) {
+            unlink(DB_NAME);
         }
 
         $this->process = new Process('');
