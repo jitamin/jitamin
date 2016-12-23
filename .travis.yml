@@ -18,6 +18,6 @@ before_script:
   - composer install
 
 script:
-  - psql -c 'create database jitamin_unit_test;' -U postgres
+  - psql -c 'create database jitamin;' -U postgres
   - phpunit -c tests/units.postgres.xml
   - phpunit tests/configtest

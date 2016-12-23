@@ -22,7 +22,6 @@ class CreateTagsTable extends AbstractMigration
         $table->addColumn('name', 'string')
               ->addColumn('project_id', 'integer')
               ->addIndex(['name', 'project_id'], ['unique' => true])
-              ->addForeignKey('project_id', 'projects', 'id', ['delete' => 'CASCADE'])
               ->create();
     }
 }

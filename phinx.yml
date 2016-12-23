@@ -17,7 +17,7 @@ environments:
     postgres:
         adapter: pgsql
         host: 127.0.0.1
-        name: jitamin_unit_test
+        name: jitamin
         user: postgres
         pass: ''
         port: 5432
