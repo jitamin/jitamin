@@ -54,8 +54,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
         $this->process = new Process('');
         $this->process->setTimeout(null);
         $this->process->setCommandLine(implode(PHP_EOL, [
-                'php vendor/bin/phinx -c phinx.php -e '.DB_DRIVER.' migrate',
-                'php vendor/bin/phinx -c phinx.php -e '.DB_DRIVER.' seed:run',
+                'php vendor/bin/phinx migrate -c phinx.php -e '.DB_DRIVER,
+                'php vendor/bin/phinx seed:run -c phinx.php -e '.DB_DRIVER,
         ]));
         $this->process->run();
 

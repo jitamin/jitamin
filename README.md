@@ -69,12 +69,12 @@ $ cp config/database{.default,}.php
 
 - 创建数据表
 ```shell
-php vendor/bin/phinx -c phinx.php migrate
+php vendor/bin/phinx migrate -c phinx.php
 ```
 
 - 安装初始化数据
 ```shell
-php vendor/bin/phinx -c phinx.php seed:run
+php vendor/bin/phinx seed:run -c phinx.php
 ```
 
 五. 确保storage目录可写。
@@ -110,7 +110,7 @@ $ composer install -o --no-dev
 三. 更新数据表
 
 ```shell
-php vendor/bin/phinx -c phinx.php migrate
+php vendor/bin/phinx migrate -c phinx.php
 ```
 
 ## 系统演示
