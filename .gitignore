@@ -14,7 +14,7 @@ Thumbs.db
 *~
 *.out
 *.log
-config/config.php
+config/database.php
 storage/files
 storage/cache
 /vendor
