@@ -48,7 +48,13 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
             $pdo = null;
         } elseif (DB_DRIVER === 'sqlite') {
-            unlink(DATA_DIR.DIRECTORY_SEPARATOR.'jitamin');
+            //unlink(DATA_DIR.DIRECTORY_SEPARATOR.'jitamin');
+             $this->process = new Process('');
+            $this->process->setTimeout(null);
+            $command = 'ls storage/';
+            $this->process->setCommandLine($command);
+            $this->process->run();
+            var_dump($process->getOutput());
         }
 
         $this->process = new Process('');
