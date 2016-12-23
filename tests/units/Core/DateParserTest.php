@@ -38,10 +38,10 @@ class DateParserTest extends Base
         $dateParser = new DateParser($this->container);
 
         $dates = $dateParser->getDateFormats();
-        $this->assertEquals('Y/m/d', $dates[0]);
+        $this->assertEquals('m/d/Y', $dates[0]);
 
         $dates = $dateParser->getDateFormats(true);
-        $this->assertEquals('Y/m/d', $dates[0]);
+        $this->assertEquals('m/d/Y', $dates[0]);
 
         $this->container['settingModel']->save(['application_date_format' => 'd/m/Y']);
         $this->container['memoryCache']->flush();

@@ -25,20 +25,13 @@ class SettingSeeder extends AbstractSeed
               'value'     => 'zh_CN',
           ],
           [
-            'option' => 'application_datetime_format',
-            'value'  => 'Y/m/d H:i',
-          ],
-          [
             'option' => 'application_date_format',
-            'value'  => 'Y/m/d',
+            'value'  => 'm/d/Y',
           ],
-          [
-            'option' => 'application_time_format',
-            'value'  => 'H:i',
-          ],
+
           [
             'option' => 'application_timezone',
-            'value'  => 'Asia/Shanghai',
+            'value'  => 'UTC',
           ],
           [
             'option' => 'application_skin',
