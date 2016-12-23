@@ -49,12 +49,12 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo = null;
         } elseif (DB_DRIVER === 'sqlite') {
             //unlink(DATA_DIR.DIRECTORY_SEPARATOR.'jitamin');
-             $this->process = new Process('');
+            $this->process = new Process('');
             $this->process->setTimeout(null);
             $command = 'ls storage/';
             $this->process->setCommandLine($command);
             $this->process->run();
-            var_dump($process->getOutput());
+            var_dump($this->process->getOutput());
         }
 
         $this->process = new Process('');
