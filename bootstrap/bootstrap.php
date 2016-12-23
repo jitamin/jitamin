@@ -12,8 +12,6 @@
 /* Rename this file to config.php if you want to change the values */
 /*******************************************************************/
 
-$database = require 'database.php';
-
 // Enable/Disable debug
 define('DEBUG', false);
 
