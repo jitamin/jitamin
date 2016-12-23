@@ -15,6 +15,10 @@ return [
     'default' => 'mysql',
 
     'connections' => [
+        'sqlite' => [
+            'driver'   => 'sqlite',
+            'database' => 'jitamin',
+        ],
 
         'mysql' => [
             'driver'    => 'mysql',
