@@ -14,7 +14,7 @@ environments:
         port: 3306
         charset: utf8
 
-    travis:
+    postgres:
         adapter: pgsql
         host: 127.0.0.1
         name: jitamin_unit_test

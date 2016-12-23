@@ -55,7 +55,7 @@ class SettingSeeder extends AbstractSeed
           ],
           [
               'option'    => 'subtask_time_tracking',
-              'value'     => 0,
+              'value'     => 1,
           ],
           [
               'option' => 'board_highlight_period',

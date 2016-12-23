@@ -51,8 +51,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
 
         $this->process = new Process('');
         $this->process->setTimeout(null);
-        $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e travis;';
-        $command .= 'php vendor/bin/phinx --configuration=phinx.yml seed:run -e travis;';
+        $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e '.DB_DRIVER.';';
+        $command .= 'php vendor/bin/phinx --configuration=phinx.yml seed:run -e '.DB_DRIVER.';';
         $this->process->setCommandLine($command);
         $this->process->run();
 
