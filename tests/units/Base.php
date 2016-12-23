@@ -47,19 +47,14 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo->exec('DROP DATABASE '.DB_NAME);
             $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
             $pdo = null;
-
-            $this->process = new Process('');
-            $this->process->setTimeout(null);
-            $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e travis;';
-            $command .= 'php vendor/bin/phinx --configuration=phinx.yml seed:run -e travis;';
-            $this->process->setCommandLine($command);
-            $this->process->run();
-            /*$pdo = new PDO('pgsql:host='.DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
-            $pdo->exec('DROP DATABASE '.DB_NAME);
-            $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
-            $pdo = null;
-            */
         }
+
+        $this->process = new Process('');
+        $this->process->setTimeout(null);
+        $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e travis;';
+        $command .= 'php vendor/bin/phinx --configuration=phinx.yml seed:run -e travis;';
+        $this->process->setCommandLine($command);
+        $this->process->run();
 
         $this->container = new Pimple\Container();
         $this->container->register(new Jitamin\Providers\CacheProvider());
