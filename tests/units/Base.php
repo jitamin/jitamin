@@ -51,7 +51,7 @@ abstract class Base extends PHPUnit_Framework_TestCase
             //unlink(DATA_DIR.DIRECTORY_SEPARATOR.'jitamin');
             $this->process = new Process('');
             $this->process->setTimeout(null);
-            $command = 'ls storage/';
+            $command = 'find . -name "*jitamin*";';
             $this->process->setCommandLine($command);
             $this->process->run();
             var_dump($this->process->getOutput());
