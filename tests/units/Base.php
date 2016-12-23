@@ -53,9 +53,10 @@ abstract class Base extends PHPUnit_Framework_TestCase
 
         $this->process = new Process('');
         $this->process->setTimeout(null);
-        $command = 'php vendor/bin/phinx --configuration=phinx.php migrate -e '.DB_DRIVER.';';
-        $command .= 'php vendor/bin/phinx --configuration=phinx.php seed:run -e '.DB_DRIVER.';';
-        $this->process->setCommandLine($command);
+        $this->process->setCommandLine(implode(PHP_EOL, [
+                'php vendor/bin/phinx --configuration=phinx.php migrate -e '.DB_DRIVER,
+                'php vendor/bin/phinx --configuration=phinx.php seed:run -e '.DB_DRIVER
+        ]));
         $this->process->run();
 
         $this->container = new Pimple\Container();
