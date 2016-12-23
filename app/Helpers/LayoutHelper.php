@@ -157,6 +157,7 @@ class LayoutHelper extends Base
     public function dashboard2($template, array $params)
     {
         $loader = $this->twig->load($template.'.html');
+
         return $loader->render($params);
     }
 
