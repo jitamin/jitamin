@@ -9,6 +9,12 @@
  * file that was distributed with this source code.
  */
 
+/*
+|--------------------------------------------------------------------------
+| Please DO NOT modify me.
+|--------------------------------------------------------------------------
+*/
+
 $db = require __DIR__.'/config/database.php';
 
 return [
