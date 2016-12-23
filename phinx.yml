@@ -25,5 +25,4 @@ environments:
 
     sqlite:
         adapter: sqlite
-        name: ':memory:'
         memory: true
