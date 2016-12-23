@@ -50,7 +50,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
 
             $this->process = new Process('');
             $this->process->setTimeout(null);
-            $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e travis';
+            $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e travis;';
+            $command .= 'php vendor/bin/phinx --configuration=phinx.yml seed:run -e travis;';
             $this->process->setCommandLine($command);
             $this->process->run();
             /*$pdo = new PDO('pgsql:host='.DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
