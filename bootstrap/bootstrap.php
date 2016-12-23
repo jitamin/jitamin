@@ -83,7 +83,7 @@ if(DB_DRIVER != 'sqlite')
     // Mysql/Postgres custom port (null = default port)
     define('DB_PORT', $db['connections'][$db['default']]['port']);
 } else {
-    define('DB_FILENAME', $db['connections'][$db['sqlite']]['database'])
+    define('DB_FILENAME', ':memory:');
 }
 
 // Mysql SSL key
