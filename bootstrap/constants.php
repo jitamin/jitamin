@@ -46,6 +46,8 @@ defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__.'
 // Database driver: sqlite, mysql or postgres
 defined('DB_DRIVER') or define('DB_DRIVER', 'sqlite');
 
+defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.'jitamin.sqlite');
+
 // Mysql/Postgres configuration
 defined('DB_USERNAME') or define('DB_USERNAME', 'root');
 defined('DB_PASSWORD') or define('DB_PASSWORD', '');
