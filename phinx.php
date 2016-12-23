@@ -18,7 +18,7 @@ require __DIR__.'/config/config.php';
         ],
         'environments' => [
             'default_migration_table' => 'migrations',
-            'default_database'        => 'mysql',
+            'default_database'        => DB_DRIVER,
             'mysql'                   => [
                 'adapter' => 'mysql',
                 'host'    => DB_HOSTNAME,
