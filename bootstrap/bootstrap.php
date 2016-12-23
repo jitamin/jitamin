@@ -68,22 +68,22 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 define('DB_DRIVER', $db['default']);
 
 if(DB_DRIVER != 'sqlite')
-// Mysql/Postgres username
-define('DB_USERNAME', $db['connections'][$db['default']]['username']);
+    // Mysql/Postgres username
+    define('DB_USERNAME', $db['connections'][$db['default']]['username']);
 
-// Mysql/Postgres password
-define('DB_PASSWORD', $db['connections'][$db['default']]['password']);
+    // Mysql/Postgres password
+    define('DB_PASSWORD', $db['connections'][$db['default']]['password']);
 
-// Mysql/Postgres hostname
-define('DB_HOSTNAME', $db['connections'][$db['default']]['host']);
+    // Mysql/Postgres hostname
+    define('DB_HOSTNAME', $db['connections'][$db['default']]['host']);
 
-// Mysql/Postgres database name
-define('DB_NAME', $db['connections'][$db['default']]['database']);
+    // Mysql/Postgres database name
+    define('DB_NAME', $db['connections'][$db['default']]['database']);
 
-// Mysql/Postgres custom port (null = default port)
-define('DB_PORT', $db['connections'][$db['default']]['port']);
+    // Mysql/Postgres custom port (null = default port)
+    define('DB_PORT', $db['connections'][$db['default']]['port']);
 } else {
-    define('DB_FILENAME', $db['connections'][$db['default']]['database'])
+    define('DB_FILENAME', $db['connections'][$db['sqlite']]['database'])
 }
 
 // Mysql SSL key
