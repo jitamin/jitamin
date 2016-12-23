@@ -19,9 +19,9 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => 'localhost',
-            'database'  => 'hiject',
+            'database'  => 'jitamin',
             'username'  => 'root',
-            'password'  => 'root12',
+            'password'  => '',
             'port'      => '3306',
             'charset'   => 'utf8',
         ],
