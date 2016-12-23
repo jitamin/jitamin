@@ -9,5 +9,7 @@
  * file that was distributed with this source code.
  */
 
-// Enable/Disable debug
-define('DEBUG', false);
+return [
+    'debug' => false,
+
+];

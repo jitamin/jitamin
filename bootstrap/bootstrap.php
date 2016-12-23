@@ -12,6 +12,9 @@
 /* Rename this file to config.php if you want to change the values */
 /*******************************************************************/
 
+// Enable/Disable debug
+define('DEBUG', $app['debug']);
+
 // Jitamin folder
 define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
