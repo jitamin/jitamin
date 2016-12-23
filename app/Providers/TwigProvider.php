@@ -11,8 +11,6 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Http\Route;
-use Jitamin\Core\Http\Router;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -30,10 +28,10 @@ class TwigProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $loader = new \Twig_Loader_Filesystem(JITAMIN_DIR . '/resources/views');
+        $loader = new \Twig_Loader_Filesystem(JITAMIN_DIR.'/resources/views');
 
         $container['twig'] = new \Twig_Environment($loader, [
-            'cache' => JITAMIN_DIR . '/storage/cache/',
+            'cache'       => JITAMIN_DIR.'/storage/cache/',
             'auto_reload' => true,
         ]);
 
