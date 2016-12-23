@@ -19,7 +19,5 @@ before_script:
 
 script:
   - psql -c 'create database jitamin_unit_test;' -U postgres
-  - vendor/bin/phinx --configuration=phinx.yml migrate -e travis
-  - vendor/bin/phinx --configuration=phinx.yml seed:run -e travis
   - phpunit -c tests/units.postgres.xml
   - phpunit tests/configtest

@@ -22,7 +22,7 @@ class SettingSeeder extends AbstractSeed
         $data = [
           [
               'option'    => 'application_language',
-              'value'     => 'zh_CN',
+              'value'     => 'en_US',
           ],
           [
             'option' => 'application_date_format',
