@@ -24,18 +24,10 @@ if ($dbUrlParser->isEnvironmentVariableDefined()) {
     define('DB_NAME', $dbSettings['database']);
 }
 
-$config_file = implode(DIRECTORY_SEPARATOR, [__DIR__, '..', 'config', 'config.php']);
+require __DIR__.DIRECTORY_SEPARATOR.'../config/app.php';
+$db = require __DIR__.DIRECTORY_SEPARATOR.'../config/database.php';
 
-if (file_exists($config_file)) {
-    require $config_file;
-}
-
-$config_file = implode(DIRECTORY_SEPARATOR, [__DIR__, '..', 'data', 'config.php']);
-
-if (file_exists($config_file)) {
-    require $config_file;
-}
-
+require __DIR__.'/bootstrap.php';
 require __DIR__.'/constants.php';
 require __DIR__.'/env.php';
 

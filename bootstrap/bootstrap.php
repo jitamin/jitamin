@@ -12,11 +12,6 @@
 /* Rename this file to config.php if you want to change the values */
 /*******************************************************************/
 
-$database = require 'database.php';
-
-// Enable/Disable debug
-define('DEBUG', false);
-
 // Jitamin folder
 define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
@@ -69,20 +64,24 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 // Database driver: sqlite, mysql or postgres (sqlite by default)
 define('DB_DRIVER', $db['default']);
 
-// Mysql/Postgres username
-define('DB_USERNAME', $db['connections'][$db['default']]['username']);
+if($db['default'] != 'sqlite') {
+    // Mysql/Postgres username
+    define('DB_USERNAME', $db['connections'][$db['default']]['username']);
 
-// Mysql/Postgres password
-define('DB_PASSWORD', $db['connections'][$db['default']]['password']);
+    // Mysql/Postgres password
+    define('DB_PASSWORD', $db['connections'][$db['default']]['password']);
 
-// Mysql/Postgres hostname
-define('DB_HOSTNAME', $db['connections'][$db['default']]['host']);
+    // Mysql/Postgres hostname
+    define('DB_HOSTNAME', $db['connections'][$db['default']]['host']);
+
+    // Mysql/Postgres custom port (null = default port)
+    define('DB_PORT', $db['connections'][$db['default']]['port']);
+
+}
 
 // Mysql/Postgres database name
 define('DB_NAME', $db['connections'][$db['default']]['database']);
 
-// Mysql/Postgres custom port (null = default port)
-define('DB_PORT', $db['connections'][$db['default']]['port']);
 
 // Mysql SSL key
 define('DB_SSL_KEY', null);
