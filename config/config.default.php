@@ -68,7 +68,7 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 define('DB_DRIVER', 'sqlite');
 
 // Mysql/Postgres username
-define('DB_USERNAME', 'root');
+define('DB_USERNAME', 'postgres');
 
 // Mysql/Postgres password
 define('DB_PASSWORD', '');
