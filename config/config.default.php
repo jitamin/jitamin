@@ -12,6 +12,8 @@
 /* Rename this file to config.php if you want to change the values */
 /*******************************************************************/
 
+$database = require 'database.php';
+
 // Enable/Disable debug
 define('DEBUG', false);
 
@@ -65,22 +67,22 @@ define('MAIL_SMTP_ENCRYPTION', null); // Valid values are "null", "ssl" or "tls"
 define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 
 // Database driver: sqlite, mysql or postgres (sqlite by default)
-define('DB_DRIVER', 'sqlite');
+define('DB_DRIVER', $db['default']);
 
 // Mysql/Postgres username
-define('DB_USERNAME', 'postgres');
+define('DB_USERNAME', $db['connections'][$db['default']]['username']);
 
 // Mysql/Postgres password
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', $db['connections'][$db['default']]['password']);
 
 // Mysql/Postgres hostname
-define('DB_HOSTNAME', 'localhost');
+define('DB_HOSTNAME', $db['connections'][$db['default']]['host']);
 
 // Mysql/Postgres database name
-define('DB_NAME', 'jitamin');
+define('DB_NAME', $db['connections'][$db['default']]['database']);
 
 // Mysql/Postgres custom port (null = default port)
-define('DB_PORT', null);
+define('DB_PORT', $db['connections'][$db['default']]['port']);
 
 // Mysql SSL key
 define('DB_SSL_KEY', null);
