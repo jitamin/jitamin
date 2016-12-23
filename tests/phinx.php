@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
+require '../config/config.php';
+
     return [
         'paths' => [
             'migrations' => 'database/migrations',
@@ -19,20 +21,20 @@
             'default_database'        => 'mysql',
             'mysql'                   => [
                 'adapter' => 'mysql',
-                'host'    => '127.0.0.1',
-                'name'    => 'jitamin',
-                'user'    => 'root',
-                'pass'    => '',
-                'port'    => '3306',
+                'host'    => DB_HOSTNAME,
+                'name'    => DB_NAME,
+                'user'    => DB_USERNAME,
+                'pass'    => DB_PASSWORD,
+                'port'    => DB_PORT,
                 'charset' => 'utf8',
             ],
             'postgres' => [
                 'adapter' => 'pgsql',
-                'host'    => '127.0.0.1',
-                'name'    => 'jitamin',
-                'user'    => 'postgres',
-                'pass'    => '',
-                'port'    => '5432',
+                'host'    => DB_HOSTNAME,
+                'name'    => DB_NAME,
+                'user'    => DB_USERNAME,
+                'pass'    => DB_PASSWORD,
+                'port'    => DB_PORT,
                 'charset' => 'utf8',
             ],
             'sqlite' => [
