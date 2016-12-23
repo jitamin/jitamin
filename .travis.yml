@@ -10,9 +10,9 @@ php:
   - 5.6
 
 env:
-  - DB=sqlite
-#  - DB=mysql
-#  - DB=postgres
+#  - DB=sqlite
+  - DB=mysql
+  - DB=postgres
 
 before_script:
   - if [[ $TRAVIS_PHP_VERSION != 7.x ]]; then phpenv config-rm xdebug.ini; fi
