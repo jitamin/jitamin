@@ -25,5 +25,5 @@ environments:
 
     sqlite:
         adapter: sqlite
-        name: jitamin
+        name: ':memory:'
         memory: true
