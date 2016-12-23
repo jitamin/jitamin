@@ -19,6 +19,7 @@ use Jitamin\Providers\ActionProvider;
 use SimpleLogger\Logger;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\Process\Process;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 abstract class Base extends PHPUnit_Framework_TestCase
@@ -30,6 +31,8 @@ abstract class Base extends PHPUnit_Framework_TestCase
      */
     protected $dispatcher;
 
+    protected $process;
+
     public function setUp()
     {
         date_default_timezone_set('UTC');
@@ -40,6 +43,11 @@ abstract class Base extends PHPUnit_Framework_TestCase
             $pdo->exec('CREATE DATABASE '.DB_NAME);
             $pdo = null;
         } elseif (DB_DRIVER === 'postgres') {
+            $this->process = new Process('');
+            $this->process->setTimeout(null);
+            $command = 'php vendor/bin/phinx --configuration=phinx.yml migrate -e travis';
+            $this->process->setCommandLine($command);
+            $this->process->run();
             /*$pdo = new PDO('pgsql:host='.DB_HOSTNAME, DB_USERNAME, DB_PASSWORD);
             $pdo->exec('DROP DATABASE '.DB_NAME);
             $pdo->exec('CREATE DATABASE '.DB_NAME.' WITH OWNER '.DB_USERNAME);
