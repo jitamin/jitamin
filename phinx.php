@@ -11,35 +11,35 @@
 
 $db = require __DIR__.'/config/database.php';
 
-    return [
-        'paths' => [
-            'migrations' => 'database/migrations',
-            'seeds'      => 'database/seeds',
+return [
+    'paths' => [
+        'migrations' => 'database/migrations',
+        'seeds'      => 'database/seeds',
+    ],
+    'environments' => [
+        'default_migration_table' => 'migrations',
+        'default_database'        => $db['default'],
+        'mysql'                   => [
+            'adapter' => 'mysql',
+            'host'    => $db['connections']['mysql']['host'],
+            'name'    => $db['connections']['mysql']['database'],
+            'user'    => $db['connections']['mysql']['username'],
+            'pass'    => $db['connections']['mysql']['password'],
+            'port'    => $db['connections']['mysql']['port'],
+            'charset' => 'utf8',
         ],
-        'environments' => [
-            'default_migration_table' => 'migrations',
-            'default_database'        => $db['default'],
-            'mysql'                   => [
-                'adapter' => 'mysql',
-                'host'    => $db['connections']['mysql']['host'],
-                'name'    => $db['connections']['mysql']['database'],
-                'user'    => $db['connections']['mysql']['username'],
-                'pass'    => $db['connections']['mysql']['password'],
-                'port'    => $db['connections']['mysql']['port'],
-                'charset' => 'utf8',
-            ],
-            'postgres' => [
-                'adapter' => 'pgsql',
-                'host'    => $db['connections']['pgsql']['host'],
-                'name'    => $db['connections']['pgsql']['database'],
-                'user'    => $db['connections']['pgsql']['username'],
-                'pass'    => $db['connections']['pgsql']['password'],
-                'port'    => $db['connections']['pgsql']['port'],
-                'charset' => 'utf8',
-            ],
-            'sqlite' => [
-                'adapter' => 'sqlite',
-                'name'    => 'jitamin',
-            ],
+        'postgres' => [
+            'adapter' => 'pgsql',
+            'host'    => $db['connections']['pgsql']['host'],
+            'name'    => $db['connections']['pgsql']['database'],
+            'user'    => $db['connections']['pgsql']['username'],
+            'pass'    => $db['connections']['pgsql']['password'],
+            'port'    => $db['connections']['pgsql']['port'],
+            'charset' => 'utf8',
         ],
-    ];
+        'sqlite' => [
+            'adapter' => 'sqlite',
+            'name'    => $db['connections']['sqlite']['database'],
+        ],
+    ],
+];
