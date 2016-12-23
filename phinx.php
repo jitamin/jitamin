@@ -46,7 +46,7 @@ return [
         'sqlite' => [
             'adapter' => 'sqlite',
             'name'    => $db['connections']['sqlite']['database'],
-            'memory' => true,
+            'memory'  => true,
         ],
     ],
 ];
