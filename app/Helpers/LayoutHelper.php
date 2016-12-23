@@ -154,6 +154,12 @@ class LayoutHelper extends Base
         return $this->subLayout('dashboard/layout', 'dashboard/sidebar', $template, $params);
     }
 
+    public function dashboard2($template, array $params)
+    {
+        $loader = $this->twig->load($template.'.html');
+        return $loader->render($params);
+    }
+
     /**
      * Common layout for analytic views.
      *

@@ -54,3 +54,4 @@ $container->register(new Jitamin\Providers\ApiProvider());
 $container->register(new Jitamin\Providers\CommandProvider());
 $container->register(new Jitamin\Providers\PluginProvider());
 $container->register(new Jitamin\Providers\UpdateProvider());
+$container->register(new Jitamin\Providers\TwigProvider());
