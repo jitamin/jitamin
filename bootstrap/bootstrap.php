@@ -67,7 +67,7 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 // Database driver: sqlite, mysql or postgres (sqlite by default)
 define('DB_DRIVER', $db['default']);
 
-if(DB_DRIVER != 'sqlite') {
+if (DB_DRIVER != 'sqlite') {
     // Mysql/Postgres username
     define('DB_USERNAME', $db['connections'][$db['default']]['username']);
 
