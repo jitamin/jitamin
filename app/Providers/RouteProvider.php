@@ -37,7 +37,7 @@ class RouteProvider implements ServiceProviderInterface
             $container['route']->enable();
             foreach (glob(JITAMIN_DIR.DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'*.php') as $file) {
                 $routes = require $file;
-                foreach($routes as $name => $entry) {
+                foreach ($routes as $name => $entry) {
                     list($controller, $action) = explode('@', $entry);
                     $container['route']->addRoute($name, $controller, $action);
                 }
