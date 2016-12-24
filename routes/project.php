@@ -9,74 +9,76 @@
  * file that was distributed with this source code.
  */
 
-// Project routes
-$container['route']->addRoute('project/create', 'ProjectController', 'create');
-$container['route']->addRoute('project/create/private', 'ProjectController', 'createPrivate');
-$container['route']->addRoute('project/store', 'ProjectController', 'store');
-$container['route']->addRoute('project/:project_id/edit', 'ProjectController', 'edit');
-$container['route']->addRoute('project/:project_id/edit/description', 'ProjectController', 'edit_description');
+return [
+    // Project routes
+    'project/create'                       => 'ProjectController@create',
+    'project/create/private'               => 'ProjectController@createPrivate',
+    'project/store'                        => 'ProjectController@store',
+    'project/:project_id/edit'             => 'ProjectController@edit',
+    'project/:project_id/edit/description' => 'ProjectController@edit_description',
 
-$container['route']->addRoute('projects', 'ProjectController', 'index');
-$container['route']->addRoute('projects/:order/:direction/:page', 'ProjectController', 'index');
-$container['route']->addRoute('project/:project_id', 'ProjectController', 'show');
-$container['route']->addRoute('project/:project_id/settings', 'ProjectSettingsController', 'show');
-$container['route']->addRoute('p/:project_id', 'ProjectSettingsController', 'show');
-$container['route']->addRoute('project/:project_id/customer-filters', 'CustomFilterController', 'index');
-$container['route']->addRoute('project/:project_id/share', 'ProjectSettingsController', 'share');
-$container['route']->addRoute('project/:project_id/notifications', 'ProjectSettingsController', 'notifications');
-$container['route']->addRoute('project/:project_id/integrations', 'ProjectSettingsController', 'integrations');
-$container['route']->addRoute('project/:project_id/duplicate', 'ProjectSettingsController', 'duplicate');
-$container['route']->addRoute('project/:project_id/permissions', 'ProjectPermissionController', 'index');
-$container['route']->addRoute('project/:project_id/roles', 'ProjectRoleController', 'show');
-$container['route']->addRoute('project/:project_id/activity', 'ActivityController', 'project');
-$container['route']->addRoute('project/:project_id/tags', 'ProjectTagController', 'index');
+    'projects'                             => 'ProjectController@index',
+    'projects/:order/:direction/:page'     => 'ProjectController@index',
+    'project/:project_id'                  => 'ProjectController@show',
+    'project/:project_id/settings'         => 'ProjectSettingsController@show',
+    'p/:project_id'                        => 'ProjectSettingsController@show',
+    'project/:project_id/customer-filters' => 'CustomFilterController@index',
+    'project/:project_id/share'            => 'ProjectSettingsController@share',
+    'project/:project_id/notifications'    => 'ProjectSettingsController@notifications',
+    'project/:project_id/integrations'     => 'ProjectSettingsController@integrations',
+    'project/:project_id/duplicate'        => 'ProjectSettingsController@duplicate',
+    'project/:project_id/permissions'      => 'ProjectPermissionController@index',
+    'project/:project_id/roles'            => 'ProjectRoleController@show',
+    'project/:project_id/activity'         => 'ActivityController@project',
+    'project/:project_id/tags'             => 'ProjectTagController@index',
 
-// ProjectUser routes
-$container['route']->addRoute('projects/managers/:user_id', 'ProjectUserOverviewController', 'managers');
-$container['route']->addRoute('projects/members/:user_id', 'ProjectUserOverviewController', 'members');
-$container['route']->addRoute('projects/tasks_opened/:user_id', 'ProjectUserOverviewController', 'opens');
-$container['route']->addRoute('projects/tasks_closed/:user_id', 'ProjectUserOverviewController', 'closed');
-$container['route']->addRoute('projects/managers', 'ProjectUserOverviewController', 'managers');
-$container['route']->addRoute('projects/gantt', 'ProjectGanttController', 'show');
+    // ProjectUser routes
+    'projects/managers/:user_id'     => 'ProjectUserOverviewController@managers',
+    'projects/members/:user_id'      => 'ProjectUserOverviewController@members',
+    'projects/tasks_opened/:user_id' => 'ProjectUserOverviewController@opens',
+    'projects/tasks_closed/:user_id' => 'ProjectUserOverviewController@closed',
+    'projects/managers'              => 'ProjectUserOverviewController@managers',
+    'projects/gantt'                 => 'ProjectGanttController@show',
 
-// ProjectFile routes
-$container['route']->addRoute('project/:project_id/file/upload', 'ProjectFileController', 'create');
-$container['route']->addRoute('project/:project_id/file/:file_id', 'FileViewerController', 'show');
-$container['route']->addRoute('project/:project_id/browser/:file_id', 'FileViewerController', 'browser');
+    // ProjectFile routes
+    'project/:project_id/file/upload'      => 'ProjectFileController@create',
+    'project/:project_id/file/:file_id'    => 'FileViewerController@show',
+    'project/:project_id/browser/:file_id' => 'FileViewerController@browser',
 
-// Action routes
-$container['route']->addRoute('project/:project_id/actions', 'ActionController', 'index');
+    // Action routes
+    'project/:project_id/actions' => 'ActionController@index',
 
-// Column routes
-$container['route']->addRoute('project/:project_id/columns', 'ColumnController', 'index');
+    // Column routes
+    'project/:project_id/columns' => 'ColumnController@index',
 
-// Swimlane routes
-$container['route']->addRoute('project/:project_id/swimlanes', 'SwimlaneController', 'index');
+    // Swimlane routes
+    'project/:project_id/swimlanes' => 'SwimlaneController@index',
 
-// Category routes
-$container['route']->addRoute('project/:project_id/categories', 'CategoryController', 'index');
+    // Category routes
+    'project/:project_id/categories' => 'CategoryController@index',
 
-// Import routes
-$container['route']->addRoute('project/:project_id/import', 'TaskImportController', 'show');
+    // Import routes
+    'project/:project_id/import' => 'TaskImportController@show',
 
-// Task routes
-$container['route']->addRoute('project/:project_id/task/:task_id', 'TaskViewController', 'show');
-$container['route']->addRoute('t/:task_id', 'TaskViewController', 'show');
-$container['route']->addRoute('public/task/:task_id/:token', 'TaskViewController', 'readonly');
+    // Task routes
+    'project/:project_id/task/:task_id' => 'TaskViewController@show',
+    't/:task_id'                        => 'TaskViewController@show',
+    'public/task/:task_id/:token'       => 'TaskViewController@readonly',
 
-$container['route']->addRoute('task/:project_id/create', 'TaskController', 'create');
-$container['route']->addRoute('task/:project_id/:column_id/:swimlane_id/create', 'TaskController', 'create');
-$container['route']->addRoute('task/:project_id/store', 'TaskController', 'store');
-$container['route']->addRoute('project/:project_id/task/:task_id/start', 'TaskController', 'start');
-$container['route']->addRoute('project/:project_id/task/:task_id/edit', 'TaskController', 'edit');
-$container['route']->addRoute('project/:project_id/task/:task_id/update', 'TaskController', 'update');
-$container['route']->addRoute('project/:project_id/task/:task_id/remove', 'TaskSuppressionController', 'confirm');
-$container['route']->addRoute('project/:project_id/task/:task_id/close', 'TaskStatusController', 'close');
-$container['route']->addRoute('project/:project_id/task/:task_id/screenshot', 'TaskPopoverController', 'screenshot');
-$container['route']->addRoute('project/:project_id/task/:task_id/activity', 'ActivityController', 'task');
-$container['route']->addRoute('project/:project_id/task/:task_id/transitions', 'TaskViewController', 'transitions');
-$container['route']->addRoute('project/:project_id/task/:task_id/analytics', 'TaskViewController', 'analytics');
-$container['route']->addRoute('project/:project_id/task/:task_id/time-tracking', 'TaskViewController', 'timetracking');
-$container['route']->addRoute('project/:project_id/task/:task_id/subtask/create', 'SubtaskController', 'create');
-$container['route']->addRoute('project/:project_id/task/:task_id/link/create', 'TaskInternalLinkController', 'create');
-$container['route']->addRoute('project/:project_id/task/:task_id/comment/create', 'CommentController', 'create');
+    'task/:project_id/create'                          => 'TaskController@create',
+    'task/:project_id/:column_id/:swimlane_id/create'  => 'TaskController@create',
+    'task/:project_id/store'                           => 'TaskController@store',
+    'project/:project_id/task/:task_id/start'          => 'TaskController@start',
+    'project/:project_id/task/:task_id/edit'           => 'TaskController@edit',
+    'project/:project_id/task/:task_id/update'         => 'TaskController@update',
+    'project/:project_id/task/:task_id/remove'         => 'TaskSuppressionController@confirm',
+    'project/:project_id/task/:task_id/close'          => 'TaskStatusController@close',
+    'project/:project_id/task/:task_id/screenshot'     => 'TaskPopoverController@screenshot',
+    'project/:project_id/task/:task_id/activity'       => 'ActivityController@task',
+    'project/:project_id/task/:task_id/transitions'    => 'TaskViewController@transitions',
+    'project/:project_id/task/:task_id/analytics'      => 'TaskViewController@analytics',
+    'project/:project_id/task/:task_id/time-tracking'  => 'TaskViewController@timetracking',
+    'project/:project_id/task/:task_id/subtask/create' => 'SubtaskController@create',
+    'project/:project_id/task/:task_id/link/create'    => 'TaskInternalLinkController@create',
+    'project/:project_id/task/:task_id/comment/create' => 'CommentController@create',
+];
