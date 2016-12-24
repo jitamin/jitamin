@@ -25,6 +25,13 @@ use SimpleLogger\Syslog;
  */
 class LoggingProvider implements ServiceProviderInterface
 {
+    /**
+     * Registers services on the given container.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function register(Container $container)
     {
         $logger = new Logger();

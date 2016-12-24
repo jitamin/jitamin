@@ -75,6 +75,11 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
         return $this;
     }
 
+    /**
+     * Get task ids without tags.
+     *
+     * @return int[]
+     */
     protected function getTaskIdsWithoutTags()
     {
         return $this->db
@@ -85,6 +90,11 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
             ->findAllByColumn(TaskModel::TABLE.'.id');
     }
 
+    /**
+     * Get task ids with given tag.
+     *
+     * @return int[]
+     */
     protected function getTaskIdsWithGivenTag()
     {
         return $this->db

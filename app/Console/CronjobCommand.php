@@ -27,6 +27,11 @@ class CronjobCommand extends BaseCommand
         'trigger:tasks',
     ];
 
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -34,6 +39,11 @@ class CronjobCommand extends BaseCommand
             ->setDescription('Execute daily cronjob');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         foreach ($this->commands as $command) {

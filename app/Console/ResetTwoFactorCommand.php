@@ -20,6 +20,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ResetTwoFactorCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -28,6 +33,14 @@ class ResetTwoFactorCommand extends BaseCommand
             ->addArgument('username', InputArgument::REQUIRED, 'Username');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface  $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $username = $input->getArgument('username');

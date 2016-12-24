@@ -36,6 +36,9 @@ class AuthenticationMiddleware extends BaseMiddleware
         $this->next();
     }
 
+    /**
+     * Handle authentication.
+     */
     protected function handleAuthentication()
     {
         if (!$this->userSession->isLogged() && !$this->authenticationManager->preAuthentication()) {
@@ -50,6 +53,9 @@ class AuthenticationMiddleware extends BaseMiddleware
         }
     }
 
+    /**
+     * Check authentication.
+     */
     protected function isPublicAccess()
     {
         if ($this->applicationAuthorization->isAllowed($this->router->getController(), $this->router->getAction(), Role::APP_PUBLIC)) {
