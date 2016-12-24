@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-// Dashboard routes
-
 return [
+    // Dashboard routes
     'dashboard'                        => 'DashboardController@index',
     'dashboard/:user_id'               => 'DashboardController@index',
     'dashboard/:user_id/projects'      => 'DashboardController@projects',

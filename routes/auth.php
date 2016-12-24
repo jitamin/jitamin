@@ -21,5 +21,4 @@ return [
 // PasswordReset
 'forgot-password'               => 'PasswordResetController@create',
 'forgot-password/change/:token' => 'PasswordResetController@change',
-
 ];
