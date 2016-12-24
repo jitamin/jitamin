@@ -37,7 +37,7 @@ class ResetPasswordCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @param InputInterface $output
+     * @param InputInterface  $output
      * @param OutputInterface $output
      *
      * @return void
@@ -68,10 +68,10 @@ class ResetPasswordCommand extends BaseCommand
      * Validate the given password.
      *
      * @param OutputInterface $output
-     * @param string $password
-     * @param string $confirmation
+     * @param string          $password
+     * @param string          $confirmation
      *
-     * @return boolean
+     * @return bool
      */
     private function validatePassword(OutputInterface $output, $password, $confirmation)
     {
@@ -95,10 +95,10 @@ class ResetPasswordCommand extends BaseCommand
      * Reset the password.
      *
      * @param OutputInterface $output
-     * @param string $username
-     * @param string $username
+     * @param string          $username
+     * @param string          $username
      *
-     * @return boolean
+     * @return bool
      */
     private function resetPassword(OutputInterface $output, $username, $username)
     {

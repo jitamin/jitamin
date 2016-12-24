@@ -84,9 +84,9 @@ class SubtaskHelper extends Base
     /**
      * Display a select field of time estimated.
      *
-     * @param array  $values     Form values
-     * @param array  $errors     Form errors
-     * @param array  $attributes
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
      *
      * @return string
      */
@@ -104,9 +104,9 @@ class SubtaskHelper extends Base
     /**
      * Display a select field of time spent.
      *
-     * @param array  $values     Form values
-     * @param array  $errors     Form errors
-     * @param array  $attributes
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
      *
      * @return string
      */
