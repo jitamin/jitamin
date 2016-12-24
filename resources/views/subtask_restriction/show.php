@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('You already have one subtask in progress') ?></h2>
 </div>
-<form class="popover-form" action="<?= $this->url->href('SubtaskRestrictionController', 'save', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']]) ?>" method="post">
+<form class="popover-form" action="<?= $this->url->href('SubtaskRestrictionController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']]) ?>" method="post">
 
     <?= $this->form->csrf() ?>
 

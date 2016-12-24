@@ -98,7 +98,7 @@ class TaskGanttController extends BaseController
     /**
      * Save new task start date and due date.
      */
-    public function save()
+    public function set_date()
     {
         $this->getProject();
         $values = $this->request->getJson();

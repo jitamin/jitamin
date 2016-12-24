@@ -43,7 +43,7 @@ class CustomFilterController extends BaseController
     /**
      * Save a new custom filter.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
 

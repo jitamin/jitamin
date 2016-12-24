@@ -18,7 +18,7 @@
 <div
     id="file-dropzone"
     data-max-size="<?= $max_size ?>"
-    data-url="<?= $this->url->href('ProjectFileController', 'save', ['project_id' => $project['id']]) ?>">
+    data-url="<?= $this->url->href('ProjectFileController', 'store', ['project_id' => $project['id']]) ?>">
     <div id="file-dropzone-inner">
         <?= t('Drag and drop your files here') ?> <?= t('or') ?> <a href="#" id="file-browser"><?= t('choose files') ?></a>
         <p class="file-tooltip"><?= t('The maximum allowed file size is %sB.', $this->text->bytes($max_size)) ?></p>

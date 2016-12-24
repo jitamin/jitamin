@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Add new tag') ?></h2>
 </div>
-<form method="post" class="popover-form" action="<?= $this->url->href('ProjectTagController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
+<form method="post" class="popover-form" action="<?= $this->url->href('ProjectTagController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('project_id', $values) ?>
 

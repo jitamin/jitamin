@@ -42,7 +42,7 @@ class TaskMovePositionController extends BaseController
     /**
      * Save new position movement.
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
         $values = $this->request->getJson();

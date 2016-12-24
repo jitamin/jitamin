@@ -50,7 +50,7 @@ class TagController extends BaseController
     /**
      * Validate and save a new user.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         list($valid, $errors) = $this->tagValidator->validateCreation($values);

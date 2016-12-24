@@ -59,7 +59,7 @@ class ColumnController extends BaseController
     /**
      * Validate and add a new column.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

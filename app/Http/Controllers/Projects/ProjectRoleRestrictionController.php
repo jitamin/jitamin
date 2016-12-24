@@ -44,7 +44,7 @@ class ProjectRoleRestrictionController extends BaseController
     /**
      * Save new restriction.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

@@ -23,7 +23,7 @@ class BoardAjaxController extends BaseController
     /**
      * Save new task positions (Ajax request made by the drag and drop).
      */
-    public function save()
+    public function store()
     {
         $project_id = $this->request->getIntegerParam('project_id');
 

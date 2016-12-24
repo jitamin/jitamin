@@ -155,7 +155,7 @@ class SettingController extends BaseController
     /**
      * Save settings.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         $redirect = $this->request->getStringParam('redirect', 'index');

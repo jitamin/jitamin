@@ -2,7 +2,7 @@
     <h2><?= t('Webhook settings') ?></h2>
 </div>
 <section>
-<form method="post" action="<?= $this->url->href('SettingController', 'save', ['redirect' => 'webhook']) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('SettingController', 'store', ['redirect' => 'webhook']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 

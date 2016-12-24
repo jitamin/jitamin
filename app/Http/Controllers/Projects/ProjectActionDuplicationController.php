@@ -34,7 +34,7 @@ class ProjectActionDuplicationController extends BaseController
     /**
      * Validate and save a new project action duplication.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $src_project_id = $this->request->getValue('src_project_id');

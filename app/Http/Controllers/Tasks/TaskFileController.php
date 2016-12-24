@@ -50,7 +50,7 @@ class TaskFileController extends BaseController
     /**
      * File upload (save files).
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
 

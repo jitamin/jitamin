@@ -19,7 +19,7 @@
     </ul>
 </div>
 
-<form action="<?= $this->url->href('UserImportController', 'save') ?>" method="post" enctype="multipart/form-data">
+<form action="<?= $this->url->href('UserImportController', 'store') ?>" method="post" enctype="multipart/form-data">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Delimiter'), 'delimiter') ?>
