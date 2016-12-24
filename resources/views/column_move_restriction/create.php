@@ -2,7 +2,7 @@
     <div class="page-header">
         <h2><?= t('New drag and drop restriction for the role "%s"', $role['role']) ?></h2>
     </div>
-    <form class="popover-form" method="post" action="<?= $this->url->href('ColumnMoveRestrictionController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('ColumnMoveRestrictionController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
         <?= $this->form->csrf() ?>
         <?= $this->form->hidden('project_id', $values) ?>
         <?= $this->form->hidden('role_id', $values) ?>

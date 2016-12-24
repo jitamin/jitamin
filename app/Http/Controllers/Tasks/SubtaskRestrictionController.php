@@ -40,7 +40,7 @@ class SubtaskRestrictionController extends BaseController
     /**
      * Change status of the in progress subtask and the other subtask.
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
         $subtask = $this->getSubtask();

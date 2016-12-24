@@ -58,7 +58,7 @@ class ProjectTagController extends BaseController
     /**
      * Validate and save a new project tag.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

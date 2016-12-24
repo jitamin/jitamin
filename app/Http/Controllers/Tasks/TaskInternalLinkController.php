@@ -60,7 +60,7 @@ class TaskInternalLinkController extends BaseController
     /**
      * Validation and creation.
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
         $values = $this->request->getValues();

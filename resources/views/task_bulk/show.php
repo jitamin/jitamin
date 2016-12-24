@@ -2,7 +2,7 @@
     <h2><?= $this->text->e($project['name']) ?> &gt; <?= t('Create tasks in bulk') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('TaskBulkController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('TaskBulkController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('column_id', $values) ?>
     <?= $this->form->hidden('swimlane_id', $values) ?>

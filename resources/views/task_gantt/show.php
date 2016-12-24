@@ -21,7 +21,7 @@
         <div
             id="gantt-chart"
             data-records='<?= json_encode($tasks, JSON_HEX_APOS) ?>'
-            data-save-url="<?= $this->url->href('TaskGanttController', 'save', ['project_id' => $project['id']]) ?>"
+            data-set-date-url="<?= $this->url->href('TaskGanttController', 'set_date', ['project_id' => $project['id']]) ?>"
             data-label-start-date="<?= t('Start date:') ?>"
             data-label-end-date="<?= t('Due date:') ?>"
             data-label-assignee="<?= t('Assignee:') ?>"

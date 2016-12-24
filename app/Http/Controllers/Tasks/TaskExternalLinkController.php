@@ -71,7 +71,7 @@ class TaskExternalLinkController extends BaseController
     /**
      * Save link.
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
         $values = $this->request->getValues();

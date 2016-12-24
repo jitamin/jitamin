@@ -60,7 +60,7 @@ class CategoryController extends BaseController
     /**
      * Validate and save a new category.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
 

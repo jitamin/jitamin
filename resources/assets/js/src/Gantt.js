@@ -27,7 +27,7 @@ Jitamin.Gantt.prototype.saveRecord = function(record) {
 
     $.ajax({
         cache: false,
-        url: $(this.options.container).data("save-url"),
+        url: $(this.options.container).data("set-date-url"),
         contentType: "application/json",
         type: "POST",
         processData: false,

@@ -33,7 +33,7 @@ class SubtaskConverterController extends BaseController
     /**
      * Save new converter.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $subtask = $this->getSubtask();

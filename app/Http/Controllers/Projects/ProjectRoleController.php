@@ -54,7 +54,7 @@ class ProjectRoleController extends BaseController
     /**
      * Save new role.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

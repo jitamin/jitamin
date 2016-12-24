@@ -76,7 +76,7 @@ class SwimlaneController extends BaseController
     /**
      * Validate and save a new swimlane.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

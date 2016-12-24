@@ -4,7 +4,7 @@
 <?php if (empty($projects_list)): ?>
     <p class="alert"><?= t('There is no available project.') ?></p>
 <?php else: ?>
-    <form class="popover-form" method="post" action="<?= $this->url->href('ProjectActionDuplicationController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('ProjectActionDuplicationController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
         <?= $this->form->csrf() ?>
 
         <?= $this->form->label(t('Create from another project'), 'src_project_id') ?>
