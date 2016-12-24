@@ -56,7 +56,7 @@ class TaskHelper extends Base
     public function selectDescription(array $values, array $errors)
     {
         $html = $this->helper->form->label(t('Description'), 'description');
-        $html .= $this->helper->form->textEditor('description', $values, $errors, ['tabindex' => 2]);
+        $html .= $this->helper->form->textEditor('description', $values, $errors, ['tabindex' => 2, 'placeholder' => t('Please add descriptive text to help others better understand this task')]);
 
         return $html;
     }
