@@ -148,6 +148,9 @@ class AnalyticController extends BaseController
         ]));
     }
 
+    /**
+     * Get dates.
+     */
     private function getDates()
     {
         $values = $this->request->getValues();

@@ -16,6 +16,9 @@ namespace Jitamin\Controller;
  */
 class SubtaskConverterController extends BaseController
 {
+    /**
+     * Show subtask converter.
+     */
     public function show()
     {
         $task = $this->getTask();
@@ -27,6 +30,9 @@ class SubtaskConverterController extends BaseController
         ]));
     }
 
+    /**
+     * Save new converter.
+     */
     public function save()
     {
         $project = $this->getProject();

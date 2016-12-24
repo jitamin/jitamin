@@ -160,6 +160,14 @@ class CustomFilterController extends BaseController
         return $this->edit($values, $errors);
     }
 
+    /**
+     * Check permission.
+     *
+     * @param array $project
+     * @param array $filter
+     *
+     * @throws AccessForbiddenException
+     */
     private function checkPermission(array $project, array $filter)
     {
         $user_id = $this->userSession->getId();
