@@ -9,37 +9,39 @@
  * file that was distributed with this source code.
  */
 
+return [
 // Users admin
-$container['route']->addRoute('admin/users', 'UserController', 'index');
-$container['route']->addRoute('admin/users/create', 'UserController', 'create');
-$container['route']->addRoute('admin/users/create/:remote', 'UserController', 'create');
-$container['route']->addRoute('admin/users/import', 'UserImportController', 'show');
-$container['route']->addRoute('admin/users/:user_id/authentication', 'UserController', 'changeAuthentication');
+'admin/users' => 'UserController@index',
+'admin/users/create' => 'UserController@create',
+'admin/users/create/:remote' => 'UserController@create',
+'admin/users/import' => 'UserImportController@show',
+'admin/users/:user_id/authentication' => 'UserController@changeAuthentication',
 
 // Groups admin
-$container['route']->addRoute('admin/groups', 'GroupController', 'index');
-$container['route']->addRoute('admin/groups/create', 'GroupController', 'create');
-$container['route']->addRoute('admin/groups/:group_id/edit', 'GroupController', 'edit');
-$container['route']->addRoute('admin/groups/:group_id/remove', 'GroupController', 'confirm');
-$container['route']->addRoute('admin/group/:group_id/members', 'GroupController', 'users');
-$container['route']->addRoute('admin/group/:group_id/associate', 'GroupController', 'associate');
+'admin/groups' => 'GroupController@index',
+'admin/groups/create' => 'GroupController@create',
+'admin/groups/:group_id/edit' => 'GroupController@edit',
+'admin/groups/:group_id/remove' => 'GroupController@confirm',
+'admin/group/:group_id/members' => 'GroupController@users',
+'admin/group/:group_id/associate' => 'GroupController@associate',
 
 // Config admin
-$container['route']->addRoute('admin/settings', 'SettingController', 'index');
-$container['route']->addRoute('admin/settings/application', 'SettingController', 'application');
-$container['route']->addRoute('admin/settings/email', 'SettingController', 'email');
-$container['route']->addRoute('admin/settings/project', 'SettingController', 'project');
-$container['route']->addRoute('admin/settings/project', 'SettingController', 'project');
-$container['route']->addRoute('admin/settings/board', 'SettingController', 'board');
-$container['route']->addRoute('admin/settings/calendar', 'SettingController', 'calendar');
-$container['route']->addRoute('admin/settings/integrations', 'SettingController', 'integrations');
-$container['route']->addRoute('admin/settings/webhook', 'SettingController', 'webhook');
-$container['route']->addRoute('admin/settings/api', 'SettingController', 'api');
-$container['route']->addRoute('admin/settings/help', 'SettingController', 'help');
-$container['route']->addRoute('admin/settings/about', 'SettingController', 'about');
-$container['route']->addRoute('admin/settings/links', 'LinkController', 'index');
-$container['route']->addRoute('admin/settings/tags', 'TagController', 'index');
+'admin/settings' => 'SettingController@index',
+'admin/settings/application' => 'SettingController@application',
+'admin/settings/email' => 'SettingController@email',
+'admin/settings/project' => 'SettingController@project',
+'admin/settings/project' => 'SettingController@project',
+'admin/settings/board' => 'SettingController@board',
+'admin/settings/calendar' => 'SettingController@calendar',
+'admin/settings/integrations' => 'SettingController@integrations',
+'admin/settings/webhook' => 'SettingController@webhook',
+'admin/settings/api' => 'SettingController@api',
+'admin/settings/help' => 'SettingController@help',
+'admin/settings/about' => 'SettingController@about',
+'admin/settings/links' => 'LinkController@index',
+'admin/settings/tags' => 'TagController@index',
 
 // Plugins admin
-$container['route']->addRoute('admin/plugins', 'PluginController', 'show');
-$container['route']->addRoute('admin/plugins/market', 'PluginController', 'directory');
+'admin/plugins' => 'PluginController@show',
+'admin/plugins/market' => 'PluginController@directory',
+];

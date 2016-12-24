@@ -10,12 +10,15 @@
  */
 
 // Dashboard routes
-$container['route']->addRoute('dashboard', 'DashboardController', 'index');
-$container['route']->addRoute('dashboard/:user_id', 'DashboardController', 'index');
-$container['route']->addRoute('dashboard/:user_id/projects', 'DashboardController', 'projects');
-$container['route']->addRoute('dashboard/:user_id/tasks', 'DashboardController', 'tasks');
-$container['route']->addRoute('dashboard/:user_id/stars', 'DashboardController', 'stars');
-$container['route']->addRoute('dashboard/:user_id/subtasks', 'DashboardController', 'subtasks');
-$container['route']->addRoute('dashboard/:user_id/calendar', 'DashboardController', 'calendar');
-$container['route']->addRoute('dashboard/:user_id/activities', 'DashboardController', 'activities');
-$container['route']->addRoute('dashboard/:user_id/notifications', 'DashboardController', 'notifications');
+
+return [
+    'dashboard' => 'DashboardController@index',
+    'dashboard/:user_id' => 'DashboardController@index',
+    'dashboard/:user_id/projects' => 'DashboardController@projects',
+    'dashboard/:user_id/tasks' => 'DashboardController@tasks',
+    'dashboard/:user_id/stars' => 'DashboardController@stars',
+    'dashboard/:user_id/subtasks' => 'DashboardController@subtasks',
+    'dashboard/:user_id/calendar' => 'DashboardController@calendar',
+    'dashboard/:user_id/activities' => 'DashboardController@activities',
+    'dashboard/:user_id/notifications' => 'DashboardController@notifications',
+];
