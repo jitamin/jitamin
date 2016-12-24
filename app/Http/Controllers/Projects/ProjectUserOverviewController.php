@@ -88,7 +88,6 @@ class ProjectUserOverviewController extends BaseController
      * @param string $action
      * @param string $title
      * @param string $title_user
-     *
      */
     private function role($role, $action, $title, $title_user)
     {
@@ -119,11 +118,10 @@ class ProjectUserOverviewController extends BaseController
     /**
      * Display the list of taks.
      *
-     * @param boolean $is_active
+     * @param bool   $is_active
      * @param string $action
      * @param string $title
      * @param string $title_user
-     *
      */
     private function tasks($is_active, $action, $title, $title_user)
     {
