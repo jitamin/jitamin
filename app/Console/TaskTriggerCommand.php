@@ -36,7 +36,7 @@ class TaskTriggerCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @param InputInterface $output
+     * @param InputInterface  $output
      * @param OutputInterface $output
      *
      * @return void
@@ -75,7 +75,7 @@ class TaskTriggerCommand extends BaseCommand
      * Send the event.
      *
      * @param array $tasks
-     * @param int $project_id
+     * @param int   $project_id
      *
      * @return void
      */

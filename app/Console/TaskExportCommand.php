@@ -39,7 +39,7 @@ class TaskExportCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @param InputInterface $output
+     * @param InputInterface  $output
      * @param OutputInterface $output
      *
      * @return void

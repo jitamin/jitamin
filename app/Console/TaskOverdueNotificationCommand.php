@@ -41,7 +41,7 @@ class TaskOverdueNotificationCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @param InputInterface $output
+     * @param InputInterface  $output
      * @param OutputInterface $output
      *
      * @return void
@@ -65,7 +65,7 @@ class TaskOverdueNotificationCommand extends BaseCommand
      * Show table.
      *
      * @param OutputInterface $output
-     * @param array $tasks
+     * @param array           $tasks
      *
      * @return void
      */

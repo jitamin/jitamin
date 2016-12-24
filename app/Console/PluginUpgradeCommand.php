@@ -38,7 +38,7 @@ class PluginUpgradeCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @param InputInterface $output
+     * @param InputInterface  $output
      * @param OutputInterface $output
      *
      * @return void
@@ -69,7 +69,7 @@ class PluginUpgradeCommand extends BaseCommand
     /**
      * Get plugin details.
      *
-     * @param array $availablePlugins
+     * @param array      $availablePlugins
      * @param BasePlugin $installedPlugin
      *
      * @return mixed
