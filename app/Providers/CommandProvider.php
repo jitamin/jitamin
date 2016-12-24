@@ -12,8 +12,6 @@
 namespace Jitamin\Providers;
 
 use Jitamin\Console\CronjobCommand;
-use Jitamin\Console\LocaleComparatorCommand;
-use Jitamin\Console\LocaleSyncCommand;
 use Jitamin\Console\PluginInstallCommand;
 use Jitamin\Console\PluginUninstallCommand;
 use Jitamin\Console\PluginUpgradeCommand;
@@ -52,8 +50,6 @@ class CommandProvider implements ServiceProviderInterface
         $application->add(new ProjectDailyStatsCalculationCommand($container));
         $application->add(new ProjectDailyColumnStatsExportCommand($container));
         $application->add(new TransitionExportCommand($container));
-        $application->add(new LocaleSyncCommand($container));
-        $application->add(new LocaleComparatorCommand($container));
         $application->add(new TaskTriggerCommand($container));
         $application->add(new CronjobCommand($container));
         $application->add(new WorkerCommand($container));

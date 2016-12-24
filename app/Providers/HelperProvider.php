@@ -21,6 +21,13 @@ use Pimple\ServiceProviderInterface;
  */
 class HelperProvider implements ServiceProviderInterface
 {
+    /**
+     * Registers services on the given container.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function register(Container $container)
     {
         $container['helper'] = new Helper($container);

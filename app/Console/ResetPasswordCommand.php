@@ -21,6 +21,11 @@ use Symfony\Component\Console\Question\Question;
  */
 class ResetPasswordCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -29,6 +34,14 @@ class ResetPasswordCommand extends BaseCommand
             ->addArgument('username', InputArgument::REQUIRED, 'Username');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $helper = $this->getHelper('question');
@@ -51,6 +64,15 @@ class ResetPasswordCommand extends BaseCommand
         }
     }
 
+    /**
+     * Validate the given password.
+     *
+     * @param OutputInterface $output
+     * @param string $password
+     * @param string $confirmation
+     *
+     * @return boolean
+     */
     private function validatePassword(OutputInterface $output, $password, $confirmation)
     {
         list($valid, $errors) = $this->passwordResetValidator->validateModification([
@@ -69,7 +91,16 @@ class ResetPasswordCommand extends BaseCommand
         return $valid;
     }
 
-    private function resetPassword(OutputInterface $output, $username, $password)
+    /**
+     * Reset the password.
+     *
+     * @param OutputInterface $output
+     * @param string $username
+     * @param string $username
+     *
+     * @return boolean
+     */
+    private function resetPassword(OutputInterface $output, $username, $username)
     {
         $userId = $this->userModel->getIdByUsername($username);
 

@@ -68,6 +68,13 @@ class FilterProvider implements ServiceProviderInterface
         return $container;
     }
 
+    /**
+     * Create user filter.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function createUserFilter(Container $container)
     {
         $container['userQuery'] = $container->factory(function ($c) {
@@ -80,6 +87,13 @@ class FilterProvider implements ServiceProviderInterface
         return $container;
     }
 
+    /**
+     * Create project filter.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function createProjectFilter(Container $container)
     {
         $container['projectGroupRoleQuery'] = $container->factory(function ($c) {
@@ -130,6 +144,13 @@ class FilterProvider implements ServiceProviderInterface
         return $container;
     }
 
+    /**
+     * Create task filter.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function createTaskFilter(Container $container)
     {
         $container['taskQuery'] = $container->factory(function ($c) {

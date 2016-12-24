@@ -81,6 +81,15 @@ class SubtaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of time estimated.
+     *
+     * @param array  $values     Form values
+     * @param array  $errors     Form errors
+     * @param array  $attributes
+     *
+     * @return string
+     */
     public function selectTimeEstimated(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="3"'], $attributes);
@@ -92,6 +101,15 @@ class SubtaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of time spent.
+     *
+     * @param array  $values     Form values
+     * @param array  $errors     Form errors
+     * @param array  $attributes
+     *
+     * @return string
+     */
     public function selectTimeSpent(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="4"'], $attributes);

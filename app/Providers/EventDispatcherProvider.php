@@ -28,6 +28,13 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  */
 class EventDispatcherProvider implements ServiceProviderInterface
 {
+    /**
+     * Registers services on the given container.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function register(Container $container)
     {
         $container['dispatcher'] = new EventDispatcher();
