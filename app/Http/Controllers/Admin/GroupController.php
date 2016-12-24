@@ -88,7 +88,7 @@ class GroupController extends BaseController
     }
 
     /**
-     * Validate and save a group.
+     * Validate and update a group.
      */
     public function update()
     {

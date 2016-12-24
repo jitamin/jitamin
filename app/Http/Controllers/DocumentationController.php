@@ -18,6 +18,9 @@ use Parsedown;
  */
 class DocumentationController extends BaseController
 {
+    /**
+     * Show documentation content.
+     */
     public function show()
     {
         $page = $this->request->getStringParam('file', 'index');

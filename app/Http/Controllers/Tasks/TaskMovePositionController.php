@@ -20,6 +20,9 @@ use Jitamin\Model\TaskModel;
  */
 class TaskMovePositionController extends BaseController
 {
+    /**
+     * Show position movement.
+     */
     public function show()
     {
         $task = $this->getTask();
@@ -36,6 +39,9 @@ class TaskMovePositionController extends BaseController
         ]));
     }
 
+    /**
+     * Save new position movement.
+     */
     public function save()
     {
         $task = $this->getTask();

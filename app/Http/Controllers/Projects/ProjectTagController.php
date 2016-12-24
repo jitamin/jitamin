@@ -18,6 +18,9 @@ use Jitamin\Core\Controller\AccessForbiddenException;
  */
 class ProjectTagController extends BaseController
 {
+    /**
+     * List of project tags.
+     */
     public function index()
     {
         $project = $this->getProject();
@@ -29,6 +32,14 @@ class ProjectTagController extends BaseController
         ]));
     }
 
+    /**
+     * Show form to create new project tag.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws AccessForbiddenException
+     */
     public function create(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
@@ -44,6 +55,9 @@ class ProjectTagController extends BaseController
         ]));
     }
 
+    /**
+     * Validate and save a new project tag.
+     */
     public function save()
     {
         $project = $this->getProject();
@@ -63,6 +77,14 @@ class ProjectTagController extends BaseController
         }
     }
 
+    /**
+     * Show form to update a project tag.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws AccessForbiddenException
+     */
     public function edit(array $values = [], array $errors = [])
     {
         $project = $this->getProject();
@@ -81,6 +103,9 @@ class ProjectTagController extends BaseController
         ]));
     }
 
+    /**
+     * Validate and update a project tag.
+     */
     public function update()
     {
         $project = $this->getProject();
@@ -106,6 +131,9 @@ class ProjectTagController extends BaseController
         }
     }
 
+    /**
+     * Confirmation dialog to remove a project tag.
+     */
     public function confirm()
     {
         $project = $this->getProject();
@@ -118,6 +146,9 @@ class ProjectTagController extends BaseController
         ]));
     }
 
+    /**
+     * Remove a project tag.
+     */
     public function remove()
     {
         $this->checkCSRFParam();
