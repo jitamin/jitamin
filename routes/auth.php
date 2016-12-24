@@ -11,15 +11,15 @@
 
 return [
 // Auth routes
-'login' => 'AuthController@login',
+'login'  => 'AuthController@login',
 'logout' => 'AuthController@logout',
-'check' => 'AuthController@check',
+'check'  => 'AuthController@check',
 
 // Captcha routes
 'captcha' => 'CaptchaController@image',
 
 // PasswordReset
-'forgot-password' => 'PasswordResetController@create',
+'forgot-password'               => 'PasswordResetController@create',
 'forgot-password/change/:token' => 'PasswordResetController@change',
 
 ];
