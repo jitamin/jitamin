@@ -15,7 +15,7 @@ try {
     require __DIR__.'/../bootstrap/autoload.php';
     $container['router']->dispatch();
 
-    if($container['router']->getController() === 'Api') {
+    if ($container['router']->getController() === 'Api') {
         echo $container['api']->execute();
         exit;
     }

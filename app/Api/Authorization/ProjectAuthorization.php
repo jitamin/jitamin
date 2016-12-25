@@ -21,7 +21,7 @@ class ProjectAuthorization extends Base
 {
     /**
      * Determine if the current user has the right permission.
-     * 
+     *
      * @param string $class
      * @param string $method
      * @param int    $project_id
