@@ -189,7 +189,7 @@ class ProfileController extends BaseController
         $user = $this->getUser();
         $this->checkCSRFParam();
         $this->userModel->update([
-            'id' => $user['id'],
+            'id'        => $user['id'],
             'api_token' => Token::getToken(),
         ]);
         $this->response->redirect($this->helper->url->to('ProfileController', 'api', ['user_id' => $user['id']]));
@@ -203,7 +203,7 @@ class ProfileController extends BaseController
         $user = $this->getUser();
         $this->checkCSRFParam();
         $this->userModel->update([
-            'id' => $user['id'],
+            'id'        => $user['id'],
             'api_token' => null,
         ]);
         $this->response->redirect($this->helper->url->to('ProfileController', 'api', ['user_id' => $user['id']]));

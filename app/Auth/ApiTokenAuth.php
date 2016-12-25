@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of Jitamin.
+ *
+ * Copyright (C) 2016 Jitamin Team
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Jitamin\Auth;
 
 use Jitamin\Core\Base;
@@ -8,37 +17,34 @@ use Jitamin\Model\UserModel;
 use Jitamin\Services\Identity\DatabaseUserProvider;
 
 /**
- * API Token Authentication Provider
+ * API Token Authentication Provider.
  */
 class ApiTokenAuth extends Base implements PasswordAuthenticationProviderInterface
 {
     /**
-     * User properties
+     * User properties.
      *
      * @var array
      */
     protected $userInfo = [];
 
     /**
-     * Username
+     * Username.
      *
-     * @access protected
      * @var string
      */
     protected $username = '';
 
     /**
-     * Password
+     * Password.
      *
-     * @access protected
      * @var string
      */
     protected $password = '';
 
     /**
-     * Get authentication provider name
+     * Get authentication provider name.
      *
-     * @access public
      * @return string
      */
     public function getName()
@@ -47,15 +53,15 @@ class ApiTokenAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Authenticate the user
+     * Authenticate the user.
      *
-     * @access public
-     * @return boolean
+     * @return bool
      */
     public function authenticate()
     {
-        if (! isset($this->sessionStorage->scope) ||  $this->sessionStorage->scope !== 'API') {
+        if (!isset($this->sessionStorage->scope) || $this->sessionStorage->scope !== 'API') {
             $this->logger->debug(__METHOD__.': Authentication provider skipped because invalid scope');
+
             return false;
         }
 
@@ -68,8 +74,9 @@ class ApiTokenAuth extends Base implements PasswordAuthenticationProviderInterfa
             ->eq('is_active', 1)
             ->findOne();
 
-        if (! empty($user)) {
+        if (!empty($user)) {
             $this->userInfo = $user;
+
             return true;
         }
 
@@ -77,25 +84,23 @@ class ApiTokenAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Get user object
+     * Get user object.
      *
-     * @access public
      * @return \Kanboard\User\DatabaseUserProvider
      */
     public function getUser()
     {
         if (empty($this->userInfo)) {
-            return null;
+            return;
         }
 
         return new DatabaseUserProvider($this->userInfo);
     }
 
     /**
-     * Set username
+     * Set username.
      *
-     * @access public
-     * @param  string $username
+     * @param string $username
      */
     public function setUsername($username)
     {
@@ -103,10 +108,9 @@ class ApiTokenAuth extends Base implements PasswordAuthenticationProviderInterfa
     }
 
     /**
-     * Set password
+     * Set password.
      *
-     * @access public
-     * @param  string $password
+     * @param string $password
      */
     public function setPassword($password)
     {

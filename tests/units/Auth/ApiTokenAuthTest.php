@@ -46,10 +46,10 @@ class ApiTokenAuthTest extends Base
         $provider = new ApiTokenAuth($this->container);
         $userModel = new UserModel($this->container);
 
-        $userModel->update(array(
-            'id' => 1,
+        $userModel->update([
+            'id'        => 1,
             'api_token' => 'test',
-        ));
+        ]);
 
         $provider->setUsername('admin');
         $provider->setPassword('test');
@@ -63,10 +63,10 @@ class ApiTokenAuthTest extends Base
         $provider = new ApiTokenAuth($this->container);
         $userModel = new UserModel($this->container);
 
-        $userModel->update(array(
-            'id' => 1,
+        $userModel->update([
+            'id'        => 1,
             'api_token' => 'test',
-        ));
+        ]);
 
         $provider->setUsername('admin');
         $provider->setPassword('test');
