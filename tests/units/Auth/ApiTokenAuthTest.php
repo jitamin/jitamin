@@ -48,7 +48,7 @@ class ApiTokenAuthTest extends Base
 
         $userModel->update(array(
             'id' => 1,
-            'api_access_token' => 'test',
+            'api_token' => 'test',
         ));
 
         $provider->setUsername('admin');
@@ -65,7 +65,7 @@ class ApiTokenAuthTest extends Base
 
         $userModel->update(array(
             'id' => 1,
-            'api_access_token' => 'test',
+            'api_token' => 'test',
         ));
 
         $provider->setUsername('admin');
