@@ -18,6 +18,13 @@ use Jitamin\Core\Base;
  */
 class SubtaskHelper extends Base
 {
+    /**
+     * Get the title.
+     *
+     * @param array $subtask
+     *
+     * @return string
+     */
     public function getTitle(array $subtask)
     {
         if ($subtask['status'] == 0) {
@@ -57,6 +64,15 @@ class SubtaskHelper extends Base
         return $this->helper->url->link($this->getTitle($subtask), 'SubtaskStatusController', 'change', $params, false, $class);
     }
 
+    /**
+     * Display a select field of title.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectTitle(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="1"', 'required', 'maxlength="255"'], $attributes);
@@ -67,6 +83,15 @@ class SubtaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of assignee.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectAssignee(array $users, array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="2"'], $attributes);
