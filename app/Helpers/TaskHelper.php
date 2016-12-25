@@ -25,26 +25,54 @@ class TaskHelper extends Base
      */
     private $columns = [];
 
+    /**
+     * Get the color list.
+     *
+     * @return array
+     */
     public function getColors()
     {
         return $this->colorModel->getList();
     }
 
+    /**
+     * Return the list recurrence triggers.
+     *
+     * @return array
+     */
     public function recurrenceTriggers()
     {
         return $this->taskRecurrenceModel->getRecurrenceTriggerList();
     }
 
+    /**
+     * Return the list recurrence timeframes.
+     *
+     * @return array
+     */
     public function recurrenceTimeframes()
     {
         return $this->taskRecurrenceModel->getRecurrenceTimeframeList();
     }
 
+    /**
+     * Return the list options to calculate recurrence due date.
+     *
+     * @return array
+     */
     public function recurrenceBasedates()
     {
         return $this->taskRecurrenceModel->getRecurrenceBasedateList();
     }
 
+    /**
+     * Display a select field of title.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     *
+     * @return string
+     */
     public function selectTitle(array $values, array $errors)
     {
         $html = $this->helper->form->label(t('Title'), 'title');
@@ -53,6 +81,14 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of description.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     *
+     * @return string
+     */
     public function selectDescription(array $values, array $errors)
     {
         $html = $this->helper->form->label(t('Description'), 'description');
@@ -61,6 +97,14 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of tags.
+     *
+     * @param array $values    Form values
+     * @param array $targs     Form tags
+     *
+     * @return string
+     */
     public function selectTags(array $project, array $tags = [])
     {
         $options = $this->tagModel->getAssignableList($project['id']);
@@ -83,6 +127,13 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of color.
+     *
+     * @param array $values     Form values
+     *
+     * @return string
+     */
     public function selectColor(array $values)
     {
         $colors = $this->colorModel->getList();
@@ -92,6 +143,16 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of assignee.
+     *
+     * @param array $users
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectAssignee(array $users, array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="3"'], $attributes);
@@ -106,6 +167,17 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of category.
+     *
+     * @param array $categories
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     * @param boolean allow_one_item
+     *
+     * @return string
+     */
     public function selectCategory(array $categories, array $values, array $errors = [], array $attributes = [], $allow_one_item = false)
     {
         $attributes = array_merge(['tabindex="4"'], $attributes);
@@ -119,6 +191,16 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of swimlane.
+     *
+     * @param array $swimlanes
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectSwimlane(array $swimlanes, array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="5"'], $attributes);
@@ -132,6 +214,16 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of column.
+     *
+     * @param array $columns
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectColumn(array $columns, array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="6"'], $attributes);
@@ -142,6 +234,14 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of column.
+     *
+     * @param array $project
+     * @param array $values     Form values
+     *
+     * @return string
+     */
     public function selectPriority(array $project, array $values)
     {
         $html = '';
@@ -159,6 +259,15 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of score.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectScore(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="8"'], $attributes);
@@ -169,6 +278,15 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of reference.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectReference(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="9"'], $attributes);
@@ -179,6 +297,15 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of time estimated.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectTimeEstimated(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="10"'], $attributes);
@@ -190,6 +317,15 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of time spent.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectTimeSpent(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="11"'], $attributes);
@@ -201,6 +337,15 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of start date.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectStartDate(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="12"'], $attributes);
@@ -208,6 +353,15 @@ class TaskHelper extends Base
         return $this->helper->form->datetime(t('Start Date'), 'date_started', $values, $errors, $attributes);
     }
 
+    /**
+     * Display a select field of due date.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectDueDate(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="13"'], $attributes);
@@ -215,6 +369,15 @@ class TaskHelper extends Base
         return $this->helper->form->date(t('Due Date'), 'date_due', $values, $errors, $attributes);
     }
 
+    /**
+     * Display a select field of progress.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectProgress(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="14"'], $attributes);
@@ -228,6 +391,14 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Format the priority.
+     *
+     * @param array $project
+     * @param array $task
+     *
+     * @return string
+     */
     public function formatPriority(array $project, array $task)
     {
         $html = '';
@@ -241,6 +412,13 @@ class TaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Returns the task progress.
+     *
+     * @param array $task
+     *
+     * @return int
+     */
     public function getProgress($task)
     {
         if (!isset($this->columns[$task['project_id']])) {
