@@ -11,6 +11,7 @@
 
 namespace Jitamin\Providers;
 
+use Jitamin\Auth\ApiTokenAuth;
 use Jitamin\Auth\DatabaseAuth;
 use Jitamin\Auth\LdapAuth;
 use Jitamin\Auth\RememberMeAuth;
@@ -49,6 +50,8 @@ class AuthenticationProvider implements ServiceProviderInterface
         if (LDAP_AUTH) {
             $container['authenticationManager']->register(new LdapAuth($container));
         }
+
+        $container['authenticationManager']->register(new ApiTokenAuth($container));
 
         $container['projectAccessMap'] = $this->getProjectAccessMap();
         $container['applicationAccessMap'] = $this->getApplicationAccessMap();

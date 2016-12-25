@@ -9,6 +9,8 @@
  * file that was distributed with this source code.
  */
 
-require __DIR__.'/../bootstrap/autoload.php';
+return [
+// Api routes
+'api'  => 'Api@api',
 
-echo $container['api']->execute();
+];
