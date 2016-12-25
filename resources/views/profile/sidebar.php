@@ -85,6 +85,11 @@
                     <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'ProfileController', 'integrations', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
+            <?php if ($this->user->hasAccess('ProfileController', 'api')): ?>
+                <li <?= $this->app->checkMenuSelection('ProfileController', 'api') ?>>
+                    <i class="fa fa-rocket"></i><?= $this->url->link(t('API'), 'ProfileController', 'api', array('user_id' => $user['id'])) ?>
+                </li>
+            <?php endif ?>
         <?php endif ?>
 
         <?php if ($this->user->hasAccess('UserController', 'changeAuthentication')): ?>

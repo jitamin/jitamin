@@ -16,6 +16,15 @@ namespace Jitamin\Api\Authorization;
  */
 class ActionAuthorization extends ProjectAuthorization
 {
+    /**
+     * Determine if the current user has the right permission.
+     *
+     * @param string $class
+     * @param string $method
+     * @param int    $action_id
+     *
+     * @return void
+     */
     public function check($class, $method, $action_id)
     {
         if ($this->userSession->isLogged()) {
