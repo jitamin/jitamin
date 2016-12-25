@@ -68,8 +68,8 @@ class TaskHelper extends Base
     /**
      * Display a select field of title.
      *
-     * @param array $values     Form values
-     * @param array $errors     Form errors
+     * @param array $values Form values
+     * @param array $errors Form errors
      *
      * @return string
      */
@@ -84,8 +84,8 @@ class TaskHelper extends Base
     /**
      * Display a select field of description.
      *
-     * @param array $values     Form values
-     * @param array $errors     Form errors
+     * @param array $values Form values
+     * @param array $errors Form errors
      *
      * @return string
      */
@@ -100,8 +100,8 @@ class TaskHelper extends Base
     /**
      * Display a select field of tags.
      *
-     * @param array $values    Form values
-     * @param array $targs     Form tags
+     * @param array $values Form values
+     * @param array $targs  Form tags
      *
      * @return string
      */
@@ -130,7 +130,7 @@ class TaskHelper extends Base
     /**
      * Display a select field of color.
      *
-     * @param array $values     Form values
+     * @param array $values Form values
      *
      * @return string
      */
@@ -174,7 +174,7 @@ class TaskHelper extends Base
      * @param array $values     Form values
      * @param array $errors     Form errors
      * @param array $attributes
-     * @param boolean allow_one_item
+     * @param bool allow_one_item
      *
      * @return string
      */
@@ -238,7 +238,7 @@ class TaskHelper extends Base
      * Display a select field of column.
      *
      * @param array $project
-     * @param array $values     Form values
+     * @param array $values  Form values
      *
      * @return string
      */
