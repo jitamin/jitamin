@@ -32,7 +32,7 @@ class ProjectFileController extends BaseController
     /**
      * Save uploaded files.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
 

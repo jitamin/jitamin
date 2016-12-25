@@ -43,7 +43,7 @@ class CustomFilterController extends BaseController
     /**
      * Save a new custom filter.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
 
@@ -160,6 +160,14 @@ class CustomFilterController extends BaseController
         return $this->edit($values, $errors);
     }
 
+    /**
+     * Check permission.
+     *
+     * @param array $project
+     * @param array $filter
+     *
+     * @throws AccessForbiddenException
+     */
     private function checkPermission(array $project, array $filter)
     {
         $user_id = $this->userSession->getId();

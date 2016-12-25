@@ -44,7 +44,7 @@ class TaskImportController extends BaseController
     /**
      * Process CSV file.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

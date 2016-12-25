@@ -40,7 +40,7 @@ class PasswordResetController extends BaseController
     /**
      * Validate and send the email.
      */
-    public function save()
+    public function store()
     {
         $this->checkActivation();
 

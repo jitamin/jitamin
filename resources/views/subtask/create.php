@@ -2,7 +2,7 @@
     <h2><?= t('Add a sub-task') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('SubtaskController', 'save', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('SubtaskController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('task_id', $values) ?>

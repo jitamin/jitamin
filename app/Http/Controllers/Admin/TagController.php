@@ -18,6 +18,9 @@ use Jitamin\Core\Controller\AccessForbiddenException;
  */
 class TagController extends BaseController
 {
+    /**
+     * List all tags.
+     */
     public function index()
     {
         $this->response->html($this->helper->layout->setting('tag/index', [
@@ -26,6 +29,12 @@ class TagController extends BaseController
         ]));
     }
 
+    /**
+     * Display a form to create a new tag.
+     *
+     * @param array $values
+     * @param array $errors
+     */
     public function create(array $values = [], array $errors = [])
     {
         if (empty($values)) {
@@ -38,7 +47,10 @@ class TagController extends BaseController
         ]));
     }
 
-    public function save()
+    /**
+     * Validate and save a new user.
+     */
+    public function store()
     {
         $values = $this->request->getValues();
         list($valid, $errors) = $this->tagValidator->validateCreation($values);
@@ -56,6 +68,12 @@ class TagController extends BaseController
         }
     }
 
+    /**
+     * Display a form to update a tag.
+     *
+     * @param array $values
+     * @param array $errors
+     */
     public function edit(array $values = [], array $errors = [])
     {
         $tag_id = $this->request->getIntegerParam('tag_id');
@@ -72,6 +90,9 @@ class TagController extends BaseController
         ]));
     }
 
+    /**
+     * Validate and update a tag.
+     */
     public function update()
     {
         $tag_id = $this->request->getIntegerParam('tag_id');
@@ -96,6 +117,9 @@ class TagController extends BaseController
         }
     }
 
+    /**
+     * Confirmation dialog to remove a tag.
+     */
     public function confirm()
     {
         $tag_id = $this->request->getIntegerParam('tag_id');
@@ -106,6 +130,9 @@ class TagController extends BaseController
         ]));
     }
 
+    /**
+     * Remove a tag.
+     */
     public function remove()
     {
         $this->checkCSRFParam();

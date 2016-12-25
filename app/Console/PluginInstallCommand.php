@@ -23,6 +23,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class PluginInstallCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -31,6 +36,14 @@ class PluginInstallCommand extends BaseCommand
             ->addArgument('url', InputArgument::REQUIRED, 'Archive URL');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface  $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         if (!Installer::isConfigured()) {

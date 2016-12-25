@@ -38,7 +38,7 @@ class UserImportController extends BaseController
     /**
      * Submit form.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         $filename = $this->request->getFilePath('file');

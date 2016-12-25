@@ -90,7 +90,7 @@ class CalendarController extends BaseController
     /**
      * Update task due date.
      */
-    public function save()
+    public function store()
     {
         if ($this->request->isAjax() && $this->request->isPost()) {
             $values = $this->request->getJson();

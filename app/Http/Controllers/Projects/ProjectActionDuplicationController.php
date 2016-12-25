@@ -16,6 +16,9 @@ namespace Jitamin\Controller;
  */
 class ProjectActionDuplicationController extends BaseController
 {
+    /**
+     * Show project action duplication.
+     */
     public function show()
     {
         $project = $this->getProject();
@@ -28,7 +31,10 @@ class ProjectActionDuplicationController extends BaseController
         ]));
     }
 
-    public function save()
+    /**
+     * Validate and save a new project action duplication.
+     */
+    public function store()
     {
         $project = $this->getProject();
         $src_project_id = $this->request->getValue('src_project_id');

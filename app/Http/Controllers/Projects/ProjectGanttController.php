@@ -44,7 +44,7 @@ class ProjectGanttController extends BaseController
     /**
      * Save new project start date and end date.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getJson();
 

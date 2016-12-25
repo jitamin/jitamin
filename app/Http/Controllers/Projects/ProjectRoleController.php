@@ -54,7 +54,7 @@ class ProjectRoleController extends BaseController
     /**
      * Save new role.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();
@@ -158,6 +158,9 @@ class ProjectRoleController extends BaseController
         $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 
+    /**
+     * Get a project role.
+     */
     protected function getRole($project_id)
     {
         $role_id = $this->request->getIntegerParam('role_id');

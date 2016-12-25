@@ -44,7 +44,7 @@ class ColumnMoveRestrictionController extends BaseController
     /**
      * Save new column restriction.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

@@ -47,7 +47,7 @@ class TaskBulkController extends BaseController
     /**
      * Save all tasks in the database.
      */
-    public function save()
+    public function store()
     {
         $project = $this->getProject();
         $values = $this->request->getValues();

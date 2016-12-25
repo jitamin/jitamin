@@ -24,7 +24,7 @@ Jitamin.Calendar.prototype.show = function(calendar) {
         eventDrop: function(event) {
             $.ajax({
                 cache: false,
-                url: calendar.data("save-url"),
+                url: calendar.data("store-url"),
                 contentType: "application/json",
                 type: "POST",
                 processData: false,

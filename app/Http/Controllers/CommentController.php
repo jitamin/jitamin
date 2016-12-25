@@ -73,7 +73,7 @@ class CommentController extends BaseController
     /**
      * Add a comment.
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
         $values = $this->request->getValues();

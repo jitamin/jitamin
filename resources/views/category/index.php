@@ -39,7 +39,7 @@
 <div class="page-header">
     <h2><?= t('Add a new category') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('CategoryController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('CategoryController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('project_id', $values) ?>

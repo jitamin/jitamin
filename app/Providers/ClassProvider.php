@@ -167,6 +167,13 @@ class ClassProvider implements ServiceProviderInterface
         ],
     ];
 
+    /**
+     * Registers services on the given container.
+     *
+     * @param Container $container
+     *
+     * @return Container
+     */
     public function register(Container $container)
     {
         Tool::buildDIC($container, $this->classes);

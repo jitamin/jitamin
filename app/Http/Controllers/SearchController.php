@@ -18,6 +18,9 @@ use Jitamin\Filter\TaskProjectsFilter;
  */
 class SearchController extends BaseController
 {
+    /**
+     * Shows the search view.
+     */
     public function index()
     {
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
@@ -53,6 +56,9 @@ class SearchController extends BaseController
         ]));
     }
 
+    /**
+     * Shows the search view of activity.
+     */
     public function activity()
     {
         $query = urldecode($this->request->getStringParam('q'));

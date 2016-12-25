@@ -206,7 +206,7 @@ class FormHelper extends Base
             'tabindex'     => isset($attributes['tabindex']) ? $attributes['tabindex'] : '-1',
             'labelPreview' => t('Preview'),
             'labelWrite'   => t('Write'),
-            'placeholder'  => t('Write your text in Markdown'),
+            'placeholder'  => isset($attributes['placeholder']) ? $attributes['placeholder'] : t('Write your text in Markdown'),
         ];
         $html = '<div class="js-text-editor" data-params=\''.json_encode($params, JSON_HEX_APOS).'\'></div>';
         $html .= $this->errorList($errors, $name);

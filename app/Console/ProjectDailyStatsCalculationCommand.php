@@ -20,6 +20,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProjectDailyStatsCalculationCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -27,6 +32,14 @@ class ProjectDailyStatsCalculationCommand extends BaseCommand
             ->setDescription('Calculate daily statistics for all projects');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface  $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $projects = $this->projectModel->getAllByStatus(ProjectModel::ACTIVE);

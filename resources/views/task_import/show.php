@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Tasks Importation') ?></h2>
 </div>
-<form action="<?= $this->url->href('TaskImportController', 'save', ['project_id' => $project['id']]) ?>" method="post" enctype="multipart/form-data">
+<form action="<?= $this->url->href('TaskImportController', 'store', ['project_id' => $project['id']]) ?>" method="post" enctype="multipart/form-data">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Delimiter'), 'delimiter') ?>

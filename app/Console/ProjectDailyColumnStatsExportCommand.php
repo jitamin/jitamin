@@ -21,6 +21,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProjectDailyColumnStatsExportCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -31,6 +36,14 @@ class ProjectDailyColumnStatsExportCommand extends BaseCommand
             ->addArgument('end_date', InputArgument::REQUIRED, 'End date (YYYY-MM-DD)');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface  $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $data = $this->projectDailyColumnStatsModel->getAggregatedMetrics(

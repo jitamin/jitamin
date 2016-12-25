@@ -1,4 +1,4 @@
-<form method="post" action="<?= $this->url->href('CommentController', 'save', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('CommentController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('task_id', $values) ?>
     <?= $this->form->hidden('user_id', $values) ?>
