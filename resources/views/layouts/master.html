@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="robots" content="noindex,nofollow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="referrer" content="no-referrer">
+        {{ asset.colorCss|raw }}
+        {{ asset.css('assets/css/vendor.min.css')|raw }}
+        {{ asset.css('assets/css/app.min.css')|raw }}
+        {{ asset.customCss|raw }}
+
+        {{ asset.js('assets/js/bootstrap.min.js')|raw }}
+        {{ asset.js('assets/js/base.min.js')|raw }}
+        {{ asset.js('assets/js/extra.min.js')|raw }}
+        {{ asset.js('assets/js/app.min.js')|raw }}
+
+        <link rel="icon" type="image/png" href="{{ url.dir }}assets/img/favicon.ico">
+        <title>{% block title %}Jitamin{% endblock %}</title>
+    </head>
+    <body class="skin-{{ app.getSkin }}"
+          data-status-url="{{ url.href('UserAjaxController', 'status') }}"
+          data-login-url="{{ url.href('AuthController', 'login') }}"
+          data-keyboard-shortcut-url="{{ url.href('DocumentationController', 'shortcuts') }}"
+          data-timezone="{{ app.getTimezone }}"
+          data-js-lang="{{ app.jsLang }}"
+          data-js-date-format="{{ app.getJsDateFormat() }}"
+          data-js-time-format="{{ app.getJsTimeFormat() }}"
+    >
+        {% block body %}
+        {% include '_partials/header.html' %}
+        {% endblock %}
+    </body>
+</html>

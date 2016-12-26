@@ -1,4 +1,14 @@
+{% extends 'layouts/master.html' %}
+
+{% block body %}
+
+{% include '_partials/header.html' %}
+
 aaa
 ddd
 fff
 ddd
+{{app.getSkin}}
+{{url.href('UserAjaxController', 'status')}}
+
+{% endblock %}

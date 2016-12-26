@@ -40,7 +40,7 @@ define('PLUGIN_API_URL', 'https://jitamin.com/plugins.json');
 define('PLUGIN_INSTALLER', true);
 
 // Available log drivers: syslog, stderr, stdout or file
-define('LOG_DRIVER', '');
+define('LOG_DRIVER', 'file');
 
 // Available cache drivers are "file", "memory" and "memcached"
 define('CACHE_DRIVER', 'memory');

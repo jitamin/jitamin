@@ -35,6 +35,10 @@ class TwigProvider implements ServiceProviderInterface
             'auto_reload' => true,
         ]);
 
+        $container['twig']->addGlobal('app',   $container['helper']->app);
+        $container['twig']->addGlobal('url',   $container['helper']->url);
+        $container['twig']->addGlobal('asset', $container['helper']->asset);
+
         return $container;
     }
 }
