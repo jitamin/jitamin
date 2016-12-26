@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="subside">
     <ul>
         <li <?= $this->app->setActive('PluginController', 'show') ?>>
             <?= $this->url->link(t('Installed Plugins'), 'PluginController', 'show') ?>

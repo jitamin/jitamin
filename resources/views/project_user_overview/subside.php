@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-icons">
+<div class="subside subside-icons">
     <?= $this->form->select(
             'user_id',
             $users,
@@ -21,6 +21,6 @@
             <i class="fa fa-eye-slash"></i><?= $this->url->link(t('Closed tasks'), 'ProjectUserOverviewController', 'closed', $filter) ?>
         </li>
 
-        <?= $this->hook->render('template:project-user:sidebar') ?>
+        <?= $this->hook->render('template:project-user:subside') ?>
     </ul>
 </div>

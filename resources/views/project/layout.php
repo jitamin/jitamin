@@ -1,10 +1,10 @@
 <section id="main">
     <?= $this->projectHeader->render($project, 'TaskController', 'index') ?>
-    <section class="sidebar-container">
+    <section class="page-container">
 
-        <?= $this->render($sidebar_template, ['project' => $project]) ?>
+        <?= $this->render($subside_template, ['project' => $project]) ?>
 
-        <div class="sidebar-content">
+        <div class="page-content">
             <?= $content_for_sublayout ?>
         </div>
     </section>

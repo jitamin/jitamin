@@ -10,9 +10,9 @@
         </ul>
         <?php endif ?>
     </div>
-    <section class="sidebar-container" id="user-section">
-        <?= $this->render('profile/sidebar', ['user' => $user]) ?>
-        <div class="sidebar-content">
+    <section class="page-container" id="user-section">
+        <?= $this->render('profile/subside', ['user' => $user]) ?>
+        <div class="page-content">
             <?= $content_for_sublayout ?>
         </div>
     </section>

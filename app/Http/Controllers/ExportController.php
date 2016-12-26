@@ -49,7 +49,7 @@ class ExportController extends BaseController
                 'errors'  => [],
                 'project' => $project,
                 'title'   => $page_title,
-            ], 'export/sidebar'));
+            ], 'export/subside'));
         }
     }
 

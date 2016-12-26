@@ -1,7 +1,7 @@
 <?php $has_project_creation_access = $this->user->hasAccess('ProjectController', 'create'); ?>
 <?php $is_private_project_enabled = $this->app->setting('disable_private_project', 0) == 0; ?>
 <div class="navbar navbar-default" role="navigation">
-    <div class="container">
+    <div class="container2">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nb-collapse">
                 <span class="sr-only">Toggle Navigation</span>
@@ -9,12 +9,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" accesskey="h"><img src="/assets/img/logo.png" alt="{{ $app_name }}"><?= $this->app->setting('application_name') ?: 'Jitamin' ?></a>
+            <a class="navbar-brand" href="/" accesskey="h"><?= $title ?: $this->app->setting('application_name') ?></a>
         </div>
 
         <div class="collapse navbar-collapse" id="nb-collapse">
 
             <ul class="nav navbar-nav navbar-right">
+                <!--
                 <li <?= $this->app->setActive('SearchController', 'index') ?>><?= $this->url->link('<i class="fa fa-search"></i> '.t('Search'), 'SearchController', 'index') ?></li>
                 <?php if ($this->user->hasAccess('SettingController', 'index')): ?>
                 <li class="dropdown">
@@ -46,7 +47,7 @@
                         <?= $this->url->link('<i class="fa fa-bell"></i>', 'DashboardController', 'notifications', [], false, '', t('You have no unread notifications')) ?>
                     <?php endif ?>
                 </li>
-                
+                -->     
                 <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
                     <li class="dropdown">
                         <a href="#" class="dropdown-menu"><i class="fa fa-plus"></i> <i class="fa fa-caret-down"></i></a>
@@ -97,7 +98,7 @@
                     </ul>
                 </li>
             </ul>
-
         </div>
+    
     </div>
 </div>

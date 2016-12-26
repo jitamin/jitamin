@@ -1,5 +1,5 @@
-<div class="sidebar sidebar-icons">
-    <div class="sidebar-title">
+<div class="subside subside-icons">
+    <div class="subside-title">
         <h2><?= t('Profile') ?></h2>
     </div>
     <ul>
@@ -31,10 +31,10 @@
             <?php endif ?>
         <?php endif ?>
 
-        <?= $this->hook->render('template:user:sidebar:information', ['user' => $user]) ?>
+        <?= $this->hook->render('template:user:subside:information', ['user' => $user]) ?>
     </ul>
 
-    <div class="sidebar-title">
+    <div class="subside-title">
         <h2><?= t('Actions') ?></h2>
     </div>
     <ul>
@@ -98,6 +98,6 @@
             </li>
         <?php endif ?>
 
-        <?= $this->hook->render('template:user:sidebar:actions', ['user' => $user]) ?>
+        <?= $this->hook->render('template:user:subside:actions', ['user' => $user]) ?>
     </ul>
 </div>

@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-icons">
+<div class="subside subside-icons">
     <ul>
         <li <?= $this->app->setActive('ProjectSettingsController', 'show') ?>>
             <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
@@ -63,6 +63,6 @@
             <?php endif ?>
         <?php endif ?>
 
-        <?= $this->hook->render('template:project:sidebar', ['project' => $project]) ?>
+        <?= $this->hook->render('template:project:subside', ['project' => $project]) ?>
     </ul>
 </div>

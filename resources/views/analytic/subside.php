@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="subside">
     <ul>
         <li <?= $this->app->setActive('AnalyticController', 'taskDistribution') ?>>
             <?= $this->url->link(t('Task distribution'), 'AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
@@ -22,7 +22,7 @@
             <?= $this->url->link(t('Estimated vs actual time'), 'AnalyticController', 'timeComparison', ['project_id' => $project['id']]) ?>
         </li>
 
-        <?= $this->hook->render('template:analytic:sidebar', ['project' => $project]) ?>
+        <?= $this->hook->render('template:analytic:subside', ['project' => $project]) ?>
 
     </ul>
 </div>

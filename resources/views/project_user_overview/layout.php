@@ -2,11 +2,11 @@
     <div class="page-header">
         <?= $this->render('project_header/nav') ?>
     </div>
-    <section class="sidebar-container">
+    <section class="page-container">
 
-        <?= $this->render($sidebar_template, ['users' => $users, 'filter' => $filter]) ?>
+        <?= $this->render($subside_template, ['users' => $users, 'filter' => $filter]) ?>
 
-        <div class="sidebar-content">
+        <div class="page-content">
             <div class="page-header">
                 <h2><?= $this->text->e($title) ?></h2>
             </div>
