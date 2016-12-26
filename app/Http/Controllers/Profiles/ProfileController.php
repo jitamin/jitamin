@@ -12,6 +12,7 @@
 namespace Jitamin\Controller;
 
 use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Core\Security\Token;
 use Jitamin\Model\ProjectModel;
 
 /**
@@ -165,6 +166,47 @@ class ProfileController extends BaseController
             'user'   => $user,
             'values' => $this->userMetadataModel->getAll($user['id']),
         ]));
+    }
+
+    /**
+     * Display user api.
+     */
+    public function api()
+    {
+        $user = $this->getUser();
+
+        return $this->response->html($this->helper->layout->user('profile/api', [
+            'user'  => $user,
+            'title' => t('API User Access'),
+        ]));
+    }
+
+    /**
+     * Generate the api token.
+     */
+    public function generateApiToken()
+    {
+        $user = $this->getUser();
+        $this->checkCSRFParam();
+        $this->userModel->update([
+            'id'        => $user['id'],
+            'api_token' => Token::getToken(),
+        ]);
+        $this->response->redirect($this->helper->url->to('ProfileController', 'api', ['user_id' => $user['id']]));
+    }
+
+    /**
+     * Remove the api token.
+     */
+    public function removeApiToken()
+    {
+        $user = $this->getUser();
+        $this->checkCSRFParam();
+        $this->userModel->update([
+            'id'        => $user['id'],
+            'api_token' => null,
+        ]);
+        $this->response->redirect($this->helper->url->to('ProfileController', 'api', ['user_id' => $user['id']]));
     }
 
     /**

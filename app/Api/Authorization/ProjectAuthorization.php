@@ -19,6 +19,15 @@ use JsonRPC\Exception\AccessDeniedException;
  */
 class ProjectAuthorization extends Base
 {
+    /**
+     * Determine if the current user has the right permission.
+     *
+     * @param string $class
+     * @param string $method
+     * @param int    $project_id
+     *
+     * @return void
+     */
     public function check($class, $method, $project_id)
     {
         if ($this->userSession->isLogged()) {

@@ -23,6 +23,7 @@ return [
     'user/:user_id/notifications'        => 'ProfileController@notifications',
     'user/:user_id/accounts'             => 'ProfileController@external',
     'user/:user_id/integrations'         => 'ProfileController@integrations',
+    'user/:user_id/api'                  => 'ProfileController@api',
 
     'user/:user_id/2fa'                => 'TwoFactorController@index',
     'user/:user_id/avatar'             => 'AvatarFileController@show',
