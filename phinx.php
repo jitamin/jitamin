@@ -15,7 +15,7 @@
 |--------------------------------------------------------------------------
 */
 
-$db = require __DIR__.'/config/database.php';
+$db = require __DIR__.'/config/config.php';
 
 return [
     'paths' => [
