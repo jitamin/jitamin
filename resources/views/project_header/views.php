@@ -1,22 +1,22 @@
 <ul class="views">
-    <li <?= $this->app->checkMenuSelection('ProjectController') ?>>
+    <li <?= $this->app->setActive('ProjectController') ?>>
         <i class="fa fa-eye"></i>
         <?= $this->url->link(t('Overview'), 'ProjectController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-overview', t('Keyboard shortcut: "%s"', 'v o')) ?>
     </li>
-    <li <?= $this->app->checkMenuSelection('BoardController') ?>>
+    <li <?= $this->app->setActive('BoardController') ?>>
         <i class="fa fa-columns"></i>
         <?= $this->url->link(t('Board'), 'BoardController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-board', t('Keyboard shortcut: "%s"', 'v b')) ?>
     </li>
-    <li <?= $this->app->checkMenuSelection('CalendarController') ?>>
+    <li <?= $this->app->setActive('CalendarController') ?>>
         <i class="fa fa-calendar"></i>
         <?= $this->url->link(t('Calendar'), 'CalendarController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-calendar', t('Keyboard shortcut: "%s"', 'v c')) ?>
     </li>
-    <li <?= $this->app->checkMenuSelection('TaskController') ?>>
+    <li <?= $this->app->setActive('TaskController') ?>>
         <i class="fa fa-list"></i>
         <?= $this->url->link(t('List'), 'TaskController', 'index', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-listing', t('Keyboard shortcut: "%s"', 'v l')) ?>
     </li>
     <?php if ($this->user->hasProjectAccess('TaskGanttController', 'show', $project['id'])): ?>
-    <li <?= $this->app->checkMenuSelection('TaskGanttController') ?>>
+    <li <?= $this->app->setActive('TaskGanttController') ?>>
         <i class="fa fa-sliders"></i>
         <?= $this->url->link(t('Gantt'), 'TaskGanttController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-gantt', t('Keyboard shortcut: "%s"', 'v g')) ?>
     </li>

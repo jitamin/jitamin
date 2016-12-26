@@ -8,16 +8,16 @@
             'chosen-select select-auto-redirect'
         ) ?>
     <ul>
-        <li <?= $this->app->checkMenuSelection('ProjectUserOverviewController', 'managers') ?>>
+        <li <?= $this->app->setActive('ProjectUserOverviewController', 'managers') ?>>
             <i class="fa fa-user-circle"></i><?= $this->url->link(t('Project managers'), 'ProjectUserOverviewController', 'managers', $filter) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('ProjectUserOverviewController', 'members') ?>>
+        <li <?= $this->app->setActive('ProjectUserOverviewController', 'members') ?>>
             <i class="fa fa-user"></i><?= $this->url->link(t('Project members'), 'ProjectUserOverviewController', 'members', $filter) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('ProjectUserOverviewController', 'opens') ?>>
+        <li <?= $this->app->setActive('ProjectUserOverviewController', 'opens') ?>>
             <i class="fa fa-eye"></i><?= $this->url->link(t('Open tasks'), 'ProjectUserOverviewController', 'opens', $filter) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('ProjectUserOverviewController', 'closed') ?>>
+        <li <?= $this->app->setActive('ProjectUserOverviewController', 'closed') ?>>
             <i class="fa fa-eye-slash"></i><?= $this->url->link(t('Closed tasks'), 'ProjectUserOverviewController', 'closed', $filter) ?>
         </li>
 

@@ -1,24 +1,24 @@
 <div class="sidebar">
     <ul>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'taskDistribution') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'taskDistribution') ?>>
             <?= $this->url->link(t('Task distribution'), 'AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'userDistribution') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'userDistribution') ?>>
             <?= $this->url->link(t('User repartition'), 'AnalyticController', 'userDistribution', ['project_id' => $project['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'cfd') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'cfd') ?>>
             <?= $this->url->link(t('Cumulative flow diagram'), 'AnalyticController', 'cfd', ['project_id' => $project['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'burndown') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'burndown') ?>>
             <?= $this->url->link(t('Burndown chart'), 'AnalyticController', 'burndown', ['project_id' => $project['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'averageTimeByColumn') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'averageTimeByColumn') ?>>
             <?= $this->url->link(t('Average time into each column'), 'AnalyticController', 'averageTimeByColumn', ['project_id' => $project['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'leadAndCycleTime') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'leadAndCycleTime') ?>>
             <?= $this->url->link(t('Lead and cycle time'), 'AnalyticController', 'leadAndCycleTime', ['project_id' => $project['id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('AnalyticController', 'timeComparison') ?>>
+        <li <?= $this->app->setActive('AnalyticController', 'timeComparison') ?>>
             <?= $this->url->link(t('Estimated vs actual time'), 'AnalyticController', 'timeComparison', ['project_id' => $project['id']]) ?>
         </li>
 

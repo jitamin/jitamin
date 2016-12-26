@@ -3,24 +3,24 @@
         <h2><?= t('Task #%d', $task['id']) ?></h2>
     </div>
     <ul>
-        <li <?= $this->app->checkMenuSelection('TaskViewController', 'show') ?>>
+        <li <?= $this->app->setActive('TaskViewController', 'show') ?>>
             <i class="fa fa-newspaper-o fa-fw"></i>
             <?= $this->url->link(t('Summary'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('ActivityController', 'task') ?>>
+        <li <?= $this->app->setActive('ActivityController', 'task') ?>>
             <i class="fa fa-history fa-fw"></i>
             <?= $this->url->link(t('Activities'), 'ActivityController', 'task', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('TaskViewController', 'transitions') ?>>
+        <li <?= $this->app->setActive('TaskViewController', 'transitions') ?>>
             <i class="fa fa-arrows-h fa-fw"></i>
             <?= $this->url->link(t('Transitions'), 'TaskViewController', 'transitions', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>
-        <li <?= $this->app->checkMenuSelection('TaskViewController', 'analytics') ?>>
+        <li <?= $this->app->setActive('TaskViewController', 'analytics') ?>>
             <i class="fa fa-bar-chart fa-fw"></i>
             <?= $this->url->link(t('Analytics'), 'TaskViewController', 'analytics', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>
         <?php if ($task['time_estimated'] > 0 || $task['time_spent'] > 0): ?>
-        <li <?= $this->app->checkMenuSelection('TaskViewController', 'timetracking') ?>>
+        <li <?= $this->app->setActive('TaskViewController', 'timetracking') ?>>
             <i class="fa fa-clock-o fa-fw"></i>
             <?= $this->url->link(t('Time tracking'), 'TaskViewController', 'timetracking', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
         </li>

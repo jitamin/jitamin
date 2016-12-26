@@ -24,7 +24,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/index', [
-            'title'             => t('Dashboard for %s', $this->helper->user->getFullname($user)),
+            'title'             => t('Dashboard'    ),
             'paginator'         => $this->projectPagination->getDashboardPaginator($user['id'], 'index', 10),
             'user'              => $user,
         ]));
@@ -38,7 +38,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/tasks', [
-            'title'     => t('Tasks overview for %s', $this->helper->user->getFullname($user)),
+            'title'     => t('My tasks'),
             'paginator' => $this->taskPagination->getDashboardPaginator($user['id'], 'tasks', 50),
             'user'      => $user,
         ]));
@@ -52,7 +52,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/subtasks', [
-            'title'     => t('Subtasks overview for %s', $this->helper->user->getFullname($user)),
+            'title'     => t('My subtasks'),
             'paginator' => $this->subtaskPagination->getDashboardPaginator($user['id'], 'subtasks', 50),
             'user'      => $user,
         ]));
@@ -66,7 +66,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/stars', [
-            'title'             => t('Dashboard for %s', $this->helper->user->getFullname($user)),
+            'title'             => t('My stars'),
             'paginator'         => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 10),
             'user'              => $user,
         ]));
@@ -80,7 +80,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/activities', [
-            'title'  => t('Activities for %s', $this->helper->user->getFullname($user)),
+            'title'  => t('My activities'),
             'events' => $this->helper->projectActivity->getProjectsEvents($this->projectPermissionModel->getActiveProjectIds($user['id']), 100),
             'user'   => $user,
         ]));
@@ -94,7 +94,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/calendar', [
-            'title' => t('Calendar for %s', $this->helper->user->getFullname($user)),
+            'title' => t('My calendar'),
             'user'  => $user,
         ]));
     }
@@ -107,7 +107,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/notifications', [
-            'title'         => t('Notifications for %s', $this->helper->user->getFullname($user)),
+            'title'         => t('My notifications'),
             'notifications' => $this->userUnreadNotificationModel->getAll($user['id']),
             'user'          => $user,
         ]));
