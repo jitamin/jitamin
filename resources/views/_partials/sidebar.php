@@ -21,7 +21,7 @@
                 <?php if ($this->user->hasAccess('SettingController', 'index')): ?>
                 <hr/>
                 <li <?= $this->app->setActive('SettingController', 'index') ?>>
-                    <?= $this->url->link('<i class="fa fa-gears"></i><br />'.t('Settings'), 'SettingController', 'index') ?>
+                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Settings'), 'SettingController', 'index') ?>
                 </li>
                 <?php endif ?>
             </ul>
