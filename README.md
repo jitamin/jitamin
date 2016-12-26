@@ -61,20 +61,20 @@ $ composer install -o --no-dev
 三. 设置配置文件
 
 ```shell
-$ cp config/database{.default,}.php
+$ cp config/config{.default,}.php
 ```
-> 根据实际情况修改 `config/database.php`, `config/app.php`等相关配置文件。
+> 根据实际情况修改 `config/config.php` 相关配置文件。
 
 四. 安装数据库迁移和初始数据
 
 - 创建数据表
 ```shell
-php vendor/bin/phinx migrate -c phinx.php
+php vendor/bin/phinx migrate
 ```
 
 - 安装初始数据
 ```shell
-php vendor/bin/phinx seed:run -c phinx.php
+php vendor/bin/phinx seed:run
 ```
 
 五. 确保storage目录可写。
@@ -98,7 +98,7 @@ $ chmod -R 0777 storage
 
 ```shell
 $ git fetch --all
-$ git checkout {latest_tag} // 请将 latest_tag} 修改为最新的tag，比如：0.1.0
+$ git checkout {latest_tag} // 请将 {latest_tag} 修改为最新的tag，比如：0.2.0
 ```
 
 二. 更新依赖
@@ -110,7 +110,7 @@ $ composer install -o --no-dev
 三. 更新数据表
 
 ```shell
-php vendor/bin/phinx migrate -c phinx.php
+php vendor/bin/phinx migrate
 ```
 
 ## 系统演示
