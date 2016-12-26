@@ -24,8 +24,7 @@ if ($dbUrlParser->isEnvironmentVariableDefined()) {
     define('DB_NAME', $dbSettings['database']);
 }
 
-$app = require __DIR__.'/../config/app.php';
-$db = require __DIR__.'/../config/database.php';
+$config = require __DIR__.'/../config/config.php';
 
 require __DIR__.'/bootstrap.php';
 require __DIR__.'/constants.php';
