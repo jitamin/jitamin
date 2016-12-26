@@ -10,11 +10,20 @@
  */
 
 return [
-    'fetch' => PDO::FETCH_CLASS,
 
-    'default' => 'mysql',
+    // Enable/Disable debug
+    'debug' => true,
 
-    'connections' => [
+    // Available log drivers: syslog, stderr, stdout or file
+    'log_driver' => 'file',
+
+    // Available cache drivers are "file", "memory" and "memcached"
+    'cache_driver' => 'memory',
+
+    // Available db drivers are "mysql", "sqlite" and "postgres"
+    'db_driver' => 'mysql',
+
+    'db_connections' => [
         'sqlite' => [
             'driver'   => 'sqlite',
             'database' => 'jitamin',
