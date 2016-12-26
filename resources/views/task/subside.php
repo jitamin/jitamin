@@ -1,5 +1,5 @@
-<div class="sidebar sidebar-icons">
-    <div class="sidebar-title">
+<div class="subside subside-icons">
+    <div class="subside-title">
         <h2><?= t('Task #%d', $task['id']) ?></h2>
     </div>
     <ul>
@@ -26,11 +26,11 @@
         </li>
         <?php endif ?>
 
-        <?= $this->hook->render('template:task:sidebar:information', ['task' => $task]) ?>
+        <?= $this->hook->render('template:task:subside:information', ['task' => $task]) ?>
     </ul>
 
     <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
-    <div class="sidebar-title">
+    <div class="subside-title">
         <h2><?= t('Actions') ?></h2>
     </div>
     <ul>
@@ -104,7 +104,7 @@
             </li>
         <?php endif ?>
 
-        <?= $this->hook->render('template:task:sidebar:actions', ['task' => $task]) ?>
+        <?= $this->hook->render('template:task:subside:actions', ['task' => $task]) ?>
     </ul>
     <?php endif ?>
 </div>

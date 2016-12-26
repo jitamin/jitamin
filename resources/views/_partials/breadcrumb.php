@@ -1,5 +1,5 @@
 <div class="breadcrumb">
-<div class="container page">
+<div class="page">
 <a href="/"><?= t('Home') ?></a> &raquo; 
     <?php if (!empty($project) && !empty($task)): ?>
         <?= $this->url->link($this->text->e($project['name']), 'BoardController', 'show', ['project_id' => $project['id']]) ?>

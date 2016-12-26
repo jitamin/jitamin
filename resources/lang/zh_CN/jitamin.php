@@ -332,6 +332,7 @@ return [
     'Email:' => '电子邮件：',
     'Notifications:' => '通知：',
     'Notifications' => '通知',
+    'Notice' => '通知',
     'Account type:' => '账户类型：',
     'Profile' => '用户信息',
     'Edit profile' => '编辑资料',

@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-icons">
+<div class="subside subside-icons">
     <ul>
         <li <?= $this->app->setActive('DashboardController', 'index') ?>>
             <i class="fa fa-cubes"></i><?= $this->url->link(t('My projects'), 'DashboardController', 'index') ?>
@@ -15,6 +15,6 @@
         <li <?= $this->app->setActive('DashboardController', 'activities') ?>>
             <i class="fa fa-history"></i><?= $this->url->link(t('My activities'), 'DashboardController', 'activities') ?>
         </li>
-        <?= $this->hook->render('template:dashboard:sidebar', ['user' => $user]) ?>
+        <?= $this->hook->render('template:dashboard:subside', ['user' => $user]) ?>
     </ul>
 </div>

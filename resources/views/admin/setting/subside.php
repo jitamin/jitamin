@@ -1,4 +1,4 @@
-<div class="sidebar sidebar-icons">
+<div class="subside subside-icons">
     <ul>
         <li <?= $this->app->setActive('SettingController', 'index') ?>>
             <i class="fa fa-cog"></i><?= $this->url->link(t('Application settings'), 'SettingController', 'index') ?>
@@ -36,6 +36,6 @@
         <li <?= $this->app->setActive('SettingController', 'about') ?>>
             <i class="fa fa-info-circle"></i><?= $this->url->link(t('About'), 'SettingController', 'about') ?>
         </li>
-        <?= $this->hook->render('template:config:sidebar') ?>
+        <?= $this->hook->render('template:config:subside') ?>
     </ul>
 </div>

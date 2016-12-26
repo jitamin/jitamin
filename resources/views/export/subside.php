@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="subside">
     <ul>
         <li <?= $this->app->setActive('ExportController', 'tasks') ?>>
             <?= $this->url->link(t('Tasks'), 'ExportController', 'tasks', ['project_id' => $project['id']]) ?>
@@ -12,6 +12,6 @@
         <li <?= $this->app->setActive('ExportController', 'summary') ?>>
             <?= $this->url->link(t('Daily project summary'), 'ExportController', 'summary', ['project_id' => $project['id']]) ?>
         </li>
-        <?= $this->hook->render('template:export:sidebar') ?>
+        <?= $this->hook->render('template:export:subside') ?>
     </ul>
 </div>
