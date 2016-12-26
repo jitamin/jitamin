@@ -71,7 +71,7 @@
         <div class="content-panel">
         <?= $this->hook->render('template:layout:top') ?>
         <?= $this->render('_partials/header', ['title' => $title]) ?>
-        <section class="page container2">
+        <section class="page">
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>
