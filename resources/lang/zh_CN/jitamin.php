@@ -197,7 +197,7 @@ return [
     'The current password is required' => '需要输入当前密码',
     'Wrong password' => '密码错误',
     'Unknown' => '未知',
-    'Last logins' => '上次登录',
+    'Last logins' => '登录日志',
     'Login date' => '登录日期',
     'Authentication method' => '认证方式',
     'IP address' => 'IP地址',

@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><?= $title ?: $this->app->setting('application_name') ?></a>
+        <h3><?= $title ?: $this->app->setting('application_name') ?></h3>
     </div>
     <div class="collapse navbar-collapse" id="nb-collapse">
 

@@ -40,14 +40,14 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for user views.
+     * Common layout for profile views.
      *
      * @param string $template Template name
      * @param array  $params   Template parameters
      *
      * @return string
      */
-    public function user($template, array $params)
+    public function profile($template, array $params)
     {
         if (isset($params['user'])) {
             $params['title'] = '#'.$params['user']['id'].' '.($params['user']['name'] ?: $params['user']['username']);
