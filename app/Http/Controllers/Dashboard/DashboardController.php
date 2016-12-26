@@ -24,7 +24,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/index', [
-            'title'             => t('Dashboard'    ),
+            'title'             => t('Dashboard'),
             'paginator'         => $this->projectPagination->getDashboardPaginator($user['id'], 'index', 10),
             'user'              => $user,
         ]));
