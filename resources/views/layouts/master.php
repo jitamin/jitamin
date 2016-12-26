@@ -55,22 +55,17 @@
     <?php if (isset($no_layout) && $no_layout): ?>
         <?= $content_for_layout ?>
     <?php else: ?>
-        <style>
-        .sidebar-menu li a {
-            display: block;
-    margin: 14px 0;
-    text-align: center;
-    line-height: 138%;
-    white-space: nowrap;
-    font-size: 12px;
-        }
-        </style>
         <div class="wrapper">
         <?= $this->render('_partials/sidebar', [
         ]) ?>
         <div class="content-panel">
         <?= $this->hook->render('template:layout:top') ?>
-        <?= $this->render('_partials/header', ['title' => $title]) ?>
+        <?= $this->render('_partials/nav', [
+            'title' => $title,
+            'project' => isset($project) ? $project : null,
+            'task'        => isset($task) ? $task : null,
+            'description' => isset($description) ? $description : null,
+        ]) ?>
         <section class="page">
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>

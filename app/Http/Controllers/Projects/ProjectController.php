@@ -196,7 +196,7 @@ class ProjectController extends BaseController
             $this->flash->failure(t('Unable to star this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('DashboardController', 'stars', ['user_id' => $this->userSession->getId()]), true);
+        $this->response->redirect($this->helper->url->to('ProjectController', 'show', ['project_id' => $project['id']]), true);
     }
 
     /**
@@ -213,7 +213,7 @@ class ProjectController extends BaseController
             $this->flash->failure(t('Unable to unstar this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('DashboardController', 'stars', ['user_id' => $this->userSession->getId()]), true);
+        $this->response->redirect($this->helper->url->to('ProjectController', 'show', ['project_id' => $project['id']]), true);
     }
 
     /**
