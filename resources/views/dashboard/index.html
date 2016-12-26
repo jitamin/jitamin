@@ -1,14 +1,19 @@
 {% extends 'layouts/master.html' %}
 
 {% block body %}
-
-{% include '_partials/header.html' %}
-
+<section id="main">
+<section class="sidebar-container" id="dashboard">
+        <div class="sidebar sidebar-icons">
+            {% include 'dashboard/sidebar.html' %}
+        </div>
+        <div class="sidebar-content">
 aaa
 ddd
 fff
 ddd
 {{app.getSkin}}
 {{url.href('UserAjaxController', 'status')}}
-
+</div>
+    </section>
+</section>
 {% endblock %}

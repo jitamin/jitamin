@@ -29,8 +29,11 @@
           data-js-date-format="{{ app.getJsDateFormat() }}"
           data-js-time-format="{{ app.getJsTimeFormat() }}"
     >
-        {% block body %}
         {% include '_partials/header.html' %}
+        <section class="page container">
+        {% block body %}
         {% endblock %}
+        </section>
+        {% include '_partials/footer.html' %}
     </body>
 </html>

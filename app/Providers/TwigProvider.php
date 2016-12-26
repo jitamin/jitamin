@@ -38,6 +38,7 @@ class TwigProvider implements ServiceProviderInterface
         $container['twig']->addGlobal('app', $container['helper']->app);
         $container['twig']->addGlobal('url', $container['helper']->url);
         $container['twig']->addGlobal('asset', $container['helper']->asset);
+        $container['twig']->addGlobal('APP_VERSION', APP_VERSION);
 
         return $container;
     }

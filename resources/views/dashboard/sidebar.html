@@ -1,0 +1,19 @@
+<div class="sidebar sidebar-icons">
+    <ul>
+        <li {{ app.checkMenuSelection('DashboardController', 'index') }}
+            <i class="fa fa-cubes"></i>{{ url.link('My projects', 'DashboardController', 'index', [])|raw }}
+        </li>
+        <li {{ app.checkMenuSelection('DashboardController', 'tasks') }}
+            <i class="fa fa-tasks"></i>{{ url.link('My tasks', 'DashboardController', 'tasks', [])|raw }}
+        </li>
+        <li {{ app.checkMenuSelection('DashboardController', 'subtasks') }}
+            <i class="fa fa-bookmark"></i>{{ url.link('My subtasks', 'DashboardController', [])|raw }}
+        </li>
+        <li {{ app.checkMenuSelection('DashboardController', 'calendar') }}
+            <i class="fa fa-calendar"></i>{{ url.link('My calendar', 'DashboardController', [])|raw }}
+        </li>
+        <li {{ app.checkMenuSelection('DashboardController', 'activities') }}
+            <i class="fa fa-history"></i>{{ url.link('My activities', 'DashboardController', [])|raw }}
+        </li>
+    </ul>
+</div>
