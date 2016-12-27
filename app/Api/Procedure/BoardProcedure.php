@@ -19,6 +19,13 @@ use Jitamin\Formatter\BoardFormatter;
  */
 class BoardProcedure extends BaseProcedure
 {
+    /**
+     * Get a board by the project id.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getBoard($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getBoard', $project_id);

@@ -21,12 +21,26 @@ use ReflectionClass;
  */
 abstract class BaseProcedure extends Base
 {
+    /**
+     * Before method of procedure.
+     *
+     * @param string $role
+     *
+     * @return void
+     */
     public function beforeProcedure($procedure)
     {
         ProcedureAuthorization::getInstance($this->container)->check($procedure);
         UserAuthorization::getInstance($this->container)->check($this->getClassName(), $procedure);
     }
 
+    /**
+     * Format the given task.
+     *
+     * @param array $task
+     *
+     * @return array
+     */
     protected function formatTask($task)
     {
         if (!empty($task)) {
@@ -37,6 +51,13 @@ abstract class BaseProcedure extends Base
         return $task;
     }
 
+    /**
+     * Format the given tasks.
+     *
+     * @param array $tasks
+     *
+     * @return array
+     */
     protected function formatTasks($tasks)
     {
         if (!empty($tasks)) {
@@ -48,6 +69,13 @@ abstract class BaseProcedure extends Base
         return $tasks;
     }
 
+    /**
+     * Format the given project.
+     *
+     * @param array $project
+     *
+     * @return array
+     */
     protected function formatProject($project)
     {
         if (!empty($project)) {
@@ -61,6 +89,13 @@ abstract class BaseProcedure extends Base
         return $project;
     }
 
+    /**
+     * Format the given projects.
+     *
+     * @param array $projects
+     *
+     * @return array
+     */
     protected function formatProjects($projects)
     {
         if (!empty($projects)) {
@@ -72,6 +107,13 @@ abstract class BaseProcedure extends Base
         return $projects;
     }
 
+    /**
+     * Values filter.
+     *
+     * @param array $values
+     *
+     * @return array
+     */
     protected function filterValues(array $values)
     {
         foreach ($values as $key => $value) {
@@ -83,6 +125,11 @@ abstract class BaseProcedure extends Base
         return $values;
     }
 
+    /**
+     * Returns the short name of called class.
+     *
+     * @return string
+     */
     protected function getClassName()
     {
         $reflection = new ReflectionClass(get_called_class());

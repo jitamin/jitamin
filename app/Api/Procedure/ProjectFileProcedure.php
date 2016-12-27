@@ -19,6 +19,14 @@ use Jitamin\Core\ObjectStorage\ObjectStorageException;
  */
 class ProjectFileProcedure extends BaseProcedure
 {
+    /**
+     * Get a file by the id.
+     *
+     * @param int $project_id
+     * @param int $file_id
+     *
+     * @return array
+     */
     public function getProjectFile($project_id, $file_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getProjectFile', $project_id);
@@ -26,6 +34,13 @@ class ProjectFileProcedure extends BaseProcedure
         return $this->projectFileModel->getById($file_id);
     }
 
+    /**
+     * Get all tasks for a given project.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getAllProjectFiles($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getAllProjectFiles', $project_id);
@@ -33,6 +48,14 @@ class ProjectFileProcedure extends BaseProcedure
         return $this->projectFileModel->getAll($project_id);
     }
 
+    /**
+     * Download a file by the id.
+     *
+     * @param int $project_id
+     * @param int $file_id
+     *
+     * @return array
+     */
     public function downloadProjectFile($project_id, $file_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'downloadProjectFile', $project_id);
@@ -50,6 +73,15 @@ class ProjectFileProcedure extends BaseProcedure
         return '';
     }
 
+    /**
+     * Handle file upload (base64 encoded content).
+     *
+     * @param int    $project_id
+     * @param string $filename
+     * @param string $blob
+     *
+     * @return bool|int
+     */
     public function createProjectFile($project_id, $filename, $blob)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'createProjectFile', $project_id);
@@ -63,6 +95,14 @@ class ProjectFileProcedure extends BaseProcedure
         }
     }
 
+    /**
+     * Remove a file.
+     *
+     * @param int $project_id
+     * @param int $file_id
+     *
+     * @return bool
+     */
     public function removeProjectFile($project_id, $file_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeProjectFile', $project_id);
@@ -70,6 +110,13 @@ class ProjectFileProcedure extends BaseProcedure
         return $this->projectFileModel->remove($file_id);
     }
 
+    /**
+     * Remove all files.
+     *
+     * @param int $project_id
+     *
+     * @return bool
+     */
     public function removeAllProjectFiles($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeAllProjectFiles', $project_id);
