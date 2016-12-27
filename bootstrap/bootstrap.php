@@ -214,7 +214,7 @@ define('API_AUTHENTICATION_HEADER', '');
 define('ENABLE_URL_REWRITE', true);
 
 // Hide login form, useful if all your users use Google/Github/ReverseProxy authentication
-define('HIDE_LOGIN_FORM', false);
+define('HIDE_LOGIN_FORM', $config['hide_login_form']);
 
 // Disabling logout (for external SSO authentication)
 define('DISABLE_LOGOUT', false);
