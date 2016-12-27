@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'SubtaskConverterController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'SubtaskConverterController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>

@@ -8,7 +8,7 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'TaskFileController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'TaskFileController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>

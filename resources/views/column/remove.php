@@ -9,7 +9,7 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'ColumnController', 'remove', ['project_id' => $project['id'], 'column_id' => $column['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'ColumnController', 'remove', ['project_id' => $project['id'], 'column_id' => $column['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?> <?= $this->url->link(t('cancel'), 'ColumnController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </div>
