@@ -875,7 +875,7 @@ return [
     'Duplicates are not imported' => '重复信息未导入',
     'Usernames must be lowercase and unique' => '用户名必须小写且唯一',
     'Passwords will be encrypted if present' => '密码将被加密',
-    '%s attached a new file to the task %s' => '"%s" 添加了附件到任务 "%s"',
+    '%s attached a new file to the task %s' => '%s 添加了附件到任务 %s',
     'Link type' => '关联类型',
     'Assign automatically a category based on a link' => '基于链接自动关联分类',
     'BAM - Konvertible Mark' => '波斯尼亚马克',
