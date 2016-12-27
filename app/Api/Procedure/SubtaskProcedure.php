@@ -22,7 +22,7 @@ class SubtaskProcedure extends BaseProcedure
     /**
      * Get a subtask by the id.
      *
-     * @param int  $subtask_id Subtask id
+     * @param int $subtask_id Subtask id
      *
      * @return array
      */

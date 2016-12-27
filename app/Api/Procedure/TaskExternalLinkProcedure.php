@@ -61,7 +61,6 @@ class TaskExternalLinkProcedure extends BaseProcedure
         return $this->taskExternalLinkModel->getById($link_id);
     }
 
-
     /**
      * Get all links.
      *
