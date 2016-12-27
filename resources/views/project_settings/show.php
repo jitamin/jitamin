@@ -35,11 +35,11 @@
     <?php if ($stats['nb_tasks'] > 0): ?>
 
         <?php if ($stats['nb_active_tasks'] > 0): ?>
-            <li><?= $this->url->link(t('%d tasks on the board', $stats['nb_active_tasks']), 'BoardController', 'show', ['project_id' => $project['id'], 'search' => 'status:open']) ?></li>
+            <li><?= $this->url->link(t('%d tasks on the board', $stats['nb_active_tasks']), 'BoardController', 'show', ['project_id' => $project['id'], 'q' => 'status:open']) ?></li>
         <?php endif ?>
 
         <?php if ($stats['nb_inactive_tasks'] > 0): ?>
-            <li><?= $this->url->link(t('%d closed tasks', $stats['nb_inactive_tasks']), 'TaskController', 'index', ['project_id' => $project['id'], 'search' => 'status:closed']) ?></li>
+            <li><?= $this->url->link(t('%d closed tasks', $stats['nb_inactive_tasks']), 'TaskController', 'index', ['project_id' => $project['id'], 'q' => 'status:closed']) ?></li>
         <?php endif ?>
 
         <li><?= t('%d tasks in total', $stats['nb_tasks']) ?></li>
