@@ -32,7 +32,7 @@ class AppHelper extends Base
     }
 
     /**
-     * Make sidebar menu active.
+     * Set active class if request is in path.
      *
      * @param string $controller
      * @param string $action
@@ -40,7 +40,7 @@ class AppHelper extends Base
      *
      * @return string
      */
-    public function checkMenuSelection($controller, $action = '', $plugin = '')
+    public function setActive($controller, $action = '', $plugin = '')
     {
         $result = strtolower($this->getRouterController()) === strtolower($controller);
 

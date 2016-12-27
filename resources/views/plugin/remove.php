@@ -6,7 +6,7 @@
     <p class="alert alert-info"><?= t('Do you really want to remove this plugin: "%s"?', $plugin->getPluginName()) ?></p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'PluginController', 'uninstall', ['pluginId' => $plugin_id], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'PluginController', 'uninstall', ['pluginId' => $plugin_id], true, 'btn btn-danger') ?>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'PluginController', 'show', [], false, 'close-popover') ?>
     </div>

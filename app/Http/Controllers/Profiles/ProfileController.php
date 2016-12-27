@@ -49,7 +49,7 @@ class ProfileController extends BaseController
     public function show()
     {
         $user = $this->getUser();
-        $this->response->html($this->helper->layout->user('profile/show', [
+        $this->response->html($this->helper->layout->profile('profile/show', [
             'user'      => $user,
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
@@ -71,7 +71,7 @@ class ProfileController extends BaseController
             ->setQuery($this->subtaskTimeTrackingModel->getUserQuery($user['id']))
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
 
-        $this->response->html($this->helper->layout->user('profile/timesheet', [
+        $this->response->html($this->helper->layout->profile('profile/timesheet', [
             'subtask_paginator' => $subtask_paginator,
             'user'              => $user,
         ]));
@@ -83,7 +83,7 @@ class ProfileController extends BaseController
     public function passwordReset()
     {
         $user = $this->getUser();
-        $this->response->html($this->helper->layout->user('profile/password_reset', [
+        $this->response->html($this->helper->layout->profile('profile/password_reset', [
             'tokens' => $this->passwordResetModel->getAll($user['id']),
             'user'   => $user,
         ]));
@@ -95,7 +95,7 @@ class ProfileController extends BaseController
     public function lastLogin()
     {
         $user = $this->getUser();
-        $this->response->html($this->helper->layout->user('profile/last', [
+        $this->response->html($this->helper->layout->profile('profile/last', [
             'last_logins' => $this->lastLoginModel->getAll($user['id']),
             'user'        => $user,
         ]));
@@ -107,7 +107,7 @@ class ProfileController extends BaseController
     public function sessions()
     {
         $user = $this->getUser();
-        $this->response->html($this->helper->layout->user('profile/sessions', [
+        $this->response->html($this->helper->layout->profile('profile/sessions', [
             'sessions' => $this->rememberMeSessionModel->getAll($user['id']),
             'user'     => $user,
         ]));
@@ -139,7 +139,7 @@ class ProfileController extends BaseController
             return $this->response->redirect($this->helper->url->to('ProfileController', 'notifications', ['user_id' => $user['id']]));
         }
 
-        return $this->response->html($this->helper->layout->user('profile/notifications', [
+        return $this->response->html($this->helper->layout->profile('profile/notifications', [
             'projects'      => $this->projectUserRoleModel->getProjectsByUser($user['id'], [ProjectModel::ACTIVE]),
             'notifications' => $this->userNotificationModel->readSettings($user['id']),
             'types'         => $this->userNotificationTypeModel->getTypes(),
@@ -162,7 +162,7 @@ class ProfileController extends BaseController
             $this->response->redirect($this->helper->url->to('ProfileController', 'integrations', ['user_id' => $user['id']]));
         }
 
-        $this->response->html($this->helper->layout->user('profile/integrations', [
+        $this->response->html($this->helper->layout->profile('profile/integrations', [
             'user'   => $user,
             'values' => $this->userMetadataModel->getAll($user['id']),
         ]));
@@ -175,7 +175,7 @@ class ProfileController extends BaseController
     {
         $user = $this->getUser();
 
-        return $this->response->html($this->helper->layout->user('profile/api', [
+        return $this->response->html($this->helper->layout->profile('profile/api', [
             'user'  => $user,
             'title' => t('API User Access'),
         ]));
@@ -215,7 +215,7 @@ class ProfileController extends BaseController
     public function external()
     {
         $user = $this->getUser();
-        $this->response->html($this->helper->layout->user('profile/external', [
+        $this->response->html($this->helper->layout->profile('profile/external', [
             'last_logins' => $this->lastLoginModel->getAll($user['id']),
             'user'        => $user,
         ]));
@@ -241,7 +241,7 @@ class ProfileController extends BaseController
             return $this->response->redirect($this->helper->url->to('ProfileController', 'share', ['user_id' => $user['id']]));
         }
 
-        return $this->response->html($this->helper->layout->user('profile/share', [
+        return $this->response->html($this->helper->layout->profile('profile/share', [
             'user'  => $user,
             'title' => t('Public access'),
         ]));
@@ -265,7 +265,7 @@ class ProfileController extends BaseController
             unset($values['password']);
         }
 
-        return $this->response->html($this->helper->layout->user('profile/edit', [
+        return $this->response->html($this->helper->layout->profile('profile/edit', [
             'values'    => $values,
             'errors'    => $errors,
             'user'      => $user,
@@ -318,7 +318,7 @@ class ProfileController extends BaseController
     {
         $user = $this->getUser();
 
-        return $this->response->html($this->helper->layout->user('profile/change_password', [
+        return $this->response->html($this->helper->layout->profile('profile/change_password', [
             'values' => $values + ['id' => $user['id']],
             'errors' => $errors,
             'user'   => $user,

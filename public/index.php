@@ -17,10 +17,10 @@ try {
 
     if ($container['router']->getController() === 'Api') {
         echo $container['api']->execute();
-        exit;
+    } else {
+        $runner = new Runner($container);
+        $runner->execute();
     }
-    $runner = new Runner($container);
-    $runner->execute();
 } catch (Exception $e) {
     echo 'Internal Error: '.$e->getMessage();
 }

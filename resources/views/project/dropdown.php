@@ -21,7 +21,7 @@
         <?php endif ?>
 
         <li>
-            <i class="fa fa-dashboard"></i>&nbsp;
+            <i class="fa fa-history"></i>&nbsp;
             <?= $this->url->link(t('Activity'), 'ActivityController', 'project', ['project_id' => $project['id']]) ?>
         </li>
 

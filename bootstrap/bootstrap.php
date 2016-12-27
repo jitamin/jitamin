@@ -67,7 +67,8 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 // Database driver: sqlite, mysql or postgres (sqlite by default)
 define('DB_DRIVER', $config['db_driver']);
 
-// Mysql/Postgres username
+if (DB_DRIVER !== 'sqlite') {
+    // Mysql/Postgres username
 define('DB_USERNAME', $config['db_connections'][$config['db_driver']]['username']);
 
 // Mysql/Postgres password
@@ -81,6 +82,7 @@ define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
 
 // Mysql/Postgres custom port (null = default port)
 define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
+}
 
 // Mysql SSL key
 define('DB_SSL_KEY', null);
@@ -214,7 +216,7 @@ define('API_AUTHENTICATION_HEADER', '');
 define('ENABLE_URL_REWRITE', true);
 
 // Hide login form, useful if all your users use Google/Github/ReverseProxy authentication
-define('HIDE_LOGIN_FORM', false);
+define('HIDE_LOGIN_FORM', $config['hide_login_form']);
 
 // Disabling logout (for external SSO authentication)
 define('DISABLE_LOGOUT', false);

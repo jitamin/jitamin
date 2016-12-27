@@ -3,7 +3,7 @@
 
 <?php if (empty($notifications)): ?>
 </div>
-<p class="alert"><?= t('No new notifications.') ?></p>
+<p class="alert"><?= t('You have no unread notifications') ?></p>
 <?php else: ?>
     <ul class="pull-right">
         <li>

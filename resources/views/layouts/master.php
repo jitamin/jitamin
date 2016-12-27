@@ -55,21 +55,26 @@
     <?php if (isset($no_layout) && $no_layout): ?>
         <?= $content_for_layout ?>
     <?php else: ?>
+        <div class="wrapper">
+        <?= $this->render('_partials/sidebar', [
+        ]) ?>
+        <div class="content-panel">
         <?= $this->hook->render('template:layout:top') ?>
-        <?= $this->render('_partials/header') ?>
-        <?= $this->render('_partials/breadcrumb', [
-                    'project'     => isset($project) ? $project : null,
-                    'task'        => isset($task) ? $task : null,
-                    'description' => isset($description) ? $description : null,
-                    'title'       => $title,
-            ]) ?>
-        <section class="page container">
+        <?= $this->render('_partials/nav', [
+            'title' => $title,
+            'project' => isset($project) ? $project : null,
+            'task'        => isset($task) ? $task : null,
+            'description' => isset($description) ? $description : null,
+        ]) ?>
+        <section class="page">
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
         </section>
         <?= $this->render('_partials/footer', [
         ]) ?>
         <?= $this->hook->render('template:layout:bottom') ?>
+        </div>
+        </div>
     <?php endif ?>
     </body>
 </html>

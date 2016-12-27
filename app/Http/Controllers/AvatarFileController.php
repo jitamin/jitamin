@@ -26,7 +26,7 @@ class AvatarFileController extends BaseController
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->user('avatar_file/show', [
+        $this->response->html($this->helper->layout->profile('avatar_file/show', [
             'user' => $user,
         ]));
     }

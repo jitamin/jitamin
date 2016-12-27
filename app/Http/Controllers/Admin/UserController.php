@@ -115,7 +115,7 @@ class UserController extends BaseController
             unset($values['password']);
         }
 
-        return $this->response->html($this->helper->layout->user('user/authentication', [
+        return $this->response->html($this->helper->layout->profile('user/authentication', [
             'values' => $values,
             'errors' => $errors,
             'user'   => $user,

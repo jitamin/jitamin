@@ -1,51 +1,51 @@
-<div class="sidebar sidebar-icons">
+<div class="subside subside-icons">
     <ul>
-        <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'show') ?>>
+        <li <?= $this->app->setActive('ProjectSettingsController', 'show') ?>>
             <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
         </li>
 
         <?php if ($this->user->hasProjectAccess('ProjectController', 'edit', $project['id'])): ?>
-            <li <?= $this->app->checkMenuSelection('ProjectController') ?>>
+            <li <?= $this->app->setActive('ProjectController') ?>>
                 <i class="fa fa-edit"></i><?= $this->url->link(t('Edit project'), 'ProjectController', 'edit', ['project_id' => $project['id']]) ?>
             </li>
             <?php if ($project['is_private'] == 0): ?>
-            <li <?= $this->app->checkMenuSelection('ProjectPermissionController') ?>>
+            <li <?= $this->app->setActive('ProjectPermissionController') ?>>
                 <i class="fa fa-user"></i><?= $this->url->link(t('Project members'), 'ProjectPermissionController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectRoleController') ?>>
+            <li <?= $this->app->setActive('ProjectRoleController') ?>>
                 <i class="fa fa-user-plus"></i><?= $this->url->link(t('Custom roles'), 'ProjectRoleController', 'show', ['project_id' => $project['id']]) ?>
             </li>
             <?php endif ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ColumnController') ?>>
+            <li <?= $this->app->setActive('ColumnController') ?>>
                 <i class="fa fa-columns"></i><?= $this->url->link(t('Columns'), 'ColumnController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('SwimlaneController') ?>>
+            <li <?= $this->app->setActive('SwimlaneController') ?>>
                 <i class="fa fa-map-signs"></i><?= $this->url->link(t('Swimlanes'), 'SwimlaneController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('CategoryController') ?>>
+            <li <?= $this->app->setActive('CategoryController') ?>>
                 <i class="fa fa-sitemap"></i><?= $this->url->link(t('Categories'), 'CategoryController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectTagController') ?>>
+            <li <?= $this->app->setActive('ProjectTagController') ?>>
                 <i class="fa fa-tag"></i><?= $this->url->link(t('Tags'), 'ProjectTagController', 'index', ['project_id' => $project['id']]) ?>
             </li>
             <?php if ($this->user->hasProjectAccess('CustomFilterController', 'index', $project['id'])): ?>
-            <li <?= $this->app->checkMenuSelection('CustomFilterController') ?>>
+            <li <?= $this->app->setActive('CustomFilterController') ?>>
                 <i class="fa fa-filter"></i><?= $this->url->link(t('Custom filters'), 'CustomFilterController', 'index', ['project_id' => $project['id']]) ?>
             </li>
             <?php endif ?>
-            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'share') ?>>
+            <li <?= $this->app->setActive('ProjectSettingsController', 'share') ?>>
                 <i class="fa fa-external-link"></i><?= $this->url->link(t('Public access'), 'ProjectSettingsController', 'share', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'notifications') ?>>
+            <li <?= $this->app->setActive('ProjectSettingsController', 'notifications') ?>>
                 <i class="fa fa-bell"></i><?= $this->url->link(t('Notifications'), 'ProjectSettingsController', 'notifications', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'integrations') ?>>
+            <li <?= $this->app->setActive('ProjectSettingsController', 'integrations') ?>>
                 <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'ProjectSettingsController', 'integrations', ['project_id' => $project['id']]) ?>
-            <li <?= $this->app->checkMenuSelection('ActionController') ?>>
+            <li <?= $this->app->setActive('ActionController') ?>>
                 <i class="fa fa-retweet"></i><?= $this->url->link(t('Automatic actions'), 'ActionController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->checkMenuSelection('ProjectSettingsController', 'duplicate') ?>>
+            <li <?= $this->app->setActive('ProjectSettingsController', 'duplicate') ?>>
                 <i class="fa fa-clone"></i><?= $this->url->link(t('Duplicate'), 'ProjectSettingsController', 'duplicate', ['project_id' => $project['id']]) ?>
             </li>
                 <?php if ($project['is_active']): ?>
@@ -63,6 +63,6 @@
             <?php endif ?>
         <?php endif ?>
 
-        <?= $this->hook->render('template:project:sidebar', ['project' => $project]) ?>
+        <?= $this->hook->render('template:project:subside', ['project' => $project]) ?>
     </ul>
 </div>

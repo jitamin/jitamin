@@ -30,9 +30,21 @@
         <?php endif ?>
 
         <li>
-            <i class="fa fa-dashboard"></i>
+            <i class="fa fa-history"></i>
             <?= $this->url->link(t('Activity'), 'ActivityController', 'project', ['project_id' => $project['id']]) ?>
         </li>
+
+        <?php if ($this->user->isStargazer($project['id'], $this->user->getId())): ?>
+        <li>
+            <i class="fa fa-star-o"></i>
+            <?= $this->url->link(t('Unstar'), 'ProjectController', 'confirmUnstar', ['project_id' => $project['id']], true, 'popover') ?>
+        </li>
+        <?php else: ?>
+        <li>
+            <i class="fa fa-star"></i>
+            <?= $this->url->link(t('Star'), 'ProjectController', 'confirmStar', ['project_id' => $project['id']], true, 'popover') ?>
+        </li>
+        <?php endif ?>
 
         <?php if ($this->user->hasProjectAccess('CustomFilterController', 'index', $project['id'])): ?>
             <li>

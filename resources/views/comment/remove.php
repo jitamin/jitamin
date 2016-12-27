@@ -14,7 +14,7 @@
     ]) ?>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Yes'), 'CommentController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'comment_id' => $comment['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'CommentController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'comment_id' => $comment['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>

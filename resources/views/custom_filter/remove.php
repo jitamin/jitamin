@@ -9,7 +9,7 @@
         </p>
 
         <div class="form-actions">
-            <?= $this->url->link(t('Yes'), 'CustomFilterController', 'remove', ['project_id' => $project['id'], 'filter_id' => $filter['id']], true, 'btn btn-danger') ?>
+            <?= $this->url->link(t('Confirm'), 'CustomFilterController', 'remove', ['project_id' => $project['id'], 'filter_id' => $filter['id']], true, 'btn btn-danger') ?>
             <?= t('or') ?>
             <?= $this->url->link(t('cancel'), 'CustomFilterController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
         </div>

@@ -23,9 +23,9 @@ use Jitamin\Model\ProjectModel;
 class ProjectGanttController extends BaseController
 {
     /**
-     * Show Gantt chart for all projects.
+     * Display Gantt chart for all projects.
      */
-    public function show()
+    public function index()
     {
         $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
         $filter = $this->projectQuery
@@ -35,9 +35,9 @@ class ProjectGanttController extends BaseController
 
         $filter->getQuery()->asc(ProjectModel::TABLE.'.start_date');
 
-        $this->response->html($this->helper->layout->app('project_gantt/show', [
+        $this->response->html($this->helper->layout->app('project_gantt/index', [
             'projects' => $filter->format(new ProjectGanttFormatter($this->container)),
-            'title'    => t('Gantt chart for all projects'),
+            'title'    => t('Projects Gantt chart'),
         ]));
     }
 

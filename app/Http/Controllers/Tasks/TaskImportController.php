@@ -38,7 +38,7 @@ class TaskImportController extends BaseController
             'delimiters' => Csv::getDelimiters(),
             'enclosures' => Csv::getEnclosures(),
             'title'      => t('Import tasks from CSV file'),
-        ], 'task_import/sidebar'));
+        ], 'task_import/subside'));
     }
 
     /**
