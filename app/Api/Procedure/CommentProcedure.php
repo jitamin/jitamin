@@ -36,7 +36,7 @@ class CommentProcedure extends BaseProcedure
     /**
      * Get all comments for a given task.
      *
-     * @param int    $task_id Task id
+     * @param int $task_id Task id
      *
      * @return array
      */

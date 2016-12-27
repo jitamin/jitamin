@@ -50,10 +50,10 @@ class ColumnProcedure extends BaseProcedure
     /**
      * Update a column.
      *
-     * @param int    $column_id         Column id
-     * @param string $title             Column title
-     * @param int    $task_limit        Task limit
-     * @param string $description       Optional description
+     * @param int    $column_id   Column id
+     * @param string $title       Column title
+     * @param int    $task_limit  Task limit
+     * @param string $description Optional description
      *
      * @return bool
      */
@@ -67,10 +67,10 @@ class ColumnProcedure extends BaseProcedure
     /**
      * Add a new column to the board.
      *
-     * @param int    $project_id        Project id
-     * @param string $title             Column title
-     * @param int    $task_limit        Task limit
-     * @param string $description       Column description
+     * @param int    $project_id  Project id
+     * @param string $title       Column title
+     * @param int    $task_limit  Task limit
+     * @param string $description Column description
      *
      * @return bool|int
      */
