@@ -20,6 +20,9 @@
                 </li>
                 <?php if ($this->user->hasAccess('SettingController', 'index')): ?>
                 <hr/>
+                <li <?= $this->app->setActive('ProjectController', 'index') ?>>
+                    <?= $this->url->link('<i class="fa fa-cubes"></i><br />'.t('Projects'), 'ProjectController', 'index') ?>
+                </li>
                 <li <?= $this->app->setActive('SettingController', 'index') ?>>
                     <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Settings'), 'SettingController', 'index') ?>
                 </li>
