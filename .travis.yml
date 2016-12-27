@@ -19,6 +19,7 @@ before_script:
   - phpenv config-add tests/php.ini
   - cp config/config{.default,}.php
   - composer install
+  - php vendor/bin/phpdoccheck --directory=app/
 
 script:
   - phpunit -c tests/units.$DB.xml

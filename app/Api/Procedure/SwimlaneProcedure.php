@@ -18,6 +18,13 @@ use Jitamin\Api\Authorization\ProjectAuthorization;
  */
 class SwimlaneProcedure extends BaseProcedure
 {
+    /**
+     * Get active swimlanes.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getActiveSwimlanes($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getActiveSwimlanes', $project_id);
@@ -25,6 +32,13 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->getSwimlanes($project_id);
     }
 
+    /**
+     * Get all swimlanes for a given project.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getAllSwimlanes($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getAllSwimlanes', $project_id);
@@ -32,6 +46,13 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->getAll($project_id);
     }
 
+    /**
+     * Get a swimlane by the id.
+     *
+     * @param int $swimlane_id Swimlane id
+     *
+     * @return array
+     */
     public function getSwimlaneById($swimlane_id)
     {
         $swimlane = $this->swimlaneModel->getById($swimlane_id);
@@ -40,6 +61,14 @@ class SwimlaneProcedure extends BaseProcedure
         return $swimlane;
     }
 
+    /**
+     * Get a swimlane by the project and the name.
+     *
+     * @param int    $project_id Project id
+     * @param string $name       Swimlane name
+     *
+     * @return array
+     */
     public function getSwimlaneByName($project_id, $name)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getSwimlaneByName', $project_id);
@@ -47,11 +76,25 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->getByName($project_id, $name);
     }
 
+    /**
+     * Get a swimlane by the id.
+     *
+     * @param int $swimlane_id Swimlane id
+     *
+     * @return array
+     */
     public function getSwimlane($swimlane_id)
     {
         return $this->swimlaneModel->getById($swimlane_id);
     }
 
+    /**
+     * Get default swimlane properties.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getDefaultSwimlane($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getDefaultSwimlane', $project_id);
@@ -59,6 +102,15 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->getDefault($project_id);
     }
 
+    /**
+     * Add a new swimlane.
+     *
+     * @param int    $project_id
+     * @param string $name
+     * @param string $description
+     *
+     * @return int|bool
+     */
     public function addSwimlane($project_id, $name, $description = '')
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'addSwimlane', $project_id);
@@ -66,6 +118,15 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->create(['project_id' => $project_id, 'name' => $name, 'description' => $description]);
     }
 
+    /**
+     * Update a swimlane.
+     *
+     * @param int    $swimlane_id
+     * @param string $name
+     * @param string $description
+     *
+     * @return bool
+     */
     public function updateSwimlane($swimlane_id, $name, $description = null)
     {
         $values = ['id' => $swimlane_id, 'name' => $name];
@@ -77,6 +138,14 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->update($values);
     }
 
+    /**
+     * Remove a swimlane.
+     *
+     * @param int $project_id  Project id
+     * @param int $swimlane_id Swimlane id
+     *
+     * @return bool
+     */
     public function removeSwimlane($project_id, $swimlane_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeSwimlane', $project_id);
@@ -84,6 +153,14 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->remove($project_id, $swimlane_id);
     }
 
+    /**
+     * Disable a swimlane.
+     *
+     * @param int $project_id  Project id
+     * @param int $swimlane_id Swimlane id
+     *
+     * @return bool
+     */
     public function disableSwimlane($project_id, $swimlane_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'disableSwimlane', $project_id);
@@ -91,6 +168,14 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->disable($project_id, $swimlane_id);
     }
 
+    /**
+     * Enable a swimlane.
+     *
+     * @param int $project_id  Project id
+     * @param int $swimlane_id Swimlane id
+     *
+     * @return bool
+     */
     public function enableSwimlane($project_id, $swimlane_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'enableSwimlane', $project_id);
@@ -98,6 +183,15 @@ class SwimlaneProcedure extends BaseProcedure
         return $this->swimlaneModel->enable($project_id, $swimlane_id);
     }
 
+    /**
+     * Change swimlane position.
+     *
+     * @param int $project_id
+     * @param int $swimlane_id
+     * @param int $position
+     *
+     * @return bool
+     */
     public function changeSwimlanePosition($project_id, $swimlane_id, $position)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'changeSwimlanePosition', $project_id);

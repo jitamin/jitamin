@@ -21,6 +21,13 @@ use Jitamin\Core\ObjectStorage\ObjectStorageException;
  */
 class TaskFileProcedure extends BaseProcedure
 {
+    /**
+     * Get a file by the id.
+     *
+     * @param int $file_id File id
+     *
+     * @return array
+     */
     public function getTaskFile($file_id)
     {
         TaskFileAuthorization::getInstance($this->container)->check($this->getClassName(), 'getTaskFile', $file_id);
@@ -28,6 +35,13 @@ class TaskFileProcedure extends BaseProcedure
         return $this->taskFileModel->getById($file_id);
     }
 
+    /**
+     * Get all files for a given task.
+     *
+     * @param int $task_id
+     *
+     * @return array
+     */
     public function getAllTaskFiles($task_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getAllTaskFiles', $task_id);
@@ -35,6 +49,13 @@ class TaskFileProcedure extends BaseProcedure
         return $this->taskFileModel->getAll($task_id);
     }
 
+    /**
+     * Download a file by the id.
+     *
+     * @param int $file_id File id
+     *
+     * @return string
+     */
     public function downloadTaskFile($file_id)
     {
         TaskFileAuthorization::getInstance($this->container)->check($this->getClassName(), 'downloadTaskFile', $file_id);
@@ -52,6 +73,16 @@ class TaskFileProcedure extends BaseProcedure
         return '';
     }
 
+    /**
+     * Handle file upload (base64 encoded content).
+     *
+     * @param int    $project_id
+     * @param int    $task_id
+     * @param string $filename
+     * @param string $blob
+     *
+     * @return bool|int
+     */
     public function createTaskFile($project_id, $task_id, $filename, $blob)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'createTaskFile', $project_id);
@@ -65,6 +96,13 @@ class TaskFileProcedure extends BaseProcedure
         }
     }
 
+    /**
+     * Remove a file.
+     *
+     * @param int $file_id File id
+     *
+     * @return bool
+     */
     public function removeTaskFile($file_id)
     {
         TaskFileAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeTaskFile', $file_id);
@@ -72,6 +110,13 @@ class TaskFileProcedure extends BaseProcedure
         return $this->taskFileModel->remove($file_id);
     }
 
+    /**
+     * Remove all files for a given task.
+     *
+     * @param int $task_id
+     *
+     * @return bool
+     */
     public function removeAllTaskFiles($task_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeAllTaskFiles', $task_id);

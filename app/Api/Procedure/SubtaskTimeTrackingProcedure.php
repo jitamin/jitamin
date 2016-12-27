@@ -18,6 +18,14 @@ use Jitamin\Api\Authorization\SubtaskAuthorization;
  */
 class SubtaskTimeTrackingProcedure extends BaseProcedure
 {
+    /**
+     * Return true if a timer is started for this use and subtask.
+     *
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return bool
+     */
     public function hasSubtaskTimer($subtask_id, $user_id)
     {
         SubtaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'hasSubtaskTimer', $subtask_id);
@@ -25,6 +33,14 @@ class SubtaskTimeTrackingProcedure extends BaseProcedure
         return $this->subtaskTimeTrackingModel->hasTimer($subtask_id, $user_id);
     }
 
+    /**
+     * Log start time.
+     *
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return bool
+     */
     public function setSubtaskStartTime($subtask_id, $user_id)
     {
         SubtaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'setSubtaskStartTime', $subtask_id);
@@ -32,6 +48,14 @@ class SubtaskTimeTrackingProcedure extends BaseProcedure
         return $this->subtaskTimeTrackingModel->logStartTime($subtask_id, $user_id);
     }
 
+    /**
+     * Log end time.
+     *
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return bool
+     */
     public function setSubtaskEndTime($subtask_id, $user_id)
     {
         SubtaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'setSubtaskEndTime', $subtask_id);
@@ -39,6 +63,14 @@ class SubtaskTimeTrackingProcedure extends BaseProcedure
         return $this->subtaskTimeTrackingModel->logEndTime($subtask_id, $user_id);
     }
 
+    /**
+     * Calculate the time spent when the clock is stopped.
+     *
+     * @param int $subtask_id
+     * @param int $user_id
+     *
+     * @return float
+     */
     public function getSubtaskTimeSpent($subtask_id, $user_id)
     {
         SubtaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getSubtaskTimeSpent', $subtask_id);
