@@ -67,6 +67,7 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 // Database driver: sqlite, mysql or postgres (sqlite by default)
 define('DB_DRIVER', $config['db_driver']);
 
+if(DB_DRIVER !== 'sqlite') {
 // Mysql/Postgres username
 define('DB_USERNAME', $config['db_connections'][$config['db_driver']]['username']);
 
@@ -81,6 +82,7 @@ define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
 
 // Mysql/Postgres custom port (null = default port)
 define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
+}
 
 // Mysql SSL key
 define('DB_SSL_KEY', null);
