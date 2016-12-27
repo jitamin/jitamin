@@ -19,6 +19,14 @@ use JsonRPC\Exception\AccessDeniedException;
  */
 class UserAuthorization extends Base
 {
+    /**
+     * Determine if the current user has permissions.
+     *
+     * @param string $class
+     * @param string $method
+     *
+     * @throws \JsonRPC\Exception\AccessDeniedException
+     */
     public function check($class, $method)
     {
         if ($this->userSession->isLogged() && !$this->apiAuthorization->isAllowed($class, $method, $this->userSession->getRole())) {

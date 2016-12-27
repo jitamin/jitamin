@@ -19,21 +19,45 @@ use Jitamin\Api\Authorization\ProjectAuthorization;
  */
 class ActionProcedure extends BaseProcedure
 {
+    /**
+     * Get available automatic actions.
+     *
+     * @return array
+     */
     public function getAvailableActions()
     {
         return $this->actionManager->getAvailableActions();
     }
 
+    /**
+     * Get the list of events and description that can be used from the user interface.
+     *
+     * @return array
+     */
     public function getAvailableActionEvents()
     {
         return $this->eventManager->getAll();
     }
 
+    /**
+     * Get list of compatible events for a given action.
+     *
+     * @param string $name
+     *
+     * @return array
+     */
     public function getCompatibleActionEvents($action_name)
     {
         return $this->actionManager->getCompatibleEvents($action_name);
     }
 
+    /**
+     * Remove an action.
+     *
+     * @param int $action_id
+     *
+     * @return bool
+     */
     public function removeAction($action_id)
     {
         ActionAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeAction', $action_id);
@@ -41,6 +65,13 @@ class ActionProcedure extends BaseProcedure
         return $this->actionModel->remove($action_id);
     }
 
+    /**
+     * Return actions and parameters for a given project.
+     *
+     * @param int $project_id
+     *
+     * @return array
+     */
     public function getActions($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getActions', $project_id);
@@ -48,6 +79,16 @@ class ActionProcedure extends BaseProcedure
         return $this->actionModel->getAllByProject($project_id);
     }
 
+    /**
+     * Create an action.
+     *
+     * @param int    $project_id
+     * @param string $event_name
+     * @param string $action_name
+     * @param array  $params
+     *
+     * @return bool|int
+     */
     public function createAction($project_id, $event_name, $action_name, array $params)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'createAction', $project_id);

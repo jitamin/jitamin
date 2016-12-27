@@ -16,6 +16,15 @@ namespace Jitamin\Api\Authorization;
  */
 class ColumnAuthorization extends ProjectAuthorization
 {
+    /**
+     * Determine if the current user has permissions.
+     *
+     * @param string $class
+     * @param string $method
+     * @param int    $column_id
+     *
+     * @throws \JsonRPC\Exception\AccessDeniedException
+     */
     public function check($class, $method, $column_id)
     {
         if ($this->userSession->isLogged()) {

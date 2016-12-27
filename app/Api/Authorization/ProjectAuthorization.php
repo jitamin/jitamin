@@ -20,13 +20,13 @@ use JsonRPC\Exception\AccessDeniedException;
 class ProjectAuthorization extends Base
 {
     /**
-     * Determine if the current user has the right permission.
+     * Determine if the current user has permissions.
      *
      * @param string $class
      * @param string $method
      * @param int    $project_id
      *
-     * @return void
+     * @throws \JsonRPC\Exception\AccessDeniedException
      */
     public function check($class, $method, $project_id)
     {
@@ -35,6 +35,15 @@ class ProjectAuthorization extends Base
         }
     }
 
+    /**
+     * Check project permmision.
+     *
+     * @param string $class
+     * @param string $method
+     * @param int    $project_id
+     *
+     * @throws \JsonRPC\Exception\AccessDeniedException
+     */
     protected function checkProjectPermission($class, $method, $project_id)
     {
         if (empty($project_id)) {
