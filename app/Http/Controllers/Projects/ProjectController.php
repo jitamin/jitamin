@@ -39,7 +39,7 @@ class ProjectController extends BaseController
         $this->response->html($this->helper->layout->app('project/index', [
             'paginator'   => $paginator,
             'nb_projects' => $nb_projects,
-            'title'       => t('Projects').' ('.$nb_projects.')',
+            'title'       => t('Projects list'),
         ]));
     }
 

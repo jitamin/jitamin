@@ -73,10 +73,6 @@
                         <?= $this->url->link(t('Edit profile'), 'ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
                     </li>
                     <li>
-                        <i class="fa fa-cubes"></i>
-                        <?= $this->url->link(t('My projects'), 'DashboardController', 'index', ['user_id' => $this->user->getId()]) ?>
-                    </li>
-                    <li>
                         <i class="fa fa-life-ring"></i>
                         <?= $this->url->link(t('Documentation'), 'DocumentationController', 'show') ?>
                     </li>

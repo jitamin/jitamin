@@ -29,7 +29,7 @@ return [
     'project/:project_id/duplicate'        => 'ProjectSettingsController@duplicate',
     'project/:project_id/permissions'      => 'ProjectPermissionController@index',
     'project/:project_id/roles'            => 'ProjectRoleController@show',
-    'project/:project_id/activity'         => 'ActivityController@project',
+    'project/:project_id/activities'       => 'ActivityController@project',
     'project/:project_id/tags'             => 'ProjectTagController@index',
 
     // ProjectUser routes
@@ -38,7 +38,7 @@ return [
     'projects/tasks_opened/:user_id' => 'ProjectUserOverviewController@opens',
     'projects/tasks_closed/:user_id' => 'ProjectUserOverviewController@closed',
     'projects/managers'              => 'ProjectUserOverviewController@managers',
-    'projects/gantt'                 => 'ProjectGanttController@show',
+    'projects/gantt'                 => 'ProjectGanttController@index',
 
     // ProjectFile routes
     'project/:project_id/file/upload'      => 'ProjectFileController@create',
@@ -74,7 +74,7 @@ return [
     'project/:project_id/task/:task_id/remove'         => 'TaskSuppressionController@confirm',
     'project/:project_id/task/:task_id/close'          => 'TaskStatusController@close',
     'project/:project_id/task/:task_id/screenshot'     => 'TaskPopoverController@screenshot',
-    'project/:project_id/task/:task_id/activity'       => 'ActivityController@task',
+    'project/:project_id/task/:task_id/activities'     => 'ActivityController@task',
     'project/:project_id/task/:task_id/transitions'    => 'TaskViewController@transitions',
     'project/:project_id/task/:task_id/analytics'      => 'TaskViewController@analytics',
     'project/:project_id/task/:task_id/time-tracking'  => 'TaskViewController@timetracking',

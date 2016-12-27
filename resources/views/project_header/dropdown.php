@@ -30,7 +30,7 @@
         <?php endif ?>
 
         <li>
-            <i class="fa fa-dashboard"></i>
+            <i class="fa fa-history"></i>
             <?= $this->url->link(t('Activity'), 'ActivityController', 'project', ['project_id' => $project['id']]) ?>
         </li>
 
