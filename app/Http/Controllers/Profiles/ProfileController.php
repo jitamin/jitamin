@@ -270,6 +270,7 @@ class ProfileController extends BaseController
             'errors'    => $errors,
             'user'      => $user,
             'skins'     => $this->skinModel->getSkins(true),
+            'layouts'   => $this->skinModel->getLayouts(true),
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
             'roles'     => $this->role->getApplicationRoles(),

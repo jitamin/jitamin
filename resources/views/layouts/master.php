@@ -42,7 +42,7 @@
 
         <?= $this->hook->render('template:layout:head') ?>
     </head>
-    <body class="skin-<?= $this->app->getSkin() ?>"
+    <body class="skin-<?= $this->app->getSkin() ?> <?= $this->app->getLayout() ?>"
           data-status-url="<?= $this->url->href('UserAjaxController', 'status') ?>"
           data-login-url="<?= $this->url->href('AuthController', 'login') ?>"
           data-keyboard-shortcut-url="<?= $this->url->href('DocumentationController', 'shortcuts') ?>"

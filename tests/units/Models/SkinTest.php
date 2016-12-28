@@ -37,4 +37,27 @@ class SkinTest extends Base
         $this->container['sessionStorage']->user = ['skin' => 'yellow'];
         $this->assertEquals('yellow', $skinModel->getCurrentSkin());
     }
+
+    public function testGetLayouts()
+    {
+        $skinModel = new SkinModel($this->container);
+        $this->assertNotEmpty($skinModel->getLayouts());
+        $this->assertArrayHasKey('fluid', $skinModel->getLayouts());
+        $this->assertArrayNotHasKey('', $skinModel->getLayouts());
+
+        $this->assertArrayHasKey('', $skinModel->getLayouts(true));
+        $this->assertContains('Use system layout', $skinModel->getLayouts(true));
+    }
+
+    public function testGetCurrentLayout()
+    {
+        $skinModel = new SkinModel($this->container);
+        $this->assertEquals('', $skinModel->getCurrentLayout());
+
+        $this->container['sessionStorage']->user = ['layout' => 'fluid'];
+        $this->assertEquals('fluid', $skinModel->getCurrentLayout());
+
+        $this->container['sessionStorage']->user = ['layout' => 'fixed'];
+        $this->assertEquals('fixed', $skinModel->getCurrentLayout());
+    }
 }

@@ -58,4 +58,40 @@ class SkinModel extends Model
 
         return $this->settingModel->get('application_skin', 'default');
     }
+
+    /**
+     * Get available layouts.
+     *
+     * @param bool $prepend Prepend a default value
+     *
+     * @return array
+     */
+    public function getLayouts($prepend = false)
+    {
+        // Sorted by value
+        $layouts = [
+            'fluid'   => t('Fluid'),
+            'fixed'   => t('Fixed'),
+        ];
+
+        if ($prepend) {
+            return ['' => t('Use system layout')] + $layouts;
+        }
+
+        return $layouts;
+    }
+
+    /**
+     * Get current layout.
+     *
+     * @return string
+     */
+    public function getCurrentLayout()
+    {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['layout'])) {
+            return $this->sessionStorage->user['layout'];
+        }
+
+        return $this->settingModel->get('application_layout', '');
+    }
 }

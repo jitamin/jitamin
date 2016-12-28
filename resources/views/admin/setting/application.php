@@ -18,6 +18,9 @@
     <?= $this->form->label(t('Skin'), 'application_skin') ?>
     <?= $this->form->select('application_skin', $skins, $values, $errors) ?>
 
+    <?= $this->form->label(t('Layout'), 'application_layout') ?>
+    <?= $this->form->select('application_layout', $layouts, $values, $errors) ?>
+
     <?= $this->form->label(t('Language'), 'application_language') ?>
     <?= $this->form->select('application_language', $languages, $values, $errors) ?>
 
