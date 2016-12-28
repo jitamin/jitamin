@@ -21,6 +21,7 @@ use Jitamin\Filter\TaskTitleFilter;
 use Jitamin\Formatter\TaskAutoCompleteFormatter;
 use Jitamin\Model\TaskModel;
 use Jitamin\Model\UserMetadataModel;
+
 /**
  * Task Controller.
  */
@@ -76,6 +77,7 @@ class TaskController extends BaseController
             'tags'            => $this->taskTagModel->getList($task['id']),
         ]));
     }
+
     /**
      * Public access (display a task).
      */
