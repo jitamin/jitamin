@@ -1,40 +1,5 @@
 <div class="subside subside-icons">
     <div class="subside-title">
-        <h2><?= t('Profile') ?></h2>
-    </div>
-    <ul>
-        <?php if ($this->user->hasAccess('ProfileController', 'show')): ?>
-            <li <?= $this->app->setActive('ProfileController', 'show') ?>>
-                <i class="fa fa-vcard"></i><?= $this->url->link(t('Summary'), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
-            </li>
-        <?php endif ?>
-        <?php if ($this->user->isAdmin() || $this->user->isCurrentUser($user['id'])): ?>
-            <?php if ($this->user->hasAccess('ProfileController', 'timesheet')): ?>
-                <li <?= $this->app->setActive('ProfileController', 'timesheet') ?>>
-                    <i class="fa fa-history"></i><?= $this->url->link(t('Time tracking'), 'ProfileController', 'timesheet', ['user_id' => $user['id']]) ?>
-                </li>
-            <?php endif ?>
-            <?php if ($this->user->hasAccess('ProfileController', 'lastLogin')): ?>
-                <li <?= $this->app->setActive('ProfileController', 'lastLogin') ?>>
-                    <i class="fa fa-sign-in"></i><?= $this->url->link(t('Last logins'), 'ProfileController', 'lastLogin', ['user_id' => $user['id']]) ?>
-                </li>
-            <?php endif ?>
-            <?php if ($this->user->hasAccess('ProfileController', 'sessions')): ?>
-                <li <?= $this->app->setActive('ProfileController', 'sessions') ?>>
-                    <i class="fa fa-heartbeat"></i><?= $this->url->link(t('Persistent connections'), 'ProfileController', 'sessions', ['user_id' => $user['id']]) ?>
-                </li>
-            <?php endif ?>
-            <?php if ($this->user->hasAccess('ProfileController', 'passwordReset')): ?>
-                <li <?= $this->app->setActive('ProfileController', 'passwordReset') ?>>
-                    <i class="fa fa-key"></i><?= $this->url->link(t('Password reset history'), 'ProfileController', 'passwordReset', ['user_id' => $user['id']]) ?>
-                </li>
-            <?php endif ?>
-        <?php endif ?>
-
-        <?= $this->hook->render('template:user:subside:information', ['user' => $user]) ?>
-    </ul>
-
-    <div class="subside-title">
         <h2><?= t('Actions') ?></h2>
     </div>
     <ul>

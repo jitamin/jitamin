@@ -1,5 +1,3 @@
-<?= $this->render('dashboard/_partials/subnav', ['user' => $user]) ?>
-
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('No projects to show.') ?></p>
 <?php else: ?>
