@@ -375,6 +375,21 @@ class TaskModelTest extends Base
         $this->assertEquals(3, $task['score']);
     }
 
+    public function testProgress()
+    {
+        $projectModel = new ProjectModel($this->container);
+        $taskModel = new TaskModel($this->container);
+        $taskFinderModel = new TaskFinderModel($this->container);
+
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['project_id' => 1, 'title' => 'test', 'progress' => 10]));
+
+        $task = $taskFinderModel->getById(1);
+        $this->assertNotEmpty($task);
+        $this->assertNotFalse($task);
+        $this->assertEquals(10, $task['progress']);
+    }
+
     public function testDefaultColor()
     {
         $projectModel = new ProjectModel($this->container);
@@ -582,6 +597,24 @@ class TaskModelTest extends Base
 
         $task = $taskFinderModel->getById(1);
         $this->assertEquals(13, $task['score']);
+    }
+
+    public function testChangeProgress()
+    {
+        $projectModel = new ProjectModel($this->container);
+        $taskModel = new TaskModel($this->container);
+        $taskFinderModel = new TaskFinderModel($this->container);
+
+        $this->assertEquals(1, $projectModel->create(['name' => 'test']));
+        $this->assertEquals(1, $taskModel->create(['title' => 'test', 'project_id' => 1]));
+
+        $task = $taskFinderModel->getById(1);
+        $this->assertEquals(0, $task['progress']);
+
+        $this->assertTrue($taskModel->update(['id' => 1, 'progress' => 20]));
+
+        $task = $taskFinderModel->getById(1);
+        $this->assertEquals(20, $task['progress']);
     }
 
     public function testChangeDueDate()
