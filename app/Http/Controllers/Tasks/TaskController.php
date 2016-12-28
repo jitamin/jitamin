@@ -11,6 +11,7 @@
 
 namespace Jitamin\Controller;
 
+use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Filter\TaskIdExclusionFilter;
 use Jitamin\Filter\TaskIdFilter;
@@ -19,7 +20,7 @@ use Jitamin\Filter\TaskProjectsFilter;
 use Jitamin\Filter\TaskTitleFilter;
 use Jitamin\Formatter\TaskAutoCompleteFormatter;
 use Jitamin\Model\TaskModel;
-
+use Jitamin\Model\UserMetadataModel;
 /**
  * Task Controller.
  */
