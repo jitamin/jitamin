@@ -1,11 +1,7 @@
 # Before Script
 before_script:
   - docker-php-ext-enable zip
-#  - docker-php-ext-enable pdo_mysql
   - docker-php-ext-enable gd
-  - docker-php-ext-install && docker-php-ext-enable memcached
-#  - ping -c 3 mysql  
-# - composer self-update
   - composer config repo.packagist composer https://packagist.phpcomposer.com
   - composer install --no-progress --no-interaction
   - cp config/config{.default,}.php
