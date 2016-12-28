@@ -12,7 +12,7 @@
                 <td class="column-60">
                     <?= $this->url->link(
                         $this->text->e('#'.$link['task_id'].' '.$link['title']),
-                        'TaskViewController', 'show', ['task_id' => $link['task_id'], 'project_id' => $link['project_id']],
+                        'TaskController', 'show', ['task_id' => $link['task_id'], 'project_id' => $link['project_id']],
                         false,
                         $link['is_active'] ? '' : 'task-link-closed'
                     ) ?>

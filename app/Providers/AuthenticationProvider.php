@@ -133,7 +133,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('AuthController', ['login', 'check'], Role::APP_PUBLIC);
         $acl->add('CaptchaController', '*', Role::APP_PUBLIC);
         $acl->add('PasswordResetController', '*', Role::APP_PUBLIC);
-        $acl->add('TaskViewController', 'readonly', Role::APP_PUBLIC);
+        $acl->add('TaskController', 'readonly', Role::APP_PUBLIC);
         $acl->add('BoardController', 'readonly', Role::APP_PUBLIC);
         $acl->add('ICalendarController', '*', Role::APP_PUBLIC);
         $acl->add('FeedController', '*', Role::APP_PUBLIC);

@@ -54,6 +54,120 @@ class TaskController extends BaseController
     }
 
     /**
+     * Show a task.
+     */
+    public function show()
+    {
+        $task = $this->getTask();
+        $subtasks = $this->subtaskModel->getAll($task['id']);
+        $commentSortingDirection = $this->userMetadataCacheDecorator->get(UserMetadataModel::KEY_COMMENT_SORTING_DIRECTION, 'ASC');
+
+        $this->response->html($this->helper->layout->task('task/show', [
+            'task'            => $task,
+            'project'         => $this->projectModel->getById($task['project_id']),
+            'files'           => $this->taskFileModel->getAllDocuments($task['id']),
+            'images'          => $this->taskFileModel->getAllImages($task['id']),
+            'comments'        => $this->commentModel->getAll($task['id'], $commentSortingDirection),
+            'subtasks'        => $subtasks,
+            'internal_links'  => $this->taskLinkModel->getAllGroupedByLabel($task['id']),
+            'external_links'  => $this->taskExternalLinkModel->getAll($task['id']),
+            'link_label_list' => $this->linkModel->getList(0, false),
+            'tags'            => $this->taskTagModel->getList($task['id']),
+        ]));
+    }
+    /**
+     * Public access (display a task).
+     */
+    public function readonly()
+    {
+        $project = $this->projectModel->getByToken($this->request->getStringParam('token'));
+
+        if (empty($project)) {
+            throw AccessForbiddenException::getInstance()->withoutLayout();
+        }
+
+        $task = $this->taskFinderModel->getDetails($this->request->getIntegerParam('task_id'));
+
+        if (empty($task)) {
+            throw PageNotFoundException::getInstance()->withoutLayout();
+        }
+
+        if ($task['project_id'] != $project['id']) {
+            throw AccessForbiddenException::getInstance()->withoutLayout();
+        }
+
+        $this->response->html($this->helper->layout->app('task/public', [
+            'project'      => $project,
+            'comments'     => $this->commentModel->getAll($task['id']),
+            'subtasks'     => $this->subtaskModel->getAll($task['id']),
+            'links'        => $this->taskLinkModel->getAllGroupedByLabel($task['id']),
+            'task'         => $task,
+            'columns_list' => $this->columnModel->getList($task['project_id']),
+            'colors_list'  => $this->colorModel->getList(),
+            'tags'         => $this->taskTagModel->getList($task['id']),
+            'title'        => $task['title'],
+            'no_layout'    => true,
+            'auto_refresh' => true,
+            'not_editable' => true,
+        ]));
+    }
+
+    /**
+     * Display task analytics.
+     */
+    public function analytics()
+    {
+        $task = $this->getTask();
+
+        $this->response->html($this->helper->layout->task('task/analytics', [
+            'task'               => $task,
+            'project'            => $this->projectModel->getById($task['project_id']),
+            'lead_time'          => $this->taskAnalyticModel->getLeadTime($task),
+            'cycle_time'         => $this->taskAnalyticModel->getCycleTime($task),
+            'time_spent_columns' => $this->taskAnalyticModel->getTimeSpentByColumn($task),
+            'tags'               => $this->taskTagModel->getList($task['id']),
+        ]));
+    }
+
+    /**
+     * Display the time tracking details.
+     */
+    public function timetracking()
+    {
+        $task = $this->getTask();
+
+        $subtask_paginator = $this->paginator
+            ->setUrl('TaskController', 'timetracking', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'pagination' => 'subtasks'])
+            ->setMax(15)
+            ->setOrder('start')
+            ->setDirection('DESC')
+            ->setQuery($this->subtaskTimeTrackingModel->getTaskQuery($task['id']))
+            ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
+
+        $this->response->html($this->helper->layout->task('task/time_tracking_details', [
+            'task'              => $task,
+            'project'           => $this->projectModel->getById($task['project_id']),
+            'subtask_paginator' => $subtask_paginator,
+            'tags'              => $this->taskTagModel->getList($task['id']),
+        ]));
+    }
+
+    /**
+     * Display the task transitions.
+     */
+    public function transitions()
+    {
+        $task = $this->getTask();
+
+        $this->response->html($this->helper->layout->task('task/transitions', [
+            'task'        => $task,
+            'project'     => $this->projectModel->getById($task['project_id']),
+            'transitions' => $this->transitionModel->getAllByTask($task['id']),
+            'tags'        => $this->taskTagModel->getList($task['id']),
+        ]));
+    }
+
+    /**
      * Display a form to create a new task.
      *
      * @param array $values
@@ -114,7 +228,7 @@ class TaskController extends BaseController
     {
         $task = $this->getTask();
         $this->taskModel->update(['id' => $task['id'], 'date_started' => time()]);
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
+        $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
     }
 
     /**
@@ -161,7 +275,7 @@ class TaskController extends BaseController
 
         if ($valid && $this->taskModel->update($values)) {
             $this->flash->success(t('Task updated successfully.'));
-            $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+            $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         } else {
             $this->flash->failure(t('Unable to update your task.'));
             $this->edit($values, $errors);

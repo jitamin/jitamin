@@ -118,7 +118,7 @@ class Markdown extends Parsedown
 
             if (!empty($token)) {
                 return $this->container['helper']->url->href(
-                    'TaskViewController',
+                    'TaskController',
                     'readonly',
                     [
                         'token'   => $token,
@@ -131,7 +131,7 @@ class Markdown extends Parsedown
         }
 
         return $this->container['helper']->url->href(
-            'TaskViewController',
+            'TaskController',
             'show',
             ['task_id' => $task_id]
         );

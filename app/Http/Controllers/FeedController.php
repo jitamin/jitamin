@@ -83,7 +83,7 @@ class FeedController extends BaseController
             $itemDate = new DateTime();
             $itemDate->setTimestamp($event['date_creation']);
 
-            $itemUrl = $this->helper->url->to('TaskViewController', 'show', ['task_id' => $event['task_id']], '', true);
+            $itemUrl = $this->helper->url->to('TaskController', 'show', ['task_id' => $event['task_id']], '', true);
 
             $feedBuilder
                 ->withItem(AtomItemBuilder::create($feedBuilder)
