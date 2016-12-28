@@ -61,9 +61,9 @@ return [
     'project/:project_id/import' => 'TaskImportController@show',
 
     // Task routes
-    'project/:project_id/task/:task_id' => 'TaskViewController@show',
-    't/:task_id'                        => 'TaskViewController@show',
-    'public/task/:task_id/:token'       => 'TaskViewController@readonly',
+    'project/:project_id/task/:task_id' => 'TaskController@show',
+    't/:task_id'                        => 'TaskController@show',
+    'public/task/:task_id/:token'       => 'TaskController@readonly',
 
     'task/:project_id/create'                          => 'TaskController@create',
     'task/:project_id/:column_id/:swimlane_id/create'  => 'TaskController@create',
@@ -75,9 +75,9 @@ return [
     'project/:project_id/task/:task_id/close'          => 'TaskStatusController@close',
     'project/:project_id/task/:task_id/screenshot'     => 'TaskPopoverController@screenshot',
     'project/:project_id/task/:task_id/activities'     => 'ActivityController@task',
-    'project/:project_id/task/:task_id/transitions'    => 'TaskViewController@transitions',
-    'project/:project_id/task/:task_id/analytics'      => 'TaskViewController@analytics',
-    'project/:project_id/task/:task_id/time-tracking'  => 'TaskViewController@timetracking',
+    'project/:project_id/task/:task_id/transitions'    => 'TaskController@transitions',
+    'project/:project_id/task/:task_id/analytics'      => 'TaskController@analytics',
+    'project/:project_id/task/:task_id/time-tracking'  => 'TaskController@timetracking',
     'project/:project_id/task/:task_id/subtask/create' => 'SubtaskController@create',
     'project/:project_id/task/:task_id/link/create'    => 'TaskInternalLinkController@create',
     'project/:project_id/task/:task_id/comment/create' => 'CommentController@create',
