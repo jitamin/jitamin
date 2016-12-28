@@ -1,5 +1,5 @@
-<div class="subside">
-    <ul>
+<div class="page-header">
+    <ul class="nav nav-tabs">
         <li <?= $this->app->setActive('AnalyticController', 'taskDistribution') ?>>
             <?= $this->url->link(t('Task distribution'), 'AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
         </li>
@@ -23,6 +23,5 @@
         </li>
 
         <?= $this->hook->render('template:analytic:subside', ['project' => $project]) ?>
-
     </ul>
 </div>

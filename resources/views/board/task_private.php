@@ -10,7 +10,7 @@
      data-owner-id="<?= $task['owner_id'] ?>"
      data-category-id="<?= $task['category_id'] ?>"
      data-due-date="<?= $task['date_due'] ?>"
-     data-task-url="<?= $this->url->href('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
+     data-task-url="<?= $this->url->href('TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
 
     <div class="task-board-sort-handle" style="display: none;"><i class="fa fa-arrows-alt"></i></div>
 
@@ -28,7 +28,7 @@
                     <?= $this->text->e($this->user->getInitials($task['assignee_name'] ?: $task['assignee_username'])) ?>
                 </span> -
             <?php endif ?>
-            <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'task-board-collapsed-title tooltip', $this->text->e($task['title'])) ?>
+            <?= $this->url->link($this->text->e($task['title']), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'task-board-collapsed-title tooltip', $this->text->e($task['title'])) ?>
         </div>
     <?php else: ?>
         <div class="task-board-expanded">
@@ -49,7 +49,7 @@
 
             <?= $this->hook->render('template:board:private:task:before-title', ['task' => $task]) ?>
             <div class="task-board-title">
-                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </div>
             <?= $this->hook->render('template:board:private:task:after-title', ['task' => $task]) ?>
 

@@ -23,6 +23,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Next') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>
 </form>

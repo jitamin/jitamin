@@ -37,7 +37,7 @@
                     <li>
                         <small>
                             <i class="fa fa-external-link"></i>
-                            <?= $this->url->link(t('Public link'), 'TaskViewController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token']], false, '', '', true) ?>
+                            <?= $this->url->link(t('Public link'), 'TaskController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token']], false, '', '', true) ?>
                         </small>
                     </li>
                     <?php endif ?>

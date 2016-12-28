@@ -34,7 +34,7 @@
                     <?= $this->text->e($task['category_name']) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                    <?= $this->url->link($this->text->e($task['title']), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
                 </td>
                 <td>
                     <?php if ($task['assignee_username']): ?>

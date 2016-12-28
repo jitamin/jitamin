@@ -62,6 +62,7 @@
         <?= $this->hook->render('template:layout:top') ?>
         <?= $this->render('_partials/nav', [
             'title' => $title,
+            'page_title' => isset($page_title) ? $page_title : null,
             'project' => isset($project) ? $project : null,
             'task'        => isset($task) ? $task : null,
             'description' => isset($description) ? $description : null,

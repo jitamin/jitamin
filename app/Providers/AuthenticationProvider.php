@@ -105,6 +105,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('SwimlaneController', '*', Role::PROJECT_MANAGER);
         $acl->add('TaskSuppressionController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskController', '*', Role::PROJECT_MEMBER);
+        $acl->add('TaskController', ['show', 'analytics', 'timetracking', 'transitions'], Role::PROJECT_VIEWER);
         $acl->add('TaskBulkController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskDuplicationController', '*', Role::PROJECT_MEMBER);
         $acl->add('TaskRecurrenceController', '*', Role::PROJECT_MEMBER);
@@ -133,7 +134,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('AuthController', ['login', 'check'], Role::APP_PUBLIC);
         $acl->add('CaptchaController', '*', Role::APP_PUBLIC);
         $acl->add('PasswordResetController', '*', Role::APP_PUBLIC);
-        $acl->add('TaskViewController', 'readonly', Role::APP_PUBLIC);
+        $acl->add('TaskController', 'readonly', Role::APP_PUBLIC);
         $acl->add('BoardController', 'readonly', Role::APP_PUBLIC);
         $acl->add('ICalendarController', '*', Role::APP_PUBLIC);
         $acl->add('FeedController', '*', Role::APP_PUBLIC);

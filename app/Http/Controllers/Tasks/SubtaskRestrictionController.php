@@ -58,6 +58,6 @@ class SubtaskRestrictionController extends BaseController
             'status' => SubtaskModel::STATUS_INPROGRESS,
         ]);
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+        $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
     }
 }

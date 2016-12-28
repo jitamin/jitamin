@@ -8,7 +8,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <h3><?= $title ?: $this->app->setting('application_name') ?></h3>
+        <h3>
+            <?php if (isset($page_title)): ?>
+                <?= $this->text->e($page_title) ?>
+            <?php elseif (isset($title)): ?>
+                <?= $this->text->e($title) ?>
+            <?php else: ?>
+                Jitamin
+            <?php endif ?>
+        </h3>
     </div>
     <div class="collapse navbar-collapse" id="nb-collapse">
 

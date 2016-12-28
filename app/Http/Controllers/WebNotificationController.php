@@ -54,14 +54,14 @@ class WebNotificationController extends BaseController
             $this->response->redirect($this->helper->url->to('DashboardController', 'notifications', ['user_id' => $user_id]));
         } elseif ($this->helper->text->contains($notification['event_name'], 'comment')) {
             $this->response->redirect($this->helper->url->to(
-                'TaskViewController',
+                'TaskController',
                 'show',
                 ['task_id' => $this->notificationModel->getTaskIdFromEvent($notification['event_name'], $notification['event_data'])],
                 'comment-'.$notification['event_data']['comment']['id']
             ));
         } else {
             $this->response->redirect($this->helper->url->to(
-                'TaskViewController',
+                'TaskController',
                 'show',
                 ['task_id' => $this->notificationModel->getTaskIdFromEvent($notification['event_name'], $notification['event_data'])]
             ));
