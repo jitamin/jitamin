@@ -19,6 +19,8 @@
     <?= $this->form->label(t('Skin:'), 'skin') ?>
     <?= $this->form->select('skin', $skins, $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_skin') ? '' : 'disabled']) ?>
 
+    <?= $this->form->label(t('Layout:'), 'layout') ?>
+    <?= $this->form->select('layout', $layouts, $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_layout') ? '' : 'disabled']) ?>
 
     <?= $this->form->label(t('Timezone:'), 'timezone') ?>
     <?= $this->form->select('timezone', $timezones, $values, $errors, [$this->user->hasAccess('ProfileController', 'show/edit_timezone') ? '' : 'disabled']) ?>
