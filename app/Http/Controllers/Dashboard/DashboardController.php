@@ -16,6 +16,9 @@ namespace Jitamin\Controller;
  */
 class DashboardController extends BaseController
 {
+    /**
+     * Dashboard overview.
+     */
     public function index()
     {
         $user = $this->getUser();
