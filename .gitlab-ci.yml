@@ -5,7 +5,8 @@ before_script:
   - composer config repo.packagist composer https://packagist.phpcomposer.com
   - composer install --no-progress --no-interaction
   - cp config/config{.default,}.php
-  - php vendor/bin/phpdoccheck --directory=app/
+  - php -v
+  - php vendor/bin/phpdoccheck --directory=app
 
 after_script:
 #  - cat storage/logs/*.log
@@ -23,6 +24,4 @@ php-7.0:
   type: test
   image: tetraweb/php:7.0
   script:
-    - php -v
-    - php vendor/bin/phpdoccheck --directory=app
     - phpunit -c tests/units.sqlite.xml
