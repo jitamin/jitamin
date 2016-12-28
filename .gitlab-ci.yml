@@ -1,7 +1,6 @@
 # Before Script
 before_script:
   - docker-php-ext-enable zip
-  - docker-php-ext-enable mbstring
 #  - docker-php-ext-enable pdo_mysql
   - docker-php-ext-enable gd
 #  - ping -c 3 mysql  
