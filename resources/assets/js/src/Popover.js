@@ -45,6 +45,13 @@ Jitamin.Popover.prototype.open = function(link) {
         $.get(link, function(content) {
             $("body").prepend('<div id="popover-container"><div id="popover-content">' + content + '</div></div>');
             $('#popover-content h2').eq(0).append('<a href="#" class="pull-right close-popover"><i class="fa fa-close"></i></a>');
+             /*
+             var screenHeight = $(window).height(); //当前浏览器窗口的高 
+             var scrolltop = $(document).scrollTop();//获取当前窗口距离页面顶部高度 
+             var obj = $('#popover-content');
+             var objTop = (screenHeight - obj.height())/2 + scrolltop; 
+             obj.css({top: objTop + 'px'});
+             */
             self.executeOnOpenedListeners();
         });
     }
