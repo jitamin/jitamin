@@ -67,14 +67,14 @@
         ]) ?>
         <div class="content-panel">
         <?= $this->hook->render('template:layout:top') ?>
-        <section class="page">
-            <?= $this->app->flashMessage() ?>
-            <?= $content_for_layout ?>
-        </section>
+            <section class="page">
+                <?= $this->app->flashMessage() ?>
+                <?= $content_for_layout ?>
+            </section>
+        </div>
         <?= $this->render('_partials/footer', [
         ]) ?>
         <?= $this->hook->render('template:layout:bottom') ?>
-        </div>
         </div>
     <?php endif ?>
     </body>
