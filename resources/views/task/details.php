@@ -37,7 +37,7 @@
                     <li>
                         <small>
                             <i class="fa fa-external-link"></i>
-                            <?= $this->url->link(t('Public link'), 'TaskController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token']], false, '', '', true) ?>
+                            <?= $this->url->link(t('Public link'), 'Task/TaskController', 'readonly', ['task_id' => $task['id'], 'token' => $project['token']], false, '', '', true) ?>
                         </small>
                     </li>
                     <?php endif ?>
@@ -164,7 +164,7 @@
     </div>
 
     <?php if ($editable && empty($task['date_started'])): ?>
-        <?= $this->url->button('fa-play', t('Set start date'), 'TaskController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-default btn-header') ?>
+        <?= $this->url->button('fa-play', t('Set start date'), 'Task/TaskController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-default btn-header') ?>
     <?php endif ?>
 
     <?= $this->hook->render('template:task:details:bottom', ['task' => $task]) ?>

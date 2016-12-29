@@ -4,7 +4,7 @@
     'task'     => $task,
     'tags'     => $tags,
     'project'  => $project,
-    'editable' => $this->user->hasProjectAccess('TaskController', 'edit', $project['id']),
+    'editable' => $this->user->hasProjectAccess('Task/TaskController', 'edit', $project['id']),
 ]) ?>
 
 <?php if (!empty($task['description'])): ?>

@@ -99,11 +99,11 @@ class Runner extends Base
         }
 
         if (!class_exists($className)) {
-            throw new RuntimeException('Controller not found');
+            throw new RuntimeException('Controller not found: '. $className);
         }
 
         if (!method_exists($className, $this->router->getAction())) {
-            throw new RuntimeException('Action not implemented');
+            throw new RuntimeException('Action not implemented: '.$this->router->getAction());
         }
 
         return $className;

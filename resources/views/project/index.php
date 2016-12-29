@@ -17,7 +17,7 @@
                 <th class="column-10"><?= $paginator->order(t('Start date'), 'start_date') ?></th>
                 <th class="column-10"><?= $paginator->order(t('End date'), 'end_date') ?></th>
                 <th class="column-10"><?= $paginator->order(t('Owner'), 'owner_id') ?></th>
-                <?php if ($this->user->hasAccess('ProjectUserOverviewController', 'managers')): ?>
+                <?php if ($this->user->hasAccess('Project/ProjectUserOverviewController', 'managers')): ?>
                     <th class="column-10"><?= t('Users') ?></th>
                 <?php endif ?>
                 <th><?= t('Columns') ?></th>
@@ -35,7 +35,7 @@
                     <?php endif ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($project['name']), 'ProjectController', 'show', ['project_id' => $project['id']]) ?>
+                    <?= $this->url->link($this->text->e($project['name']), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
                     <?php if ($project['is_public']): ?>
                         <i class="fa fa-share-alt" title="<?= t('Shared project') ?>"></i>
                     <?php endif ?>
@@ -59,10 +59,10 @@
                         <?= $this->text->e($project['owner_name'] ?: $project['owner_username']) ?>
                     <?php endif ?>
                 </td>
-                <?php if ($this->user->hasAccess('ProjectUserOverviewController', 'managers')): ?>
+                <?php if ($this->user->hasAccess('Project/ProjectUserOverviewController', 'managers')): ?>
                     <td>
                         <i class="fa fa-users"></i>
-                        <a class="tooltip" title="<?= t('Members') ?>" data-href="<?= $this->url->href('ProjectUserOverviewController', 'users', ['project_id' => $project['id']]) ?>"><?= t('Members') ?></a>
+                        <a class="tooltip" title="<?= t('Members') ?>" data-href="<?= $this->url->href('Project/ProjectUserOverviewController', 'users', ['project_id' => $project['id']]) ?>"><?= t('Members') ?></a>
                     </td>
                 <?php endif ?>
                 <td class="dashboard-project-stats">

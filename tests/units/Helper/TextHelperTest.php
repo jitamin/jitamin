@@ -31,7 +31,7 @@ class TextHelperTest extends Base
         $this->assertEquals('<p>Test</p>', $helper->markdown('Test'));
 
         $this->assertEquals(
-            '<p>Task <a href="?controller=TaskController&amp;action=show&amp;task_id=123">#123</a></p>',
+            '<p>Task <a href="?controller=Task/TaskController&amp;action=show&amp;task_id=123">#123</a></p>',
             $helper->markdown('Task #123')
         );
 
@@ -41,7 +41,7 @@ class TextHelperTest extends Base
         );
 
         $this->assertEquals(
-            '<p>Task <a href="?controller=TaskController&amp;action=readonly&amp;token='.$project['token'].'&amp;task_id=1">#1</a></p>',
+            '<p>Task <a href="?controller=Task/TaskController&amp;action=readonly&amp;token='.$project['token'].'&amp;task_id=1">#1</a></p>',
             $helper->markdown('Task #1', true)
         );
 
@@ -56,7 +56,7 @@ class TextHelperTest extends Base
     public function testMarkdownUserLink()
     {
         $h = new TextHelper($this->container);
-        $this->assertEquals('<p>Text <a href="?controller=ProfileController&amp;action=profile&amp;user_id=1" class="user-mention-link">@admin</a> @notfound</p>', $h->markdown('Text @admin @notfound'));
+        $this->assertEquals('<p>Text <a href="?controller=Profile/ProfileController&amp;action=profile&amp;user_id=1" class="user-mention-link">@admin</a> @notfound</p>', $h->markdown('Text @admin @notfound'));
         $this->assertEquals('<p>Text @admin @notfound</p>', $h->markdown('Text @admin @notfound', true));
     }
 

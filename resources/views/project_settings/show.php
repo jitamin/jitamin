@@ -39,7 +39,7 @@
         <?php endif ?>
 
         <?php if ($stats['nb_inactive_tasks'] > 0): ?>
-            <li><?= $this->url->link(t('%d closed tasks', $stats['nb_inactive_tasks']), 'TaskController', 'index', ['project_id' => $project['id'], 'q' => 'status:closed']) ?></li>
+            <li><?= $this->url->link(t('%d closed tasks', $stats['nb_inactive_tasks']), 'Task/TaskController', 'index', ['project_id' => $project['id'], 'q' => 'status:closed']) ?></li>
         <?php endif ?>
 
         <li><?= t('%d tasks in total', $stats['nb_tasks']) ?></li>

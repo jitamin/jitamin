@@ -13,8 +13,8 @@
     </div>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'SubtaskController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'Task/SubtaskController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>
 </div>

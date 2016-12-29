@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit project') ?></h2>
 </div>
-<form method="post" class="popover-form" action="<?= $this->url->href('ProjectController', 'update', ['project_id' => $project['id'], 'redirect' => 'edit']) ?>" autocomplete="off">
+<form method="post" class="popover-form" action="<?= $this->url->href('Project/ProjectController', 'update', ['project_id' => $project['id'], 'redirect' => 'edit']) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('id', $values) ?>
 
@@ -30,7 +30,7 @@
         <?= $this->form->select('owner_id', $owners, $values, $errors) ?>
     </div>
 
-    <?php if ($this->user->hasProjectAccess('ProjectController', 'create', $project['id'])): ?>
+    <?php if ($this->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])): ?>
         <hr>
         <?= $this->form->checkbox('is_private', t('Private project'), 1, $project['is_private'] == 1) ?>
         <p class="form-help"><?= t('Private projects do not have users and groups management.') ?></p>
@@ -39,6 +39,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'ProjectController', 'show', ['project_id' => $project['id']], false, 'btn btn-default close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Project/ProjectController', 'show', ['project_id' => $project['id']], false, 'btn btn-default close-popover') ?>
     </div>
 </form>

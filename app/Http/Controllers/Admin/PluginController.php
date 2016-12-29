@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Plugin\Directory;
 use Jitamin\Core\Plugin\Installer;
 use Jitamin\Core\Plugin\PluginInstallerException;

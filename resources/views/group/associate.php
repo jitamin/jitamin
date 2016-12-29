@@ -4,7 +4,7 @@
 <?php if (empty($users)): ?>
     <p class="alert"><?= t('There is no user available.') ?></p>
 <?php else: ?>
-    <form class="popover-form" method="post" action="<?= $this->url->href('GroupController', 'addUser', ['group_id' => $group['id']]) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('Admin/GroupController', 'addUser', ['group_id' => $group['id']]) ?>" autocomplete="off">
         <?= $this->form->csrf() ?>
         <?= $this->form->hidden('group_id', $values) ?>
 
@@ -14,7 +14,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'GroupController', 'index', [], false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'Admin/GroupController', 'index', [], false, 'close-popover') ?>
         </div>
     </form>
 <?php endif ?>

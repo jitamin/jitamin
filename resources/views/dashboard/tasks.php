@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h3><?= $this->url->link(t('My tasks'), 'DashboardController', 'tasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
+    <h3><?= $this->url->link(t('My tasks'), 'Dashboard/DashboardController', 'tasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
 </div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('There is nothing assigned to you.') ?></p>
@@ -24,7 +24,7 @@
                 <?= $this->url->link($this->text->e($task['project_name']), 'BoardController', 'show', ['project_id' => $task['project_id']]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['title']), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
             </td>
             <td>
                 <?php if ($task['priority'] != null): ?>

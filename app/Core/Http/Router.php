@@ -18,7 +18,7 @@ use Jitamin\Core\Base;
  */
 class Router extends Base
 {
-    const DEFAULT_CONTROLLER = 'DashboardController';
+    const DEFAULT_CONTROLLER = 'Dashboard/DashboardController';
     const DEFAULT_METHOD = 'index';
 
     /**

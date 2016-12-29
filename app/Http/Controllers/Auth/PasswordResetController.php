@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Auth;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**

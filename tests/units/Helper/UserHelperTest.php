@@ -69,8 +69,8 @@ class UserHelperTest extends Base
         ];
 
         $this->assertTrue($helper->hasAccess('Admin/UserController', 'create'));
-        $this->assertTrue($helper->hasAccess('ProjectController', 'create'));
-        $this->assertTrue($helper->hasAccess('ProjectController', 'createPrivate'));
+        $this->assertTrue($helper->hasAccess('Project/ProjectController', 'create'));
+        $this->assertTrue($helper->hasAccess('Project/ProjectController', 'createPrivate'));
     }
 
     public function testHasAccessForManagers()
@@ -83,8 +83,8 @@ class UserHelperTest extends Base
         ];
 
         $this->assertFalse($helper->hasAccess('Admin/UserController', 'show'));
-        $this->assertTrue($helper->hasAccess('ProjectController', 'create'));
-        $this->assertTrue($helper->hasAccess('ProjectController', 'createPrivate'));
+        $this->assertTrue($helper->hasAccess('Project/ProjectController', 'create'));
+        $this->assertTrue($helper->hasAccess('Project/ProjectController', 'createPrivate'));
     }
 
     public function testHasAccessForUsers()
@@ -97,8 +97,8 @@ class UserHelperTest extends Base
         ];
 
         $this->assertFalse($helper->hasAccess('Admin/UserController', 'create'));
-        $this->assertFalse($helper->hasAccess('ProjectController', 'create'));
-        $this->assertTrue($helper->hasAccess('ProjectController', 'createPrivate'));
+        $this->assertFalse($helper->hasAccess('Project/ProjectController', 'create'));
+        $this->assertTrue($helper->hasAccess('Project/ProjectController', 'createPrivate'));
     }
 
     public function testHasProjectAccessWithoutSession()
@@ -107,7 +107,7 @@ class UserHelperTest extends Base
         $project = new ProjectModel($this->container);
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
     }
 
     public function testHasProjectAccessForAdmins()
@@ -122,7 +122,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
 
-        $this->assertTrue($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertTrue($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertTrue($helper->hasProjectAccess('BoardController', 'show', 1));
     }
 
@@ -138,7 +138,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 1));
     }
 
@@ -154,7 +154,7 @@ class UserHelperTest extends Base
 
         $this->assertEquals(1, $project->create(['name' => 'My project']));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 1));
     }
 
@@ -175,15 +175,15 @@ class UserHelperTest extends Base
         $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MANAGER));
 
-        $this->assertTrue($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertTrue($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertTrue($helper->hasProjectAccess('BoardController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'show', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'show', 1));
         $this->assertTrue($helper->hasProjectAccess('taskcreationcontroller', 'save', 1));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 2));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 2));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'create', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'show', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'create', 2));
     }
 
     public function testHasProjectAccessForProjectManagers()
@@ -203,15 +203,15 @@ class UserHelperTest extends Base
         $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MANAGER));
 
-        $this->assertTrue($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertTrue($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertTrue($helper->hasProjectAccess('BoardController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'create', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'show', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'create', 1));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 2));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 2));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'create', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'show', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'create', 2));
     }
 
     public function testHasProjectAccessForProjectMembers()
@@ -231,15 +231,15 @@ class UserHelperTest extends Base
         $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_MEMBER));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertTrue($helper->hasProjectAccess('BoardController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'create', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'show', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'create', 1));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 2));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 2));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'create', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'show', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'create', 2));
     }
 
     public function testHasProjectAccessForProjectViewers()
@@ -259,15 +259,15 @@ class UserHelperTest extends Base
         $this->assertEquals(2, $user->create(['username' => 'user', 'email' => 'user@user']));
         $this->assertTrue($projectUserRole->addUser(1, 2, Role::PROJECT_VIEWER));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertTrue($helper->hasProjectAccess('BoardController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'show', 1));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'create', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'show', 1));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'create', 1));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 2));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 2));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'create', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'show', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'create', 2));
     }
 
     public function testHasProjectAccessForCustomProjectRole()
@@ -290,14 +290,14 @@ class UserHelperTest extends Base
 
         $this->assertTrue($projectUserRole->addUser(1, 2, 'Custom Role'));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 1));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 1));
         $this->assertTrue($helper->hasProjectAccess('BoardController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'show', 1));
-        $this->assertTrue($helper->hasProjectAccess('TaskController', 'create', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'show', 1));
+        $this->assertTrue($helper->hasProjectAccess('Task/TaskController', 'create', 1));
 
-        $this->assertFalse($helper->hasProjectAccess('ProjectController', 'edit', 2));
+        $this->assertFalse($helper->hasProjectAccess('Project/ProjectController', 'edit', 2));
         $this->assertFalse($helper->hasProjectAccess('BoardController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'show', 2));
-        $this->assertFalse($helper->hasProjectAccess('TaskController', 'create', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'show', 2));
+        $this->assertFalse($helper->hasProjectAccess('Task/TaskController', 'create', 2));
     }
 }

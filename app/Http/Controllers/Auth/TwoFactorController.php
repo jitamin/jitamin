@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Auth;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
@@ -100,10 +101,10 @@ class TwoFactorController extends ProfileController
             unset($this->sessionStorage->twoFactorSecret);
             $this->userSession->disablePostAuthentication();
 
-            $this->response->redirect($this->helper->url->to('TwoFactorController', 'index', ['user_id' => $user['id']]));
+            $this->response->redirect($this->helper->url->to('Auth/TwoFactorController', 'index', ['user_id' => $user['id']]));
         } else {
             $this->flash->failure(t('The two factor authentication code is not valid.'));
-            $this->response->redirect($this->helper->url->to('TwoFactorController', 'show', ['user_id' => $user['id']]));
+            $this->response->redirect($this->helper->url->to('Auth/TwoFactorController', 'show', ['user_id' => $user['id']]));
         }
     }
 
@@ -125,7 +126,7 @@ class TwoFactorController extends ProfileController
         $this->userSession->disablePostAuthentication();
 
         $this->flash->success(t('User updated successfully.'));
-        $this->response->redirect($this->helper->url->to('TwoFactorController', 'index', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Auth/TwoFactorController', 'index', ['user_id' => $user['id']]));
     }
 
     /**
@@ -145,10 +146,10 @@ class TwoFactorController extends ProfileController
         if ($provider->authenticate()) {
             $this->userSession->validatePostAuthentication();
             $this->flash->success(t('The two factor authentication code is valid.'));
-            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
+            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'index'));
         } else {
             $this->flash->failure(t('The two factor authentication code is not valid.'));
-            $this->response->redirect($this->helper->url->to('TwoFactorController', 'code'));
+            $this->response->redirect($this->helper->url->to('Auth/TwoFactorController', 'code'));
         }
     }
 
@@ -184,7 +185,7 @@ class TwoFactorController extends ProfileController
                 'twofactor_secret'    => '',
             ]);
 
-            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
         }
 
         return $this->response->html($this->helper->layout->profile('twofactor/disable', [

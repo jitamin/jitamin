@@ -15,7 +15,7 @@
 
 <?php if ($task['recurrence_status'] != \Jitamin\Model\TaskModel::RECURRING_STATUS_PROCESSED): ?>
 
-    <form class="popover-form" method="post" action="<?= $this->url->href('TaskRecurrenceController', 'update', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
+    <form class="popover-form" method="post" action="<?= $this->url->href('Task/TaskRecurrenceController', 'update', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>" autocomplete="off">
 
         <?= $this->form->csrf() ?>
 
@@ -40,7 +40,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
         </div>
     </form>
 

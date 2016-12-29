@@ -8,7 +8,7 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'TwoFactorController', 'disable', ['user_id' => $user['id'], 'disable' => 'yes'], true, 'btn btn-danger') ?>
-        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
+        <?= $this->url->link(t('Confirm'), 'Auth/TwoFactorController', 'disable', ['user_id' => $user['id'], 'disable' => 'yes'], true, 'btn btn-danger') ?>
+        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Profile/ProfileController', 'show', ['user_id' => $user['id']]) ?>
     </div>
 </div>

@@ -5,7 +5,7 @@
             <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'Admin/UserController', 'create', [], false, 'popover') ?></li>
             <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'Admin/UserController', 'create', ['remote' => 1], false, 'popover') ?></li>
             <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'Admin/UserImportController', 'show', [], false, 'popover') ?></li>
-            <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'GroupController', 'index') ?></li>
+            <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'Admin/GroupController', 'index') ?></li>
         </ul>
         <?php endif ?>
     </div>
@@ -30,7 +30,7 @@
                     <?= '#'.$user['id'] ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($user['username']), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
+                    <?= $this->url->link($this->text->e($user['username']), 'Profile/ProfileController', 'show', ['user_id' => $user['id']]) ?>
                 </td>
                 <td>
                     <?= $this->text->e($user['name']) ?>

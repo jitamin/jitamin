@@ -1,7 +1,7 @@
 <ul class="views">
-    <li <?= $this->app->setActive('ProjectController') ?>>
+    <li <?= $this->app->setActive('Project/ProjectController') ?>>
         <i class="fa fa-eye"></i>
-        <?= $this->url->link(t('Overview'), 'ProjectController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-overview', t('Keyboard shortcut: "%s"', 'v o')) ?>
+        <?= $this->url->link(t('Overview'), 'Project/ProjectController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-overview', t('Keyboard shortcut: "%s"', 'v o')) ?>
     </li>
     <li <?= $this->app->setActive('BoardController') ?>>
         <i class="fa fa-columns"></i>
@@ -11,14 +11,14 @@
         <i class="fa fa-calendar"></i>
         <?= $this->url->link(t('Calendar'), 'CalendarController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-calendar', t('Keyboard shortcut: "%s"', 'v c')) ?>
     </li>
-    <li <?= $this->app->setActive('TaskController') ?>>
+    <li <?= $this->app->setActive('Task/TaskController') ?>>
         <i class="fa fa-list"></i>
-        <?= $this->url->link(t('List'), 'TaskController', 'index', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-listing', t('Keyboard shortcut: "%s"', 'v l')) ?>
+        <?= $this->url->link(t('List'), 'Task/TaskController', 'index', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-listing', t('Keyboard shortcut: "%s"', 'v l')) ?>
     </li>
-    <?php if ($this->user->hasProjectAccess('TaskGanttController', 'show', $project['id'])): ?>
-    <li <?= $this->app->setActive('TaskGanttController') ?>>
+    <?php if ($this->user->hasProjectAccess('Task/TaskGanttController', 'show', $project['id'])): ?>
+    <li <?= $this->app->setActive('Task/TaskGanttController') ?>>
         <i class="fa fa-sliders"></i>
-        <?= $this->url->link(t('Gantt'), 'TaskGanttController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-gantt', t('Keyboard shortcut: "%s"', 'v g')) ?>
+        <?= $this->url->link(t('Gantt'), 'Task/TaskGanttController', 'show', ['project_id' => $project['id'], 'q' => $filters['q']], false, 'view-gantt', t('Keyboard shortcut: "%s"', 'v g')) ?>
     </li>
     <?php endif ?>
 </ul>
