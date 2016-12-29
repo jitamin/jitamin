@@ -11,7 +11,6 @@
 
 namespace Jitamin\Controller\Auth;
 
-use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
