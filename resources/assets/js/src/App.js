@@ -31,6 +31,7 @@ Jitamin.App.prototype.execute = function() {
     }
 
     this.focus();
+    this.sidebarToggle();
     this.chosen();
     this.keyboardShortcuts();
     this.datePicker();
@@ -81,6 +82,21 @@ Jitamin.App.prototype.focus = function() {
     // Workaround for chrome
     $(document).on('mouseup', '.auto-select', function(e) {
         e.preventDefault();
+    });
+};
+
+Jitamin.App.prototype.sidebarToggle = function() {
+    $(document).on("click", ".sidebar-toggle", function(e) {
+        var wrapper = $(this).parents(".wrapper");
+        e.preventDefault();
+
+        if (wrapper.hasClass("wrapper-collapsed")) {
+            wrapper.find(".sidebar").show("slow");
+            wrapper.removeClass("wrapper-collapsed");
+        } else {
+            wrapper.find(".sidebar").hide("slow");
+            wrapper.addClass("wrapper-collapsed");
+        }
     });
 };
 

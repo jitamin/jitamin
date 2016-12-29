@@ -9,6 +9,7 @@
             <span class="icon-bar"></span>
         </button>
         <h3>
+            <span class="sidebar-toggle"><i class="fa fa-navicon"></i></span>
             <?php if (isset($page_title)): ?>
                 <?= $this->text->e($page_title) ?>
             <?php elseif (isset($title)): ?>
