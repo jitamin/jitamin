@@ -1,4 +1,4 @@
-<section id="main" class="container page public-board">
+<section id="main" class="public-board">
 
    <?= $this->render('board/table_container', [
             'project'                        => $project,
