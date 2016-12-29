@@ -58,8 +58,6 @@
         <div class="wrapper">
         <?= $this->render('_partials/sidebar', [
         ]) ?>
-        <div class="content-panel">
-        <?= $this->hook->render('template:layout:top') ?>
         <?= $this->render('_partials/nav', [
             'title' => $title,
             'page_title' => isset($page_title) ? $page_title : null,
@@ -67,6 +65,8 @@
             'task'        => isset($task) ? $task : null,
             'description' => isset($description) ? $description : null,
         ]) ?>
+        <div class="content-panel">
+        <?= $this->hook->render('template:layout:top') ?>
         <section class="page">
             <?= $this->app->flashMessage() ?>
             <?= $content_for_layout ?>
