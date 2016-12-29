@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit Authentication') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('UserController', 'saveAuthentication', ['user_id' => $user['id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Admin/UserController', 'saveAuthentication', ['user_id' => $user['id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->hidden('id', $values) ?>

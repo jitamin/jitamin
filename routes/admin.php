@@ -11,11 +11,11 @@
 
 return [
 // Users admin
-'admin/users'                         => 'UserController@index',
-'admin/users/create'                  => 'UserController@create',
-'admin/users/create/:remote'          => 'UserController@create',
-'admin/users/import'                  => 'UserImportController@show',
-'admin/users/:user_id/authentication' => 'UserController@changeAuthentication',
+'admin/users'                         => 'Admin/UserController@index',
+'admin/users/create'                  => 'Admin/UserController@create',
+'admin/users/create/:remote'          => 'Admin/UserController@create',
+'admin/users/import'                  => 'Admin/UserImportController@show',
+'admin/users/:user_id/authentication' => 'Admin/UserController@changeAuthentication',
 
 // Groups admin
 'admin/groups'                    => 'GroupController@index',

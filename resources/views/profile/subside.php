@@ -57,9 +57,9 @@
             <?php endif ?>
         <?php endif ?>
 
-        <?php if ($this->user->hasAccess('UserController', 'changeAuthentication')): ?>
-            <li <?= $this->app->setActive('UserController', 'changeAuthentication') ?>>
-                <i class="fa fa-street-view"></i><?= $this->url->link(t('Edit Authentication'), 'UserController', 'changeAuthentication', ['user_id' => $user['id']]) ?>
+        <?php if ($this->user->hasAccess('Admin/UserController', 'changeAuthentication')): ?>
+            <li <?= $this->app->setActive('Admin/UserController', 'changeAuthentication') ?>>
+                <i class="fa fa-street-view"></i><?= $this->url->link(t('Edit Authentication'), 'Admin/UserController', 'changeAuthentication', ['user_id' => $user['id']]) ?>
             </li>
         <?php endif ?>
 

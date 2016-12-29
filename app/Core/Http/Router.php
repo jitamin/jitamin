@@ -123,6 +123,7 @@ class Router extends Base
      */
     public function sanitize($value, $default = '')
     {
-        return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
+        return  $value ?: $default;
+        //return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
     }
 }

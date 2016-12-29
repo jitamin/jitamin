@@ -97,7 +97,6 @@ class Route extends Base
     {
         $items = explode('/', ltrim($path, '/'));
         $count = count($items);
-
         foreach ($this->paths as $route) {
             if ($count === $route['count']) {
                 $params = [];
@@ -109,7 +108,6 @@ class Route extends Base
                         break;
                     }
                 }
-
                 if ($i === $count) {
                     $this->request->setParams($params);
 

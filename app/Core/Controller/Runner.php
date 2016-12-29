@@ -95,7 +95,7 @@ class Runner extends Base
         if ($this->router->getPlugin() !== '') {
             $className = '\Jitamin\Plugin\\'.$this->router->getPlugin().'\Controller\\'.$this->router->getController();
         } else {
-            $className = '\Jitamin\Controller\\'.$this->router->getController();
+            $className = '\Jitamin\Controller\\'.str_replace('/', '\\', $this->router->getController());
         }
 
         if (!class_exists($className)) {

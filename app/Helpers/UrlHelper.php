@@ -207,7 +207,8 @@ class UrlHelper extends Base
         }
 
         if (!empty($qs)) {
-            $path .= '?'.http_build_query($qs, '', $separator);
+            unset($qs['controller']);
+            $path .= '?controller='.$controller.'&amp;'.http_build_query($qs, '', $separator);
         }
 
         return ($absolute ? $this->base() : $this->dir()).$path.(empty($anchor) ? '' : '#'.$anchor);

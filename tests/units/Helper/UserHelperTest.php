@@ -56,7 +56,7 @@ class UserHelperTest extends Base
     public function testHasAccessWithoutSession()
     {
         $helper = new UserHelper($this->container);
-        $this->assertFalse($helper->hasAccess('UserController', 'create'));
+        $this->assertFalse($helper->hasAccess('Admin/UserController', 'create'));
     }
 
     public function testHasAccessForAdmins()
@@ -68,7 +68,7 @@ class UserHelperTest extends Base
             'role' => Role::APP_ADMIN,
         ];
 
-        $this->assertTrue($helper->hasAccess('UserController', 'create'));
+        $this->assertTrue($helper->hasAccess('Admin/UserController', 'create'));
         $this->assertTrue($helper->hasAccess('ProjectController', 'create'));
         $this->assertTrue($helper->hasAccess('ProjectController', 'createPrivate'));
     }
@@ -82,7 +82,7 @@ class UserHelperTest extends Base
             'role' => Role::APP_MANAGER,
         ];
 
-        $this->assertFalse($helper->hasAccess('UserController', 'show'));
+        $this->assertFalse($helper->hasAccess('Admin/UserController', 'show'));
         $this->assertTrue($helper->hasAccess('ProjectController', 'create'));
         $this->assertTrue($helper->hasAccess('ProjectController', 'createPrivate'));
     }
@@ -96,7 +96,7 @@ class UserHelperTest extends Base
             'role' => Role::APP_USER,
         ];
 
-        $this->assertFalse($helper->hasAccess('UserController', 'create'));
+        $this->assertFalse($helper->hasAccess('Admin/UserController', 'create'));
         $this->assertFalse($helper->hasAccess('ProjectController', 'create'));
         $this->assertTrue($helper->hasAccess('ProjectController', 'createPrivate'));
     }

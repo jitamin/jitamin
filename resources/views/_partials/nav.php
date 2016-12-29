@@ -28,7 +28,7 @@
                 <ul>
                     <li>
                         <i class="fa fa-user"></i>
-                        <?= $this->url->link(t('Users management'), 'UserController', 'index') ?>
+                        <?= $this->url->link(t('Users management'), 'Admin/UserController', 'index') ?>
                     </li>
                     <li>
                         <i class="fa fa-group"></i>

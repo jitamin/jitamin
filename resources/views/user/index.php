@@ -1,10 +1,10 @@
 <section id="main">
     <div class="page-header">
-        <?php if ($this->user->hasAccess('UserController', 'create')): ?>
+        <?php if ($this->user->hasAccess('Admin/UserController', 'create')): ?>
         <ul>
-            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'UserController', 'create', [], false, 'popover') ?></li>
-            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'UserController', 'create', ['remote' => 1], false, 'popover') ?></li>
-            <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'UserImportController', 'show', [], false, 'popover') ?></li>
+            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'Admin/UserController', 'create', [], false, 'popover') ?></li>
+            <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'Admin/UserController', 'create', ['remote' => 1], false, 'popover') ?></li>
+            <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'Admin/UserImportController', 'show', [], false, 'popover') ?></li>
             <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'GroupController', 'index') ?></li>
         </ul>
         <?php endif ?>
