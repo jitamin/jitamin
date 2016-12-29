@@ -60,12 +60,6 @@ Jitamin.App.prototype.keyboardShortcuts = function() {
         }
     });
 
-    // Open board selector
-    Mousetrap.bind("b", function(e) {
-        e.preventDefault();
-        $('#board-selector').trigger('chosen:open');
-    });
-
     // Close popover and dropdown
     Mousetrap.bindGlobal("esc", function() {
         self.get("Popover").close();
