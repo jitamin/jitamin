@@ -121,9 +121,9 @@ class Router extends Base
      *
      * @return string
      */
-    public function sanitize($value, $default = '', $is_controller = false)
+    protected function sanitize($value, $default = '', $is_controller = false)
     {
-        if($is_controller) {
+        if ($is_controller) {
             return  $value ?: $default;
         }
         return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
