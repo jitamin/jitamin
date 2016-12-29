@@ -108,7 +108,7 @@ class Router extends Base
             $plugin = $route['plugin'];
         }
 
-        $this->currentControllerName = ucfirst($this->sanitize($controller, self::DEFAULT_CONTROLLER));
+        $this->currentControllerName = ucfirst($this->sanitize($controller, self::DEFAULT_CONTROLLER, true));
         $this->currentActionName = $this->sanitize($action, self::DEFAULT_METHOD);
         $this->currentPluginName = ucfirst($this->sanitize($plugin));
     }
@@ -121,9 +121,11 @@ class Router extends Base
      *
      * @return string
      */
-    public function sanitize($value, $default = '')
+    public function sanitize($value, $default = '', $is_controller = false)
     {
-        return  $value ?: $default;
-        //return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
+        if($is_controller) {
+            return  $value ?: $default;
+        }
+        return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
     }
 }

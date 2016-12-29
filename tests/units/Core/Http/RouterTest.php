@@ -27,7 +27,7 @@ class RouterTest extends Base
         $this->assertEquals('default', $dispatcher->sanitize('R&D', 'default'));
         $this->assertEquals('Test123', $dispatcher->sanitize('Test123', 'default'));
         $this->assertEquals('Test_123', $dispatcher->sanitize('Test_123', 'default'));
-        $this->assertEquals('userImport', $dispatcher->sanitize('userImport', 'default'));
+        $this->assertEquals('Admin/UserImport', $dispatcher->sanitize('Admin/UserImport', 'default',true));
     }
 
     public function testGetPathWithFolder()
