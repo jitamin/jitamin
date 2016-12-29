@@ -2,7 +2,7 @@
 <div class="page-header">
     <h2><?= t('Application settings') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('SettingController', 'store', ['redirect' => 'index']) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Admin/SettingController', 'store', ['redirect' => 'index']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 

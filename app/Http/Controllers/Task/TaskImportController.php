@@ -66,7 +66,7 @@ class TaskImportController extends BaseController
                 $this->flash->failure(t('Nothing have been imported!'));
             }
 
-            $this->response->redirect($this->helper->url->to('TaskImportController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Task/TaskImportController', 'show', ['project_id' => $project['id']]));
         }
     }
 

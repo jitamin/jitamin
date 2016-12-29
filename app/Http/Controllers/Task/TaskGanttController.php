@@ -89,7 +89,7 @@ class TaskGanttController extends BaseController
 
         if ($valid && $this->taskModel->create($values)) {
             $this->flash->success(t('Task created successfully.'));
-            $this->response->redirect($this->helper->url->to('TaskGanttController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Task/TaskGanttController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->flash->failure(t('Unable to create your task.'));
             $this->show($values, $errors);

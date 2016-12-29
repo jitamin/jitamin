@@ -63,7 +63,7 @@ class TaskRecurrenceController extends BaseController
                 $this->flash->failure(t('Unable to update your task.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         }
 
         return $this->edit($values, $errors);

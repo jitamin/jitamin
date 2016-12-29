@@ -63,7 +63,7 @@ class ProjectSettingsController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'share', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectSettingsController', 'share', ['project_id' => $project['id']]));
     }
 
     /**
@@ -93,7 +93,7 @@ class ProjectSettingsController extends BaseController
 
         $this->projectMetadataModel->save($project['id'], $this->request->getValues());
         $this->flash->success(t('Project updated successfully.'));
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'integrations', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectSettingsController', 'integrations', ['project_id' => $project['id']]));
     }
 
     /**
@@ -123,7 +123,7 @@ class ProjectSettingsController extends BaseController
 
         $this->projectNotificationModel->saveSettings($project['id'], $values);
         $this->flash->success(t('Project updated successfully.'));
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'notifications', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectSettingsController', 'notifications', ['project_id' => $project['id']]));
     }
 
     /**
@@ -156,6 +156,6 @@ class ProjectSettingsController extends BaseController
             $this->flash->failure(t('Unable to clone this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectSettingsController', 'show', ['project_id' => $project_id]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectSettingsController', 'show', ['project_id' => $project_id]));
     }
 }

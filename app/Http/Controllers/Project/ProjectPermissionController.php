@@ -81,7 +81,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -100,7 +100,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -118,7 +118,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -154,7 +154,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**
@@ -172,7 +172,7 @@ class ProjectPermissionController extends BaseController
             $this->flash->failure(t('Unable to update this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectPermissionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
     }
 
     /**

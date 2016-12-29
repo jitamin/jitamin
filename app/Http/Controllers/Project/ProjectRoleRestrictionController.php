@@ -62,7 +62,7 @@ class ProjectRoleRestrictionController extends BaseController
             $this->flash->failure(t('Unable to create this project restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 
     /**
@@ -95,6 +95,6 @@ class ProjectRoleRestrictionController extends BaseController
             $this->flash->failure(t('Unable to remove this restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 }

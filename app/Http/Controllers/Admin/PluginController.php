@@ -70,7 +70,7 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 
     /**
@@ -91,7 +91,7 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 
     /**
@@ -126,6 +126,6 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 }

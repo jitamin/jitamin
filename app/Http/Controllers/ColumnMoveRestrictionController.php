@@ -65,7 +65,7 @@ class ColumnMoveRestrictionController extends BaseController
                 $this->flash->failure(t('Unable to create this column restriction.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Task/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->create($values, $errors);
         }
@@ -100,6 +100,6 @@ class ColumnMoveRestrictionController extends BaseController
             $this->flash->failure(t('Unable to remove this restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Task/ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 }

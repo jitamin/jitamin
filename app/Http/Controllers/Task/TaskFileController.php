@@ -28,7 +28,7 @@ class TaskFileController extends BaseController
         if ($this->request->isPost() && $this->taskFileModel->uploadScreenshot($task['id'], $this->request->getValue('screenshot')) !== false) {
             $this->flash->success(t('Screenshot uploaded successfully.'));
 
-            return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
         return $this->response->html($this->template->render('task_file/screenshot', [
@@ -60,7 +60,7 @@ class TaskFileController extends BaseController
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
+        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
     }
 
     /**
@@ -78,7 +78,7 @@ class TaskFileController extends BaseController
             $this->flash->failure(t('Unable to remove this file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
+        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
     }
 
     /**

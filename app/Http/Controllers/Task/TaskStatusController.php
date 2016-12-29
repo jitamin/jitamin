@@ -55,7 +55,7 @@ class TaskStatusController extends BaseController
                 $this->flash->failure($failure_message);
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
         return $this->response->html($this->template->render($template, [

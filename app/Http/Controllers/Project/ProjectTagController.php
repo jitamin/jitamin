@@ -72,7 +72,7 @@ class ProjectTagController extends BaseController
                 $this->flash->failure(t('Unable to create this tag.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectTagController', 'index', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Project/ProjectTagController', 'index', ['project_id' => $project['id']]));
         } else {
             $this->create($values, $errors);
         }
@@ -126,7 +126,7 @@ class ProjectTagController extends BaseController
                 $this->flash->failure(t('Unable to update this tag.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectTagController', 'index', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Project/ProjectTagController', 'index', ['project_id' => $project['id']]));
         } else {
             $this->edit($values, $errors);
         }
@@ -167,6 +167,6 @@ class ProjectTagController extends BaseController
             $this->flash->failure(t('Unable to remove this tag.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectTagController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectTagController', 'index', ['project_id' => $project['id']]));
     }
 }

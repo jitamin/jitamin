@@ -37,7 +37,7 @@ class TaskController extends BaseController
         $search = $this->helper->projectHeader->getSearchQuery($project);
 
         $paginator = $this->paginator
-            ->setUrl('TaskController', 'index', ['project_id' => $project['id']])
+            ->setUrl('Task/TaskController', 'index', ['project_id' => $project['id']])
             ->setMax(30)
             ->setOrder(TaskModel::TABLE.'.id')
             ->setDirection('DESC')
@@ -141,7 +141,7 @@ class TaskController extends BaseController
         $task = $this->getTask();
 
         $subtask_paginator = $this->paginator
-            ->setUrl('TaskController', 'timetracking', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'pagination' => 'subtasks'])
+            ->setUrl('Task/TaskController', 'timetracking', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'pagination' => 'subtasks'])
             ->setMax(15)
             ->setOrder('start')
             ->setDirection('DESC')
@@ -232,7 +232,7 @@ class TaskController extends BaseController
     {
         $task = $this->getTask();
         $this->taskModel->update(['id' => $task['id'], 'date_started' => time()]);
-        $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
+        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]));
     }
 
     /**
@@ -279,7 +279,7 @@ class TaskController extends BaseController
 
         if ($valid && $this->taskModel->update($values)) {
             $this->flash->success(t('Task updated successfully.'));
-            $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+            $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         } else {
             $this->flash->failure(t('Unable to update your task.'));
             $this->edit($values, $errors);

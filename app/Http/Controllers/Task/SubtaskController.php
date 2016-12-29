@@ -85,7 +85,7 @@ class SubtaskController extends BaseController
                 return $this->create(['project_id' => $task['project_id'], 'task_id' => $task['id'], 'another_subtask' => 1]);
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']], 'subtasks'), true);
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']], 'subtasks'), true);
         }
 
         return $this->create($values, $errors);
@@ -133,7 +133,7 @@ class SubtaskController extends BaseController
                 $this->flash->failure(t('Unable to update your sub-task.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         }
 
         return $this->edit($values, $errors);
@@ -168,7 +168,7 @@ class SubtaskController extends BaseController
             $this->flash->failure(t('Unable to remove this sub-task.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
     }
 
     /**
@@ -180,7 +180,7 @@ class SubtaskController extends BaseController
         $task_id = $this->request->getIntegerParam('task_id');
         $values = $this->request->getJson();
 
-        if (!empty($values) && $this->helper->user->hasProjectAccess('SubtaskController', 'movePosition', $project_id)) {
+        if (!empty($values) && $this->helper->user->hasProjectAccess('Task/SubtaskController', 'movePosition', $project_id)) {
             $result = $this->subtaskPositionModel->changePosition($task_id, $values['subtask_id'], $values['position']);
             $this->response->json(['result' => $result]);
         } else {

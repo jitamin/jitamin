@@ -71,7 +71,7 @@ class ProjectRoleController extends BaseController
                 $this->flash->failure(t('Unable to create custom project role.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->create($values, $errors);
         }
@@ -121,7 +121,7 @@ class ProjectRoleController extends BaseController
                 $this->flash->failure(t('Unable to update custom project role.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->edit($values, $errors);
         }
@@ -156,7 +156,7 @@ class ProjectRoleController extends BaseController
             $this->flash->failure(t('Unable to remove this project role.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 
     /**

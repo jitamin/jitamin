@@ -65,7 +65,7 @@ class ProfileController extends BaseController
         $user = $this->getUser();
 
         $subtask_paginator = $this->paginator
-            ->setUrl('ProfileController', 'timesheet', ['user_id' => $user['id'], 'pagination' => 'subtasks'])
+            ->setUrl('Profile/ProfileController', 'timesheet', ['user_id' => $user['id'], 'pagination' => 'subtasks'])
             ->setMax(20)
             ->setOrder('start')
             ->setDirection('DESC')
@@ -122,7 +122,7 @@ class ProfileController extends BaseController
         $this->checkCSRFParam();
         $user = $this->getUser();
         $this->rememberMeSessionModel->remove($this->request->getIntegerParam('id'));
-        $this->response->redirect($this->helper->url->to('ProfileController', 'sessions', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'sessions', ['user_id' => $user['id']]));
     }
 
     /**
@@ -137,7 +137,7 @@ class ProfileController extends BaseController
             $this->userNotificationModel->saveSettings($user['id'], $values);
             $this->flash->success(t('User updated successfully.'));
 
-            return $this->response->redirect($this->helper->url->to('ProfileController', 'notifications', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'notifications', ['user_id' => $user['id']]));
         }
 
         return $this->response->html($this->helper->layout->profile('profile/notifications', [
@@ -160,7 +160,7 @@ class ProfileController extends BaseController
             $values = $this->request->getValues();
             $this->userMetadataModel->save($user['id'], $values);
             $this->flash->success(t('User updated successfully.'));
-            $this->response->redirect($this->helper->url->to('ProfileController', 'integrations', ['user_id' => $user['id']]));
+            $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'integrations', ['user_id' => $user['id']]));
         }
 
         $this->response->html($this->helper->layout->profile('profile/integrations', [
@@ -193,7 +193,7 @@ class ProfileController extends BaseController
             'id'        => $user['id'],
             'api_token' => Token::getToken(),
         ]);
-        $this->response->redirect($this->helper->url->to('ProfileController', 'api', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'api', ['user_id' => $user['id']]));
     }
 
     /**
@@ -207,7 +207,7 @@ class ProfileController extends BaseController
             'id'        => $user['id'],
             'api_token' => null,
         ]);
-        $this->response->redirect($this->helper->url->to('ProfileController', 'api', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'api', ['user_id' => $user['id']]));
     }
 
     /**
@@ -239,7 +239,7 @@ class ProfileController extends BaseController
                 $this->flash->failure(t('Unable to update this user.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('ProfileController', 'share', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'share', ['user_id' => $user['id']]));
         }
 
         return $this->response->html($this->helper->layout->profile('profile/share', [
@@ -301,7 +301,7 @@ class ProfileController extends BaseController
                 $this->flash->failure(t('Unable to update your user.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
         }
 
         return $this->show($values, $errors);
@@ -348,7 +348,7 @@ class ProfileController extends BaseController
                 $this->flash->failure(t('Unable to change the password.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
         }
 
         return $this->changePassword($values, $errors);

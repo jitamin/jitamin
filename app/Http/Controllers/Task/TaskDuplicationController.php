@@ -32,11 +32,11 @@ class TaskDuplicationController extends BaseController
             if ($task_id > 0) {
                 $this->flash->success(t('Task created successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task_id]));
+                return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task_id]));
             } else {
                 $this->flash->failure(t('Unable to create this task.'));
 
-                return $this->response->redirect($this->helper->url->to('TaskDuplicationController', 'duplicate', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+                return $this->response->redirect($this->helper->url->to('Task/TaskDuplicationController', 'duplicate', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
             }
         }
 
@@ -64,7 +64,7 @@ class TaskDuplicationController extends BaseController
                                                                 $values['owner_id'])) {
                 $this->flash->success(t('Task updated successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task['id']]));
+                return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task['id']]));
             }
 
             $this->flash->failure(t('Unable to update your task.'));
@@ -93,7 +93,7 @@ class TaskDuplicationController extends BaseController
                 if ($task_id > 0) {
                     $this->flash->success(t('Task created successfully.'));
 
-                    return $this->response->redirect($this->helper->url->to('TaskController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task_id]));
+                    return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task_id]));
                 }
             }
 
