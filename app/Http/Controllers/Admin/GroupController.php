@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
+
+use Jitamin\Controller\BaseController;
 
 /**
  * Group Controller.
@@ -22,7 +24,7 @@ class GroupController extends BaseController
     public function index()
     {
         $paginator = $this->paginator
-            ->setUrl('GroupController', 'index')
+            ->setUrl('Admin/GroupController', 'index')
             ->setMax(30)
             ->setOrder('name')
             ->setQuery($this->groupModel->getQuery())
@@ -60,7 +62,7 @@ class GroupController extends BaseController
             if ($this->groupModel->create($values['name']) !== false) {
                 $this->flash->success(t('Group created successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('GroupController', 'index'), true);
+                return $this->response->redirect($this->helper->url->to('Admin/GroupController', 'index'), true);
             } else {
                 $this->flash->failure(t('Unable to create your group.'));
             }
@@ -99,7 +101,7 @@ class GroupController extends BaseController
             if ($this->groupModel->update($values) !== false) {
                 $this->flash->success(t('Group updated successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('GroupController', 'index'), true);
+                return $this->response->redirect($this->helper->url->to('Admin/GroupController', 'index'), true);
             } else {
                 $this->flash->failure(t('Unable to update your group.'));
             }
@@ -117,7 +119,7 @@ class GroupController extends BaseController
         $group = $this->groupModel->getById($group_id);
 
         $paginator = $this->paginator
-            ->setUrl('GroupController', 'users', ['group_id' => $group_id])
+            ->setUrl('Admin/GroupController', 'users', ['group_id' => $group_id])
             ->setMax(30)
             ->setOrder('username')
             ->setQuery($this->groupMemberModel->getQuery($group_id))
@@ -164,7 +166,7 @@ class GroupController extends BaseController
             if ($this->groupMemberModel->addUser($values['group_id'], $values['user_id'])) {
                 $this->flash->success(t('Group member added successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('GroupController', 'users', ['group_id' => $values['group_id']]), true);
+                return $this->response->redirect($this->helper->url->to('Admin/GroupController', 'users', ['group_id' => $values['group_id']]), true);
             } else {
                 $this->flash->failure(t('Unable to add group member.'));
             }
@@ -204,7 +206,7 @@ class GroupController extends BaseController
             $this->flash->failure(t('Unable to remove this user from the group.'));
         }
 
-        $this->response->redirect($this->helper->url->to('GroupController', 'users', ['group_id' => $group_id]), true);
+        $this->response->redirect($this->helper->url->to('Admin/GroupController', 'users', ['group_id' => $group_id]), true);
     }
 
     /**
@@ -234,6 +236,6 @@ class GroupController extends BaseController
             $this->flash->failure(t('Unable to remove this group.'));
         }
 
-        $this->response->redirect($this->helper->url->to('GroupController', 'index'), true);
+        $this->response->redirect($this->helper->url->to('Admin/GroupController', 'index'), true);
     }
 }

@@ -8,8 +8,8 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'LinkController', 'remove', ['link_id' => $link['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'Admin/LinkController', 'remove', ['link_id' => $link['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'LinkController', 'index') ?>
+        <?= $this->url->link(t('cancel'), 'Admin/LinkController', 'index') ?>
     </div>
 </div>

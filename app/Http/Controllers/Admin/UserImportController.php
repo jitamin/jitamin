@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Csv;
 
 /**
@@ -49,7 +50,7 @@ class UserImportController extends BaseController
             $this->importFile($values, $filename);
         }
 
-        $this->response->redirect($this->helper->url->to('UserController', 'index'));
+        $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
     }
 
     /**

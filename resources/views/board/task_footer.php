@@ -6,7 +6,7 @@
         <?php else: ?>
             <?= $this->url->link(
                 $this->text->e($task['category_name']),
-                'TaskController',
+                'Task/TaskController',
                 'edit',
                 ['task_id' => $task['id'], 'project_id' => $task['project_id']],
                 false,

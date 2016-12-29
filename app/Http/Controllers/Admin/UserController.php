@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Security\Role;
 use Jitamin\Notification\MailNotification;
 
@@ -90,10 +91,10 @@ class UserController extends BaseController
             }
 
             $this->flash->success(t('User created successfully.'));
-            $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user_id]));
+            $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user_id]));
         } else {
             $this->flash->failure(t('Unable to create your user.'));
-            $this->response->redirect($this->helper->url->to('UserController', 'index'));
+            $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
         }
     }
 
@@ -141,7 +142,7 @@ class UserController extends BaseController
                 $this->flash->failure(t('Unable to update your user.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('UserController', 'changeAuthentication', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Admin/UserController', 'changeAuthentication', ['user_id' => $user['id']]));
         }
 
         return $this->changeAuthentication($values, $errors);
@@ -161,6 +162,6 @@ class UserController extends BaseController
             $this->flash->failure(t('Unable to unlock the user.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
     }
 }

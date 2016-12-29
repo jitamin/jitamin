@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Auth;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
@@ -49,7 +50,7 @@ class PasswordResetController extends BaseController
 
         if ($valid) {
             $this->sendEmail($values['username']);
-            $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         } else {
             $this->create($values, $errors);
         }
@@ -78,7 +79,7 @@ class PasswordResetController extends BaseController
                 'no_layout' => true,
             ]));
         } else {
-            $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         }
     }
 
@@ -101,7 +102,7 @@ class PasswordResetController extends BaseController
                 $this->passwordResetModel->disable($user_id);
             }
 
-            return $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            return $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         }
 
         return $this->change($values, $errors);

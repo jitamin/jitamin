@@ -42,13 +42,13 @@ return [
 'c/:project_id'        => 'CalendarController@show',
 
 // Listing routes
-'list/:project_id' => 'TaskController@index',
-'l/:project_id'    => 'TaskListController@show',
+'list/:project_id' => 'Task/TaskController@index',
+'l/:project_id'    => 'Task/TaskListController@show',
 
 // Gantt routes
-'gantt/:project_id'               => 'TaskGanttController@show',
-'gantt/:project_id/sort/:sorting' => 'TaskGanttController@show',
-'gantt/:project_id/create'        => 'TaskGanttController@create',
+'gantt/:project_id'               => 'Task/TaskGanttController@show',
+'gantt/:project_id/sort/:sorting' => 'Task/TaskGanttController@show',
+'gantt/:project_id/create'        => 'Task/TaskGanttController@create',
 
 // Feed routes
 'feed/project/:token' => 'FeedController@project',

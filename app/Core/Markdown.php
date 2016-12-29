@@ -90,7 +90,7 @@ class Markdown extends Parsedown
             $user_id = $this->container['userModel']->getIdByUsername($matches[1]);
 
             if (!empty($user_id)) {
-                $url = $this->container['helper']->url->href('ProfileController', 'profile', ['user_id' => $user_id]);
+                $url = $this->container['helper']->url->href('Profile/ProfileController', 'profile', ['user_id' => $user_id]);
 
                 return [
                     'extent'  => strlen($matches[0]),
@@ -118,7 +118,7 @@ class Markdown extends Parsedown
 
             if (!empty($token)) {
                 return $this->container['helper']->url->href(
-                    'TaskController',
+                    'Task/TaskController',
                     'readonly',
                     [
                         'token'   => $token,
@@ -131,7 +131,7 @@ class Markdown extends Parsedown
         }
 
         return $this->container['helper']->url->href(
-            'TaskController',
+            'Task/TaskController',
             'show',
             ['task_id' => $task_id]
         );

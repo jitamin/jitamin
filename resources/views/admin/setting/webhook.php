@@ -2,7 +2,7 @@
     <h2><?= t('Webhook settings') ?></h2>
 </div>
 <section>
-<form method="post" action="<?= $this->url->href('SettingController', 'store', ['redirect' => 'webhook']) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Admin/SettingController', 'store', ['redirect' => 'webhook']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
@@ -25,7 +25,7 @@
             <strong><?= $this->text->e($values['webhook_token']) ?></strong>
         </li>
         <li>
-            <?= $this->url->link(t('Reset token'), 'SettingController', 'token', ['type' => 'webhook'], true) ?>
+            <?= $this->url->link(t('Reset token'), 'Admin/SettingController', 'token', ['type' => 'webhook'], true) ?>
         </li>
     </ul>
 </section>

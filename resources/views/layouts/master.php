@@ -43,8 +43,8 @@
         <?= $this->hook->render('template:layout:head') ?>
     </head>
     <body class="skin-<?= $this->app->getSkin() ?> <?= $this->app->getLayout() ?>"
-          data-status-url="<?= $this->url->href('UserAjaxController', 'status') ?>"
-          data-login-url="<?= $this->url->href('AuthController', 'login') ?>"
+          data-status-url="<?= $this->url->href('Profile/UserAjaxController', 'status') ?>"
+          data-login-url="<?= $this->url->href('Auth/AuthController', 'login') ?>"
           data-keyboard-shortcut-url="<?= $this->url->href('DocumentationController', 'shortcuts') ?>"
           data-timezone="<?= $this->app->getTimezone() ?>"
           data-js-lang="<?= $this->app->jsLang() ?>"

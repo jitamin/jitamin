@@ -1,4 +1,4 @@
-<?php $has_project_creation_access = $this->user->hasAccess('ProjectController', 'create'); ?>
+<?php $has_project_creation_access = $this->user->hasAccess('Project/ProjectController', 'create'); ?>
 <?php $is_private_project_enabled = $this->app->setting('disable_private_project', 0) == 0; ?>
 <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
@@ -22,21 +22,21 @@
     <div class="collapse navbar-collapse" id="nb-collapse">
 
         <ul class="nav navbar-nav navbar-right">
-            <?php if ($this->user->hasAccess('SettingController', 'index')): ?>
+            <?php if ($this->user->hasAccess('Admin/SettingController', 'index')): ?>
             <li class="dropdown">
                 <a href="#" class="dropdown-menu"><i class="fa fa-wrench"></i> <i class="fa fa-caret-down"></i></a>
                 <ul>
                     <li>
                         <i class="fa fa-user"></i>
-                        <?= $this->url->link(t('Users management'), 'UserController', 'index') ?>
+                        <?= $this->url->link(t('Users management'), 'Admin/UserController', 'index') ?>
                     </li>
                     <li>
                         <i class="fa fa-group"></i>
-                        <?= $this->url->link(t('Groups management'), 'GroupController', 'index') ?>
+                        <?= $this->url->link(t('Groups management'), 'Admin/GroupController', 'index') ?>
                     </li>
                     <li>
                         <i class="fa fa-plug"></i>
-                        <?= $this->url->link(t('Plugins management'), 'PluginController', 'show') ?>
+                        <?= $this->url->link(t('Plugins management'), 'Admin/PluginController', 'show') ?>
                     </li>
                 </ul>
             </li>
@@ -44,9 +44,9 @@
             <!--
             <li class="notification">
                 <?php if ($this->user->hasNotifications()): ?>
-                    <?= $this->url->link('<i class="fa fa-bell web-notification-icon"></i>', 'DashboardController', 'notifications', [], false, '', t('You have unread notifications')) ?>
+                    <?= $this->url->link('<i class="fa fa-bell web-notification-icon"></i>', 'Dashboard/DashboardController', 'notifications', [], false, '', t('You have unread notifications')) ?>
                 <?php else: ?>
-                    <?= $this->url->link('<i class="fa fa-bell"></i>', 'DashboardController', 'notifications', [], false, '', t('You have no unread notifications')) ?>
+                    <?= $this->url->link('<i class="fa fa-bell"></i>', 'Dashboard/DashboardController', 'notifications', [], false, '', t('You have no unread notifications')) ?>
                 <?php endif ?>
             </li>
             <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
@@ -55,13 +55,13 @@
                     <ul>
                         <?php if ($has_project_creation_access): ?>
                             <li><i class="fa fa-cube"></i>
-                                <?= $this->url->link(t('New project'), 'ProjectController', 'create', [], false, 'popover') ?>
+                                <?= $this->url->link(t('New project'), 'Project/ProjectController', 'create', [], false, 'popover') ?>
                             </li>
                         <?php endif ?>
                         <?php if ($is_private_project_enabled): ?>
                             <li>
                                 <i class="fa fa-lock"></i>
-                                <?= $this->url->link(t('New private project'), 'ProjectController', 'createPrivate', [], false, 'popover') ?>
+                                <?= $this->url->link(t('New private project'), 'Project/ProjectController', 'createPrivate', [], false, 'popover') ?>
                             </li>
                         <?php endif ?>
                         <?= $this->hook->render('template:header:creation-dropdown') ?>
@@ -75,11 +75,11 @@
                 <ul>
                     <li>
                         <i class="fa fa-vcard"></i>
-                        <?= $this->url->link(t('My profile'), 'ProfileController', 'show', ['user_id' => $this->user->getId()]) ?>
+                        <?= $this->url->link(t('My profile'), 'Profile/ProfileController', 'show', ['user_id' => $this->user->getId()]) ?>
                     </li>
                     <li>
                         <i class="fa fa-edit"></i>
-                        <?= $this->url->link(t('Edit profile'), 'ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
+                        <?= $this->url->link(t('Edit profile'), 'Profile/ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
                     </li>
                     <li>
                         <i class="fa fa-life-ring"></i>
@@ -90,7 +90,7 @@
                     <?php if (!DISABLE_LOGOUT): ?>
                         <li>
                             <i class="fa fa-sign-out"></i>
-                            <?= $this->url->link(t('Logout'), 'AuthController', 'logout') ?>
+                            <?= $this->url->link(t('Logout'), 'Auth/AuthController', 'logout') ?>
                         </li>
                     <?php endif ?>
                 </ul>

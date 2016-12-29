@@ -1,4 +1,4 @@
-<form method="post" action="<?= $this->url->href('TwoFactorController', 'check', ['user_id' => $this->user->getId()]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Profile/TwoFactorController', 'check', ['user_id' => $this->user->getId()]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->label(t('Code'), 'code') ?>

@@ -24,7 +24,7 @@ class WebNotificationController extends BaseController
         $user_id = $this->getUserId();
 
         $this->userUnreadNotificationModel->markAllAsRead($user_id);
-        $this->response->redirect($this->helper->url->to('DashboardController', 'notifications', ['user_id' => $user_id]));
+        $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'notifications', ['user_id' => $user_id]));
     }
 
     /**
@@ -36,7 +36,7 @@ class WebNotificationController extends BaseController
         $notification_id = $this->request->getIntegerParam('notification_id');
 
         $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
-        $this->response->redirect($this->helper->url->to('DashboardController', 'notifications', ['user_id' => $user_id]));
+        $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'notifications', ['user_id' => $user_id]));
     }
 
     /**
@@ -51,17 +51,17 @@ class WebNotificationController extends BaseController
         $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
 
         if (empty($notification)) {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'notifications', ['user_id' => $user_id]));
+            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'notifications', ['user_id' => $user_id]));
         } elseif ($this->helper->text->contains($notification['event_name'], 'comment')) {
             $this->response->redirect($this->helper->url->to(
-                'TaskController',
+                'Task/TaskController',
                 'show',
                 ['task_id' => $this->notificationModel->getTaskIdFromEvent($notification['event_name'], $notification['event_data'])],
                 'comment-'.$notification['event_data']['comment']['id']
             ));
         } else {
             $this->response->redirect($this->helper->url->to(
-                'TaskController',
+                'Task/TaskController',
                 'show',
                 ['task_id' => $this->notificationModel->getTaskIdFromEvent($notification['event_name'], $notification['event_data'])]
             ));

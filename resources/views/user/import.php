@@ -3,7 +3,7 @@
     <ul>
         <li>
             <i class="fa fa-download fa-fw"></i>
-            <?= $this->url->link(t('Download CSV template'), 'UserImportController', 'template') ?>
+            <?= $this->url->link(t('Download CSV template'), 'Admin/UserImportController', 'template') ?>
         </li>
     </ul>
 </div>
@@ -19,7 +19,7 @@
     </ul>
 </div>
 
-<form action="<?= $this->url->href('UserImportController', 'store') ?>" method="post" enctype="multipart/form-data">
+<form action="<?= $this->url->href('Admin/UserImportController', 'store') ?>" method="post" enctype="multipart/form-data">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->label(t('Delimiter'), 'delimiter') ?>
@@ -36,6 +36,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Import') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'UserController', 'index', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Admin/UserController', 'index', [], false, 'close-popover') ?>
     </div>
 </form>

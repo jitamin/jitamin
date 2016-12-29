@@ -44,7 +44,7 @@ abstract class BaseProcedure extends Base
     protected function formatTask($task)
     {
         if (!empty($task)) {
-            $task['url'] = $this->helper->url->to('TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], '', true);
+            $task['url'] = $this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], '', true);
             $task['color'] = $this->colorModel->getColorProperties($task['color_id']);
         }
 
@@ -82,7 +82,7 @@ abstract class BaseProcedure extends Base
             $project['url'] = [
                 'board'    => $this->helper->url->to('BoardController', 'show', ['project_id' => $project['id']], '', true),
                 'calendar' => $this->helper->url->to('CalendarController', 'show', ['project_id' => $project['id']], '', true),
-                'list'     => $this->helper->url->to('TaskController', 'index', ['project_id' => $project['id']], '', true),
+                'list'     => $this->helper->url->to('Task/TaskController', 'index', ['project_id' => $project['id']], '', true),
             ];
         }
 

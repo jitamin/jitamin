@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Plugin\Directory;
 use Jitamin\Core\Plugin\Installer;
 use Jitamin\Core\Plugin\PluginInstallerException;
@@ -69,7 +70,7 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 
     /**
@@ -90,7 +91,7 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 
     /**
@@ -125,6 +126,6 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 }

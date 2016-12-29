@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
+
+use Jitamin\Controller\BaseController;
 
 /**
  * Setting Controller.
@@ -188,7 +190,7 @@ class SettingController extends BaseController
             $this->flash->failure(t('Unable to save your settings.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SettingController', $redirect));
+        $this->response->redirect($this->helper->url->to('Admin/SettingController', $redirect));
     }
 
     /**
@@ -209,7 +211,7 @@ class SettingController extends BaseController
         $this->checkCSRFParam();
         $this->settingModel->optimizeDatabase();
         $this->flash->success(t('Database optimization done.'));
-        $this->response->redirect($this->helper->url->to('SettingController', 'index'));
+        $this->response->redirect($this->helper->url->to('Admin/SettingController', 'index'));
     }
 
     /**
@@ -223,6 +225,6 @@ class SettingController extends BaseController
         $this->settingModel->regenerateToken($type.'_token');
 
         $this->flash->success(t('Token regenerated.'));
-        $this->response->redirect($this->helper->url->to('SettingController', $type));
+        $this->response->redirect($this->helper->url->to('Admin/SettingController', $type));
     }
 }

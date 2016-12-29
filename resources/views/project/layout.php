@@ -1,5 +1,5 @@
 <section id="main">
-    <?= $this->projectHeader->render($project, 'TaskController', 'index') ?>
+    <?= $this->projectHeader->render($project, 'Task/TaskController', 'index') ?>
     <section class="page-container">
 
         <div class="page-content">

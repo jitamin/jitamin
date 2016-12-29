@@ -11,12 +11,12 @@
 
 return [
     // Dashboard routes
-    'dashboard'               => 'DashboardController@index',
-    'dashboard/projects'      => 'DashboardController@projects',
-    'dashboard/tasks'         => 'DashboardController@tasks',
-    'dashboard/stars'         => 'DashboardController@stars',
-    'dashboard/subtasks'      => 'DashboardController@subtasks',
-    'dashboard/calendar'      => 'DashboardController@calendar',
-    'dashboard/activities'    => 'DashboardController@activities',
-    'dashboard/notifications' => 'DashboardController@notifications',
+    'dashboard'               => 'Dashboard/DashboardController@index',
+    'dashboard/projects'      => 'Dashboard/DashboardController@projects',
+    'dashboard/tasks'         => 'Dashboard/DashboardController@tasks',
+    'dashboard/stars'         => 'Dashboard/DashboardController@stars',
+    'dashboard/subtasks'      => 'Dashboard/DashboardController@subtasks',
+    'dashboard/calendar'      => 'Dashboard/DashboardController@calendar',
+    'dashboard/activities'    => 'Dashboard/DashboardController@activities',
+    'dashboard/notifications' => 'Dashboard/DashboardController@notifications',
 ];

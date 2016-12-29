@@ -7,7 +7,7 @@
         <p><?= t('There is no user management for private projects.') ?></p>
     </div>
     <?php endif ?>
-    <form class="popover-form" id="project-creation-form" method="post" action="<?= $this->url->href('ProjectController', 'store') ?>" autocomplete="off">
+    <form class="popover-form" id="project-creation-form" method="post" action="<?= $this->url->href('Project/ProjectController', 'store') ?>" autocomplete="off">
 
         <?= $this->form->csrf() ?>
         <?= $this->form->hidden('is_private', $values) ?>
@@ -37,7 +37,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'ProjectController', 'index', [], false, 'close-popover') ?>
+            <?= $this->url->link(t('cancel'), 'Project/ProjectController', 'index', [], false, 'close-popover') ?>
         </div>
     </form>
     

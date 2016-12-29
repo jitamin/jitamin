@@ -32,7 +32,7 @@ class StarPagination extends Base
     public function getDashboardPaginator($user_id, $method, $max)
     {
         return $this->paginator
-            ->setUrl('DashboardController', $method, ['pagination' => 'stars', 'user_id' => $user_id])
+            ->setUrl('Dashboard/DashboardController', $method, ['pagination' => 'stars', 'user_id' => $user_id])
             ->setMax(30)
             ->setOrder(ProjectModel::TABLE.'.name')
             ->setQuery($this->projectModel->getQueryColumnStats($this->projectStarModel->getProjectIds($user_id)))

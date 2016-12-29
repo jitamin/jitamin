@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit group') ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('GroupController', 'update') ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('Admin/GroupController', 'update') ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->hidden('id', $values) ?>
@@ -13,6 +13,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'GroupController', 'index', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Admin/GroupController', 'index', [], false, 'close-popover') ?>
     </div>
 </form>

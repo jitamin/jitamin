@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
@@ -62,7 +63,7 @@ class TagController extends BaseController
                 $this->flash->failure(t('Unable to create this tag.'));
             }
 
-            $this->response->redirect($this->helper->url->to('TagController', 'index'));
+            $this->response->redirect($this->helper->url->to('Admin/TagController', 'index'));
         } else {
             $this->create($values, $errors);
         }
@@ -111,7 +112,7 @@ class TagController extends BaseController
                 $this->flash->failure(t('Unable to update this tag.'));
             }
 
-            $this->response->redirect($this->helper->url->to('TagController', 'index'));
+            $this->response->redirect($this->helper->url->to('Admin/TagController', 'index'));
         } else {
             $this->edit($values, $errors);
         }
@@ -149,6 +150,6 @@ class TagController extends BaseController
             $this->flash->failure(t('Unable to remove this tag.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TagController', 'index'));
+        $this->response->redirect($this->helper->url->to('Admin/TagController', 'index'));
     }
 }

@@ -22,10 +22,10 @@
         </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('TaskController', 'create', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Task/TaskController', 'create', $project['id'])): ?>
             <li>
                 <i class="fa fa-plus"></i>
-                <?= $this->url->link(t('Add a new task'), 'TaskController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
+                <?= $this->url->link(t('Add a new task'), 'Task/TaskController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
             </li>
         <?php endif ?>
 
@@ -37,12 +37,12 @@
         <?php if ($this->user->isStargazer($project['id'], $this->user->getId())): ?>
         <li>
             <i class="fa fa-star-o"></i>
-            <?= $this->url->link(t('Unstar'), 'ProjectController', 'confirmUnstar', ['project_id' => $project['id']], true, 'popover') ?>
+            <?= $this->url->link(t('Unstar'), 'Project/ProjectController', 'confirmUnstar', ['project_id' => $project['id']], true, 'popover') ?>
         </li>
         <?php else: ?>
         <li>
             <i class="fa fa-star"></i>
-            <?= $this->url->link(t('Star'), 'ProjectController', 'confirmStar', ['project_id' => $project['id']], true, 'popover') ?>
+            <?= $this->url->link(t('Star'), 'Project/ProjectController', 'confirmStar', ['project_id' => $project['id']], true, 'popover') ?>
         </li>
         <?php endif ?>
 
@@ -76,17 +76,17 @@
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('TaskImportController', 'tasks', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Task/TaskImportController', 'tasks', $project['id'])): ?>
             <li>
                 <i class="fa fa-download"></i>
-                <?= $this->url->link(t('Imports'), 'TaskImportController', 'show', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Imports'), 'Task/TaskImportController', 'show', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('ProjectController', 'edit', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/ProjectController', 'edit', $project['id'])): ?>
             <li>
                 <i class="fa fa-cog"></i>
-                <?= $this->url->link(t('Settings'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Settings'), 'Project/ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
     </ul>

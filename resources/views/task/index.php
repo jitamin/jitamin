@@ -1,5 +1,5 @@
 <section id="main">
-    <?= $this->projectHeader->render($project, 'TaskController', 'index') ?>
+    <?= $this->projectHeader->render($project, 'Task/TaskController', 'index') ?>
 
     <?php if ($paginator->isEmpty()): ?>
         <p class="alert"><?= t('No tasks found.') ?></p>
@@ -18,7 +18,7 @@
             <?php foreach ($paginator->getCollection() as $task): ?>
             <tr>
                 <td class="task-table color-<?= $task['color_id'] ?>">
-                    <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
+                    <?php if ($this->user->hasProjectAccess('Task/TaskController', 'edit', $task['project_id'])): ?>
                         <?= $this->render('task/dropdown', ['task' => $task]) ?>
                     <?php else: ?>
                         #<?= $task['id'] ?>
@@ -34,7 +34,7 @@
                     <?= $this->text->e($task['category_name']) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($task['title']), 'TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                    <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
                 </td>
                 <td>
                     <?php if ($task['assignee_username']): ?>

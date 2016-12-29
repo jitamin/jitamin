@@ -25,7 +25,7 @@
             <td><?= $this->dt->datetime($transition['date']) ?></td>
             <td><?= $this->text->e($transition['src_column']) ?></td>
             <td><?= $this->text->e($transition['dst_column']) ?></td>
-            <td><?= $this->url->link($this->text->e($transition['name'] ?: $transition['username']), 'ProfileController', 'show', ['user_id' => $transition['user_id']]) ?></td>
+            <td><?= $this->url->link($this->text->e($transition['name'] ?: $transition['username']), 'Profile/ProfileController', 'show', ['user_id' => $transition['user_id']]) ?></td>
             <td><?= $this->dt->duration($transition['time_spent']) ?></td>
         </tr>
         <?php endforeach ?>

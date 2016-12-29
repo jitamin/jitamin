@@ -8,8 +8,8 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'TaskExternalLinkController', 'remove', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'Task/TaskExternalLinkController', 'remove', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TaskExternalLinkController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Task/TaskExternalLinkController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>
 </div>

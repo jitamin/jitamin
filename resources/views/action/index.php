@@ -7,7 +7,7 @@
         </li>
         <li>
             <i class="fa fa-copy fa-fw"></i>
-            <?= $this->url->link(t('Import from another project'), 'ProjectActionDuplicationController', 'show', ['project_id' => $project['id']], false, 'popover') ?>
+            <?= $this->url->link(t('Import from another project'), 'Project/ProjectActionDuplicationController', 'show', ['project_id' => $project['id']], false, 'popover') ?>
         </li>
     </ul>
 </div>
