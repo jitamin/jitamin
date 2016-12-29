@@ -121,7 +121,7 @@ class Router extends Base
      *
      * @return string
      */
-    protected function sanitize($value, $default = '', $is_controller = false)
+    public function sanitize($value, $default = '', $is_controller = false)
     {
         if ($is_controller) {
             return  $value ?: $default;
