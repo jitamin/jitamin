@@ -123,10 +123,8 @@ class Router extends Base
      */
     protected function sanitize($value, $default = '', $is_controller = false)
     {
-        if ($is_controller) {
-            return  $value ?: $default;
-        }
+        $pattern = $is_controller ? '/^[a-zA-Z_0-9\/]+$/' : '/^[a-zA-Z_0-9]+$/';
 
-        return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
+        return preg_match($pattern, $value) ? $value : $default;
     }
 }
