@@ -126,6 +126,7 @@ class Router extends Base
         if ($is_controller) {
             return  $value ?: $default;
         }
+
         return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
     }
 }
