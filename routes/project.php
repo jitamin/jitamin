@@ -38,7 +38,7 @@ return [
     'projects/tasks_opened/:user_id' => 'Project/ProjectUserOverviewController@opens',
     'projects/tasks_closed/:user_id' => 'Project/ProjectUserOverviewController@closed',
     'projects/managers'              => 'Project/ProjectUserOverviewController@managers',
-    'projects/gantt'                 => 'Project/ProjectGanttController@index',
+    'projects/gantt'                 => 'Project/ProjectController@gantt',
 
     // ProjectFile routes
     'project/:project_id/file/upload'      => 'Project/ProjectFileController@create',

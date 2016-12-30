@@ -1,5 +1,5 @@
 <div class="page-header">
-    <?= $this->render('project_header/nav') ?>
+    <?= $this->render('project/_partials/nav') ?>
 </div>
 <section>
     <?php if (empty($projects)): ?>
@@ -8,7 +8,7 @@
         <div
             id="gantt-chart"
             data-records='<?= json_encode($projects, JSON_HEX_APOS) ?>'
-            data-store-url="<?= $this->url->href('ProjectGanttController', 'store') ?>"
+            data-store-url="<?= $this->url->href('Project/ProjectController', 'updateDate') ?>"
             data-label-project-manager="<?= t('Project managers') ?>"
             data-label-project-member="<?= t('Project members') ?>"
             data-label-gantt-link="<?= t('Gantt chart for this project') ?>"

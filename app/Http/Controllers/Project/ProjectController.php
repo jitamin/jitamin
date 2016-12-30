@@ -12,6 +12,11 @@
 namespace Jitamin\Controller\Project;
 
 use Jitamin\Controller\BaseController;
+use Jitamin\Filter\ProjectIdsFilter;
+use Jitamin\Filter\ProjectStatusFilter;
+use Jitamin\Filter\ProjectTypeFilter;
+use Jitamin\Formatter\ProjectGanttFormatter;
+use Jitamin\Model\ProjectModel;
 
 /**
  * Class ProjectController.
@@ -62,6 +67,25 @@ class ProjectController extends BaseController
             'events'      => $this->helper->projectActivity->getProjectEvents($project['id'], 10),
             'images'      => $this->projectFileModel->getAllImages($project['id']),
             'files'       => $this->projectFileModel->getAllDocuments($project['id']),
+        ]));
+    }
+
+    /**
+     * Display Gantt chart for all projects.
+     */
+    public function gantt()
+    {
+        $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
+        $filter = $this->projectQuery
+            ->withFilter(new ProjectTypeFilter(ProjectModel::TYPE_TEAM))
+            ->withFilter(new ProjectStatusFilter(ProjectModel::ACTIVE))
+            ->withFilter(new ProjectIdsFilter($project_ids));
+
+        $filter->getQuery()->asc(ProjectModel::TABLE.'.start_date');
+
+        $this->response->html($this->helper->layout->app('project/gantt', [
+            'projects' => $filter->format(new ProjectGanttFormatter($this->container)),
+            'title'    => t('Projects Gantt chart'),
         ]));
     }
 
@@ -241,6 +265,26 @@ class ProjectController extends BaseController
         }
 
         return $this->$redirect($values, $errors);
+    }
+
+    /**
+     * Update new project start date and end date.
+     */
+    public function updateDate()
+    {
+        $values = $this->request->getJson();
+
+        $result = $this->projectModel->update([
+            'id'         => $values['id'],
+            'start_date' => $this->dateParser->getIsoDate(strtotime($values['start'])),
+            'end_date'   => $this->dateParser->getIsoDate(strtotime($values['end'])),
+        ]);
+
+        if (!$result) {
+            $this->response->json(['message' => 'Unable to save project'], 400);
+        } else {
+            $this->response->json(['message' => 'OK'], 201);
+        }
     }
 
     /**

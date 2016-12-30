@@ -1,5 +1,5 @@
 <div class="page-header">
-    <?= $this->render('project_header/nav') ?>
+    <?= $this->render('project/_partials/nav') ?>
 </div>
 <section class="page-container">
     <div class="page-content">
