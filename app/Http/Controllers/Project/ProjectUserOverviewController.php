@@ -102,7 +102,7 @@ class ProjectUserOverviewController extends BaseController
         }
 
         $paginator = $this->paginator
-            ->setUrl('ProjectUserOverviewController', $action, ['user_id' => $user_id])
+            ->setUrl('Project/ProjectUserOverviewController', $action, ['user_id' => $user_id])
             ->setMax(30)
             ->setOrder('projects.name')
             ->setQuery($query)
@@ -136,7 +136,7 @@ class ProjectUserOverviewController extends BaseController
         }
 
         $paginator = $this->paginator
-            ->setUrl('ProjectUserOverviewController', $action, ['user_id' => $user_id])
+            ->setUrl('Project/ProjectUserOverviewController', $action, ['user_id' => $user_id])
             ->setMax(50)
             ->setOrder(TaskModel::TABLE.'.id')
             ->setQuery($query)
