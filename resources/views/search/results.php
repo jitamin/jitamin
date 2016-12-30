@@ -1,6 +1,6 @@
 <table class="table-small table-scrolling">
     <tr>
-        <th class="column-5"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
+        <th class="column-8"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
         <th class="column-8"><?= $paginator->order(t('Project'), 'tasks.project_id') ?></th>
         <th class="column-10"><?= $paginator->order(t('Swimlane'), 'tasks.swimlane_id') ?></th>
         <th class="column-10"><?= $paginator->order(t('Column'), 'tasks.column_id') ?></th>
@@ -8,7 +8,7 @@
         <th><?= $paginator->order(t('Title'), 'tasks.title') ?></th>
         <th class="column-10"><?= $paginator->order(t('Assignee'), 'users.username') ?></th>
         <th class="column-10"><?= $paginator->order(t('Due date'), 'tasks.date_due') ?></th>
-        <th class="column-5"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
+        <th class="column-8"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
     </tr>
     <?php foreach ($paginator->getCollection() as $task): ?>
     <tr>

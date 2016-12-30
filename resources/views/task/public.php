@@ -1,4 +1,4 @@
-<section id="main" class="public-board">
+<section class="public-board">
     <?= $this->render('task/details', [
         'task'     => $task,
         'tags'     => $tags,

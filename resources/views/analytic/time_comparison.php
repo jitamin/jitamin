@@ -25,9 +25,9 @@
 
         <table class="table-fixed table-small table-scrolling">
             <tr>
-                <th class="column-5"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
+                <th class="column-8"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
                 <th><?= $paginator->order(t('Title'), 'tasks.title') ?></th>
-                <th class="column-5"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
+                <th class="column-8"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
                 <th class="column-10"><?= $paginator->order(t('Estimated Time'), 'tasks.time_estimated') ?></th>
                 <th class="column-10"><?= $paginator->order(t('Actual Time'), 'tasks.time_spent') ?></th>
             </tr>
