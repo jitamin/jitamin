@@ -27,11 +27,11 @@ class RememberMeSessionModel extends Model
     const TABLE = 'remember_me';
 
     /**
-     * Expiration (60 days).
+     * Expiration (30 days).
      *
      * @var int
      */
-    const EXPIRATION = 5184000;
+    const EXPIRATION = 2592000;
 
     /**
      * Get a remember me record.
