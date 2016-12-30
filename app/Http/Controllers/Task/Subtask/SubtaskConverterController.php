@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Task;
+namespace Jitamin\Controller\Task\Subtask;
 
 use Jitamin\Controller\BaseController;
 

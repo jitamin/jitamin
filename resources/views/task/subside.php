@@ -14,7 +14,7 @@
         </li>
         <li>
             <i class="fa fa-plus fa-fw"></i>
-            <?= $this->url->link(t('Add a sub-task'), 'Task/SubtaskController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a sub-task'), 'Task/Subtask/SubtaskController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-code-fork fa-fw"></i>

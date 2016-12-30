@@ -238,4 +238,14 @@ class GroupController extends BaseController
 
         $this->response->redirect($this->helper->url->to('Admin/GroupController', 'index'), true);
     }
+
+    /**
+     * Group auto-completion (Ajax).
+     */
+    public function autocompleteAjax()
+    {
+        $search = $this->request->getStringParam('term');
+        $formatter = new GroupAutoCompleteFormatter($this->groupManager->find($search));
+        $this->response->json($formatter->format());
+    }
 }

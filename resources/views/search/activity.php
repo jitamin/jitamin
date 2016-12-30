@@ -15,7 +15,7 @@
         <div class="input-addon">
             <?= $this->form->text('q', $values, [], [empty($values['q']) ? 'autofocus' : '', 'placeholder="'.t('Search').'"'], 'input-addon-field') ?>
             <div class="input-addon-item">
-                <?= $this->render('app/filters_helper') ?>
+                <?= $this->render('_partials/filters_helper') ?>
             </div>
         </div>
     </form>

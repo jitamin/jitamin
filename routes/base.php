@@ -32,11 +32,6 @@ return [
 'analytics/lead-cycle-time/:project_id'      => 'AnalyticController@leadAndCycleTime',
 'analytics/estimated-spent-time/:project_id' => 'AnalyticController@compareHours',
 
-// Board routes
-'board/:project_id'   => 'BoardController@show',
-'b/:project_id'       => 'BoardController@show',
-'public/board/:token' => 'BoardController@readonly',
-
 // Calendar routes
 'calendar/:project_id' => 'CalendarController@show',
 'c/:project_id'        => 'CalendarController@show',

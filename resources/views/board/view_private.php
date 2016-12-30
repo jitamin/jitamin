@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'BoardController', 'show', true) ?>
+<?= $this->projectHeader->render($project, 'Project/Board/BoardController', 'show', true) ?>
 
 <?= $this->render('board/table_container', [
     'project'                        => $project,

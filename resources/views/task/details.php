@@ -45,7 +45,7 @@
                     <li>
                         <small>
                             <i class="fa fa-columns"></i>
-                            <?= $this->url->link(t('Back to the board'), 'BoardController', 'readonly', ['token' => $project['token']]) ?>
+                            <?= $this->url->link(t('Back to the board'), 'Project/Board/BoardController', 'readonly', ['token' => $project['token']]) ?>
                         </small>
                     </li>
                     <?php endif ?>

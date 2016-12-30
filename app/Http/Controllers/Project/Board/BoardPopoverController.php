@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Project\Board;
+
+use Jitamin\Controller\BaseController;
 
 /**
  * Board Popover Controller.

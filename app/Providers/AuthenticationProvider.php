@@ -81,8 +81,8 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('ActionController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/ProjectActionDuplicationController', '*', Role::PROJECT_MANAGER);
         $acl->add('AnalyticController', '*', Role::PROJECT_MANAGER);
-        $acl->add('BoardAjaxController', 'store', Role::PROJECT_MEMBER);
-        $acl->add('BoardPopoverController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Project/Board/BoardAjaxController', 'store', Role::PROJECT_MEMBER);
+        $acl->add('Project/Board/BoardPopoverController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/TaskPopoverController', '*', Role::PROJECT_MEMBER);
         $acl->add('CalendarController', 'store', Role::PROJECT_MEMBER);
         $acl->add('CategoryController', '*', Role::PROJECT_MANAGER);
@@ -99,9 +99,9 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('Project/ProjectUserOverviewController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/ProjectStatusController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/ProjectTagController', '*', Role::PROJECT_MANAGER);
-        $acl->add('Task/SubtaskController', '*', Role::PROJECT_MEMBER);
-        $acl->add('Task/SubtaskRestrictionController', '*', Role::PROJECT_MEMBER);
-        $acl->add('Task/SubtaskStatusController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/Subtask/SubtaskController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/Subtask/SubtaskRestrictionController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/Subtask/SubtaskStatusController', '*', Role::PROJECT_MEMBER);
         $acl->add('SwimlaneController', '*', Role::PROJECT_MANAGER);
         $acl->add('Task/TaskSuppressionController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/TaskController', '*', Role::PROJECT_MEMBER);
@@ -135,7 +135,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('CaptchaController', '*', Role::APP_PUBLIC);
         $acl->add('Auth/PasswordResetController', '*', Role::APP_PUBLIC);
         $acl->add('Task/TaskController', 'readonly', Role::APP_PUBLIC);
-        $acl->add('BoardController', 'readonly', Role::APP_PUBLIC);
+        $acl->add('Project/Board/BoardController', 'readonly', Role::APP_PUBLIC);
         $acl->add('ICalendarController', '*', Role::APP_PUBLIC);
         $acl->add('FeedController', '*', Role::APP_PUBLIC);
         $acl->add('AvatarFileController', ['show', 'image'], Role::APP_PUBLIC);

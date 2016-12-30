@@ -40,6 +40,19 @@ class LayoutHelper extends Base
     }
 
     /**
+     * Common layout for error views.
+     *
+     * @param string $template Template name
+     * @param array  $params   Template parameters
+     *
+     * @return string
+     */
+    public function error($template, array $params = [])
+    {
+        return $this->template->render($template, $params);
+    }
+
+    /**
      * Common layout for profile views.
      *
      * @param string $template Template name

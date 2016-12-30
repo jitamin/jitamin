@@ -16,7 +16,7 @@
             <?= $this->url->link('#'.$this->text->e($task['id']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
         </td>
         <td>
-            <?= $this->url->link($this->text->e($task['project_name']), 'BoardController', 'show', ['project_id' => $task['project_id']]) ?>
+            <?= $this->url->link($this->text->e($task['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $task['project_id']]) ?>
         </td>
         <td>
             <?= $this->text->e($task['swimlane_name'] ?: $task['default_swimlane']) ?>

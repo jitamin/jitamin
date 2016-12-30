@@ -19,7 +19,7 @@
                 <?= $this->render('task/dropdown', ['task' => ['id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($subtask['project_name']), 'BoardController', 'show', ['project_id' => $subtask['project_id']]) ?>
+                <?= $this->url->link($this->text->e($subtask['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $subtask['project_id']]) ?>
             </td>
             <td>
                 <?= $this->url->link($this->text->e($subtask['task_name']), 'Task/TaskController', 'show', ['task_id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]) ?>

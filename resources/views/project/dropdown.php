@@ -3,7 +3,7 @@
     <ul>
         <li>
             <i class="fa fa-columns"></i>
-            <?= $this->url->link(t('Board'), 'BoardController', 'show', ['project_id' => $project['id']]) ?>
+            <?= $this->url->link(t('Board'), 'Project/Board/BoardController', 'show', ['project_id' => $project['id']]) ?>
         </li>
         <li>
             <i class="fa fa-calendar"></i>

@@ -5,11 +5,11 @@
         <li>
             <span class="filter-display-mode" <?= $this->board->isCollapsed($project['id']) ? '' : 'style="display: none;"' ?>>
                 <i class="fa fa-expand"></i>
-                <?= $this->url->link(t('Expand tasks'), 'BoardAjaxController', 'expand', ['project_id' => $project['id']], false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
+                <?= $this->url->link(t('Expand tasks'), 'Project/Board/BoardAjaxController', 'expand', ['project_id' => $project['id']], false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
             </span>
             <span class="filter-display-mode" <?= $this->board->isCollapsed($project['id']) ? 'style="display: none;"' : '' ?>>
                 <i class="fa fa-compress"></i>
-                <?= $this->url->link(t('Collapse tasks'), 'BoardAjaxController', 'collapse', ['project_id' => $project['id']], false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
+                <?= $this->url->link(t('Collapse tasks'), 'Project/Board/BoardAjaxController', 'collapse', ['project_id' => $project['id']], false, 'board-display-mode', t('Keyboard shortcut: "%s"', 's')) ?>
             </span>
         </li>
         <li>
@@ -56,7 +56,7 @@
         <?php if ($project['is_public']): ?>
             <li>
                 <i class="fa fa-share-alt"></i>
-                <?= $this->url->link(t('Public link'), 'BoardController', 'readonly', ['token' => $project['token']], false, '', '', true) ?>
+                <?= $this->url->link(t('Public link'), 'Project/Board/BoardController', 'readonly', ['token' => $project['token']], false, '', '', true) ?>
             </li>
         <?php endif ?>
 
