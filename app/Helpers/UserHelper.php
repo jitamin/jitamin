@@ -112,7 +112,7 @@ class UserHelper extends Base
      *
      * @return bool
      */
-    public function hasAccess($controller, $action, $plugin='')
+    public function hasAccess($controller, $action, $plugin = '')
     {
         if (!$this->userSession->isLogged()) {
             return false;
