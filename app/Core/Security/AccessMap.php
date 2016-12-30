@@ -123,10 +123,10 @@ class AccessMap
     {
         if (is_array($methods)) {
             foreach ($methods as $method) {
-                $this->addRule($controller, $method, $role);
+                $this->addRule($controller, $method, $role, $plugin);
             }
         } else {
-            $this->addRule($controller, $methods, $role);
+            $this->addRule($controller, $methods, $role, $plugin);
         }
 
         return $this;
