@@ -61,20 +61,6 @@ class DashboardController extends BaseController
     }
 
     /**
-     * My stars.
-     */
-    public function stars()
-    {
-        $user = $this->getUser();
-
-        $this->response->html($this->helper->layout->dashboard('dashboard/stars', [
-            'title'             => t('My stars'),
-            'paginator'         => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 10),
-            'user'              => $user,
-        ]));
-    }
-
-    /**
      * My activities.
      */
     public function activities()

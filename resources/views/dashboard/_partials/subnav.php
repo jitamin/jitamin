@@ -1,10 +1,10 @@
 <div class="page-header">
     <ul class="nav nav-tabs">
-        <li <?= $this->app->setActive('Dashboard/DashboardController', 'index') ?>>
-            <?= $this->url->link(t('My projects'), 'Dashboard/DashboardController', 'index') ?>
+        <li <?= $this->app->setActive('Dashboard/ProjectController', 'index') ?>>
+            <?= $this->url->link(t('My projects'), 'Dashboard/ProjectController', 'index') ?>
         </li>
-        <li <?= $this->app->setActive('Dashboard/DashboardController', 'stars') ?>>
-            <?= $this->url->link(t('My stars'), 'Dashboard/DashboardController', 'stars') ?>
+        <li <?= $this->app->setActive('Dashboard/ProjectController', 'starred') ?>>
+            <?= $this->url->link(t('My stars'), 'Dashboard/ProjectController', 'starred') ?>
         </li>
         <li <?= $this->app->setActive('Dashboard/DashboardController', 'tasks') ?>>
             <?= $this->url->link(t('My tasks'), 'Dashboard/DashboardController', 'tasks') ?>
