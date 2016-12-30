@@ -9,7 +9,7 @@
     <h2><?= t('Sign in to %s', $this->app->setting('application_name') ?: 'Jitamin') ?></h2>
 
     <?php if (!HIDE_LOGIN_FORM) : ?>
-    <form method="post" action="<?= $this->url->href('AuthController', 'check') ?>">
+    <form method="post" action="<?= $this->url->href('Auth/AuthController', 'check') ?>">
 
         <?= $this->form->csrf() ?>
 
