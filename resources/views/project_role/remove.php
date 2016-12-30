@@ -8,7 +8,7 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'ProjectRoleController', 'remove', ['project_id' => $project['id'], 'role_id' => $role['role_id']], true, 'btn btn-danger') ?>
-        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'ProjectRoleController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
+        <?= $this->url->link(t('Confirm'), 'Project/ProjectRoleController', 'remove', ['project_id' => $project['id'], 'role_id' => $role['role_id']], true, 'btn btn-danger') ?>
+        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/ProjectRoleController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </div>

@@ -8,8 +8,8 @@
     </p>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'TagController', 'remove', ['tag_id' => $tag['id']], true, 'btn btn-danger popover-link') ?>
+        <?= $this->url->link(t('Confirm'), 'Admin/TagController', 'remove', ['tag_id' => $tag['id']], true, 'btn btn-danger popover-link') ?>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TagController', 'index', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Admin/TagController', 'index', [], false, 'close-popover') ?>
     </div>
 </div>

@@ -34,7 +34,7 @@
         </div>
         <?php if ($this->app->setting('password_reset') == 1): ?>
             <div class="reset-password">
-                <?= $this->url->link(t('Forgot password?'), 'PasswordResetController', 'create') ?>
+                <?= $this->url->link(t('Forgot password?'), 'Auth/PasswordResetController', 'create') ?>
             </div>
         <?php endif ?>
     </form>

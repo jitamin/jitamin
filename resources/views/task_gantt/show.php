@@ -1,17 +1,17 @@
-<?= $this->projectHeader->render($project, 'TaskGanttController', 'show') ?>
+<?= $this->projectHeader->render($project, 'Task/TaskGanttController', 'show') ?>
 <div class="menu-inline">
     <ul>
         <li <?= $sorting === 'board' ? 'class="active"' : '' ?>>
             <i class="fa fa-sort-numeric-asc fa-fw"></i>
-            <?= $this->url->link(t('Sort by position'), 'TaskGanttController', 'show', ['project_id' => $project['id'], 'sorting' => 'board']) ?>
+            <?= $this->url->link(t('Sort by position'), 'Task/TaskGanttController', 'show', ['project_id' => $project['id'], 'sorting' => 'board']) ?>
         </li>
         <li <?= $sorting === 'date' ? 'class="active"' : '' ?>>
             <i class="fa fa-sort-amount-asc fa-fw"></i>
-            <?= $this->url->link(t('Sort by date'), 'TaskGanttController', 'show', ['project_id' => $project['id'], 'sorting' => 'date']) ?>
+            <?= $this->url->link(t('Sort by date'), 'Task/TaskGanttController', 'show', ['project_id' => $project['id'], 'sorting' => 'date']) ?>
         </li>
         <li>
             <i class="fa fa-plus fa-fw"></i>
-            <?= $this->url->link(t('Add task'), 'TaskGanttController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add task'), 'Task/TaskGanttController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
         </li>
     </ul>
 </div>
@@ -20,7 +20,7 @@
     <div
         id="gantt-chart"
         data-records='<?= json_encode($tasks, JSON_HEX_APOS) ?>'
-        data-set-date-url="<?= $this->url->href('TaskGanttController', 'set_date', ['project_id' => $project['id']]) ?>"
+        data-set-date-url="<?= $this->url->href('Task/TaskGanttController', 'set_date', ['project_id' => $project['id']]) ?>"
         data-label-start-date="<?= t('Start date:') ?>"
         data-label-end-date="<?= t('Due date:') ?>"
         data-label-assignee="<?= t('Assignee:') ?>"

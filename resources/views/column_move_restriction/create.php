@@ -15,7 +15,7 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'ProjectRoleController', 'show', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Project/ProjectRoleController', 'show', [], false, 'close-popover') ?>
     </div>
 
     <p class="alert alert-info"><?= t('People belonging to this role will be able to move tasks only between the source and the destination column.') ?></p>

@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Add new tag') ?></h2>
 </div>
-<form method="post" class="popover-form" action="<?= $this->url->href('TagController', 'store') ?>" autocomplete="off">
+<form method="post" class="popover-form" action="<?= $this->url->href('Admin/TagController', 'store') ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('project_id', $values) ?>
 
@@ -11,6 +11,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TagController', 'index', [], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Admin/TagController', 'index', [], false, 'close-popover') ?>
     </div>
 </form>

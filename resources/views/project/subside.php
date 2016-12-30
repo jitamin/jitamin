@@ -1,7 +1,7 @@
 <div class="subside subside-icons">
     <ul>
         <li <?= $this->app->setActive('Project/ProjectSettingsController', 'show') ?>>
-            <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
+            <i class="fa fa-eye"></i><?= $this->url->link(t('Summary'), 'Project/ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
         </li>
 
         <?php if ($this->user->hasProjectAccess('Project/ProjectController', 'edit', $project['id'])): ?>

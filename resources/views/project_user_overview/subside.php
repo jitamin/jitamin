@@ -14,7 +14,7 @@
         <li <?= $this->app->setActive('Project/ProjectUserOverviewController', 'members') ?>>
             <i class="fa fa-user"></i><?= $this->url->link(t('Project members'), 'Project/ProjectUserOverviewController', 'members', $filter) ?>
         </li>
-        <li <?= $this->app->setActive('ProjectUserOverviewController', 'opens') ?>>
+        <li <?= $this->app->setActive('Project/ProjectUserOverviewController', 'opens') ?>>
             <i class="fa fa-eye"></i><?= $this->url->link(t('Open tasks'), 'Project/ProjectUserOverviewController', 'opens', $filter) ?>
         </li>
         <li <?= $this->app->setActive('Project/ProjectUserOverviewController', 'closed') ?>>

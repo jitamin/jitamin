@@ -9,6 +9,6 @@
 
     <div class="form-actions">
         <?= $this->url->link(t('Confirm'), 'ColumnMoveRestrictionController', 'remove', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], true, 'btn btn-danger') ?>
-        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'ProjectRoleController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
+        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/ProjectRoleController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </div>

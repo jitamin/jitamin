@@ -15,11 +15,11 @@
         <li <?= $this->app->setActive('Admin/SettingController', 'calendar') ?>>
             <?= $this->url->link(t('Calendar settings'), 'Admin/SettingController', 'calendar') ?>
         </li>
-        <li <?= $this->app->setActive('TagController', 'index') ?>>
-            <?= $this->url->link(t('Tags management'), 'TagController', 'index') ?>
+        <li <?= $this->app->setActive('Admin/TagController', 'index') ?>>
+            <?= $this->url->link(t('Tags management'), 'Admin/TagController', 'index') ?>
         </li>
-        <li <?= $this->app->setActive('LinkController') ?>>
-            <?= $this->url->link(t('Link settings'), 'LinkController', 'index') ?>
+        <li <?= $this->app->setActive('Admin/LinkController') ?>>
+            <?= $this->url->link(t('Link settings'), 'Admin/LinkController', 'index') ?>
         </li>
         <li <?= $this->app->setActive('Admin/SettingController', 'integrations') ?>>
             <?= $this->url->link(t('Integrations'), 'Admin/SettingController', 'integrations') ?>
