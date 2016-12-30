@@ -145,6 +145,7 @@ class AccessMap
     {
         $controller = strtolower($controller);
         $method = strtolower($method);
+        $plugin = strtolower($plugin);
 
         if (!isset($this->map[$plugin][$controller])) {
             $this->map[$plugin][$controller] = [];
@@ -167,6 +168,7 @@ class AccessMap
     {
         $controller = strtolower($controller);
         $method = strtolower($method);
+        $plugin = strtolower($plugin);
 
         foreach ([$method, '*'] as $key) {
             if (isset($this->map[$plugin][$controller][$key])) {
