@@ -15,7 +15,7 @@ define('ROOT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 define('APP_DIR', __DIR__);
 
 // Jitamin folder
-define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
+defined('JITAMIN_DIR') or define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // Data directory location
 defined('DATA_DIR') or define('DATA_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'storage');
