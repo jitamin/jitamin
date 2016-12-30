@@ -119,7 +119,7 @@ class AccessMap
      *
      * @return AccessMap
      */
-    public function add($controller, $methods, $role, $plugin='')
+    public function add($controller, $methods, $role, $plugin = '')
     {
         if (is_array($methods)) {
             foreach ($methods as $method) {
@@ -141,7 +141,7 @@ class AccessMap
      *
      * @return AccessMap
      */
-    private function addRule($controller, $method, $role, $plugin='')
+    private function addRule($controller, $method, $role, $plugin = '')
     {
         $controller = strtolower($controller);
         $method = strtolower($method);
@@ -164,7 +164,7 @@ class AccessMap
      *
      * @return array
      */
-    public function getRoles($controller, $method, $plugin='')
+    public function getRoles($controller, $method, $plugin = '')
     {
         $controller = strtolower($controller);
         $method = strtolower($method);
