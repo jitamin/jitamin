@@ -1,7 +1,7 @@
 <div class="page-header">
     <ul>
         <?= $this->hook->render('template:project-list:menu:before') ?>
-        <?= $this->render('project_header/nav') ?>
+        <?= $this->render('project/_partials/nav') ?>
         <?= $this->hook->render('template:project-list:menu:after') ?>
     </ul>
 </div>
