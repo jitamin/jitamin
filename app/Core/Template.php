@@ -104,9 +104,9 @@ class Template
         }
 
         if ($plugin !== 'jitamin' && $plugin !== '') {
-            return implode(DIRECTORY_SEPARATOR, [PLUGINS_DIR, ucfirst($plugin), 'Template', $template.'.php']);
+            return implode(DIRECTORY_SEPARATOR, [PLUGINS_DIR, ucfirst($plugin), 'resources', 'views', $template.'.php']);
         }
 
-        return implode(DIRECTORY_SEPARATOR, [__DIR__, '..', '..', 'resources', 'views', $template.'.php']);
+        return implode(DIRECTORY_SEPARATOR, [JITAMIN_DIR, 'resources', 'views', $template.'.php']);
     }
 }
