@@ -112,7 +112,7 @@ class UserHelper extends Base
      *
      * @return bool
      */
-    public function hasAccess($controller, $action)
+    public function hasAccess($controller, $action, $plugin='')
     {
         if (!$this->userSession->isLogged()) {
             return false;
@@ -122,7 +122,7 @@ class UserHelper extends Base
         $result = $this->memoryCache->get($key);
 
         if ($result === null) {
-            $result = $this->applicationAuthorization->isAllowed($controller, $action, $this->userSession->getRole());
+            $result = $this->applicationAuthorization->isAllowed($controller, $action, $this->userSession->getRole(), $plugin);
             $this->memoryCache->set($key, $result);
         }
 
