@@ -58,7 +58,7 @@ class AuthenticationMiddleware extends BaseMiddleware
      */
     protected function isPublicAccess()
     {
-        if ($this->applicationAuthorization->isAllowed($this->router->getController(), $this->router->getAction(), Role::APP_PUBLIC)) {
+        if ($this->applicationAuthorization->isAllowed($this->router->getController(), $this->router->getAction(), Role::APP_PUBLIC, $this->router->getPlugin())) {
             $this->nextMiddleware = null;
 
             return true;

@@ -119,14 +119,14 @@ class AccessMap
      *
      * @return AccessMap
      */
-    public function add($controller, $methods, $role)
+    public function add($controller, $methods, $role, $plugin = '')
     {
         if (is_array($methods)) {
             foreach ($methods as $method) {
-                $this->addRule($controller, $method, $role);
+                $this->addRule($controller, $method, $role, $plugin);
             }
         } else {
-            $this->addRule($controller, $methods, $role);
+            $this->addRule($controller, $methods, $role, $plugin);
         }
 
         return $this;
@@ -141,16 +141,17 @@ class AccessMap
      *
      * @return AccessMap
      */
-    private function addRule($controller, $method, $role)
+    private function addRule($controller, $method, $role, $plugin = '')
     {
         $controller = strtolower($controller);
         $method = strtolower($method);
+        $plugin = strtolower($plugin);
 
-        if (!isset($this->map[$controller])) {
-            $this->map[$controller] = [];
+        if (!isset($this->map[$plugin][$controller])) {
+            $this->map[$plugin][$controller] = [];
         }
 
-        $this->map[$controller][$method] = $role;
+        $this->map[$plugin][$controller][$method] = $role;
 
         return $this;
     }
@@ -163,14 +164,15 @@ class AccessMap
      *
      * @return array
      */
-    public function getRoles($controller, $method)
+    public function getRoles($controller, $method, $plugin = '')
     {
         $controller = strtolower($controller);
         $method = strtolower($method);
+        $plugin = strtolower($plugin);
 
         foreach ([$method, '*'] as $key) {
-            if (isset($this->map[$controller][$key])) {
-                return $this->getRoleHierarchy($this->map[$controller][$key]);
+            if (isset($this->map[$plugin][$controller][$key])) {
+                return $this->getRoleHierarchy($this->map[$plugin][$controller][$key]);
             }
         }
 

@@ -42,9 +42,9 @@ class Authorization
      *
      * @return bool
      */
-    public function isAllowed($controller, $method, $role)
+    public function isAllowed($controller, $method, $role, $plugin = '')
     {
-        $roles = $this->accessMap->getRoles($controller, $method);
+        $roles = $this->accessMap->getRoles($controller, $method, $plugin);
 
         return in_array($role, $roles);
     }
