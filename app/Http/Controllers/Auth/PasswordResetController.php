@@ -13,6 +13,7 @@ namespace Jitamin\Controller\Auth;
 
 use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Model\UserModel;
 
 /**
  * Password Reset Controller.
@@ -115,20 +116,17 @@ class PasswordResetController extends BaseController
      */
     private function sendEmail($username)
     {
-        $user_id = $this->db->table(UserModel::TABLE)
-            ->eq(strpos($this->username, '@') === false ? 'username' : 'email', $this->username)
-            ->neq('email', '')
-            ->notNull('email')
-            ->findOneColumn('id');
+        $user = $this->db->table(UserModel::TABLE)
+            ->eq(strpos($username, '@') === false ? 'username' : 'email', $username)
+            ->findOne();
 
-        if (!$user_id) {
+        if (!$user || !$user['email']) {
             return false;
         }
 
-        $token = $this->passwordResetModel->create($user_id);
+        $token = $this->passwordResetModel->create($user['id']);
 
         if ($token !== false) {
-            $user = $this->userModel->getById($user_id);
 
             $this->emailClient->send(
                 $user['email'],
