@@ -29,7 +29,7 @@ class AuthController extends BaseController
         if ($this->userSession->isLogged()) {
             $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'index'));
         } else {
-            $this->response->html($this->helper->layout->app('auth/index', [
+            $this->response->html($this->helper->layout->app('auth/login', [
                 'captcha'   => !empty($values['username']) && $this->userLockingModel->hasCaptcha($values['username']),
                 'errors'    => $errors,
                 'values'    => $values,

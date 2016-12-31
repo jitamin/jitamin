@@ -47,19 +47,13 @@ class PasswordResetModel extends Model
     /**
      * Generate a new reset token for a user.
      *
-     * @param string $username
-     * @param int    $expiration
+     * @param int $user_id
+     * @param int $expiration
      *
      * @return bool|string
      */
-    public function create($username, $expiration = 0)
+    public function create($user_id, $expiration = 0)
     {
-        $user_id = $this->db->table(UserModel::TABLE)->eq('username', $username)->neq('email', '')->notNull('email')->findOneColumn('id');
-
-        if (!$user_id) {
-            return false;
-        }
-
         $token = $this->token->getToken();
 
         $result = $this->db->table(self::TABLE)->insert([
