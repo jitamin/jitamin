@@ -127,7 +127,6 @@ class PasswordResetController extends BaseController
         $token = $this->passwordResetModel->create($user['id']);
 
         if ($token !== false) {
-
             $this->emailClient->send(
                 $user['email'],
                 $user['name'] ?: $user['username'],
