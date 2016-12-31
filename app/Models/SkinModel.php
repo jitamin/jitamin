@@ -94,4 +94,43 @@ class SkinModel extends Model
 
         return $this->settingModel->get('application_layout', '');
     }
+
+    /**
+     * Get available dashboards.
+     *
+     * @param bool $prepend Prepend a default value
+     *
+     * @return array
+     */
+    public function getDashboards($prepend = false)
+    {
+        // Sorted by value
+        $dashboards = [
+            'projects'   => t('My projects'),
+            'stars'      => t('My stars'),
+            'calendar'   => t('My calendar'),
+            'activities' => t('My activities'),
+            'tasks'      => t('My tasks'),
+        ];
+
+        if ($prepend) {
+            return ['' => t('Use system dashboard')] + $dashboards;
+        }
+
+        return $dashboards;
+    }
+
+    /**
+     *
+     *
+     *
+     */
+    public function getCurrentDashboard()
+    {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['dashboard'])) {
+            return $this->sessionStorage->user['dashboard'];
+        }
+
+        return $this->settingModel->get('application_dashboard', '');
+    }
 }

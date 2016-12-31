@@ -22,6 +22,9 @@
     <?= $this->form->label(t('Layout:'), 'layout') ?>
     <?= $this->form->select('layout', $layouts, $values, $errors, [$this->user->hasAccess('Profile/ProfileController', 'show/edit_layout') ? '' : 'disabled']) ?>
 
+    <?= $this->form->label(t('Default Dashboard:'), 'dashboard') ?>
+    <?= $this->form->select('dashboard', $dashboards, $values, $errors, [$this->user->hasAccess('Profile/ProfileController', 'show/edit_dashboard') ? '' : 'disabled']) ?>
+
     <?= $this->form->label(t('Timezone:'), 'timezone') ?>
     <?= $this->form->select('timezone', $timezones, $values, $errors, [$this->user->hasAccess('Profile/ProfileController', 'show/edit_timezone') ? '' : 'disabled']) ?>
 

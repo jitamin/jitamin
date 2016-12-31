@@ -40,6 +40,7 @@ class SettingController extends BaseController
             'mail_transports'  => $this->emailClient->getAvailableTransports(),
             'skins'            => $this->skinModel->getSkins(),
             'layouts'          => $this->skinModel->getLayouts(),
+            'dashboards'       => $this->skinModel->getDashboards(),
             'languages'        => $this->languageModel->getLanguages(),
             'timezones'        => $this->timezoneModel->getTimezones(),
             'date_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),

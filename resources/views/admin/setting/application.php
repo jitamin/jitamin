@@ -21,6 +21,9 @@
     <?= $this->form->label(t('Layout'), 'application_layout') ?>
     <?= $this->form->select('application_layout', $layouts, $values, $errors) ?>
 
+    <?= $this->form->label(t('Default Dashboard'), 'application_dashboard') ?>
+    <?= $this->form->select('application_dashboard', $dashboards, $values, $errors) ?>
+
     <?= $this->form->label(t('Language'), 'application_language') ?>
     <?= $this->form->select('application_language', $languages, $values, $errors) ?>
 

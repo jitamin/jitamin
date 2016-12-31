@@ -267,14 +267,15 @@ class ProfileController extends BaseController
         }
 
         return $this->response->html($this->helper->layout->profile('profile/edit', [
-            'values'    => $values,
-            'errors'    => $errors,
-            'user'      => $user,
-            'skins'     => $this->skinModel->getSkins(true),
-            'layouts'   => $this->skinModel->getLayouts(true),
-            'timezones' => $this->timezoneModel->getTimezones(true),
-            'languages' => $this->languageModel->getLanguages(true),
-            'roles'     => $this->role->getApplicationRoles(),
+            'values'     => $values,
+            'errors'     => $errors,
+            'user'       => $user,
+            'skins'      => $this->skinModel->getSkins(true),
+            'layouts'    => $this->skinModel->getLayouts(true),
+            'dashboards' => $this->skinModel->getDashboards(true),
+            'timezones'  => $this->timezoneModel->getTimezones(true),
+            'languages'  => $this->languageModel->getLanguages(true),
+            'roles'      => $this->role->getApplicationRoles(),
         ]));
     }
 
