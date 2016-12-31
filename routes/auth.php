@@ -10,6 +10,7 @@
  */
 
 return [
+
 // Auth routes
 'login'  => 'Auth/AuthController@login',
 'logout' => 'Auth/AuthController@logout',
@@ -21,4 +22,6 @@ return [
 // PasswordReset
 'forgot-password'               => 'Auth/PasswordResetController@create',
 'forgot-password/change/:token' => 'Auth/PasswordResetController@change',
+'forgot-password/store'         => 'Auth/PasswordResetController@store',
+
 ];

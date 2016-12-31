@@ -10,6 +10,7 @@
  */
 
 return [
+
 // WebNotification routes
 'notification/:user_id/:notification_id' => 'WebNotificationController@redirect',
 
@@ -56,4 +57,5 @@ return [
 // Doc
 'help/:file' => 'DocumentationController@show',
 'help'       => 'DocumentationController@show',
+
 ];

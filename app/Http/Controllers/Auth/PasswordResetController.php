@@ -13,6 +13,7 @@ namespace Jitamin\Controller\Auth;
 
 use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Model\UserModel;
 
 /**
  * Password Reset Controller.
@@ -31,7 +32,7 @@ class PasswordResetController extends BaseController
     {
         $this->checkActivation();
 
-        $this->response->html($this->helper->layout->app('password_reset/create', [
+        $this->response->html($this->helper->layout->app('auth/passwords/create', [
             'errors'    => $errors,
             'values'    => $values,
             'no_layout' => true,
@@ -72,7 +73,7 @@ class PasswordResetController extends BaseController
         $user_id = $this->passwordResetModel->getUserIdByToken($token);
 
         if ($user_id !== false) {
-            $this->response->html($this->helper->layout->app('password_reset/change', [
+            $this->response->html($this->helper->layout->app('auth/passwords/change', [
                 'token'     => $token,
                 'errors'    => $errors,
                 'values'    => $values,
@@ -115,16 +116,22 @@ class PasswordResetController extends BaseController
      */
     private function sendEmail($username)
     {
-        $token = $this->passwordResetModel->create($username);
+        $user = $this->db->table(UserModel::TABLE)
+            ->eq(strpos($username, '@') === false ? 'username' : 'email', $username)
+            ->findOne();
+
+        if (!$user || !$user['email']) {
+            return false;
+        }
+
+        $token = $this->passwordResetModel->create($user['id']);
 
         if ($token !== false) {
-            $user = $this->userModel->getByUsername($username);
-
             $this->emailClient->send(
                 $user['email'],
                 $user['name'] ?: $user['username'],
                 t('Password Reset for Jitamin'),
-                $this->template->render('password_reset/email', ['token' => $token])
+                $this->template->render('auth/passwords/email', ['token' => $token])
             );
         }
     }
