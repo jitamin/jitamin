@@ -60,4 +60,27 @@ class SkinTest extends Base
         $this->container['sessionStorage']->user = ['layout' => 'fixed'];
         $this->assertEquals('fixed', $skinModel->getCurrentLayout());
     }
+
+    public function testGetDashboards()
+    {
+        $skinModel = new SkinModel($this->container);
+        $this->assertNotEmpty($skinModel->getDashboards());
+        $this->assertArrayHasKey('projects', $skinModel->getDashboards());
+        $this->assertArrayNotHasKey('', $skinModel->getDashboards());
+
+        $this->assertArrayHasKey('', $skinModel->getDashboards(true));
+        $this->assertContains('Use system dashboard', $skinModel->getDashboards(true));
+    }
+
+    public function testGetCurrentDashboard()
+    {
+        $skinModel = new SkinModel($this->container);
+        $this->assertEquals('', $skinModel->getCurrentDashboard());
+
+        $this->container['sessionStorage']->user = ['dashboard' => 'activities'];
+        $this->assertEquals('activities', $skinModel->getCurrentDashboard());
+
+        $this->container['sessionStorage']->user = ['dashboard' => 'stars'];
+        $this->assertEquals('stars', $skinModel->getCurrentDashboard());
+    }
 }
