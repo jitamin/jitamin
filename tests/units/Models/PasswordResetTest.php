@@ -76,8 +76,8 @@ class PasswordResetTest extends Base
         $passwordResetModel = new PasswordResetModel($this->container);
 
         $this->assertEquals(2, $userModel->create(['username' => 'user2', 'email' => 'user2@localhost']));
-        $this->assertNotFalse($passwordResetModel->create(2);
-        $this->assertNotFalse($passwordResetModel->create(2);
+        $this->assertNotFalse($passwordResetModel->create(2));
+        $this->assertNotFalse($passwordResetModel->create(2));
 
         $tokens = $passwordResetModel->getAll(1);
         $this->assertCount(0, $tokens);
