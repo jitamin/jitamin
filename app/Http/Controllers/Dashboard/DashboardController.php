@@ -25,6 +25,7 @@ class DashboardController extends BaseController
     {
         list($className, $method) = $this->helper->app->getDashboard(true);
         $controllerObject = new $className($this->container);
+
         return $controllerObject->{$method}();
     }
 

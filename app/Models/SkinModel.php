@@ -120,11 +120,6 @@ class SkinModel extends Model
         return $dashboards;
     }
 
-    /**
-     *
-     *
-     *
-     */
     public function getCurrentDashboard()
     {
         if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['dashboard'])) {

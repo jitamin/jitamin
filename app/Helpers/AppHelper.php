@@ -43,7 +43,6 @@ class AppHelper extends Base
      */
     public function setActive($controller, $action = '', $plugin = '')
     {
-
         $currentController = strtolower($this->getRouterController());
         $currentAction = strtolower($this->getRouterAction());
         $controller = strtolower($controller);
@@ -55,9 +54,8 @@ class AppHelper extends Base
             $result = $currentAction === $action;
         }
 
-        if($currentController == strtolower(Router::DEFAULT_CONTROLLER) && $currentAction == Router::DEFAULT_METHOD) {
-
-            list($defaultController, $defaultAction) = array_map(function($value){
+        if ($currentController == strtolower(Router::DEFAULT_CONTROLLER) && $currentAction == Router::DEFAULT_METHOD) {
+            list($defaultController, $defaultAction) = array_map(function ($value) {
                 return strtolower($value);
             }, $this->getDashboard());
 
@@ -169,7 +167,6 @@ class AppHelper extends Base
      */
     public function getDashboard($forController = false)
     {
-
         $currentDashboard = $this->skinModel->getCurrentDashboard();
 
         switch ($currentDashboard) {
