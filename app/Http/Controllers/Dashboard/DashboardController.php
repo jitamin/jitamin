@@ -23,13 +23,10 @@ class DashboardController extends BaseController
      */
     public function index()
     {
-        $user = $this->getUser();
+        list($className, $method) = $this->helper->app->getDashboard(true);
+        $controllerObject = new $className($this->container);
 
-        $this->response->html($this->helper->layout->dashboard('dashboard/index', [
-            'title'             => t('Dashboard'),
-            'paginator'         => $this->projectPagination->getDashboardPaginator($user['id'], 'index', 10),
-            'user'              => $user,
-        ]));
+        return $controllerObject->{$method}();
     }
 
     /**

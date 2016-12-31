@@ -12,6 +12,7 @@
 namespace Jitamin\Helper;
 
 use Jitamin\Core\Base;
+use Jitamin\Core\Http\Router;
 
 /**
  * Application Helper.
@@ -42,10 +43,23 @@ class AppHelper extends Base
      */
     public function setActive($controller, $action = '', $plugin = '')
     {
-        $result = strtolower($this->getRouterController()) === strtolower($controller);
+        $currentController = strtolower($this->getRouterController());
+        $currentAction = strtolower($this->getRouterAction());
+        $controller = strtolower($controller);
+        $action = strtolower($action);
+
+        $result = $currentController === $controller;
 
         if ($result && $action !== '') {
-            $result = strtolower($this->getRouterAction()) === strtolower($action);
+            $result = $currentAction === $action;
+        }
+
+        if ($currentController == strtolower(Router::DEFAULT_CONTROLLER) && $currentAction == Router::DEFAULT_METHOD) {
+            list($defaultController, $defaultAction) = array_map(function ($value) {
+                return strtolower($value);
+            }, $this->getDashboard());
+
+            $result = ($controller == $defaultController && $action == $defaultAction) || ($controller == strtolower(Router::DEFAULT_CONTROLLER) && $action == Router::DEFAULT_METHOD);
         }
 
         if ($result && $plugin !== '') {
@@ -144,6 +158,46 @@ class AppHelper extends Base
     public function getLayout()
     {
         return $this->skinModel->getCurrentLayout();
+    }
+
+    /**
+     * Get current dashboard.
+     *
+     * @return array
+     */
+    public function getDashboard($forController = false)
+    {
+        $currentDashboard = $this->skinModel->getCurrentDashboard();
+
+        switch ($currentDashboard) {
+            case 'projects':
+                $controller = 'Dashboard/ProjectController';
+                $action = 'index';
+                break;
+            case 'stars':
+                $controller = 'Dashboard/ProjectController';
+                $action = 'starred';
+                break;
+            case 'calendar':
+                $controller = 'Dashboard/DashboardController';
+                $action = 'calendar';
+                break;
+            case 'activities':
+                $controller = 'Dashboard/DashboardController';
+                $action = 'activities';
+                break;
+            case 'tasks':
+                $controller = 'Dashboard/DashboardController';
+                $action = 'tasks';
+                break;
+            default:
+                $controller = 'Dashboard/ProjectController';
+                $action = 'index';
+        }
+
+        $controller = $forController ? 'Jitamin\\Controller\\'.str_replace('/', '\\', $controller) : $controller;
+
+        return [$controller, $action];
     }
 
     /**
