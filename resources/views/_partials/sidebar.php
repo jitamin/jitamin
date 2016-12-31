@@ -18,6 +18,25 @@
                         <?= $this->url->link('<i class="fa fa-bell"></i><br />'.t('Notice'), 'Dashboard/DashboardController', 'notifications', [], false, '', t('You have no unread notifications')) ?>
                     <?php endif ?>
                 </li>
+                <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-menu" title="<?= t('New project') ?>"><i class="fa fa-plus"></i><br /><?= t('Create') ?></a>
+                    <ul>
+                        <?php if ($has_project_creation_access): ?>
+                            <li><i class="fa fa-cube"></i>
+                                <?= $this->url->link(t('New project'), 'Project/ProjectController', 'create', [], false, 'popover') ?>
+                            </li>
+                        <?php endif ?>
+                        <?php if ($is_private_project_enabled): ?>
+                            <li>
+                                <i class="fa fa-lock"></i>
+                                <?= $this->url->link(t('New private project'), 'Project/ProjectController', 'createPrivate', [], false, 'popover') ?>
+                            </li>
+                        <?php endif ?>
+                        <?= $this->hook->render('template:header:creation-dropdown') ?>
+                    </ul>
+                </li>
+                <?php endif ?>
                 <?php if ($this->user->hasAccess('Admin/SettingController', 'index')): ?>
                 <hr/>
                 <li <?= $this->app->setActive('Project/ProjectController', 'index') ?>>
