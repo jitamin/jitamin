@@ -10,6 +10,7 @@
  */
 
 return [
+
 // Users admin
 'admin/users'                         => 'Admin/UserController@index',
 'admin/users/create'                  => 'Admin/UserController@create',
@@ -44,4 +45,5 @@ return [
 // Plugins admin
 'admin/plugins'        => 'Admin/PluginController@show',
 'admin/plugins/market' => 'Admin/PluginController@directory',
+
 ];
