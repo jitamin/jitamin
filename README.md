@@ -8,15 +8,15 @@ Jitamin
 
 Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理的维他命。
 
-![Screenshot](http://jitamin.com/screenshot.jpg)
+![Screenshot](http://jitamin.com/screenshot2.png)
 
 ## 功能特性
 
-* 界面简洁、美观
+* 简洁、美观的界面
 * 可视化的任务管理
-* 项目支持列表、看板和甘特图
-* 任务可在看板间拖拽
-* 多语言，目前支持英文和简体中文
+* 支持列表、看板和甘特图等任务视图
+* 任务可拖拽移动
+* 多语言，默认带英文和简体中文语言包
 * 过滤搜索
 * 可创建团队项目和个人项目
 * 支持任务、子任务、附件和评论
@@ -116,7 +116,7 @@ php vendor/bin/phinx migrate
 
 ## 系统演示
 
-体验Jitamin, 请访问 [Jitamin](http://jitamin.com):
+体验Jitamin, 请访问 [http://jitamin.com](http://jitamin.com):
 
 - **用户名:** `jitamin` or `jitamin@jitamin.com`
 - **密码:** `jitamin`
