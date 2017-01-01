@@ -129,7 +129,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function admin($template, array $params, $subside = '')
+    public function admin($template, array $params, $subside = 'admin/setting/subside')
     {
         if (!isset($params['values'])) {
             $params['values'] = $this->settingModel->getAll();
@@ -139,7 +139,7 @@ class LayoutHelper extends Base
             $params['errors'] = [];
         }
 
-        return $this->subLayout('admin/layout', $subside ?: 'admin/setting/subside', $template, $params);
+        return $this->subLayout('admin/layout', $subside, $template, $params);
     }
 
     /**

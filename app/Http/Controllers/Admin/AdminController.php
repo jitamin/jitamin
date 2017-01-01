@@ -28,7 +28,7 @@ class AdminController extends BaseController
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title'      => t('Settings').' &raquo; '.t('About'),
-        ]));
+        ], ''));
     }
 
     /**
@@ -41,6 +41,6 @@ class AdminController extends BaseController
             'db_version' => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
             'title'      => t('Settings').' &raquo; '.t('About'),
-        ]));
+        ], ''));
     }
 }

@@ -3,6 +3,8 @@
     <div class="page-content">
         <?= $content_for_sublayout ?>
     </div>
-    <?= $this->render($subside_template) ?>
+    <?php if ($subside_template): ?>
+        <?= $this->render($subside_template) ?>
+    <?php endif ?>
 </section>
 
