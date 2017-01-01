@@ -19,6 +19,7 @@
                     <?php endif ?>
                 </li>
                 <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
+                <hr/>
                 <li class="dropdown">
                     <a href="#" class="dropdown-menu" title="<?= t('New project') ?>"><i class="fa fa-plus"></i><br /><?= t('Create') ?></a>
                     <ul>
@@ -37,13 +38,15 @@
                     </ul>
                 </li>
                 <?php endif ?>
+                 <?php if ($this->user->hasAccess('Project/ProjectController', 'index')): ?>
+                <li <?= $this->app->setActive('Project/ProjectController', 'index') ?>>
+                    <?= $this->url->link('<i class="fa fa-wrench"></i><br />'.t('Manage'), 'Project/ProjectController', 'index', [], false, '', t('Project management')) ?>
+                </li>
+                <?php endif ?>
                 <?php if ($this->user->hasAccess('Admin/SettingController', 'index')): ?>
                 <hr/>
-                <li <?= $this->app->setActive('Project/ProjectController', 'index') ?>>
-                    <?= $this->url->link('<i class="fa fa-cubes"></i><br />'.t('Projects'), 'Project/ProjectController', 'index') ?>
-                </li>
                 <li <?= $this->app->setActive('Admin/SettingController', 'index') ?>>
-                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Settings'), 'Admin/SettingController', 'index') ?>
+                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Settings'), 'Admin/SettingController', 'index', [], false, '', t('Application settings')) ?>
                 </li>
                 <?php endif ?>
             </ul>

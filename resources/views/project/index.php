@@ -17,7 +17,7 @@
             <th class="column-10"><?= $paginator->order(t('End date'), 'end_date') ?></th>
             <th class="column-10"><?= $paginator->order(t('Owner'), 'owner_id') ?></th>
             <?php if ($this->user->hasAccess('Project/ProjectUserOverviewController', 'managers')): ?>
-                <th class="column-10"><?= t('Users') ?></th>
+                <th class="column-8"><?= t('Users') ?></th>
             <?php endif ?>
             <th><?= t('Columns') ?></th>
         </tr>
