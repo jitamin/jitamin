@@ -1,13 +1,3 @@
-<div class="page-header">
-    <?php if ($this->user->hasAccess('Admin/UserController', 'create')): ?>
-    <ul>
-        <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New local user'), 'Admin/UserController', 'create', [], false, 'popover') ?></li>
-        <li><i class="fa fa-plus fa-fw"></i><?= $this->url->link(t('New remote user'), 'Admin/UserController', 'create', ['remote' => 1], false, 'popover') ?></li>
-        <li><i class="fa fa-upload fa-fw"></i><?= $this->url->link(t('Import'), 'Admin/UserImportController', 'show', [], false, 'popover') ?></li>
-        <li><i class="fa fa-users fa-fw"></i><?= $this->url->link(t('View all groups'), 'Admin/GroupController', 'index') ?></li>
-    </ul>
-    <?php endif ?>
-</div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('No user') ?></p>
 <?php else: ?>
@@ -54,7 +44,7 @@
                 <?php endif ?>
             </td>
             <td>
-                <?= $this->render('user/dropdown', ['user' => $user]) ?>
+                <?= $this->render('admin/user/dropdown', ['user' => $user]) ?>
             </td>
         </tr>
         <?php endforeach ?>

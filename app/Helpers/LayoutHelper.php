@@ -121,14 +121,15 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for setting views.
+     * Common layout for admin views.
      *
      * @param string $template
      * @param array  $params
+     * @param string $subside
      *
      * @return string
      */
-    public function setting($template, array $params)
+    public function admin($template, array $params, $subside = '')
     {
         if (!isset($params['values'])) {
             $params['values'] = $this->settingModel->getAll();
@@ -138,20 +139,7 @@ class LayoutHelper extends Base
             $params['errors'] = [];
         }
 
-        return $this->subLayout('admin/setting/layout', 'admin/setting/subside', $template, $params);
-    }
-
-    /**
-     * Common layout for plugin views.
-     *
-     * @param string $template
-     * @param array  $params
-     *
-     * @return string
-     */
-    public function plugin($template, array $params)
-    {
-        return $this->subLayout('plugin/layout', 'plugin/subside', $template, $params);
+        return $this->subLayout('admin/layout', $subside ?: 'admin/setting/subside', $template, $params);
     }
 
     /**

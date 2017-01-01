@@ -30,10 +30,10 @@ class GroupController extends BaseController
             ->setQuery($this->groupModel->getQuery())
             ->calculate();
 
-        $this->response->html($this->helper->layout->app('group/index', [
+        $this->response->html($this->helper->layout->admin('admin/group/index', [
             'title'     => t('Groups').' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
-        ]));
+        ], 'admin/group/subside'));
     }
 
     /**
@@ -44,7 +44,7 @@ class GroupController extends BaseController
      */
     public function create(array $values = [], array $errors = [])
     {
-        $this->response->html($this->template->render('group/create', [
+        $this->response->html($this->template->render('admin/group/create', [
             'errors' => $errors,
             'values' => $values,
         ]));
@@ -83,7 +83,7 @@ class GroupController extends BaseController
             $values = $this->groupModel->getById($this->request->getIntegerParam('group_id'));
         }
 
-        $this->response->html($this->template->render('group/edit', [
+        $this->response->html($this->template->render('admin/group/edit', [
             'errors' => $errors,
             'values' => $values,
         ]));
@@ -125,11 +125,11 @@ class GroupController extends BaseController
             ->setQuery($this->groupMemberModel->getQuery($group_id))
             ->calculate();
 
-        $this->response->html($this->helper->layout->app('group/users', [
+        $this->response->html($this->helper->layout->admin('admin/group/users', [
             'title'     => t('Members of %s', $group['name']).' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
             'group'     => $group,
-        ]));
+        ], 'admin/group/subside'));
     }
 
     /**
@@ -147,7 +147,7 @@ class GroupController extends BaseController
             $values['group_id'] = $group_id;
         }
 
-        $this->response->html($this->template->render('group/associate', [
+        $this->response->html($this->template->render('admin/group/associate', [
             'users'  => $this->userModel->prepareList($this->groupMemberModel->getNotMembers($group_id)),
             'group'  => $group,
             'errors' => $errors,
@@ -185,7 +185,7 @@ class GroupController extends BaseController
         $group = $this->groupModel->getById($group_id);
         $user = $this->userModel->getById($user_id);
 
-        $this->response->html($this->template->render('group/dissociate', [
+        $this->response->html($this->template->render('admin/group/dissociate', [
             'group' => $group,
             'user'  => $user,
         ]));
@@ -217,7 +217,7 @@ class GroupController extends BaseController
         $group_id = $this->request->getIntegerParam('group_id');
         $group = $this->groupModel->getById($group_id);
 
-        $this->response->html($this->template->render('group/remove', [
+        $this->response->html($this->template->render('admin/group/remove', [
             'group' => $group,
         ]));
     }

@@ -24,7 +24,7 @@ class TagController extends BaseController
      */
     public function index()
     {
-        $this->response->html($this->helper->layout->setting('tag/index', [
+        $this->response->html($this->helper->layout->admin('admin/tag/index', [
             'tags'  => $this->tagModel->getAllByProject(0),
             'title' => t('Settings').' &raquo; '.t('Global tags management'),
         ]));
@@ -42,7 +42,7 @@ class TagController extends BaseController
             $values['project_id'] = 0;
         }
 
-        $this->response->html($this->template->render('tag/create', [
+        $this->response->html($this->template->render('admin/tag/create', [
             'values' => $values,
             'errors' => $errors,
         ]));
@@ -84,7 +84,7 @@ class TagController extends BaseController
             $values = $tag;
         }
 
-        $this->response->html($this->template->render('tag/edit', [
+        $this->response->html($this->template->render('admin/tag/edit', [
             'tag'    => $tag,
             'values' => $values,
             'errors' => $errors,
@@ -126,7 +126,7 @@ class TagController extends BaseController
         $tag_id = $this->request->getIntegerParam('tag_id');
         $tag = $this->tagModel->getById($tag_id);
 
-        $this->response->html($this->template->render('tag/remove', [
+        $this->response->html($this->template->render('admin/tag/remove', [
             'tag' => $tag,
         ]));
     }

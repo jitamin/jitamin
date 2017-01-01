@@ -1,9 +1,3 @@
-<div class="page-header">
-    <ul>
-        <li><i class="fa fa-user fa-fw"></i><?= $this->url->link(t('All users'), 'Admin/UserController', 'index') ?></li>
-        <li><i class="fa fa-user-plus fa-fw"></i><?= $this->url->link(t('New group'), 'Admin/GroupController', 'create', [], false, 'popover') ?></li>
-    </ul>
-</div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('There is no group.') ?></p>
 <?php else: ?>
