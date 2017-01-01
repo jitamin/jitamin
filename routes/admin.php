@@ -28,6 +28,8 @@ return [
 // Config admin
 'admin/settings'              => 'Admin/SettingController@index',
 'admin/settings/application'  => 'Admin/SettingController@application',
+'admin/settings/theme'        => 'Admin/SettingController@theme',
+'admin/settings/localization' => 'Admin/SettingController@localization',
 'admin/settings/email'        => 'Admin/SettingController@email',
 'admin/settings/project'      => 'Admin/SettingController@project',
 'admin/settings/project'      => 'Admin/SettingController@project',
