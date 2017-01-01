@@ -20,25 +20,6 @@
     <div class="collapse navbar-collapse" id="nb-collapse">
 
         <ul class="nav navbar-nav navbar-right">
-            <?php if ($this->user->hasAccess('Admin/SettingController', 'index')): ?>
-            <li class="dropdown">
-                <a href="#" class="dropdown-menu"><i class="fa fa-wrench"></i> <i class="fa fa-caret-down"></i></a>
-                <ul>
-                    <li>
-                        <i class="fa fa-user"></i>
-                        <?= $this->url->link(t('Users management'), 'Admin/UserController', 'index') ?>
-                    </li>
-                    <li>
-                        <i class="fa fa-group"></i>
-                        <?= $this->url->link(t('Groups management'), 'Admin/GroupController', 'index') ?>
-                    </li>
-                    <li>
-                        <i class="fa fa-plug"></i>
-                        <?= $this->url->link(t('Plugins management'), 'Admin/PluginController', 'show') ?>
-                    </li>
-                </ul>
-            </li>
-            <?php endif ?>
             <li class="dropdown">
                 <a href="#" class="dropdown-menu"><?= $this->avatar->currentUserSmall('avatar-inline') ?><?= $this->text->e($this->user->getFullname()) ?> <i class="fa fa-caret-down"></i></a>
                 <ul>
