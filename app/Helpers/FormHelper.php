@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -206,7 +206,7 @@ class FormHelper extends Base
             'tabindex'     => isset($attributes['tabindex']) ? $attributes['tabindex'] : '-1',
             'labelPreview' => t('Preview'),
             'labelWrite'   => t('Write'),
-            'placeholder'  => t('Write your text in Markdown'),
+            'placeholder'  => isset($attributes['placeholder']) ? $attributes['placeholder'] : t('Write your text in Markdown'),
         ];
         $html = '<div class="js-text-editor" data-params=\''.json_encode($params, JSON_HEX_APOS).'\'></div>';
         $html .= $this->errorList($errors, $name);

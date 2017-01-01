@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,7 +18,7 @@ use Jitamin\Core\Base;
  */
 class Router extends Base
 {
-    const DEFAULT_CONTROLLER = 'DashboardController';
+    const DEFAULT_CONTROLLER = 'Dashboard/DashboardController';
     const DEFAULT_METHOD = 'index';
 
     /**
@@ -108,7 +108,7 @@ class Router extends Base
             $plugin = $route['plugin'];
         }
 
-        $this->currentControllerName = ucfirst($this->sanitize($controller, self::DEFAULT_CONTROLLER));
+        $this->currentControllerName = ucfirst($this->sanitize($controller, self::DEFAULT_CONTROLLER, true));
         $this->currentActionName = $this->sanitize($action, self::DEFAULT_METHOD);
         $this->currentPluginName = ucfirst($this->sanitize($plugin));
     }
@@ -121,8 +121,10 @@ class Router extends Base
      *
      * @return string
      */
-    public function sanitize($value, $default = '')
+    protected function sanitize($value, $default = '', $is_controller = false)
     {
-        return preg_match('/^[a-zA-Z_0-9]+$/', $value) ? $value : $default;
+        $pattern = $is_controller ? '/^[a-zA-Z_0-9\/]+$/' : '/^[a-zA-Z_0-9]+$/';
+
+        return preg_match($pattern, $value) ? $value : $default;
     }
 }

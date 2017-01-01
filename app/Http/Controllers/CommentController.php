@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -73,7 +73,7 @@ class CommentController extends BaseController
     /**
      * Add a comment.
      */
-    public function save()
+    public function store()
     {
         $task = $this->getTask();
         $values = $this->request->getValues();
@@ -87,7 +87,7 @@ class CommentController extends BaseController
                 $this->flash->failure(t('Unable to create your comment.'));
             }
 
-            $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'comments'), true);
+            $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'comments'), true);
         } else {
             $this->create($values, $errors);
         }
@@ -134,7 +134,7 @@ class CommentController extends BaseController
                 $this->flash->failure(t('Unable to update your comment.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), false);
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), false);
         }
 
         return $this->edit($values, $errors);
@@ -170,7 +170,7 @@ class CommentController extends BaseController
             $this->flash->failure(t('Unable to remove this comment.'));
         }
 
-        $this->response->redirect($this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'comments'));
+        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'comments'));
     }
 
     /**
@@ -186,7 +186,7 @@ class CommentController extends BaseController
         $this->userMetadataCacheDecorator->set(UserMetadataModel::KEY_COMMENT_SORTING_DIRECTION, $newDirection);
 
         $this->response->redirect($this->helper->url->to(
-            'TaskViewController',
+            'Task/TaskController',
             'show',
             ['task_id' => $task['id'], 'project_id' => $task['project_id']],
             'comments'

@@ -3,14 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
@@ -64,7 +65,7 @@ class LinkController extends BaseController
             if ($this->linkModel->create($values['label'], $values['opposite_label']) !== false) {
                 $this->flash->success(t('Link added successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('LinkController', 'index'));
+                return $this->response->redirect($this->helper->url->to('Admin/LinkController', 'index'));
             } else {
                 $this->flash->failure(t('Unable to create your link.'));
             }
@@ -107,7 +108,7 @@ class LinkController extends BaseController
             if ($this->linkModel->update($values)) {
                 $this->flash->success(t('Link updated successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('LinkController', 'index'));
+                return $this->response->redirect($this->helper->url->to('Admin/LinkController', 'index'));
             } else {
                 $this->flash->failure(t('Unable to update your link.'));
             }
@@ -143,6 +144,6 @@ class LinkController extends BaseController
             $this->flash->failure(t('Unable to remove this link.'));
         }
 
-        $this->response->redirect($this->helper->url->to('LinkController', 'index'));
+        $this->response->redirect($this->helper->url->to('Admin/LinkController', 'index'));
     }
 }

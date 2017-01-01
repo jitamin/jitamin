@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -75,6 +75,11 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
         return $this;
     }
 
+    /**
+     * Get task ids without tags.
+     *
+     * @return int[]
+     */
     protected function getTaskIdsWithoutTags()
     {
         return $this->db
@@ -85,6 +90,11 @@ class TaskTagFilter extends BaseFilter implements FilterInterface
             ->findAllByColumn(TaskModel::TABLE.'.id');
     }
 
+    /**
+     * Get task ids with given tag.
+     *
+     * @return int[]
+     */
     protected function getTaskIdsWithGivenTag()
     {
         return $this->db

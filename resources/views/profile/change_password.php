@@ -2,7 +2,7 @@
     <h2><?= t('Password modification') ?></h2>
 </div>
 
-<form method="post" action="<?= $this->url->href('ProfileController', 'savePassword', ['user_id' => $user['id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Profile/ProfileController', 'savePassword', ['user_id' => $user['id']]) ?>" autocomplete="off">
     <?= $this->form->hidden('id', $values) ?>
     <?= $this->form->csrf() ?>
 
@@ -18,6 +18,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'ProfileController', 'show', ['user_id' => $user['id']]) ?>
+        <?= $this->url->link(t('cancel'), 'Profile/ProfileController', 'show', ['user_id' => $user['id']]) ?>
     </div>
 </form>

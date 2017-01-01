@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,6 +20,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class ProjectDailyStatsCalculationCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -27,6 +32,14 @@ class ProjectDailyStatsCalculationCommand extends BaseCommand
             ->setDescription('Calculate daily statistics for all projects');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface  $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $projects = $this->projectModel->getAllByStatus(ProjectModel::ACTIVE);

@@ -42,9 +42,9 @@
 
         <?= $this->hook->render('template:layout:head') ?>
     </head>
-    <body class="skin-<?= $this->app->getSkin() ?>"
-          data-status-url="<?= $this->url->href('UserAjaxController', 'status') ?>"
-          data-login-url="<?= $this->url->href('AuthController', 'login') ?>"
+    <body class="skin-<?= $this->app->getSkin() ?> <?= $this->app->getLayout() ?>"
+          data-status-url="<?= $this->url->href('Profile/UserAjaxController', 'status') ?>"
+          data-login-url="<?= $this->url->href('Auth/AuthController', 'login') ?>"
           data-keyboard-shortcut-url="<?= $this->url->href('DocumentationController', 'shortcuts') ?>"
           data-timezone="<?= $this->app->getTimezone() ?>"
           data-js-lang="<?= $this->app->jsLang() ?>"
@@ -55,21 +55,27 @@
     <?php if (isset($no_layout) && $no_layout): ?>
         <?= $content_for_layout ?>
     <?php else: ?>
+        <div class="wrapper">
+        <?= $this->render('_partials/sidebar', [
+        ]) ?>
+        <?= $this->render('_partials/nav', [
+            'title' => $title,
+            'page_title' => isset($page_title) ? $page_title : null,
+            'project' => isset($project) ? $project : null,
+            'task'        => isset($task) ? $task : null,
+            'description' => isset($description) ? $description : null,
+        ]) ?>
+        <div class="content-panel">
         <?= $this->hook->render('template:layout:top') ?>
-        <?= $this->render('_partials/header') ?>
-        <?= $this->render('_partials/breadcrumb', [
-                    'project'     => isset($project) ? $project : null,
-                    'task'        => isset($task) ? $task : null,
-                    'description' => isset($description) ? $description : null,
-                    'title'       => $title,
-            ]) ?>
-        <section class="page container">
-            <?= $this->app->flashMessage() ?>
-            <?= $content_for_layout ?>
-        </section>
+            <section class="page">
+                <?= $this->app->flashMessage() ?>
+                <?= $content_for_layout ?>
+            </section>
+        </div>
         <?= $this->render('_partials/footer', [
         ]) ?>
         <?= $this->hook->render('template:layout:bottom') ?>
+        </div>
     <?php endif ?>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <?php if (!empty($subtasks)): ?>
     <table
         class="subtasks-table table-striped table-scrolling"
-        data-save-position-url="<?= $this->url->href('SubtaskController', 'movePosition', ['project_id' => $task['project_id'], 'task_id' => $task['id']]) ?>"
+        data-save-position-url="<?= $this->url->href('Task/Subtask/SubtaskController', 'movePosition', ['project_id' => $task['project_id'], 'task_id' => $task['id']]) ?>"
     >
     <thead>
         <tr>
@@ -46,11 +46,11 @@
                     <li>
                         <?php if ($subtask['is_timer_started']): ?>
                             <i class="fa fa-pause"></i>
-                            <?= $this->url->link(t('Stop timer'), 'SubtaskStatusController', 'timer', ['timer' => 'stop', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']], false, 'subtask-toggle-timer') ?>
+                            <?= $this->url->link(t('Stop timer'), 'Task/Subtask/SubtaskStatusController', 'timer', ['timer' => 'stop', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']], false, 'subtask-toggle-timer') ?>
                             (<?= $this->dt->age($subtask['timer_start_date']) ?>)
                         <?php else: ?>
                             <i class="fa fa-play-circle-o"></i>
-                            <?= $this->url->link(t('Start timer'), 'SubtaskStatusController', 'timer', ['timer' => 'start', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']], false, 'subtask-toggle-timer') ?>
+                            <?= $this->url->link(t('Start timer'), 'Task/Subtask/SubtaskStatusController', 'timer', ['timer' => 'start', 'project_id' => $task['project_id'], 'task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id']], false, 'subtask-toggle-timer') ?>
                         <?php endif ?>
                     </li>
                     <?php endif ?>

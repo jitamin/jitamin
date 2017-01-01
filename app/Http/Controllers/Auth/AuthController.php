@@ -3,13 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Auth;
+
+use Jitamin\Controller\BaseController;
 
 /**
  * Authentication Controller.
@@ -25,9 +27,9 @@ class AuthController extends BaseController
     public function login(array $values = [], array $errors = [])
     {
         if ($this->userSession->isLogged()) {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
+            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'index'));
         } else {
-            $this->response->html($this->helper->layout->app('auth/index', [
+            $this->response->html($this->helper->layout->app('auth/login', [
                 'captcha'   => !empty($values['username']) && $this->userLockingModel->hasCaptcha($values['username']),
                 'errors'    => $errors,
                 'values'    => $values,
@@ -60,9 +62,9 @@ class AuthController extends BaseController
     {
         if (!DISABLE_LOGOUT) {
             $this->sessionManager->close();
-            $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         } else {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
+            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'index'));
         }
     }
 
@@ -76,7 +78,7 @@ class AuthController extends BaseController
             unset($this->sessionStorage->redirectAfterLogin);
             $this->response->redirect($redirect);
         } else {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
+            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'index'));
         }
     }
 }

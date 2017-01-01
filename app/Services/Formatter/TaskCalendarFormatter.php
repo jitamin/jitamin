@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -54,7 +54,7 @@ class TaskCalendarFormatter extends BaseTaskCalendarFormatter implements Formatt
                 'backgroundColor' => $this->colorModel->getBackgroundColor($task['color_id']),
                 'borderColor'     => $this->colorModel->getBorderColor($task['color_id']),
                 'textColor'       => 'black',
-                'url'             => $this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
+                'url'             => $this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
                 'start'           => date($this->getDateTimeFormat(), $task[$this->startColumn]),
                 'end'             => date($this->getDateTimeFormat(), $task[$this->endColumn] ?: time()),
                 'editable'        => $this->fullDay,

@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -24,8 +24,7 @@ if ($dbUrlParser->isEnvironmentVariableDefined()) {
     define('DB_NAME', $dbSettings['database']);
 }
 
-$app = require __DIR__.'/../config/app.php';
-$db = require __DIR__.'/../config/database.php';
+$config = require __DIR__.'/../config/config.php';
 
 require __DIR__.'/bootstrap.php';
 require __DIR__.'/constants.php';

@@ -3,20 +3,25 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+return [
+
 // Auth routes
-$container['route']->addRoute('login', 'AuthController', 'login');
-$container['route']->addRoute('logout', 'AuthController', 'logout');
-$container['route']->addRoute('check', 'AuthController', 'check');
+'login'  => 'Auth/AuthController@login',
+'logout' => 'Auth/AuthController@logout',
+'check'  => 'Auth/AuthController@check',
 
 // Captcha routes
-$container['route']->addRoute('captcha', 'CaptchaController', 'image');
+'captcha' => 'CaptchaController@image',
 
 // PasswordReset
-$container['route']->addRoute('forgot-password', 'PasswordResetController', 'create');
-$container['route']->addRoute('forgot-password/change/:token', 'PasswordResetController', 'change');
+'forgot-password'               => 'Auth/PasswordResetController@create',
+'forgot-password/change/:token' => 'Auth/PasswordResetController@change',
+'forgot-password/store'         => 'Auth/PasswordResetController@store',
+
+];

@@ -2,7 +2,7 @@
 <div class="page-header">
     <h2><?= t('Application settings') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('SettingController', 'save', ['redirect' => 'index']) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Admin/SettingController', 'store', ['redirect' => 'index']) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
@@ -17,6 +17,12 @@
 
     <?= $this->form->label(t('Skin'), 'application_skin') ?>
     <?= $this->form->select('application_skin', $skins, $values, $errors) ?>
+
+    <?= $this->form->label(t('Layout'), 'application_layout') ?>
+    <?= $this->form->select('application_layout', $layouts, $values, $errors) ?>
+
+    <?= $this->form->label(t('Default Dashboard'), 'application_dashboard') ?>
+    <?= $this->form->select('application_dashboard', $dashboards, $values, $errors) ?>
 
     <?= $this->form->label(t('Language'), 'application_language') ?>
     <?= $this->form->select('application_language', $languages, $values, $errors) ?>

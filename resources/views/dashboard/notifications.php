@@ -3,7 +3,7 @@
 
 <?php if (empty($notifications)): ?>
 </div>
-<p class="alert"><?= t('No new notifications.') ?></p>
+<p class="alert"><?= t('You have no unread notifications') ?></p>
 <?php else: ?>
     <ul class="pull-right">
         <li>
@@ -29,7 +29,7 @@
                 <?php if (isset($notification['event_data']['task']['project_name'])): ?>
                     <?= $this->url->link(
                             $this->text->e($notification['event_data']['task']['project_name']),
-                            'ProjectController',
+                            'Project/ProjectController',
                             'show',
                             ['project_id' => $notification['event_data']['task']['project_id']]
                         )

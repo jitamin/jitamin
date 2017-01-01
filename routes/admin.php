@@ -3,43 +3,47 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+return [
+
 // Users admin
-$container['route']->addRoute('admin/users', 'UserController', 'index');
-$container['route']->addRoute('admin/users/create', 'UserController', 'create');
-$container['route']->addRoute('admin/users/create/:remote', 'UserController', 'create');
-$container['route']->addRoute('admin/users/import', 'UserImportController', 'show');
-$container['route']->addRoute('admin/users/:user_id/authentication', 'UserController', 'changeAuthentication');
+'admin/users'                         => 'Admin/UserController@index',
+'admin/users/create'                  => 'Admin/UserController@create',
+'admin/users/create/:remote'          => 'Admin/UserController@create',
+'admin/users/import'                  => 'Admin/UserImportController@show',
+'admin/users/:user_id/authentication' => 'Admin/UserController@changeAuthentication',
 
 // Groups admin
-$container['route']->addRoute('admin/groups', 'GroupController', 'index');
-$container['route']->addRoute('admin/groups/create', 'GroupController', 'create');
-$container['route']->addRoute('admin/groups/:group_id/edit', 'GroupController', 'edit');
-$container['route']->addRoute('admin/groups/:group_id/remove', 'GroupController', 'confirm');
-$container['route']->addRoute('admin/group/:group_id/members', 'GroupController', 'users');
-$container['route']->addRoute('admin/group/:group_id/associate', 'GroupController', 'associate');
+'admin/groups'                    => 'Admin/GroupController@index',
+'admin/groups/create'             => 'Admin/GroupController@create',
+'admin/groups/:group_id/edit'     => 'Admin/GroupController@edit',
+'admin/groups/:group_id/remove'   => 'Admin/GroupController@confirm',
+'admin/group/:group_id/members'   => 'Admin/GroupController@users',
+'admin/group/:group_id/associate' => 'Admin/GroupController@associate',
 
 // Config admin
-$container['route']->addRoute('admin/settings', 'SettingController', 'index');
-$container['route']->addRoute('admin/settings/application', 'SettingController', 'application');
-$container['route']->addRoute('admin/settings/email', 'SettingController', 'email');
-$container['route']->addRoute('admin/settings/project', 'SettingController', 'project');
-$container['route']->addRoute('admin/settings/project', 'SettingController', 'project');
-$container['route']->addRoute('admin/settings/board', 'SettingController', 'board');
-$container['route']->addRoute('admin/settings/calendar', 'SettingController', 'calendar');
-$container['route']->addRoute('admin/settings/integrations', 'SettingController', 'integrations');
-$container['route']->addRoute('admin/settings/webhook', 'SettingController', 'webhook');
-$container['route']->addRoute('admin/settings/api', 'SettingController', 'api');
-$container['route']->addRoute('admin/settings/help', 'SettingController', 'help');
-$container['route']->addRoute('admin/settings/about', 'SettingController', 'about');
-$container['route']->addRoute('admin/settings/links', 'LinkController', 'index');
-$container['route']->addRoute('admin/settings/tags', 'TagController', 'index');
+'admin/settings'              => 'Admin/SettingController@index',
+'admin/settings/application'  => 'Admin/SettingController@application',
+'admin/settings/email'        => 'Admin/SettingController@email',
+'admin/settings/project'      => 'Admin/SettingController@project',
+'admin/settings/project'      => 'Admin/SettingController@project',
+'admin/settings/board'        => 'Admin/SettingController@board',
+'admin/settings/calendar'     => 'Admin/SettingController@calendar',
+'admin/settings/integrations' => 'Admin/SettingController@integrations',
+'admin/settings/webhook'      => 'Admin/SettingController@webhook',
+'admin/settings/api'          => 'Admin/SettingController@api',
+'admin/settings/help'         => 'Admin/SettingController@help',
+'admin/settings/about'        => 'Admin/SettingController@about',
+'admin/settings/links'        => 'Admin/LinkController@index',
+'admin/settings/tags'         => 'Admin/TagController@index',
 
 // Plugins admin
-$container['route']->addRoute('admin/plugins', 'PluginController', 'show');
-$container['route']->addRoute('admin/plugins/market', 'PluginController', 'directory');
+'admin/plugins'        => 'Admin/PluginController@show',
+'admin/plugins/market' => 'Admin/PluginController@directory',
+
+];

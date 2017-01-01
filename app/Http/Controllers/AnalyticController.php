@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -148,6 +148,9 @@ class AnalyticController extends BaseController
         ]));
     }
 
+    /**
+     * Get dates.
+     */
     private function getDates()
     {
         $values = $this->request->getValues();

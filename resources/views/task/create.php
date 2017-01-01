@@ -2,7 +2,7 @@
     <h2><?= $this->text->e($project['name']) ?> &gt; <?= t('New task') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('TaskController', 'store', ['project_id' => $values['project_id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('Task/TaskController', 'store', ['project_id' => $values['project_id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
 
     <div class="form-columns">
@@ -47,6 +47,6 @@
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info" tabindex="15"><?= t('Save') ?></button>
-        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'BoardController', 'show', ['project_id' => $values['project_id']], false, 'close-popover') ?>
+        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/Board/BoardController', 'show', ['project_id' => $values['project_id']], false, 'close-popover') ?>
     </div>
 </form>

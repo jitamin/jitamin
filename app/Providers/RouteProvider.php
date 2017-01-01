@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -36,7 +36,11 @@ class RouteProvider implements ServiceProviderInterface
         if (ENABLE_URL_REWRITE) {
             $container['route']->enable();
             foreach (glob(JITAMIN_DIR.DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'*.php') as $file) {
-                require $file;
+                $routes = require $file;
+                foreach ($routes as $path => $entry) {
+                    list($controller, $action) = explode('@', $entry);
+                    $container['route']->addRoute($path, $controller, $action);
+                }
             }
         }
 

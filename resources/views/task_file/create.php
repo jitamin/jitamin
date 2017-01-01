@@ -4,7 +4,7 @@
 <div id="file-done" style="display:none">
     <p class="alert alert-success">
         <?= t('All files have been uploaded successfully.') ?>
-        <?= $this->url->link(t('View uploaded files'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
+        <?= $this->url->link(t('View uploaded files'), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
     </p>
 </div>
 
@@ -18,7 +18,7 @@
 <div
     id="file-dropzone"
     data-max-size="<?= $max_size ?>"
-    data-url="<?= $this->url->href('TaskFileController', 'save', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
+    data-url="<?= $this->url->href('Task/TaskFileController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
     <div id="file-dropzone-inner">
         <?= t('Drag and drop your files here') ?> <?= t('or') ?> <a href="#" id="file-browser"><?= t('choose files') ?></a>
     </div>
@@ -29,5 +29,5 @@
 <div class="form-actions">
     <input type="submit" value="<?= t('Upload files') ?>" class="btn btn-info" id="file-upload-button" disabled>
     <?= t('or') ?>
-    <?= $this->url->link(t('cancel'), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
+    <?= $this->url->link(t('cancel'), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
 </div>

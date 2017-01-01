@@ -10,14 +10,14 @@
      data-owner-id="<?= $task['owner_id'] ?>"
      data-category-id="<?= $task['category_id'] ?>"
      data-due-date="<?= $task['date_due'] ?>"
-     data-task-url="<?= $this->url->href('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
+     data-task-url="<?= $this->url->href('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>">
 
     <div class="task-board-sort-handle" style="display: none;"><i class="fa fa-arrows-alt"></i></div>
 
     <?php if ($this->board->isCollapsed($task['project_id'])): ?>
         <div class="task-board-collapsed">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse"></i></div>
-            <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
+            <?php if ($this->user->hasProjectAccess('Task/TaskController', 'edit', $task['project_id'])): ?>
                 <?= $this->render('task/dropdown', ['task' => $task]) ?>
             <?php else: ?>
                 <strong><?= '#'.$task['id'] ?></strong>
@@ -28,12 +28,12 @@
                     <?= $this->text->e($this->user->getInitials($task['assignee_name'] ?: $task['assignee_username'])) ?>
                 </span> -
             <?php endif ?>
-            <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'task-board-collapsed-title tooltip', $this->text->e($task['title'])) ?>
+            <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'task-board-collapsed-title tooltip', $this->text->e($task['title'])) ?>
         </div>
     <?php else: ?>
         <div class="task-board-expanded">
             <div class="task-board-saving-icon" style="display: none;"><i class="fa fa-spinner fa-pulse fa-2x"></i></div>
-            <?php if ($this->user->hasProjectAccess('TaskController', 'edit', $task['project_id'])): ?>
+            <?php if ($this->user->hasProjectAccess('Task/TaskController', 'edit', $task['project_id'])): ?>
                 <?= $this->render('task/dropdown', ['task' => $task]) ?>
             <?php else: ?>
                 <strong><?= '#'.$task['id'] ?></strong>
@@ -49,7 +49,7 @@
 
             <?= $this->hook->render('template:board:private:task:before-title', ['task' => $task]) ?>
             <div class="task-board-title">
-                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </div>
             <?= $this->hook->render('template:board:private:task:after-title', ['task' => $task]) ?>
 

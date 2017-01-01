@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -123,7 +123,7 @@ class TaskICalFormatter extends BaseTaskCalendarFormatter implements FormatterIn
         $vEvent->setSummary(t('#%d', $task['id']).' '.$task['title']);
         $vEvent->setDescription($task['description']);
         $vEvent->setDescriptionHTML($this->helper->text->markdown($task['description']));
-        $vEvent->setUrl($this->helper->url->base().$this->helper->url->to('TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
+        $vEvent->setUrl($this->helper->url->base().$this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
 
         if (!empty($task['owner_id'])) {
             $attendees = new Attendees();

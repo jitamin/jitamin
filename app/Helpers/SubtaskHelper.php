@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,6 +18,13 @@ use Jitamin\Core\Base;
  */
 class SubtaskHelper extends Base
 {
+    /**
+     * Get the title.
+     *
+     * @param array $subtask
+     *
+     * @return string
+     */
     public function getTitle(array $subtask)
     {
         if ($subtask['status'] == 0) {
@@ -42,21 +49,30 @@ class SubtaskHelper extends Base
      */
     public function toggleStatus(array $subtask, $project_id, $refresh_table = false)
     {
-        if (!$this->helper->user->hasProjectAccess('SubtaskController', 'edit', $project_id)) {
+        if (!$this->helper->user->hasProjectAccess('Task/Subtask/SubtaskController', 'edit', $project_id)) {
             return $this->getTitle($subtask);
         }
 
         $params = ['task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id'], 'refresh-table' => (int) $refresh_table];
 
         if ($subtask['status'] == 0 && isset($this->sessionStorage->hasSubtaskInProgress) && $this->sessionStorage->hasSubtaskInProgress) {
-            return $this->helper->url->link($this->getTitle($subtask), 'SubtaskRestrictionController', 'show', $params, false, 'popover');
+            return $this->helper->url->link($this->getTitle($subtask), 'Task/Subtask/SubtaskRestrictionController', 'show', $params, false, 'popover');
         }
 
         $class = 'subtask-toggle-status '.($refresh_table ? 'subtask-refresh-table' : '');
 
-        return $this->helper->url->link($this->getTitle($subtask), 'SubtaskStatusController', 'change', $params, false, $class);
+        return $this->helper->url->link($this->getTitle($subtask), 'Task/Subtask/SubtaskStatusController', 'change', $params, false, $class);
     }
 
+    /**
+     * Display a select field of title.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectTitle(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="1"', 'required', 'maxlength="255"'], $attributes);
@@ -67,6 +83,15 @@ class SubtaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of assignee.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectAssignee(array $users, array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="2"'], $attributes);
@@ -81,6 +106,15 @@ class SubtaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of time estimated.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectTimeEstimated(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="3"'], $attributes);
@@ -92,6 +126,15 @@ class SubtaskHelper extends Base
         return $html;
     }
 
+    /**
+     * Display a select field of time spent.
+     *
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
     public function selectTimeSpent(array $values, array $errors = [], array $attributes = [])
     {
         $attributes = array_merge(['tabindex="4"'], $attributes);

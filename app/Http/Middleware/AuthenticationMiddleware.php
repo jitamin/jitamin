@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -36,6 +36,9 @@ class AuthenticationMiddleware extends BaseMiddleware
         $this->next();
     }
 
+    /**
+     * Handle authentication.
+     */
     protected function handleAuthentication()
     {
         if (!$this->userSession->isLogged() && !$this->authenticationManager->preAuthentication()) {
@@ -45,14 +48,17 @@ class AuthenticationMiddleware extends BaseMiddleware
                 $this->response->text('Not Authorized', 401);
             } else {
                 $this->sessionStorage->redirectAfterLogin = $this->request->getUri();
-                $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+                $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
             }
         }
     }
 
+    /**
+     * Check authentication.
+     */
     protected function isPublicAccess()
     {
-        if ($this->applicationAuthorization->isAllowed($this->router->getController(), $this->router->getAction(), Role::APP_PUBLIC)) {
+        if ($this->applicationAuthorization->isAllowed($this->router->getController(), $this->router->getAction(), Role::APP_PUBLIC, $this->router->getPlugin())) {
             $this->nextMiddleware = null;
 
             return true;

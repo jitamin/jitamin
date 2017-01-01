@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -21,6 +21,11 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class TaskTriggerCommand extends BaseCommand
 {
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -28,6 +33,14 @@ class TaskTriggerCommand extends BaseCommand
             ->setDescription('Trigger scheduler event for all tasks');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @param InputInterface  $output
+     * @param OutputInterface $output
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         foreach ($this->getProjectIds() as $project_id) {
@@ -41,6 +54,11 @@ class TaskTriggerCommand extends BaseCommand
         }
     }
 
+    /**
+     * Get the project ids.
+     *
+     * @return int[]
+     */
     private function getProjectIds()
     {
         $listeners = $this->dispatcher->getListeners(TaskModel::EVENT_DAILY_CRONJOB);
@@ -53,6 +71,14 @@ class TaskTriggerCommand extends BaseCommand
         return array_unique($project_ids);
     }
 
+    /**
+     * Send the event.
+     *
+     * @param array $tasks
+     * @param int   $project_id
+     *
+     * @return void
+     */
     private function sendEvent(array &$tasks, $project_id)
     {
         $event = new TaskListEvent(['project_id' => $project_id]);

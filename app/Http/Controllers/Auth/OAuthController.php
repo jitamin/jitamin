@@ -3,14 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Auth;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Security\OAuthAuthenticationProviderInterface;
 
 /**
@@ -53,7 +54,7 @@ class OAuthController extends BaseController
                 $this->link($provider);
             } else {
                 $this->flash->failure(t('The OAuth2 state parameter is invalid'));
-                $this->response->redirect($this->helper->url->to('ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
+                $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
             }
         } else {
             if ($hasValidState) {
@@ -78,7 +79,7 @@ class OAuthController extends BaseController
             $this->flash->success(t('Your external account is linked to your profile successfully.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
     }
 
     /**
@@ -95,7 +96,7 @@ class OAuthController extends BaseController
             $this->flash->failure(t('Unable to unlink your external account.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
     }
 
     /**
@@ -106,7 +107,7 @@ class OAuthController extends BaseController
     protected function authenticate($providerName)
     {
         if ($this->authenticationManager->oauthAuthentication($providerName)) {
-            $this->response->redirect($this->helper->url->to('DashboardController', 'index'));
+            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'index'));
         } else {
             $this->authenticationFailure(t('External authentication failed'));
         }

@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -74,7 +74,7 @@ class TaskGanttFormatter extends BaseFormatter implements FormatterInterface
             'column_title' => $task['column_name'],
             'assignee'     => $task['assignee_name'] ?: $task['assignee_username'],
             'progress'     => $this->taskModel->getProgress($task, $this->columns[$task['project_id']]).'%',
-            'link'         => $this->helper->url->href('TaskViewController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]),
+            'link'         => $this->helper->url->href('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]),
             'color'        => $this->colorModel->getColorProperties($task['color_id']),
             'not_defined'  => empty($task['date_due']) || empty($task['date_started']),
         ];

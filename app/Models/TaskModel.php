@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -215,7 +215,7 @@ class TaskModel extends Model
     }
 
     /**
-     * Get task progress based on the column position.
+     * Get task progress.
      *
      * @param array $task
      * @param array $columns
@@ -229,19 +229,6 @@ class TaskModel extends Model
         }
 
         return $task['progress'] ?: 0;
-        /*
-        $position = 0;
-
-        foreach ($columns as $column_id => $column_title) {
-            if ($column_id == $task['column_id']) {
-                break;
-            }
-
-            $position++;
-        }
-
-        return round(($position * 100) / count($columns), 1);
-        */
     }
 
     /**

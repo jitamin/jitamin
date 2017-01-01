@@ -1,9 +1,2 @@
-<section id="main">
-    <section class="sidebar-container" id="config-section">
-        <?= $this->render($sidebar_template) ?>
-
-        <div class="sidebar-content">
-            <?= $content_for_sublayout ?>
-        </div>
-    </section>
-</section>
+<?= $this->render('admin/setting/_partials/subnav') ?>
+<?= $content_for_sublayout ?>

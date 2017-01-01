@@ -7,7 +7,7 @@
         <div class="input-addon">
             <?= $this->form->text('q', $filters, [], ['placeholder="'.t('Filter').'"'], 'input-addon-field') ?>
             <div class="input-addon-item">
-                <?= $this->render('app/filters_helper', ['reset' => 'status:open', 'project' => $project]) ?>
+                <?= $this->render('_partials/filters_helper', ['reset' => 'status:open', 'project' => $project]) ?>
             </div>
 
             <?php if (isset($custom_filters_list) && !empty($custom_filters_list)): ?>

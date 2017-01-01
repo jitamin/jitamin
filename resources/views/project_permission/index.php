@@ -26,12 +26,12 @@
                         $roles,
                         ['role-'.$user['id'] => $user['role']],
                         [],
-                        ['data-url="'.$this->url->href('ProjectPermissionController', 'changeUserRole', ['project_id' => $project['id']]).'"', 'data-id="'.$user['id'].'"'],
+                        ['data-url="'.$this->url->href('Project/ProjectPermissionController', 'changeUserRole', ['project_id' => $project['id']]).'"', 'data-id="'.$user['id'].'"'],
                         'project-change-role'
                     ) ?>
                 </td>
                 <td>
-                    <?= $this->url->link(t('Remove'), 'ProjectPermissionController', 'removeUser', ['project_id' => $project['id'], 'user_id' => $user['id']], true) ?>
+                    <?= $this->url->link(t('Remove'), 'Project/ProjectPermissionController', 'removeUser', ['project_id' => $project['id'], 'user_id' => $user['id']], true) ?>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -40,7 +40,7 @@
 
     <?php if ($project['is_private'] == 0): ?>
     <div class="listing">
-        <form method="post" action="<?= $this->url->href('ProjectPermissionController', 'addUser', ['project_id' => $project['id']]) ?>" autocomplete="off" class="form-inline">
+        <form method="post" action="<?= $this->url->href('Project/ProjectPermissionController', 'addUser', ['project_id' => $project['id']]) ?>" autocomplete="off" class="form-inline">
             <?= $this->form->csrf() ?>
             <?= $this->form->hidden('project_id', ['project_id' => $project['id']]) ?>
             <?= $this->form->hidden('user_id', $values) ?>
@@ -51,7 +51,7 @@
                 'placeholder="'.t('Enter user name...').'"',
                 'title="'.t('Enter user name...').'"',
                 'data-dst-field="user_id"',
-                'data-search-url="'.$this->url->href('UserAjaxController', 'autocomplete').'"',
+                'data-search-url="'.$this->url->href('Profile/UserAjaxController', 'autocomplete').'"',
             ],
             'autocomplete') ?>
 
@@ -86,12 +86,12 @@
                         $roles,
                         ['role-'.$group['id'] => $group['role']],
                         [],
-                        ['data-url="'.$this->url->href('ProjectPermissionController', 'changeGroupRole', ['project_id' => $project['id']]).'"', 'data-id="'.$group['id'].'"'],
+                        ['data-url="'.$this->url->href('Project/ProjectPermissionController', 'changeGroupRole', ['project_id' => $project['id']]).'"', 'data-id="'.$group['id'].'"'],
                         'project-change-role'
                     ) ?>
                 </td>
                 <td>
-                    <?= $this->url->link(t('Remove'), 'ProjectPermissionController', 'removeGroup', ['project_id' => $project['id'], 'group_id' => $group['id']], true) ?>
+                    <?= $this->url->link(t('Remove'), 'Project/ProjectPermissionController', 'removeGroup', ['project_id' => $project['id'], 'group_id' => $group['id']], true) ?>
                 </td>
             </tr>
             <?php endforeach ?>
@@ -100,7 +100,7 @@
 
     <?php if ($project['is_private'] == 0): ?>
     <div class="listing">
-        <form method="post" action="<?= $this->url->href('ProjectPermissionController', 'addGroup', ['project_id' => $project['id']]) ?>" autocomplete="off" class="form-inline">
+        <form method="post" action="<?= $this->url->href('Project/ProjectPermissionController', 'addGroup', ['project_id' => $project['id']]) ?>" autocomplete="off" class="form-inline">
             <?= $this->form->csrf() ?>
             <?= $this->form->hidden('project_id', ['project_id' => $project['id']]) ?>
             <?= $this->form->hidden('group_id', $values) ?>
@@ -113,7 +113,7 @@
                 'title="'.t('Enter group name...').'"',
                 'data-dst-field="group_id"',
                 'data-dst-extra-field="external_id"',
-                'data-search-url="'.$this->url->href('GroupAjaxController', 'autocomplete').'"',
+                'data-search-url="'.$this->url->href('Admin/GroupController', 'autocompleteAjax').'"',
             ],
             'autocomplete') ?>
 
@@ -128,7 +128,7 @@
 
 <?php if ($project['is_private'] == 0): ?>
 <hr/>
-<form method="post" action="<?= $this->url->href('ProjectPermissionController', 'allowEverybody', ['project_id' => $project['id']]) ?>">
+<form method="post" action="<?= $this->url->href('Project/ProjectPermissionController', 'allowEverybody', ['project_id' => $project['id']]) ?>">
     <?= $this->form->csrf() ?>
 
     <?= $this->form->hidden('id', ['id' => $project['id']]) ?>

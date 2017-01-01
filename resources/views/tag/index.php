@@ -3,7 +3,7 @@
     <ul>
         <li>
             <i class="fa fa-plus" aria-hidden="true"></i>
-            <?= $this->url->link(t('Add new tag'), 'TagController', 'create', [], false, 'popover') ?>
+            <?= $this->url->link(t('Add new tag'), 'Admin/TagController', 'create', [], false, 'popover') ?>
         </li>
     </ul>
 </div>
@@ -21,9 +21,9 @@
                 <td><?= $this->text->e($tag['name']) ?></td>
                 <td>
                     <i class="fa fa-times" aria-hidden="true"></i>
-                    <?= $this->url->link(t('Remove'), 'TagController', 'confirm', ['tag_id' => $tag['id']], false, 'popover') ?>
+                    <?= $this->url->link(t('Remove'), 'Admin/TagController', 'confirm', ['tag_id' => $tag['id']], false, 'popover') ?>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                    <?= $this->url->link(t('Edit'), 'TagController', 'edit', ['tag_id' => $tag['id']], false, 'popover') ?>
+                    <?= $this->url->link(t('Edit'), 'Admin/TagController', 'edit', ['tag_id' => $tag['id']], false, 'popover') ?>
                 </td>
             </tr>
         <?php endforeach ?>

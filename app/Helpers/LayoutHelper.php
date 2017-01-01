@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -40,20 +40,33 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for user views.
+     * Common layout for error views.
      *
      * @param string $template Template name
      * @param array  $params   Template parameters
      *
      * @return string
      */
-    public function user($template, array $params)
+    public function error($template, array $params = [])
+    {
+        return $this->template->render($template, $params);
+    }
+
+    /**
+     * Common layout for profile views.
+     *
+     * @param string $template Template name
+     * @param array  $params   Template parameters
+     *
+     * @return string
+     */
+    public function profile($template, array $params)
     {
         if (isset($params['user'])) {
             $params['title'] = '#'.$params['user']['id'].' '.($params['user']['name'] ?: $params['user']['username']);
         }
 
-        return $this->subLayout('profile/layout', 'profile/sidebar', $template, $params);
+        return $this->subLayout('profile/layout', 'profile/subside', $template, $params);
     }
 
     /**
@@ -69,7 +82,7 @@ class LayoutHelper extends Base
         $params['page_title'] = $params['task']['project_name'].', #'.$params['task']['id'].' - '.$params['task']['title'];
         $params['title'] = $params['task']['project_name'];
 
-        return $this->subLayout('task/layout', 'task/sidebar', $template, $params);
+        return $this->subLayout('task/layout', 'task/subside', $template, $params);
     }
 
     /**
@@ -77,11 +90,11 @@ class LayoutHelper extends Base
      *
      * @param string $template
      * @param array  $params
-     * @param string $sidebar
+     * @param string $subside
      *
      * @return string
      */
-    public function project($template, array $params, $sidebar = 'project/sidebar')
+    public function project($template, array $params, $subside = 'project/subside')
     {
         if (empty($params['title'])) {
             $params['title'] = $params['project']['name'];
@@ -89,7 +102,7 @@ class LayoutHelper extends Base
             $params['title'] = $params['project']['name'].' &raquo; '.$params['title'];
         }
 
-        return $this->subLayout('project/layout', $sidebar, $template, $params);
+        return $this->subLayout('project/layout', $subside, $template, $params);
     }
 
     /**
@@ -104,7 +117,7 @@ class LayoutHelper extends Base
     {
         $params['filter'] = ['user_id' => $params['user_id']];
 
-        return $this->subLayout('project_user_overview/layout', 'project_user_overview/sidebar', $template, $params);
+        return $this->subLayout('project_user_overview/layout', 'project_user_overview/subside', $template, $params);
     }
 
     /**
@@ -125,7 +138,7 @@ class LayoutHelper extends Base
             $params['errors'] = [];
         }
 
-        return $this->subLayout('admin/setting/layout', 'admin/setting/sidebar', $template, $params);
+        return $this->subLayout('admin/setting/layout', 'admin/setting/subside', $template, $params);
     }
 
     /**
@@ -138,7 +151,7 @@ class LayoutHelper extends Base
      */
     public function plugin($template, array $params)
     {
-        return $this->subLayout('plugin/layout', 'plugin/sidebar', $template, $params);
+        return $this->subLayout('plugin/layout', 'plugin/subside', $template, $params);
     }
 
     /**
@@ -151,7 +164,7 @@ class LayoutHelper extends Base
      */
     public function dashboard($template, array $params)
     {
-        return $this->subLayout('dashboard/layout', 'dashboard/sidebar', $template, $params);
+        return $this->subLayout('dashboard/layout', 'dashboard/subside', $template, $params);
     }
 
     /**
@@ -168,7 +181,7 @@ class LayoutHelper extends Base
             $params['title'] = $params['project']['name'].' &raquo; '.$params['title'];
         }
 
-        return $this->subLayout('analytic/layout', 'analytic/sidebar', $template, $params);
+        return $this->subLayout('analytic/layout', 'analytic/subside', $template, $params);
     }
 
     /**
@@ -192,13 +205,13 @@ class LayoutHelper extends Base
      * Common method to generate a sub-layout.
      *
      * @param string $sublayout
-     * @param string $sidebar
+     * @param string $subside
      * @param string $template
      * @param array  $params
      *
      * @return string
      */
-    public function subLayout($sublayout, $sidebar, $template, array $params = [])
+    public function subLayout($sublayout, $subside, $template, array $params = [])
     {
         $content = $this->template->render($template, $params);
 
@@ -207,7 +220,7 @@ class LayoutHelper extends Base
         }
 
         $params['content_for_sublayout'] = $content;
-        $params['sidebar_template'] = $sidebar;
+        $params['subside_template'] = $subside;
 
         return $this->app($sublayout, $params);
     }

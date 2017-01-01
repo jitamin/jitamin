@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -11,6 +11,7 @@
 
 namespace Jitamin\Providers;
 
+use Jitamin\Auth\ApiTokenAuth;
 use Jitamin\Auth\DatabaseAuth;
 use Jitamin\Auth\LdapAuth;
 use Jitamin\Auth\RememberMeAuth;
@@ -50,6 +51,8 @@ class AuthenticationProvider implements ServiceProviderInterface
             $container['authenticationManager']->register(new LdapAuth($container));
         }
 
+        $container['authenticationManager']->register(new ApiTokenAuth($container));
+
         $container['projectAccessMap'] = $this->getProjectAccessMap();
         $container['applicationAccessMap'] = $this->getApplicationAccessMap();
         $container['apiAccessMap'] = $this->getApiAccessMap();
@@ -76,40 +79,41 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->setRoleHierarchy(Role::PROJECT_MEMBER, [Role::PROJECT_VIEWER]);
 
         $acl->add('ActionController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectActionDuplicationController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectActionDuplicationController', '*', Role::PROJECT_MANAGER);
         $acl->add('AnalyticController', '*', Role::PROJECT_MANAGER);
-        $acl->add('BoardAjaxController', 'save', Role::PROJECT_MEMBER);
-        $acl->add('BoardPopoverController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskPopoverController', '*', Role::PROJECT_MEMBER);
-        $acl->add('CalendarController', 'save', Role::PROJECT_MEMBER);
+        $acl->add('Project/Board/BoardAjaxController', 'store', Role::PROJECT_MEMBER);
+        $acl->add('Project/Board/BoardPopoverController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskPopoverController', '*', Role::PROJECT_MEMBER);
+        $acl->add('CalendarController', 'store', Role::PROJECT_MEMBER);
         $acl->add('CategoryController', '*', Role::PROJECT_MANAGER);
         $acl->add('ColumnController', '*', Role::PROJECT_MANAGER);
         $acl->add('CommentController', '*', Role::PROJECT_MEMBER);
         $acl->add('CustomFilterController', '*', Role::PROJECT_MEMBER);
         $acl->add('ExportController', '*', Role::PROJECT_MANAGER);
-        $acl->add('TaskFileController', ['screenshot', 'create', 'save', 'remove', 'confirm'], Role::PROJECT_MEMBER);
-        $acl->add('TaskGanttController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectSettingsController', ['share', 'updateSharing', 'integrations', 'updateIntegrations', 'notifications', 'updateNotifications', 'duplicate', 'doDuplication'], Role::PROJECT_MANAGER);
-        $acl->add('ProjectPermissionController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectController', ['edit', 'edit_description', 'update'], Role::PROJECT_MANAGER);
-        $acl->add('ProjectFileController', '*', Role::PROJECT_MEMBER);
-        $acl->add('ProjectUserOverviewController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectStatusController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectTagController', '*', Role::PROJECT_MANAGER);
-        $acl->add('SubtaskController', '*', Role::PROJECT_MEMBER);
-        $acl->add('SubtaskRestrictionController', '*', Role::PROJECT_MEMBER);
-        $acl->add('SubtaskStatusController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskFileController', ['screenshot', 'create', 'store', 'remove', 'confirm'], Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskGanttController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectSettingsController', ['share', 'updateSharing', 'integrations', 'updateIntegrations', 'notifications', 'updateNotifications', 'duplicate', 'doDuplication'], Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectPermissionController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectController', ['edit', 'edit_description', 'update'], Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectFileController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Project/ProjectUserOverviewController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectStatusController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/ProjectTagController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Task/Subtask/SubtaskController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/Subtask/SubtaskRestrictionController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/Subtask/SubtaskStatusController', '*', Role::PROJECT_MEMBER);
         $acl->add('SwimlaneController', '*', Role::PROJECT_MANAGER);
-        $acl->add('TaskSuppressionController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskBulkController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskDuplicationController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskRecurrenceController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskImportController', '*', Role::PROJECT_MANAGER);
-        $acl->add('TaskInternalLinkController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskExternalLinkController', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskStatusController', '*', Role::PROJECT_MEMBER);
-        $acl->add('UserAjaxController', ['mention'], Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskSuppressionController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskController', ['show', 'analytics', 'timetracking', 'transitions'], Role::PROJECT_VIEWER);
+        $acl->add('Task/TaskBulkController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskDuplicationController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskRecurrenceController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskImportController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Task/TaskInternalLinkController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskExternalLinkController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/TaskStatusController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Profile/UserAjaxController', ['mention'], Role::PROJECT_MEMBER);
 
         return $acl;
     }
@@ -127,27 +131,26 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER, Role::APP_PUBLIC]);
         $acl->setRoleHierarchy(Role::APP_USER, [Role::APP_PUBLIC]);
 
-        $acl->add('AuthController', ['login', 'check'], Role::APP_PUBLIC);
+        $acl->add('Auth/AuthController', ['login', 'check'], Role::APP_PUBLIC);
         $acl->add('CaptchaController', '*', Role::APP_PUBLIC);
-        $acl->add('PasswordResetController', '*', Role::APP_PUBLIC);
-        $acl->add('TaskViewController', 'readonly', Role::APP_PUBLIC);
-        $acl->add('BoardController', 'readonly', Role::APP_PUBLIC);
+        $acl->add('Auth/PasswordResetController', '*', Role::APP_PUBLIC);
+        $acl->add('Task/TaskController', 'readonly', Role::APP_PUBLIC);
+        $acl->add('Project/Board/BoardController', 'readonly', Role::APP_PUBLIC);
         $acl->add('ICalendarController', '*', Role::APP_PUBLIC);
         $acl->add('FeedController', '*', Role::APP_PUBLIC);
         $acl->add('AvatarFileController', ['show', 'image'], Role::APP_PUBLIC);
 
-        $acl->add('SettingController', '*', Role::APP_ADMIN);
-        $acl->add('TagController', '*', Role::APP_ADMIN);
-        $acl->add('PluginController', '*', Role::APP_ADMIN);
-        $acl->add('ProjectGanttController', '*', Role::APP_MANAGER);
-        $acl->add('GroupController', '*', Role::APP_ADMIN);
-        $acl->add('LinkController', '*', Role::APP_ADMIN);
-        $acl->add('ProjectController', 'create', Role::APP_MANAGER);
-        $acl->add('ProjectUserOverviewController', '*', Role::APP_MANAGER);
-        $acl->add('TwoFactorController', 'disable', Role::APP_ADMIN);
-        $acl->add('UserImportController', '*', Role::APP_ADMIN);
-        $acl->add('UserController', '*', Role::APP_ADMIN);
-        $acl->add('UserStatusController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/SettingController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/TagController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/PluginController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/GroupController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/LinkController', '*', Role::APP_ADMIN);
+        $acl->add('Project/ProjectController', ['create', 'gantt', 'updateDate'], Role::APP_MANAGER);
+        $acl->add('Project/ProjectUserOverviewController', '*', Role::APP_MANAGER);
+        $acl->add('Profile/TwoFactorController', 'disable', Role::APP_ADMIN);
+        $acl->add('Admin/UserImportController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/UserController', '*', Role::APP_ADMIN);
+        $acl->add('Profile/UserStatusController', '*', Role::APP_ADMIN);
 
         return $acl;
     }

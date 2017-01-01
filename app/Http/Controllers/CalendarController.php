@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -90,7 +90,7 @@ class CalendarController extends BaseController
     /**
      * Update task due date.
      */
-    public function save()
+    public function store()
     {
         if ($this->request->isAjax() && $this->request->isPost()) {
             $values = $this->request->getJson();

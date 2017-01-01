@@ -25,19 +25,19 @@
 
         <table class="table-fixed table-small table-scrolling">
             <tr>
-                <th class="column-5"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
+                <th class="column-8"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
                 <th><?= $paginator->order(t('Title'), 'tasks.title') ?></th>
-                <th class="column-5"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
+                <th class="column-8"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
                 <th class="column-10"><?= $paginator->order(t('Estimated Time'), 'tasks.time_estimated') ?></th>
                 <th class="column-10"><?= $paginator->order(t('Actual Time'), 'tasks.time_spent') ?></th>
             </tr>
             <?php foreach ($paginator->getCollection() as $task): ?>
             <tr>
                 <td class="task-table color-<?= $task['color_id'] ?>">
-                    <?= $this->url->link('#'.$this->text->e($task['id']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                    <?= $this->url->link('#'.$this->text->e($task['id']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
                 </td>
                 <td>
-                    <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                    <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
                 </td>
                 <td>
                     <?php if ($task['is_active'] == \Jitamin\Model\TaskModel::STATUS_OPEN): ?>

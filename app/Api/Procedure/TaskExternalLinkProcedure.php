@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,11 +20,21 @@ use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
  */
 class TaskExternalLinkProcedure extends BaseProcedure
 {
+    /**
+     * Get link types.
+     *
+     * @return array
+     */
     public function getExternalTaskLinkTypes()
     {
         return $this->externalLinkManager->getTypes();
     }
 
+    /**
+     * Get a dictionary of supported dependency types by the provider.
+     *
+     * @return array
+     */
     public function getExternalTaskLinkProviderDependencies($providerName)
     {
         try {
@@ -36,6 +46,14 @@ class TaskExternalLinkProcedure extends BaseProcedure
         }
     }
 
+    /**
+     * Get link.
+     *
+     * @param int $task_id
+     * @param int $link_id
+     *
+     * @return array
+     */
     public function getExternalTaskLinkById($task_id, $link_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getExternalTaskLink', $task_id);
@@ -43,6 +61,13 @@ class TaskExternalLinkProcedure extends BaseProcedure
         return $this->taskExternalLinkModel->getById($link_id);
     }
 
+    /**
+     * Get all links.
+     *
+     * @param int $task_id
+     *
+     * @return array
+     */
     public function getAllExternalTaskLinks($task_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getExternalTaskLinks', $task_id);
@@ -50,6 +75,17 @@ class TaskExternalLinkProcedure extends BaseProcedure
         return $this->taskExternalLinkModel->getAll($task_id);
     }
 
+    /**
+     * Add a new link in the database.
+     *
+     * @param int    $task_id
+     * @param string $url
+     * @param string $dependency
+     * @param string $type
+     * @param strint $title
+     *
+     * @return bool|int
+     */
     public function createExternalTaskLink($task_id, $url, $dependency, $type = ExternalLinkManager::TYPE_AUTO, $title = '')
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'createExternalTaskLink', $task_id);
@@ -86,6 +122,18 @@ class TaskExternalLinkProcedure extends BaseProcedure
         return false;
     }
 
+    /**
+     * Modify external link.
+     *
+     * @param int    $task_id
+     * @param int    $link_id
+     * @param string $url
+     * @param string $dependency
+     * @param string $type
+     * @param strint $title
+     *
+     * @return bool
+     */
     public function updateExternalTaskLink($task_id, $link_id, $title = null, $url = null, $dependency = null)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'updateExternalTaskLink', $task_id);
@@ -109,6 +157,14 @@ class TaskExternalLinkProcedure extends BaseProcedure
         return $this->taskExternalLinkModel->update($values);
     }
 
+    /**
+     * Remove a link.
+     *
+     * @param int $task_id
+     * @param int $link_id
+     *
+     * @return bool
+     */
     public function removeExternalTaskLink($task_id, $link_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeExternalTaskLink', $task_id);

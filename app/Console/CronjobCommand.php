@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,6 +27,11 @@ class CronjobCommand extends BaseCommand
         'trigger:tasks',
     ];
 
+    /**
+     * Configure the console command.
+     *
+     * @return void
+     */
     protected function configure()
     {
         $this
@@ -34,6 +39,11 @@ class CronjobCommand extends BaseCommand
             ->setDescription('Execute daily cronjob');
     }
 
+    /**
+     * Execute the console command.
+     *
+     * @return void
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         foreach ($this->commands as $command) {

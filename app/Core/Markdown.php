@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -90,7 +90,7 @@ class Markdown extends Parsedown
             $user_id = $this->container['userModel']->getIdByUsername($matches[1]);
 
             if (!empty($user_id)) {
-                $url = $this->container['helper']->url->href('ProfileController', 'profile', ['user_id' => $user_id]);
+                $url = $this->container['helper']->url->href('Profile/ProfileController', 'profile', ['user_id' => $user_id]);
 
                 return [
                     'extent'  => strlen($matches[0]),
@@ -118,7 +118,7 @@ class Markdown extends Parsedown
 
             if (!empty($token)) {
                 return $this->container['helper']->url->href(
-                    'TaskViewController',
+                    'Task/TaskController',
                     'readonly',
                     [
                         'token'   => $token,
@@ -131,7 +131,7 @@ class Markdown extends Parsedown
         }
 
         return $this->container['helper']->url->href(
-            'TaskViewController',
+            'Task/TaskController',
             'show',
             ['task_id' => $task_id]
         );

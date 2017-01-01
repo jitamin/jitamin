@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -12,6 +12,7 @@
 namespace Jitamin\Helper;
 
 use Jitamin\Core\Base;
+use Jitamin\Core\Http\Router;
 
 /**
  * Application Helper.
@@ -32,7 +33,7 @@ class AppHelper extends Base
     }
 
     /**
-     * Make sidebar menu active.
+     * Set active class if request is in path.
      *
      * @param string $controller
      * @param string $action
@@ -40,12 +41,25 @@ class AppHelper extends Base
      *
      * @return string
      */
-    public function checkMenuSelection($controller, $action = '', $plugin = '')
+    public function setActive($controller, $action = '', $plugin = '')
     {
-        $result = strtolower($this->getRouterController()) === strtolower($controller);
+        $currentController = strtolower($this->getRouterController());
+        $currentAction = strtolower($this->getRouterAction());
+        $controller = strtolower($controller);
+        $action = strtolower($action);
+
+        $result = $currentController === $controller;
 
         if ($result && $action !== '') {
-            $result = strtolower($this->getRouterAction()) === strtolower($action);
+            $result = $currentAction === $action;
+        }
+
+        if ($currentController == strtolower(Router::DEFAULT_CONTROLLER) && $currentAction == Router::DEFAULT_METHOD) {
+            list($defaultController, $defaultAction) = array_map(function ($value) {
+                return strtolower($value);
+            }, $this->getDashboard());
+
+            $result = ($controller == $defaultController && $action == $defaultAction) || ($controller == strtolower(Router::DEFAULT_CONTROLLER) && $action == Router::DEFAULT_METHOD);
         }
 
         if ($result && $plugin !== '') {
@@ -134,6 +148,56 @@ class AppHelper extends Base
     public function getSkin()
     {
         return $this->skinModel->getCurrentSkin();
+    }
+
+    /**
+     * Get current skin.
+     *
+     * @return string
+     */
+    public function getLayout()
+    {
+        return $this->skinModel->getCurrentLayout();
+    }
+
+    /**
+     * Get current dashboard.
+     *
+     * @return array
+     */
+    public function getDashboard($forController = false)
+    {
+        $currentDashboard = $this->skinModel->getCurrentDashboard();
+
+        switch ($currentDashboard) {
+            case 'projects':
+                $controller = 'Dashboard/ProjectController';
+                $action = 'index';
+                break;
+            case 'stars':
+                $controller = 'Dashboard/ProjectController';
+                $action = 'starred';
+                break;
+            case 'calendar':
+                $controller = 'Dashboard/DashboardController';
+                $action = 'calendar';
+                break;
+            case 'activities':
+                $controller = 'Dashboard/DashboardController';
+                $action = 'activities';
+                break;
+            case 'tasks':
+                $controller = 'Dashboard/DashboardController';
+                $action = 'tasks';
+                break;
+            default:
+                $controller = 'Dashboard/ProjectController';
+                $action = 'index';
+        }
+
+        $controller = $forController ? 'Jitamin\\Controller\\'.str_replace('/', '\\', $controller) : $controller;
+
+        return [$controller, $action];
     }
 
     /**

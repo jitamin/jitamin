@@ -3,7 +3,7 @@
     <ul>
         <li>
             <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-            <?= $this->url->link(t('Add a new custom role'), 'ProjectRoleController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a new custom role'), 'Project/ProjectRoleController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
         </li>
     </ul>
 </div>
@@ -20,7 +20,7 @@
                     <ul>
                         <li>
                             <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-                            <?= $this->url->link(t('Add a new project restriction'), 'ProjectRoleRestrictionController', 'create', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
+                            <?= $this->url->link(t('Add a new project restriction'), 'Project/ProjectRoleRestrictionController', 'create', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
                         </li>
                         <li>
                             <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
@@ -32,11 +32,11 @@
                         </li>
                         <li>
                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
-                            <?= $this->url->link(t('Edit this role'), 'ProjectRoleController', 'edit', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
+                            <?= $this->url->link(t('Edit this role'), 'Project/ProjectRoleController', 'edit', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
                         </li>
                         <li>
                             <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                            <?= $this->url->link(t('Remove this role'), 'ProjectRoleController', 'confirm', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
+                            <?= $this->url->link(t('Remove this role'), 'Project/ProjectRoleController', 'confirm', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
                     </td>
                     <td>
                         <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                        <?= $this->url->link(t('Remove'), 'ProjectRoleRestrictionController', 'confirm', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], false, 'popover') ?>
+                        <?= $this->url->link(t('Remove'), 'Project/ProjectRoleRestrictionController', 'confirm', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], false, 'popover') ?>
                     </td>
                 </tr>
             <?php endforeach ?>

@@ -28,7 +28,11 @@ Jitamin.Dropdown.prototype.listen = function() {
         var submenuWidth = clone.outerWidth();
 
         if (offset.top + submenuHeight - $(window).scrollTop() < $(window).height() || $(window).scrollTop() + offset.top < submenuHeight) {
-            clone.css('top', offset.top + $(this).height());
+            if ($(this).parents('.sidebar').length) {
+                clone.css('top', offset.top - 5);
+            } else {
+                clone.css('top', offset.top + $(this).height());
+            }
         }
         else {
             clone.css('top', offset.top - submenuHeight - 5);
@@ -38,7 +42,11 @@ Jitamin.Dropdown.prototype.listen = function() {
             clone.css('left', offset.left - submenuWidth + $(this).outerWidth());
         }
         else {
-            clone.css('left', offset.left);
+            if ($(this).parents('.sidebar').length) {
+                 clone.css('left', $('.sidebar').width());
+            } else {
+                clone.css('left', offset.left);
+            }
         }
     });
 

@@ -3,19 +3,23 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+return [
+
 // Dashboard routes
-$container['route']->addRoute('dashboard', 'DashboardController', 'index');
-$container['route']->addRoute('dashboard/:user_id', 'DashboardController', 'index');
-$container['route']->addRoute('dashboard/:user_id/projects', 'DashboardController', 'projects');
-$container['route']->addRoute('dashboard/:user_id/tasks', 'DashboardController', 'tasks');
-$container['route']->addRoute('dashboard/:user_id/stars', 'DashboardController', 'stars');
-$container['route']->addRoute('dashboard/:user_id/subtasks', 'DashboardController', 'subtasks');
-$container['route']->addRoute('dashboard/:user_id/calendar', 'DashboardController', 'calendar');
-$container['route']->addRoute('dashboard/:user_id/activities', 'DashboardController', 'activities');
-$container['route']->addRoute('dashboard/:user_id/notifications', 'DashboardController', 'notifications');
+'dashboard'               => 'Dashboard/DashboardController@index',
+'dashboard/projects'      => 'Dashboard/ProjectController@index',
+'dashboard/starred'       => 'Dashboard/ProjectController@starred',
+
+'dashboard/tasks'         => 'Dashboard/DashboardController@tasks',
+'dashboard/subtasks'      => 'Dashboard/DashboardController@subtasks',
+'dashboard/calendar'      => 'Dashboard/DashboardController@calendar',
+'dashboard/activities'    => 'Dashboard/DashboardController@activities',
+'dashboard/notifications' => 'Dashboard/DashboardController@notifications',
+
+];

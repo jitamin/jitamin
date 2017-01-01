@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,6 +19,13 @@ use Jitamin\Api\Authorization\ProjectAuthorization;
  */
 class CategoryProcedure extends BaseProcedure
 {
+    /**
+     * Get a category by the category id.
+     *
+     * @param int $category_id Category id
+     *
+     * @return array
+     */
     public function getCategory($category_id)
     {
         CategoryAuthorization::getInstance($this->container)->check($this->getClassName(), 'getCategory', $category_id);
@@ -26,6 +33,13 @@ class CategoryProcedure extends BaseProcedure
         return $this->categoryModel->getById($category_id);
     }
 
+    /**
+     * Return all categories for a given project.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getAllCategories($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getAllCategories', $project_id);
@@ -33,6 +47,13 @@ class CategoryProcedure extends BaseProcedure
         return $this->categoryModel->getAll($project_id);
     }
 
+    /**
+     * Remove a category.
+     *
+     * @param int $category_id Category id
+     *
+     * @return bool
+     */
     public function removeCategory($category_id)
     {
         CategoryAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeCategory', $category_id);
@@ -40,6 +61,14 @@ class CategoryProcedure extends BaseProcedure
         return $this->categoryModel->remove($category_id);
     }
 
+    /**
+     * Create a category (run inside a transaction).
+     *
+     * @param int    $project_id
+     * @param string $name
+     *
+     * @return bool|int
+     */
     public function createCategory($project_id, $name)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'createCategory', $project_id);
@@ -54,6 +83,14 @@ class CategoryProcedure extends BaseProcedure
         return $valid ? $this->categoryModel->create($values) : false;
     }
 
+    /**
+     * Update a category.
+     *
+     * @param int    $id
+     * @param string $name
+     *
+     * @return bool
+     */
     public function updateCategory($id, $name)
     {
         CategoryAuthorization::getInstance($this->container)->check($this->getClassName(), 'updateCategory', $id);

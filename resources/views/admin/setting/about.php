@@ -61,11 +61,11 @@
                 <strong><?= $this->text->bytes($db_size) ?></strong>
             </li>
             <li>
-                <?= $this->url->link(t('Download the database'), 'SettingController', 'downloadDb', [], true) ?>&nbsp;
+                <?= $this->url->link(t('Download the database'), 'Admin/SettingController', 'downloadDb', [], true) ?>&nbsp;
                 <?= t('(Gzip compressed Sqlite file)') ?>
             </li>
             <li>
-                <?= $this->url->link(t('Optimize the database'), 'SettingController', 'optimizeDb', [], true) ?>&nbsp;
+                <?= $this->url->link(t('Optimize the database'), 'Admin/SettingController', 'optimizeDb', [], true) ?>&nbsp;
                 <?= t('(VACUUM command)') ?>
             </li>
         </ul>

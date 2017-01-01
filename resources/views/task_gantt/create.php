@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= $this->text->e($project['name']) ?> &gt; <?= t('New task') ?></h2>
 </div>
-<form class="popover-form" method="post" action="<?= $this->url->href('TaskGanttController', 'store', ['project_id' => $values['project_id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('Task/TaskGanttController', 'store', ['project_id' => $values['project_id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('project_id', $values) ?>
     <?= $this->form->hidden('column_id', $values) ?>
@@ -41,6 +41,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info" tabindex="15"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'TaskGanttController', 'show', ['project_id' => $values['project_id']], false, 'close-popover') ?>
+        <?= $this->url->link(t('cancel'), 'Task/TaskGanttController', 'show', ['project_id' => $values['project_id']], false, 'close-popover') ?>
     </div>
 </form>

@@ -17,8 +17,9 @@ env:
 before_script:
   - if [[ $TRAVIS_PHP_VERSION != 7.x ]]; then phpenv config-rm xdebug.ini; fi
   - phpenv config-add tests/php.ini
-  - cp config/database{.default,}.php
+  - cp config/config{.default,}.php
   - composer install
+  - php vendor/bin/phpdoccheck --directory=app/
 
 script:
   - phpunit -c tests/units.$DB.xml

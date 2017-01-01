@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -13,6 +13,9 @@ define('ROOT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // App directory
 define('APP_DIR', __DIR__);
+
+// Jitamin folder
+defined('JITAMIN_DIR') or define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // Data directory location
 defined('DATA_DIR') or define('DATA_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'storage');

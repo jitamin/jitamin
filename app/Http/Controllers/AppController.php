@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,7 +29,7 @@ class AppController extends Base
         if ($this->request->isAjax()) {
             $this->response->json(['message' => $message ?: t('Access Forbidden')], 403);
         } else {
-            $this->response->html($this->helper->layout->app('app/forbidden', [
+            $this->response->html($this->helper->layout->app('errors/403', [
                 'title'     => t('Access Forbidden'),
                 'no_layout' => $withoutLayout,
             ]));
@@ -43,7 +43,7 @@ class AppController extends Base
      */
     public function notFound($withoutLayout = false)
     {
-        $this->response->html($this->helper->layout->app('app/notfound', [
+        $this->response->html($this->helper->layout->error('errors/404', [
             'title'     => t('Page not found'),
             'no_layout' => $withoutLayout,
         ]));

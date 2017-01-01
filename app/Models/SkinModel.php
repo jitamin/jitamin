@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -57,5 +57,80 @@ class SkinModel extends Model
         }
 
         return $this->settingModel->get('application_skin', 'default');
+    }
+
+    /**
+     * Get available layouts.
+     *
+     * @param bool $prepend Prepend a default value
+     *
+     * @return array
+     */
+    public function getLayouts($prepend = false)
+    {
+        // Sorted by value
+        $layouts = [
+            'fluid'   => t('Fluid'),
+            'fixed'   => t('Fixed'),
+        ];
+
+        if ($prepend) {
+            return ['' => t('Use system layout')] + $layouts;
+        }
+
+        return $layouts;
+    }
+
+    /**
+     * Get current layout.
+     *
+     * @return string
+     */
+    public function getCurrentLayout()
+    {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['layout'])) {
+            return $this->sessionStorage->user['layout'];
+        }
+
+        return $this->settingModel->get('application_layout', '');
+    }
+
+    /**
+     * Get available dashboards.
+     *
+     * @param bool $prepend Prepend a default value
+     *
+     * @return array
+     */
+    public function getDashboards($prepend = false)
+    {
+        // Sorted by value
+        $dashboards = [
+            'projects'   => t('My projects'),
+            'stars'      => t('My stars'),
+            'calendar'   => t('My calendar'),
+            'activities' => t('My activities'),
+            'tasks'      => t('My tasks'),
+        ];
+
+        if ($prepend) {
+            return ['' => t('Use system dashboard')] + $dashboards;
+        }
+
+        return $dashboards;
+    }
+
+    /**
+     * Get current dashboard.
+     *
+     * @return string
+     */
+    public function getCurrentDashboard()
+    {
+        if ($this->userSession->isLogged() && !empty($this->sessionStorage->user['dashboard'])) {
+            return $this->sessionStorage->user['dashboard'];
+        }
+
+        return $this->settingModel->get('application_dashboard', '');
     }
 }

@@ -3,13 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
+
+use Jitamin\Controller\BaseController;
 
 /**
  * Setting Controller.
@@ -37,6 +39,8 @@ class SettingController extends BaseController
             'latest_version'   => $latest_version,
             'mail_transports'  => $this->emailClient->getAvailableTransports(),
             'skins'            => $this->skinModel->getSkins(),
+            'layouts'          => $this->skinModel->getLayouts(),
+            'dashboards'       => $this->skinModel->getDashboards(),
             'languages'        => $this->languageModel->getLanguages(),
             'timezones'        => $this->timezoneModel->getTimezones(),
             'date_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
@@ -155,7 +159,7 @@ class SettingController extends BaseController
     /**
      * Save settings.
      */
-    public function save()
+    public function store()
     {
         $values = $this->request->getValues();
         $redirect = $this->request->getStringParam('redirect', 'index');
@@ -187,7 +191,7 @@ class SettingController extends BaseController
             $this->flash->failure(t('Unable to save your settings.'));
         }
 
-        $this->response->redirect($this->helper->url->to('SettingController', $redirect));
+        $this->response->redirect($this->helper->url->to('Admin/SettingController', $redirect));
     }
 
     /**
@@ -208,7 +212,7 @@ class SettingController extends BaseController
         $this->checkCSRFParam();
         $this->settingModel->optimizeDatabase();
         $this->flash->success(t('Database optimization done.'));
-        $this->response->redirect($this->helper->url->to('SettingController', 'index'));
+        $this->response->redirect($this->helper->url->to('Admin/SettingController', 'index'));
     }
 
     /**
@@ -222,6 +226,6 @@ class SettingController extends BaseController
         $this->settingModel->regenerateToken($type.'_token');
 
         $this->flash->success(t('Token regenerated.'));
-        $this->response->redirect($this->helper->url->to('SettingController', $type));
+        $this->response->redirect($this->helper->url->to('Admin/SettingController', $type));
     }
 }

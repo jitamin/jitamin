@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -17,19 +17,6 @@ use Jitamin\Core\Http\Router;
 
 class RouterTest extends Base
 {
-    public function testSanitize()
-    {
-        $dispatcher = new Router($this->container);
-
-        $this->assertEquals('PloP', $dispatcher->sanitize('PloP', 'default'));
-        $this->assertEquals('default', $dispatcher->sanitize('', 'default'));
-        $this->assertEquals('default', $dispatcher->sanitize('123-AB', 'default'));
-        $this->assertEquals('default', $dispatcher->sanitize('R&D', 'default'));
-        $this->assertEquals('Test123', $dispatcher->sanitize('Test123', 'default'));
-        $this->assertEquals('Test_123', $dispatcher->sanitize('Test_123', 'default'));
-        $this->assertEquals('userImport', $dispatcher->sanitize('userImport', 'default'));
-    }
-
     public function testGetPathWithFolder()
     {
         $router = new Router($this->container);

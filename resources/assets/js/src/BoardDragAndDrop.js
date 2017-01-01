@@ -69,7 +69,7 @@ Jitamin.BoardDragAndDrop.prototype.save = function(taskId, srcColumnId, dstColum
 
     $.ajax({
         cache: false,
-        url: $("#board").data("save-url"),
+        url: $("#board").data("store-url"),
         contentType: "application/json",
         type: "POST",
         processData: false,

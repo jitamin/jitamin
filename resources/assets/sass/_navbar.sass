@@ -1,11 +1,31 @@
 .navbar
   border: 0px
+  padding-left: $sidebar-width
   li
     a
       line-height: 21px
+
+  .navbar-nav
+    li
+      a
+        color: #18bc9c
+
+  .navbar-header
+    h3
+      color: #18bc9c
+      padding-left: 15px
+      .sidebar-toggle
+        color: #999
+        cursor: pointer
+
   .navbar-brand
+    color: #18bc9c
     img
       display: inline;
       margin: -10px 10px 0 0;
       width: 45px;
       height: 45px;
+
+.navbar-default
+  background-color: #fff
+  border-bottom: solid 1px #eeece8

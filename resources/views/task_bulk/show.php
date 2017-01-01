@@ -2,7 +2,7 @@
     <h2><?= $this->text->e($project['name']) ?> &gt; <?= t('Create tasks in bulk') ?></h2>
 </div>
 
-<form class="popover-form" method="post" action="<?= $this->url->href('TaskBulkController', 'save', ['project_id' => $project['id']]) ?>" autocomplete="off">
+<form class="popover-form" method="post" action="<?= $this->url->href('Task/TaskBulkController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('column_id', $values) ?>
     <?= $this->form->hidden('swimlane_id', $values) ?>
@@ -18,7 +18,7 @@
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
-        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'BoardController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
+        <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/Board/BoardController', 'show', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </form>
 

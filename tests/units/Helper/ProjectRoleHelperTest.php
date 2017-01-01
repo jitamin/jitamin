@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -304,10 +304,10 @@ class ProjectRoleHelperTest extends Base
         $this->assertNotFalse($userModel->create(['username' => 'toto', 'email' => 'toto@here', 'password' => '123456']));
         $this->assertNotFalse($userModel->create(['username' => 'toto2', 'email' => 'toto2@here', 'password' => '123456']));
         $this->assertEquals(1, $projectModel->create(['name' => 'Project #1']));
-        $this->assertEquals(1, $taskModel->create(['title' => 'TaskViewController #1', 'project_id' => 1, 'creator_id' => 1]));
-        $this->assertEquals(2, $taskModel->create(['title' => 'TaskViewController #2', 'project_id' => 1, 'creator_id' => 2]));
-        $this->assertEquals(3, $taskModel->create(['title' => 'TaskViewController #3', 'project_id' => 1, 'creator_id' => 3]));
-        $this->assertEquals(4, $taskModel->create(['title' => 'TaskViewController #4', 'project_id' => 1]));
+        $this->assertEquals(1, $taskModel->create(['title' => 'TaskController #1', 'project_id' => 1, 'creator_id' => 1]));
+        $this->assertEquals(2, $taskModel->create(['title' => 'TaskController #2', 'project_id' => 1, 'creator_id' => 2]));
+        $this->assertEquals(3, $taskModel->create(['title' => 'TaskController #3', 'project_id' => 1, 'creator_id' => 3]));
+        $this->assertEquals(4, $taskModel->create(['title' => 'TaskController #4', 'project_id' => 1]));
 
         // User #1 can remove everything
         $user = $userModel->getById(1);
@@ -318,7 +318,7 @@ class ProjectRoleHelperTest extends Base
         $this->assertNotEmpty($task);
         $this->assertTrue($projectRoleHelper->canRemoveTask($task));
 
-        // User #2 can't remove the TaskViewController #1
+        // User #2 can't remove the TaskController #1
         $user = $userModel->getById(2);
         $this->assertNotEmpty($user);
         $userSessionModel->initialize($user);
@@ -336,7 +336,7 @@ class ProjectRoleHelperTest extends Base
         $this->assertNotEmpty($task);
         $this->assertTrue($projectRoleHelper->canRemoveTask($task));
 
-        // User #2 can remove his own TaskViewController
+        // User #2 can remove his own TaskController
         $user = $userModel->getById(2);
         $this->assertNotEmpty($user);
         $userSessionModel->initialize($user);
@@ -354,7 +354,7 @@ class ProjectRoleHelperTest extends Base
         $this->assertNotEmpty($task);
         $this->assertTrue($projectRoleHelper->canRemoveTask($task));
 
-        // User #2 can't remove the TaskViewController #3
+        // User #2 can't remove the TaskController #3
         $user = $userModel->getById(2);
         $this->assertNotEmpty($user);
         $userSessionModel->initialize($user);
@@ -372,7 +372,7 @@ class ProjectRoleHelperTest extends Base
         $this->assertNotEmpty($task);
         $this->assertTrue($projectRoleHelper->canRemoveTask($task));
 
-        // User #2 can't remove the TaskViewController #4
+        // User #2 can't remove the TaskController #4
         $user = $userModel->getById(2);
         $this->assertNotEmpty($user);
         $userSessionModel->initialize($user);

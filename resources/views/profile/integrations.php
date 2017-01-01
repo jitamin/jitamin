@@ -2,7 +2,7 @@
     <h2><?= t('Integrations') ?></h2>
 </div>
 
-<form method="post" action="<?= $this->url->href('ProfileController', 'integrations', ['user_id' => $user['id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Profile/ProfileController', 'integrations', ['user_id' => $user['id']]) ?>" autocomplete="off">
     <?= $this->form->csrf() ?>
     <?php $hooks = $this->hook->render('template:user:integrations', ['values' => $values]) ?>
     <?php if (!empty($hooks)): ?>
