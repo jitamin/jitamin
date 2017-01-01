@@ -27,7 +27,7 @@ class UserImportController extends BaseController
      */
     public function show(array $values = [], array $errors = [])
     {
-        $this->response->html($this->template->render('user/import', [
+        $this->response->html($this->template->render('admin/user/import', [
             'values'     => $values,
             'errors'     => $errors,
             'max_size'   => get_upload_max_size(),

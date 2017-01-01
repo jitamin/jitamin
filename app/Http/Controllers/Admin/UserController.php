@@ -27,10 +27,10 @@ class UserController extends BaseController
     {
         $paginator = $this->userPagination->getListingPaginator();
 
-        $this->response->html($this->helper->layout->app('user/index', [
+        $this->response->html($this->helper->layout->admin('admin/user/index', [
             'title'     => t('Users').' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
-        ]));
+        ], 'admin/user/subside'));
     }
 
     /**
@@ -42,7 +42,7 @@ class UserController extends BaseController
     public function create(array $values = [], array $errors = [])
     {
         $isRemote = $this->request->getIntegerParam('remote') == 1 || (isset($values['is_ldap_user']) && $values['is_ldap_user'] == 1);
-        $template = $isRemote ? 'user/create_remote' : 'user/create_local';
+        $template = $isRemote ? 'admin/user/create_remote' : 'admin/user/create_local';
 
         $this->response->html($this->template->render($template, [
             'timezones' => $this->timezoneModel->getTimezones(true),
@@ -116,7 +116,7 @@ class UserController extends BaseController
             unset($values['password']);
         }
 
-        return $this->response->html($this->helper->layout->profile('user/authentication', [
+        return $this->response->html($this->helper->layout->profile('admin/user/authentication', [
             'values' => $values,
             'errors' => $errors,
             'user'   => $user,

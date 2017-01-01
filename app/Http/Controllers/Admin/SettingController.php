@@ -33,7 +33,7 @@ class SettingController extends BaseController
             $latest_version = $latest_tag;
         }
 
-        $this->response->html($this->helper->layout->setting('admin/setting/application', [
+        $this->response->html($this->helper->layout->admin('admin/setting/application', [
             'is_outdated'      => $is_outdated,
             'current_version'  => $current_version,
             'latest_version'   => $latest_version,
@@ -61,7 +61,7 @@ class SettingController extends BaseController
             $values['mail_transport'] = MAIL_TRANSPORT;
         }
 
-        $this->response->html($this->helper->layout->setting('admin/setting/email', [
+        $this->response->html($this->helper->layout->admin('admin/setting/email', [
             'values'          => $values,
             'mail_transports' => $this->emailClient->getAvailableTransports(),
             'title'           => t('Settings').' &raquo; '.t('Email settings'),
@@ -73,7 +73,7 @@ class SettingController extends BaseController
      */
     public function project()
     {
-        $this->response->html($this->helper->layout->setting('admin/setting/project', [
+        $this->response->html($this->helper->layout->admin('admin/setting/project', [
             'colors'          => $this->colorModel->getList(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
             'title'           => t('Settings').' &raquo; '.t('Project settings'),
@@ -85,7 +85,7 @@ class SettingController extends BaseController
      */
     public function board()
     {
-        $this->response->html($this->helper->layout->setting('admin/setting/board', [
+        $this->response->html($this->helper->layout->admin('admin/setting/board', [
             'title' => t('Settings').' &raquo; '.t('Board settings'),
         ]));
     }
@@ -95,7 +95,7 @@ class SettingController extends BaseController
      */
     public function calendar()
     {
-        $this->response->html($this->helper->layout->setting('admin/setting/calendar', [
+        $this->response->html($this->helper->layout->admin('admin/setting/calendar', [
             'title' => t('Settings').' &raquo; '.t('Calendar settings'),
         ]));
     }
@@ -105,7 +105,7 @@ class SettingController extends BaseController
      */
     public function integrations()
     {
-        $this->response->html($this->helper->layout->setting('admin/setting/integrations', [
+        $this->response->html($this->helper->layout->admin('admin/setting/integrations', [
             'title' => t('Settings').' &raquo; '.t('Integrations'),
         ]));
     }
@@ -115,7 +115,7 @@ class SettingController extends BaseController
      */
     public function webhook()
     {
-        $this->response->html($this->helper->layout->setting('admin/setting/webhook', [
+        $this->response->html($this->helper->layout->admin('admin/setting/webhook', [
             'title' => t('Settings').' &raquo; '.t('Webhook settings'),
         ]));
     }
@@ -125,34 +125,8 @@ class SettingController extends BaseController
      */
     public function api()
     {
-        $this->response->html($this->helper->layout->setting('admin/setting/api', [
+        $this->response->html($this->helper->layout->admin('admin/setting/api', [
             'title' => t('Settings').' &raquo; '.t('API'),
-        ]));
-    }
-
-    /**
-     * Display the help page.
-     */
-    public function help()
-    {
-        $this->response->html($this->helper->layout->setting('admin/setting/help', [
-            'db_size'    => $this->settingModel->getDatabaseSize(),
-            'db_version' => $this->db->getDriver()->getDatabaseVersion(),
-            'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'      => t('Settings').' &raquo; '.t('About'),
-        ]));
-    }
-
-    /**
-     * Display the about page.
-     */
-    public function about()
-    {
-        $this->response->html($this->helper->layout->setting('admin/setting/about', [
-            'db_size'    => $this->settingModel->getDatabaseSize(),
-            'db_version' => $this->db->getDriver()->getDatabaseVersion(),
-            'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'      => t('Settings').' &raquo; '.t('About'),
         ]));
     }
 

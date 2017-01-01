@@ -10,7 +10,6 @@
  */
 
 return [
-
 // Users admin
 'admin/users'                         => 'Admin/UserController@index',
 'admin/users/create'                  => 'Admin/UserController@create',
@@ -37,13 +36,16 @@ return [
 'admin/settings/integrations' => 'Admin/SettingController@integrations',
 'admin/settings/webhook'      => 'Admin/SettingController@webhook',
 'admin/settings/api'          => 'Admin/SettingController@api',
-'admin/settings/help'         => 'Admin/SettingController@help',
-'admin/settings/about'        => 'Admin/SettingController@about',
 'admin/settings/links'        => 'Admin/LinkController@index',
 'admin/settings/tags'         => 'Admin/TagController@index',
 
 // Plugins admin
 'admin/plugins'        => 'Admin/PluginController@show',
 'admin/plugins/market' => 'Admin/PluginController@directory',
+
+// Admin routes
+'admin'       => 'Admin/SettingController@index',
+'admin/help'  => 'Admin/AdminController@help',
+'admin/about' => 'Admin/AdminController@about',
 
 ];

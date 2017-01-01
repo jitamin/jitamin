@@ -45,7 +45,7 @@ class LinkController extends BaseController
      */
     public function index(array $values = [], array $errors = [])
     {
-        $this->response->html($this->helper->layout->setting('admin/link/index', [
+        $this->response->html($this->helper->layout->admin('admin/link/index', [
             'links'  => $this->linkModel->getMergedList(),
             'values' => $values,
             'errors' => $errors,
@@ -87,7 +87,7 @@ class LinkController extends BaseController
         $link = $this->getLink();
         $link['label'] = t($link['label']);
 
-        $this->response->html($this->helper->layout->setting('admin/link/edit', [
+        $this->response->html($this->helper->layout->admin('admin/link/edit', [
             'values' => $values ?: $link,
             'errors' => $errors,
             'labels' => $this->linkModel->getList($link['id']),
@@ -124,7 +124,7 @@ class LinkController extends BaseController
     {
         $link = $this->getLink();
 
-        $this->response->html($this->helper->layout->setting('admin/link/remove', [
+        $this->response->html($this->helper->layout->admin('admin/link/remove', [
             'link'  => $link,
             'title' => t('Remove a link'),
         ]));
