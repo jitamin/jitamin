@@ -8,4 +8,6 @@ return [
     'Manage projects' => '项目管理',
     'Settings' => '设置',
     'Application settings' => '系统设置',
+    'Theme settings' => '主题设置',
+    'Localization settings' => '国际化设置',
 ];

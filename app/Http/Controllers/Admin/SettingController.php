@@ -38,15 +38,33 @@ class SettingController extends BaseController
             'current_version'  => $current_version,
             'latest_version'   => $latest_version,
             'mail_transports'  => $this->emailClient->getAvailableTransports(),
+            'title'            => t('Settings').' &raquo; '.t('Application settings'),
+        ]));
+    }
+
+    /**
+     * Display the theme settings page.
+     */
+    public function theme()
+    {
+        $this->response->html($this->helper->layout->admin('admin/setting/theme', [
             'skins'            => $this->skinModel->getSkins(),
             'layouts'          => $this->skinModel->getLayouts(),
             'dashboards'       => $this->skinModel->getDashboards(),
+        ]));
+    }
+
+    /**
+     * Display the localization settings page.
+     */
+    public function localization()
+    {
+        $this->response->html($this->helper->layout->admin('admin/setting/localization', [
             'languages'        => $this->languageModel->getLanguages(),
             'timezones'        => $this->timezoneModel->getTimezones(),
             'date_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
             'datetime_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateTimeFormats()),
             'time_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
-            'title'            => t('Settings').' &raquo; '.t('Application settings'),
         ]));
     }
 

@@ -3,6 +3,11 @@
         <li <?= $this->app->setActive('Admin/SettingController', 'index') ?>>
             <i class="fa fa-cog"></i><?= $this->url->link(t('Application settings'), 'Admin/SettingController', 'index') ?>
         </li>
+        <li <?= $this->app->setActive('Admin/SettingController', 'theme') ?>>
+            <i class="fa fa-adjust"></i><?= $this->url->link(t('Theme settings'), 'Admin/SettingController', 'theme') ?>
+        <li <?= $this->app->setActive('Admin/SettingController', 'localization') ?>>
+            <i class="fa fa-language"></i><?= $this->url->link(t('Localization settings'), 'Admin/SettingController', 'localization') ?>
+        </li>
         <li <?= $this->app->setActive('Admin/SettingController', 'email') ?>>
             <i class="fa fa-envelope-o"></i><?= $this->url->link(t('Email settings'), 'Admin/SettingController', 'email') ?>
         </li>
