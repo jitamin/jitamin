@@ -9,8 +9,8 @@
                 <li <?= $this->app->setActive('Profile/ProfileController', 'edit') ?>>
                     <i class="fa fa-edit"></i><?= $this->url->link(t('Edit profile'), 'Profile/ProfileController', 'edit', ['user_id' => $user['id']]) ?>
                 </li>
-                <li <?= $this->app->setActive('AvatarFile') ?>>
-                    <i class="fa fa-user-circle-o"></i><?= $this->url->link(t('Avatar'), 'AvatarFileController', 'show', ['user_id' => $user['id']]) ?>
+                <li <?= $this->app->setActive('Profile/AvatarController') ?>>
+                    <i class="fa fa-user-circle-o"></i><?= $this->url->link(t('Avatar'), 'Profile/AvatarController', 'show', ['user_id' => $user['id']]) ?>
                 </li>
             <?php endif ?>
 

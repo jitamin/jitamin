@@ -314,7 +314,7 @@ class UserModel extends Model
      */
     public function remove($user_id)
     {
-        $this->avatarFileModel->remove($user_id);
+        $this->avatarModel->remove($user_id);
 
         return $this->db->transaction(function (Database $db) use ($user_id) {
 

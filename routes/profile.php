@@ -27,8 +27,8 @@ return [
 'user/:user_id/api'                  => 'Profile/ProfileController@api',
 
 'user/:user_id/2fa'                => 'Profile/TwoFactorController@index',
-'user/:user_id/avatar'             => 'AvatarFileController@show',
-'user/:user_id/avatar/:size/image' => 'AvatarFileController@image',
+'user/:user_id/avatar'             => 'Profile/AvatarController@show',
+'user/:user_id/avatar/:size/image' => 'Profile/AvatarController@image',
 
 'user/ajax/status' => 'Profile/UserAjaxController@status',
 

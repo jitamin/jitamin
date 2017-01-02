@@ -35,7 +35,7 @@ class ClassProvider implements ServiceProviderInterface
         'Model' => [
             'ActionModel',
             'ActionParameterModel',
-            'AvatarFileModel',
+            'AvatarModel',
             'BoardModel',
             'CategoryModel',
             'ColorModel',
