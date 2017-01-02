@@ -9,6 +9,9 @@
                 <li <?= $this->app->setActive('Profile/ProfileController', 'edit') ?>>
                     <i class="fa fa-edit"></i><?= $this->url->link(t('Edit profile'), 'Profile/ProfileController', 'edit', ['user_id' => $user['id']]) ?>
                 </li>
+                 <li <?= $this->app->setActive('Profile/ProfileController', 'preferences') ?>>
+                    <i class="fa fa-globe"></i><?= $this->url->link(t('Preferences'), 'Profile/ProfileController', 'preferences', ['user_id' => $user['id']]) ?>
+                </li>
                 <li <?= $this->app->setActive('Profile/AvatarController') ?>>
                     <i class="fa fa-user-circle-o"></i><?= $this->url->link(t('Avatar'), 'Profile/AvatarController', 'show', ['user_id' => $user['id']]) ?>
                 </li>

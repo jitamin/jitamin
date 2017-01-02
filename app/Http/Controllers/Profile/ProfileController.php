@@ -270,12 +270,37 @@ class ProfileController extends BaseController
             'values'     => $values,
             'errors'     => $errors,
             'user'       => $user,
+            'roles'      => $this->role->getApplicationRoles(),
+        ]));
+    }
+
+    /**
+     * Display a form to edit user preferences.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     */
+    public function preferences(array $values = [], array $errors = [])
+    {
+        $user = $this->getUser();
+
+        if (empty($values)) {
+            $values = $user;
+            unset($values['password']);
+        }
+
+        return $this->response->html($this->helper->layout->profile('profile/preferences', [
+            'values'     => $values,
+            'errors'     => $errors,
+            'user'       => $user,
             'skins'      => $this->skinModel->getSkins(true),
             'layouts'    => $this->skinModel->getLayouts(true),
             'dashboards' => $this->skinModel->getDashboards(true),
             'timezones'  => $this->timezoneModel->getTimezones(true),
             'languages'  => $this->languageModel->getLanguages(true),
-            'roles'      => $this->role->getApplicationRoles(),
         ]));
     }
 
@@ -286,6 +311,7 @@ class ProfileController extends BaseController
     {
         $user = $this->getUser();
         $values = $this->request->getValues();
+        $redirect = $this->request->getStringParam('redirect', 'edit');
 
         if (!$this->userSession->isAdmin()) {
             if (isset($values['role'])) {
@@ -302,7 +328,7 @@ class ProfileController extends BaseController
                 $this->flash->failure(t('Unable to update your user.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Profile/ProfileController', $redirect, ['user_id' => $user['id']]));
         }
 
         return $this->show($values, $errors);
