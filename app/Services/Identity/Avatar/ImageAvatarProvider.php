@@ -17,7 +17,7 @@ use Jitamin\Core\Identity\Avatar\AvatarProviderInterface;
 /**
  * Avatar Local Image File Provider.
  */
-class AvatarFileProvider extends Base implements AvatarProviderInterface
+class ImageAvatarProvider extends Base implements AvatarProviderInterface
 {
     /**
      * Render avatar html.
@@ -29,7 +29,7 @@ class AvatarFileProvider extends Base implements AvatarProviderInterface
      */
     public function render(array $user, $size)
     {
-        $url = $this->helper->url->href('AvatarFileController', 'image', ['user_id' => $user['id'], 'size' => $size]);
+        $url = $this->helper->url->href('Profile/AvatarController', 'image', ['user_id' => $user['id'], 'size' => $size]);
         $title = $this->helper->text->e($user['name'] ?: $user['username']);
 
         return '<img src="'.$url.'" alt="'.$title.'" title="'.$title.'">';

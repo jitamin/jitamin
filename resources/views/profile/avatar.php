@@ -6,14 +6,14 @@
 
 <div class="form-actions">
 <?php if (!empty($user['avatar_path'])): ?>
-    <?= $this->url->link(t('Remove my image'), 'AvatarFileController', 'remove', ['user_id' => $user['id']], true, 'btn btn-danger') ?>
+    <?= $this->url->link(t('Remove my image'), 'Profile/AvatarController', 'remove', ['user_id' => $user['id']], true, 'btn btn-danger') ?>
 <?php endif ?>
 </div>
 
 <hr>
 
 <h3><?= t('Upload my avatar image') ?></h3>
-<form method="post" enctype="multipart/form-data" action="<?= $this->url->href('AvatarFileController', 'upload', ['user_id' => $user['id']]) ?>">
+<form method="post" enctype="multipart/form-data" action="<?= $this->url->href('Profile/AvatarController', 'upload', ['user_id' => $user['id']]) ?>">
     <?= $this->form->csrf() ?>
     <?= $this->form->file('avatar') ?>
 

@@ -9,15 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Profile;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\ObjectStorage\ObjectStorageException;
 use Jitamin\Core\Thumbnail;
 
 /**
- * Avatar File Controller.
+ * Avatar Controller.
  */
-class AvatarFileController extends BaseController
+class AvatarController extends BaseController
 {
     /**
      * Display avatar page.
@@ -26,7 +27,7 @@ class AvatarFileController extends BaseController
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->profile('avatar_file/show', [
+        $this->response->html($this->helper->layout->profile('profile/avatar', [
             'user' => $user,
         ]));
     }
@@ -38,11 +39,11 @@ class AvatarFileController extends BaseController
     {
         $user = $this->getUser();
 
-        if (!$this->avatarFileModel->uploadImageFile($user['id'], $this->request->getFileInfo('avatar'))) {
+        if (!$this->avatarModel->uploadImageFile($user['id'], $this->request->getFileInfo('avatar'))) {
             $this->flash->failure(t('Unable to upload the file.'));
         }
 
-        $this->response->redirect($this->helper->url->to('AvatarFileController', 'show', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/AvatarController', 'show', ['user_id' => $user['id']]));
     }
 
     /**
@@ -52,9 +53,9 @@ class AvatarFileController extends BaseController
     {
         $this->checkCSRFParam();
         $user = $this->getUser();
-        $this->avatarFileModel->remove($user['id']);
+        $this->avatarModel->remove($user['id']);
         $this->userSession->refresh($user['id']);
-        $this->response->redirect($this->helper->url->to('AvatarFileController', 'show', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/AvatarController', 'show', ['user_id' => $user['id']]));
     }
 
     /**
@@ -64,7 +65,7 @@ class AvatarFileController extends BaseController
     {
         $user_id = $this->request->getIntegerParam('user_id');
         $size = $this->request->getStringParam('size', 48);
-        $filename = $this->avatarFileModel->getFilename($user_id);
+        $filename = $this->avatarModel->getFilename($user_id);
         $etag = md5($filename.$size);
 
         $this->response->withCache(365 * 86400, $etag);
