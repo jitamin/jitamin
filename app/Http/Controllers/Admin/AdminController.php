@@ -37,10 +37,10 @@ class AdminController extends BaseController
             'is_outdated'      => $is_outdated,
             'current_version'  => $current_version,
             'latest_version'   => $latest_version,
-            'db_size'    => $this->settingModel->getDatabaseSize(),
-            'db_version' => $this->db->getDriver()->getDatabaseVersion(),
-            'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'      => t('Settings').' &raquo; '.t('About'),
+            'db_size'          => $this->settingModel->getDatabaseSize(),
+            'db_version'       => $this->db->getDriver()->getDatabaseVersion(),
+            'user_agent'       => $this->request->getServerVariable('HTTP_USER_AGENT'),
+            'title'            => t('Settings').' &raquo; '.t('About'),
         ], ''));
     }
 }
