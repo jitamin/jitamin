@@ -18,21 +18,6 @@ return [
 'search'          => 'SearchController@index',
 'search/activity' => 'SearchController@activity',
 
-// Exports
-'export/tasks/:project_id'       => 'ExportController@tasks',
-'export/subtasks/:project_id'    => 'ExportController@subtasks',
-'export/transitions/:project_id' => 'ExportController@transitions',
-'export/summary/:project_id'     => 'ExportController@summary',
-
-// Analytics routes
-'analytics/tasks/:project_id'                => 'AnalyticController@taskDistribution',
-'analytics/users/:project_id'                => 'AnalyticController@userDistribution',
-'analytics/cfd/:project_id'                  => 'AnalyticController@cfd',
-'analytics/burndown/:project_id'             => 'AnalyticController@burndown',
-'analytics/average-time-column/:project_id'  => 'AnalyticController@averageTimeByColumn',
-'analytics/lead-cycle-time/:project_id'      => 'AnalyticController@leadAndCycleTime',
-'analytics/estimated-spent-time/:project_id' => 'AnalyticController@compareHours',
-
 // Calendar routes
 'calendar/:project_id' => 'CalendarController@show',
 'c/:project_id'        => 'CalendarController@show',

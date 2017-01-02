@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Task;
+namespace Jitamin\Controller\Project;
 
 use Jitamin\Controller\BaseController;
 use Jitamin\Core\Csv;
 
 /**
- * Task Import controller.
+ * Import controller.
  */
-class TaskImportController extends BaseController
+class ImportController extends BaseController
 {
     /**
      * Upload the file and ask settings.
@@ -66,7 +66,7 @@ class TaskImportController extends BaseController
                 $this->flash->failure(t('Nothing have been imported!'));
             }
 
-            $this->response->redirect($this->helper->url->to('Task/TaskImportController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Project/ImportController', 'show', ['project_id' => $project['id']]));
         }
     }
 

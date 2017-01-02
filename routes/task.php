@@ -11,9 +11,6 @@
 
 return [
 
-// Import routes
-'project/:project_id/import' => 'Task/TaskImportController@show',
-
 // Task routes
 'project/:project_id/task/:task_id' => 'Task/TaskController@show',
 't/:task_id'                        => 'Task/TaskController@show',
