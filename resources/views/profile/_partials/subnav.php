@@ -27,6 +27,11 @@
                 </li>
             <?php endif ?>
         <?php endif ?>
+        <?php if ($this->user->hasAccess('Profile/ProfileController', 'edit')): ?>
+            <li <?= $this->app->setActive('Profile/ProfileController', 'edit') ?>>
+                <?= $this->url->link(t('Edit profile'), 'Profile/ProfileController', 'edit', ['user_id' => $user['id']]) ?>
+            </li>
+        <?php endif ?>
 
         <?= $this->hook->render('template:user:subside:information', ['user' => $user]) ?>
     </ul>
