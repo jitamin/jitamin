@@ -12,7 +12,7 @@
 namespace Jitamin\Providers;
 
 use Jitamin\Core\Identity\Avatar\AvatarManager;
-use Jitamin\Services\Identity\Avatar\AvatarProvider;
+use Jitamin\Services\Identity\Avatar\ImageAvatarProvider;
 use Jitamin\Services\Identity\Avatar\GravatarProvider;
 use Jitamin\Services\Identity\Avatar\LetterAvatarProvider;
 use Pimple\Container;
@@ -35,7 +35,7 @@ class AvatarProvider implements ServiceProviderInterface
         $container['avatarManager'] = new AvatarManager();
         $container['avatarManager']->register(new LetterAvatarProvider($container));
         $container['avatarManager']->register(new GravatarProvider($container));
-        $container['avatarManager']->register(new AvatarProvider($container));
+        $container['avatarManager']->register(new ImageAvatarProvider($container));
 
         return $container;
     }
