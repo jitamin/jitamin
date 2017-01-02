@@ -3,5 +3,7 @@
          <?= $this->render('profile/_partials/subnav', ['user' => $user]) ?>
         <?= $content_for_sublayout ?>
     </div>
-    <?= $this->render('profile/subside', ['user' => $user]) ?>
+    <?php if ($subside_template): ?>
+        <?= $this->render($subside_template, ['user' => $user]) ?>
+    <?php endif ?>
 </section>

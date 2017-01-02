@@ -41,7 +41,7 @@ class ProfileController extends BaseController
             'title'  => $user['name'] ?: $user['username'],
             'events' => $this->helper->projectActivity->searchEvents('creator:'.$user['username'], 20),
             'user'   => $user,
-        ]));
+        ], ''));
     }
 
     /**
@@ -54,7 +54,7 @@ class ProfileController extends BaseController
             'user'      => $user,
             'timezones' => $this->timezoneModel->getTimezones(true),
             'languages' => $this->languageModel->getLanguages(true),
-        ]));
+        ], ''));
     }
 
     /**
@@ -75,7 +75,7 @@ class ProfileController extends BaseController
         $this->response->html($this->helper->layout->profile('profile/timesheet', [
             'subtask_paginator' => $subtask_paginator,
             'user'              => $user,
-        ]));
+        ], ''));
     }
 
     /**
@@ -87,7 +87,7 @@ class ProfileController extends BaseController
         $this->response->html($this->helper->layout->profile('profile/password_reset', [
             'tokens' => $this->passwordResetModel->getAll($user['id']),
             'user'   => $user,
-        ]));
+        ], ''));
     }
 
     /**
@@ -99,7 +99,7 @@ class ProfileController extends BaseController
         $this->response->html($this->helper->layout->profile('profile/last', [
             'last_logins' => $this->lastLoginModel->getAll($user['id']),
             'user'        => $user,
-        ]));
+        ], ''));
     }
 
     /**
@@ -111,7 +111,7 @@ class ProfileController extends BaseController
         $this->response->html($this->helper->layout->profile('profile/sessions', [
             'sessions' => $this->rememberMeSessionModel->getAll($user['id']),
             'user'     => $user,
-        ]));
+        ], ''));
     }
 
     /**

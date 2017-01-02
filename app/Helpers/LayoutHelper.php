@@ -57,16 +57,17 @@ class LayoutHelper extends Base
      *
      * @param string $template Template name
      * @param array  $params   Template parameters
+     * @param string $subside
      *
      * @return string
      */
-    public function profile($template, array $params)
+    public function profile($template, array $params, $subside = 'profile/subside')
     {
         if (isset($params['user'])) {
             $params['title'] = '#'.$params['user']['id'].' '.($params['user']['name'] ?: $params['user']['username']);
         }
 
-        return $this->subLayout('profile/layout', 'profile/subside', $template, $params);
+        return $this->subLayout('profile/layout', $subside, $template, $params);
     }
 
     /**
