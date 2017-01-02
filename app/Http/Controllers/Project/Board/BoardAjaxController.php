@@ -116,7 +116,7 @@ class BoardAjaxController extends BaseController
         if ($this->request->isAjax()) {
             $this->response->html($this->renderBoard($project_id));
         } else {
-            $this->response->redirect($this->helper->url->to('BoardController', 'show', ['project_id' => $project_id]));
+            $this->response->redirect($this->helper->url->to('Project/Board/BoardController', 'show', ['project_id' => $project_id]));
         }
     }
 
