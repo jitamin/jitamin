@@ -17,7 +17,7 @@
                 <i class="fa fa-columns"></i> <a href="#" class="filter-toggle-scrolling" title="<?= t('Keyboard shortcut: "%s"', 'c') ?>"><?= t('Compact view') ?></a>
             </span>
             <span class="filter-wide" style="display: none">
-                <i class="fa fa-arrows-h"></i> <a href="#" class="filter-toggle-scrolling" title="<?= t('Keyboard shortcut: "%s"', 'c') ?>"><?= t('Horizontal scrolling') ?></a>
+                <i class="fa fa-arrows-h"></i> <a href="#" class="filter-toggle-scrolling" title="<?= t('Keyboard shortcut: "%s"', 'c') ?>"><?= t('Wide view') ?></a>
             </span>
         </li>
         <?php endif ?>
