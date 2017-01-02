@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Edit user') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('Profile/ProfileController', 'store', ['user_id' => $user['id']]) ?>" autocomplete="off">
+<form method="post" action="<?= $this->url->href('Profile/ProfileController', 'update', ['user_id' => $user['id']]) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 

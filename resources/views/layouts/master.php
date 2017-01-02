@@ -45,7 +45,7 @@
     <body class="skin-<?= $this->app->getSkin() ?> <?= $this->app->getLayout() ?>"
           data-status-url="<?= $this->url->href('Profile/UserAjaxController', 'status') ?>"
           data-login-url="<?= $this->url->href('Auth/AuthController', 'login') ?>"
-          data-keyboard-shortcut-url="<?= $this->url->href('DocumentationController', 'shortcuts') ?>"
+          data-keyboard-shortcut-url="<?= $this->url->href('DocumentationController', 'show', ['file' => 'shortcuts']) ?>"
           data-timezone="<?= $this->app->getTimezone() ?>"
           data-js-lang="<?= $this->app->jsLang() ?>"
           data-js-date-format="<?= $this->app->getJsDateFormat() ?>"

@@ -34,15 +34,6 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Display keyboard shortcut.
-     */
-    public function shortcuts()
-    {
-        $filename = $this->getPageFilename('shortcuts');
-        $this->response->html($this->helper->layout->app('doc/show', $this->render($filename)));
-    }
-
-    /**
      * Prepare Markdown file.
      *
      * @param string $filename

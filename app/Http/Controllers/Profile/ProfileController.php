@@ -280,9 +280,9 @@ class ProfileController extends BaseController
     }
 
     /**
-     * Save user information.
+     * Update user information.
      */
-    public function store()
+    public function update()
     {
         $user = $this->getUser();
         $values = $this->request->getValues();
