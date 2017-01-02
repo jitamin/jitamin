@@ -36,7 +36,7 @@ class OAuthController extends BaseController
         $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'external', ['user_id' => $this->userSession->getId()]));
     }
 
-        /**
+    /**
      * Redirect to the provider if no code received.
      *
      * @param string $provider
