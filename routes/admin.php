@@ -16,6 +16,8 @@ return [
 'admin/users/create/:remote'          => 'Admin/UserController@create',
 'admin/users/import'                  => 'Admin/UserImportController@show',
 'admin/users/:user_id/authentication' => 'Admin/UserController@changeAuthentication',
+'admin/users/:user_id/disable'        => 'Admin/UserStatusController@confirmDisable',
+'admin/users/:user_id/remove'         => 'Admin/UserStatusController@confirmRemove',
 
 // Groups admin
 'admin/groups'                    => 'Admin/GroupController@index',
@@ -46,8 +48,6 @@ return [
 'admin/plugins/market' => 'Admin/PluginController@directory',
 
 // Admin routes
-'admin'       => 'Admin/SettingController@index',
-'admin/help'  => 'Admin/AdminController@help',
-'admin/about' => 'Admin/AdminController@about',
+'admin'       => 'Admin/AdminController@index',
 
 ];

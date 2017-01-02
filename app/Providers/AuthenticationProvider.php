@@ -138,7 +138,11 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('Project/Board/BoardController', 'readonly', Role::APP_PUBLIC);
         $acl->add('ICalendarController', '*', Role::APP_PUBLIC);
         $acl->add('FeedController', '*', Role::APP_PUBLIC);
+
         $acl->add('Profile/AvatarController', ['show', 'image'], Role::APP_PUBLIC);
+        $acl->add('Project/ProjectController', ['create', 'gantt', 'updateDate'], Role::APP_MANAGER);
+        $acl->add('Project/ProjectUserOverviewController', '*', Role::APP_MANAGER);
+        $acl->add('Profile/TwoFactorController', 'disable', Role::APP_ADMIN);
 
         $acl->add('Admin/AdminController', '*', Role::APP_ADMIN);
         $acl->add('Admin/SettingController', '*', Role::APP_ADMIN);
@@ -146,12 +150,9 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('Admin/PluginController', '*', Role::APP_ADMIN);
         $acl->add('Admin/GroupController', '*', Role::APP_ADMIN);
         $acl->add('Admin/LinkController', '*', Role::APP_ADMIN);
-        $acl->add('Project/ProjectController', ['create', 'gantt', 'updateDate'], Role::APP_MANAGER);
-        $acl->add('Project/ProjectUserOverviewController', '*', Role::APP_MANAGER);
-        $acl->add('Profile/TwoFactorController', 'disable', Role::APP_ADMIN);
         $acl->add('Admin/UserImportController', '*', Role::APP_ADMIN);
         $acl->add('Admin/UserController', '*', Role::APP_ADMIN);
-        $acl->add('Profile/UserStatusController', '*', Role::APP_ADMIN);
+        $acl->add('Admin/UserStatusController', '*', Role::APP_ADMIN);
 
         return $acl;
     }

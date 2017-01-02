@@ -23,20 +23,7 @@ class SettingController extends BaseController
      */
     public function index()
     {
-        $is_outdated = false;
-        $current_version = APP_VERSION;
-        $latest_version = APP_VERSION;
-        if ($this->userSession->isAdmin()) {
-            $latest_tag = str_replace(['V', 'v'], '', $this->updateManager->latest());
-            $is_outdated = version_compare($latest_tag, APP_VERSION, '>');
-            $current_version = APP_VERSION;
-            $latest_version = $latest_tag;
-        }
-
         $this->response->html($this->helper->layout->admin('admin/setting/application', [
-            'is_outdated'      => $is_outdated,
-            'current_version'  => $current_version,
-            'latest_version'   => $latest_version,
             'mail_transports'  => $this->emailClient->getAvailableTransports(),
             'title'            => t('Settings').' &raquo; '.t('Application settings'),
         ]));

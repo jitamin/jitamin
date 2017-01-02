@@ -19,15 +19,28 @@ use Jitamin\Controller\BaseController;
 class AdminController extends BaseController
 {
     /**
-     * Display the about page.
+     * Display the default page.
      */
-    public function about()
+    public function index()
     {
-        $this->response->html($this->helper->layout->admin('admin/about', [
-            'db_size'    => $this->settingModel->getDatabaseSize(),
-            'db_version' => $this->db->getDriver()->getDatabaseVersion(),
-            'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'      => t('Settings').' &raquo; '.t('About'),
+        $is_outdated = false;
+        $current_version = APP_VERSION;
+        $latest_version = APP_VERSION;
+        if ($this->userSession->isAdmin()) {
+            $latest_tag = str_replace(['V', 'v'], '', $this->updateManager->latest());
+            $is_outdated = version_compare($latest_tag, APP_VERSION, '>');
+            $current_version = APP_VERSION;
+            $latest_version = $latest_tag;
+        }
+
+        $this->response->html($this->helper->layout->admin('admin/index', [
+            'is_outdated'      => $is_outdated,
+            'current_version'  => $current_version,
+            'latest_version'   => $latest_version,
+            'db_size'          => $this->settingModel->getDatabaseSize(),
+            'db_version'       => $this->db->getDriver()->getDatabaseVersion(),
+            'user_agent'       => $this->request->getServerVariable('HTTP_USER_AGENT'),
+            'title'            => t('Settings').' &raquo; '.t('About'),
         ], ''));
     }
 }
