@@ -63,4 +63,24 @@ return [
 'b/:project_id'       => 'Project/Board/BoardController@show',
 'public/board/:token' => 'Project/Board/BoardController@readonly',
 
+// Analytics routes
+'project/:project_id/analytics/tasks'                => 'AnalyticController@taskDistribution',
+'project/:project_id/analytics/users'                => 'AnalyticController@userDistribution',
+'project/:project_id/analytics/cfd'                  => 'AnalyticController@cfd',
+'project/:project_id/analytics/burndown'             => 'AnalyticController@burndown',
+'project/:project_id/analytics/average-time-column'  => 'AnalyticController@averageTimeByColumn',
+'project/:project_id/analytics/lead-cycle-time'      => 'AnalyticController@leadAndCycleTime',
+'project/:project_id/analytics/estimated-spent-time' => 'AnalyticController@compareHours',
+'project/:project_id/analytics/time-comparison'      => 'AnalyticController@timeComparison',
+
+// Exports
+'project/:project_id/export/tasks'       => 'Project/ExportController@tasks',
+'project/:project_id/export/subtasks'    => 'Project/ExportController@subtasks',
+'project/:project_id/export/transitions' => 'Project/ExportController@transitions',
+'project/:project_id/export/summary'     => 'Project/ExportController@summary',
+
+// Import routes
+'project/:project_id/import' => 'Project/ImportController@show',
+'project/:project_id/import/download-template' => 'Project/ImportController@template',
+
 ];

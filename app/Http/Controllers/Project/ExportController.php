@@ -9,7 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Project;
+
+use Jitamin\Controller\BaseController;
 
 /**
  * Export Controller.
@@ -40,7 +42,7 @@ class ExportController extends BaseController
         } else {
             $this->response->html($this->helper->layout->project('export/'.$action, [
                 'values' => [
-                    'controller' => 'ExportController',
+                    'controller' => 'Project/ExportController',
                     'action'     => $action,
                     'project_id' => $project['id'],
                     'from'       => $from,

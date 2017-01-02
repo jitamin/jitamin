@@ -69,17 +69,17 @@
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('ExportController', 'tasks', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/ExportController', 'tasks', $project['id'])): ?>
             <li>
                 <i class="fa fa-upload"></i>
-                <?= $this->url->link(t('Exports'), 'ExportController', 'tasks', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Exports'), 'Project/ExportController', 'tasks', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('Task/TaskImportController', 'tasks', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/ImportController', 'tasks', $project['id'])): ?>
             <li>
                 <i class="fa fa-download"></i>
-                <?= $this->url->link(t('Imports'), 'Task/TaskImportController', 'show', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Imports'), 'Project/ImportController', 'show', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
