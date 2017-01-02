@@ -59,9 +59,11 @@ return [
 'project/:project_id/categories' => 'CategoryController@index',
 
 // Board routes
-'board/:project_id'   => 'Project/Board/BoardController@show',
-'b/:project_id'       => 'Project/Board/BoardController@show',
-'public/board/:token' => 'Project/Board/BoardController@readonly',
+'board/:project_id'          => 'Project/Board/BoardController@show',
+'b/:project_id'              => 'Project/Board/BoardController@show',
+'public/board/:token'        => 'Project/Board/BoardController@readonly',
+'board/:project_id/collapse' => 'Project/Board/BoardAjaxController@collapse',
+'board/:project_id/expand'   => 'Project/Board/BoardAjaxController@expand',
 
 // Analytics routes
 'project/:project_id/analytics/tasks'                => 'AnalyticController@taskDistribution',
