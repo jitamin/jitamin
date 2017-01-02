@@ -1,7 +1,7 @@
 <div class="page-header">
     <ul class="nav nav-tabs">
         <li <?= $this->app->setActive('Admin/AdminController', 'index') ?>>
-            <?= $this->url->link(t('Admin'), 'Admin/AdminController', 'index') ?>
+            <?= $this->url->link(t('Overview'), 'Admin/AdminController', 'index') ?>
         </li>
         <li <?= $this->app->setActive('Admin/SettingController', 'index') ?>>
             <?= $this->url->link(t('Application settings'), 'Admin/SettingController', 'index') ?>

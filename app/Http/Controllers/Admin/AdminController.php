@@ -40,7 +40,7 @@ class AdminController extends BaseController
             'db_size'          => $this->settingModel->getDatabaseSize(),
             'db_version'       => $this->db->getDriver()->getDatabaseVersion(),
             'user_agent'       => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'            => t('Settings').' &raquo; '.t('About'),
+            'title'            => t('Admin').' &raquo; '.t('Overview'),
         ], ''));
     }
 }
