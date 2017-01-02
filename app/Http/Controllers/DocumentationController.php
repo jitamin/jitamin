@@ -38,7 +38,8 @@ class DocumentationController extends BaseController
      */
     public function shortcuts()
     {
-        $this->response->html($this->template->render('admin/setting/keyboard_shortcuts'));
+        $filename = $this->getPageFilename('shortcuts');
+        $this->response->html($this->helper->layout->app('doc/show', $this->render($filename)));
     }
 
     /**

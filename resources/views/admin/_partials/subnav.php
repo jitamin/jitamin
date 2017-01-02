@@ -9,11 +9,14 @@
         <li <?= $this->app->setActive('Admin/GroupController', 'index') ?>>
             <?= $this->url->link(t('Groups management'), 'Admin/GroupController', 'index') ?>
         </li>
+        <li <?= $this->app->setActive('Admin/TagController', 'index') ?>>
+            <?= $this->url->link(t('Tags management'), 'Admin/TagController', 'index') ?>
+        </li>
+        <li <?= $this->app->setActive('Admin/LinkController') ?>>
+            <?= $this->url->link(t('Link settings'), 'Admin/LinkController', 'index') ?>
+        </li>
         <li <?= $this->app->setActive('Admin/PluginController', 'show') ?>>
             <?= $this->url->link(t('Plugins management'), 'Admin/PluginController', 'show') ?>
-        </li>
-        <li <?= $this->app->setActive('Admin/AdminController', 'help') ?>>
-            <?= $this->url->link(t('Help'), 'Admin/AdminController', 'help') ?>
         </li>
         <li <?= $this->app->setActive('Admin/AdminController', 'about') ?>>
             <?= $this->url->link(t('About'), 'Admin/AdminController', 'about') ?>

@@ -49,7 +49,7 @@ class LinkController extends BaseController
             'links'  => $this->linkModel->getMergedList(),
             'values' => $values,
             'errors' => $errors,
-            'title'  => t('Settings').' &raquo; '.t('Task\'s links'),
+            'title'  => t('Task\'s links'),
         ]));
     }
 

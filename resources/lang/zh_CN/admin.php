@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Admin' => '后台',
     'Projects management' => '项目管理',
     'Users management' => '用户管理',
     'Groups management' => '团队管理',

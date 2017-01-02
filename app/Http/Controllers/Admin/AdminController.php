@@ -19,19 +19,6 @@ use Jitamin\Controller\BaseController;
 class AdminController extends BaseController
 {
     /**
-     * Display the help page.
-     */
-    public function help()
-    {
-        $this->response->html($this->helper->layout->admin('admin/help', [
-            'db_size'    => $this->settingModel->getDatabaseSize(),
-            'db_version' => $this->db->getDriver()->getDatabaseVersion(),
-            'user_agent' => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'      => t('Settings').' &raquo; '.t('About'),
-        ], ''));
-    }
-
-    /**
      * Display the about page.
      */
     public function about()

@@ -46,7 +46,7 @@
                 <?php if ($this->user->hasAccess('Admin/SettingController', 'index')): ?>
                 <hr/>
                 <li <?= $this->app->setActive('Admin/SettingController', 'index') ?>>
-                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Settings'), 'Admin/SettingController', 'index', [], false, '', t('Application settings')) ?>
+                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Admin'), 'Admin/SettingController', 'index', [], false, '', t('Application settings')) ?>
                 </li>
                 <?php endif ?>
             </ul>

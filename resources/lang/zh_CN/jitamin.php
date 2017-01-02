@@ -805,7 +805,7 @@ return [
     'Switch to the Gantt chart view' => '切换到甘特图',
     'Reset the search/filter box' => '重置搜索/过滤框',
     'Documentation' => '帮助文档',
-    'Table of contents' => '帮助内容列表',
+    'Table of contents' => '帮助首页',
     'Gantt' => '甘特图',
     'Author' => '作者',
     'Version' => '版本',

@@ -51,6 +51,7 @@ class SettingController extends BaseController
             'skins'            => $this->skinModel->getSkins(),
             'layouts'          => $this->skinModel->getLayouts(),
             'dashboards'       => $this->skinModel->getDashboards(),
+            'title'            => t('Settings').' &raquo; '.t('Theme settings'),
         ]));
     }
 
@@ -65,6 +66,7 @@ class SettingController extends BaseController
             'date_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
             'datetime_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateTimeFormats()),
             'time_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
+            'title'            => t('Settings').' &raquo; '.t('Localization settings'),
         ]));
     }
 

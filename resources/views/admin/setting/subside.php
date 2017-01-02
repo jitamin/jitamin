@@ -20,12 +20,6 @@
         <li <?= $this->app->setActive('Admin/SettingController', 'calendar') ?>>
             <i class="fa fa-calendar"></i><?= $this->url->link(t('Calendar settings'), 'Admin/SettingController', 'calendar') ?>
         </li>
-        <li <?= $this->app->setActive('Admin/TagController', 'index') ?>>
-            <i class="fa fa-tag"></i><?= $this->url->link(t('Tags management'), 'Admin/TagController', 'index') ?>
-        </li>
-        <li <?= $this->app->setActive('Admin/LinkController') ?>>
-            <i class="fa fa-link"></i><?= $this->url->link(t('Link settings'), 'Admin/LinkController', 'index') ?>
-        </li>
         <li <?= $this->app->setActive('Admin/SettingController', 'integrations') ?>>
             <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'Admin/SettingController', 'integrations') ?>
         </li>
