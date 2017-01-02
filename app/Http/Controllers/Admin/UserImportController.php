@@ -68,7 +68,7 @@ class UserImportController extends BaseController
      * @param array $values
      * @param       $filename
      */
-    private function importFile(array $values, $filename)
+    protected function importFile(array $values, $filename)
     {
         $csv = new Csv($values['delimiter'], $values['enclosure']);
         $csv->setColumnMapping($this->userImport->getColumnMapping());

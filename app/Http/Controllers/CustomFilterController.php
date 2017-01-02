@@ -168,7 +168,7 @@ class CustomFilterController extends BaseController
      *
      * @throws AccessForbiddenException
      */
-    private function checkPermission(array $project, array $filter)
+    protected function checkPermission(array $project, array $filter)
     {
         $user_id = $this->userSession->getId();
 

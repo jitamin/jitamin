@@ -20,24 +20,6 @@ use Jitamin\Core\Controller\PageNotFoundException;
 class LinkController extends BaseController
 {
     /**
-     * Get the current link.
-     *
-     * @throws PageNotFoundException
-     *
-     * @return array
-     */
-    private function getLink()
-    {
-        $link = $this->linkModel->getById($this->request->getIntegerParam('link_id'));
-
-        if (empty($link)) {
-            throw new PageNotFoundException();
-        }
-
-        return $link;
-    }
-
-    /**
      * List of links.
      *
      * @param array $values
@@ -145,5 +127,23 @@ class LinkController extends BaseController
         }
 
         $this->response->redirect($this->helper->url->to('Admin/LinkController', 'index'));
+    }
+
+    /**
+     * Get the current link.
+     *
+     * @throws PageNotFoundException
+     *
+     * @return array
+     */
+    protected function getLink()
+    {
+        $link = $this->linkModel->getById($this->request->getIntegerParam('link_id'));
+
+        if (empty($link)) {
+            throw new PageNotFoundException();
+        }
+
+        return $link;
     }
 }

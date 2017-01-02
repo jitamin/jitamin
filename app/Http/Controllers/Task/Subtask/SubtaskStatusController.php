@@ -64,7 +64,7 @@ class SubtaskStatusController extends BaseController
      *
      * @return string
      */
-    private function renderTable(array $task)
+    protected function renderTable(array $task)
     {
         return $this->template->render('subtask/table', [
             'task'     => $task,

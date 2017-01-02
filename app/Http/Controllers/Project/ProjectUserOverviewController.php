@@ -69,7 +69,7 @@ class ProjectUserOverviewController extends BaseController
     /**
      * Returns project ids and active users.
      */
-    private function common()
+    protected function common()
     {
         $user_id = $this->request->getIntegerParam('user_id', UserModel::EVERYBODY_ID);
 
@@ -90,7 +90,7 @@ class ProjectUserOverviewController extends BaseController
      * @param string $title
      * @param string $title_user
      */
-    private function role($role, $action, $title, $title_user)
+    protected function role($role, $action, $title, $title_user)
     {
         list($user_id, $project_ids, $users) = $this->common();
 
@@ -124,7 +124,7 @@ class ProjectUserOverviewController extends BaseController
      * @param string $title
      * @param string $title_user
      */
-    private function tasks($is_active, $action, $title, $title_user)
+    protected function tasks($is_active, $action, $title, $title_user)
     {
         list($user_id, $project_ids, $users) = $this->common();
 

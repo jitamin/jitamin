@@ -21,24 +21,6 @@ use Jitamin\Model\SwimlaneModel;
 class SwimlaneController extends BaseController
 {
     /**
-     * Get the swimlane (common method between actions).
-     *
-     * @throws PageNotFoundException
-     *
-     * @return array
-     */
-    private function getSwimlane()
-    {
-        $swimlane = $this->swimlaneModel->getById($this->request->getIntegerParam('swimlane_id'));
-
-        if (empty($swimlane)) {
-            throw new PageNotFoundException();
-        }
-
-        return $swimlane;
-    }
-
-    /**
      * List of swimlanes for a given project.
      */
     public function index()
@@ -297,5 +279,23 @@ class SwimlaneController extends BaseController
         } else {
             throw new AccessForbiddenException();
         }
+    }
+
+    /**
+     * Get the swimlane (common method between actions).
+     *
+     * @throws PageNotFoundException
+     *
+     * @return array
+     */
+    protected function getSwimlane()
+    {
+        $swimlane = $this->swimlaneModel->getById($this->request->getIntegerParam('swimlane_id'));
+
+        if (empty($swimlane)) {
+            throw new PageNotFoundException();
+        }
+
+        return $swimlane;
     }
 }

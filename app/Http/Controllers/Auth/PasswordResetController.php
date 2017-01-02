@@ -114,7 +114,7 @@ class PasswordResetController extends BaseController
      *
      * @param string $username
      */
-    private function sendEmail($username)
+    protected function sendEmail($username)
     {
         $user = $this->db->table(UserModel::TABLE)
             ->eq(strpos($username, '@') === false ? 'username' : 'email', $username)
@@ -139,7 +139,7 @@ class PasswordResetController extends BaseController
     /**
      * Check feature availability.
      */
-    private function checkActivation()
+    protected function checkActivation()
     {
         if ($this->settingModel->get('password_reset', 0) == 0) {
             throw AccessForbiddenException::getInstance()->withoutLayout();

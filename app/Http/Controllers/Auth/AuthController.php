@@ -71,7 +71,7 @@ class AuthController extends BaseController
     /**
      * Redirect the user after the authentication.
      */
-    private function redirectAfterLogin()
+    protected function redirectAfterLogin()
     {
         if (isset($this->sessionStorage->redirectAfterLogin) && !empty($this->sessionStorage->redirectAfterLogin) && !filter_var($this->sessionStorage->redirectAfterLogin, FILTER_VALIDATE_URL)) {
             $redirect = $this->sessionStorage->redirectAfterLogin;

@@ -21,26 +21,6 @@ use Jitamin\Core\Security\Role;
 class ProjectPermissionController extends BaseController
 {
     /**
-     * Permissions are only available for team projects.
-     *
-     * @param int $project_id Default project id
-     *
-     * @throws AccessForbiddenException
-     *
-     * @return array
-     */
-    protected function getProject($project_id = 0)
-    {
-        $project = parent::getProject($project_id);
-
-        if ($project['is_private'] == 1) {
-            throw new AccessForbiddenException();
-        }
-
-        return $project;
-    }
-
-    /**
      * Show all permissions.
      *
      * @param array $values
@@ -188,5 +168,25 @@ class ProjectPermissionController extends BaseController
         } else {
             $this->response->json(['status' => 'error']);
         }
+    }
+
+    /**
+     * Permissions are only available for team projects.
+     *
+     * @param int $project_id Default project id
+     *
+     * @throws AccessForbiddenException
+     *
+     * @return array
+     */
+    protected function getProject($project_id = 0)
+    {
+        $project = parent::getProject($project_id);
+
+        if ($project['is_private'] == 1) {
+            throw new AccessForbiddenException();
+        }
+
+        return $project;
     }
 }

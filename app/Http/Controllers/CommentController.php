@@ -21,29 +21,6 @@ use Jitamin\Model\UserMetadataModel;
 class CommentController extends BaseController
 {
     /**
-     * Get the current comment.
-     *
-     * @throws PageNotFoundException
-     * @throws AccessForbiddenException
-     *
-     * @return array
-     */
-    private function getComment()
-    {
-        $comment = $this->commentModel->getById($this->request->getIntegerParam('comment_id'));
-
-        if (empty($comment)) {
-            throw new PageNotFoundException();
-        }
-
-        if (!$this->userSession->isAdmin() && $comment['user_id'] != $this->userSession->getId()) {
-            throw new AccessForbiddenException();
-        }
-
-        return $comment;
-    }
-
-    /**
      * Add comment form.
      *
      * @param array $values
@@ -191,5 +168,28 @@ class CommentController extends BaseController
             ['task_id' => $task['id'], 'project_id' => $task['project_id']],
             'comments'
         ));
+    }
+
+    /**
+     * Get the current comment.
+     *
+     * @throws PageNotFoundException
+     * @throws AccessForbiddenException
+     *
+     * @return array
+     */
+    protected function getComment()
+    {
+        $comment = $this->commentModel->getById($this->request->getIntegerParam('comment_id'));
+
+        if (empty($comment)) {
+            throw new PageNotFoundException();
+        }
+
+        if (!$this->userSession->isAdmin() && $comment['user_id'] != $this->userSession->getId()) {
+            throw new AccessForbiddenException();
+        }
+
+        return $comment;
     }
 }
