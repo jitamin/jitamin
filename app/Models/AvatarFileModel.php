@@ -17,7 +17,7 @@ use Jitamin\Core\Database\Model;
 /**
  * Avatar File.
  */
-class AvatarModel extends Model
+class AvatarFileModel extends Model
 {
     /**
      * Path prefix.

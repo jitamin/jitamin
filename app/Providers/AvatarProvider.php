@@ -35,7 +35,7 @@ class AvatarProvider implements ServiceProviderInterface
         $container['avatarManager'] = new AvatarManager();
         $container['avatarManager']->register(new LetterAvatarProvider($container));
         $container['avatarManager']->register(new GravatarProvider($container));
-        $container['avatarManager']->register(new AvatarProvider($container));
+        $container['avatarManager']->register(new self($container));
 
         return $container;
     }
