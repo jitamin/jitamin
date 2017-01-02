@@ -296,7 +296,7 @@ class ProjectController extends BaseController
      *
      * @return array
      */
-    private function prepareValues($redirect, array $project, array $values)
+    protected function prepareValues($redirect, array $project, array $values)
     {
         if ($redirect === 'edit') {
             if (isset($values['is_private'])) {
@@ -320,7 +320,7 @@ class ProjectController extends BaseController
      *
      * @return bool|int
      */
-    private function createOrDuplicate(array $values)
+    protected function createOrDuplicate(array $values)
     {
         if (empty($values['src_project_id'])) {
             return $this->createNewProject($values);
@@ -336,7 +336,7 @@ class ProjectController extends BaseController
      *
      * @return bool|int
      */
-    private function createNewProject(array $values)
+    protected function createNewProject(array $values)
     {
         $project = [
             'name'       => $values['name'],
@@ -353,7 +353,7 @@ class ProjectController extends BaseController
      *
      * @return bool|int
      */
-    private function duplicateNewProject(array $values)
+    protected function duplicateNewProject(array $values)
     {
         $selection = [];
 

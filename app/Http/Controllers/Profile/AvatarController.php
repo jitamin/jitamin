@@ -85,7 +85,7 @@ class AvatarController extends BaseController
      * @param string $filename
      * @param int    $size
      */
-    private function render($filename, $size)
+    protected function render($filename, $size)
     {
         try {
             $blob = $this->objectStorage->get($filename);

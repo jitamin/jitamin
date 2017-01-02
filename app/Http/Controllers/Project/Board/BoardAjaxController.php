@@ -108,7 +108,7 @@ class BoardAjaxController extends BaseController
      *
      * @param int $mode
      */
-    private function changeDisplayMode($mode)
+    protected function changeDisplayMode($mode)
     {
         $project_id = $this->request->getIntegerParam('project_id');
         $this->userMetadataCacheDecorator->set(UserMetadataModel::KEY_BOARD_COLLAPSED.$project_id, $mode);

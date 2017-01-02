@@ -109,7 +109,7 @@ class TaskDuplicationController extends BaseController
      * @param array  $task
      * @param string $template
      */
-    private function chooseDestination(array $task, $template)
+    protected function chooseDestination(array $task, $template)
     {
         $values = [];
         $projects_list = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());

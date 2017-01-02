@@ -71,7 +71,7 @@ class WebNotificationController extends BaseController
     /**
      * Get user id.
      */
-    private function getUserId()
+    protected function getUserId()
     {
         $user_id = $this->request->getIntegerParam('user_id');
 

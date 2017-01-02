@@ -34,27 +34,6 @@ class DocumentationController extends BaseController
     }
 
     /**
-     * Prepare Markdown file.
-     *
-     * @param string $filename
-     *
-     * @return array
-     */
-    private function render($filename)
-    {
-        $data = file_get_contents($filename);
-        $content = preg_replace_callback('/\((.*.md)\)/', [$this, 'replaceMarkdownUrl'], $data);
-        $content = preg_replace_callback('/\((screenshots.*\.png)\)/', [$this, 'replaceImageUrl'], $content);
-
-        list($title) = explode("\n", $data, 2);
-
-        return [
-            'content' => Parsedown::instance()->text($content),
-            'title'   => $title !== 'Documentation' ? t('Documentation: %s', $title) : $title,
-        ];
-    }
-
-    /**
      * Regex callback to replace Markdown links.
      *
      * @param array $matches
@@ -79,13 +58,34 @@ class DocumentationController extends BaseController
     }
 
     /**
+     * Prepare Markdown file.
+     *
+     * @param string $filename
+     *
+     * @return array
+     */
+    protected function render($filename)
+    {
+        $data = file_get_contents($filename);
+        $content = preg_replace_callback('/\((.*.md)\)/', [$this, 'replaceMarkdownUrl'], $data);
+        $content = preg_replace_callback('/\((screenshots.*\.png)\)/', [$this, 'replaceImageUrl'], $content);
+
+        list($title) = explode("\n", $data, 2);
+
+        return [
+            'content' => Parsedown::instance()->text($content),
+            'title'   => $title !== 'Documentation' ? t('Documentation: %s', $title) : $title,
+        ];
+    }
+
+    /**
      * Get Markdown file according to the current language.
      *
      * @param string $page
      *
      * @return string
      */
-    private function getPageFilename($page)
+    protected function getPageFilename($page)
     {
         return $this->getFileLocation($page.'.md') ?:
             implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', 'index.md']);
@@ -98,7 +98,7 @@ class DocumentationController extends BaseController
      *
      * @return string
      */
-    private function getFileBaseUrl($filename)
+    protected function getFileBaseUrl($filename)
     {
         $language = $this->languageModel->getCurrentLanguage();
         $path = $this->getFileLocation($filename);
@@ -119,7 +119,7 @@ class DocumentationController extends BaseController
      *
      * @return string
      */
-    private function getFileLocation($filename)
+    protected function getFileLocation($filename)
     {
         $files = [
             implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', $this->languageModel->getCurrentLanguage(), $filename]),

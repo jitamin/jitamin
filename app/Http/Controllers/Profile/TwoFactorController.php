@@ -19,20 +19,6 @@ use Jitamin\Core\Controller\AccessForbiddenException;
 class TwoFactorController extends ProfileController
 {
     /**
-     * Only the current user can access to 2FA settings.
-     *
-     * @param array $user
-     *
-     * @throws AccessForbiddenException
-     */
-    private function checkCurrentUser(array $user)
-    {
-        if ($user['id'] != $this->userSession->getId()) {
-            throw new AccessForbiddenException();
-        }
-    }
-
-    /**
      * Show form to disable/enable 2FA.
      */
     public function index()
@@ -190,5 +176,19 @@ class TwoFactorController extends ProfileController
         return $this->response->html($this->helper->layout->profile('twofactor/disable', [
             'user' => $user,
         ]));
+    }
+
+    /**
+     * Only the current user can access to 2FA settings.
+     *
+     * @param array $user
+     *
+     * @throws AccessForbiddenException
+     */
+    protected function checkCurrentUser(array $user)
+    {
+        if ($user['id'] != $this->userSession->getId()) {
+            throw new AccessForbiddenException();
+        }
     }
 }

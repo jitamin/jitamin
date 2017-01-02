@@ -42,7 +42,7 @@ class TaskStatusController extends BaseController
      * @param string $success_message
      * @param string $failure_message
      */
-    private function changeStatus($method, $template, $success_message, $failure_message)
+    protected function changeStatus($method, $template, $success_message, $failure_message)
     {
         $task = $this->getTask();
 

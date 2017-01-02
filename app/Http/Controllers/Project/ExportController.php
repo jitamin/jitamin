@@ -19,43 +19,6 @@ use Jitamin\Controller\BaseController;
 class ExportController extends BaseController
 {
     /**
-     * Common export method.
-     *
-     * @param string $model
-     * @param string $method
-     * @param string $filename
-     * @param string $action
-     * @param string $page_title
-     *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
-     */
-    private function common($model, $method, $filename, $action, $page_title)
-    {
-        $project = $this->getProject();
-        $from = $this->request->getStringParam('from');
-        $to = $this->request->getStringParam('to');
-
-        if ($from && $to) {
-            $data = $this->$model->$method($project['id'], $from, $to);
-            $this->response->withFileDownload($filename.'.csv');
-            $this->response->csv($data);
-        } else {
-            $this->response->html($this->helper->layout->project('export/'.$action, [
-                'values' => [
-                    'controller' => 'Project/ExportController',
-                    'action'     => $action,
-                    'project_id' => $project['id'],
-                    'from'       => $from,
-                    'to'         => $to,
-                ],
-                'errors'  => [],
-                'project' => $project,
-                'title'   => $page_title,
-            ], 'export/subside'));
-        }
-    }
-
-    /**
      * Task export.
      */
     public function tasks()
@@ -85,5 +48,42 @@ class ExportController extends BaseController
     public function transitions()
     {
         $this->common('transitionExport', 'export', t('Transitions'), 'transitions', t('Task transitions export'));
+    }
+
+    /**
+     * Common export method.
+     *
+     * @param string $model
+     * @param string $method
+     * @param string $filename
+     * @param string $action
+     * @param string $page_title
+     *
+     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     */
+    protected function common($model, $method, $filename, $action, $page_title)
+    {
+        $project = $this->getProject();
+        $from = $this->request->getStringParam('from');
+        $to = $this->request->getStringParam('to');
+
+        if ($from && $to) {
+            $data = $this->$model->$method($project['id'], $from, $to);
+            $this->response->withFileDownload($filename.'.csv');
+            $this->response->csv($data);
+        } else {
+            $this->response->html($this->helper->layout->project('export/'.$action, [
+                'values' => [
+                    'controller' => 'Project/ExportController',
+                    'action'     => $action,
+                    'project_id' => $project['id'],
+                    'from'       => $from,
+                    'to'         => $to,
+                ],
+                'errors'  => [],
+                'project' => $project,
+                'title'   => $page_title,
+            ], 'export/subside'));
+        }
     }
 }

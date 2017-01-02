@@ -70,35 +70,6 @@ class UserController extends BaseController
     }
 
     /**
-     * Create user.
-     *
-     * @param array $values
-     */
-    private function createUser(array $values)
-    {
-        $project_id = empty($values['project_id']) ? 0 : $values['project_id'];
-        unset($values['project_id']);
-
-        $user_id = $this->userModel->create($values);
-
-        if ($user_id !== false) {
-            if ($project_id !== 0) {
-                $this->projectUserRoleModel->addUser($project_id, $user_id, Role::PROJECT_MEMBER);
-            }
-
-            if (!empty($values['notifications_enabled'])) {
-                $this->userNotificationTypeModel->saveSelectedTypes($user_id, [MailNotification::TYPE]);
-            }
-
-            $this->flash->success(t('User created successfully.'));
-            $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user_id]));
-        } else {
-            $this->flash->failure(t('Unable to create your user.'));
-            $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
-        }
-    }
-
-    /**
      * Display a form to edit authentication.
      *
      * @param array $values
@@ -163,5 +134,34 @@ class UserController extends BaseController
         }
 
         $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
+    }
+
+    /**
+     * Create user.
+     *
+     * @param array $values
+     */
+    protected function createUser(array $values)
+    {
+        $project_id = empty($values['project_id']) ? 0 : $values['project_id'];
+        unset($values['project_id']);
+
+        $user_id = $this->userModel->create($values);
+
+        if ($user_id !== false) {
+            if ($project_id !== 0) {
+                $this->projectUserRoleModel->addUser($project_id, $user_id, Role::PROJECT_MEMBER);
+            }
+
+            if (!empty($values['notifications_enabled'])) {
+                $this->userNotificationTypeModel->saveSelectedTypes($user_id, [MailNotification::TYPE]);
+            }
+
+            $this->flash->success(t('User created successfully.'));
+            $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user_id]));
+        } else {
+            $this->flash->failure(t('Unable to create your user.'));
+            $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
+        }
     }
 }
