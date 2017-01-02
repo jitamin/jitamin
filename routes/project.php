@@ -80,7 +80,7 @@ return [
 'project/:project_id/export/summary'     => 'Project/ExportController@summary',
 
 // Import routes
-'project/:project_id/import' => 'Project/ImportController@show',
+'project/:project_id/import'                   => 'Project/ImportController@show',
 'project/:project_id/import/download-template' => 'Project/ImportController@template',
 
 ];
