@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Profile;
+namespace Jitamin\Controller\Admin;
 
 use Jitamin\Controller\BaseController;
 
@@ -25,7 +25,7 @@ class UserStatusController extends BaseController
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->profile('user_status/remove', [
+        $this->response->html($this->helper->layout->admin('admin/user_status/remove', [
             'user' => $user,
         ]));
     }
@@ -54,7 +54,7 @@ class UserStatusController extends BaseController
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->profile('user_status/enable', [
+        $this->response->html($this->helper->layout->admin('admin/user_status/enable', [
             'user' => $user,
         ]));
     }
@@ -83,7 +83,7 @@ class UserStatusController extends BaseController
     {
         $user = $this->getUser();
 
-        $this->response->html($this->helper->layout->profile('user_status/disable', [
+        $this->response->html($this->helper->layout->admin('admin/user_status/disable', [
             'user' => $user,
         ]));
     }

@@ -21,7 +21,7 @@
                 <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
                 <hr/>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-menu" title="<?= t('New project') ?>"><i class="fa fa-plus"></i><br /><?= t('Create') ?></a>
+                    <a href="#" class="dropdown-menu" title="<?= t('New project') ?>"><i class="fa fa-plus-circle"></i><br /><?= t('Create') ?></a>
                     <ul>
                         <?php if ($has_project_creation_access): ?>
                             <li><i class="fa fa-cube"></i>
@@ -34,7 +34,7 @@
                                 <?= $this->url->link(t('New private project'), 'Project/ProjectController', 'createPrivate', [], false, 'popover') ?>
                             </li>
                         <?php endif ?>
-                        <?= $this->hook->render('template:header:creation-dropdown') ?>
+                        <?= $this->hook->render('template:sidebar:creation-dropdown') ?>
                     </ul>
                 </li>
                 <?php endif ?>
@@ -43,10 +43,10 @@
                     <?= $this->url->link('<i class="fa fa-wrench"></i><br />'.t('Manage'), 'Project/ProjectController', 'index', [], false, '', t('Project management')) ?>
                 </li>
                 <?php endif ?>
-                <?php if ($this->user->hasAccess('Admin/SettingController', 'index')): ?>
+                <?php if ($this->user->hasAccess('Admin/AdminController', 'index')): ?>
                 <hr/>
-                <li <?= $this->app->setActive('Admin/SettingController', 'index') ?>>
-                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Admin'), 'Admin/SettingController', 'index', [], false, '', t('Application settings')) ?>
+                <li <?= $this->app->setActive('Admin/AdminController', 'index') ?>>
+                    <?= $this->url->link('<i class="fa fa-gear"></i><br />'.t('Admin'), 'Admin/AdminController', 'index', [], false, '', t('Admin Control Panel')) ?>
                 </li>
                 <?php endif ?>
             </ul>
