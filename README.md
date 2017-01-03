@@ -8,7 +8,7 @@ Jitamin
 
 Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理的维他命。
 
-![Screenshot](http://jitamin.com/screenshot2.png)
+![Screenshot](http://jitamin.com/jitamin2.png)
 
 ## 功能特性
 
@@ -70,13 +70,14 @@ $ cp config/config{.default,}.php
 
 - 创建数据表
 ```shell
-php vendor/bin/phinx migrate
+vendor/bin/phinx migrate
 ```
 
 - 安装初始数据
 ```shell
-php vendor/bin/phinx seed:run
+vendor/bin/phinx seed:run
 ```
+> Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
 
 五. 确保storage目录可写。
 
@@ -111,8 +112,9 @@ $ composer install -o --no-dev
 三. 更新数据表
 
 ```shell
-php vendor/bin/phinx migrate
+vendor/bin/phinx migrate
 ```
+> Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
 
 ## 系统演示
 
