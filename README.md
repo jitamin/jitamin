@@ -120,7 +120,13 @@ vendor/bin/phinx migrate
 
 体验Jitamin, 请访问 [http://jitamin.com](http://jitamin.com):
 
-一. 管理员用户
+一. 普通用户
+
+- **用户名:** `test` or `test@test.com`
+- **密码:** `test123`
+
+二. 管理员用户
+
 - **用户名:** `jitamin` or `jitamin@jitamin.com`
 - **密码:** `jitamin`
 
