@@ -1116,7 +1116,6 @@ return [
     'Search by creation date: ' => '按创建时间：',
     'Search by task status: ' => '按任务状态：',
     'Search by task title: ' => '按任务标题：',
-    'Activities search' => '在动态中搜索：',
     'Projects where "%s" is manager' => '%s 管理的项目',
     'Projects where "%s" is member' => '%s 作为成员加入的项目',
     'Open tasks assigned to "%s"' => '指派给 %s 的打开项目',

@@ -1,9 +1,7 @@
 <div class="page-header">
-    <ul>
-        <?= $this->hook->render('template:project-list:menu:before') ?>
-        <?= $this->render('project/_partials/nav') ?>
-        <?= $this->hook->render('template:project-list:menu:after') ?>
-    </ul>
+    <?= $this->hook->render('template:project-list:menu:before') ?>
+    <?= $this->render('project/_partials/nav') ?>
+    <?= $this->hook->render('template:project-list:menu:after') ?>
 </div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('No project') ?></p>

@@ -1,10 +1,5 @@
 <div class="page-header">
-    <ul>
-        <li>
-            <i class="fa fa-search fa-fw"></i>
-            <?= $this->url->link(t('Search tasks'), 'SearchController', 'index') ?>
-        </li>
-    </ul>
+    <?= $this->render('search/_partials/nav') ?>
 </div>
 
 <div class="filter-box">
