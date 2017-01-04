@@ -14,7 +14,7 @@
         <div class="board-column-expanded">
             <?php if (!$not_editable && $this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
                 <div class="board-add-icon">
-                    <?= $this->url->link('+', 'Task/TaskController', 'create', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover', t('Add a new task')) ?>
+                    <?= $this->url->link('+', 'Task/TaskController', 'create', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover large', t('Add a new task')) ?>
                 </div>
             <?php endif ?>
 
@@ -38,7 +38,7 @@
                             <?php if ($this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
                                 <li>
                                     <i class="fa fa-align-justify fa-fw" aria-hidden="true"></i>
-                                    <?= $this->url->link(t('Create tasks in bulk'), 'Task/TaskBulkController', 'show', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover medium') ?>
+                                    <?= $this->url->link(t('Create tasks in bulk'), 'Task/TaskBulkController', 'show', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover') ?>
                                 </li>
                             <?php endif ?>
 

@@ -32,10 +32,10 @@ Jitamin.Popover.prototype.onClick = function(e) {
 
     if($(target).hasClass('small')) {
         size = 'small';
-    } else if($(target).hasClass('medium')) {
-        size = 'medium';
-    } else {
+    } else if($(target).hasClass('large')) {
         size = 'large';
+    } else {
+        size = 'medium';
     }
 
     if (link) {
@@ -49,8 +49,9 @@ Jitamin.Popover.prototype.isOpen = function() {
 
 Jitamin.Popover.prototype.open = function(link, size) {
     var self = this;
+
     if (typeof size === 'undefined') {
-        size = 'normal';
+        size = 'medium';
     }
 
     if (!self.isOpen()) {
