@@ -13,7 +13,7 @@
         </li>
         <li>
             <i class="fa fa-plus fa-fw"></i>
-            <?= $this->url->link(t('Add a sub-task'), 'Task/Subtask/SubtaskController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a sub-task'), 'Task/Subtask/SubtaskController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover medium') ?>
         </li>
         <li>
             <i class="fa fa-code-fork fa-fw"></i>
@@ -21,7 +21,7 @@
         </li>
         <li>
             <i class="fa fa-comment-o fa-fw"></i>
-            <?= $this->url->link(t('Add a comment'), 'CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a comment'), 'CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover small') ?>
         </li>
         <li>
             <i class="fa fa-camera fa-fw"></i>

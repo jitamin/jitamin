@@ -15,7 +15,7 @@
             <td>
                 <?= $this->url->link('<i class="fa fa-columns"></i>', 'Project/Board/BoardController', 'show', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Board')) ?>
                 <?= $this->url->link('<i class="fa fa-sliders"></i>', 'Task/TaskController', 'gantt', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Gantt chart')) ?>
-                <?= $this->url->link('<i class="fa fa-cog"></i>', 'Project/ProjectSettingsController', 'show', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Project settings')) ?>
+                <?= $this->url->link('<i class="fa fa-cog"></i>', 'Project/ProjectController', 'show', ['project_id' => $project['id']], false, 'dashboard-table-link', t('Project settings')) ?>
 
                 <?= $this->text->e($project['project_name']) ?>
             </td>

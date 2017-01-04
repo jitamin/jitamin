@@ -14,7 +14,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
             <?= t('or') ?>
-            <?= $this->url->link(t('cancel'), 'Project/ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
+            <?= $this->url->link(t('cancel'), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
         </div>
     </form>
 <?php endif ?>

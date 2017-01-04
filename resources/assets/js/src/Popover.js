@@ -24,13 +24,22 @@ Jitamin.Popover.prototype.onClick = function(e) {
 
     var target = e.currentTarget || e.target;
     var link = target.getAttribute("href");
+    var size;
 
     if (! link) {
         link = target.getAttribute("data-href");
     }
 
+    if($(target).hasClass('small')) {
+        size = 'small';
+    } else if($(target).hasClass('medium')) {
+        size = 'medium';
+    } else {
+        size = 'large';
+    }
+
     if (link) {
-        this.open(link);
+        this.open(link, size);
     }
 };
 
@@ -38,12 +47,15 @@ Jitamin.Popover.prototype.isOpen = function() {
     return $('#popover-container').size() > 0;
 };
 
-Jitamin.Popover.prototype.open = function(link) {
+Jitamin.Popover.prototype.open = function(link, size) {
     var self = this;
+    if (typeof size === 'undefined') {
+        size = 'normal';
+    }
 
     if (!self.isOpen()) {
         $.get(link, function(content) {
-            $("body").prepend('<div id="popover-container"><div id="popover-content">' + content + '</div></div>');
+            $("body").prepend('<div id="popover-container"><div id="popover-content" class="'+size+'">' + content + '</div></div>');
             $('#popover-content h2').eq(0).append('<a href="#" class="pull-right close-popover"><i class="fa fa-close"></i></a>');
              /*
              var screenHeight = $(window).height(); //当前浏览器窗口的高 

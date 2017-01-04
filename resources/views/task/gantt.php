@@ -9,10 +9,6 @@
             <i class="fa fa-sort-amount-asc fa-fw"></i>
             <?= $this->url->link(t('Sort by date'), 'Task/TaskController', 'gantt', ['project_id' => $project['id'], 'sorting' => 'date']) ?>
         </li>
-        <li>
-            <i class="fa fa-plus fa-fw"></i>
-            <?= $this->url->link(t('Add task'), 'Task/TaskController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
-        </li>
     </ul>
 </div>
 

@@ -23,7 +23,7 @@
 
         <div class="form-actions">
             <button type="submit" class="btn btn-danger"><?= t('Duplicate') ?></button>
-            <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
+            <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
         </div>
     </form>
 </div>

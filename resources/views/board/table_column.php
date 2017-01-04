@@ -38,7 +38,7 @@
                             <?php if ($this->projectRole->canCreateTaskInColumn($column['project_id'], $column['id'])): ?>
                                 <li>
                                     <i class="fa fa-align-justify fa-fw" aria-hidden="true"></i>
-                                    <?= $this->url->link(t('Create tasks in bulk'), 'Task/TaskBulkController', 'show', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover') ?>
+                                    <?= $this->url->link(t('Create tasks in bulk'), 'Task/TaskBulkController', 'show', ['project_id' => $column['project_id'], 'column_id' => $column['id'], 'swimlane_id' => $swimlane['id']], false, 'popover medium') ?>
                                 </li>
                             <?php endif ?>
 
