@@ -25,6 +25,8 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 * 第三方集成
 * 支持插件
 
+[版本更新说明](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
+
 ## 下一阶段要实现的功能
 
 - [ ] 通过插件与Fixhub集成
