@@ -28,11 +28,11 @@ class SubtaskHelper extends Base
     public function getTitle(array $subtask)
     {
         if ($subtask['status'] == 0) {
-            $html = '<i class="fa fa-square-o fa-fw"></i>';
+            $html = '<i class="fa fa-square-o fa-fw" title="'.t('Backlog').'"></i>';
         } elseif ($subtask['status'] == 1) {
-            $html = '<i class="fa fa-gears fa-fw"></i>';
+            $html = '<i class="fa fa-caret-square-o-right fa-fw" title="'.t('Work in progress').'"></i>';
         } else {
-            $html = '<i class="fa fa-check-square-o fa-fw"></i>';
+            $html = '<i class="fa fa-check-square-o fa-fw" title="'.t('Done').'"></i>';
         }
 
         return $html.$this->helper->text->e($subtask['title']);
