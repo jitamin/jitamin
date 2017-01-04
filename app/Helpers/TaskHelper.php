@@ -143,7 +143,6 @@ class TaskHelper extends Base
         return $html;
     }
 
-
     /**
      * Display a select field of project.
      *

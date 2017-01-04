@@ -31,7 +31,7 @@ class TaskSimpleController extends BaseController
         $this->response->html($this->template->render('task/create_simple', [
             'values'          => $values,
             'errors'          => $errors,
-            'projects'        => $projects
+            'projects'        => $projects,
         ]));
     }
 
