@@ -5,6 +5,11 @@ Version 0.3.4 (未发布)
 
 改进:
 
+* 合并TaskGanttController的功能到TaskController
+* 删除项目设置的概况页(功能与项目概况页有重叠)
+* 调整中文措辞，将`过滤`修改为`筛选`
+* 修改子任务图标，并显示title
+
 Bug修复:
 
 Version 0.3.3 (2016-01-04)
