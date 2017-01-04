@@ -12,6 +12,7 @@
 namespace Jitamin\Controller\Admin;
 
 use Jitamin\Controller\BaseController;
+use Jitamin\Formatter\GroupAutoCompleteFormatter;
 
 /**
  * Group Controller.
