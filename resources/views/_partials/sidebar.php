@@ -1,5 +1,8 @@
-<?php $has_project_creation_access = $this->user->hasAccess('Project/ProjectController', 'create'); ?>
-<?php $is_private_project_enabled = $this->app->setting('disable_private_project', 0) == 0; ?>
+<?php 
+$has_project_creation_access = $this->user->hasAccess('Project/ProjectController', 'create');
+$has_task_creation_access = $this->user->hasAccess('Task/TaskSimpleController', 'create');
+$is_private_project_enabled = $this->app->setting('disable_private_project', 0) == 0;
+?>
 <div class="sidebar">
     <div class="sidememu">
         <a href="/"><div class="menu-top"></div></a>
@@ -18,10 +21,10 @@
                         <?= $this->url->link('<i class="fa fa-bell"></i><br />'.t('Notice'), 'Dashboard/DashboardController', 'notifications', [], false, '', t('You have no unread notifications')) ?>
                     <?php endif ?>
                 </li>
-                <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled)): ?>
+                <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled) || $has_task_creation_access): ?>
                 <hr/>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-menu" title="<?= t('New project') ?>"><i class="fa fa-plus-circle"></i><br /><?= t('Create') ?></a>
+                    <a href="#" class="dropdown-menu"><i class="fa fa-plus-circle"></i><br /><?= t('Create') ?></a>
                     <ul>
                         <?php if ($has_project_creation_access): ?>
                             <li><i class="fa fa-cube"></i>
@@ -33,6 +36,13 @@
                                 <i class="fa fa-lock"></i>
                                 <?= $this->url->link(t('New private project'), 'Project/ProjectController', 'createPrivate', [], false, 'popover') ?>
                             </li>
+                        <?php endif ?>
+                        <?php if ($has_task_creation_access): ?>
+                        <div class="divider"></div>
+                        <li>
+                            <i class="fa fa-tasks"></i>
+                            <?= $this->url->link(t('New task'), 'Task/TaskSimpleController', 'create', [], false, 'popover') ?>
+                        </li>
                         <?php endif ?>
                         <?= $this->hook->render('template:sidebar:creation-dropdown') ?>
                     </ul>

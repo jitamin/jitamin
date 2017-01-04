@@ -38,6 +38,7 @@
                     <?= $this->hook->render('template:header:dropdown') ?>
 
                     <?php if (!DISABLE_LOGOUT): ?>
+                        <div class="divider"></div>
                         <li>
                             <i class="fa fa-sign-out"></i>
                             <?= $this->url->link(t('Logout'), 'Auth/AuthController', 'logout') ?>

@@ -143,6 +143,27 @@ class TaskHelper extends Base
         return $html;
     }
 
+
+    /**
+     * Display a select field of project.
+     *
+     * @param array $projects
+     * @param array $values     Form values
+     * @param array $errors     Form errors
+     * @param array $attributes
+     *
+     * @return string
+     */
+    public function selectProject(array $projects, array $values, array $errors = [], array $attributes = [])
+    {
+        $attributes = array_merge(['tabindex="2"'], $attributes);
+
+        $html = $this->helper->form->label(t('Project'), 'project_id');
+        $html .= $this->helper->form->select('project_id', $projects, $values, $errors, $attributes);
+
+        return $html;
+    }
+
     /**
      * Display a select field of assignee.
      *
