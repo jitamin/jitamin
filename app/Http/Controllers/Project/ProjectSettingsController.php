@@ -19,20 +19,6 @@ use Jitamin\Controller\BaseController;
 class ProjectSettingsController extends BaseController
 {
     /**
-     * Show the project information page.
-     */
-    public function show()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->helper->layout->project('project_settings/show', [
-            'project' => $project,
-            'stats'   => $this->projectModel->getTaskStats($project['id']),
-            'title'   => $project['name'],
-        ]));
-    }
-
-    /**
      * Public access management.
      */
     public function share()
@@ -156,6 +142,6 @@ class ProjectSettingsController extends BaseController
             $this->flash->failure(t('Unable to clone this project.'));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectSettingsController', 'show', ['project_id' => $project_id]));
+        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project_id]));
     }
 }

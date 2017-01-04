@@ -135,7 +135,7 @@ class ProjectController extends BaseController
             if ($project_id > 0) {
                 $this->flash->success(t('Your project have been created successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('Project/ProjectSettingsController', 'show', ['project_id' => $project_id]));
+                return $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project_id]));
             }
 
             $this->flash->failure(t('Unable to create your project.'));
