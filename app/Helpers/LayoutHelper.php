@@ -32,10 +32,6 @@ class LayoutHelper extends Base
             return $this->template->render($template, $params);
         }
 
-        if (!isset($params['no_layout']) && !isset($params['board_selector'])) {
-            $params['board_selector'] = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
-        }
-
         return $this->pageLayout($template, $params);
     }
 

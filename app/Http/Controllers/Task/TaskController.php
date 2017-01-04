@@ -203,6 +203,19 @@ class TaskController extends BaseController
     }
 
     /**
+     * Display a form to create a simple project.
+     *
+     * @param array $values
+     * @param array $errors
+     */
+    public function createSimple(array $values = [], array $errors = [])
+    {
+        $this->response->html($this->template->render('task/create', [
+
+        ]));
+    }
+
+    /**
      * Validate and store a new task.
      */
     public function store()
