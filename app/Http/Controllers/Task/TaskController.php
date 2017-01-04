@@ -282,7 +282,6 @@ class TaskController extends BaseController
         }
     }
 
-
     /**
      * Display a form to edit a task.
      *
