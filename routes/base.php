@@ -26,11 +26,6 @@ return [
 'list/:project_id' => 'Task/TaskController@index',
 'l/:project_id'    => 'Task/TaskListController@show',
 
-// Gantt routes
-'gantt/:project_id'               => 'Task/TaskGanttController@show',
-'gantt/:project_id/sort/:sorting' => 'Task/TaskGanttController@show',
-'gantt/:project_id/create'        => 'Task/TaskGanttController@create',
-
 // Feed routes
 'feed/project/:token' => 'FeedController@project',
 'feed/user/:token'    => 'FeedController@user',

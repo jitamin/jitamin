@@ -50,7 +50,7 @@ class ProjectGanttFormatter extends BaseFormatter implements FormatterInterface
                 ],
                 'link'        => $this->helper->url->href('Project/ProjectController', 'show', ['project_id' => $project['id']]),
                 'board_link'  => $this->helper->url->href('Project/Board/BoardController', 'show', ['project_id' => $project['id']]),
-                'gantt_link'  => $this->helper->url->href('Task/TaskGanttController', 'show', ['project_id' => $project['id']]),
+                'gantt_link'  => $this->helper->url->href('Task/TaskController', 'gantt', ['project_id' => $project['id']]),
                 'color'       => $color,
                 'not_defined' => empty($project['start_date']) || empty($project['end_date']),
                 'users'       => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),
