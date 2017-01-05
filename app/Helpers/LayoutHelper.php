@@ -28,24 +28,16 @@ class LayoutHelper extends Base
      */
     public function app($template, array $params = [])
     {
+        $content = $this->template->render($template, $params);
+
         if ($this->request->isAjax()) {
-            return $this->template->render($template, $params);
+            return $content;
         }
 
-        return $this->pageLayout($template, $params);
-    }
-
-    /**
-     * Common layout for error views.
-     *
-     * @param string $template Template name
-     * @param array  $params   Template parameters
-     *
-     * @return string
-     */
-    public function error($template, array $params = [])
-    {
-        return $this->template->render($template, $params);
+        return $this->template->render(
+            'layouts/master',
+            $params + ['content_for_layout' => $content]
+        );
     }
 
     /**
@@ -170,23 +162,6 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Render page layout.
-     *
-     * @param string $template Template name
-     * @param array  $params   Key/value dictionary
-     * @param string $layout   Layout name
-     *
-     * @return string
-     */
-    public function pageLayout($template, array $params = [], $layout = 'layouts/master')
-    {
-        return $this->template->render(
-            $layout,
-            $params + ['content_for_layout' => $this->template->render($template, $params)]
-        );
-    }
-
-    /**
      * Common method to generate a sub-layout.
      *
      * @param string $sublayout
@@ -196,7 +171,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function subLayout($sublayout, $subside, $template, array $params = [])
+    protected function subLayout($sublayout, $subside, $template, array $params = [])
     {
         $content = $this->template->render($template, $params);
 
