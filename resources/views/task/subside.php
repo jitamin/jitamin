@@ -6,7 +6,7 @@
     <ul>
         <li>
             <i class="fa fa-pencil-square-o fa-fw"></i>
-            <?= $this->url->link(t('Edit the task'), 'Task/TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Edit the task'), 'Task/TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover large') ?>
         </li>
         <li>
             <i class="fa fa-refresh fa-rotate-90 fa-fw"></i>
