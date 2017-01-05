@@ -57,29 +57,7 @@ class ProjectController extends BaseController
     {
         $project = $this->getProject();
 
-        switch ($project['default_view']) {
-            case 'gantt':
-                $className = 'Task/TaskController';
-                $method = 'gantt';
-                break;
-            case 'board':
-                $className = 'Project/Board/BoardController';
-                $method = 'show';
-                break;
-            case 'list':
-                $className = 'Task/TaskController';
-                $method = 'index';
-                break;
-            case 'calendar':
-                $className = 'CalendarController';
-                $method = 'show';
-                break;
-            default:
-                $className = 'Project/ProjectController';
-                $method = 'overview';
-        }
-
-        $className = 'Jitamin\\Controller\\'.str_replace('/', '\\', $className);
+        list($className, $method) = $this->helper->app->getProjectDefaultView($project['default_view'], true);
         $controllerObject = new $className($this->container);
 
         return $controllerObject->{$method}();
