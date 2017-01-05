@@ -59,7 +59,7 @@ class AppHelper extends Base
             $result = strtolower($this->getPluginName()) === strtolower($plugin);
         }
 
-        if (!$result && $slug != '') {
+        if (!$result && $slug !== '') {
             if ($this->getRouterController() == 'Project/ProjectController' && $this->getRouterAction() == 'show') {
                 list($className, $method) = $this->getProjectDefaultView($slug);
                 $result = $controller == strtolower($className) && $action == strtolower($method);
