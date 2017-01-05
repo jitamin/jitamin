@@ -59,11 +59,11 @@ class AppHelper extends Base
             $result = strtolower($this->getPluginName()) === strtolower($plugin);
         }
 
-        if(!$result  && $slug != '') {
-            if($this->getRouterController() == 'Project/ProjectController' && $this->getRouterAction() == 'show') {
+        if (!$result && $slug != '') {
+            if ($this->getRouterController() == 'Project/ProjectController' && $this->getRouterAction() == 'show') {
                 list($className, $method) = $this->getProjectDefaultView($slug);
                 $result = $controller == strtolower($className) && $action == strtolower($method);
-            } else if ($this->getRouterController() == 'Dashboard/DashboardController' && $this->getRouterAction() == 'index') {
+            } elseif ($this->getRouterController() == 'Dashboard/DashboardController' && $this->getRouterAction() == 'index') {
                 list($className, $method) = $this->getDashboard();
                 $result = $controller == strtolower($className) && $action == strtolower($method);
             }

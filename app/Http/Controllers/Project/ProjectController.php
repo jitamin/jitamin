@@ -59,6 +59,7 @@ class ProjectController extends BaseController
 
         list($className, $method) = $this->helper->app->getProjectDefaultView($project['default_view'], true);
         $controllerObject = new $className($this->container);
+
         return $controllerObject->{$method}();
     }
 
