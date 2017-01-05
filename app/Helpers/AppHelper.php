@@ -54,14 +54,6 @@ class AppHelper extends Base
             $result = $currentAction === $action;
         }
 
-        if ($currentController == strtolower(Router::DEFAULT_CONTROLLER) && $currentAction == Router::DEFAULT_METHOD) {
-            list($defaultController, $defaultAction) = array_map(function ($value) {
-                return strtolower($value);
-            }, $this->getDashboard());
-
-            $result = ($controller == $defaultController && $action == $defaultAction) || ($controller == strtolower(Router::DEFAULT_CONTROLLER) && $action == Router::DEFAULT_METHOD);
-        }
-
         if ($result && $plugin !== '') {
             $result = strtolower($this->getPluginName()) === strtolower($plugin);
         }

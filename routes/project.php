@@ -64,6 +64,9 @@ return [
 'board/:project_id/collapse' => 'Project/Board/BoardAjaxController@collapse',
 'board/:project_id/expand'   => 'Project/Board/BoardAjaxController@expand',
 
+// Overview routes
+'overview/:project_id'          => 'Project/ProjectController@overview',
+
 // Gantt routes
 'gantt/:project_id'               => 'Task/TaskController@gantt',
 'gantt/:project_id/sort/:sorting' => 'Task/TaskController@gantt',
