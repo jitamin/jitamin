@@ -24,6 +24,9 @@
 
     <?= $this->form->label(t('Highest priority'), 'priority_end') ?>
     <?= $this->form->number('priority_end', $values, $errors) ?>
+
+    <?= $this->form->label(t('Default view'), 'default_view') ?>
+    <?= $this->form->select('default_view', $views, $values, $errors) ?>
     <hr>
     <div class="form-inline">
         <?= $this->form->label(t('Project owner'), 'owner_id') ?>

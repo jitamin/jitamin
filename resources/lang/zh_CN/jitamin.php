@@ -564,6 +564,7 @@ return [
     'Wide view' => '宽屏视图',
     'Compact/wide view' => '紧凑/宽屏视图',
     'No results match:' => '无匹配结果:',
+    'Default view' => '默认视图',
     'Private project' => '私有项目',
     'AUD - Australian Dollar' => '澳元',
     'CAD - Canadian Dollar' => '加元',
