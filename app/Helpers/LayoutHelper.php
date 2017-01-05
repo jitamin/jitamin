@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -32,11 +32,20 @@ class LayoutHelper extends Base
             return $this->template->render($template, $params);
         }
 
-        if (!isset($params['no_layout']) && !isset($params['board_selector'])) {
-            $params['board_selector'] = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
-        }
-
         return $this->pageLayout($template, $params);
+    }
+
+    /**
+     * Common layout for error views.
+     *
+     * @param string $template Template name
+     * @param array  $params   Template parameters
+     *
+     * @return string
+     */
+    public function error($template, array $params = [])
+    {
+        return $this->template->render($template, $params);
     }
 
     /**
@@ -44,16 +53,17 @@ class LayoutHelper extends Base
      *
      * @param string $template Template name
      * @param array  $params   Template parameters
+     * @param string $subside
      *
      * @return string
      */
-    public function profile($template, array $params)
+    public function profile($template, array $params, $subside = 'profile/subside')
     {
         if (isset($params['user'])) {
             $params['title'] = '#'.$params['user']['id'].' '.($params['user']['name'] ?: $params['user']['username']);
         }
 
-        return $this->subLayout('profile/layout', 'profile/subside', $template, $params);
+        return $this->subLayout('profile/layout', $subside, $template, $params);
     }
 
     /**
@@ -108,14 +118,15 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Common layout for setting views.
+     * Common layout for admin views.
      *
      * @param string $template
      * @param array  $params
+     * @param string $subside
      *
      * @return string
      */
-    public function setting($template, array $params)
+    public function admin($template, array $params, $subside = 'admin/setting/subside')
     {
         if (!isset($params['values'])) {
             $params['values'] = $this->settingModel->getAll();
@@ -125,20 +136,7 @@ class LayoutHelper extends Base
             $params['errors'] = [];
         }
 
-        return $this->subLayout('admin/setting/layout', 'admin/setting/subside', $template, $params);
-    }
-
-    /**
-     * Common layout for plugin views.
-     *
-     * @param string $template
-     * @param array  $params
-     *
-     * @return string
-     */
-    public function plugin($template, array $params)
-    {
-        return $this->subLayout('plugin/layout', 'plugin/subside', $template, $params);
+        return $this->subLayout('admin/layout', $subside, $template, $params);
     }
 
     /**
@@ -154,6 +152,14 @@ class LayoutHelper extends Base
         return $this->subLayout('dashboard/layout', 'dashboard/subside', $template, $params);
     }
 
+    /**
+     * Common layout for dashboard views.
+     *
+     * @param string $template
+     * @param array  $params
+     *
+     * @return string
+     */
     public function dashboard2($template, array $params)
     {
         $loader = $this->twig->load($template.'.html');

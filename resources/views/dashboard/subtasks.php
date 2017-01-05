@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h3><?= $this->url->link(t('My subtasks'), 'DashboardController', 'subtasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
+    <h3><?= $this->url->link(t('My subtasks'), 'Dashboard/DashboardController', 'subtasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
 </div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('There is nothing assigned to you.') ?></p>
@@ -19,10 +19,10 @@
                 <?= $this->render('task/dropdown', ['task' => ['id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($subtask['project_name']), 'BoardController', 'show', ['project_id' => $subtask['project_id']]) ?>
+                <?= $this->url->link($this->text->e($subtask['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $subtask['project_id']]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($subtask['task_name']), 'TaskViewController', 'show', ['task_id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]) ?>
+                <?= $this->url->link($this->text->e($subtask['task_name']), 'Task/TaskController', 'show', ['task_id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]) ?>
             </td>
             <td>
                 <?= $this->subtask->toggleStatus($subtask, $subtask['project_id']) ?>

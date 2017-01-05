@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,7 +28,7 @@ class UserPagination extends Base
     public function getListingPaginator()
     {
         return $this->paginator
-            ->setUrl('UserController', 'index')
+            ->setUrl('Admin/UserController', 'index')
             ->setMax(30)
             ->setOrder(UserModel::TABLE.'.username')
             ->setQuery($this->userModel->getQuery())

@@ -1,9 +1,11 @@
 .sidebar
   background-color: #2c3e50
-  width: 60px
+  width: $sidebar-width
   height: 100%
   position: fixed
   top: 0
+  left: 0
+  z-index: 100
 
   .sidememu
     color: #92908d
@@ -53,6 +55,9 @@
             border-left: solid 3px #da4f4a
             a
               color: #fff
+        .dropdown
+          display: block
+
     .menu-bottom
       position: absolute;
       bottom: 0

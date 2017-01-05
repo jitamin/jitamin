@@ -3,14 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Security\Role;
 use Jitamin\Notification\MailNotification;
 
@@ -26,10 +27,10 @@ class UserController extends BaseController
     {
         $paginator = $this->userPagination->getListingPaginator();
 
-        $this->response->html($this->helper->layout->app('user/index', [
+        $this->response->html($this->helper->layout->admin('admin/user/index', [
             'title'     => t('Users').' ('.$paginator->getTotal().')',
             'paginator' => $paginator,
-        ]));
+        ], 'admin/user/subside'));
     }
 
     /**
@@ -41,7 +42,7 @@ class UserController extends BaseController
     public function create(array $values = [], array $errors = [])
     {
         $isRemote = $this->request->getIntegerParam('remote') == 1 || (isset($values['is_ldap_user']) && $values['is_ldap_user'] == 1);
-        $template = $isRemote ? 'user/create_remote' : 'user/create_local';
+        $template = $isRemote ? 'admin/user/create_remote' : 'admin/user/create_local';
 
         $this->response->html($this->template->render($template, [
             'timezones' => $this->timezoneModel->getTimezones(true),
@@ -62,38 +63,28 @@ class UserController extends BaseController
         list($valid, $errors) = $this->userValidator->validateCreation($values);
 
         if ($valid) {
-            $this->createUser($values);
-        } else {
-            $this->show($values, $errors);
-        }
-    }
+            $project_id = empty($values['project_id']) ? 0 : $values['project_id'];
+            unset($values['project_id']);
 
-    /**
-     * Create user.
-     *
-     * @param array $values
-     */
-    private function createUser(array $values)
-    {
-        $project_id = empty($values['project_id']) ? 0 : $values['project_id'];
-        unset($values['project_id']);
+            $user_id = $this->userModel->create($values);
 
-        $user_id = $this->userModel->create($values);
+            if ($user_id !== false) {
+                if ($project_id !== 0) {
+                    $this->projectUserRoleModel->addUser($project_id, $user_id, Role::PROJECT_MEMBER);
+                }
 
-        if ($user_id !== false) {
-            if ($project_id !== 0) {
-                $this->projectUserRoleModel->addUser($project_id, $user_id, Role::PROJECT_MEMBER);
+                if (!empty($values['notifications_enabled'])) {
+                    $this->userNotificationTypeModel->saveSelectedTypes($user_id, [MailNotification::TYPE]);
+                }
+
+                $this->flash->success(t('User created successfully.'));
+                $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user_id]));
+            } else {
+                $this->flash->failure(t('Unable to create your user.'));
+                $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
             }
-
-            if (!empty($values['notifications_enabled'])) {
-                $this->userNotificationTypeModel->saveSelectedTypes($user_id, [MailNotification::TYPE]);
-            }
-
-            $this->flash->success(t('User created successfully.'));
-            $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user_id]));
         } else {
-            $this->flash->failure(t('Unable to create your user.'));
-            $this->response->redirect($this->helper->url->to('UserController', 'index'));
+            $this->create($values, $errors);
         }
     }
 
@@ -115,7 +106,7 @@ class UserController extends BaseController
             unset($values['password']);
         }
 
-        return $this->response->html($this->helper->layout->profile('user/authentication', [
+        return $this->response->html($this->helper->layout->profile('admin/user/authentication', [
             'values' => $values,
             'errors' => $errors,
             'user'   => $user,
@@ -141,7 +132,7 @@ class UserController extends BaseController
                 $this->flash->failure(t('Unable to update your user.'));
             }
 
-            return $this->response->redirect($this->helper->url->to('UserController', 'changeAuthentication', ['user_id' => $user['id']]));
+            return $this->response->redirect($this->helper->url->to('Admin/UserController', 'changeAuthentication', ['user_id' => $user['id']]));
         }
 
         return $this->changeAuthentication($values, $errors);
@@ -161,6 +152,6 @@ class UserController extends BaseController
             $this->flash->failure(t('Unable to unlock the user.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProfileController', 'show', ['user_id' => $user['id']]));
+        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'show', ['user_id' => $user['id']]));
     }
 }

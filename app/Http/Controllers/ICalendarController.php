@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -89,7 +89,7 @@ class ICalendarController extends BaseController
      * @param QueryBuilder $queryBuilder
      * @param iCalendar    $calendar
      */
-    private function renderCalendar(QueryBuilder $queryBuilder, iCalendar $calendar)
+    protected function renderCalendar(QueryBuilder $queryBuilder, iCalendar $calendar)
     {
         $start = $this->request->getStringParam('start', strtotime('-2 month'));
         $end = $this->request->getStringParam('end', strtotime('+6 months'));

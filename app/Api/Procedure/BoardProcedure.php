@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,6 +19,13 @@ use Jitamin\Formatter\BoardFormatter;
  */
 class BoardProcedure extends BaseProcedure
 {
+    /**
+     * Get a board by the project id.
+     *
+     * @param int $project_id Project id
+     *
+     * @return array
+     */
     public function getBoard($project_id)
     {
         ProjectAuthorization::getInstance($this->container)->check($this->getClassName(), 'getBoard', $project_id);

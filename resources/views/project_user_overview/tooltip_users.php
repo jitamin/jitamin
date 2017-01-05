@@ -7,7 +7,7 @@
         <tr><th><?= $role_name ?></th></tr>
             <?php foreach ($users[$role] as $user_id => $user): ?>
                 <tr><td>
-                <?= $this->url->link($this->text->e($user), 'ProjectUserOverviewController', 'opens', ['user_id' => $user_id]) ?>
+                <?= $this->url->link($this->text->e($user), 'Project/ProjectUserOverviewController', 'opens', ['user_id' => $user_id]) ?>
                 </td></tr>
             <?php endforeach ?>
         <?php endif ?>

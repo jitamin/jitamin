@@ -2,7 +2,7 @@
     <h2><?= t('Link modification') ?></h2>
 </div>
 
-<form action="<?= $this->url->href('LinkController', 'update', ['link_id' => $link['id']]) ?>" method="post" autocomplete="off">
+<form action="<?= $this->url->href('Admin/LinkController', 'update', ['link_id' => $link['id']]) ?>" method="post" autocomplete="off">
 
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('id', $values) ?>
@@ -16,6 +16,6 @@
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
         <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'LinkController', 'index') ?>
+        <?= $this->url->link(t('cancel'), 'Admin/LinkController', 'index') ?>
     </div>
 </form>

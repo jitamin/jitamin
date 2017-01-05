@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -18,24 +18,6 @@ use Jitamin\Core\Controller\PageNotFoundException;
  */
 class CategoryController extends BaseController
 {
-    /**
-     * Get the category (common method between actions).
-     *
-     * @throws PageNotFoundException
-     *
-     * @return array
-     */
-    private function getCategory()
-    {
-        $category = $this->categoryModel->getById($this->request->getIntegerParam('category_id'));
-
-        if (empty($category)) {
-            throw new PageNotFoundException();
-        }
-
-        return $category;
-    }
-
     /**
      * List of categories for a given project.
      *
@@ -171,5 +153,23 @@ class CategoryController extends BaseController
         }
 
         $this->response->redirect($this->helper->url->to('CategoryController', 'index', ['project_id' => $project['id']]));
+    }
+
+    /**
+     * Get the category (common method between actions).
+     *
+     * @throws PageNotFoundException
+     *
+     * @return array
+     */
+    protected function getCategory()
+    {
+        $category = $this->categoryModel->getById($this->request->getIntegerParam('category_id'));
+
+        if (empty($category)) {
+            throw new PageNotFoundException();
+        }
+
+        return $category;
     }
 }

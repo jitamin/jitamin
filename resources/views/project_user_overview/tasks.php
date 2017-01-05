@@ -3,7 +3,7 @@
 <?php elseif (!$paginator->isEmpty()): ?>
     <table class="table-small table-striped table-scrolling">
         <tr>
-            <th class="column-5"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
+            <th class="column-8"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
             <th class="column-10"><?= $paginator->order(t('Project'), 'projects.name') ?></th>
             <th class="column-15"><?= $paginator->order(t('Column'), 'tasks.column_id') ?></th>
             <th><?= $paginator->order(t('Title'), 'tasks.title') ?></th>
@@ -14,16 +14,16 @@
         <?php foreach ($paginator->getCollection() as $task): ?>
         <tr>
             <td class="task-table color-<?= $task['color_id'] ?>">
-                <?= $this->url->link('#'.$this->text->e($task['id']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                <?= $this->url->link('#'.$this->text->e($task['id']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['project_name']), 'BoardController', 'show', ['project_id' => $task['project_id']]) ?>
+                <?= $this->url->link($this->text->e($task['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $task['project_id']]) ?>
             </td>
             <td>
                 <?= $this->text->e($task['column_name']) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['title']), 'TaskViewController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </td>
             <td>
                 <?php if ($task['assignee_username']): ?>

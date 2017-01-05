@@ -10,10 +10,10 @@
                    class="board-project-<?= $project['id'] ?>"
                    data-project-id="<?= $project['id'] ?>"
                    data-check-interval="<?= $board_private_refresh_interval ?>"
-                   data-store-url="<?= $this->url->href('BoardAjaxController', 'store', ['project_id' => $project['id']]) ?>"
-                   data-reload-url="<?= $this->url->href('BoardAjaxController', 'reload', ['project_id' => $project['id']]) ?>"
-                   data-check-url="<?= $this->url->href('BoardAjaxController', 'check', ['project_id' => $project['id'], 'timestamp' => time()]) ?>"
-                   data-task-creation-url="<?= $this->url->href('TaskController', 'create', ['project_id' => $project['id']]) ?>"
+                   data-store-url="<?= $this->url->href('Project/Board/BoardAjaxController', 'store', ['project_id' => $project['id']]) ?>"
+                   data-reload-url="<?= $this->url->href('Project/Board/BoardAjaxController', 'reload', ['project_id' => $project['id']]) ?>"
+                   data-check-url="<?= $this->url->href('Project/Board/BoardAjaxController', 'check', ['project_id' => $project['id'], 'timestamp' => time()]) ?>"
+                   data-task-creation-url="<?= $this->url->href('Task/TaskController', 'create', ['project_id' => $project['id']]) ?>"
             >
         <?php endif ?>
 

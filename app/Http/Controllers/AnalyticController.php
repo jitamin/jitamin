@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -129,7 +129,7 @@ class AnalyticController extends BaseController
      * @param string $column
      * @param string $title
      */
-    private function commonAggregateMetrics($template, $column, $title)
+    protected function commonAggregateMetrics($template, $column, $title)
     {
         $project = $this->getProject();
         list($from, $to) = $this->getDates();
@@ -151,7 +151,7 @@ class AnalyticController extends BaseController
     /**
      * Get dates.
      */
-    private function getDates()
+    protected function getDates()
     {
         $values = $this->request->getValues();
 

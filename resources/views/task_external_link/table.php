@@ -6,7 +6,7 @@
         <th class="column-10"><?= t('Dependency') ?></th>
         <th class="column-15"><?= t('Creator') ?></th>
         <th class="column-15"><?= t('Date') ?></th>
-        <?php if ($this->user->hasProjectAccess('TaskExternalLinkController', 'edit', $task['project_id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Task/TaskExternalLinkController', 'edit', $task['project_id'])): ?>
             <th class="column-5"><?= t('Action') ?></th>
         <?php endif ?>
     </tr>
@@ -27,18 +27,18 @@
             <td>
                 <?= $this->dt->date($link['date_creation']) ?>
             </td>
-            <?php if ($this->user->hasProjectAccess('TaskExternalLinkController', 'edit', $task['project_id'])): ?>
+            <?php if ($this->user->hasProjectAccess('Task/TaskExternalLinkController', 'edit', $task['project_id'])): ?>
                 <td>
                     <div class="dropdown">
                         <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog fa-fw"></i><i class="fa fa-caret-down"></i></a>
                         <ul>
                             <li>
                                 <i class="fa fa-edit fa-fw"></i>
-                                <?= $this->url->link(t('Edit'), 'TaskExternalLinkController', 'edit', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+                                <?= $this->url->link(t('Edit'), 'Task/TaskExternalLinkController', 'edit', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                             </li>
                             <li>
                                 <i class="fa fa-trash-o fa-fw"></i>
-                                <?= $this->url->link(t('Remove'), 'TaskExternalLinkController', 'confirm', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+                                <?= $this->url->link(t('Remove'), 'Task/TaskExternalLinkController', 'confirm', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                             </li>
                         </ul>
                     </div>

@@ -3,7 +3,7 @@
     <ul>
         <li>
             <i class="fa fa-columns"></i>
-            <?= $this->url->link(t('Board'), 'BoardController', 'show', ['project_id' => $project['id']]) ?>
+            <?= $this->url->link(t('Board'), 'Project/Board/BoardController', 'show', ['project_id' => $project['id']]) ?>
         </li>
         <li>
             <i class="fa fa-calendar"></i>
@@ -11,12 +11,12 @@
         </li>
         <li>
             <i class="fa fa-list"></i>
-            <?= $this->url->link(t('Listing'), 'TaskController', 'index', ['project_id' => $project['id']]) ?>
+            <?= $this->url->link(t('Listing'), 'Task/TaskController', 'index', ['project_id' => $project['id']]) ?>
         </li>
-        <?php if ($this->user->hasProjectAccess('TaskGanttController', 'show', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Task/TaskController', 'gantt', $project['id'])): ?>
         <li>
             <i class="fa fa-sliders"></i>
-            <?= $this->url->link(t('Gantt'), 'TaskGanttController', 'show', ['project_id' => $project['id']]) ?>
+            <?= $this->url->link(t('Gantt'), 'Task/TaskController', 'gantt', ['project_id' => $project['id']]) ?>
         </li>
         <?php endif ?>
 
@@ -34,10 +34,10 @@
 
         <?= $this->hook->render('template:project:dropdown', ['project' => $project]) ?>
 
-        <?php if ($this->user->hasProjectAccess('ProjectController', 'edit', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/ProjectController', 'edit', $project['id'])): ?>
             <li>
                 <i class="fa fa-cog"></i>
-                <?= $this->url->link(t('Settings'), 'ProjectSettingsController', 'show', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Settings'), 'Project/ProjectController', 'edit', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
     </ul>

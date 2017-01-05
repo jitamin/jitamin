@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -524,5 +524,30 @@ class ProjectModel extends Model
                     ->table(self::TABLE)
                     ->eq('id', $project_id)
                     ->save(['is_public' => 0, 'token' => '']);
+    }
+
+    /**
+     * Get available views.
+     *
+     * @param bool $prepend Prepend a default value
+     *
+     * @return array
+     */
+    public function getViews($prepend = false)
+    {
+        // Sorted by value
+        $views = [
+            'overview'   => t('Overview'),
+            'board'      => t('Board'),
+            'calendar'   => t('Calendar'),
+            'list'       => t('List'),
+            'gantt'      => t('Gantt'),
+        ];
+
+        if ($prepend) {
+            return ['' => t('Use default view')] + $views;
+        }
+
+        return $views;
     }
 }

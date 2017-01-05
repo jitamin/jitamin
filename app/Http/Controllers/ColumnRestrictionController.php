@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -66,7 +66,7 @@ class ColumnRestrictionController extends BaseController
                 $this->flash->failure(t('Unable to create this column restriction.'));
             }
 
-            $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+            $this->response->redirect($this->helper->url->to('Task/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         } else {
             $this->create($values, $errors);
         }
@@ -101,6 +101,6 @@ class ColumnRestrictionController extends BaseController
             $this->flash->failure(t('Unable to remove this restriction.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ProjectRoleController', 'show', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Task/ProjectRoleController', 'show', ['project_id' => $project['id']]));
     }
 }

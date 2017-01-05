@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -42,7 +42,7 @@ class ProjectRoleHelper extends Base
      */
     public function isDraggable(array &$task)
     {
-        if ($task['is_active'] == 1 && $this->helper->user->hasProjectAccess('BoardAjaxController', 'store', $task['project_id'])) {
+        if ($task['is_active'] == 1 && $this->helper->user->hasProjectAccess('Project/Board/BoardAjaxController', 'store', $task['project_id'])) {
             return $this->isSortableColumn($task['project_id'], $task['column_id']);
         }
 
@@ -130,7 +130,7 @@ class ProjectRoleHelper extends Base
             }
         }
 
-        return $this->helper->user->hasProjectAccess('TaskController', 'create', $project_id);
+        return $this->helper->user->hasProjectAccess('Task/TaskController', 'create', $project_id);
     }
 
     /**
@@ -151,7 +151,7 @@ class ProjectRoleHelper extends Base
             }
         }
 
-        return $this->helper->user->hasProjectAccess('TaskStatusController', 'close', $project_id);
+        return $this->helper->user->hasProjectAccess('Task/TaskStatusController', 'close', $project_id);
     }
 
     /**

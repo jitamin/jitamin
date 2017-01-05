@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -47,7 +47,7 @@ class LdapUserPhotoSubscriber extends BaseSubscriber implements EventSubscriberI
 
             if (empty($profile['avatar_path']) && !empty($photo)) {
                 $this->logger->info('Saving user photo from LDAP profile');
-                $this->avatarFileModel->uploadImageContent($profile['id'], $photo);
+                $this->avatarModel->uploadImageContent($profile['id'], $photo);
             }
         }
     }

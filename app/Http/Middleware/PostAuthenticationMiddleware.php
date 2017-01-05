@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -25,7 +25,7 @@ class PostAuthenticationMiddleware extends BaseMiddleware
     {
         $controller = strtolower($this->router->getController());
         $action = strtolower($this->router->getAction());
-        $ignore = ($controller === 'twofactorcontroller' && in_array($action, ['code', 'check'])) || ($controller === 'authcontroller' && $action === 'logout');
+        $ignore = ($controller === 'profile/twofactorcontroller' && in_array($action, ['code', 'check'])) || ($controller === 'auth/authcontroller' && $action === 'logout');
 
         if ($ignore === false && $this->userSession->hasPostAuthentication() && !$this->userSession->isPostAuthenticationValidated()) {
             $this->nextMiddleware = null;
@@ -33,7 +33,7 @@ class PostAuthenticationMiddleware extends BaseMiddleware
             if ($this->request->isAjax()) {
                 $this->response->text('Not Authorized', 401);
             } else {
-                $this->response->redirect($this->helper->url->to('TwoFactorController', 'code'));
+                $this->response->redirect($this->helper->url->to('Profile/TwoFactorController', 'code'));
             }
         }
 

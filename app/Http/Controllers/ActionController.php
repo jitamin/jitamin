@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -124,27 +124,6 @@ class ActionController extends BaseController
     }
 
     /**
-     * Common method to save the action.
-     *
-     * @param array $project Project properties
-     * @param array $values  Form values
-     */
-    private function doCreation(array $project, array $values)
-    {
-        list($valid) = $this->actionValidator->validateCreation($values);
-
-        if ($valid) {
-            if ($this->actionModel->create($values) !== false) {
-                $this->flash->success(t('Your automatic action have been created successfully.'));
-            } else {
-                $this->flash->failure(t('Unable to create your automatic action.'));
-            }
-        }
-
-        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
-    }
-
-    /**
      * Confirmation dialog before removing an action.
      */
     public function confirm()
@@ -173,6 +152,27 @@ class ActionController extends BaseController
             $this->flash->success(t('Action removed successfully.'));
         } else {
             $this->flash->failure(t('Unable to remove this action.'));
+        }
+
+        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
+    }
+
+    /**
+     * Common method to save the action.
+     *
+     * @param array $project Project properties
+     * @param array $values  Form values
+     */
+    protected function doCreation(array $project, array $values)
+    {
+        list($valid) = $this->actionValidator->validateCreation($values);
+
+        if ($valid) {
+            if ($this->actionModel->create($values) !== false) {
+                $this->flash->success(t('Your automatic action have been created successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to create your automatic action.'));
+            }
         }
 
         $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));

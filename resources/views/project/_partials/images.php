@@ -12,10 +12,10 @@
                                     <i class="fa fa-download fa-fw"></i>
                                     <?= $this->url->link(t('Download'), 'FileViewerController', 'download', ['project_id' => $project['id'], 'file_id' => $file['id']]) ?>
                                 </li>
-                                <?php if ($this->user->hasProjectAccess('ProjectFileController', 'remove', $project['id'])): ?>
+                                <?php if ($this->user->hasProjectAccess('Project/ProjectFileController', 'remove', $project['id'])): ?>
                                     <li>
                                         <i class="fa fa-trash fa-fw"></i>
-                                        <?= $this->url->link(t('Remove'), 'ProjectFileController', 'confirm', ['project_id' => $project['id'], 'file_id' => $file['id']], false, 'popover') ?>
+                                        <?= $this->url->link(t('Remove'), 'Project/ProjectFileController', 'confirm', ['project_id' => $project['id'], 'file_id' => $file['id']], false, 'popover') ?>
                                     </li>
                                 <?php endif ?>
                             </ul>

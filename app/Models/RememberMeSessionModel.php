@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -27,11 +27,11 @@ class RememberMeSessionModel extends Model
     const TABLE = 'remember_me';
 
     /**
-     * Expiration (60 days).
+     * Expiration (30 days).
      *
      * @var int
      */
-    const EXPIRATION = 5184000;
+    const EXPIRATION = 2592000;
 
     /**
      * Get a remember me record.

@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -22,41 +22,99 @@ use LogicException;
  */
 class UserProcedure extends BaseProcedure
 {
+    /**
+     * Get a specific user by id.
+     *
+     * @param int $user_id User id
+     *
+     * @return array
+     */
     public function getUser($user_id)
     {
         return $this->userModel->getById($user_id);
     }
 
+    /**
+     * Get a specific user by the username.
+     *
+     * @param string $username Username
+     *
+     * @return array
+     */
     public function getUserByName($username)
     {
         return $this->userModel->getByUsername($username);
     }
 
+    /**
+     * Get all users.
+     *
+     * @return array
+     */
     public function getAllUsers()
     {
         return $this->userModel->getAll();
     }
 
+    /**
+     * Remove a specific user.
+     *
+     * @param int $user_id User id
+     *
+     * @return bool
+     */
     public function removeUser($user_id)
     {
         return $this->userModel->remove($user_id);
     }
 
+    /**
+     * Disable a specific user.
+     *
+     * @param int $user_id
+     *
+     * @return bool
+     */
     public function disableUser($user_id)
     {
         return $this->userModel->disable($user_id);
     }
 
+    /**
+     * Enable a specific user.
+     *
+     * @param int $user_id
+     *
+     * @return bool
+     */
     public function enableUser($user_id)
     {
         return $this->userModel->enable($user_id);
     }
 
+    /**
+     * Return true if the user is active.
+     *
+     * @param int $user_id User id
+     *
+     * @return bool
+     */
     public function isActiveUser($user_id)
     {
         return $this->userModel->isActive($user_id);
     }
 
+    /**
+     * Add a new user in the database.
+     *
+     * @param string $username
+     * @param string $password
+     * @param string $name
+     * @param string $email
+     * @param string $role
+     *
+     * @return bool|int
+     */
     public function createUser($username, $password, $name = '', $email = '', $role = Role::APP_USER)
     {
         $values = [
@@ -123,6 +181,18 @@ class UserProcedure extends BaseProcedure
         }
     }
 
+    /**
+     * Update a user in the database.
+     *
+     * @param int    $id
+     * @param string $username
+     * @param string $password
+     * @param string $name
+     * @param string $email
+     * @param string $role
+     *
+     * @return bool
+     */
     public function updateUser($id, $username = null, $name = null, $email = null, $role = null)
     {
         $values = $this->filterValues([

@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -83,7 +83,7 @@ class FeedController extends BaseController
             $itemDate = new DateTime();
             $itemDate->setTimestamp($event['date_creation']);
 
-            $itemUrl = $this->helper->url->to('TaskViewController', 'show', ['task_id' => $event['task_id']], '', true);
+            $itemUrl = $this->helper->url->to('Task/TaskController', 'show', ['task_id' => $event['task_id']], '', true);
 
             $feedBuilder
                 ->withItem(AtomItemBuilder::create($feedBuilder)

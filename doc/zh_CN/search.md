@@ -86,7 +86,7 @@ assigne:me due:tomorrow my title
 
 时间格式参照`到期时间`搜索.
 
-支持过滤`刚刚`有更新的任务: `modified:recently`.
+支持筛选`刚刚`有更新的任务: `modified:recently`.
 
 此处所认定的`刚刚`与项目设定的`高亮期限`的时间一致.
 

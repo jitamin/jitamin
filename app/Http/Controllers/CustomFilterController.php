@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -168,7 +168,7 @@ class CustomFilterController extends BaseController
      *
      * @throws AccessForbiddenException
      */
-    private function checkPermission(array $project, array $filter)
+    protected function checkPermission(array $project, array $filter)
     {
         $user_id = $this->userSession->getId();
 

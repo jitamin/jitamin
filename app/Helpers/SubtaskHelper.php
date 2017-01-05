@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,11 +28,11 @@ class SubtaskHelper extends Base
     public function getTitle(array $subtask)
     {
         if ($subtask['status'] == 0) {
-            $html = '<i class="fa fa-square-o fa-fw"></i>';
+            $html = '<i class="fa fa-square-o fa-fw" title="'.t('Backlog').'"></i>';
         } elseif ($subtask['status'] == 1) {
-            $html = '<i class="fa fa-gears fa-fw"></i>';
+            $html = '<i class="fa fa-caret-square-o-right fa-fw" title="'.t('Work in progress').'"></i>';
         } else {
-            $html = '<i class="fa fa-check-square-o fa-fw"></i>';
+            $html = '<i class="fa fa-check-square-o fa-fw" title="'.t('Done').'"></i>';
         }
 
         return $html.$this->helper->text->e($subtask['title']);
@@ -49,19 +49,19 @@ class SubtaskHelper extends Base
      */
     public function toggleStatus(array $subtask, $project_id, $refresh_table = false)
     {
-        if (!$this->helper->user->hasProjectAccess('SubtaskController', 'edit', $project_id)) {
+        if (!$this->helper->user->hasProjectAccess('Task/Subtask/SubtaskController', 'edit', $project_id)) {
             return $this->getTitle($subtask);
         }
 
         $params = ['task_id' => $subtask['task_id'], 'subtask_id' => $subtask['id'], 'refresh-table' => (int) $refresh_table];
 
         if ($subtask['status'] == 0 && isset($this->sessionStorage->hasSubtaskInProgress) && $this->sessionStorage->hasSubtaskInProgress) {
-            return $this->helper->url->link($this->getTitle($subtask), 'SubtaskRestrictionController', 'show', $params, false, 'popover');
+            return $this->helper->url->link($this->getTitle($subtask), 'Task/Subtask/SubtaskRestrictionController', 'show', $params, false, 'popover');
         }
 
         $class = 'subtask-toggle-status '.($refresh_table ? 'subtask-refresh-table' : '');
 
-        return $this->helper->url->link($this->getTitle($subtask), 'SubtaskStatusController', 'change', $params, false, $class);
+        return $this->helper->url->link($this->getTitle($subtask), 'Task/Subtask/SubtaskStatusController', 'change', $params, false, $class);
     }
 
     /**

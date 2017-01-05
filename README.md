@@ -6,17 +6,17 @@ Jitamin
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jitamin/jitamin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jitamin/jitamin/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理过程中起重要作用的维他命。
+Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理的维他命。
 
-![Screenshot](http://jitamin.com/jitamin.png)
+![jitamin](https://cloud.githubusercontent.com/assets/15666864/21678087/312aab60-d378-11e6-8244-56882545970c.jpeg)
 
 ## 功能特性
 
-* 界面简洁、美观
+* 简洁、美观的界面
 * 可视化的任务管理
-* 项目支持列表、看板和甘特图
-* 任务可在看板间拖拽
-* 多语言，目前支持英文和简体中文
+* 支持列表、看板和甘特图等任务视图
+* 任务可拖拽移动
+* 多语言，默认带英文和简体中文语言包
 * 过滤搜索
 * 可创建团队项目和个人项目
 * 支持任务、子任务、附件和评论
@@ -24,6 +24,8 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 * 可视化的统计
 * 第三方集成
 * 支持插件
+
+[版本更新说明](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
 
 ## 下一阶段要实现的功能
 
@@ -36,6 +38,7 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 - [x] 可对项目进行按赞(亦可当收藏夹使用)
 - [x] 支持在线预览PDF和Log文件
 - [x] 引入phinx进行数据迁移管理
+- [x] 可自定义控制台默认首页
 - [ ] 集成twig模板引擎
 
 ## 安装环境要求
@@ -69,13 +72,14 @@ $ cp config/config{.default,}.php
 
 - 创建数据表
 ```shell
-php vendor/bin/phinx migrate
+vendor/bin/phinx migrate
 ```
 
 - 安装初始数据
 ```shell
-php vendor/bin/phinx seed:run
+vendor/bin/phinx seed:run
 ```
+> Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
 
 五. 确保storage目录可写。
 
@@ -98,7 +102,7 @@ $ chmod -R 0777 storage
 
 ```shell
 $ git fetch --all
-$ git checkout {latest_tag} // 请将 {latest_tag} 修改为最新的tag，比如：0.2.0
+$ git checkout {latest_tag} // 请将 {latest_tag} 修改为最新的tag，比如：0.3.0
 ```
 
 二. 更新依赖
@@ -110,12 +114,20 @@ $ composer install -o --no-dev
 三. 更新数据表
 
 ```shell
-php vendor/bin/phinx migrate
+vendor/bin/phinx migrate
 ```
+> Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
 
 ## 系统演示
 
-体验Jitamin, 请访问 [Jitamin](http://jitamin.com):
+体验Jitamin, 请访问 [http://jitamin.com](http://jitamin.com):
+
+一. 普通用户
+
+- **用户名:** `test` or `test@test.com`
+- **密码:** `test123`
+
+二. 管理员用户
 
 - **用户名:** `jitamin` or `jitamin@jitamin.com`
 - **密码:** `jitamin`

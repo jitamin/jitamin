@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -48,9 +48,9 @@ class ProjectGanttFormatter extends BaseFormatter implements FormatterInterface
                     (int) date('n', $end),
                     (int) date('j', $end),
                 ],
-                'link'        => $this->helper->url->href('ProjectSettingsController', 'show', ['project_id' => $project['id']]),
-                'board_link'  => $this->helper->url->href('BoardController', 'show', ['project_id' => $project['id']]),
-                'gantt_link'  => $this->helper->url->href('TaskGanttController', 'show', ['project_id' => $project['id']]),
+                'link'        => $this->helper->url->href('Project/ProjectController', 'show', ['project_id' => $project['id']]),
+                'board_link'  => $this->helper->url->href('Project/Board/BoardController', 'show', ['project_id' => $project['id']]),
+                'gantt_link'  => $this->helper->url->href('Task/TaskController', 'gantt', ['project_id' => $project['id']]),
                 'color'       => $color,
                 'not_defined' => empty($project['start_date']) || empty($project['end_date']),
                 'users'       => $this->projectUserRoleModel->getAllUsersGroupedByRole($project['id']),

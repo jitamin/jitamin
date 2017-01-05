@@ -3,14 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Plugin\Directory;
 use Jitamin\Core\Plugin\Installer;
 use Jitamin\Core\Plugin\PluginInstallerException;
@@ -25,11 +26,11 @@ class PluginController extends BaseController
      */
     public function show()
     {
-        $this->response->html($this->helper->layout->plugin('plugin/show', [
+        $this->response->html($this->helper->layout->admin('admin/plugin/show', [
             'plugins'       => $this->pluginLoader->getPlugins(),
             'title'         => t('Installed Plugins'),
             'is_configured' => Installer::isConfigured(),
-        ]));
+        ], 'admin/plugin/subside'));
     }
 
     /**
@@ -43,12 +44,12 @@ class PluginController extends BaseController
             $installedPlugins[$plugin->getPluginName()] = $plugin->getPluginVersion();
         }
 
-        $this->response->html($this->helper->layout->plugin('plugin/directory', [
+        $this->response->html($this->helper->layout->admin('admin/plugin/directory', [
             'installed_plugins' => $installedPlugins,
             'available_plugins' => Directory::getInstance($this->container)->getAvailablePlugins(),
             'title'             => t('Plugin Directory'),
             'is_configured'     => Installer::isConfigured(),
-        ]));
+        ], 'admin/plugin/subside'));
     }
 
     /**
@@ -69,7 +70,7 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 
     /**
@@ -90,7 +91,7 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 
     /**
@@ -101,7 +102,7 @@ class PluginController extends BaseController
         $pluginId = $this->request->getStringParam('pluginId');
         $plugins = $this->pluginLoader->getPlugins();
 
-        $this->response->html($this->template->render('plugin/remove', [
+        $this->response->html($this->template->render('admin/plugin/remove', [
             'plugin_id' => $pluginId,
             'plugin'    => $plugins[$pluginId],
         ]));
@@ -125,6 +126,6 @@ class PluginController extends BaseController
             $this->flash->failure($e->getMessage());
         }
 
-        $this->response->redirect($this->helper->url->to('PluginController', 'show'));
+        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
     }
 }

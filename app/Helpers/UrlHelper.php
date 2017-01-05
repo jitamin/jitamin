@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -207,7 +207,8 @@ class UrlHelper extends Base
         }
 
         if (!empty($qs)) {
-            $path .= '?'.http_build_query($qs, '', $separator);
+            unset($qs['controller']);
+            $path .= '?controller='.$controller.$separator.http_build_query($qs, '', $separator);
         }
 
         return ($absolute ? $this->base() : $this->dir()).$path.(empty($anchor) ? '' : '#'.$anchor);

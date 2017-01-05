@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,6 +29,13 @@ class ProcedureAuthorization extends Base
         'getMyOverdueTasks',
     ];
 
+    /**
+     * Determine if the current user has permissions.
+     *
+     * @param string $procedure
+     *
+     * @throws \JsonRPC\Exception\AccessDeniedException
+     */
     public function check($procedure)
     {
         if (!$this->userSession->isLogged() && in_array($procedure, $this->userSpecificProcedures)) {

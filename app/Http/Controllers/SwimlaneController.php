@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -20,24 +20,6 @@ use Jitamin\Model\SwimlaneModel;
  */
 class SwimlaneController extends BaseController
 {
-    /**
-     * Get the swimlane (common method between actions).
-     *
-     * @throws PageNotFoundException
-     *
-     * @return array
-     */
-    private function getSwimlane()
-    {
-        $swimlane = $this->swimlaneModel->getById($this->request->getIntegerParam('swimlane_id'));
-
-        if (empty($swimlane)) {
-            throw new PageNotFoundException();
-        }
-
-        return $swimlane;
-    }
-
     /**
      * List of swimlanes for a given project.
      */
@@ -297,5 +279,23 @@ class SwimlaneController extends BaseController
         } else {
             throw new AccessForbiddenException();
         }
+    }
+
+    /**
+     * Get the swimlane (common method between actions).
+     *
+     * @throws PageNotFoundException
+     *
+     * @return array
+     */
+    protected function getSwimlane()
+    {
+        $swimlane = $this->swimlaneModel->getById($this->request->getIntegerParam('swimlane_id'));
+
+        if (empty($swimlane)) {
+            throw new PageNotFoundException();
+        }
+
+        return $swimlane;
     }
 }

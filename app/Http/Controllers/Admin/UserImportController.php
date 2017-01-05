@@ -3,14 +3,15 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Admin;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Csv;
 
 /**
@@ -26,7 +27,7 @@ class UserImportController extends BaseController
      */
     public function show(array $values = [], array $errors = [])
     {
-        $this->response->html($this->template->render('user/import', [
+        $this->response->html($this->template->render('admin/user/import', [
             'values'     => $values,
             'errors'     => $errors,
             'max_size'   => get_upload_max_size(),
@@ -49,7 +50,7 @@ class UserImportController extends BaseController
             $this->importFile($values, $filename);
         }
 
-        $this->response->redirect($this->helper->url->to('UserController', 'index'));
+        $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
     }
 
     /**
@@ -67,7 +68,7 @@ class UserImportController extends BaseController
      * @param array $values
      * @param       $filename
      */
-    private function importFile(array $values, $filename)
+    protected function importFile(array $values, $filename)
     {
         $csv = new Csv($values['delimiter'], $values['enclosure']);
         $csv->setColumnMapping($this->userImport->getColumnMapping());

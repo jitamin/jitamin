@@ -5,6 +5,8 @@ return [
     'number.thousands_separator' => ',',
     'None' => '无',
     'Default' => '默认',
+    'Create' => '创建',
+    'Manage' => '管理',
     'edit' => '编辑',
     'Edit' => '编辑',
     'remove' => '删除',

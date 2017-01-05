@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -19,6 +19,13 @@ use Jitamin\Api\Authorization\TaskAuthorization;
  */
 class SubtaskProcedure extends BaseProcedure
 {
+    /**
+     * Get a subtask by the id.
+     *
+     * @param int $subtask_id Subtask id
+     *
+     * @return array
+     */
     public function getSubtask($subtask_id)
     {
         SubtaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getSubtask', $subtask_id);
@@ -26,6 +33,13 @@ class SubtaskProcedure extends BaseProcedure
         return $this->subtaskModel->getById($subtask_id);
     }
 
+    /**
+     * Get all subtasks for a given task.
+     *
+     * @param int $task_id Task id
+     *
+     * @return array
+     */
     public function getAllSubtasks($task_id)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'getAllSubtasks', $task_id);
@@ -33,6 +47,13 @@ class SubtaskProcedure extends BaseProcedure
         return $this->subtaskModel->getAll($task_id);
     }
 
+    /**
+     * Remove.
+     *
+     * @param int $subtask_id Subtask id
+     *
+     * @return bool
+     */
     public function removeSubtask($subtask_id)
     {
         SubtaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'removeSubtask', $subtask_id);
@@ -40,6 +61,18 @@ class SubtaskProcedure extends BaseProcedure
         return $this->subtaskModel->remove($subtask_id);
     }
 
+    /**
+     * Create a new subtask.
+     *
+     * @param int    $task_id
+     * @param string $title
+     * @param int    $user_id
+     * @param int    $time_estimated
+     * @param int    $time_spent
+     * @param int    $status
+     *
+     * @return bool|int
+     */
     public function createSubtask($task_id, $title, $user_id = 0, $time_estimated = 0, $time_spent = 0, $status = 0)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'createSubtask', $task_id);
@@ -58,6 +91,19 @@ class SubtaskProcedure extends BaseProcedure
         return $valid ? $this->subtaskModel->create($values) : false;
     }
 
+    /**
+     * Create a new subtask.
+     *
+     * @param int    $id
+     * @param int    $task_id
+     * @param string $title
+     * @param int    $user_id
+     * @param int    $time_estimated
+     * @param int    $time_spent
+     * @param int    $status
+     *
+     * @return bool
+     */
     public function updateSubtask($id, $task_id, $title = null, $user_id = null, $time_estimated = null, $time_spent = null, $status = null)
     {
         TaskAuthorization::getInstance($this->container)->check($this->getClassName(), 'updateSubtask', $task_id);

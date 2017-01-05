@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,7 +39,7 @@ class SubtaskTimeTrackingCalendarFormatter extends BaseFormatter implements Form
                 'backgroundColor' => $this->colorModel->getBackgroundColor($row['color_id']),
                 'borderColor'     => $this->colorModel->getBorderColor($row['color_id']),
                 'textColor'       => 'black',
-                'url'             => $this->helper->url->to('TaskViewController', 'show', ['task_id' => $row['task_id'], 'project_id' => $row['project_id']]),
+                'url'             => $this->helper->url->to('Task/TaskController', 'show', ['task_id' => $row['task_id'], 'project_id' => $row['project_id']]),
                 'editable'        => false,
             ];
         }

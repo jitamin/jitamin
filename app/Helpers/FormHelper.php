@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -200,7 +200,7 @@ class FormHelper extends Base
     {
         $params = [
             'name'         => $name,
-            'text'         => isset($values[$name]) ? $this->helper->text->e($values[$name]) : '',
+            'text'         => isset($values[$name]) ? $values[$name] : '',
             'css'          => $this->errorClass($errors, $name),
             'required'     => isset($attributes['required']) && $attributes['required'],
             'tabindex'     => isset($attributes['tabindex']) ? $attributes['tabindex'] : '-1',

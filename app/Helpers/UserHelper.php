@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -112,7 +112,7 @@ class UserHelper extends Base
      *
      * @return bool
      */
-    public function hasAccess($controller, $action)
+    public function hasAccess($controller, $action, $plugin = '')
     {
         if (!$this->userSession->isLogged()) {
             return false;
@@ -122,7 +122,7 @@ class UserHelper extends Base
         $result = $this->memoryCache->get($key);
 
         if ($result === null) {
-            $result = $this->applicationAuthorization->isAllowed($controller, $action, $this->userSession->getRole());
+            $result = $this->applicationAuthorization->isAllowed($controller, $action, $this->userSession->getRole(), $plugin);
             $this->memoryCache->set($key, $result);
         }
 

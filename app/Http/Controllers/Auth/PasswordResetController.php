@@ -3,15 +3,17 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Auth;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Model\UserModel;
 
 /**
  * Password Reset Controller.
@@ -30,7 +32,7 @@ class PasswordResetController extends BaseController
     {
         $this->checkActivation();
 
-        $this->response->html($this->helper->layout->app('password_reset/create', [
+        $this->response->html($this->helper->layout->app('auth/passwords/create', [
             'errors'    => $errors,
             'values'    => $values,
             'no_layout' => true,
@@ -49,7 +51,7 @@ class PasswordResetController extends BaseController
 
         if ($valid) {
             $this->sendEmail($values['username']);
-            $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         } else {
             $this->create($values, $errors);
         }
@@ -71,14 +73,14 @@ class PasswordResetController extends BaseController
         $user_id = $this->passwordResetModel->getUserIdByToken($token);
 
         if ($user_id !== false) {
-            $this->response->html($this->helper->layout->app('password_reset/change', [
+            $this->response->html($this->helper->layout->app('auth/passwords/change', [
                 'token'     => $token,
                 'errors'    => $errors,
                 'values'    => $values,
                 'no_layout' => true,
             ]));
         } else {
-            $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         }
     }
 
@@ -101,7 +103,7 @@ class PasswordResetController extends BaseController
                 $this->passwordResetModel->disable($user_id);
             }
 
-            return $this->response->redirect($this->helper->url->to('AuthController', 'login'));
+            return $this->response->redirect($this->helper->url->to('Auth/AuthController', 'login'));
         }
 
         return $this->change($values, $errors);
@@ -112,18 +114,24 @@ class PasswordResetController extends BaseController
      *
      * @param string $username
      */
-    private function sendEmail($username)
+    protected function sendEmail($username)
     {
-        $token = $this->passwordResetModel->create($username);
+        $user = $this->db->table(UserModel::TABLE)
+            ->eq(strpos($username, '@') === false ? 'username' : 'email', $username)
+            ->findOne();
+
+        if (!$user || !$user['email']) {
+            return false;
+        }
+
+        $token = $this->passwordResetModel->create($user['id']);
 
         if ($token !== false) {
-            $user = $this->userModel->getByUsername($username);
-
             $this->emailClient->send(
                 $user['email'],
                 $user['name'] ?: $user['username'],
                 t('Password Reset for Jitamin'),
-                $this->template->render('password_reset/email', ['token' => $token])
+                $this->template->render('auth/passwords/email', ['token' => $token])
             );
         }
     }
@@ -131,7 +139,7 @@ class PasswordResetController extends BaseController
     /**
      * Check feature availability.
      */
-    private function checkActivation()
+    protected function checkActivation()
     {
         if ($this->settingModel->get('password_reset', 0) == 0) {
             throw AccessForbiddenException::getInstance()->withoutLayout();

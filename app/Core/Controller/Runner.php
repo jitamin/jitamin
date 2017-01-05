@@ -3,7 +3,7 @@
 /*
  * This file is part of Jitamin.
  *
- * Copyright (C) 2016 Jitamin Team
+ * Copyright (C) Jitamin Team
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -95,15 +95,15 @@ class Runner extends Base
         if ($this->router->getPlugin() !== '') {
             $className = '\Jitamin\Plugin\\'.$this->router->getPlugin().'\Controller\\'.$this->router->getController();
         } else {
-            $className = '\Jitamin\Controller\\'.$this->router->getController();
+            $className = '\Jitamin\Controller\\'.str_replace('/', '\\', $this->router->getController());
         }
 
         if (!class_exists($className)) {
-            throw new RuntimeException('Controller not found');
+            throw new RuntimeException('Controller not found: '.$className);
         }
 
         if (!method_exists($className, $this->router->getAction())) {
-            throw new RuntimeException('Action not implemented');
+            throw new RuntimeException('Action not implemented: '.$this->router->getAction());
         }
 
         return $className;
