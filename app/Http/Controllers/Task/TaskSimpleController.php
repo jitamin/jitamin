@@ -55,6 +55,7 @@ class TaskSimpleController extends BaseController
                     'title'       => $values['title'],
                     'project_id'  => $project['id'],
                 ]);
+            $this->flash->success(t('Task created successfully.'));
             $this->response->redirect($this->helper->url->to(
                 'Project/Board/BoardController',
                 'show',

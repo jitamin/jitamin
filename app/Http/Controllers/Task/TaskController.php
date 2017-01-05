@@ -392,7 +392,7 @@ class TaskController extends BaseController
         if (isset($values['duplicate_multiple_projects']) && $values['duplicate_multiple_projects'] == 1) {
             $this->chooseProjects($project, $task_id);
         } elseif (isset($values['another_task']) && $values['another_task'] == 1) {
-            $this->show([
+            $this->create([
                 'owner_id'     => $values['owner_id'],
                 'color_id'     => $values['color_id'],
                 'category_id'  => isset($values['category_id']) ? $values['category_id'] : 0,
