@@ -1,11 +1,5 @@
 <div class="page-header">
     <h2><?= t('Global tags') ?></h2>
-    <ul>
-        <li>
-            <i class="fa fa-plus" aria-hidden="true"></i>
-            <?= $this->url->link(t('Add new tag'), 'Admin/TagController', 'create', [], false, 'popover') ?>
-        </li>
-    </ul>
 </div>
 
 <?php if (empty($tags)): ?>

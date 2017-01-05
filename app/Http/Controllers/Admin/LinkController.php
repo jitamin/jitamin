@@ -32,6 +32,20 @@ class LinkController extends BaseController
             'values' => $values,
             'errors' => $errors,
             'title'  => t('Task\'s links'),
+        ], 'admin/link/subside'));
+    }
+
+    /**
+     * Display a form to create a new tag.
+     *
+     * @param array $values
+     * @param array $errors
+     */
+    public function create(array $values = [], array $errors = [])
+    {
+        $this->response->html($this->template->render('admin/link/create', [
+            'values' => $values,
+            'errors' => $errors,
         ]));
     }
 

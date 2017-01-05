@@ -27,6 +27,18 @@ return [
 'admin/group/:group_id/members'   => 'Admin/GroupController@users',
 'admin/group/:group_id/associate' => 'Admin/GroupController@associate',
 
+// Links admin
+'admin/links'                 => 'Admin/LinkController@index',
+'admin/links/create'          => 'Admin/LinkController@create',
+'admin/links/:link_id/edit'   => 'Admin/LinkController@edit',
+'admin/links/:link_id/remove' => 'Admin/LinkController@confirm',
+
+// Tags admin
+'admin/tags'                => 'Admin/TagController@index',
+'admin/tags/create'         => 'Admin/TagController@create',
+'admin/tags/:tag_id/edit'   => 'Admin/TagController@edit',
+'admin/tags/:tag_id/remove' => 'Admin/TagController@confirm',
+
 // Config admin
 'admin/settings'              => 'Admin/SettingController@index',
 'admin/settings/application'  => 'Admin/SettingController@application',
@@ -40,8 +52,6 @@ return [
 'admin/settings/integrations' => 'Admin/SettingController@integrations',
 'admin/settings/webhook'      => 'Admin/SettingController@webhook',
 'admin/settings/api'          => 'Admin/SettingController@api',
-'admin/settings/links'        => 'Admin/LinkController@index',
-'admin/settings/tags'         => 'Admin/TagController@index',
 
 // Plugins admin
 'admin/plugins'        => 'Admin/PluginController@show',
