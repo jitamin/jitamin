@@ -24,7 +24,7 @@ return [
 'project/{project_id}/tags'             => 'Project/ProjectTagController@index',
 
 // ProjectFile routes
-'project/{project_id}/file/upload'      => 'Project/ProjectFileController@create',
+'project/{project_id}/file/upload'       => 'Project/ProjectFileController@create',
 'project/{project_id}/file/{file_id}'    => 'FileViewerController@show',
 'project/{project_id}/browser/{file_id}' => 'FileViewerController@browser',
 
@@ -51,7 +51,7 @@ return [
 'overview/{project_id}'          => 'Project/ProjectController@overview',
 
 // Gantt routes
-'gantt/{project_id}'               => 'Task/TaskController@gantt',
+'gantt/{project_id}'                => 'Task/TaskController@gantt',
 'gantt/{project_id}/sort/{sorting}' => 'Task/TaskController@gantt',
 
 // Analytics routes
