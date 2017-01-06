@@ -1,6 +1,3 @@
-<div class="page-header">
-    <h3><?= $this->url->link(t('My tasks'), 'Dashboard/DashboardController', 'tasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
-</div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('There is nothing assigned to you.') ?></p>
 <?php else: ?>

@@ -21,6 +21,6 @@
         <li <?= $this->app->setActive('Dashboard/DashboardController', 'notifications', 'dashboard') ?>>
             <?= $this->url->link(t('My notifications'), 'Dashboard/DashboardController', 'notifications') ?>
         </li>
-        <?= $this->hook->render('template:dashboard:subside', ['user' => $user]) ?>
+        <?= $this->hook->render('template:dashboard:subside') ?>
     </ul>
 </div>

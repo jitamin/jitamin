@@ -83,10 +83,10 @@
             </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('Project/ProjectController', 'edit', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Manage/ProjectSettingsController', 'edit', $project['id'])): ?>
             <li>
                 <i class="fa fa-cog"></i>
-                <?= $this->url->link(t('Settings'), 'Project/ProjectController', 'edit', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Settings'), 'Manage/ProjectSettingsController', 'edit', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
     </ul>
