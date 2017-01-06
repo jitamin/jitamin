@@ -59,7 +59,7 @@ class UserProfile extends Base
             $profile = $this->userModel->getById($user->getInternalId());
         } elseif ($user->getExternalIdColumn() && $user->getExternalId()) {
             $profile = $this->userSync->synchronize($user);
-            if($profile && isset($profile['id'])) {
+            if ($profile && isset($profile['id'])) {
                 $this->groupSync->synchronize($profile['id'], $user->getExternalGroupIds());
             }
         }
