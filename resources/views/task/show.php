@@ -24,7 +24,7 @@
 
 <?php if (!empty($internal_links)): ?>
     <?= $this->hook->render('template:task:show:before-internal-links', ['task' => $task, 'project' => $project]) ?>
-    <?= $this->render('task_internal_link/show', [
+    <?= $this->render('task/internal_link/show', [
         'task'            => $task,
         'links'           => $internal_links,
         'project'         => $project,
@@ -36,7 +36,7 @@
 
 <?php if (!empty($external_links)): ?>
     <?= $this->hook->render('template:task:show:before-external-links', ['task' => $task, 'project' => $project]) ?>
-    <?= $this->render('task_external_link/show', [
+    <?= $this->render('task/external_link/show', [
         'task'    => $task,
         'links'   => $external_links,
         'project' => $project,

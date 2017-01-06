@@ -3,7 +3,7 @@
         <h3><a href="#" class="fa accordion-toggle"></a> <?= t('External links') ?></h3>
     </div>
     <div class="accordion-content">
-        <?= $this->render('task_external_link/table', [
+        <?= $this->render('task/external_link/table', [
             'links'   => $links,
             'task'    => $task,
             'project' => $project,

@@ -40,7 +40,7 @@ class TaskDuplicationController extends BaseController
             }
         }
 
-        return $this->response->html($this->template->render('task_duplication/duplicate', [
+        return $this->response->html($this->template->render('task/duplication/duplicate', [
             'task' => $task,
         ]));
     }

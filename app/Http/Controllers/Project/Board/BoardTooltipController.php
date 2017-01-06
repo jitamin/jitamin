@@ -101,7 +101,7 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_recurrence/info', [
+        $this->response->html($this->template->render('task/recurrence/info', [
             'task'                      => $task,
             'recurrence_trigger_list'   => $this->taskRecurrenceModel->getRecurrenceTriggerList(),
             'recurrence_timeframe_list' => $this->taskRecurrenceModel->getRecurrenceTimeframeList(),

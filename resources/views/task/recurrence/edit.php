@@ -4,7 +4,7 @@
 
 <?php if ($task['recurrence_status'] != \Jitamin\Model\TaskModel::RECURRING_STATUS_NONE): ?>
 <div class="listing">
-    <?= $this->render('task_recurrence/info', [
+    <?= $this->render('task/recurrence/info', [
         'task'                      => $task,
         'recurrence_trigger_list'   => $recurrence_trigger_list,
         'recurrence_timeframe_list' => $recurrence_timeframe_list,

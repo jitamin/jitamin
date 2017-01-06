@@ -30,7 +30,7 @@ class TaskSuppressionController extends BaseController
             throw new AccessForbiddenException();
         }
 
-        $this->response->html($this->template->render('task_suppression/remove', [
+        $this->response->html($this->template->render('task/suppression/remove', [
             'task'     => $task,
             'redirect' => $this->request->getStringParam('redirect'),
         ]));

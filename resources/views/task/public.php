@@ -18,7 +18,7 @@
         'editable' => false,
     ]) ?>
 
-    <?= $this->render('task_internal_link/show', [
+    <?= $this->render('task/internal_link/show', [
         'task'      => $task,
         'links'     => $links,
         'project'   => $project,

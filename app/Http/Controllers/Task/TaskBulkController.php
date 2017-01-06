@@ -36,7 +36,7 @@ class TaskBulkController extends BaseController
             ];
         }
 
-        $this->response->html($this->template->render('task_bulk/show', [
+        $this->response->html($this->template->render('task/create_bulk', [
             'project'         => $project,
             'values'          => $values,
             'errors'          => $errors,

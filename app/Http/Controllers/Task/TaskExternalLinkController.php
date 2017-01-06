@@ -33,7 +33,7 @@ class TaskExternalLinkController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_external_link/find', [
+        $this->response->html($this->template->render('task/external_link/find', [
             'values' => $values,
             'errors' => $errors,
             'task'   => $task,
@@ -53,7 +53,7 @@ class TaskExternalLinkController extends BaseController
             $provider = $this->externalLinkManager->setUserInput($values)->find();
             $link = $provider->getLink();
 
-            $this->response->html($this->template->render('task_external_link/create', [
+            $this->response->html($this->template->render('task/external_link/create', [
                 'values' => [
                     'title'     => $link->getTitle(),
                     'url'       => $link->getUrl(),
@@ -112,7 +112,7 @@ class TaskExternalLinkController extends BaseController
 
         $provider = $this->externalLinkManager->getProvider($values['link_type']);
 
-        $this->response->html($this->template->render('task_external_link/edit', [
+        $this->response->html($this->template->render('task/external_link/edit', [
             'values'       => $values,
             'errors'       => $errors,
             'task'         => $task,
@@ -151,7 +151,7 @@ class TaskExternalLinkController extends BaseController
             throw new PageNotFoundException();
         }
 
-        $this->response->html($this->template->render('task_external_link/remove', [
+        $this->response->html($this->template->render('task/external_link/remove', [
             'link' => $link,
             'task' => $task,
         ]));

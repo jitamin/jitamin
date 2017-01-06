@@ -35,7 +35,7 @@ class TaskRecurrenceController extends BaseController
             $values = $task;
         }
 
-        $this->response->html($this->template->render('task_recurrence/edit', [
+        $this->response->html($this->template->render('task/recurrence/edit', [
             'values'                    => $values,
             'errors'                    => $errors,
             'task'                      => $task,

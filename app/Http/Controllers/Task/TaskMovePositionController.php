@@ -28,7 +28,7 @@ class TaskMovePositionController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_move_position/show', [
+        $this->response->html($this->template->render('task/move_position/show', [
             'task'  => $task,
             'board' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($task['project_id'])

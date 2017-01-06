@@ -32,7 +32,7 @@ class TaskInternalLinkController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_internal_link/create', [
+        $this->response->html($this->template->render('task/internal_link/create', [
             'values' => $values,
             'errors' => $errors,
             'task'   => $task,
@@ -84,7 +84,7 @@ class TaskInternalLinkController extends BaseController
             $values['title'] = '#'.$opposite_task['id'].' - '.$opposite_task['title'];
         }
 
-        $this->response->html($this->template->render('task_internal_link/edit', [
+        $this->response->html($this->template->render('task/internal_link/edit', [
             'values'    => $values,
             'errors'    => $errors,
             'task_link' => $task_link,
@@ -124,7 +124,7 @@ class TaskInternalLinkController extends BaseController
         $task = $this->getTask();
         $link = $this->getTaskLink();
 
-        $this->response->html($this->template->render('task_internal_link/remove', [
+        $this->response->html($this->template->render('task/internal_link/remove', [
             'link' => $link,
             'task' => $task,
         ]));
