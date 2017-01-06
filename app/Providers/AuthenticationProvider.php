@@ -78,17 +78,17 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->setRoleHierarchy(Role::PROJECT_MANAGER, [Role::PROJECT_MEMBER, Role::PROJECT_VIEWER]);
         $acl->setRoleHierarchy(Role::PROJECT_MEMBER, [Role::PROJECT_VIEWER]);
 
-        $acl->add('ActionController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/ActionController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/ProjectActionDuplicationController', '*', Role::PROJECT_MANAGER);
-        $acl->add('AnalyticController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/AnalyticController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/Board/BoardAjaxController', 'store', Role::PROJECT_MEMBER);
         $acl->add('Project/Board/BoardPopoverController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/TaskPopoverController', '*', Role::PROJECT_MEMBER);
         $acl->add('CalendarController', 'store', Role::PROJECT_MEMBER);
-        $acl->add('CategoryController', '*', Role::PROJECT_MANAGER);
-        $acl->add('ColumnController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/CategoryController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/Column/ColumnController', '*', Role::PROJECT_MANAGER);
         $acl->add('CommentController', '*', Role::PROJECT_MEMBER);
-        $acl->add('CustomFilterController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Project/CustomFilterController', '*', Role::PROJECT_MEMBER);
         $acl->add('Project/ExportController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/ImportController', '*', Role::PROJECT_MANAGER);
         $acl->add('Task/TaskFileController', ['screenshot', 'create', 'store', 'remove', 'confirm'], Role::PROJECT_MEMBER);
@@ -102,7 +102,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('Task/Subtask/SubtaskController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/Subtask/SubtaskRestrictionController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/Subtask/SubtaskStatusController', '*', Role::PROJECT_MEMBER);
-        $acl->add('SwimlaneController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Project/SwimlaneController', '*', Role::PROJECT_MANAGER);
         $acl->add('Task/TaskSuppressionController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/TaskController', '*', Role::PROJECT_MEMBER);
         $acl->add('Task/TaskController', ['show', 'analytics', 'timetracking', 'transitions'], Role::PROJECT_VIEWER);

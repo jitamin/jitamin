@@ -46,10 +46,10 @@
         </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('CustomFilterController', 'index', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/CustomFilterController', 'index', $project['id'])): ?>
             <li>
                 <i class="fa fa-filter"></i>
-                <?= $this->url->link(t('Custom filters'), 'CustomFilterController', 'index', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Custom filters'), 'Project/CustomFilterController', 'index', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 
@@ -62,10 +62,10 @@
 
         <?= $this->hook->render('template:project:dropdown', ['project' => $project]) ?>
 
-        <?php if ($this->user->hasProjectAccess('AnalyticController', 'taskDistribution', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/AnalyticController', 'taskDistribution', $project['id'])): ?>
             <li>
                 <i class="fa fa-line-chart"></i>
-                <?= $this->url->link(t('Analytics'), 'AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Analytics'), 'Project/AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 

@@ -47,6 +47,6 @@ class ProjectActionDuplicationController extends BaseController
             $this->flash->failure(t('Unable to duplicate actions.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ActionController', 'index', ['project_id' => $project['id']]));
     }
 }
