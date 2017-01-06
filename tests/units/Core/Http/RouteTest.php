@@ -21,7 +21,7 @@ class RouteTest extends Base
         $route = new Route($this->container);
         $route->enable();
 
-        $this->assertEquals(['p1' => true, 'p2' => true], $route->findParams('/something/{p1}/{p2}']));
+        $this->assertEquals(['p1' => true, 'p2' => true], $route->findParams('/something/{p1}/{p2}'));
         $this->assertEquals(['p1' => true], $route->findParams('/something/{p1}'));
         $this->assertEquals(['p1' => true], $route->findParams('/something/{p1}/something else'));
     }
