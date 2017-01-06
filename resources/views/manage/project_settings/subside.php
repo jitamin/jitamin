@@ -13,21 +13,21 @@
             </li>
             <?php endif ?>
             </li>
-            <li <?= $this->app->setActive('ColumnController') ?>>
-                <i class="fa fa-columns"></i><?= $this->url->link(t('Columns'), 'ColumnController', 'index', ['project_id' => $project['id']]) ?>
+            <li <?= $this->app->setActive('Project/Column/ColumnController') ?>>
+                <i class="fa fa-columns"></i><?= $this->url->link(t('Columns'), 'Project/Column/ColumnController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->setActive('SwimlaneController') ?>>
-                <i class="fa fa-map-signs"></i><?= $this->url->link(t('Swimlanes'), 'SwimlaneController', 'index', ['project_id' => $project['id']]) ?>
+            <li <?= $this->app->setActive('Project/SwimlaneController') ?>>
+                <i class="fa fa-map-signs"></i><?= $this->url->link(t('Swimlanes'), 'Project/SwimlaneController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <li <?= $this->app->setActive('CategoryController') ?>>
-                <i class="fa fa-sitemap"></i><?= $this->url->link(t('Categories'), 'CategoryController', 'index', ['project_id' => $project['id']]) ?>
+            <li <?= $this->app->setActive('Project/CategoryController') ?>>
+                <i class="fa fa-sitemap"></i><?= $this->url->link(t('Categories'), 'Project/CategoryController', 'index', ['project_id' => $project['id']]) ?>
             </li>
             <li <?= $this->app->setActive('Manage/ProjectTagController') ?>>
                 <i class="fa fa-tag"></i><?= $this->url->link(t('Tags'), 'Manage/ProjectTagController', 'index', ['project_id' => $project['id']]) ?>
             </li>
-            <?php if ($this->user->hasProjectAccess('CustomFilterController', 'index', $project['id'])): ?>
-            <li <?= $this->app->setActive('CustomFilterController') ?>>
-                <i class="fa fa-filter"></i><?= $this->url->link(t('Custom filters'), 'CustomFilterController', 'index', ['project_id' => $project['id']]) ?>
+            <?php if ($this->user->hasProjectAccess('Project/CustomFilterController', 'index', $project['id'])): ?>
+            <li <?= $this->app->setActive('Project/CustomFilterController') ?>>
+                <i class="fa fa-filter"></i><?= $this->url->link(t('Custom filters'), 'Project/CustomFilterController', 'index', ['project_id' => $project['id']]) ?>
             </li>
             <?php endif ?>
             <li <?= $this->app->setActive('Manage/ProjectSettingsController', 'share') ?>>
@@ -38,8 +38,8 @@
             </li>
             <li <?= $this->app->setActive('Manage/ProjectSettingsController', 'integrations') ?>>
                 <i class="fa fa-puzzle-piece"></i><?= $this->url->link(t('Integrations'), 'Manage/ProjectSettingsController', 'integrations', ['project_id' => $project['id']]) ?>
-            <li <?= $this->app->setActive('ActionController') ?>>
-                <i class="fa fa-retweet"></i><?= $this->url->link(t('Automatic actions'), 'ActionController', 'index', ['project_id' => $project['id']]) ?>
+            <li <?= $this->app->setActive('Project/ActionController') ?>>
+                <i class="fa fa-retweet"></i><?= $this->url->link(t('Automatic actions'), 'Project/ActionController', 'index', ['project_id' => $project['id']]) ?>
             </li>
             <li <?= $this->app->setActive('Manage/ProjectSettingsController', 'duplicate') ?>>
                 <i class="fa fa-clone"></i><?= $this->url->link(t('Duplicate'), 'Manage/ProjectSettingsController', 'duplicate', ['project_id' => $project['id']]) ?>

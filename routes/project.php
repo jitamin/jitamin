@@ -18,7 +18,7 @@ return [
 
 'project/:project_id'                  => 'Project/ProjectController@show',
 'p/:project_id'                        => 'Project/ProjectController@show',
-'project/:project_id/customer-filters' => 'CustomFilterController@index',
+'project/:project_id/customer-filters' => 'Project/CustomFilterController@index',
 'project/:project_id/roles'            => 'Project/ProjectRoleController@show',
 'project/:project_id/activities'       => 'ActivityController@project',
 'project/:project_id/tags'             => 'Project/ProjectTagController@index',
@@ -29,16 +29,16 @@ return [
 'project/:project_id/browser/:file_id' => 'FileViewerController@browser',
 
 // Action routes
-'project/:project_id/actions' => 'ActionController@index',
+'project/:project_id/actions' => 'Project/ActionController@index',
 
 // Column routes
-'project/:project_id/columns' => 'ColumnController@index',
+'project/:project_id/columns' => 'Project/Column/ColumnController@index',
 
 // Swimlane routes
-'project/:project_id/swimlanes' => 'SwimlaneController@index',
+'project/:project_id/swimlanes' => 'Project/SwimlaneController@index',
 
 // Category routes
-'project/:project_id/categories' => 'CategoryController@index',
+'project/:project_id/categories' => 'Project/CategoryController@index',
 
 // Board routes
 'board/:project_id'          => 'Project/Board/BoardController@show',
@@ -55,14 +55,14 @@ return [
 'gantt/:project_id/sort/:sorting' => 'Task/TaskController@gantt',
 
 // Analytics routes
-'project/:project_id/analytics/tasks'                => 'AnalyticController@taskDistribution',
-'project/:project_id/analytics/users'                => 'AnalyticController@userDistribution',
-'project/:project_id/analytics/cfd'                  => 'AnalyticController@cfd',
-'project/:project_id/analytics/burndown'             => 'AnalyticController@burndown',
-'project/:project_id/analytics/average-time-column'  => 'AnalyticController@averageTimeByColumn',
-'project/:project_id/analytics/lead-cycle-time'      => 'AnalyticController@leadAndCycleTime',
-'project/:project_id/analytics/estimated-spent-time' => 'AnalyticController@compareHours',
-'project/:project_id/analytics/time-comparison'      => 'AnalyticController@timeComparison',
+'project/:project_id/analytics/tasks'                => 'Project/AnalyticController@taskDistribution',
+'project/:project_id/analytics/users'                => 'Project/AnalyticController@userDistribution',
+'project/:project_id/analytics/cfd'                  => 'Project/AnalyticController@cfd',
+'project/:project_id/analytics/burndown'             => 'Project/AnalyticController@burndown',
+'project/:project_id/analytics/average-time-column'  => 'Project/AnalyticController@averageTimeByColumn',
+'project/:project_id/analytics/lead-cycle-time'      => 'Project/AnalyticController@leadAndCycleTime',
+'project/:project_id/analytics/estimated-spent-time' => 'Project/AnalyticController@compareHours',
+'project/:project_id/analytics/time-comparison'      => 'Project/AnalyticController@timeComparison',
 
 // Exports
 'project/:project_id/export/tasks'       => 'Project/ExportController@tasks',

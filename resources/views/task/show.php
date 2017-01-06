@@ -54,11 +54,11 @@
 
 <?php if (!empty($comments)): ?>
     <?= $this->hook->render('template:task:show:before-comments', ['task' => $task, 'project' => $project]) ?>
-    <?= $this->render('comments/show', [
+    <?= $this->render('task/comments/show', [
         'task'     => $task,
         'comments' => $comments,
         'project'  => $project,
-        'editable' => $this->user->hasProjectAccess('CommentController', 'edit', $project['id']),
+        'editable' => $this->user->hasProjectAccess('Task/CommentController', 'edit', $project['id']),
     ]) ?>
 <?php endif ?>
 

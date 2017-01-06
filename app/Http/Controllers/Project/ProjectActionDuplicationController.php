@@ -27,7 +27,7 @@ class ProjectActionDuplicationController extends BaseController
         $projects = $this->projectUserRoleModel->getProjectsByUser($this->userSession->getId());
         unset($projects[$project['id']]);
 
-        $this->response->html($this->template->render('project/action_duplication', [
+        $this->response->html($this->template->render('project/action/duplication', [
             'project'       => $project,
             'projects_list' => $projects,
         ]));
@@ -47,6 +47,6 @@ class ProjectActionDuplicationController extends BaseController
             $this->flash->failure(t('Unable to duplicate actions.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ActionController', 'index', ['project_id' => $project['id']]));
     }
 }

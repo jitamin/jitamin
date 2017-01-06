@@ -25,10 +25,10 @@
             <?= $this->url->link(t('Activity'), 'ActivityController', 'project', ['project_id' => $project['id']]) ?>
         </li>
 
-        <?php if ($this->user->hasProjectAccess('AnalyticController', 'taskDistribution', $project['id'])): ?>
+        <?php if ($this->user->hasProjectAccess('Project/AnalyticController', 'taskDistribution', $project['id'])): ?>
             <li>
                 <i class="fa fa-line-chart"></i>&nbsp;
-                <?= $this->url->link(t('Analytics'), 'AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
+                <?= $this->url->link(t('Analytics'), 'Project/AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
             </li>
         <?php endif ?>
 

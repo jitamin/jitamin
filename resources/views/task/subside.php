@@ -26,7 +26,7 @@
         </li>
         <li>
             <i class="fa fa-comment-o fa-fw"></i>
-            <?= $this->url->link(t('Add a comment'), 'CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a comment'), 'Task/CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-file fa-fw"></i>
