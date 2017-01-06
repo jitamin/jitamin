@@ -66,7 +66,7 @@ class Route extends Base
         if ($this->activated) {
             $path = ltrim($path, '/');
             $items = explode('/', $path);
-            $params = $this->compileParameterNames($path);
+            $params = $this->findParams($path);
 
             $this->paths[] = [
                 'items'      => $items,
@@ -174,7 +174,7 @@ class Route extends Base
      *
      * @return array
      */
-    public function compileParameterNames($str)
+    public function findParams($str)
     {
         preg_match_all('/\{(.*?)\}/', $str, $matches);
 
