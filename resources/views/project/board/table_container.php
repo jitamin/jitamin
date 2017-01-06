@@ -22,27 +22,27 @@
 
                 <!-- Note: Do not show swimlane row on the top otherwise we can't collapse columns -->
                 <?php if ($index > 0 && $swimlane['nb_swimlanes'] > 1): ?>
-                    <?= $this->render('board/table_swimlane', [
+                    <?= $this->render('project/board/table_swimlane', [
                         'project'      => $project,
                         'swimlane'     => $swimlane,
                         'not_editable' => isset($not_editable),
                     ]) ?>
                 <?php endif ?>
 
-                <?= $this->render('board/table_column', [
+                <?= $this->render('project/board/table_column', [
                     'swimlane'     => $swimlane,
                     'not_editable' => isset($not_editable),
                 ]) ?>
 
                 <?php if ($index === 0 && $swimlane['nb_swimlanes'] > 1): ?>
-                    <?= $this->render('board/table_swimlane', [
+                    <?= $this->render('project/board/table_swimlane', [
                         'project'      => $project,
                         'swimlane'     => $swimlane,
                         'not_editable' => isset($not_editable),
                     ]) ?>
                 <?php endif ?>
 
-                <?= $this->render('board/table_tasks', [
+                <?= $this->render('project/board/table_tasks', [
                     'project'                => $project,
                     'swimlane'               => $swimlane,
                     'not_editable'           => isset($not_editable),

@@ -38,7 +38,7 @@ class BoardController extends BaseController
             ->getExtendedQuery()
             ->eq(TaskModel::TABLE.'.is_active', TaskModel::STATUS_OPEN);
 
-        $this->response->html($this->helper->layout->app('board/view_public', [
+        $this->response->html($this->helper->layout->app('project/board/view_public', [
             'project'   => $project,
             'swimlanes' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($project['id'])
@@ -62,7 +62,7 @@ class BoardController extends BaseController
         $project = $this->getProject();
         $query = $this->helper->projectHeader->getSearchQuery($project);
 
-        $this->response->html($this->helper->layout->app('board/view_private', [
+        $this->response->html($this->helper->layout->app('project/board/view_private', [
             'project'                        => $project,
             'title'                          => $project['name'],
             'description'                    => $this->helper->projectHeader->getDescription($project),

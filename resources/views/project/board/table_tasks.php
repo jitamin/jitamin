@@ -15,7 +15,7 @@
                 data-task-limit="<?= $column['task_limit'] ?>">
 
                 <?php foreach ($column['tasks'] as $task): ?>
-                    <?= $this->render($not_editable ? 'board/task_public' : 'board/task_private', [
+                    <?= $this->render($not_editable ? 'project/board/task_public' : 'project/board/task_private', [
                         'project'                => $project,
                         'task'                   => $task,
                         'board_highlight_period' => $board_highlight_period,

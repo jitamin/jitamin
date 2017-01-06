@@ -45,7 +45,7 @@
             </span>
             <?php endif ?>
 
-            <?= $this->render('board/task_avatar', ['task' => $task]) ?>
+            <?= $this->render('project/board/task_avatar', ['task' => $task]) ?>
 
             <?= $this->hook->render('template:board:private:task:before-title', ['task' => $task]) ?>
             <div class="task-board-title">
@@ -53,7 +53,7 @@
             </div>
             <?= $this->hook->render('template:board:private:task:after-title', ['task' => $task]) ?>
 
-            <?= $this->render('board/task_footer', [
+            <?= $this->render('project/board/task_footer', [
                 'task'         => $task,
                 'not_editable' => $not_editable,
                 'project'      => $project,

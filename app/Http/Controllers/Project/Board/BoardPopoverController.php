@@ -27,7 +27,7 @@ class BoardPopoverController extends BaseController
         $column_id = $this->request->getIntegerParam('column_id');
         $swimlane_id = $this->request->getIntegerParam('swimlane_id');
 
-        $this->response->html($this->template->render('board_popover/close_all_tasks_column', [
+        $this->response->html($this->template->render('project/board/close_all_tasks_column', [
             'project'  => $project,
             'nb_tasks' => $this->taskFinderModel->countByColumnAndSwimlaneId($project['id'], $column_id, $swimlane_id),
             'column'   => $this->columnModel->getColumnTitleById($column_id),
