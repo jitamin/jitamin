@@ -66,7 +66,7 @@ class Route extends Base
         if ($this->activated) {
             $path = ltrim($path, '/');
             $items = explode('/', $path);
-            $params = $this->findParams($items);
+            $params = $this->findParams($path);
 
             $this->paths[] = [
                 'items'      => $items,
@@ -102,8 +102,8 @@ class Route extends Base
                 $params = [];
 
                 for ($i = 0; $i < $count; $i++) {
-                    if ($route['items'][$i][0] === ':') {
-                        $params[substr($route['items'][$i], 1)] = $items[$i];
+                    if ($route['items'][$i][0] === '{') {
+                        $params[str_replace(['{', '}'], '', $route['items'][$i])] = $items[$i];
                     } elseif ($route['items'][$i] !== $items[$i]) {
                         break;
                     }
@@ -154,7 +154,7 @@ class Route extends Base
                 $i = 0;
 
                 foreach ($params as $variable => $value) {
-                    $url = str_replace(':'.$variable, $value, $url);
+                    $url = str_replace('{'.$variable.'}', $value, $url);
                     $i++;
                 }
 
@@ -168,22 +168,16 @@ class Route extends Base
     }
 
     /**
-     * Find url params.
+     * Compile url params.
      *
      * @param array $items
      *
      * @return array
      */
-    public function findParams(array $items)
+    public function findParams($str)
     {
-        $params = [];
+        preg_match_all('/\{(.*?)\}/', $str, $matches);
 
-        foreach ($items as $item) {
-            if ($item !== '' && $item[0] === ':') {
-                $params[substr($item, 1)] = true;
-            }
-        }
-
-        return $params;
+        return array_fill_keys($matches[1], true);
     }
 }

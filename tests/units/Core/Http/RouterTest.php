@@ -102,7 +102,7 @@ class RouterTest extends Base
 
         $this->container['route'] = new Route($this->container);
         $this->container['route']->enable();
-        $this->container['route']->addRoute('/my/route/:param', 'FakeController', 'myAction');
+        $this->container['route']->addRoute('/my/route/{param}', 'FakeController', 'myAction');
 
         $dispatcher = new Router($this->container);
         $dispatcher->dispatch();
@@ -129,7 +129,7 @@ class RouterTest extends Base
 
         $this->container['route'] = new Route($this->container);
         $this->container['route']->enable();
-        $this->container['route']->addRoute('/my/plugin/route/:param', 'fakeController', 'myAction', 'Myplugin');
+        $this->container['route']->addRoute('/my/plugin/route/{param}', 'fakeController', 'myAction', 'Myplugin');
 
         $dispatcher = new Router($this->container);
         $dispatcher->dispatch();
