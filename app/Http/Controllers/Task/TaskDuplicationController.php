@@ -70,7 +70,7 @@ class TaskDuplicationController extends BaseController
             $this->flash->failure(t('Unable to update your task.'));
         }
 
-        return $this->chooseDestination($task, 'task_duplication/move');
+        return $this->chooseDestination($task, 'task/duplication/move');
     }
 
     /**
@@ -100,7 +100,7 @@ class TaskDuplicationController extends BaseController
             $this->flash->failure(t('Unable to create your task.'));
         }
 
-        return $this->chooseDestination($task, 'task_duplication/copy');
+        return $this->chooseDestination($task, 'task/duplication/copy');
     }
 
     /**
