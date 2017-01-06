@@ -20,8 +20,8 @@ return [
 'captcha' => 'CaptchaController@image',
 
 // PasswordReset
-'forgot-password'               => 'Auth/PasswordResetController@create',
-'forgot-password/change/:token' => 'Auth/PasswordResetController@change',
-'forgot-password/store'         => 'Auth/PasswordResetController@store',
+'forgot-password'                => 'Auth/PasswordResetController@create',
+'forgot-password/change/{token}' => 'Auth/PasswordResetController@change',
+'forgot-password/store'          => 'Auth/PasswordResetController@store',
 
 ];
