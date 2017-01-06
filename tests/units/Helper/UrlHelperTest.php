@@ -29,7 +29,7 @@ class UrlHelperTest extends Base
     public function testPluginLinkWithRouteDefined()
     {
         $this->container['route']->enable();
-        $this->container['route']->addRoute('/myplugin/something/:d', 'a', 'b', 'something');
+        $this->container['route']->addRoute('/myplugin/something/{d}', 'a', 'b', 'something');
 
         $h = new UrlHelper($this->container);
         $this->assertEquals(
