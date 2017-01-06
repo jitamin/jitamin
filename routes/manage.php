@@ -10,9 +10,8 @@
  */
 
 return [
-// Manage routes
 
-// Project routes
+// Manage routes
 'project/:project_id/settings'             => 'Manage/ProjectSettingsController@edit',
 'project/:project_id/edit/description'     => 'Manage/ProjectSettingsController@edit_description',
 'project/:project_id/share'                => 'Manage/ProjectSettingsController@share',
