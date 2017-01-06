@@ -12,10 +12,6 @@
 namespace Jitamin\Controller\Project;
 
 use Jitamin\Controller\BaseController;
-use Jitamin\Filter\ProjectIdsFilter;
-use Jitamin\Filter\ProjectStatusFilter;
-use Jitamin\Filter\ProjectTypeFilter;
-use Jitamin\Formatter\ProjectGanttFormatter;
 use Jitamin\Model\ProjectModel;
 
 /**

@@ -18,7 +18,6 @@ use Jitamin\Controller\BaseController;
  */
 class ProjectSettingsController extends BaseController
 {
-
     /**
      * General edition (most common operations).
      *
