@@ -7,14 +7,14 @@
         <?= t('Do you really want to remove this comment?') ?>
     </p>
 
-    <?= $this->render('comment/show', [
+    <?= $this->render('task/comment/show', [
         'comment'      => $comment,
         'task'         => $task,
         'hide_actions' => true,
     ]) ?>
 
     <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'CommentController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'comment_id' => $comment['id']], true, 'btn btn-danger') ?>
+        <?= $this->url->link(t('Confirm'), 'Task/CommentController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'comment_id' => $comment['id']], true, 'btn btn-danger') ?>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>

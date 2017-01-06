@@ -7,12 +7,12 @@
             <div class="comment-sorting">
                 <small>
                     <i class="fa fa-sort"></i>
-                    <?= $this->url->link(t('change sorting'), 'CommentController', 'toggleSorting', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
+                    <?= $this->url->link(t('change sorting'), 'Task/CommentController', 'toggleSorting', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
                 </small>
             </div>
         <?php endif ?>
         <?php foreach ($comments as $comment): ?>
-            <?= $this->render('comment/show', [
+            <?= $this->render('task/comment/show', [
                 'comment'   => $comment,
                 'task'      => $task,
                 'project'   => $project,
@@ -22,7 +22,7 @@
         <?php endforeach ?>
 
         <?php if ($editable): ?>
-            <?= $this->render('comments/create', [
+            <?= $this->render('task/comments/create', [
                 'values' => [
                     'user_id' => $this->user->getId(),
                     'task_id' => $task['id'],

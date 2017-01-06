@@ -9,8 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Controller\Task;
 
+use Jitamin\Controller\BaseController;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Model\UserMetadataModel;
@@ -40,7 +41,7 @@ class CommentController extends BaseController
             ];
         }
 
-        $this->response->html($this->template->render('comment/create', [
+        $this->response->html($this->template->render('task/comment/create', [
             'values' => $values,
             'errors' => $errors,
             'task'   => $task,
@@ -84,7 +85,7 @@ class CommentController extends BaseController
         $task = $this->getTask();
         $comment = $this->getComment();
 
-        $this->response->html($this->template->render('comment/edit', [
+        $this->response->html($this->template->render('task/comment/edit', [
             'values'  => empty($values) ? $comment : $values,
             'errors'  => $errors,
             'comment' => $comment,
@@ -125,7 +126,7 @@ class CommentController extends BaseController
         $task = $this->getTask();
         $comment = $this->getComment();
 
-        $this->response->html($this->template->render('comment/remove', [
+        $this->response->html($this->template->render('task/comment/remove', [
             'comment' => $comment,
             'task'    => $task,
             'title'   => t('Remove a comment'),

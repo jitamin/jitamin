@@ -87,7 +87,7 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->add('CalendarController', 'store', Role::PROJECT_MEMBER);
         $acl->add('Project/CategoryController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/Column/ColumnController', '*', Role::PROJECT_MANAGER);
-        $acl->add('CommentController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Task/CommentController', '*', Role::PROJECT_MEMBER);
         $acl->add('Project/CustomFilterController', '*', Role::PROJECT_MEMBER);
         $acl->add('Project/ExportController', '*', Role::PROJECT_MANAGER);
         $acl->add('Project/ImportController', '*', Role::PROJECT_MANAGER);
