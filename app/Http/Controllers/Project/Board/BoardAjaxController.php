@@ -129,7 +129,7 @@ class BoardAjaxController extends BaseController
      */
     protected function renderBoard($project_id)
     {
-        return $this->template->render('board/table_container', [
+        return $this->template->render('project/board/table_container', [
             'project'                        => $this->projectModel->getById($project_id),
             'board_private_refresh_interval' => $this->settingModel->get('board_private_refresh_interval'),
             'board_highlight_period'         => $this->settingModel->get('board_highlight_period'),
