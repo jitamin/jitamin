@@ -37,7 +37,7 @@ class SubtaskController extends BaseController
             $values = $this->prepareValues($task);
         }
 
-        $this->response->html($this->template->render('subtask/create', [
+        $this->response->html($this->template->render('task/subtask/create', [
             'values'     => $values,
             'errors'     => $errors,
             'users_list' => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
@@ -86,7 +86,7 @@ class SubtaskController extends BaseController
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask/edit', [
+        $this->response->html($this->template->render('task/subtask/edit', [
             'values'      => empty($values) ? $subtask : $values,
             'errors'      => $errors,
             'users_list'  => $this->projectUserRoleModel->getAssignableUsersList($task['project_id']),
@@ -128,7 +128,7 @@ class SubtaskController extends BaseController
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask/remove', [
+        $this->response->html($this->template->render('task/subtask/remove', [
             'subtask' => $subtask,
             'task'    => $task,
         ]));

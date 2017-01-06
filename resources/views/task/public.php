@@ -12,7 +12,7 @@
         'is_public' => true,
     ]) ?>
 
-    <?= $this->render('subtask/show', [
+    <?= $this->render('task/subtask/show', [
         'task'     => $task,
         'subtasks' => $subtasks,
         'editable' => false,

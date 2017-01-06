@@ -58,7 +58,7 @@
             </td>
             <?php if ($editable): ?>
                 <td>
-                    <?= $this->render('subtask/menu', [
+                    <?= $this->render('task/subtask/menu', [
                         'task'    => $task,
                         'subtask' => $subtask,
                     ]) ?>

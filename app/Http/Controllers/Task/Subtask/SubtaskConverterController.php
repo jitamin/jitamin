@@ -26,7 +26,7 @@ class SubtaskConverterController extends BaseController
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask_converter/show', [
+        $this->response->html($this->template->render('task/subtask/converter', [
             'subtask' => $subtask,
             'task'    => $task,
         ]));

@@ -14,7 +14,7 @@
 
 <?php if (!empty($subtasks)): ?>
     <?= $this->hook->render('template:task:show:before-subtasks', ['task' => $task, 'project' => $project]) ?>
-    <?= $this->render('subtask/show', [
+    <?= $this->render('task/subtask/show', [
         'task'     => $task,
         'subtasks' => $subtasks,
         'project'  => $project,
