@@ -73,7 +73,7 @@ class ProjectSettingsController extends BaseController
             if ($this->projectModel->update($values)) {
                 $this->flash->success(t('Project updated successfully.'));
 
-                return $this->response->redirect($this->helper->url->to('Project/ProjectController', $redirect, ['project_id' => $project['id']]), true);
+                return $this->response->redirect($this->helper->url->to('Manage/ProjectSettingsController', $redirect, ['project_id' => $project['id']]), true);
             } else {
                 $this->flash->failure(t('Unable to update this project.'));
             }
@@ -207,5 +207,31 @@ class ProjectSettingsController extends BaseController
         }
 
         $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project_id]));
+    }
+
+    /**
+     * Prepare form values.
+     *
+     * @param string $redirect
+     * @param array  $project
+     * @param array  $values
+     *
+     * @return array
+     */
+    protected function prepareValues($redirect, array $project, array $values)
+    {
+        if ($redirect === 'edit') {
+            if (isset($values['is_private'])) {
+                if (!$this->helper->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])) {
+                    unset($values['is_private']);
+                }
+            } elseif ($project['is_private'] == 1 && !isset($values['is_private'])) {
+                if ($this->helper->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])) {
+                    $values += ['is_private' => 0];
+                }
+            }
+        }
+
+        return $values;
     }
 }

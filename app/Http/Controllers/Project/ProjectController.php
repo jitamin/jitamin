@@ -188,32 +188,6 @@ class ProjectController extends BaseController
     }
 
     /**
-     * Prepare form values.
-     *
-     * @param string $redirect
-     * @param array  $project
-     * @param array  $values
-     *
-     * @return array
-     */
-    protected function prepareValues($redirect, array $project, array $values)
-    {
-        if ($redirect === 'edit') {
-            if (isset($values['is_private'])) {
-                if (!$this->helper->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])) {
-                    unset($values['is_private']);
-                }
-            } elseif ($project['is_private'] == 1 && !isset($values['is_private'])) {
-                if ($this->helper->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])) {
-                    $values += ['is_private' => 0];
-                }
-            }
-        }
-
-        return $values;
-    }
-
-    /**
      * Create or duplicate a project.
      *
      * @param array $values

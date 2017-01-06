@@ -13,6 +13,7 @@ return [
 
 // Manage routes
 'project/:project_id/settings'             => 'Manage/ProjectSettingsController@edit',
+'project/:project_id/update/:redirect'     => 'Manage/ProjectSettingsController@update',
 'project/:project_id/edit/description'     => 'Manage/ProjectSettingsController@edit_description',
 'project/:project_id/share'                => 'Manage/ProjectSettingsController@share',
 'project/:project_id/notifications'        => 'Manage/ProjectSettingsController@notifications',
