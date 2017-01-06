@@ -120,7 +120,7 @@ class OAuthController extends BaseController
      */
     protected function authenticationFailure($message)
     {
-        $this->response->html($this->helper->layout->app('auth/index', [
+        $this->response->html($this->helper->layout->app('auth/login', [
             'errors'    => ['login' => $message],
             'values'    => [],
             'no_layout' => true,
