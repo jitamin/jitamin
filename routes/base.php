@@ -12,7 +12,9 @@
 return [
 
 // WebNotification routes
-'notification/:user_id/:notification_id' => 'WebNotificationController@redirect',
+'notification/:user_id/:notification_id'        => 'WebNotificationController@redirect',
+'notification/:user_id/:notification_id/remove' => 'WebNotificationController@remove',
+'notifications/:user_id/flush'                  => 'WebNotificationController@flush',
 
 // Search routes
 'search'          => 'SearchController@index',
