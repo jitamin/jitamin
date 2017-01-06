@@ -97,7 +97,7 @@ class Router extends Base
      */
     public function dispatch()
     {
-        $controller = $this->request->getStringParam('controller');
+        $controller = urldecode($this->request->getStringParam('controller'));
         $action = $this->request->getStringParam('action');
         $plugin = $this->request->getStringParam('plugin');
 
