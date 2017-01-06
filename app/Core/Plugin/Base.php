@@ -77,7 +77,7 @@ abstract class Base extends \Jitamin\Core\Base
      */
     public function getPluginName()
     {
-        return ucfirst(substr(get_called_class(), 16, -7));
+        return ucfirst(substr(get_called_class(), 15, -7));
     }
 
     /**
