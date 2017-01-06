@@ -27,7 +27,7 @@ class ProjectActionDuplicationController extends BaseController
         $projects = $this->projectUserRoleModel->getProjectsByUser($this->userSession->getId());
         unset($projects[$project['id']]);
 
-        $this->response->html($this->template->render('project_action_duplication/show', [
+        $this->response->html($this->template->render('project/action_duplication', [
             'project'       => $project,
             'projects_list' => $projects,
         ]));

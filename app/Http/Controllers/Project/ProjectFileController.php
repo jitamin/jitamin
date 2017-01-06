@@ -25,7 +25,7 @@ class ProjectFileController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('project_file/create', [
+        $this->response->html($this->template->render('project/attachment/create', [
             'project'  => $project,
             'max_size' => $this->helper->text->phpToBytes(get_upload_max_size()),
         ]));
@@ -71,7 +71,7 @@ class ProjectFileController extends BaseController
         $project = $this->getProject();
         $file = $this->projectFileModel->getById($this->request->getIntegerParam('file_id'));
 
-        $this->response->html($this->template->render('project_file/remove', [
+        $this->response->html($this->template->render('project/attachment/remove', [
             'project' => $project,
             'file'    => $file,
         ]));

@@ -31,7 +31,7 @@ class TaskFileController extends BaseController
             return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]), true);
         }
 
-        return $this->response->html($this->template->render('task_file/screenshot', [
+        return $this->response->html($this->template->render('task/attachment/screenshot', [
             'task' => $task,
         ]));
     }
@@ -43,7 +43,7 @@ class TaskFileController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_file/create', [
+        $this->response->html($this->template->render('task/attachment/create', [
             'task'     => $task,
             'max_size' => $this->helper->text->phpToBytes(get_upload_max_size()),
         ]));
@@ -89,7 +89,7 @@ class TaskFileController extends BaseController
         $task = $this->getTask();
         $file = $this->taskFileModel->getById($this->request->getIntegerParam('file_id'));
 
-        $this->response->html($this->template->render('task_file/remove', [
+        $this->response->html($this->template->render('task/attachment/remove', [
             'task' => $task,
             'file' => $file,
         ]));

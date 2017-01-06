@@ -3,7 +3,7 @@
         <h3><a href="#" class="fa accordion-toggle"></a> <?= t('Attachments') ?></h3>
     </div>
     <div class="accordion-content">
-        <?= $this->render('task_file/images', ['task' => $task, 'images' => $images]) ?>
-        <?= $this->render('task_file/files', ['task' => $task, 'files' => $files]) ?>
+        <?= $this->render('task/attachment/images', ['task' => $task, 'images' => $images]) ?>
+        <?= $this->render('task/attachment/files', ['task' => $task, 'files' => $files]) ?>
     </div>
 </section>

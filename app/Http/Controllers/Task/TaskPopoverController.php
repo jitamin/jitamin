@@ -25,7 +25,7 @@ class TaskPopoverController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_file/screenshot', [
+        $this->response->html($this->template->render('task/attachment/screenshot', [
             'task' => $task,
         ]));
     }

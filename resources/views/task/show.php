@@ -45,7 +45,7 @@
 
 <?php if (!empty($files) || !empty($images)): ?>
     <?= $this->hook->render('template:task:show:before-attachments', ['task' => $task, 'project' => $project]) ?>
-    <?= $this->render('task_file/show', [
+    <?= $this->render('task/attachment/show', [
         'task'   => $task,
         'files'  => $files,
         'images' => $images,
