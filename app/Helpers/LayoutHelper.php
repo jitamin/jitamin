@@ -83,7 +83,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function project($template, array $params, $subside = 'project/subside')
+    public function project($template, array $params, $subside = 'manage/project_settings/subside')
     {
         if (empty($params['title'])) {
             $params['title'] = $params['project']['name'];
@@ -106,7 +106,7 @@ class LayoutHelper extends Base
     {
         $params['filter'] = ['user_id' => $params['user_id']];
 
-        return $this->subLayout('project_user_overview/layout', 'project_user_overview/subside', $template, $params);
+        return $this->subLayout('manage/project_user_overview/layout', 'manage/project_user_overview/subside', $template, $params);
     }
 
     /**
@@ -136,12 +136,13 @@ class LayoutHelper extends Base
      *
      * @param string $template
      * @param array  $params
+     * @param string $subside
      *
      * @return string
      */
-    public function dashboard($template, array $params)
+    public function dashboard($template, array $params, $subside = 'dashboard/_partials/subnav')
     {
-        return $this->subLayout('dashboard/layout', 'dashboard/subside', $template, $params);
+        return $this->subLayout('dashboard/layout', $subside, $template, $params);
     }
 
     /**

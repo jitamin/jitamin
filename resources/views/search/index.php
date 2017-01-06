@@ -1,7 +1,3 @@
-<div class="page-header">
-    <?= $this->render('search/_partials/nav') ?>
-</div>
-
 <div class="filter-box">
     <form method="get" action="<?= $this->url->dir() ?>" class="search">
         <?= $this->form->hidden('controller', $values) ?>

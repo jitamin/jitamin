@@ -15,30 +15,13 @@ return [
 'project/create'                       => 'Project/ProjectController@create',
 'project/create/private'               => 'Project/ProjectController@createPrivate',
 'project/store'                        => 'Project/ProjectController@store',
-'project/:project_id/edit'             => 'Project/ProjectController@edit',
-'project/:project_id/edit/description' => 'Project/ProjectController@edit_description',
 
-'projects'                             => 'Project/ProjectController@index',
-'projects/:order/:direction/:page'     => 'Project/ProjectController@index',
 'project/:project_id'                  => 'Project/ProjectController@show',
 'p/:project_id'                        => 'Project/ProjectController@show',
 'project/:project_id/customer-filters' => 'CustomFilterController@index',
-'project/:project_id/share'            => 'Project/ProjectSettingsController@share',
-'project/:project_id/notifications'    => 'Project/ProjectSettingsController@notifications',
-'project/:project_id/integrations'     => 'Project/ProjectSettingsController@integrations',
-'project/:project_id/duplicate'        => 'Project/ProjectSettingsController@duplicate',
-'project/:project_id/permissions'      => 'Project/ProjectPermissionController@index',
 'project/:project_id/roles'            => 'Project/ProjectRoleController@show',
 'project/:project_id/activities'       => 'ActivityController@project',
 'project/:project_id/tags'             => 'Project/ProjectTagController@index',
-
-// ProjectUser routes
-'projects/managers/:user_id'     => 'Project/ProjectUserOverviewController@managers',
-'projects/members/:user_id'      => 'Project/ProjectUserOverviewController@members',
-'projects/tasks_opened/:user_id' => 'Project/ProjectUserOverviewController@opens',
-'projects/tasks_closed/:user_id' => 'Project/ProjectUserOverviewController@closed',
-'projects/managers'              => 'Project/ProjectUserOverviewController@managers',
-'projects/gantt'                 => 'Project/ProjectController@gantt',
 
 // ProjectFile routes
 'project/:project_id/file/upload'      => 'Project/ProjectFileController@create',

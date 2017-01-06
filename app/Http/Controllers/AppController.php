@@ -31,7 +31,6 @@ class AppController extends Base
         } else {
             $this->response->html($this->template->render('errors/403', [
                 'title'     => t('Access Forbidden'),
-                'no_layout' => $withoutLayout,
             ]));
         }
     }
@@ -45,7 +44,6 @@ class AppController extends Base
     {
         $this->response->html($this->template->render('errors/404', [
             'title'     => t('Page not found'),
-            'no_layout' => $withoutLayout,
         ]));
     }
 }

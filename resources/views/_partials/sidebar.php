@@ -48,9 +48,9 @@ $is_private_project_enabled = $this->app->setting('disable_private_project', 0) 
                     </ul>
                 </li>
                 <?php endif ?>
-                 <?php if ($this->user->hasAccess('Project/ProjectController', 'index')): ?>
-                <li <?= $this->app->setActive('Project/ProjectController', 'index') ?>>
-                    <?= $this->url->link('<i class="fa fa-wrench"></i><br />'.t('Manage'), 'Project/ProjectController', 'index', [], false, '', t('Project management')) ?>
+                 <?php if ($this->user->hasAccess('Manage/ProjectController', 'index')): ?>
+                <li <?= $this->app->setActive('Manage/ProjectController', 'index') ?>>
+                    <?= $this->url->link('<i class="fa fa-wrench"></i><br />'.t('Manage'), 'Manage/ProjectController', 'index', [], false, '', t('Project management')) ?>
                 </li>
                 <?php endif ?>
                 <?php if ($this->user->hasAccess('Admin/AdminController', 'index')): ?>
