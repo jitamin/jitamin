@@ -109,7 +109,6 @@ class Request extends Base
     public function getValues()
     {
         if ($this->checkCSRFParam()) {
-
             return $this->post;
         }
 
@@ -124,7 +123,6 @@ class Request extends Base
     public function checkCSRFToken()
     {
         if (!$this->checkCSRFParam()) {
-
             throw new AccessForbiddenException();
         }
     }
