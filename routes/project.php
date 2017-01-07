@@ -25,8 +25,8 @@ return [
 
 // ProjectFile routes
 'project/{project_id}/file/upload'       => 'Project/ProjectFileController@create',
-'project/{project_id}/file/{file_id}'    => 'FileViewerController@show',
-'project/{project_id}/browser/{file_id}' => 'FileViewerController@browser',
+'project/{project_id}/file/{file_id}'    => 'AttachmentController@show',
+'project/{project_id}/browser/{file_id}' => 'AttachmentController@browser',
 
 // Action routes
 'project/{project_id}/actions' => 'Project/ActionController@index',

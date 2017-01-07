@@ -16,12 +16,12 @@
                             <?php if ($this->file->getPreviewType($file['name']) !== null): ?>
                                 <li>
                                     <i class="fa fa-eye fa-fw"></i>
-                                    <?= $this->url->link(t('View file'), 'FileViewerController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']], false, 'popover') ?>
+                                    <?= $this->url->link(t('View file'), 'AttachmentController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']], false, 'popover') ?>
                                 </li>
                             <?php endif ?>
                             <li>
                                 <i class="fa fa-download fa-fw"></i>
-                                <?= $this->url->link(t('Download'), 'FileViewerController', 'download', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']]) ?>
+                                <?= $this->url->link(t('Download'), 'AttachmentController', 'download', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']]) ?>
                             </li>
                             <?php if ($this->user->hasProjectAccess('Task/TaskFileController', 'remove', $task['project_id'])): ?>
                                 <li>
