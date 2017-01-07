@@ -85,6 +85,9 @@ define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
 
 // Mysql/Postgres custom port (null = default port)
 define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
+} else {
+
+define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.'jitamin.sqlite');
 }
 
 // Mysql SSL key
