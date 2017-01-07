@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Dashboard;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Dashboard Controller.
  */
-class DashboardController extends BaseController
+class DashboardController extends Controller
 {
     /**
      * Dashboard overview.

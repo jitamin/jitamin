@@ -19,7 +19,7 @@ use Jitamin\Model\TaskModel;
 /**
  * Calendar Controller.
  */
-class CalendarController extends BaseController
+class CalendarController extends Controller
 {
     /**
      * Show calendar view for projects.

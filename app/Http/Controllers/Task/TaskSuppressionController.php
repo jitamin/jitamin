@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class TaskSuppressionController.
  */
-class TaskSuppressionController extends BaseController
+class TaskSuppressionController extends Controller
 {
     /**
      * Confirmation dialog box before to remove the task.

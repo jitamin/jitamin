@@ -16,7 +16,7 @@ use Jitamin\Core\ObjectStorage\ObjectStorageException;
 /**
  * File Viewer Controller.
  */
-class FileViewerController extends BaseController
+class FileViewerController extends Controller
 {
     /**
      * Show file content in a popover.

@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Auth;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Security\OAuthAuthenticationProviderInterface;
 
 /**
  * OAuth Controller.
  */
-class OAuthController extends BaseController
+class OAuthController extends Controller
 {
     /**
      * Unlink external account.

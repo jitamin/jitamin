@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Profile;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Core\Security\Token;
 use Jitamin\Model\ProjectModel;
@@ -19,7 +19,7 @@ use Jitamin\Model\ProjectModel;
 /**
  * Class ProfileController.
  */
-class ProfileController extends BaseController
+class ProfileController extends Controller
 {
     /**
      * Public user profile.

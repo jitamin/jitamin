@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Automatic Actions Controller.
  */
-class ActionController extends BaseController
+class ActionController extends Controller
 {
     /**
      * List of automatic actions for a given project.

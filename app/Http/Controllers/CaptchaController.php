@@ -16,7 +16,7 @@ use Gregwar\Captcha\CaptchaBuilder;
 /**
  * Captcha Controller.
  */
-class CaptchaController extends BaseController
+class CaptchaController extends Controller
 {
     /**
      * Display captcha image.

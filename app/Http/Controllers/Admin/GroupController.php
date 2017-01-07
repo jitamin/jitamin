@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Formatter\GroupAutoCompleteFormatter;
 
 /**
  * Group Controller.
  */
-class GroupController extends BaseController
+class GroupController extends Controller
 {
     /**
      * List all groups.

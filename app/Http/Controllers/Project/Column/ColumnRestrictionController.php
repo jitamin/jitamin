@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project\Column;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class ColumnMoveRestrictionController.
  */
-class ColumnRestrictionController extends BaseController
+class ColumnRestrictionController extends Controller
 {
     /**
      * Show form to create a new column restriction.

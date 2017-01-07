@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Model\SwimlaneModel;
@@ -19,7 +19,7 @@ use Jitamin\Model\SwimlaneModel;
 /**
  * Swimlanes Controller.
  */
-class SwimlaneController extends BaseController
+class SwimlaneController extends Controller
 {
     /**
      * List of swimlanes for a given project.

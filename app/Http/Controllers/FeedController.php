@@ -20,7 +20,7 @@ use PicoFeed\Syndication\FeedBuilder;
 /**
  * Atom/RSS Feed controller.
  */
-class FeedController extends BaseController
+class FeedController extends Controller
 {
     /**
      * RSS feed for a user.

@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class ProjectRoleRestrictionController.
  */
-class ProjectRoleRestrictionController extends BaseController
+class ProjectRoleRestrictionController extends Controller
 {
     /**
      * Show form to create a new project restriction.

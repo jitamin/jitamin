@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Csv;
 
 /**
  * User Import controller.
  */
-class UserImportController extends BaseController
+class UserImportController extends Controller
 {
     /**
      * Upload the file and ask settings.

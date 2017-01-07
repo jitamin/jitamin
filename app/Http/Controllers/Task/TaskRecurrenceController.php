@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Recurrence controller.
  */
-class TaskRecurrenceController extends BaseController
+class TaskRecurrenceController extends Controller
 {
     /**
      * Edit recurrence form.

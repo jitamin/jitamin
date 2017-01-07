@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Admin Controller.
  */
-class AdminController extends BaseController
+class AdminController extends Controller
 {
     /**
      * Display the default page.

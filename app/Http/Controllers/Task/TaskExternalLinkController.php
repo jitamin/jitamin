@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
  * Task External Link Controller.
  */
-class TaskExternalLinkController extends BaseController
+class TaskExternalLinkController extends Controller
 {
     /**
      * First creation form.

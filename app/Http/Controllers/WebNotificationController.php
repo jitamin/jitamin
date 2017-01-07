@@ -14,7 +14,7 @@ namespace Jitamin\Controller;
 /**
  * Web notification controller.
  */
-class WebNotificationController extends BaseController
+class WebNotificationController extends Controller
 {
     /**
      * Mark all notifications as read.

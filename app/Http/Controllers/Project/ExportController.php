@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Export Controller.
  */
-class ExportController extends BaseController
+class ExportController extends Controller
 {
     /**
      * Task export.

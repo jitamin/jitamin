@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project\Board;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Model\UserMetadataModel;
 
 /**
  * Board Tooltip.
  */
-class BoardTooltipController extends BaseController
+class BoardTooltipController extends Controller
 {
     /**
      * Get links on mouseover.

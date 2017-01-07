@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Popover.
  */
-class TaskPopoverController extends BaseController
+class TaskPopoverController extends Controller
 {
     /**
      * Screenshot popover.

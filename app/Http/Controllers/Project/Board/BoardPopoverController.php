@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project\Board;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Board Popover Controller.
  */
-class BoardPopoverController extends BaseController
+class BoardPopoverController extends Controller
 {
     /**
      * Confirmation before to close all column tasks.

@@ -168,15 +168,15 @@ class Route extends Base
     }
 
     /**
-     * Compile url params.
+     * Find url params.
      *
      * @param array $items
      *
      * @return array
      */
-    public function findParams($str)
+    public function findParams($path)
     {
-        preg_match_all('/\{(.*?)\}/', $str, $matches);
+        preg_match_all('/\{(.*?)\}/', $path, $matches);
 
         return array_fill_keys($matches[1], true);
     }

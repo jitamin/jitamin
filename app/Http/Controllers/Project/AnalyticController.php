@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Filter\TaskProjectFilter;
 use Jitamin\Model\TaskModel;
 
 /**
  * Project Analytic Controller.
  */
-class AnalyticController extends BaseController
+class AnalyticController extends Controller
 {
     /**
      * Show average Lead and Cycle time.

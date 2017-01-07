@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Profile;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Filter\UserNameFilter;
 use Jitamin\Formatter\UserAutoCompleteFormatter;
 use Jitamin\Model\UserModel;
@@ -19,7 +19,7 @@ use Jitamin\Model\UserModel;
 /**
  * User Ajax Controller.
  */
-class UserAjaxController extends BaseController
+class UserAjaxController extends Controller
 {
     /**
      * User auto-completion (Ajax).

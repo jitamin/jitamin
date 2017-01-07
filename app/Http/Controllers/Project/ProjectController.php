@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Model\ProjectModel;
 
 /**
  * Class ProjectController.
  */
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
      * Project entrypoint.

@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
  * TaskInternalLink Controller.
  */
-class TaskInternalLinkController extends BaseController
+class TaskInternalLinkController extends Controller
 {
     /**
      * Creation form.
