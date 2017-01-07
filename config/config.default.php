@@ -23,6 +23,9 @@ return [
     // Hide login form, useful if all your users use Google/Github/ReverseProxy authentication
     'hide_login_form' => false,
 
+    // Enable/disable url rewrite
+    'enable_url_rewrite' => false,
+
     // Available db drivers are "mysql", "sqlite" and "postgres"
     'db_driver' => 'mysql',
 

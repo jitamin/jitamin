@@ -9,9 +9,6 @@
  * file that was distributed with this source code.
  */
 
-/* Rename this file to config.php if you want to change the values */
-/*******************************************************************/
-
 // Enable/Disable debug
 define('DEBUG', $config['debug']);
 
@@ -222,7 +219,7 @@ define('MARKDOWN_ESCAPE_HTML', true);
 define('API_AUTHENTICATION_HEADER', '');
 
 // Enable/disable url rewrite
-define('ENABLE_URL_REWRITE', true);
+define('ENABLE_URL_REWRITE', $config['enable_url_rewrite']);
 
 // Hide login form, useful if all your users use Google/Github/ReverseProxy authentication
 define('HIDE_LOGIN_FORM', $config['hide_login_form']);
