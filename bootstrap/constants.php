@@ -9,16 +9,11 @@
  * file that was distributed with this source code.
  */
 
-define('ROOT_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
-
-// App directory
-define('APP_DIR', __DIR__);
-
-// Jitamin folder
+// Jitamin directory
 defined('JITAMIN_DIR') or define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
 // Data directory location
-defined('DATA_DIR') or define('DATA_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'storage');
+defined('DATA_DIR') or define('DATA_DIR', JITAMIN_DIR.DIRECTORY_SEPARATOR.'storage');
 
 // Files directory (attachments)
 defined('FILES_DIR') or define('FILES_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'files');
@@ -30,7 +25,7 @@ defined('CACHE_DRIVER') or define('CACHE_DRIVER', 'memory');
 defined('CACHE_DIR') or define('CACHE_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'cache');
 
 // Plugins settings
-defined('PLUGINS_DIR') or define('PLUGINS_DIR', ROOT_DIR.DIRECTORY_SEPARATOR.'plugins');
+defined('PLUGINS_DIR') or define('PLUGINS_DIR', JITAMIN_DIR.DIRECTORY_SEPARATOR.'plugins');
 defined('PLUGIN_API_URL') or define('PLUGIN_API_URL', 'http://jitamin.com/plugins.json');
 defined('PLUGIN_INSTALLER') or define('PLUGIN_INSTALLER', true);
 

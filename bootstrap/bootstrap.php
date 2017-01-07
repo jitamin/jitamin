@@ -15,16 +15,16 @@
 // Enable/Disable debug
 define('DEBUG', $config['debug']);
 
-// Jitamin folder
+// Jitamin directory
 define('JITAMIN_DIR', __DIR__.DIRECTORY_SEPARATOR.'..');
 
-// Data folder (must be writeable by the web server user)
+// Data directory (must be writeable by the web server user)
 define('DATA_DIR', JITAMIN_DIR.DIRECTORY_SEPARATOR.'storage');
 
 // Log filename if the log driver is "file"
 define('LOG_FILE', DATA_DIR.DIRECTORY_SEPARATOR.'debug.log');
 
-// Cache folder to use if cache driver is "file" (must be writeable by the web server user)
+// Cache directory to use if cache driver is "file" (must be writeable by the web server user)
 define('CACHE_DIR', DATA_DIR.DIRECTORY_SEPARATOR.'cache');
 
 // Folder for uploaded files (must be writeable by the web server user)

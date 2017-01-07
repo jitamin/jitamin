@@ -88,7 +88,7 @@ class DocumentationController extends Controller
     protected function getPageFilename($page)
     {
         return $this->getFileLocation($page.'.md') ?:
-            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', 'index.md']);
+            implode(DIRECTORY_SEPARATOR, [JITAMIN_DIR, 'doc', 'index.md']);
     }
 
     /**
@@ -122,8 +122,8 @@ class DocumentationController extends Controller
     protected function getFileLocation($filename)
     {
         $files = [
-            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', $this->languageModel->getCurrentLanguage(), $filename]),
-            implode(DIRECTORY_SEPARATOR, [ROOT_DIR, 'doc', $filename]),
+            implode(DIRECTORY_SEPARATOR, [JITAMIN_DIR, 'doc', $this->languageModel->getCurrentLanguage(), $filename]),
+            implode(DIRECTORY_SEPARATOR, [JITAMIN_DIR, 'doc', $filename]),
         ];
 
         foreach ($files as $filename) {
