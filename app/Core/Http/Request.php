@@ -110,6 +110,7 @@ class Request extends Base
     {
         if (!empty($this->post)) {
             $this->checkCSRFToken();
+
             return $this->post;
         }
 

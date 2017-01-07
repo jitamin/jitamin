@@ -139,7 +139,7 @@ class ProjectRoleController extends Controller
         if ($this->request->isPost()) {
             $this->request->checkCSRFToken();
             if ($this->projectRoleModel->remove($project['id'], $role_id)) {
-            $this->flash->success(t('Custom project role removed successfully.'));
+                $this->flash->success(t('Custom project role removed successfully.'));
             } else {
                 $this->flash->failure(t('Unable to remove this project role.'));
             }
@@ -148,6 +148,7 @@ class ProjectRoleController extends Controller
         }
 
         $role = $this->projectRoleModel->getById($project['id'], $role_id);
+
         return $this->response->html($this->helper->layout->project('project/role/remove', [
             'project' => $project,
             'role'    => $role,
