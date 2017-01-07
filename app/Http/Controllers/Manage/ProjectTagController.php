@@ -133,26 +133,11 @@ class ProjectTagController extends Controller
     }
 
     /**
-     * Confirmation dialog to remove a project tag.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $tag_id = $this->request->getIntegerParam('tag_id');
-        $tag = $this->tagModel->getById($tag_id);
-
-        $this->response->html($this->template->render('manage/project_tag/remove', [
-            'tag'     => $tag,
-            'project' => $project,
-        ]));
-    }
-
-    /**
      * Remove a project tag.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
+
         $project = $this->getProject();
         $tag_id = $this->request->getIntegerParam('tag_id');
         $tag = $this->tagModel->getById($tag_id);
@@ -161,12 +146,19 @@ class ProjectTagController extends Controller
             throw new AccessForbiddenException();
         }
 
-        if ($this->tagModel->remove($tag_id)) {
-            $this->flash->success(t('Tag removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this tag.'));
+        if ($this->request->isPost()) {
+            if ($this->request->checkCSRFToken() && $this->tagModel->remove($tag_id)) {
+                $this->flash->success(t('Tag removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this tag.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Manage/ProjectTagController', 'index', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Manage/ProjectTagController', 'index', ['project_id' => $project['id']]));
+        return $this->response->html($this->template->render('manage/project_tag/remove', [
+            'tag'     => $tag,
+            'project' => $project,
+        ]));
     }
 }

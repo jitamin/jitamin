@@ -117,6 +117,22 @@ class Request extends Base
     }
 
     /**
+     * Check for CSRF token.
+     *
+     * @return bool
+     */
+    public function checkCSRFToken()
+    {
+        if (!empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
+            unset($this->post['csrf_token']);
+
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Get the raw body of the HTTP request.
      *
      * @return string

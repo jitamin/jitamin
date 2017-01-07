@@ -95,37 +95,35 @@ class PluginController extends Controller
     }
 
     /**
-     * Confirmation before to remove the plugin.
-     */
-    public function confirm()
-    {
-        $pluginId = $this->request->getStringParam('pluginId');
-        $plugins = $this->pluginLoader->getPlugins();
-
-        $this->response->html($this->template->render('admin/plugin/remove', [
-            'plugin_id' => $pluginId,
-            'plugin'    => $plugins[$pluginId],
-        ]));
-    }
-
-    /**
      * Remove a plugin.
      *
      * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function uninstall()
     {
-        $this->checkCSRFParam();
         $pluginId = $this->request->getStringParam('pluginId');
 
-        try {
-            $installer = new Installer($this->container);
-            $installer->uninstall($pluginId);
-            $this->flash->success(t('Plugin removed successfully.'));
-        } catch (PluginInstallerException $e) {
-            $this->flash->failure($e->getMessage());
+        if ($this->request->isPost()) {
+            try {
+                if ($this->request->checkCSRFToken()) {
+                    $installer = new Installer($this->container);
+                    $installer->uninstall($pluginId);
+                    $this->flash->success(t('Plugin removed successfully.'));
+                } else {
+                     $this->flash->failure(t('Unable to remove this plugin.'));
+                }
+            } catch (PluginInstallerException $e) {
+                $this->flash->failure($e->getMessage());
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
+        $plugins = $this->pluginLoader->getPlugins();
+
+        return $this->response->html($this->template->render('admin/plugin/remove', [
+            'plugin_id' => $pluginId,
+            'plugin'    => $plugins[$pluginId],
+        ]));
     }
 }
