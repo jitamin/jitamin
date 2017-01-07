@@ -29,7 +29,7 @@
         <?php if ($is_configured): ?>
             <td>
                 <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                <?= $this->url->link(t('Uninstall'), 'Admin/PluginController', 'confirm', ['pluginId' => $pluginFolder], false, 'popover') ?>
+                <?= $this->url->link(t('Uninstall'), 'Admin/PluginController', 'uninstall', ['pluginId' => $pluginFolder], false, 'popover') ?>
             </td>
         <?php endif ?>
     </tr>

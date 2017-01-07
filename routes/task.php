@@ -22,7 +22,7 @@ return [
 'project/{project_id}/task/{task_id}/start'           => 'Task/TaskController@start',
 'project/{project_id}/task/{task_id}/edit'            => 'Task/TaskController@edit',
 'project/{project_id}/task/{task_id}/update'          => 'Task/TaskController@update',
-'project/{project_id}/task/{task_id}/remove'          => 'Task/TaskSuppressionController@confirm',
+'project/{project_id}/task/{task_id}/remove'          => 'Task/TaskSuppressionController@remove',
 'project/{project_id}/task/{task_id}/close'           => 'Task/TaskStatusController@close',
 'project/{project_id}/task/{task_id}/screenshot'      => 'Task/TaskPopoverController@screenshot',
 

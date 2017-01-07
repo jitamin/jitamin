@@ -121,35 +121,28 @@ class SubtaskController extends Controller
     }
 
     /**
-     * Confirmation dialog before removing a subtask.
-     */
-    public function confirm()
-    {
-        $task = $this->getTask();
-        $subtask = $this->getSubtask();
-
-        $this->response->html($this->template->render('task/subtask/remove', [
-            'subtask' => $subtask,
-            'task'    => $task,
-        ]));
-    }
-
-    /**
      * Remove a subtask.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        if ($this->subtaskModel->remove($subtask['id'])) {
-            $this->flash->success(t('Sub-task removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this sub-task.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->subtaskModel->remove($subtask['id'])) {
+                $this->flash->success(t('Sub-task removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this sub-task.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $task['project_id'], 'task_id' => $task['id']]), true);
+        return $this->response->html($this->template->render('task/subtask/remove', [
+            'subtask' => $subtask,
+            'task'    => $task,
+        ]));
     }
 
     /**

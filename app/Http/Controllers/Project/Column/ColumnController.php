@@ -155,33 +155,27 @@ class ColumnController extends Controller
     }
 
     /**
-     * Confirm column suppression.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->helper->layout->project('project/column/remove', [
-            'column'  => $this->columnModel->getById($this->request->getIntegerParam('column_id')),
-            'project' => $project,
-        ]));
-    }
-
-    /**
      * Remove a column.
      */
     public function remove()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
         $column_id = $this->request->getIntegerParam('column_id');
 
-        if ($this->columnModel->remove($column_id)) {
-            $this->flash->success(t('Column removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this column.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->columnModel->remove($column_id)) {
+                $this->flash->success(t('Column removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this column.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/Column/ColumnController', 'index', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/Column/ColumnController', 'index', ['project_id' => $project['id']]));
+        return $this->response->html($this->helper->layout->project('project/column/remove', [
+            'column'  => $this->columnModel->getById($column_id),
+            'project' => $project,
+        ]));
     }
 }

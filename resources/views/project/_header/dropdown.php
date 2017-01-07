@@ -37,12 +37,12 @@
         <?php if ($this->user->isStargazer($project['id'], $this->user->getId())): ?>
         <li>
             <i class="fa fa-star-o"></i>
-            <?= $this->url->link(t('Unstar'), 'Project/ProjectController', 'confirmUnstar', ['project_id' => $project['id']], true, 'popover') ?>
+            <?= $this->url->link(t('Unstar'), 'Project/ProjectController', 'unstar', ['project_id' => $project['id']], true, 'popover') ?>
         </li>
         <?php else: ?>
         <li>
             <i class="fa fa-star"></i>
-            <?= $this->url->link(t('Star'), 'Project/ProjectController', 'confirmStar', ['project_id' => $project['id']], true, 'popover') ?>
+            <?= $this->url->link(t('Star'), 'Project/ProjectController', 'star', ['project_id' => $project['id']], true, 'popover') ?>
         </li>
         <?php endif ?>
 

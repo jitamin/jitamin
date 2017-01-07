@@ -165,35 +165,28 @@ class SwimlaneController extends Controller
     }
 
     /**
-     * Confirmation dialog before removing a swimlane.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $swimlane = $this->getSwimlane();
-
-        $this->response->html($this->helper->layout->project('project/swimlane/remove', [
-            'project'  => $project,
-            'swimlane' => $swimlane,
-        ]));
-    }
-
-    /**
      * Remove a swimlane.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
-        $swimlane_id = $this->request->getIntegerParam('swimlane_id');
+        $swimlane = $this->getSwimlane();
 
-        if ($this->swimlaneModel->remove($project['id'], $swimlane_id)) {
-            $this->flash->success(t('Swimlane removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this swimlane.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->swimlaneModel->remove($project['id'], $swimlane['id'])) {
+                $this->flash->success(t('Swimlane removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this swimlane.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/SwimlaneController', 'index', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/SwimlaneController', 'index', ['project_id' => $project['id']]));
+        return $this->response->html($this->helper->layout->project('project/swimlane/remove', [
+            'project'  => $project,
+            'swimlane' => $swimlane,
+        ]));
     }
 
     /**

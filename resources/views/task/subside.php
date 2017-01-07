@@ -70,7 +70,7 @@
         <?php if ($this->projectRole->canRemoveTask($task)): ?>
             <li>
                 <i class="fa fa-trash-o fa-fw"></i>
-                <?= $this->url->link(t('Remove'), 'Task/TaskSuppressionController', 'confirm', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'redirect' => 'board'], false, 'popover') ?>
+                <?= $this->url->link(t('Remove'), 'Task/TaskSuppressionController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'redirect' => 'board'], false, 'popover') ?>
             </li>
         <?php endif ?>
 

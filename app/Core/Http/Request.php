@@ -12,6 +12,7 @@
 namespace Jitamin\Core\Http;
 
 use Jitamin\Core\Base;
+use Jitamin\Core\Controller\AccessForbiddenException;
 use Pimple\Container;
 
 /**
@@ -107,7 +108,8 @@ class Request extends Base
      */
     public function getValues()
     {
-        if (!empty($this->post) && $this->checkCSRFToken()) {
+        if (!empty($this->post)) {
+            $this->checkCSRFToken();
             return $this->post;
         }
 
@@ -121,13 +123,10 @@ class Request extends Base
      */
     public function checkCSRFToken()
     {
-        if (!empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
-            unset($this->post['csrf_token']);
-
-            return true;
+        if (empty($this->post['csrf_token']) || !$this->token->validateCSRFToken($this->post['csrf_token'])) {
+            throw new AccessForbiddenException();
         }
-
-        return false;
+        unset($this->post['csrf_token']);
     }
 
     /**

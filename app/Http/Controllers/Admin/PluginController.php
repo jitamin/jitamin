@@ -105,13 +105,10 @@ class PluginController extends Controller
 
         if ($this->request->isPost()) {
             try {
-                if ($this->request->checkCSRFToken()) {
-                    $installer = new Installer($this->container);
-                    $installer->uninstall($pluginId);
-                    $this->flash->success(t('Plugin removed successfully.'));
-                } else {
-                    $this->flash->failure(t('Unable to remove this plugin.'));
-                }
+                $this->request->checkCSRFToken();
+                $installer = new Installer($this->container);
+                $installer->uninstall($pluginId);
+                $this->flash->success(t('Plugin removed successfully.'));
             } catch (PluginInstallerException $e) {
                 $this->flash->failure($e->getMessage());
             }

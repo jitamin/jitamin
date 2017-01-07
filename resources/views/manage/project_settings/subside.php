@@ -46,15 +46,15 @@
             </li>
                 <?php if ($project['is_active']): ?>
                     <li>
-                    <i class="fa fa-minus-circle"></i><?= $this->url->link(t('Disable'), 'Manage/ProjectStatusController', 'confirmDisable', ['project_id' => $project['id']], false, 'popover') ?>
+                    <i class="fa fa-minus-circle"></i><?= $this->url->link(t('Disable'), 'Manage/ProjectStatusController', 'disable', ['project_id' => $project['id']], false, 'popover') ?>
                 <?php else: ?>
                     <li>
-                    <i class="fa fa-check-circle"></i><?= $this->url->link(t('Enable'), 'Manage/ProjectStatusController', 'confirmEnable', ['project_id' => $project['id']], false, 'popover') ?>
+                    <i class="fa fa-check-circle"></i><?= $this->url->link(t('Enable'), 'Manage/ProjectStatusController', 'enable', ['project_id' => $project['id']], false, 'popover') ?>
                 <?php endif ?>
             </li>
             <?php if ($this->user->hasProjectAccess('Manage/ProjectStatusController', 'remove', $project['id'])): ?>
                 <li>
-                    <i class="fa fa-trash"></i><?= $this->url->link(t('Remove'), 'Manage/ProjectStatusController', 'confirmRemove', ['project_id' => $project['id']], false, 'popover') ?>
+                    <i class="fa fa-trash"></i><?= $this->url->link(t('Remove'), 'Manage/ProjectStatusController', 'remove', ['project_id' => $project['id']], false, 'popover') ?>
                 </li>
             <?php endif ?>
         <?php endif ?>

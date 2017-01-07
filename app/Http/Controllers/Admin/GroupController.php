@@ -218,7 +218,8 @@ class GroupController extends Controller
         $group_id = $this->request->getIntegerParam('group_id');
 
         if ($this->request->isPost()) {
-            if ($this->request->checkCSRFToken() && $this->groupModel->remove($group_id)) {
+            $this->request->checkCSRFToken();
+            if ($this->groupModel->remove($group_id)) {
                 $this->flash->success(t('Group removed successfully.'));
             } else {
                 $this->flash->failure(t('Unable to remove this group.'));

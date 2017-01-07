@@ -146,7 +146,8 @@ class ProjectTagController extends Controller
         }
 
         if ($this->request->isPost()) {
-            if ($this->request->checkCSRFToken() && $this->tagModel->remove($tag_id)) {
+            $this->request->checkCSRFToken();
+            if ($this->tagModel->remove($tag_id)) {
                 $this->flash->success(t('Tag removed successfully.'));
             } else {
                 $this->flash->failure(t('Unable to remove this tag.'));

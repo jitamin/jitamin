@@ -7,7 +7,7 @@
         </li>
         <li>
             <i class="fa fa-trash-o" aria-hidden="true"></i>
-            <?= $this->url->link(t('Remove'), 'Task/Subtask/SubtaskController', 'confirm', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], false, 'popover') ?>
+            <?= $this->url->link(t('Remove'), 'Task/Subtask/SubtaskController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'subtask_id' => $subtask['id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-clone" aria-hidden="true"></i>

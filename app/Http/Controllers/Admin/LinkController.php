@@ -121,7 +121,8 @@ class LinkController extends Controller
         $link = $this->getLink();
 
         if ($this->request->isPost()) {
-            if ($this->request->checkCSRFToken() && $this->linkModel->remove($link['id'])) {
+            $this->request->checkCSRFToken();
+            if ($this->linkModel->remove($link['id'])) {
                 $this->flash->success(t('Link removed successfully.'));
             } else {
                 $this->flash->failure(t('Unable to remove this link.'));

@@ -139,9 +139,9 @@ class TaskExternalLinkController extends Controller
     }
 
     /**
-     * Confirmation dialog before removing a link.
+     * Remove a link.
      */
-    public function confirm()
+    public function remove()
     {
         $task = $this->getTask();
         $link_id = $this->request->getIntegerParam('link_id');
@@ -151,26 +151,20 @@ class TaskExternalLinkController extends Controller
             throw new PageNotFoundException();
         }
 
-        $this->response->html($this->template->render('task/external_link/remove', [
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->taskExternalLinkModel->remove($link_id)) {
+                $this->flash->success(t('Link removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this link.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
+        }
+
+        return $this->response->html($this->template->render('task/external_link/remove', [
             'link' => $link,
             'task' => $task,
         ]));
-    }
-
-    /**
-     * Remove a link.
-     */
-    public function remove()
-    {
-        $this->checkCSRFParam();
-        $task = $this->getTask();
-
-        if ($this->taskExternalLinkModel->remove($this->request->getIntegerParam('link_id'))) {
-            $this->flash->success(t('Link removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this link.'));
-        }
-
-        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
     }
 }
