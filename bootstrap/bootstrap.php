@@ -9,9 +9,6 @@
  * file that was distributed with this source code.
  */
 
-/* Rename this file to config.php if you want to change the values */
-/*******************************************************************/
-
 // Enable/Disable debug
 define('DEBUG', $config['debug']);
 
@@ -49,7 +46,7 @@ define('CACHE_DRIVER', $config['cache_driver']);
 define('CACHE_PREFIX', '');
 
 // E-mail address for the "From" header (notifications)
-define('MAIL_FROM', 'replace-me@jitamin.local');
+define('MAIL_FROM', 'notifications@jitamin.local');
 
 // Mail transport available: "smtp", "sendmail", "mail" (PHP mail function), "postmark", "mailgun", "sendgrid"
 define('MAIL_TRANSPORT', 'mail');
@@ -64,34 +61,43 @@ define('MAIL_SMTP_ENCRYPTION', null); // Valid values are "null", "ssl" or "tls"
 // Sendmail command to use when the transport is "sendmail"
 define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 
+// Application version
+defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__.'/../VERSION')));
+
 // Database driver: sqlite, mysql or postgres (sqlite by default)
-define('DB_DRIVER', $config['db_driver']);
+defined('DB_DRIVER') or define('DB_DRIVER', $config['db_driver']);
 
 if (DB_DRIVER !== 'sqlite') {
     // Mysql/Postgres username
-define('DB_USERNAME', $config['db_connections'][$config['db_driver']]['username']);
+defined('DB_USERNAME') or define('DB_USERNAME', $config['db_connections'][$config['db_driver']]['username']);
 
 // Mysql/Postgres password
-define('DB_PASSWORD', $config['db_connections'][$config['db_driver']]['password']);
+defined('DB_PASSWORD') or define('DB_PASSWORD', $config['db_connections'][$config['db_driver']]['password']);
 
 // Mysql/Postgres hostname
-define('DB_HOSTNAME', $config['db_connections'][$config['db_driver']]['host']);
+defined('DB_HOSTNAME') or define('DB_HOSTNAME', $config['db_connections'][$config['db_driver']]['host']);
 
 // Mysql/Postgres database name
-define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
+defined('DB_NAME') or define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
 
 // Mysql/Postgres custom port (null = default port)
-define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
+defined('DB_PORT') or define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
+} else {
+    // Sqlite configuration
+    defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.'jitamin.sqlite');
 }
 
 // Mysql SSL key
-define('DB_SSL_KEY', null);
+defined('DB_SSL_KEY') or define('DB_SSL_KEY', null);
 
 // Mysql SSL certificate
-define('DB_SSL_CERT', null);
+defined('DB_SSL_CERT') or define('DB_SSL_CERT', null);
 
 // Mysql SSL CA
-define('DB_SSL_CA', null);
+defined('DB_SSL_CA') or define('DB_SSL_CA', null);
+
+// Database backend group provider
+defined('DB_GROUP_PROVIDER') or define('DB_GROUP_PROVIDER', true);
 
 // Enable LDAP authentication (false by default)
 define('LDAP_AUTH', false);
@@ -213,7 +219,7 @@ define('MARKDOWN_ESCAPE_HTML', true);
 define('API_AUTHENTICATION_HEADER', '');
 
 // Enable/disable url rewrite
-define('ENABLE_URL_REWRITE', true);
+define('ENABLE_URL_REWRITE', $config['enable_url_rewrite']);
 
 // Hide login form, useful if all your users use Google/Github/ReverseProxy authentication
 define('HIDE_LOGIN_FORM', $config['hide_login_form']);
@@ -242,3 +248,5 @@ define('HTTP_PROXY_PASSWORD', '');
 
 // Set to false to allow self-signed certificates
 define('HTTP_VERIFY_SSL_CERTIFICATE', true);
+
+defined('TOTP_ISSUER') or define('TOTP_ISSUER', 'Jitamin');
