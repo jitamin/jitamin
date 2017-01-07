@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Model\UserMetadataModel;
@@ -19,7 +19,7 @@ use Jitamin\Model\UserMetadataModel;
 /**
  * Comment Controller.
  */
-class CommentController extends BaseController
+class CommentController extends Controller
 {
     /**
      * Add comment form.

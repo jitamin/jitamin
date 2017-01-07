@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Manage;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Class ProjectSettingsController.
  */
-class ProjectSettingsController extends BaseController
+class ProjectSettingsController extends Controller
 {
     /**
      * General edition (most common operations).

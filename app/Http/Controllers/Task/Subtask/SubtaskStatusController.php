@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task\Subtask;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Subtask Status.
  */
-class SubtaskStatusController extends BaseController
+class SubtaskStatusController extends Controller
 {
     /**
      * Change status to the next status: Toto -> In Progress -> Done.

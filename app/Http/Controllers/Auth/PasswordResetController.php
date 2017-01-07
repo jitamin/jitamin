@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Auth;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Model\UserModel;
 
 /**
  * Password Reset Controller.
  */
-class PasswordResetController extends BaseController
+class PasswordResetController extends Controller
 {
     /**
      * Show the form to reset the password.

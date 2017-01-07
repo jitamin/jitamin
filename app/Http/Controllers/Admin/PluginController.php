@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Plugin\Directory;
 use Jitamin\Core\Plugin\Installer;
 use Jitamin\Core\Plugin\PluginInstallerException;
@@ -19,7 +19,7 @@ use Jitamin\Core\Plugin\PluginInstallerException;
 /**
  * Class PluginController.
  */
-class PluginController extends BaseController
+class PluginController extends Controller
 {
     /**
      * Display the plugin page.

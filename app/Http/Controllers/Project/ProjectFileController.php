@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Project File Controller.
  */
-class ProjectFileController extends BaseController
+class ProjectFileController extends Controller
 {
     /**
      * File upload form.

@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
  * Category Controller.
  */
-class CategoryController extends BaseController
+class CategoryController extends Controller
 {
     /**
      * List of categories for a given project.

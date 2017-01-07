@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Class TaskBulkController.
  */
-class TaskBulkController extends BaseController
+class TaskBulkController extends Controller
 {
     /**
      * Show the form.

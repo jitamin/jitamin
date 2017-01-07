@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
  * Link Controller.
  */
-class LinkController extends BaseController
+class LinkController extends Controller
 {
     /**
      * List of links.

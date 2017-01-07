@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Duplication controller.
  */
-class TaskDuplicationController extends BaseController
+class TaskDuplicationController extends Controller
 {
     /**
      * Duplicate a task.

@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task File Controller.
  */
-class TaskFileController extends BaseController
+class TaskFileController extends Controller
 {
     /**
      * Screenshot.

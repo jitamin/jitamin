@@ -23,7 +23,7 @@ use Jitamin\Model\TaskModel;
 /**
  * iCalendar Controller.
  */
-class ICalendarController extends BaseController
+class ICalendarController extends Controller
 {
     /**
      * Get user iCalendar.

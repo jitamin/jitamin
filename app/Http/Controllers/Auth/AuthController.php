@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Auth;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Authentication Controller.
  */
-class AuthController extends BaseController
+class AuthController extends Controller
 {
     /**
      * Display the form login.

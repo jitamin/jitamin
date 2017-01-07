@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Security\Role;
 
 /**
  * Custom Filter Controller.
  */
-class CustomFilterController extends BaseController
+class CustomFilterController extends Controller
 {
     /**
      * Display list of filters.

@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Status controller.
  */
-class TaskStatusController extends BaseController
+class TaskStatusController extends Controller
 {
     /**
      * Close a task.

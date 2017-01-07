@@ -14,9 +14,9 @@ namespace Jitamin\Controller;
 use Jitamin\Core\ObjectStorage\ObjectStorageException;
 
 /**
- * File Viewer Controller.
+ * Attachment Controller.
  */
-class FileViewerController extends BaseController
+class AttachmentController extends Controller
 {
     /**
      * Show file content in a popover.
@@ -31,7 +31,7 @@ class FileViewerController extends BaseController
             $params['task_id'] = $file['task_id'];
         }
 
-        $this->response->html($this->template->render('file_viewer/show', [
+        $this->response->html($this->template->render('attachment/show', [
             'file'    => $file,
             'params'  => $params,
             'type'    => $type,

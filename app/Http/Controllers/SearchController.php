@@ -16,7 +16,7 @@ use Jitamin\Filter\TaskProjectsFilter;
 /**
  * Search Controller.
  */
-class SearchController extends BaseController
+class SearchController extends Controller
 {
     /**
      * Shows the search view.

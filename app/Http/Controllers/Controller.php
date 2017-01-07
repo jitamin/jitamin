@@ -18,7 +18,7 @@ use Jitamin\Core\Controller\PageNotFoundException;
 /**
  * Base Controller.
  */
-abstract class BaseController extends Base
+abstract class Controller extends Base
 {
     /**
      * Check if the CSRF token from the URL is correct.

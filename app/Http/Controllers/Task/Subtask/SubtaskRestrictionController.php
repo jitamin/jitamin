@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Task\Subtask;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Model\SubtaskModel;
 
 /**
  * Subtask Restriction.
  */
-class SubtaskRestrictionController extends BaseController
+class SubtaskRestrictionController extends Controller
 {
     /**
      * Show popup.

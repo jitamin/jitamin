@@ -2,7 +2,7 @@
     <div class="file-thumbnails">
         <?php foreach ($images as $file): ?>
             <div class="file-thumbnail">
-                <a href="<?= $this->url->href('FileViewerController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']]) ?>" class="popover"><img src="<?= $this->url->href('FileViewerController', 'thumbnail', ['file_id' => $file['id'], 'project_id' => $task['project_id'], 'task_id' => $file['task_id']]) ?>" title="<?= $this->text->e($file['name']) ?>" alt="<?= $this->text->e($file['name']) ?>"></a>
+                <a href="<?= $this->url->href('AttachmentController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']]) ?>" class="popover"><img src="<?= $this->url->href('FileViewerController', 'thumbnail', ['file_id' => $file['id'], 'project_id' => $task['project_id'], 'task_id' => $file['task_id']]) ?>" title="<?= $this->text->e($file['name']) ?>" alt="<?= $this->text->e($file['name']) ?>"></a>
                 <div class="file-thumbnail-content">
                     <div class="file-thumbnail-title">
                         <div class="dropdown">
@@ -10,7 +10,7 @@
                             <ul>
                                 <li>
                                     <i class="fa fa-download fa-fw"></i>
-                                    <?= $this->url->link(t('Download'), 'FileViewerController', 'download', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']]) ?>
+                                    <?= $this->url->link(t('Download'), 'AttachmentController', 'download', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'file_id' => $file['id']]) ?>
                                 </li>
                                 <?php if ($this->user->hasProjectAccess('Task/TaskFileController', 'remove', $task['project_id'])): ?>
                                     <li>

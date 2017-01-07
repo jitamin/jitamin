@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Manage;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Security\Role;
 
 /**
  * Project Permission Controller.
  */
-class ProjectPermissionController extends BaseController
+class ProjectPermissionController extends Controller
 {
     /**
      * Show all permissions.

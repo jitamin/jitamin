@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Task\Subtask;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
  * Subtask controller.
  */
-class SubtaskController extends BaseController
+class SubtaskController extends Controller
 {
     /**
      * Creation form.

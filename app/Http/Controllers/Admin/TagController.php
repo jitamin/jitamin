@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class TagController.
  */
-class TagController extends BaseController
+class TagController extends Controller
 {
     /**
      * List all tags.

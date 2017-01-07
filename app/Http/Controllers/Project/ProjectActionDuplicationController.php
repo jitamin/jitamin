@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Duplicate automatic action from another project.
  */
-class ProjectActionDuplicationController extends BaseController
+class ProjectActionDuplicationController extends Controller
 {
     /**
      * Show project action duplication.

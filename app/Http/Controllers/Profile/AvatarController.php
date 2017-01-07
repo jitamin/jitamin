@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Profile;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\ObjectStorage\ObjectStorageException;
 use Jitamin\Core\Thumbnail;
 
 /**
  * Avatar Controller.
  */
-class AvatarController extends BaseController
+class AvatarController extends Controller
 {
     /**
      * Display avatar page.

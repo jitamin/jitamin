@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Manage;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Class ProjectStatusController.
  */
-class ProjectStatusController extends BaseController
+class ProjectStatusController extends Controller
 {
     /**
      * Enable a project (confirmation dialog box).

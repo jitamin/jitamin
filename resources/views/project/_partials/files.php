@@ -16,17 +16,17 @@
                             <?php if ($this->file->getPreviewType($file['name']) !== null): ?>
                                 <li>
                                     <i class="fa fa-eye fa-fw"></i>
-                                    <?= $this->url->link(t('View file'), 'FileViewerController', 'show', ['project_id' => $project['id'], 'file_id' => $file['id']], false, 'popover') ?>
+                                    <?= $this->url->link(t('View file'), 'AttachmentController', 'show', ['project_id' => $project['id'], 'file_id' => $file['id']], false, 'popover') ?>
                                 </li>
                             <?php elseif ($this->file->getBrowserViewType($file['name']) !== null): ?>
                                 <li>
                                     <i class="fa fa-eye fa-fw"></i>
-                                    <?= $this->url->link(t('View file'), 'FileViewerController', 'browser', ['project_id' => $project['id'], 'file_id' => $file['id']], false, '', '', true) ?>
+                                    <?= $this->url->link(t('View file'), 'AttachmentController', 'browser', ['project_id' => $project['id'], 'file_id' => $file['id']], false, '', '', true) ?>
                                 </li>
                             <?php endif ?>
                             <li>
                                 <i class="fa fa-download fa-fw"></i>
-                                <?= $this->url->link(t('Download'), 'FileViewerController', 'download', ['project_id' => $project['id'], 'file_id' => $file['id']]) ?>
+                                <?= $this->url->link(t('Download'), 'AttachmentController', 'download', ['project_id' => $project['id'], 'file_id' => $file['id']]) ?>
                             </li>
                             <?php if ($this->user->hasProjectAccess('Project/ProjectFileController', 'remove', $project['id'])): ?>
                                 <li>

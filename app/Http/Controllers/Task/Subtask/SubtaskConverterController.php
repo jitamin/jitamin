@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task\Subtask;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Class SubtaskConverterController.
  */
-class SubtaskConverterController extends BaseController
+class SubtaskConverterController extends Controller
 {
     /**
      * Show subtask converter.

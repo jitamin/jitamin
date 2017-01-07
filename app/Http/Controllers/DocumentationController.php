@@ -16,7 +16,7 @@ use Parsedown;
 /**
  * Documentation Viewer.
  */
-class DocumentationController extends BaseController
+class DocumentationController extends Controller
 {
     /**
      * Show documentation content.

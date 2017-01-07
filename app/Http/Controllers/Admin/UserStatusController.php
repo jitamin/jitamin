@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * User Status Controller.
  */
-class UserStatusController extends BaseController
+class UserStatusController extends Controller
 {
     /**
      * Confirm remove a user.

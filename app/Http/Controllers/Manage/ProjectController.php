@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Manage;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Filter\ProjectIdsFilter;
 use Jitamin\Filter\ProjectStatusFilter;
 use Jitamin\Filter\ProjectTypeFilter;
@@ -21,7 +21,7 @@ use Jitamin\Model\ProjectModel;
 /**
  * Class ProjectController.
  */
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
      * List of projects.

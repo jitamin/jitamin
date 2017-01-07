@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Setting Controller.
  */
-class SettingController extends BaseController
+class SettingController extends Controller
 {
     /**
      * Display the application settings page.
