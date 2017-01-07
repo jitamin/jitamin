@@ -21,16 +21,6 @@ use Jitamin\Core\Controller\PageNotFoundException;
 abstract class Controller extends Base
 {
     /**
-     * Check if the CSRF token from the URL is correct.
-     */
-    protected function checkCSRFParam()
-    {
-        if (!$this->token->validateCSRFToken($this->request->getStringParam('csrf_token'))) {
-            throw new AccessForbiddenException();
-        }
-    }
-
-    /**
      * Check webhook token.
      */
     protected function checkWebhookToken()

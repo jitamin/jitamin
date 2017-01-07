@@ -51,7 +51,6 @@ class AvatarController extends Controller
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $user = $this->getUser();
         $this->avatarModel->remove($user['id']);
         $this->userSession->refresh($user['id']);

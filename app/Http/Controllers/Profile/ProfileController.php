@@ -119,7 +119,6 @@ class ProfileController extends Controller
      */
     public function removeSession()
     {
-        $this->checkCSRFParam();
         $user = $this->getUser();
         $this->rememberMeSessionModel->remove($this->request->getIntegerParam('id'));
         $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'sessions', ['user_id' => $user['id']]));
@@ -188,7 +187,6 @@ class ProfileController extends Controller
     public function generateApiToken()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
         $this->userModel->update([
             'id'        => $user['id'],
             'api_token' => Token::getToken(),
@@ -202,7 +200,6 @@ class ProfileController extends Controller
     public function removeApiToken()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
         $this->userModel->update([
             'id'        => $user['id'],
             'api_token' => null,
@@ -231,7 +228,6 @@ class ProfileController extends Controller
         $switch = $this->request->getStringParam('switch');
 
         if ($switch === 'enable' || $switch === 'disable') {
-            $this->checkCSRFParam();
 
             if ($this->userModel->{$switch.'PublicAccess'}($user['id'])) {
                 $this->flash->success(t('User updated successfully.'));

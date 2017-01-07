@@ -162,7 +162,6 @@ class TwoFactorController extends ProfileController
         $user = $this->getUser();
 
         if ($this->request->getStringParam('disable') === 'yes') {
-            $this->checkCSRFParam();
 
             $this->userModel->update([
                 'id'                  => $user['id'],

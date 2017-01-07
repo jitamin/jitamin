@@ -26,7 +26,6 @@ class TaskDuplicationController extends Controller
         $task = $this->getTask();
 
         if ($this->request->getStringParam('confirmation') === 'yes') {
-            $this->checkCSRFParam();
             $task_id = $this->taskDuplicationModel->duplicate($task['id']);
 
             if ($task_id > 0) {

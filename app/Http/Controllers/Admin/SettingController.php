@@ -180,7 +180,6 @@ class SettingController extends Controller
      */
     public function downloadDb()
     {
-        $this->checkCSRFParam();
         $this->response->withFileDownload('db.sqlite.gz');
         $this->response->binary($this->settingModel->downloadDatabase());
     }
@@ -190,7 +189,6 @@ class SettingController extends Controller
      */
     public function optimizeDb()
     {
-        $this->checkCSRFParam();
         $this->settingModel->optimizeDatabase();
         $this->flash->success(t('Database optimization done.'));
         $this->response->redirect($this->helper->url->to('Admin/SettingController', 'index'));
@@ -203,7 +201,6 @@ class SettingController extends Controller
     {
         $type = $this->request->getStringParam('type');
 
-        $this->checkCSRFParam();
         $this->settingModel->regenerateToken($type.'_token');
 
         $this->flash->success(t('Token regenerated.'));

@@ -25,7 +25,6 @@ class OAuthController extends Controller
     public function unlink()
     {
         $backend = $this->request->getStringParam('backend');
-        $this->checkCSRFParam();
 
         if ($this->authenticationManager->getProvider($backend)->unlink($this->userSession->getId())) {
             $this->flash->success(t('Your external account is not linked anymore to your profile.'));

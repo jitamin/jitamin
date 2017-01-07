@@ -59,7 +59,6 @@ class PluginController extends Controller
      */
     public function install()
     {
-        $this->checkCSRFParam();
         $pluginArchiveUrl = urldecode($this->request->getStringParam('archive_url'));
 
         try {
@@ -80,7 +79,6 @@ class PluginController extends Controller
      */
     public function update()
     {
-        $this->checkCSRFParam();
         $pluginArchiveUrl = urldecode($this->request->getStringParam('archive_url'));
 
         try {

@@ -194,7 +194,6 @@ class SwimlaneController extends Controller
      */
     public function disable()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
         $swimlane_id = $this->request->getIntegerParam('swimlane_id');
 
@@ -212,7 +211,6 @@ class SwimlaneController extends Controller
      */
     public function disableDefault()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
 
         if ($this->swimlaneModel->disableDefault($project['id'])) {
@@ -229,7 +227,6 @@ class SwimlaneController extends Controller
      */
     public function enable()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
         $swimlane_id = $this->request->getIntegerParam('swimlane_id');
 
@@ -247,7 +244,6 @@ class SwimlaneController extends Controller
      */
     public function enableDefault()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
 
         if ($this->swimlaneModel->enableDefault($project['id'])) {

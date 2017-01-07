@@ -197,7 +197,6 @@ class GroupController extends Controller
      */
     public function removeUser()
     {
-        $this->checkCSRFParam();
         $group_id = $this->request->getIntegerParam('group_id');
         $user_id = $this->request->getIntegerParam('user_id');
 
