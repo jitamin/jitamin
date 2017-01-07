@@ -110,7 +110,7 @@ class PluginController extends Controller
                     $installer->uninstall($pluginId);
                     $this->flash->success(t('Plugin removed successfully.'));
                 } else {
-                     $this->flash->failure(t('Unable to remove this plugin.'));
+                    $this->flash->failure(t('Unable to remove this plugin.'));
                 }
             } catch (PluginInstallerException $e) {
                 $this->flash->failure($e->getMessage());
