@@ -47,7 +47,6 @@ class TaskStatusController extends Controller
         $task = $this->getTask();
 
         if ($this->request->getStringParam('confirmation') === 'yes') {
-
             if ($this->taskStatusModel->$method($task['id'])) {
                 $this->flash->success($success_message);
             } else {

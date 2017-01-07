@@ -162,7 +162,6 @@ class TwoFactorController extends ProfileController
         $user = $this->getUser();
 
         if ($this->request->getStringParam('disable') === 'yes') {
-
             $this->userModel->update([
                 'id'                  => $user['id'],
                 'twofactor_activated' => 0,
