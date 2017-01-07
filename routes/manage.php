@@ -21,8 +21,8 @@ return [
 'project/{project_id}/duplicate'             => 'Manage/ProjectSettingsController@duplicate',
 'project/{project_id}/permissions'           => 'Manage/ProjectPermissionController@index',
 'project/{project_id}/tags'                  => 'Manage/ProjectTagController@index',
-'project/{project_id}/disable'               => 'Manage/ProjectStatusController@confirmDisable',
-'project/{project_id}/remove'                => 'Manage/ProjectStatusController@confirmRemove',
+'project/{project_id}/disable'               => 'Manage/ProjectStatusController@disable',
+'project/{project_id}/remove'                => 'Manage/ProjectStatusController@remove',
 
 'manage/projects'                     => 'Manage/ProjectController@index',
 'projects/{order}/{direction}/{page}' => 'Manage/ProjectController@index',

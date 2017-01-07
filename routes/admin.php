@@ -16,14 +16,14 @@ return [
 'admin/users/create/{remote}'          => 'Admin/UserController@create',
 'admin/users/import'                   => 'Admin/UserImportController@show',
 'admin/users/{user_id}/authentication' => 'Admin/UserController@changeAuthentication',
-'admin/users/{user_id}/disable'        => 'Admin/UserStatusController@confirmDisable',
-'admin/users/{user_id}/remove'         => 'Admin/UserStatusController@confirmRemove',
+'admin/users/{user_id}/disable'        => 'Admin/UserStatusController@disable',
+'admin/users/{user_id}/remove'         => 'Admin/UserStatusController@remove',
 
 // Groups admin
 'admin/groups'                     => 'Admin/GroupController@index',
 'admin/groups/create'              => 'Admin/GroupController@create',
 'admin/groups/{group_id}/edit'     => 'Admin/GroupController@edit',
-'admin/groups/{group_id}/remove'   => 'Admin/GroupController@confirm',
+'admin/groups/{group_id}/remove'   => 'Admin/GroupController@remove',
 'admin/group/{group_id}/members'   => 'Admin/GroupController@users',
 'admin/group/{group_id}/associate' => 'Admin/GroupController@associate',
 
@@ -31,13 +31,13 @@ return [
 'admin/links'                  => 'Admin/LinkController@index',
 'admin/links/create'           => 'Admin/LinkController@create',
 'admin/links/{link_id}/edit'   => 'Admin/LinkController@edit',
-'admin/links/{link_id}/remove' => 'Admin/LinkController@confirm',
+'admin/links/{link_id}/remove' => 'Admin/LinkController@remove',
 
 // Tags admin
 'admin/tags'                 => 'Admin/TagController@index',
 'admin/tags/create'          => 'Admin/TagController@create',
 'admin/tags/{tag_id}/edit'   => 'Admin/TagController@edit',
-'admin/tags/{tag_id}/remove' => 'Admin/TagController@confirm',
+'admin/tags/{tag_id}/remove' => 'Admin/TagController@remove',
 
 // Config admin
 'admin/settings'              => 'Admin/SettingController@index',

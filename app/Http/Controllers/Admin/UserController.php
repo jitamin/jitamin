@@ -144,7 +144,6 @@ class UserController extends Controller
     public function unlock()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
 
         if ($this->userLockingModel->resetFailedLogin($user['username'])) {
             $this->flash->success(t('User unlocked successfully.'));

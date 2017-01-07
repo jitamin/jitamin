@@ -19,42 +19,24 @@ use Jitamin\Controller\Controller;
 class UserStatusController extends Controller
 {
     /**
-     * Confirm remove a user.
-     */
-    public function confirmRemove()
-    {
-        $user = $this->getUser();
-
-        $this->response->html($this->helper->layout->admin('admin/user_status/remove', [
-            'user' => $user,
-        ]));
-    }
-
-    /**
      * Remove a user.
      */
     public function remove()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
 
-        if ($this->userModel->remove($user['id'])) {
-            $this->flash->success(t('User removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this user.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->userModel->remove($user['id'])) {
+                $this->flash->success(t('User removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this user.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
-    }
-
-    /**
-     * Confirm enable a user.
-     */
-    public function confirmEnable()
-    {
-        $user = $this->getUser();
-
-        $this->response->html($this->helper->layout->admin('admin/user_status/enable', [
+        return $this->response->html($this->helper->layout->admin('admin/user_status/remove', [
             'user' => $user,
         ]));
     }
@@ -65,25 +47,19 @@ class UserStatusController extends Controller
     public function enable()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
 
-        if ($this->userModel->enable($user['id'])) {
-            $this->flash->success(t('User activated successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to enable this user.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->userModel->enable($user['id'])) {
+                $this->flash->success(t('User activated successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to enable this user.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
-    }
-
-    /**
-     * Confirm disable a user.
-     */
-    public function confirmDisable()
-    {
-        $user = $this->getUser();
-
-        $this->response->html($this->helper->layout->admin('admin/user_status/disable', [
+        return $this->response->html($this->helper->layout->admin('admin/user_status/enable', [
             'user' => $user,
         ]));
     }
@@ -94,14 +70,20 @@ class UserStatusController extends Controller
     public function disable()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
 
-        if ($this->userModel->disable($user['id'])) {
-            $this->flash->success(t('User disabled successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to disable this user.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->userModel->disable($user['id'])) {
+                $this->flash->success(t('User disabled successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to disable this user.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/UserController', 'index'));
+        return $this->response->html($this->helper->layout->admin('admin/user_status/disable', [
+            'user' => $user,
+        ]));
     }
 }

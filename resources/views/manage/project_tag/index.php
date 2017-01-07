@@ -21,7 +21,7 @@
                 <td><?= $this->text->e($tag['name']) ?></td>
                 <td>
                     <i class="fa fa-times" aria-hidden="true"></i>
-                    <?= $this->url->link(t('Remove'), 'Manage/ProjectTagController', 'confirm', ['tag_id' => $tag['id'], 'project_id' => $project['id']], false, 'popover') ?>
+                    <?= $this->url->link(t('Remove'), 'Manage/ProjectTagController', 'remove', ['tag_id' => $tag['id'], 'project_id' => $project['id']], false, 'popover') ?>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     <?= $this->url->link(t('Edit'), 'Manage/ProjectTagController', 'edit', ['tag_id' => $tag['id'], 'project_id' => $project['id']], false, 'popover') ?>
                 </td>

@@ -20,7 +20,7 @@
             <ul>
                 <?= $this->url->link(t('Edit'), 'Admin/LinkController', 'edit', ['link_id' => $link['id']], false ,'popover') ?>
                 <?= t('or') ?>
-                <?= $this->url->link(t('Remove'), 'Admin/LinkController', 'confirm', ['link_id' => $link['id']], false, 'popover') ?>
+                <?= $this->url->link(t('Remove'), 'Admin/LinkController', 'remove', ['link_id' => $link['id']], false, 'popover') ?>
             </ul>
         </td>
     </tr>

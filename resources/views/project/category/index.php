@@ -25,7 +25,7 @@
                     <?= $this->url->link(t('Edit'), 'Project/CategoryController', 'edit', ['project_id' => $project['id'], 'category_id' => $category_id], false, 'popover') ?>
                 </li>
                 <li>
-                    <?= $this->url->link(t('Remove'), 'Project/CategoryController', 'confirm', ['project_id' => $project['id'], 'category_id' => $category_id], false, 'popover') ?>
+                    <?= $this->url->link(t('Remove'), 'Project/CategoryController', 'remove', ['project_id' => $project['id'], 'category_id' => $category_id], false, 'popover') ?>
                 </li>
             </ul>
             </div>

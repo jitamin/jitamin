@@ -15,7 +15,7 @@
                 <td><?= $this->text->e($tag['name']) ?></td>
                 <td>
                     <i class="fa fa-times" aria-hidden="true"></i>
-                    <?= $this->url->link(t('Remove'), 'Admin/TagController', 'confirm', ['tag_id' => $tag['id']], false, 'popover') ?>
+                    <?= $this->url->link(t('Remove'), 'Admin/TagController', 'remove', ['tag_id' => $tag['id']], false, 'popover') ?>
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     <?= $this->url->link(t('Edit'), 'Admin/TagController', 'edit', ['tag_id' => $tag['id']], false, 'popover') ?>
                 </td>

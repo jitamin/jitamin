@@ -108,46 +108,28 @@ class ProjectController extends Controller
     }
 
     /**
-     * Star a project (confirmation dialog box).
-     */
-    public function confirmStar()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('project/star', [
-            'project' => $project,
-            'title'   => t('Star project'),
-        ]));
-    }
-
-    /**
-     * Unstar a project (confirmation dialog box).
-     */
-    public function confirmUnstar()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('project/unstar', [
-            'project' => $project,
-            'title'   => t('Unstar project'),
-        ]));
-    }
-
-    /**
      * Star the project.
      */
     public function star()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectStarModel->addStargazer($project['id'], $this->userSession->getId())) {
-            $this->flash->success(t('Project starred successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to star this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+
+            if ($this->projectStarModel->addStargazer($project['id'], $this->userSession->getId())) {
+                $this->flash->success(t('Project starred successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to star this project.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
+        return $this->response->html($this->template->render('project/star', [
+            'project' => $project,
+            'title'   => t('Star project'),
+        ]));
     }
 
     /**
@@ -156,15 +138,23 @@ class ProjectController extends Controller
     public function unstar()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectStarModel->removeStargazer($project['id'], $this->userSession->getId())) {
-            $this->flash->success(t('Project unstarred successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to unstar this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+
+            if ($this->projectStarModel->removeStargazer($project['id'], $this->userSession->getId())) {
+                $this->flash->success(t('Project unstarred successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to unstar this project.'));
+            }
+
+            $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
+        return $this->response->html($this->template->render('project/unstar', [
+            'project' => $project,
+            'title'   => t('Unstar project'),
+        ]));
     }
 
     /**

@@ -197,7 +197,6 @@ class GroupController extends Controller
      */
     public function removeUser()
     {
-        $this->checkCSRFParam();
         $group_id = $this->request->getIntegerParam('group_id');
         $user_id = $this->request->getIntegerParam('user_id');
 
@@ -211,33 +210,28 @@ class GroupController extends Controller
     }
 
     /**
-     * Confirmation dialog to remove a group.
-     */
-    public function confirm()
-    {
-        $group_id = $this->request->getIntegerParam('group_id');
-        $group = $this->groupModel->getById($group_id);
-
-        $this->response->html($this->template->render('admin/group/remove', [
-            'group' => $group,
-        ]));
-    }
-
-    /**
      * Remove a group.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $group_id = $this->request->getIntegerParam('group_id');
 
-        if ($this->groupModel->remove($group_id)) {
-            $this->flash->success(t('Group removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this group.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->groupModel->remove($group_id)) {
+                $this->flash->success(t('Group removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this group.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/GroupController', 'index'), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/GroupController', 'index'), true);
+        $group = $this->groupModel->getById($group_id);
+
+        return $this->response->html($this->template->render('admin/group/remove', [
+            'group' => $group,
+        ]));
     }
 
     /**

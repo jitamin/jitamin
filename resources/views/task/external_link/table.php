@@ -38,7 +38,7 @@
                             </li>
                             <li>
                                 <i class="fa fa-trash-o fa-fw"></i>
-                                <?= $this->url->link(t('Remove'), 'Task/TaskExternalLinkController', 'confirm', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+                                <?= $this->url->link(t('Remove'), 'Task/TaskExternalLinkController', 'remove', ['link_id' => $link['id'], 'task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
                             </li>
                         </ul>
                     </div>

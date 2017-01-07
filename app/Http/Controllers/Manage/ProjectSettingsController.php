@@ -104,7 +104,6 @@ class ProjectSettingsController extends Controller
     public function updateSharing()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
         $switch = $this->request->getStringParam('switch');
 
         if ($this->projectModel->{$switch.'PublicAccess'}($project['id'])) {

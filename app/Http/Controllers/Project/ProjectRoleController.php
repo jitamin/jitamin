@@ -108,7 +108,8 @@ class ProjectRoleController extends Controller
     public function update()
     {
         $project = $this->getProject();
-        $role = $this->getRole($project['id']);
+        $role_id = $this->request->getIntegerParam('role_id');
+        $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
         $values = $this->request->getValues();
 
@@ -128,44 +129,29 @@ class ProjectRoleController extends Controller
     }
 
     /**
-     * Confirm suppression.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $role = $this->getRole($project['id']);
-
-        $this->response->html($this->helper->layout->project('project/role/remove', [
-            'project' => $project,
-            'role'    => $role,
-        ]));
-    }
-
-    /**
      * Remove a custom role.
      */
     public function remove()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
         $role_id = $this->request->getIntegerParam('role_id');
 
-        if ($this->projectRoleModel->remove($project['id'], $role_id)) {
-            $this->flash->success(t('Custom project role removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this project role.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectRoleModel->remove($project['id'], $role_id)) {
+                $this->flash->success(t('Custom project role removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this project role.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
-    }
+        $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
-    /**
-     * Get a project role.
-     */
-    protected function getRole($project_id)
-    {
-        $role_id = $this->request->getIntegerParam('role_id');
-
-        return $this->projectRoleModel->getById($project_id, $role_id);
+        return $this->response->html($this->helper->layout->project('project/role/remove', [
+            'project' => $project,
+            'role'    => $role,
+        ]));
     }
 }

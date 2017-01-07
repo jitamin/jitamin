@@ -19,43 +19,24 @@ use Jitamin\Controller\Controller;
 class ProjectStatusController extends Controller
 {
     /**
-     * Enable a project (confirmation dialog box).
-     */
-    public function confirmEnable()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('manage/project_status/enable', [
-            'project' => $project,
-            'title'   => t('Project activation'),
-        ]));
-    }
-
-    /**
      * Enable the project.
      */
     public function enable()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectModel->enable($project['id'])) {
-            $this->flash->success(t('Project activated successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to activate this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectModel->enable($project['id'])) {
+                $this->flash->success(t('Project activated successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to activate this project.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
-    }
-
-    /**
-     * Disable a project (confirmation dialog box).
-     */
-    public function confirmDisable()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('manage/project_status/disable', [
+        return $this->response->html($this->template->render('manage/project_status/enable', [
             'project' => $project,
             'title'   => t('Project activation'),
         ]));
@@ -67,27 +48,21 @@ class ProjectStatusController extends Controller
     public function disable()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectModel->disable($project['id'])) {
-            $this->flash->success(t('Project disabled successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to disable this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectModel->disable($project['id'])) {
+                $this->flash->success(t('Project disabled successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to disable this project.'));
+            }
+
+            $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
-    }
-
-    /**
-     * Remove a project (confirmation dialog box).
-     */
-    public function confirmRemove()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('manage/project_status/remove', [
+        return $this->response->html($this->template->render('manage/project_status/disable', [
             'project' => $project,
-            'title'   => t('Remove project'),
+            'title'   => t('Project activation'),
         ]));
     }
 
@@ -97,14 +72,21 @@ class ProjectStatusController extends Controller
     public function remove()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectModel->remove($project['id'])) {
-            $this->flash->success(t('Project removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectModel->remove($project['id'])) {
+                $this->flash->success(t('Project removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this project.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Manage/ProjectController', 'index'), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Manage/ProjectController', 'index'), true);
+        return $this->response->html($this->template->render('manage/project_status/remove', [
+            'project' => $project,
+            'title'   => t('Remove project'),
+        ]));
     }
 }

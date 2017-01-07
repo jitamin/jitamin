@@ -124,36 +124,29 @@ class CategoryController extends Controller
     }
 
     /**
-     * Confirmation dialog before removing a category.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $category = $this->getCategory();
-
-        $this->response->html($this->helper->layout->project('project/category/remove', [
-            'project'  => $project,
-            'category' => $category,
-            'title'    => t('Remove a category'),
-        ]));
-    }
-
-    /**
      * Remove a category.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
         $category = $this->getCategory();
 
-        if ($this->categoryModel->remove($category['id'])) {
-            $this->flash->success(t('Category removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this category.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->categoryModel->remove($category['id'])) {
+                $this->flash->success(t('Category removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this category.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/CategoryController', 'index', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/CategoryController', 'index', ['project_id' => $project['id']]));
+        return $this->response->html($this->helper->layout->project('project/category/remove', [
+            'project'  => $project,
+            'category' => $category,
+            'title'    => t('Remove a category'),
+        ]));
     }
 
     /**

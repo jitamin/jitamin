@@ -67,38 +67,31 @@ class CustomFilterController extends Controller
     }
 
     /**
-     * Confirmation dialog before removing a custom filter.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $filter = $this->customFilterModel->getById($this->request->getIntegerParam('filter_id'));
-
-        $this->response->html($this->helper->layout->project('project/custom_filter/remove', [
-            'project' => $project,
-            'filter'  => $filter,
-            'title'   => t('Remove a custom filter'),
-        ]));
-    }
-
-    /**
      * Remove a custom filter.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
         $filter = $this->customFilterModel->getById($this->request->getIntegerParam('filter_id'));
 
         $this->checkPermission($project, $filter);
 
-        if ($this->customFilterModel->remove($filter['id'])) {
-            $this->flash->success(t('Custom filter removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this custom filter.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->customFilterModel->remove($filter['id'])) {
+                $this->flash->success(t('Custom filter removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this custom filter.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/CustomFilterController', 'index', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/CustomFilterController', 'index', ['project_id' => $project['id']]));
+        return $this->response->html($this->helper->layout->project('project/custom_filter/remove', [
+            'project' => $project,
+            'filter'  => $filter,
+            'title'   => t('Remove a custom filter'),
+        ]));
     }
 
     /**

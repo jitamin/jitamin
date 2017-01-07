@@ -46,7 +46,7 @@
                     </li>
                     <li>
                         <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                        <?= $this->url->link(t('Remove'), 'Project/Column/ColumnController', 'confirm', ['project_id' => $project['id'], 'column_id' => $column['id']], false, 'popover') ?>
+                        <?= $this->url->link(t('Remove'), 'Project/Column/ColumnController', 'remove', ['project_id' => $project['id'], 'column_id' => $column['id']], false, 'popover') ?>
                     </li>
                 </ul>
                 </div>

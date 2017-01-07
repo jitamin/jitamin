@@ -88,7 +88,6 @@ class ProjectPermissionController extends Controller
      */
     public function removeUser()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
         $user_id = $this->request->getIntegerParam('user_id');
 
@@ -142,7 +141,6 @@ class ProjectPermissionController extends Controller
      */
     public function removeGroup()
     {
-        $this->checkCSRFParam();
         $project = $this->getProject();
         $group_id = $this->request->getIntegerParam('group_id');
 

@@ -12,6 +12,7 @@
 namespace Jitamin\Core\Http;
 
 use Jitamin\Core\Base;
+use Jitamin\Core\Controller\AccessForbiddenException;
 use Pimple\Container;
 
 /**
@@ -107,13 +108,23 @@ class Request extends Base
      */
     public function getValues()
     {
-        if (!empty($this->post) && !empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
-            unset($this->post['csrf_token']);
-
+        if ($this->checkCSRFParam()) {
             return $this->post;
         }
 
         return [];
+    }
+
+    /**
+     * Check for CSRF token.
+     *
+     * @return void
+     */
+    public function checkCSRFToken()
+    {
+        if (!$this->checkCSRFParam()) {
+            throw new AccessForbiddenException();
+        }
     }
 
     /**
@@ -337,5 +348,19 @@ class Request extends Base
     public function getServerVariable($variable)
     {
         return isset($this->server[$variable]) ? $this->server[$variable] : '';
+    }
+
+    /**
+     * Check if the CSRF token from the URL is correct.
+     */
+    protected function checkCSRFParam()
+    {
+        if (!empty($this->post) && !empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
+            unset($this->post['csrf_token']);
+
+            return true;
+        }
+
+        return false;
     }
 }

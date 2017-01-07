@@ -2,12 +2,15 @@
     <h2><?= t('Remove plugin') ?></h2>
 </div>
 
-<div class="confirm">
-    <p class="alert alert-info"><?= t('Do you really want to remove this plugin: "%s"?', $plugin->getPluginName()) ?></p>
+<form action="<?= $this->url->href('Admin/PluginController', 'uninstall', ['pluginId' => $plugin_id]) ?>" method="post" autocomplete="off">
+    <?= $this->form->csrf() ?>
+    <div class="confirm">
+        <p class="alert alert-info"><?= t('Do you really want to remove this plugin: "%s"?', $plugin->getPluginName()) ?></p>
 
-    <div class="form-actions">
-        <?= $this->url->link(t('Confirm'), 'Admin/PluginController', 'uninstall', ['pluginId' => $plugin_id], true, 'btn btn-danger') ?>
-        <?= t('or') ?>
-        <?= $this->url->link(t('cancel'), 'Admin/PluginController', 'show', [], false, 'close-popover') ?>
+        <div class="form-actions">
+            <button type="submit" class="btn btn-danger"><?= t('Confirm') ?></button>
+            <?= t('or') ?>
+            <?= $this->url->link(t('cancel'), 'Admin/PluginController', 'show', [], false, 'close-popover') ?>
+        </div>
     </div>
-</div>
+</form>

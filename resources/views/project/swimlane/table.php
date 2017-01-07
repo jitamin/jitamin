@@ -65,7 +65,7 @@
                         <?php endif ?>
                     </li>
                     <li>
-                        <?= $this->url->link(t('Remove'), 'Project/SwimlaneController', 'confirm', ['project_id' => $project['id'], 'swimlane_id' => $swimlane['id']], false, 'popover') ?>
+                        <?= $this->url->link(t('Remove'), 'Project/SwimlaneController', 'remove', ['project_id' => $project['id'], 'swimlane_id' => $swimlane['id']], false, 'popover') ?>
                     </li>
                 </ul>
                 </div>
