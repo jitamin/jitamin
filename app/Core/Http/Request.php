@@ -127,6 +127,7 @@ class Request extends Base
         if (empty($this->post['csrf_token']) || !$this->token->validateCSRFToken($this->post['csrf_token'])) {
             throw new AccessForbiddenException();
         }
+        unset($this->post['csrf_token']);
     }
 
     /**
