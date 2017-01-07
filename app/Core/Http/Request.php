@@ -107,9 +107,7 @@ class Request extends Base
      */
     public function getValues()
     {
-        if (!empty($this->post) && !empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
-            unset($this->post['csrf_token']);
-
+        if (!empty($this->post) && $this->checkCSRFToken()) {
             return $this->post;
         }
 
