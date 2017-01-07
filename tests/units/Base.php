@@ -10,7 +10,6 @@
  */
 
 require __DIR__.'/../../vendor/autoload.php';
-require __DIR__.'/../../bootstrap/constants.php';
 
 use Composer\Autoload\ClassLoader;
 use Jitamin\Core\Session\FlashMessage;

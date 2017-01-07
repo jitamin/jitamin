@@ -64,6 +64,9 @@ define('MAIL_SMTP_ENCRYPTION', null); // Valid values are "null", "ssl" or "tls"
 // Sendmail command to use when the transport is "sendmail"
 define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 
+// Application version
+defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__.'/../VERSION')));
+
 // Database driver: sqlite, mysql or postgres (sqlite by default)
 define('DB_DRIVER', $config['db_driver']);
 
@@ -92,6 +95,9 @@ define('DB_SSL_CERT', null);
 
 // Mysql SSL CA
 define('DB_SSL_CA', null);
+
+// Database backend group provider
+defined('DB_GROUP_PROVIDER') or define('DB_GROUP_PROVIDER', true);
 
 // Enable LDAP authentication (false by default)
 define('LDAP_AUTH', false);

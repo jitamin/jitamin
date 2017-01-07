@@ -38,9 +38,6 @@ defined('LOG_DRIVER') or define('LOG_DRIVER', '');
 // Logging file
 defined('LOG_FILE') or define('LOG_FILE', DATA_DIR.DIRECTORY_SEPARATOR.'debug.log');
 
-// Application version
-defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__.'/../VERSION')));
-
 // Database driver: sqlite, mysql or postgres
 defined('DB_DRIVER') or define('DB_DRIVER', 'sqlite');
 
