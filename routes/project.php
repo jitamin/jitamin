@@ -23,6 +23,10 @@ return [
 'project/{project_id}/activities'       => 'ActivityController@project',
 'project/{project_id}/tags'             => 'Project/ProjectTagController@index',
 
+// Star
+'project/{project_id}/star'   => 'Project/ProjectController@star',
+'project/{project_id}/unstar' => 'Project/ProjectController@unstar',
+
 // ProjectFile routes
 'project/{project_id}/file/upload'       => 'Project/ProjectFileController@create',
 'project/{project_id}/file/{file_id}'    => 'AttachmentController@show',

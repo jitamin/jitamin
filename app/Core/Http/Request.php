@@ -108,9 +108,8 @@ class Request extends Base
      */
     public function getValues()
     {
-        if (!empty($this->post)) {
-            $this->checkCSRFToken();
-
+        if (!empty($this->post) && !empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
+            unset($this->post['csrf_token']);
             return $this->post;
         }
 
@@ -127,7 +126,6 @@ class Request extends Base
         if (empty($this->post['csrf_token']) || !$this->token->validateCSRFToken($this->post['csrf_token'])) {
             throw new AccessForbiddenException();
         }
-        unset($this->post['csrf_token']);
     }
 
     /**
