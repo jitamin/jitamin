@@ -121,8 +121,8 @@ class Route extends Base
         }
 
         return [
-                'controller' => 'Dashboard/DashboardController',
-                'action'     => 'index',
+                'controller' => Router::DEFAULT_CONTROLLER,
+                'action'     => Router::DEFAULT_METHOD,
                 'plugin'     => '',
             ];
     }
