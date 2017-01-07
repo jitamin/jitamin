@@ -26,7 +26,7 @@ class ProjectRoleController extends Controller
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_role/show', [
+        $this->response->html($this->helper->layout->project('project/role/show', [
             'project' => $project,
             'roles'   => $this->projectRoleModel->getAllWithRestrictions($project['id']),
             'title'   => t('Custom Project Roles'),
@@ -45,7 +45,7 @@ class ProjectRoleController extends Controller
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('project_role/create', [
+        $this->response->html($this->template->render('project/role/create', [
             'project' => $project,
             'values'  => $values + ['project_id' => $project['id']],
             'errors'  => $errors,
@@ -94,7 +94,7 @@ class ProjectRoleController extends Controller
             $values = $role;
         }
 
-        $this->response->html($this->template->render('project_role/edit', [
+        $this->response->html($this->template->render('project/role/edit', [
             'role'    => $role,
             'project' => $project,
             'values'  => $values,
@@ -135,7 +135,7 @@ class ProjectRoleController extends Controller
         $project = $this->getProject();
         $role = $this->getRole($project['id']);
 
-        $this->response->html($this->helper->layout->project('project_role/remove', [
+        $this->response->html($this->helper->layout->project('project/role/remove', [
             'project' => $project,
             'role'    => $role,
         ]));

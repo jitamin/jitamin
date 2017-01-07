@@ -33,7 +33,7 @@ class ProjectRoleRestrictionController extends Controller
         $role_id = $this->request->getIntegerParam('role_id');
         $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
-        $this->response->html($this->template->render('project_role_restriction/create', [
+        $this->response->html($this->template->render('project/role_restriction/create', [
             'project'      => $project,
             'role'         => $role,
             'values'       => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
@@ -73,7 +73,7 @@ class ProjectRoleRestrictionController extends Controller
         $project = $this->getProject();
         $restriction_id = $this->request->getIntegerParam('restriction_id');
 
-        $this->response->html($this->helper->layout->project('project_role_restriction/remove', [
+        $this->response->html($this->helper->layout->project('project/role_restriction/remove', [
             'project'      => $project,
             'restriction'  => $this->projectRoleRestrictionModel->getById($project['id'], $restriction_id),
             'restrictions' => $this->projectRoleRestrictionModel->getRules(),
