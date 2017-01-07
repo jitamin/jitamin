@@ -24,10 +24,6 @@ return [
 'calendar/{project_id}' => 'CalendarController@show',
 'c/{project_id}'        => 'CalendarController@show',
 
-// Listing routes
-'list/{project_id}' => 'Task/TaskController@index',
-'l/{project_id}'    => 'Task/TaskListController@show',
-
 // Feed routes
 'feed/project/{token}' => 'FeedController@project',
 'feed/user/{token}'    => 'FeedController@user',

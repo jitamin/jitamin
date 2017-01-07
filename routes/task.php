@@ -11,6 +11,10 @@
 
 return [
 
+// Listing routes
+'list/{project_id}' => 'Task/TaskController@index',
+'l/{project_id}'    => 'Task/TaskListController@show',
+
 // Task routes
 'project/{project_id}/task/{task_id}' => 'Task/TaskController@show',
 't/{task_id}'                         => 'Task/TaskController@show',
