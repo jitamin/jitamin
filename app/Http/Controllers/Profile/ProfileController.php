@@ -228,7 +228,6 @@ class ProfileController extends Controller
         $switch = $this->request->getStringParam('switch');
 
         if ($switch === 'enable' || $switch === 'disable') {
-
             if ($this->userModel->{$switch.'PublicAccess'}($user['id'])) {
                 $this->flash->success(t('User updated successfully.'));
             } else {
