@@ -250,3 +250,5 @@ define('HTTP_PROXY_PASSWORD', '');
 
 // Set to false to allow self-signed certificates
 define('HTTP_VERIFY_SSL_CERTIFICATE', true);
+
+defined('TOTP_ISSUER') or define('TOTP_ISSUER', 'Jitamin');
