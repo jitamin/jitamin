@@ -137,7 +137,6 @@ class ProjectTagController extends Controller
      */
     public function remove()
     {
-
         $project = $this->getProject();
         $tag_id = $this->request->getIntegerParam('tag_id');
         $tag = $this->tagModel->getById($tag_id);
