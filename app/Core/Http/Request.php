@@ -108,7 +108,7 @@ class Request extends Base
      */
     public function getValues()
     {
-        if (!$this->checkCSRFParam());
+        if ($this->checkCSRFParam()) {
 
             return $this->post;
         }
