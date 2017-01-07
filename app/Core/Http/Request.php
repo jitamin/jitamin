@@ -110,6 +110,7 @@ class Request extends Base
     {
         if (!empty($this->post) && !empty($this->post['csrf_token']) && $this->token->validateCSRFToken($this->post['csrf_token'])) {
             unset($this->post['csrf_token']);
+
             return $this->post;
         }
 
