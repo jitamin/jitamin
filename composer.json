@@ -56,6 +56,14 @@
         "phpunit/phpunit-selenium": "2.0.2",
         "friendsofphp/php-cs-fixer": "^1.11"
     },
+    "scripts": {
+        "post-install-cmd": [
+            "php artisan config:cache"
+        ],
+        "post-update-cmd": [
+            "php artisan config:cache"
+        ]
+    },
     "repositories": {
         "packagist": {
             "type": "composer",

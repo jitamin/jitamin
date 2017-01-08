@@ -73,9 +73,10 @@ vendor/bin/phinx seed:run
 ```
 > Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
 
-五. 确保storage目录可写。
+五. 确保bootstrap/cache和storage目录可写。
 
 ```shell
+$ chmod -R 0777 bootstrap/cache
 $ chmod -R 0777 storage
 ```
 

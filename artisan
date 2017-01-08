@@ -5,6 +5,8 @@ use Symfony\Component\EventDispatcher\Event;
 
 try {
     require __DIR__.'/bootstrap/autoload.php';
+    // This bootstraps the framework and gets it ready for use
+    $app = require_once __DIR__.'/bootstrap/app.php';
     $container['dispatcher']->dispatch('app.bootstrap', new Event);
     $container['cli']->run();
 } catch (Exception $e) {
