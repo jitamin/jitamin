@@ -27,10 +27,10 @@ if ($dbUrlParser->isEnvironmentVariableDefined()) {
 if (file_exists(__DIR__.'/cache/config.php')) {
     $configAll = require __DIR__.'/cache/config.php';
     $config = $configAll['config'];
-    $configApp  = $configAll['app'];
+    $configApp = $configAll['app'];
 } else {
     $config = require __DIR__.'/../config/config.php';
-    $configApp  = require __DIR__.'/../config/app.php';
+    $configApp = require __DIR__.'/../config/app.php';
 }
 
 require __DIR__.'/bootstrap.php';

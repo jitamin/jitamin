@@ -11,7 +11,6 @@
 
 namespace Jitamin\Console;
 
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -60,13 +59,13 @@ class ConfigCacheCommand extends BaseCommand
     {
         $config = [];
         foreach (glob(JITAMIN_DIR.'/config/*.php') as $file) {
-            if(strrpos($file, '.default.php') !== false) {
+            if (strrpos($file, '.default.php') !== false) {
                 continue;
             }
             $section = str_replace('.php', '', basename($file));
             $config[$section] = require $file;
         }
-        
+
         return $config;
     }
 
