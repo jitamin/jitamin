@@ -9,18 +9,15 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Controller\Runner;
+// Register The Auto Loader
+require __DIR__.'/../bootstrap/autoload.php';
 
+// This bootstraps the framework and gets it ready for use
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+// Run The Application
 try {
-    require __DIR__.'/../bootstrap/autoload.php';
-    $container['router']->dispatch();
-
-    if ($container['router']->getController() === 'Api') {
-        echo $container['api']->execute();
-    } else {
-        $runner = new Runner($container);
-        $runner->execute();
-    }
+    $app->execute();
 } catch (Exception $e) {
     echo 'Internal Error: '.$e->getMessage();
 }
