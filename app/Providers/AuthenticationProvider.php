@@ -169,13 +169,13 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->setRoleHierarchy(Role::APP_ADMIN, [Role::APP_MANAGER, Role::APP_USER, Role::APP_PUBLIC]);
         $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER, Role::APP_PUBLIC]);
 
-        $acl->add('UserProcedure', '*', Role::APP_ADMIN);
-        $acl->add('GroupMemberProcedure', '*', Role::APP_ADMIN);
-        $acl->add('GroupProcedure', '*', Role::APP_ADMIN);
-        $acl->add('LinkProcedure', '*', Role::APP_ADMIN);
-        $acl->add('TaskProcedure', ['getOverdueTasks'], Role::APP_ADMIN);
-        $acl->add('ProjectProcedure', ['getAllProjects'], Role::APP_ADMIN);
-        $acl->add('ProjectProcedure', ['createProject'], Role::APP_MANAGER);
+        $acl->add('Api/UserController', '*', Role::APP_ADMIN);
+        $acl->add('Api/GroupMemberController', '*', Role::APP_ADMIN);
+        $acl->add('Api/GroupController', '*', Role::APP_ADMIN);
+        $acl->add('Api/LinkController', '*', Role::APP_ADMIN);
+        $acl->add('Api/TaskController', ['getOverdueTasks'], Role::APP_ADMIN);
+        $acl->add('Api/ProjectController', ['getAllProjects'], Role::APP_ADMIN);
+        $acl->add('Api/ProjectController', ['createProject'], Role::APP_MANAGER);
 
         return $acl;
     }
@@ -192,20 +192,20 @@ class AuthenticationProvider implements ServiceProviderInterface
         $acl->setRoleHierarchy(Role::PROJECT_MANAGER, [Role::PROJECT_MEMBER, Role::PROJECT_VIEWER]);
         $acl->setRoleHierarchy(Role::PROJECT_MEMBER, [Role::PROJECT_VIEWER]);
 
-        $acl->add('ActionProcedure', ['removeAction', 'getActions', 'createAction'], Role::PROJECT_MANAGER);
-        $acl->add('CategoryProcedure', '*', Role::PROJECT_MANAGER);
-        $acl->add('ColumnProcedure', '*', Role::PROJECT_MANAGER);
-        $acl->add('CommentProcedure', ['removeComment', 'createComment', 'updateComment'], Role::PROJECT_MEMBER);
-        $acl->add('ProjectPermissionProcedure', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectProcedure', ['updateProject', 'removeProject', 'enableProject', 'disableProject', 'enableProjectPublicAccess', 'disableProjectPublicAccess'], Role::PROJECT_MANAGER);
-        $acl->add('SubtaskProcedure', '*', Role::PROJECT_MEMBER);
-        $acl->add('SubtaskTimeTrackingProcedure', '*', Role::PROJECT_MEMBER);
-        $acl->add('SwimlaneProcedure', '*', Role::PROJECT_MANAGER);
-        $acl->add('ProjectFileProcedure', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskFileProcedure', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskLinkProcedure', '*', Role::PROJECT_MEMBER);
-        $acl->add('TaskExternalLinkProcedure', ['createExternalTaskLink', 'updateExternalTaskLink', 'removeExternalTaskLink'], Role::PROJECT_MEMBER);
-        $acl->add('TaskProcedure', '*', Role::PROJECT_MEMBER);
+        $acl->add('Api/ActionController', ['removeAction', 'getActions', 'createAction'], Role::PROJECT_MANAGER);
+        $acl->add('Api/CategoryController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Api/ColumnController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Api/CommentController', ['removeComment', 'createComment', 'updateComment'], Role::PROJECT_MEMBER);
+        $acl->add('Api/ProjectPermissionController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Api/ProjectController', ['updateProject', 'removeProject', 'enableProject', 'disableProject', 'enableProjectPublicAccess', 'disableProjectPublicAccess'], Role::PROJECT_MANAGER);
+        $acl->add('Api/SubtaskController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Api/SubtaskTimeTrackingController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Api/SwimlaneController', '*', Role::PROJECT_MANAGER);
+        $acl->add('Api/ProjectFileController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Api/TaskFileController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Api/TaskLinkController', '*', Role::PROJECT_MEMBER);
+        $acl->add('Api/askExternalLinkController', ['createExternalTaskLink', 'updateExternalTaskLink', 'removeExternalTaskLink'], Role::PROJECT_MEMBER);
+        $acl->add('Api/TaskController', '*', Role::PROJECT_MEMBER);
 
         return $acl;
     }
