@@ -80,7 +80,7 @@ class ApiProvider implements ServiceProviderInterface
             ->withObject(new UserController($container))
             ->withObject(new GroupController($container))
             ->withObject(new GroupMemberController($container))
-            ->withBeforeMethod('beforeController');
+            ->withBeforeMethod('beforeAction');
 
         $container['api'] = $server;
 

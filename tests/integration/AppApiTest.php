@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/BaseProcedureTest.php';
+require_once __DIR__.'/BaseApiTest.php';
 
-class AppProcedureTest extends BaseProcedureTest
+class AppApiTest extends BaseApiTest
 {
     public function testGetTimezone()
     {

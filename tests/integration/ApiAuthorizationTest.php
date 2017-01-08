@@ -9,29 +9,29 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/BaseProcedureTest.php';
+require_once __DIR__.'/BaseApiTest.php';
 
-class ProcedureAuthorizationTest extends BaseProcedureTest
+class ApiAuthorizationTest extends BaseApiTest
 {
-    public function testApiCredentialDoNotHaveAccessToUserCredentialProcedure()
+    public function testApiCredentialDoNotHaveAccessToUserCredentialApi()
     {
         $this->setExpectedException('JsonRPC\Exception\AccessDeniedException');
         $this->app->getMe();
     }
 
-    public function testUserCredentialDoNotHaveAccessToAdminProcedures()
+    public function testUserCredentialDoNotHaveAccessToAdminApis()
     {
         $this->setExpectedException('JsonRPC\Exception\AccessDeniedException');
         $this->user->getUser(1);
     }
 
-    public function testManagerCredentialDoNotHaveAccessToAdminProcedures()
+    public function testManagerCredentialDoNotHaveAccessToAdminApis()
     {
         $this->setExpectedException('JsonRPC\Exception\AccessDeniedException');
         $this->user->getAllProjects();
     }
 
-    public function testUserCredentialDoNotHaveAccessToManagerProcedures()
+    public function testUserCredentialDoNotHaveAccessToManagerApis()
     {
         $this->setExpectedException('JsonRPC\Exception\AccessDeniedException');
         $this->user->createProject('Team project creation are only for app managers');

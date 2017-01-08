@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/BaseProcedureTest.php';
+require_once __DIR__.'/BaseApiTest.php';
 
-class TaskLinkProcedureTest extends BaseProcedureTest
+class TaskLinkApiTest extends BaseApiTest
 {
     protected $projectName = 'My project to test task links';
     protected $taskLinkId;

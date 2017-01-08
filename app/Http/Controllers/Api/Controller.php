@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Api;
 
 use Jitamin\Core\Base;
-use Jitamin\Policy\ProcedurePolicy;
+use Jitamin\Policy\MethodPolicy;
 use Jitamin\Policy\UserPolicy;
 use ReflectionClass;
 
@@ -22,16 +22,16 @@ use ReflectionClass;
 abstract class Controller extends Base
 {
     /**
-     * Before method of procedure.
+     * Before action.
      *
      * @param string $role
      *
      * @return void
      */
-    public function beforeProcedure($procedure)
+    public function beforeAction($method)
     {
-        ProcedurePolicy::getInstance($this->container)->check($procedure);
-        UserPolicy::getInstance($this->container)->check($this->getClassName(), $procedure);
+        MethodPolicy::getInstance($this->container)->check($method);
+        UserPolicy::getInstance($this->container)->check($this->getClassName(), $method);
     }
 
     /**

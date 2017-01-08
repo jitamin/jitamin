@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/BaseProcedureTest.php';
+require_once __DIR__.'/BaseApiTest.php';
 
-class SwimlaneProcedureTest extends BaseProcedureTest
+class SwimlaneApiTest extends BaseApiTest
 {
     protected $projectName = 'My project to test swimlanes';
     private $swimlaneId = 0;

@@ -26,12 +26,12 @@ class ApiAuthenticationMiddleware extends Base implements MiddlewareInterface
      *
      * @param string $username
      * @param string $password
-     * @param string $procedureName
+     * @param string $apiName
      *
      * @throws AccessDeniedException
      * @throws AuthenticationFailureException
      */
-    public function execute($username, $password, $procedureName)
+    public function execute($username, $password, $apiName)
     {
         $this->dispatcher->dispatch('app.bootstrap');
         $this->sessionStorage->scope = 'API';

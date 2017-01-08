@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/BaseProcedureTest.php';
+require_once __DIR__.'/BaseApiTest.php';
 
-class ActionProcedureTest extends BaseProcedureTest
+class ActionApiTest extends BaseApiTest
 {
     protected $projectName = 'My project to test actions';
 

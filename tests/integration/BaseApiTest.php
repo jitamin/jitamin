@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-abstract class BaseProcedureTest extends PHPUnit_Framework_TestCase
+abstract class BaseApiTest extends PHPUnit_Framework_TestCase
 {
     protected $app = null;
     protected $admin = null;

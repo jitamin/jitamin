@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-require_once __DIR__.'/BaseProcedureTest.php';
+require_once __DIR__.'/BaseApiTest.php';
 
-class GroupProcedureTest extends BaseProcedureTest
+class GroupApiTest extends BaseApiTest
 {
     public function testAll()
     {
