@@ -9,10 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Controller;
+namespace Jitamin\Core;
 
 use Jitamin\Controller\AppController;
-use Jitamin\Core\Base;
 use Jitamin\Middleware\ApplicationAuthorizationMiddleware;
 use Jitamin\Middleware\AuthenticationMiddleware;
 use Jitamin\Middleware\BootstrapMiddleware;
@@ -21,9 +20,9 @@ use Jitamin\Middleware\ProjectAuthorizationMiddleware;
 use RuntimeException;
 
 /**
- * Class Runner.
+ * Class Application.
  */
-class Runner extends Base
+class Application extends Base
 {
     /**
      * Execute middleware and controller.
