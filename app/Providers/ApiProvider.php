@@ -11,29 +11,29 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Api\Middleware\AuthenticationMiddleware;
-use Jitamin\Api\Procedure\ActionProcedure;
-use Jitamin\Api\Procedure\AppProcedure;
-use Jitamin\Api\Procedure\BoardProcedure;
-use Jitamin\Api\Procedure\CategoryProcedure;
-use Jitamin\Api\Procedure\ColumnProcedure;
-use Jitamin\Api\Procedure\CommentProcedure;
-use Jitamin\Api\Procedure\GroupMemberProcedure;
-use Jitamin\Api\Procedure\GroupProcedure;
-use Jitamin\Api\Procedure\LinkProcedure;
-use Jitamin\Api\Procedure\MeProcedure;
-use Jitamin\Api\Procedure\ProjectFileProcedure;
-use Jitamin\Api\Procedure\ProjectPermissionProcedure;
-use Jitamin\Api\Procedure\ProjectProcedure;
-use Jitamin\Api\Procedure\SubtaskProcedure;
-use Jitamin\Api\Procedure\SubtaskTimeTrackingProcedure;
-use Jitamin\Api\Procedure\SwimlaneProcedure;
-use Jitamin\Api\Procedure\TaskExternalLinkProcedure;
-use Jitamin\Api\Procedure\TaskFileProcedure;
-use Jitamin\Api\Procedure\TaskLinkProcedure;
-use Jitamin\Api\Procedure\TaskMetadataProcedure;
-use Jitamin\Api\Procedure\TaskProcedure;
-use Jitamin\Api\Procedure\UserProcedure;
+use Jitamin\Middleware\ApiAuthenticationMiddleware;
+use Jitamin\Controller\Api\ActionController;
+use Jitamin\Controller\Api\AppController;
+use Jitamin\Controller\Api\BoardController;
+use Jitamin\Controller\Api\CategoryController;
+use Jitamin\Controller\Api\ColumnController;
+use Jitamin\Controller\Api\CommentController;
+use Jitamin\Controller\Api\GroupMemberController;
+use Jitamin\Controller\Api\GroupController;
+use Jitamin\Controller\Api\LinkController;
+use Jitamin\Controller\Api\MeController;
+use Jitamin\Controller\Api\ProjectFileController;
+use Jitamin\Controller\Api\ProjectPermissionController;
+use Jitamin\Controller\Api\ProjectController;
+use Jitamin\Controller\Api\SubtaskController;
+use Jitamin\Controller\Api\SubtaskTimeTrackingController;
+use Jitamin\Controller\Api\SwimlaneController;
+use Jitamin\Controller\Api\TaskExternalLinkController;
+use Jitamin\Controller\Api\TaskFileController;
+use Jitamin\Controller\Api\TaskLinkController;
+use Jitamin\Controller\Api\TaskMetadataController;
+use Jitamin\Controller\Api\TaskController;
+use Jitamin\Controller\Api\UserController;
 use JsonRPC\Server;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
@@ -55,32 +55,32 @@ class ApiProvider implements ServiceProviderInterface
         $server = new Server();
         $server->setAuthenticationHeader(API_AUTHENTICATION_HEADER);
         $server->getMiddlewareHandler()
-            ->withMiddleware(new AuthenticationMiddleware($container));
+            ->withMiddleware(new ApiAuthenticationMiddleware($container));
 
         $server->getProcedureHandler()
-            ->withObject(new MeProcedure($container))
-            ->withObject(new ActionProcedure($container))
-            ->withObject(new AppProcedure($container))
-            ->withObject(new BoardProcedure($container))
-            ->withObject(new ColumnProcedure($container))
-            ->withObject(new CategoryProcedure($container))
-            ->withObject(new CommentProcedure($container))
-            ->withObject(new TaskFileProcedure($container))
-            ->withObject(new ProjectFileProcedure($container))
-            ->withObject(new LinkProcedure($container))
-            ->withObject(new ProjectProcedure($container))
-            ->withObject(new ProjectPermissionProcedure($container))
-            ->withObject(new SubtaskProcedure($container))
-            ->withObject(new SubtaskTimeTrackingProcedure($container))
-            ->withObject(new SwimlaneProcedure($container))
-            ->withObject(new TaskProcedure($container))
-            ->withObject(new TaskLinkProcedure($container))
-            ->withObject(new TaskExternalLinkProcedure($container))
-            ->withObject(new TaskMetadataProcedure($container))
-            ->withObject(new UserProcedure($container))
-            ->withObject(new GroupProcedure($container))
-            ->withObject(new GroupMemberProcedure($container))
-            ->withBeforeMethod('beforeProcedure');
+            ->withObject(new MeController($container))
+            ->withObject(new ActionController($container))
+            ->withObject(new AppController($container))
+            ->withObject(new BoardController($container))
+            ->withObject(new ColumnController($container))
+            ->withObject(new CategoryController($container))
+            ->withObject(new CommentController($container))
+            ->withObject(new TaskFileController($container))
+            ->withObject(new ProjectFileController($container))
+            ->withObject(new LinkController($container))
+            ->withObject(new ProjectController($container))
+            ->withObject(new ProjectPermissionController($container))
+            ->withObject(new SubtaskController($container))
+            ->withObject(new SubtaskTimeTrackingController($container))
+            ->withObject(new SwimlaneController($container))
+            ->withObject(new TaskController($container))
+            ->withObject(new TaskLinkController($container))
+            ->withObject(new TaskExternalLinkController($container))
+            ->withObject(new TaskMetadataController($container))
+            ->withObject(new UserController($container))
+            ->withObject(new GroupController($container))
+            ->withObject(new GroupMemberController($container))
+            ->withBeforeMethod('beforeController');
 
         $container['api'] = $server;
 
