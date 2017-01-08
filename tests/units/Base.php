@@ -11,8 +11,7 @@
 
 require __DIR__.'/../../vendor/autoload.php';
 
-$config = require_once __DIR__.'/../../config/config.php';
-require_once __DIR__.'/../../bootstrap/bootstrap.php';
+require_once __DIR__.'/../../bootstrap/autoload.php';
 
 use Composer\Autoload\ClassLoader;
 use Jitamin\Core\Session\FlashMessage;
