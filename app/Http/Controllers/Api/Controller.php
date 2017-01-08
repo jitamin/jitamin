@@ -11,9 +11,9 @@
 
 namespace Jitamin\Controller\Api;
 
+use Jitamin\Core\Base;
 use Jitamin\Policy\ProcedurePolicy;
 use Jitamin\Policy\UserPolicy;
-use Jitamin\Core\Base;
 use ReflectionClass;
 
 /**

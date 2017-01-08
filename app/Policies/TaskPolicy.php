@@ -14,7 +14,7 @@ namespace Jitamin\Policy;
 /**
  * Class TaskAuthorization.
  */
-class TaskAuthorization extends ProjectAuthorization
+class TaskPolicy extends ProjectAuthorization
 {
     /**
      * Determine if the current user has permissions.

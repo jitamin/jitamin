@@ -11,8 +11,8 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\ProjectPolicy;
 use Jitamin\Core\Security\Role;
+use Jitamin\Policy\ProjectPolicy;
 
 /**
  * Project Permission API controller.

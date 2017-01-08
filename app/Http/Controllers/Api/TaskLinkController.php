@@ -11,8 +11,8 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\TaskPolicy;
 use Jitamin\Policy\TaskLinkPolicy;
+use Jitamin\Policy\TaskPolicy;
 
 /**
  * TaskLink API controller.

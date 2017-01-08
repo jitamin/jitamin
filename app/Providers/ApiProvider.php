@@ -11,29 +11,29 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Middleware\ApiAuthenticationMiddleware;
 use Jitamin\Controller\Api\ActionController;
 use Jitamin\Controller\Api\AppController;
 use Jitamin\Controller\Api\BoardController;
 use Jitamin\Controller\Api\CategoryController;
 use Jitamin\Controller\Api\ColumnController;
 use Jitamin\Controller\Api\CommentController;
-use Jitamin\Controller\Api\GroupMemberController;
 use Jitamin\Controller\Api\GroupController;
+use Jitamin\Controller\Api\GroupMemberController;
 use Jitamin\Controller\Api\LinkController;
 use Jitamin\Controller\Api\MeController;
+use Jitamin\Controller\Api\ProjectController;
 use Jitamin\Controller\Api\ProjectFileController;
 use Jitamin\Controller\Api\ProjectPermissionController;
-use Jitamin\Controller\Api\ProjectController;
 use Jitamin\Controller\Api\SubtaskController;
 use Jitamin\Controller\Api\SubtaskTimeTrackingController;
 use Jitamin\Controller\Api\SwimlaneController;
+use Jitamin\Controller\Api\TaskController;
 use Jitamin\Controller\Api\TaskExternalLinkController;
 use Jitamin\Controller\Api\TaskFileController;
 use Jitamin\Controller\Api\TaskLinkController;
 use Jitamin\Controller\Api\TaskMetadataController;
-use Jitamin\Controller\Api\TaskController;
 use Jitamin\Controller\Api\UserController;
+use Jitamin\Middleware\ApiAuthenticationMiddleware;
 use JsonRPC\Server;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

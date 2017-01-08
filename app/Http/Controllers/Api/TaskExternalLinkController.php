@@ -11,9 +11,9 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\TaskPolicy;
 use Jitamin\Core\ExternalLink\ExternalLinkManager;
 use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
+use Jitamin\Policy\TaskPolicy;
 
 /**
  * Task External Link API controller.

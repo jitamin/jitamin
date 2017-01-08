@@ -11,8 +11,8 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\ProjectPolicy;
 use Jitamin\Formatter\BoardFormatter;
+use Jitamin\Policy\ProjectPolicy;
 
 /**
  * Board API controller.

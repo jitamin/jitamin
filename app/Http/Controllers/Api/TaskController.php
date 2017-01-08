@@ -11,10 +11,10 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\ProjectPolicy;
-use Jitamin\Policy\TaskPolicy;
 use Jitamin\Filter\TaskProjectFilter;
 use Jitamin\Model\TaskModel;
+use Jitamin\Policy\ProjectPolicy;
+use Jitamin\Policy\TaskPolicy;
 
 /**
  * Task API controller.
