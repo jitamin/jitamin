@@ -30,6 +30,13 @@ class Runner extends Base
      */
     public function execute()
     {
+        $this->container['router']->dispatch();
+
+        if ($this->container['router']->getController() === 'Api') {
+            echo $this->container['api']->execute();
+            return;
+        }
+
         try {
             $this->executeMiddleware();
 
