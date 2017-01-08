@@ -47,18 +47,18 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 $ git clone https://github.com/jitamin/jitamin.git
 ```
 
-二. 安装依赖包
-
-```shell
-$ composer install -o --no-dev
-```
-
-三. 设置配置文件
+二. 设置配置文件
 
 ```shell
 $ cp config/config{.default,}.php
 ```
 > 根据实际情况修改 `config/config.php` 相关配置文件。
+
+三. 安装依赖包
+
+```shell
+$ composer install -o --no-dev
+```
 
 四. 安装数据库迁移和初始数据
 
