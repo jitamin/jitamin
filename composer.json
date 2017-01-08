@@ -57,7 +57,7 @@
         "friendsofphp/php-cs-fixer": "^1.11"
     },
     "scripts": {
-        "post-root-package-install": [
+        "pre-install-cmd": [
             "php -r \"file_exists('config/config.php') || copy('config/config.default.php', 'config/config.php');\""
         ],
         "post-install-cmd": [
