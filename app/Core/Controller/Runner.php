@@ -34,6 +34,7 @@ class Runner extends Base
 
         if ($this->container['router']->getController() === 'Api') {
             echo $this->container['api']->execute();
+
             return;
         }
 
