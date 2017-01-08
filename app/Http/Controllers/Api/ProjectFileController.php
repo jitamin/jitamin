@@ -11,8 +11,8 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\ProjectPolicy;
 use Jitamin\Core\ObjectStorage\ObjectStorageException;
+use Jitamin\Policy\ProjectPolicy;
 
 /**
  * Project File API controller.

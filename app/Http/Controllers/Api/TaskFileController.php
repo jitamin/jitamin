@@ -11,10 +11,10 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Policy\ProjectPolicy;
-use Jitamin\Policy\TaskPolicy;
-use Jitamin\Policy\TaskFilePolicy;
 use Jitamin\Core\ObjectStorage\ObjectStorageException;
+use Jitamin\Policy\ProjectPolicy;
+use Jitamin\Policy\TaskFilePolicy;
+use Jitamin\Policy\TaskPolicy;
 
 /**
  * Task File API controller.
