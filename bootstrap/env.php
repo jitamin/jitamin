@@ -15,7 +15,7 @@ if (version_compare(PHP_VERSION, '5.6.0', '<')) {
 }
 
 // Check data folder if sqlite
-if (DB_DRIVER === 'sqlite' && !is_writable(DATA_DIR.DIRECTORY_SEPARATOR.DB_FILENAME.'.sqlite')) {
+if (DB_DRIVER === 'sqlite' && !is_writable(DB_FILENAME)) {
     throw new Exception('The directory "'.DB_FILENAME.'" must be writeable by your web server user');
 }
 
