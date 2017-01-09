@@ -11,10 +11,10 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Foundation\ExternalLink\ExternalLinkManager;
 use Jitamin\ExternalLink\AttachmentLinkProvider;
 use Jitamin\ExternalLink\FileLinkProvider;
 use Jitamin\ExternalLink\WebLinkProvider;
+use Jitamin\Foundation\ExternalLink\ExternalLinkManager;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

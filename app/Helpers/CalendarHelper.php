@@ -11,11 +11,11 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Foundation\Base;
-use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Filter\TaskDueDateRangeFilter;
 use Jitamin\Formatter\SubtaskTimeTrackingCalendarFormatter;
 use Jitamin\Formatter\TaskCalendarFormatter;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Filter\QueryBuilder;
 
 /**
  * Calendar Helper.

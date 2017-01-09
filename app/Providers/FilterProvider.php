@@ -11,8 +11,6 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Foundation\Filter\LexerBuilder;
-use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Filter\ProjectActivityCreationDateFilter;
 use Jitamin\Filter\ProjectActivityCreatorFilter;
 use Jitamin\Filter\ProjectActivityProjectNameFilter;
@@ -40,6 +38,8 @@ use Jitamin\Filter\TaskSubtaskAssigneeFilter;
 use Jitamin\Filter\TaskSwimlaneFilter;
 use Jitamin\Filter\TaskTagFilter;
 use Jitamin\Filter\TaskTitleFilter;
+use Jitamin\Foundation\Filter\LexerBuilder;
+use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Model\ProjectGroupRoleModel;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\ProjectUserRoleModel;

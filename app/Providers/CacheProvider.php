@@ -11,13 +11,13 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Foundation\Cache\FileCache;
-use Jitamin\Foundation\Cache\MemcachedCache;
-use Jitamin\Foundation\Cache\MemoryCache;
 use Jitamin\Decorator\ColumnMoveRestrictionCacheDecorator;
 use Jitamin\Decorator\ColumnRestrictionCacheDecorator;
 use Jitamin\Decorator\MetadataCacheDecorator;
 use Jitamin\Decorator\ProjectRoleRestrictionCacheDecorator;
+use Jitamin\Foundation\Cache\FileCache;
+use Jitamin\Foundation\Cache\MemcachedCache;
+use Jitamin\Foundation\Cache\MemoryCache;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

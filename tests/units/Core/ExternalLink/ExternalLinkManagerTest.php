@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Foundation\ExternalLink\ExternalLinkManager;
 use Jitamin\ExternalLink\AttachmentLinkProvider;
 use Jitamin\ExternalLink\WebLinkProvider;
+use Jitamin\Foundation\ExternalLink\ExternalLinkManager;
 
 class ExternalLinkManagerTest extends Base
 {

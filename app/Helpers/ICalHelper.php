@@ -12,10 +12,10 @@
 namespace Jitamin\Helper;
 
 use Eluceo\iCal\Component\Calendar as iCalendar;
-use Jitamin\Foundation\Base;
-use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Filter\TaskDueDateRangeFilter;
 use Jitamin\Formatter\TaskICalFormatter;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Filter\QueryBuilder;
 
 /**
  * ICal Helper.
