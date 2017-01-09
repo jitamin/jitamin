@@ -30,7 +30,7 @@ class RouteCacheCommand extends BaseCommand
     {
         $this
             ->setName('route:cache')
-            ->setDescription('Create a cache file for faster route loading');
+            ->setDescription('Create a route cache file for faster route registration');
     }
 
     /**
