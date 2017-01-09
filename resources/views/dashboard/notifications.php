@@ -1,7 +1,7 @@
 <?php if (empty($notifications)): ?>
 <p class="alert"><?= t('You have no unread notifications') ?></p>
 <?php else: ?>
-    <div class="pull-right">
+    <div class="text-right">
         <i class="fa fa-check-square-o fa-fw"></i>
         <?= $this->url->link(t('Mark all as read'), 'NotificationController', 'flush', ['user_id' => $user['id']]) ?>
     </div>

@@ -56,13 +56,13 @@
             </span>
 
             <?php if (!$not_editable && !empty($column['description'])): ?>
-                <span class="tooltip pull-right" title="<?= $this->text->markdownAttribute($column['description']) ?>">
+                <span class="tooltip text-right" title="<?= $this->text->markdownAttribute($column['description']) ?>">
                     &nbsp;<i class="fa fa-info-circle"></i>
                 </span>
             <?php endif ?>
 
             <?php if (!empty($column['score'])): ?>
-                <span class="pull-right" title="<?= t('Score') ?>">
+                <span class="text-right" title="<?= t('Score') ?>">
                     <?= $column['score'] ?>
                 </span>
             <?php endif ?>

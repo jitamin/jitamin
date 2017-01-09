@@ -33,6 +33,7 @@
         </tr>
         <?php endforeach ?>
     </table>
-
-    <?= $paginator ?>
+    <div class="page-footer text-right">
+        <?= $paginator ?>
+    </div>
 <?php endif ?>
