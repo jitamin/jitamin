@@ -84,7 +84,7 @@ defined('DB_NAME') or define('DB_NAME', $config['db_connections'][$config['db_dr
 defined('DB_PORT') or define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
 } else {
     // Sqlite configuration
-    defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.'jitamin.sqlite');
+    defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.$config['db_connections'][$config['db_driver']]['database'].'.sqlite');
 }
 
 // Mysql SSL key
