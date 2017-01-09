@@ -21,7 +21,7 @@
         </li>
         <li>
             <i class="fa fa-comment-o fa-fw"></i>
-            <?= $this->url->link(t('Add a comment'), 'CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover small') ?>
+            <?= $this->url->link(t('Add a comment'), 'Task/CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover small') ?>
         </li>
         <li>
             <i class="fa fa-camera fa-fw"></i>
@@ -30,7 +30,7 @@
         <?php if ($this->projectRole->canRemoveTask($task)): ?>
             <li>
                 <i class="fa fa-trash-o fa-fw"></i>
-                <?= $this->url->link(t('Remove'), 'Task/TaskSuppressionController', 'confirm', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+                <?= $this->url->link(t('Remove'), 'Task/TaskSuppressionController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
             </li>
         <?php endif ?>
         <?php if (isset($task['is_active']) && $this->projectRole->canChangeTaskStatusInColumn($task['project_id'], $task['column_id'])): ?>

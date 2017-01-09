@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Security\Role;
 use Jitamin\Notification\MailNotification;
 
 /**
  * Class UserController.
  */
-class UserController extends BaseController
+class UserController extends Controller
 {
     /**
      * List all users.
@@ -144,7 +144,6 @@ class UserController extends BaseController
     public function unlock()
     {
         $user = $this->getUser();
-        $this->checkCSRFParam();
 
         if ($this->userLockingModel->resetFailedLogin($user['username'])) {
             $this->flash->success(t('User unlocked successfully.'));

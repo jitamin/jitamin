@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project\Board;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Model\UserMetadataModel;
 
 /**
  * Board Tooltip.
  */
-class BoardTooltipController extends BaseController
+class BoardTooltipController extends Controller
 {
     /**
      * Get links on mouseover.
@@ -25,7 +25,7 @@ class BoardTooltipController extends BaseController
     public function tasklinks()
     {
         $task = $this->getTask();
-        $this->response->html($this->template->render('board/tooltip_tasklinks', [
+        $this->response->html($this->template->render('project/board/tooltip_tasklinks', [
             'links' => $this->taskLinkModel->getAllGroupedByLabel($task['id']),
             'task'  => $task,
         ]));
@@ -37,7 +37,7 @@ class BoardTooltipController extends BaseController
     public function externallinks()
     {
         $task = $this->getTask();
-        $this->response->html($this->template->render('board/tooltip_external_links', [
+        $this->response->html($this->template->render('project/board/tooltip_external_links', [
             'links' => $this->taskExternalLinkModel->getAll($task['id']),
             'task'  => $task,
         ]));
@@ -49,7 +49,7 @@ class BoardTooltipController extends BaseController
     public function subtasks()
     {
         $task = $this->getTask();
-        $this->response->html($this->template->render('board/tooltip_subtasks', [
+        $this->response->html($this->template->render('project/board/tooltip_subtasks', [
             'subtasks' => $this->subtaskModel->getAll($task['id']),
             'task'     => $task,
         ]));
@@ -62,7 +62,7 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('board/tooltip_files', [
+        $this->response->html($this->template->render('project/board/tooltip_files', [
             'files' => $this->taskFileModel->getAll($task['id']),
             'task'  => $task,
         ]));
@@ -76,7 +76,7 @@ class BoardTooltipController extends BaseController
         $task = $this->getTask();
         $commentSortingDirection = $this->userMetadataCacheDecorator->get(UserMetadataModel::KEY_COMMENT_SORTING_DIRECTION, 'ASC');
 
-        $this->response->html($this->template->render('board/tooltip_comments', [
+        $this->response->html($this->template->render('project/board/tooltip_comments', [
             'task'     => $task,
             'comments' => $this->commentModel->getAll($task['id'], $commentSortingDirection),
         ]));
@@ -89,7 +89,7 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('board/tooltip_description', [
+        $this->response->html($this->template->render('project/board/tooltip_description', [
             'task' => $task,
         ]));
     }
@@ -101,7 +101,7 @@ class BoardTooltipController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_recurrence/info', [
+        $this->response->html($this->template->render('task/recurrence/info', [
             'task'                      => $task,
             'recurrence_trigger_list'   => $this->taskRecurrenceModel->getRecurrenceTriggerList(),
             'recurrence_timeframe_list' => $this->taskRecurrenceModel->getRecurrenceTimeframeList(),
@@ -116,6 +116,6 @@ class BoardTooltipController extends BaseController
     {
         $this->getProject();
         $swimlane = $this->swimlaneModel->getById($this->request->getIntegerParam('swimlane_id'));
-        $this->response->html($this->template->render('board/tooltip_description', ['task' => $swimlane]));
+        $this->response->html($this->template->render('project/board/tooltip_description', ['task' => $swimlane]));
     }
 }

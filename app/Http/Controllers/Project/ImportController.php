@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Csv;
 
 /**
  * Import controller.
  */
-class ImportController extends BaseController
+class ImportController extends Controller
 {
     /**
      * Upload the file and ask settings.

@@ -11,14 +11,14 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
  * Task External Link Controller.
  */
-class TaskExternalLinkController extends BaseController
+class TaskExternalLinkController extends Controller
 {
     /**
      * First creation form.
@@ -33,7 +33,7 @@ class TaskExternalLinkController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_external_link/find', [
+        $this->response->html($this->template->render('task/external_link/find', [
             'values' => $values,
             'errors' => $errors,
             'task'   => $task,
@@ -53,7 +53,7 @@ class TaskExternalLinkController extends BaseController
             $provider = $this->externalLinkManager->setUserInput($values)->find();
             $link = $provider->getLink();
 
-            $this->response->html($this->template->render('task_external_link/create', [
+            $this->response->html($this->template->render('task/external_link/create', [
                 'values' => [
                     'title'     => $link->getTitle(),
                     'url'       => $link->getUrl(),
@@ -112,7 +112,7 @@ class TaskExternalLinkController extends BaseController
 
         $provider = $this->externalLinkManager->getProvider($values['link_type']);
 
-        $this->response->html($this->template->render('task_external_link/edit', [
+        $this->response->html($this->template->render('task/external_link/edit', [
             'values'       => $values,
             'errors'       => $errors,
             'task'         => $task,
@@ -139,9 +139,9 @@ class TaskExternalLinkController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a link.
+     * Remove a link.
      */
-    public function confirm()
+    public function remove()
     {
         $task = $this->getTask();
         $link_id = $this->request->getIntegerParam('link_id');
@@ -151,26 +151,20 @@ class TaskExternalLinkController extends BaseController
             throw new PageNotFoundException();
         }
 
-        $this->response->html($this->template->render('task_external_link/remove', [
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->taskExternalLinkModel->remove($link_id)) {
+                $this->flash->success(t('Link removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this link.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
+        }
+
+        return $this->response->html($this->template->render('task/external_link/remove', [
             'link' => $link,
             'task' => $task,
         ]));
-    }
-
-    /**
-     * Remove a link.
-     */
-    public function remove()
-    {
-        $this->checkCSRFParam();
-        $task = $this->getTask();
-
-        if ($this->taskExternalLinkModel->remove($this->request->getIntegerParam('link_id'))) {
-            $this->flash->success(t('Link removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this link.'));
-        }
-
-        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
     }
 }

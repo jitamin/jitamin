@@ -1,2 +1,2 @@
-<?= $this->render('dashboard/_partials/subnav', ['user' => $user]) ?>
+<?= $this->render($subside_template) ?>
 <?= $content_for_sublayout ?>

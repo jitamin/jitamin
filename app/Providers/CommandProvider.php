@@ -11,6 +11,7 @@
 
 namespace Jitamin\Providers;
 
+use Jitamin\Console\ConfigCacheCommand;
 use Jitamin\Console\CronjobCommand;
 use Jitamin\Console\PluginInstallCommand;
 use Jitamin\Console\PluginUninstallCommand;
@@ -44,6 +45,7 @@ class CommandProvider implements ServiceProviderInterface
     public function register(Container $container)
     {
         $application = new Application('Jitamin', APP_VERSION);
+        $application->add(new ConfigCacheCommand($container));
         $application->add(new TaskOverdueNotificationCommand($container));
         $application->add(new SubtaskExportCommand($container));
         $application->add(new TaskExportCommand($container));

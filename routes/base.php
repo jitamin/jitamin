@@ -12,30 +12,28 @@
 return [
 
 // WebNotification routes
-'notification/:user_id/:notification_id' => 'WebNotificationController@redirect',
+'notification/{user_id}/{notification_id}'        => 'NotificationController@redirect',
+'notification/{user_id}/{notification_id}/remove' => 'NotificationController@remove',
+'notifications/{user_id}/flush'                   => 'NotificationController@flush',
 
 // Search routes
 'search'          => 'SearchController@index',
 'search/activity' => 'SearchController@activity',
 
 // Calendar routes
-'calendar/:project_id' => 'CalendarController@show',
-'c/:project_id'        => 'CalendarController@show',
-
-// Listing routes
-'list/:project_id' => 'Task/TaskController@index',
-'l/:project_id'    => 'Task/TaskListController@show',
+'calendar/{project_id}' => 'CalendarController@show',
+'c/{project_id}'        => 'CalendarController@show',
 
 // Feed routes
-'feed/project/:token' => 'FeedController@project',
-'feed/user/:token'    => 'FeedController@user',
+'feed/project/{token}' => 'FeedController@project',
+'feed/user/{token}'    => 'FeedController@user',
 
 // Ical routes
-'ical/project/:token' => 'ICalendarController@project',
-'ical/user/:token'    => 'ICalendarController@user',
+'ical/project/{token}' => 'ICalendarController@project',
+'ical/user/{token}'    => 'ICalendarController@user',
 
 // Doc
-'help/:file' => 'DocumentationController@show',
-'help'       => 'DocumentationController@show',
+'help/{file}' => 'DocumentationController@show',
+'help'        => 'DocumentationController@show',
 
 ];

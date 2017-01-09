@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class ProjectRoleRestrictionController.
  */
-class ProjectRoleRestrictionController extends BaseController
+class ProjectRoleRestrictionController extends Controller
 {
     /**
      * Show form to create a new project restriction.
@@ -33,7 +33,7 @@ class ProjectRoleRestrictionController extends BaseController
         $role_id = $this->request->getIntegerParam('role_id');
         $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
-        $this->response->html($this->template->render('project_role_restriction/create', [
+        $this->response->html($this->template->render('project/role_restriction/create', [
             'project'      => $project,
             'role'         => $role,
             'values'       => $values + ['project_id' => $project['id'], 'role_id' => $role['role_id']],
@@ -66,35 +66,28 @@ class ProjectRoleRestrictionController extends BaseController
     }
 
     /**
-     * Confirm suppression.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $restriction_id = $this->request->getIntegerParam('restriction_id');
-
-        $this->response->html($this->helper->layout->project('project_role_restriction/remove', [
-            'project'      => $project,
-            'restriction'  => $this->projectRoleRestrictionModel->getById($project['id'], $restriction_id),
-            'restrictions' => $this->projectRoleRestrictionModel->getRules(),
-        ]));
-    }
-
-    /**
      * Remove a restriction.
      */
     public function remove()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
         $restriction_id = $this->request->getIntegerParam('restriction_id');
 
-        if ($this->projectRoleRestrictionModel->remove($restriction_id)) {
-            $this->flash->success(t('Project restriction removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this restriction.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectRoleRestrictionModel->remove($restriction_id)) {
+                $this->flash->success(t('Project restriction removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this restriction.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
+        return $this->response->html($this->helper->layout->project('project/role_restriction/remove', [
+            'project'      => $project,
+            'restriction'  => $this->projectRoleRestrictionModel->getById($project['id'], $restriction_id),
+            'restrictions' => $this->projectRoleRestrictionModel->getRules(),
+        ]));
     }
 }

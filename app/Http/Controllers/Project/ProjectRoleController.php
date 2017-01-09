@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class ProjectRoleController.
  */
-class ProjectRoleController extends BaseController
+class ProjectRoleController extends Controller
 {
     /**
      * Show roles and permissions.
@@ -26,7 +26,7 @@ class ProjectRoleController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('project_role/show', [
+        $this->response->html($this->helper->layout->project('project/role/show', [
             'project' => $project,
             'roles'   => $this->projectRoleModel->getAllWithRestrictions($project['id']),
             'title'   => t('Custom Project Roles'),
@@ -45,7 +45,7 @@ class ProjectRoleController extends BaseController
     {
         $project = $this->getProject();
 
-        $this->response->html($this->template->render('project_role/create', [
+        $this->response->html($this->template->render('project/role/create', [
             'project' => $project,
             'values'  => $values + ['project_id' => $project['id']],
             'errors'  => $errors,
@@ -94,7 +94,7 @@ class ProjectRoleController extends BaseController
             $values = $role;
         }
 
-        $this->response->html($this->template->render('project_role/edit', [
+        $this->response->html($this->template->render('project/role/edit', [
             'role'    => $role,
             'project' => $project,
             'values'  => $values,
@@ -108,7 +108,8 @@ class ProjectRoleController extends BaseController
     public function update()
     {
         $project = $this->getProject();
-        $role = $this->getRole($project['id']);
+        $role_id = $this->request->getIntegerParam('role_id');
+        $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
         $values = $this->request->getValues();
 
@@ -128,44 +129,29 @@ class ProjectRoleController extends BaseController
     }
 
     /**
-     * Confirm suppression.
-     */
-    public function confirm()
-    {
-        $project = $this->getProject();
-        $role = $this->getRole($project['id']);
-
-        $this->response->html($this->helper->layout->project('project_role/remove', [
-            'project' => $project,
-            'role'    => $role,
-        ]));
-    }
-
-    /**
      * Remove a custom role.
      */
     public function remove()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
         $role_id = $this->request->getIntegerParam('role_id');
 
-        if ($this->projectRoleModel->remove($project['id'], $role_id)) {
-            $this->flash->success(t('Custom project role removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this project role.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectRoleModel->remove($project['id'], $role_id)) {
+                $this->flash->success(t('Custom project role removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this project role.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectRoleController', 'show', ['project_id' => $project['id']]));
-    }
+        $role = $this->projectRoleModel->getById($project['id'], $role_id);
 
-    /**
-     * Get a project role.
-     */
-    protected function getRole($project_id)
-    {
-        $role_id = $this->request->getIntegerParam('role_id');
-
-        return $this->projectRoleModel->getById($project_id, $role_id);
+        return $this->response->html($this->helper->layout->project('project/role/remove', [
+            'project' => $project,
+            'role'    => $role,
+        ]));
     }
 }

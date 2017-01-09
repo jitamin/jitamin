@@ -14,7 +14,7 @@ namespace Jitamin\Controller;
 /**
  * Activity Controller.
  */
-class ActivityController extends BaseController
+class ActivityController extends Controller
 {
     /**
      * Activity page for a project.

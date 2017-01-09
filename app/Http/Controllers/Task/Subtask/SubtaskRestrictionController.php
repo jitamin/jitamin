@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Task\Subtask;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Model\SubtaskModel;
 
 /**
  * Subtask Restriction.
  */
-class SubtaskRestrictionController extends BaseController
+class SubtaskRestrictionController extends Controller
 {
     /**
      * Show popup.
@@ -27,7 +27,7 @@ class SubtaskRestrictionController extends BaseController
         $task = $this->getTask();
         $subtask = $this->getSubtask();
 
-        $this->response->html($this->template->render('subtask_restriction/show', [
+        $this->response->html($this->template->render('task/subtask/restriction', [
             'status_list' => [
                 SubtaskModel::STATUS_TODO => t('Todo'),
                 SubtaskModel::STATUS_DONE => t('Done'),

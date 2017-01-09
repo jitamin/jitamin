@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Auth;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Security\OAuthAuthenticationProviderInterface;
 
 /**
  * OAuth Controller.
  */
-class OAuthController extends BaseController
+class OAuthController extends Controller
 {
     /**
      * Unlink external account.
@@ -25,7 +25,6 @@ class OAuthController extends BaseController
     public function unlink()
     {
         $backend = $this->request->getStringParam('backend');
-        $this->checkCSRFParam();
 
         if ($this->authenticationManager->getProvider($backend)->unlink($this->userSession->getId())) {
             $this->flash->success(t('Your external account is not linked anymore to your profile.'));
@@ -120,7 +119,7 @@ class OAuthController extends BaseController
      */
     protected function authenticationFailure($message)
     {
-        $this->response->html($this->helper->layout->app('auth/index', [
+        $this->response->html($this->helper->layout->app('auth/login', [
             'errors'    => ['login' => $message],
             'values'    => [],
             'no_layout' => true,

@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Recurrence controller.
  */
-class TaskRecurrenceController extends BaseController
+class TaskRecurrenceController extends Controller
 {
     /**
      * Edit recurrence form.
@@ -35,7 +35,7 @@ class TaskRecurrenceController extends BaseController
             $values = $task;
         }
 
-        $this->response->html($this->template->render('task_recurrence/edit', [
+        $this->response->html($this->template->render('task/recurrence/edit', [
             'values'                    => $values,
             'errors'                    => $errors,
             'task'                      => $task,

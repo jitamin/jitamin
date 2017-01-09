@@ -11,45 +11,14 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
-use Jitamin\Filter\ProjectIdsFilter;
-use Jitamin\Filter\ProjectStatusFilter;
-use Jitamin\Filter\ProjectTypeFilter;
-use Jitamin\Formatter\ProjectGanttFormatter;
+use Jitamin\Controller\Controller;
 use Jitamin\Model\ProjectModel;
 
 /**
  * Class ProjectController.
  */
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
-    /**
-     * List of projects.
-     */
-    public function index()
-    {
-        if ($this->userSession->isAdmin()) {
-            $project_ids = $this->projectModel->getAllIds();
-        } else {
-            $project_ids = $this->projectPermissionModel->getProjectIds($this->userSession->getId());
-        }
-
-        $nb_projects = count($project_ids);
-
-        $paginator = $this->paginator
-            ->setUrl('Project/ProjectController', 'index')
-            ->setMax(20)
-            ->setOrder('name')
-            ->setQuery($this->projectModel->getQueryColumnStats($project_ids))
-            ->calculate();
-
-        $this->response->html($this->helper->layout->app('project/index', [
-            'paginator'   => $paginator,
-            'nb_projects' => $nb_projects,
-            'title'       => t('Projects list'),
-        ]));
-    }
-
     /**
      * Project entrypoint.
      */
@@ -71,7 +40,7 @@ class ProjectController extends BaseController
         $project = $this->getProject();
         $this->projectModel->getColumnStats($project);
 
-        $this->response->html($this->helper->layout->app('project/show', [
+        $this->response->html($this->helper->layout->app('project/overview', [
             'project'     => $project,
             'title'       => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
@@ -80,25 +49,6 @@ class ProjectController extends BaseController
             'events'      => $this->helper->projectActivity->getProjectEvents($project['id'], 10),
             'images'      => $this->projectFileModel->getAllImages($project['id']),
             'files'       => $this->projectFileModel->getAllDocuments($project['id']),
-        ]));
-    }
-
-    /**
-     * Display Gantt chart for all projects.
-     */
-    public function gantt()
-    {
-        $project_ids = $this->projectPermissionModel->getActiveProjectIds($this->userSession->getId());
-        $filter = $this->projectQuery
-            ->withFilter(new ProjectTypeFilter(ProjectModel::TYPE_TEAM))
-            ->withFilter(new ProjectStatusFilter(ProjectModel::ACTIVE))
-            ->withFilter(new ProjectIdsFilter($project_ids));
-
-        $filter->getQuery()->asc(ProjectModel::TABLE.'.start_date');
-
-        $this->response->html($this->helper->layout->app('project/gantt', [
-            'projects' => $filter->format(new ProjectGanttFormatter($this->container)),
-            'title'    => t('Projects Gantt chart'),
         ]));
     }
 
@@ -158,85 +108,28 @@ class ProjectController extends BaseController
     }
 
     /**
-     * General edition (most common operations).
-     *
-     * @param array $values
-     * @param array $errors
-     */
-    public function edit(array $values = [], array $errors = [])
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->helper->layout->project('project/edit', [
-            'owners'  => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
-            'values'  => empty($values) ? $project : $values,
-            'errors'  => $errors,
-            'project' => $project,
-            'views'   => $this->projectModel->getViews(),
-            'title'   => t('Edit project'),
-        ]));
-    }
-
-    /**
-     * Change project description.
-     *
-     * @param array $values
-     * @param array $errors
-     */
-    public function edit_description(array $values = [], array $errors = [])
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->helper->layout->project('project/edit_description', [
-            'owners'  => $this->projectUserRoleModel->getAssignableUsersList($project['id'], true),
-            'values'  => empty($values) ? $project : $values,
-            'errors'  => $errors,
-            'project' => $project,
-            'title'   => t('Edit project'),
-        ]));
-    }
-
-    /**
-     * Star a project (confirmation dialog box).
-     */
-    public function confirmStar()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('project/star', [
-            'project' => $project,
-            'title'   => t('Star project'),
-        ]));
-    }
-
-    /**
-     * Unstar a project (confirmation dialog box).
-     */
-    public function confirmUnstar()
-    {
-        $project = $this->getProject();
-
-        $this->response->html($this->template->render('project/unstar', [
-            'project' => $project,
-            'title'   => t('Unstar project'),
-        ]));
-    }
-
-    /**
      * Star the project.
      */
     public function star()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectStarModel->addStargazer($project['id'], $this->userSession->getId())) {
-            $this->flash->success(t('Project starred successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to star this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+
+            if ($this->projectStarModel->addStargazer($project['id'], $this->userSession->getId())) {
+                $this->flash->success(t('Project starred successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to star this project.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
         }
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
+        return $this->response->html($this->template->render('project/star', [
+            'project' => $project,
+            'title'   => t('Star project'),
+        ]));
     }
 
     /**
@@ -245,40 +138,23 @@ class ProjectController extends BaseController
     public function unstar()
     {
         $project = $this->getProject();
-        $this->checkCSRFParam();
 
-        if ($this->projectStarModel->removeStargazer($project['id'], $this->userSession->getId())) {
-            $this->flash->success(t('Project unstarred successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to unstar this project.'));
-        }
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
 
-        $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
-    }
-
-    /**
-     * Validate and update a project.
-     */
-    public function update()
-    {
-        $project = $this->getProject();
-        $values = $this->request->getValues();
-        $redirect = $this->request->getStringParam('redirect', 'edit');
-
-        $values = $this->prepareValues($redirect, $project, $values);
-        list($valid, $errors) = $this->projectValidator->validateModification($values);
-
-        if ($valid) {
-            if ($this->projectModel->update($values)) {
-                $this->flash->success(t('Project updated successfully.'));
-
-                return $this->response->redirect($this->helper->url->to('Project/ProjectController', $redirect, ['project_id' => $project['id']]), true);
+            if ($this->projectStarModel->removeStargazer($project['id'], $this->userSession->getId())) {
+                $this->flash->success(t('Project unstarred successfully.'));
             } else {
-                $this->flash->failure(t('Unable to update this project.'));
+                $this->flash->failure(t('Unable to unstar this project.'));
             }
+
+            $this->response->redirect($this->helper->url->to('Project/ProjectController', 'show', ['project_id' => $project['id']]), true);
         }
 
-        return $this->$redirect($values, $errors);
+        return $this->response->html($this->template->render('project/unstar', [
+            'project' => $project,
+            'title'   => t('Unstar project'),
+        ]));
     }
 
     /**
@@ -299,32 +175,6 @@ class ProjectController extends BaseController
         } else {
             $this->response->json(['message' => 'OK'], 201);
         }
-    }
-
-    /**
-     * Prepare form values.
-     *
-     * @param string $redirect
-     * @param array  $project
-     * @param array  $values
-     *
-     * @return array
-     */
-    protected function prepareValues($redirect, array $project, array $values)
-    {
-        if ($redirect === 'edit') {
-            if (isset($values['is_private'])) {
-                if (!$this->helper->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])) {
-                    unset($values['is_private']);
-                }
-            } elseif ($project['is_private'] == 1 && !isset($values['is_private'])) {
-                if ($this->helper->user->hasProjectAccess('Project/ProjectController', 'create', $project['id'])) {
-                    $values += ['is_private' => 0];
-                }
-            }
-        }
-
-        return $values;
     }
 
     /**

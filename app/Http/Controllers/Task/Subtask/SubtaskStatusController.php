@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task\Subtask;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Subtask Status.
  */
-class SubtaskStatusController extends BaseController
+class SubtaskStatusController extends Controller
 {
     /**
      * Change status to the next status: Toto -> In Progress -> Done.
@@ -66,7 +66,7 @@ class SubtaskStatusController extends BaseController
      */
     protected function renderTable(array $task)
     {
-        return $this->template->render('subtask/table', [
+        return $this->template->render('task/subtask/table', [
             'task'     => $task,
             'subtasks' => $this->subtaskModel->getAll($task['id']),
             'editable' => true,

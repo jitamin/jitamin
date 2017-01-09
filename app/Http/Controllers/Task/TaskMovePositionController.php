@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Formatter\BoardFormatter;
 use Jitamin\Model\TaskModel;
@@ -19,7 +19,7 @@ use Jitamin\Model\TaskModel;
 /**
  * Class TaskMovePositionController.
  */
-class TaskMovePositionController extends BaseController
+class TaskMovePositionController extends Controller
 {
     /**
      * Show position movement.
@@ -28,7 +28,7 @@ class TaskMovePositionController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_move_position/show', [
+        $this->response->html($this->template->render('task/move_position/show', [
             'task'  => $task,
             'board' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($task['project_id'])

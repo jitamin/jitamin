@@ -26,7 +26,7 @@
         </li>
         <li>
             <i class="fa fa-comment-o fa-fw"></i>
-            <?= $this->url->link(t('Add a comment'), 'CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a comment'), 'Task/CommentController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <li>
             <i class="fa fa-file fa-fw"></i>
@@ -70,7 +70,7 @@
         <?php if ($this->projectRole->canRemoveTask($task)): ?>
             <li>
                 <i class="fa fa-trash-o fa-fw"></i>
-                <?= $this->url->link(t('Remove'), 'Task/TaskSuppressionController', 'confirm', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'redirect' => 'board'], false, 'popover') ?>
+                <?= $this->url->link(t('Remove'), 'Task/TaskSuppressionController', 'remove', ['task_id' => $task['id'], 'project_id' => $task['project_id'], 'redirect' => 'board'], false, 'popover') ?>
             </li>
         <?php endif ?>
 

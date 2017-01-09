@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Project\Board;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Formatter\BoardFormatter;
 use Jitamin\Model\UserMetadataModel;
@@ -19,7 +19,7 @@ use Jitamin\Model\UserMetadataModel;
 /**
  * Class BoardAjaxController.
  */
-class BoardAjaxController extends BaseController
+class BoardAjaxController extends Controller
 {
     /**
      * Save new task positions (Ajax request made by the drag and drop).
@@ -129,7 +129,7 @@ class BoardAjaxController extends BaseController
      */
     protected function renderBoard($project_id)
     {
-        return $this->template->render('board/table_container', [
+        return $this->template->render('project/board/table_container', [
             'project'                        => $this->projectModel->getById($project_id),
             'board_private_refresh_interval' => $this->settingModel->get('board_private_refresh_interval'),
             'board_highlight_period'         => $this->settingModel->get('board_highlight_period'),

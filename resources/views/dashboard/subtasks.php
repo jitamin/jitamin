@@ -1,6 +1,3 @@
-<div class="page-header">
-    <h3><?= $this->url->link(t('My subtasks'), 'Dashboard/DashboardController', 'subtasks', ['user_id' => $user['id']]) ?> (<?= $paginator->getTotal() ?>)</h3>
-</div>
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('There is nothing assigned to you.') ?></p>
 <?php else: ?>
@@ -41,5 +38,7 @@
         <?php endforeach ?>
     </table>
 
-    <?= $paginator ?>
+    <div class="page-footer text-right">
+        <?= $paginator ?>
+    </div>
 <?php endif ?>

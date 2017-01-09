@@ -1,17 +1,10 @@
-<div class="page-header">
-    <h2><?= t('My notifications') ?></h2>
-
 <?php if (empty($notifications)): ?>
-</div>
 <p class="alert"><?= t('You have no unread notifications') ?></p>
 <?php else: ?>
-    <ul class="pull-right">
-        <li>
-            <i class="fa fa-check-square-o fa-fw"></i>
-            <?= $this->url->link(t('Mark all as read'), 'WebNotificationController', 'flush', ['user_id' => $user['id']]) ?>
-        </li>
-    </ul>
-</div>
+    <div class="text-right">
+        <i class="fa fa-check-square-o fa-fw"></i>
+        <?= $this->url->link(t('Mark all as read'), 'NotificationController', 'flush', ['user_id' => $user['id']]) ?>
+    </div>
 
     <table class="table-striped table-scrolling table-small">
         <tr>
@@ -56,7 +49,7 @@
                 <?php if ($this->text->contains($notification['event_name'], 'task.overdue') && count($notification['event_data']['tasks']) > 1): ?>
                     <?= $notification['title'] ?>
                 <?php else: ?>
-                    <?= $this->url->link($notification['title'], 'WebNotificationController', 'redirect', ['notification_id' => $notification['id'], 'user_id' => $user['id']]) ?>
+                    <?= $this->url->link($notification['title'], 'NotificationController', 'redirect', ['notification_id' => $notification['id'], 'user_id' => $user['id']]) ?>
                 <?php endif ?>
             </td>
             <td>
@@ -71,7 +64,7 @@
             </td>
             <td>
                 <i class="fa fa-check fa-fw"></i>
-                <?= $this->url->link(t('Mark as read'), 'WebNotificationController', 'remove', ['user_id' => $user['id'], 'notification_id' => $notification['id']]) ?>
+                <?= $this->url->link(t('Mark as read'), 'NotificationController', 'remove', ['user_id' => $user['id'], 'notification_id' => $notification['id']]) ?>
             </td>
         </tr>
         <?php endforeach ?>

@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Class TaskBulkController.
  */
-class TaskBulkController extends BaseController
+class TaskBulkController extends Controller
 {
     /**
      * Show the form.
@@ -36,7 +36,7 @@ class TaskBulkController extends BaseController
             ];
         }
 
-        $this->response->html($this->template->render('task_bulk/show', [
+        $this->response->html($this->template->render('task/create_bulk', [
             'project'         => $project,
             'values'          => $values,
             'errors'          => $errors,

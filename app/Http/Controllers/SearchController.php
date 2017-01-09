@@ -16,7 +16,7 @@ use Jitamin\Filter\TaskProjectsFilter;
 /**
  * Search Controller.
  */
-class SearchController extends BaseController
+class SearchController extends Controller
 {
     /**
      * Shows the search view.
@@ -45,7 +45,7 @@ class SearchController extends BaseController
             $nb_tasks = $paginator->getTotal();
         }
 
-        $this->response->html($this->helper->layout->app('search/index', [
+        $this->response->html($this->helper->layout->dashboard('search/index', [
             'values' => [
                 'q'          => $query,
                 'controller' => 'SearchController',
@@ -53,7 +53,7 @@ class SearchController extends BaseController
             ],
             'paginator' => $paginator,
             'title'     => t('Search tasks').($nb_tasks > 0 ? ' ('.$nb_tasks.')' : ''),
-        ]));
+        ], 'search/_partials/nav'));
     }
 
     /**
@@ -65,7 +65,7 @@ class SearchController extends BaseController
         $events = $this->helper->projectActivity->searchEvents($query);
         $nb_events = count($events);
 
-        $this->response->html($this->helper->layout->app('search/activity', [
+        $this->response->html($this->helper->layout->dashboard('search/activity', [
             'values' => [
                 'q'          => $query,
                 'controller' => 'SearchController',
@@ -74,6 +74,6 @@ class SearchController extends BaseController
             'title'     => t('Search in activities').($nb_events > 0 ? ' ('.$nb_events.')' : ''),
             'nb_events' => $nb_events,
             'events'    => $events,
-        ]));
+        ], 'search/_partials/nav'));
     }
 }

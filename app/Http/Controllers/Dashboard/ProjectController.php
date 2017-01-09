@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Dashboard;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Project Controller.
  */
-class ProjectController extends BaseController
+class ProjectController extends Controller
 {
     /**
      * Project overview.

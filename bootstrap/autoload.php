@@ -12,10 +12,8 @@
 require __DIR__.'/../vendor/autoload.php';
 
 $dbUrlParser = new PicoDb\UrlParser();
-
 if ($dbUrlParser->isEnvironmentVariableDefined()) {
     $dbSettings = $dbUrlParser->getSettings();
-
     define('DB_DRIVER', $dbSettings['driver']);
     define('DB_USERNAME', $dbSettings['username']);
     define('DB_PASSWORD', $dbSettings['password']);
@@ -24,33 +22,14 @@ if ($dbUrlParser->isEnvironmentVariableDefined()) {
     define('DB_NAME', $dbSettings['database']);
 }
 
-$config = require __DIR__.'/../config/config.php';
+if (file_exists(__DIR__.'/cache/config.php')) {
+    $configAll = require __DIR__.'/cache/config.php';
+    $config = $configAll['config'];
+    $configApp = $configAll['app'];
+} else {
+    $config = require __DIR__.'/../config/config.php';
+    $configApp = require __DIR__.'/../config/app.php';
+}
 
 require __DIR__.'/bootstrap.php';
-require __DIR__.'/constants.php';
 require __DIR__.'/env.php';
-
-$container = new Pimple\Container();
-$container->register(new Jitamin\Providers\MailProvider());
-$container->register(new Jitamin\Providers\HelperProvider());
-$container->register(new Jitamin\Providers\SessionProvider());
-$container->register(new Jitamin\Providers\LoggingProvider());
-$container->register(new Jitamin\Providers\CacheProvider());
-$container->register(new Jitamin\Providers\DatabaseProvider());
-$container->register(new Jitamin\Providers\AuthenticationProvider());
-$container->register(new Jitamin\Providers\NotificationProvider());
-$container->register(new Jitamin\Providers\ClassProvider());
-$container->register(new Jitamin\Providers\EventDispatcherProvider());
-$container->register(new Jitamin\Providers\GroupProvider());
-$container->register(new Jitamin\Providers\RouteProvider());
-$container->register(new Jitamin\Providers\ActionProvider());
-$container->register(new Jitamin\Providers\ExternalLinkProvider());
-$container->register(new Jitamin\Providers\AvatarProvider());
-$container->register(new Jitamin\Providers\FilterProvider());
-$container->register(new Jitamin\Providers\JobProvider());
-$container->register(new Jitamin\Providers\QueueProvider());
-$container->register(new Jitamin\Providers\ApiProvider());
-$container->register(new Jitamin\Providers\CommandProvider());
-$container->register(new Jitamin\Providers\PluginProvider());
-$container->register(new Jitamin\Providers\UpdateProvider());
-$container->register(new Jitamin\Providers\TwigProvider());

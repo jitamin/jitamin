@@ -28,24 +28,16 @@ class LayoutHelper extends Base
      */
     public function app($template, array $params = [])
     {
+        $content = $this->template->render($template, $params);
+
         if ($this->request->isAjax()) {
-            return $this->template->render($template, $params);
+            return $content;
         }
 
-        return $this->pageLayout($template, $params);
-    }
-
-    /**
-     * Common layout for error views.
-     *
-     * @param string $template Template name
-     * @param array  $params   Template parameters
-     *
-     * @return string
-     */
-    public function error($template, array $params = [])
-    {
-        return $this->template->render($template, $params);
+        return $this->template->render(
+            'layouts/master',
+            $params + ['content_for_layout' => $content]
+        );
     }
 
     /**
@@ -91,7 +83,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function project($template, array $params, $subside = 'project/subside')
+    public function project($template, array $params, $subside = 'manage/project_settings/subside')
     {
         if (empty($params['title'])) {
             $params['title'] = $params['project']['name'];
@@ -114,7 +106,7 @@ class LayoutHelper extends Base
     {
         $params['filter'] = ['user_id' => $params['user_id']];
 
-        return $this->subLayout('project_user_overview/layout', 'project_user_overview/subside', $template, $params);
+        return $this->subLayout('manage/project_user_overview/layout', 'manage/project_user_overview/subside', $template, $params);
     }
 
     /**
@@ -144,12 +136,13 @@ class LayoutHelper extends Base
      *
      * @param string $template
      * @param array  $params
+     * @param string $subside
      *
      * @return string
      */
-    public function dashboard($template, array $params)
+    public function dashboard($template, array $params, $subside = 'dashboard/_partials/subnav')
     {
-        return $this->subLayout('dashboard/layout', 'dashboard/subside', $template, $params);
+        return $this->subLayout('dashboard/layout', $subside, $template, $params);
     }
 
     /**
@@ -185,23 +178,6 @@ class LayoutHelper extends Base
     }
 
     /**
-     * Render page layout.
-     *
-     * @param string $template Template name
-     * @param array  $params   Key/value dictionary
-     * @param string $layout   Layout name
-     *
-     * @return string
-     */
-    public function pageLayout($template, array $params = [], $layout = 'layouts/master')
-    {
-        return $this->template->render(
-            $layout,
-            $params + ['content_for_layout' => $this->template->render($template, $params)]
-        );
-    }
-
-    /**
      * Common method to generate a sub-layout.
      *
      * @param string $sublayout
@@ -211,7 +187,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function subLayout($sublayout, $subside, $template, array $params = [])
+    protected function subLayout($sublayout, $subside, $template, array $params = [])
     {
         $content = $this->template->render($template, $params);
 

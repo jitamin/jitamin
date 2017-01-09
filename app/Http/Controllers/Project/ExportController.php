@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Export Controller.
  */
-class ExportController extends BaseController
+class ExportController extends Controller
 {
     /**
      * Task export.
@@ -72,7 +72,7 @@ class ExportController extends BaseController
             $this->response->withFileDownload($filename.'.csv');
             $this->response->csv($data);
         } else {
-            $this->response->html($this->helper->layout->project('export/'.$action, [
+            $this->response->html($this->helper->layout->project('project/export/'.$action, [
                 'values' => [
                     'controller' => 'Project/ExportController',
                     'action'     => $action,
@@ -83,7 +83,7 @@ class ExportController extends BaseController
                 'errors'  => [],
                 'project' => $project,
                 'title'   => $page_title,
-            ], 'export/subside'));
+            ], 'project/export/subside'));
         }
     }
 }

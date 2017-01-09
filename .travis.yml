@@ -17,7 +17,7 @@ env:
 before_script:
   - if [[ $TRAVIS_PHP_VERSION != 7.x ]]; then phpenv config-rm xdebug.ini; fi
   - phpenv config-add tests/php.ini
-  - cp config/config{.default,}.php
+  - touch storage/jitamin.sqlite
   - composer install
   - php vendor/bin/phpdoccheck --directory=app/
 

@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
  * TaskInternalLink Controller.
  */
-class TaskInternalLinkController extends BaseController
+class TaskInternalLinkController extends Controller
 {
     /**
      * Creation form.
@@ -32,7 +32,7 @@ class TaskInternalLinkController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_internal_link/create', [
+        $this->response->html($this->template->render('task/internal_link/create', [
             'values' => $values,
             'errors' => $errors,
             'task'   => $task,
@@ -84,7 +84,7 @@ class TaskInternalLinkController extends BaseController
             $values['title'] = '#'.$opposite_task['id'].' - '.$opposite_task['title'];
         }
 
-        $this->response->html($this->template->render('task_internal_link/edit', [
+        $this->response->html($this->template->render('task/internal_link/edit', [
             'values'    => $values,
             'errors'    => $errors,
             'task_link' => $task_link,
@@ -117,34 +117,28 @@ class TaskInternalLinkController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a link.
-     */
-    public function confirm()
-    {
-        $task = $this->getTask();
-        $link = $this->getTaskLink();
-
-        $this->response->html($this->template->render('task_internal_link/remove', [
-            'link' => $link,
-            'task' => $task,
-        ]));
-    }
-
-    /**
      * Remove a link.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $task = $this->getTask();
+        $link = $this->getTaskLink();
 
-        if ($this->taskLinkModel->remove($this->request->getIntegerParam('link_id'))) {
-            $this->flash->success(t('Link removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this link.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->taskLinkModel->remove($this->request->getIntegerParam('link_id'))) {
+                $this->flash->success(t('Link removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this link.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]));
+        return $this->response->html($this->template->render('task/internal_link/remove', [
+            'link' => $link,
+            'task' => $task,
+        ]));
     }
 
     /**

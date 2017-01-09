@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Project;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Duplicate automatic action from another project.
  */
-class ProjectActionDuplicationController extends BaseController
+class ProjectActionDuplicationController extends Controller
 {
     /**
      * Show project action duplication.
@@ -27,7 +27,7 @@ class ProjectActionDuplicationController extends BaseController
         $projects = $this->projectUserRoleModel->getProjectsByUser($this->userSession->getId());
         unset($projects[$project['id']]);
 
-        $this->response->html($this->template->render('project_action_duplication/show', [
+        $this->response->html($this->template->render('project/action/duplication', [
             'project'       => $project,
             'projects_list' => $projects,
         ]));
@@ -47,6 +47,6 @@ class ProjectActionDuplicationController extends BaseController
             $this->flash->failure(t('Unable to duplicate actions.'));
         }
 
-        $this->response->redirect($this->helper->url->to('ActionController', 'index', ['project_id' => $project['id']]));
+        $this->response->redirect($this->helper->url->to('Project/ActionController', 'index', ['project_id' => $project['id']]));
     }
 }

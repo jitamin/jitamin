@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Plugin\Directory;
 use Jitamin\Core\Plugin\Installer;
 use Jitamin\Core\Plugin\PluginInstallerException;
@@ -19,7 +19,7 @@ use Jitamin\Core\Plugin\PluginInstallerException;
 /**
  * Class PluginController.
  */
-class PluginController extends BaseController
+class PluginController extends Controller
 {
     /**
      * Display the plugin page.
@@ -59,7 +59,6 @@ class PluginController extends BaseController
      */
     public function install()
     {
-        $this->checkCSRFParam();
         $pluginArchiveUrl = urldecode($this->request->getStringParam('archive_url'));
 
         try {
@@ -80,7 +79,6 @@ class PluginController extends BaseController
      */
     public function update()
     {
-        $this->checkCSRFParam();
         $pluginArchiveUrl = urldecode($this->request->getStringParam('archive_url'));
 
         try {
@@ -95,37 +93,32 @@ class PluginController extends BaseController
     }
 
     /**
-     * Confirmation before to remove the plugin.
-     */
-    public function confirm()
-    {
-        $pluginId = $this->request->getStringParam('pluginId');
-        $plugins = $this->pluginLoader->getPlugins();
-
-        $this->response->html($this->template->render('admin/plugin/remove', [
-            'plugin_id' => $pluginId,
-            'plugin'    => $plugins[$pluginId],
-        ]));
-    }
-
-    /**
      * Remove a plugin.
      *
      * @throws \Jitamin\Core\Controller\AccessForbiddenException
      */
     public function uninstall()
     {
-        $this->checkCSRFParam();
         $pluginId = $this->request->getStringParam('pluginId');
 
-        try {
-            $installer = new Installer($this->container);
-            $installer->uninstall($pluginId);
-            $this->flash->success(t('Plugin removed successfully.'));
-        } catch (PluginInstallerException $e) {
-            $this->flash->failure($e->getMessage());
+        if ($this->request->isPost()) {
+            try {
+                $this->request->checkCSRFToken();
+                $installer = new Installer($this->container);
+                $installer->uninstall($pluginId);
+                $this->flash->success(t('Plugin removed successfully.'));
+            } catch (PluginInstallerException $e) {
+                $this->flash->failure($e->getMessage());
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/PluginController', 'show'));
+        $plugins = $this->pluginLoader->getPlugins();
+
+        return $this->response->html($this->template->render('admin/plugin/remove', [
+            'plugin_id' => $pluginId,
+            'plugin'    => $plugins[$pluginId],
+        ]));
     }
 }

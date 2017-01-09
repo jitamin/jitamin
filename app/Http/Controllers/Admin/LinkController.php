@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\PageNotFoundException;
 
 /**
  * Link Controller.
  */
-class LinkController extends BaseController
+class LinkController extends Controller
 {
     /**
      * List of links.
@@ -114,33 +114,27 @@ class LinkController extends BaseController
     }
 
     /**
-     * Confirmation dialog before removing a link.
-     */
-    public function confirm()
-    {
-        $link = $this->getLink();
-
-        $this->response->html($this->helper->layout->admin('admin/link/remove', [
-            'link'  => $link,
-            'title' => t('Remove a link'),
-        ]));
-    }
-
-    /**
      * Remove a link.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $link = $this->getLink();
 
-        if ($this->linkModel->remove($link['id'])) {
-            $this->flash->success(t('Link removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this link.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->linkModel->remove($link['id'])) {
+                $this->flash->success(t('Link removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this link.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/LinkController', 'index'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/LinkController', 'index'));
+        return $this->response->html($this->helper->layout->admin('admin/link/remove', [
+            'link'  => $link,
+            'title' => t('Remove a link'),
+        ]));
     }
 
     /**

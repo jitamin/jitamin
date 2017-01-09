@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Duplication controller.
  */
-class TaskDuplicationController extends BaseController
+class TaskDuplicationController extends Controller
 {
     /**
      * Duplicate a task.
@@ -26,7 +26,6 @@ class TaskDuplicationController extends BaseController
         $task = $this->getTask();
 
         if ($this->request->getStringParam('confirmation') === 'yes') {
-            $this->checkCSRFParam();
             $task_id = $this->taskDuplicationModel->duplicate($task['id']);
 
             if ($task_id > 0) {
@@ -40,7 +39,7 @@ class TaskDuplicationController extends BaseController
             }
         }
 
-        return $this->response->html($this->template->render('task_duplication/duplicate', [
+        return $this->response->html($this->template->render('task/duplication/duplicate', [
             'task' => $task,
         ]));
     }
@@ -70,7 +69,7 @@ class TaskDuplicationController extends BaseController
             $this->flash->failure(t('Unable to update your task.'));
         }
 
-        return $this->chooseDestination($task, 'task_duplication/move');
+        return $this->chooseDestination($task, 'task/duplication/move');
     }
 
     /**
@@ -100,7 +99,7 @@ class TaskDuplicationController extends BaseController
             $this->flash->failure(t('Unable to create your task.'));
         }
 
-        return $this->chooseDestination($task, 'task_duplication/copy');
+        return $this->chooseDestination($task, 'task/duplication/copy');
     }
 
     /**

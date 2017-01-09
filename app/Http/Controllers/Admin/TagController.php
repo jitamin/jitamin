@@ -11,13 +11,13 @@
 
 namespace Jitamin\Controller\Admin;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 use Jitamin\Core\Controller\AccessForbiddenException;
 
 /**
  * Class TagController.
  */
-class TagController extends BaseController
+class TagController extends Controller
 {
     /**
      * List all tags.
@@ -119,24 +119,10 @@ class TagController extends BaseController
     }
 
     /**
-     * Confirmation dialog to remove a tag.
-     */
-    public function confirm()
-    {
-        $tag_id = $this->request->getIntegerParam('tag_id');
-        $tag = $this->tagModel->getById($tag_id);
-
-        $this->response->html($this->template->render('admin/tag/remove', [
-            'tag' => $tag,
-        ]));
-    }
-
-    /**
      * Remove a tag.
      */
     public function remove()
     {
-        $this->checkCSRFParam();
         $tag_id = $this->request->getIntegerParam('tag_id');
         $tag = $this->tagModel->getById($tag_id);
 
@@ -144,12 +130,19 @@ class TagController extends BaseController
             throw new AccessForbiddenException();
         }
 
-        if ($this->tagModel->remove($tag_id)) {
-            $this->flash->success(t('Tag removed successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to remove this tag.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->tagModel->remove($tag_id)) {
+                $this->flash->success(t('Tag removed successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to remove this tag.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Admin/TagController', 'index'));
         }
 
-        $this->response->redirect($this->helper->url->to('Admin/TagController', 'index'));
+        return $this->response->html($this->template->render('admin/tag/remove', [
+            'tag' => $tag,
+        ]));
     }
 }

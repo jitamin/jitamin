@@ -26,13 +26,14 @@
                     <li><?= $this->url->link(t('Add group member'), 'Admin/GroupController', 'associate', ['group_id' => $group['id']], false, 'popover') ?></li>
                     <li><?= $this->url->link(t('Members'), 'Admin/GroupController', 'users', ['group_id' => $group['id']]) ?></li>
                     <li><?= $this->url->link(t('Edit'), 'Admin/GroupController', 'edit', ['group_id' => $group['id']], false, 'popover') ?></li>
-                    <li><?= $this->url->link(t('Remove'), 'Admin/GroupController', 'confirm', ['group_id' => $group['id']], false, 'popover') ?></li>
+                    <li><?= $this->url->link(t('Remove'), 'Admin/GroupController', 'remove', ['group_id' => $group['id']], false, 'popover') ?></li>
                 </ul>
                 </div>
             </td>
         </tr>
         <?php endforeach ?>
     </table>
-
-    <?= $paginator ?>
+    <div class="page-footer text-right">
+        <?= $paginator ?>
+    </div>
 <?php endif ?>

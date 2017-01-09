@@ -4,7 +4,6 @@ before_script:
   - docker-php-ext-enable gd
   - composer config repo.packagist composer https://packagist.phpcomposer.com
   - composer install --no-progress --no-interaction
-  - cp config/config{.default,}.php
   - php -v
   - php vendor/bin/phpdoccheck --directory=app
 

@@ -11,19 +11,19 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Status controller.
  */
-class TaskStatusController extends BaseController
+class TaskStatusController extends Controller
 {
     /**
      * Close a task.
      */
     public function close()
     {
-        $this->changeStatus('close', 'task_status/close', t('Task closed successfully.'), t('Unable to close this task.'));
+        $this->changeStatus('close', 'task/status/close', t('Task closed successfully.'), t('Unable to close this task.'));
     }
 
     /**
@@ -31,7 +31,7 @@ class TaskStatusController extends BaseController
      */
     public function open()
     {
-        $this->changeStatus('open', 'task_status/open', t('Task opened successfully.'), t('Unable to open this task.'));
+        $this->changeStatus('open', 'task/status/open', t('Task opened successfully.'), t('Unable to open this task.'));
     }
 
     /**
@@ -47,8 +47,6 @@ class TaskStatusController extends BaseController
         $task = $this->getTask();
 
         if ($this->request->getStringParam('confirmation') === 'yes') {
-            $this->checkCSRFParam();
-
             if ($this->taskStatusModel->$method($task['id'])) {
                 $this->flash->success($success_message);
             } else {

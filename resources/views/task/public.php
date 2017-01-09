@@ -12,13 +12,13 @@
         'is_public' => true,
     ]) ?>
 
-    <?= $this->render('subtask/show', [
+    <?= $this->render('task/subtask/show', [
         'task'     => $task,
         'subtasks' => $subtasks,
         'editable' => false,
     ]) ?>
 
-    <?= $this->render('task_internal_link/show', [
+    <?= $this->render('task/internal_link/show', [
         'task'      => $task,
         'links'     => $links,
         'project'   => $project,
@@ -26,7 +26,7 @@
         'is_public' => true,
     ]) ?>
 
-    <?= $this->render('comments/show', [
+    <?= $this->render('task/comments/show', [
         'task'      => $task,
         'comments'  => $comments,
         'project'   => $project,

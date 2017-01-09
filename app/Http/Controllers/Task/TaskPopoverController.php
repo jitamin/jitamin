@@ -11,12 +11,12 @@
 
 namespace Jitamin\Controller\Task;
 
-use Jitamin\Controller\BaseController;
+use Jitamin\Controller\Controller;
 
 /**
  * Task Popover.
  */
-class TaskPopoverController extends BaseController
+class TaskPopoverController extends Controller
 {
     /**
      * Screenshot popover.
@@ -25,7 +25,7 @@ class TaskPopoverController extends BaseController
     {
         $task = $this->getTask();
 
-        $this->response->html($this->template->render('task_file/screenshot', [
+        $this->response->html($this->template->render('task/attachment/screenshot', [
             'task' => $task,
         ]));
     }
