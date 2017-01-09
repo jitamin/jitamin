@@ -168,6 +168,31 @@ class Route extends Base
     }
 
     /**
+     * Load route data from cache.
+     *
+     * @param array $routes
+     *
+     */
+    public function loadCacheData($routes)
+    {
+        $this->urls = $routes['urls'];
+        $this->paths = $routes['paths'];
+    }
+
+    /**
+     * Get route data.
+     *
+     * @return array
+     */
+    public function getRouteData()
+    {
+        return [
+            'urls' => $this->urls,
+            'paths' => $this->paths,
+        ];
+    }
+
+    /**
      * Find url params.
      *
      * @param array $items

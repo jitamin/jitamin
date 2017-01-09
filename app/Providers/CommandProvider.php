@@ -20,6 +20,7 @@ use Jitamin\Console\ProjectDailyColumnStatsExportCommand;
 use Jitamin\Console\ProjectDailyStatsCalculationCommand;
 use Jitamin\Console\ResetPasswordCommand;
 use Jitamin\Console\ResetTwoFactorCommand;
+use Jitamin\Console\RouteCacheCommand;
 use Jitamin\Console\SubtaskExportCommand;
 use Jitamin\Console\TaskExportCommand;
 use Jitamin\Console\TaskOverdueNotificationCommand;
@@ -46,6 +47,7 @@ class CommandProvider implements ServiceProviderInterface
     {
         $application = new Application('Jitamin', APP_VERSION);
         $application->add(new ConfigCacheCommand($container));
+        $application->add(new RouteCacheCommand($container));
         $application->add(new TaskOverdueNotificationCommand($container));
         $application->add(new SubtaskExportCommand($container));
         $application->add(new TaskExportCommand($container));

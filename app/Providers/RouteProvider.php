@@ -35,13 +35,19 @@ class RouteProvider implements ServiceProviderInterface
 
         if (ENABLE_URL_REWRITE) {
             $container['route']->enable();
-            foreach (glob(JITAMIN_DIR.DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'*.php') as $file) {
-                $routes = require $file;
-                foreach ($routes as $path => $entry) {
-                    list($controller, $action) = explode('@', $entry);
-                    $container['route']->addRoute($path, $controller, $action);
+            if (file_exists(JITAMIN_DIR.'/bootstrap/cache/routes.php')) {
+                $routes = require JITAMIN_DIR.'/bootstrap/cache/routes.php';
+                $container['route']->loadCacheData($routes);
+            } else {
+                foreach (glob(JITAMIN_DIR.DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'*.php') as $file) {
+                    $routes = require $file;
+                    foreach ($routes as $path => $entry) {
+                        list($controller, $action) = explode('@', $entry);
+                        $container['route']->addRoute($path, $controller, $action);
+                    }
                 }
             }
+
         }
 
         return $container;
