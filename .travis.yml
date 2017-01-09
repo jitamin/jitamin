@@ -20,6 +20,7 @@ before_script:
   - touch storage/jitamin.sqlite
   - composer install
   - php vendor/bin/phpdoccheck --directory=app/
+  - php artisan config:cache
 
 script:
   - phpunit -c tests/units.$DB.xml

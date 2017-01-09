@@ -5,8 +5,15 @@ use Symfony\Component\EventDispatcher\Event;
 
 try {
     require __DIR__.'/bootstrap/autoload.php';
-    // This bootstraps the framework and gets it ready for use
-    $app = require_once __DIR__.'/bootstrap/app.php';
+
+    $config = require __DIR__.'/config/config.php';
+    $configApp = require __DIR__.'/config/app.php';
+
+    $container = new Pimple\Container();
+
+    foreach ($configApp['providers'] as $provider) {
+        $container->register(new $provider());
+    }
     $container['dispatcher']->dispatch('app.bootstrap', new Event);
     $container['cli']->run();
 } catch (Exception $e) {
