@@ -6,9 +6,6 @@ use Symfony\Component\EventDispatcher\Event;
 try {
     require __DIR__.'/bootstrap/autoload.php';
 
-    $config = require __DIR__.'/config/config.php';
-    $configApp = require __DIR__.'/config/app.php';
-
     $container = new Pimple\Container();
 
     foreach ($configApp['providers'] as $provider) {

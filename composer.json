@@ -61,8 +61,10 @@
             "php -r \"file_exists('config/config.php') || copy('config/config.default.php', 'config/config.php');\""
         ],
         "post-install-cmd": [
+            "php artisan config:cache"
         ],
         "post-update-cmd": [
+            "php artisan config:cache"
         ]
     },
     "repositories": {
