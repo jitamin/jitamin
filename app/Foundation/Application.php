@@ -31,7 +31,7 @@ class Application extends Base
     public function execute()
     {
         if ($this->runningInConsole()) {
-            $this->container['dispatcher']->dispatch('app.bootstrap', new Event);
+            $this->container['dispatcher']->dispatch('app.bootstrap', new Event());
             $this->container['cli']->run();
 
             return;
