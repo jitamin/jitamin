@@ -56,6 +56,15 @@
         "phpunit/phpunit-selenium": "2.0.2",
         "friendsofphp/php-cs-fixer": "^1.11"
     },
+    "scripts": {
+        "pre-install-cmd": [
+            "php -r \"file_exists('config/config.php') || copy('config/config.default.php', 'config/config.php');\""
+        ],
+        "post-install-cmd": [
+        ],
+        "post-update-cmd": [
+        ]
+    },
     "repositories": {
         "packagist": {
             "type": "composer",
