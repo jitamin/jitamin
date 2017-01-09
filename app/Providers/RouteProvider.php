@@ -47,7 +47,6 @@ class RouteProvider implements ServiceProviderInterface
                     }
                 }
             }
-
         }
 
         return $container;

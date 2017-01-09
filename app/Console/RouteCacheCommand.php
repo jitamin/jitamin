@@ -19,8 +19,8 @@ use Symfony\Component\Console\Output\OutputInterface;
  */
 class RouteCacheCommand extends BaseCommand
 {
-
     protected $routes = [];
+
     /**
      * Configure the console command.
      *
@@ -45,7 +45,7 @@ class RouteCacheCommand extends BaseCommand
     {
         $this->getFreshRoutes();
 
-       foreach ($this->routes as $path => $entry) {
+        foreach ($this->routes as $path => $entry) {
             list($controller, $action) = explode('@', $entry);
             $this->container['route']->addRoute($path, $controller, $action);
         }
