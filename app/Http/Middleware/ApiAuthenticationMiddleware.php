@@ -11,7 +11,7 @@
 
 namespace Jitamin\Middleware;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use JsonRPC\Exception\AccessDeniedException;
 use JsonRPC\Exception\AuthenticationFailureException;
 use JsonRPC\MiddlewareInterface;

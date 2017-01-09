@@ -9,17 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Plugin;
+namespace Jitamin\Foundation\Plugin;
 
 use Composer\Autoload\ClassLoader;
 use DirectoryIterator;
-use Jitamin\Core\Tool;
+use Jitamin\Foundation\Tool;
 use LogicException;
 
 /**
  * Plugin Loader.
  */
-class Loader extends \Jitamin\Core\Base
+class Loader extends \Jitamin\Foundation\Base
 {
     /**
      * Plugin instances.

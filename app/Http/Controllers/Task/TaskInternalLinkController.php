@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Task;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Foundation\Controller\PageNotFoundException;
 
 /**
  * TaskInternalLink Controller.
@@ -26,7 +26,7 @@ class TaskInternalLinkController extends Controller
      * @param array $errors
      *
      * @throws PageNotFoundException
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function create(array $values = [], array $errors = [])
     {
@@ -71,7 +71,7 @@ class TaskInternalLinkController extends Controller
      * @param array $errors
      *
      * @throws PageNotFoundException
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function edit(array $values = [], array $errors = [])
     {

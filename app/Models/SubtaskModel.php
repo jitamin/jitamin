@@ -11,7 +11,7 @@
 
 namespace Jitamin\Model;
 
-use Jitamin\Core\Database\Model;
+use Jitamin\Foundation\Database\Model;
 use PicoDb\Database;
 
 /**

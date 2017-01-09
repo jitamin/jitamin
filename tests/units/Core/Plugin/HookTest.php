@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Plugin\Hook;
+use Jitamin\Foundation\Plugin\Hook;
 
 class HookTest extends Base
 {

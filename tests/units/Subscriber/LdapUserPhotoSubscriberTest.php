@@ -11,7 +11,7 @@
 
 use Jitamin\Bus\Event\UserProfileSyncEvent;
 use Jitamin\Bus\Subscriber\LdapUserPhotoSubscriber;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\UserModel;
 use Jitamin\Services\Identity\DatabaseUserProvider;
 use Jitamin\Services\Identity\LdapUserProvider;

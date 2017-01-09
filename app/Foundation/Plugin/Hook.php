@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Plugin;
+namespace Jitamin\Foundation\Plugin;
 
 /**
  * Plugin Hooks Handler.

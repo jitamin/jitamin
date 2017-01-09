@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Http\Route;
-use Jitamin\Core\Http\Router;
+use Jitamin\Foundation\Http\Route;
+use Jitamin\Foundation\Http\Router;
 
 class RouteTest extends Base
 {

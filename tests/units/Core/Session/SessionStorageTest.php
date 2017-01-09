@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Session\SessionStorage;
+use Jitamin\Foundation\Session\SessionStorage;
 
 class SessionStorageTest extends Base
 {

@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Security\Token;
+use Jitamin\Foundation\Security\Token;
 
 class TokenTest extends Base
 {

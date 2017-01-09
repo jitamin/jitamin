@@ -57,7 +57,7 @@ abstract class BaseFilter
      *
      * @param Table $query
      *
-     * @return \Jitamin\Core\Filter\FilterInterface
+     * @return \Jitamin\Foundation\Filter\FilterInterface
      */
     public function withQuery(Table $query)
     {
@@ -71,7 +71,7 @@ abstract class BaseFilter
      *
      * @param string $value
      *
-     * @return \Jitamin\Core\Filter\FilterInterface
+     * @return \Jitamin\Foundation\Filter\FilterInterface
      */
     public function withValue($value)
     {

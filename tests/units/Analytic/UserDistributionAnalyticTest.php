@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Jitamin\Analytic\UserDistributionAnalytic;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\ProjectUserRoleModel;
 use Jitamin\Model\TaskModel;

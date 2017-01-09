@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Session;
+namespace Jitamin\Foundation\Session;
 
 /**
  * Session Storage.

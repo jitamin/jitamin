@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Cache\MemoryCache;
+use Jitamin\Foundation\Cache\MemoryCache;
 
 class MemoryCacheTest extends Base
 {

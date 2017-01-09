@@ -18,7 +18,7 @@ class HookHelperTest extends Base
     public function testAttachCallable()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Jitamin\Core\Template')
+            ->getMockBuilder('\Jitamin\Foundation\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -45,7 +45,7 @@ class HookHelperTest extends Base
     public function testAttachCallableWithNoResult()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Jitamin\Core\Template')
+            ->getMockBuilder('\Jitamin\Foundation\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -69,7 +69,7 @@ class HookHelperTest extends Base
     public function testAttachLocalVariables()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Jitamin\Core\Template')
+            ->getMockBuilder('\Jitamin\Foundation\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();
@@ -91,7 +91,7 @@ class HookHelperTest extends Base
     public function testMultipleHooks()
     {
         $this->container['template'] = $this
-            ->getMockBuilder('\Jitamin\Core\Template')
+            ->getMockBuilder('\Jitamin\Foundation\Template')
             ->setConstructorArgs([$this->container['helper']])
             ->setMethods(['render'])
             ->getMock();

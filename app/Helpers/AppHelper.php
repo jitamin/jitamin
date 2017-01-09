@@ -11,8 +11,8 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Http\Router;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Http\Router;
 
 /**
  * Application Helper.

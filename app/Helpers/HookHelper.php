@@ -12,7 +12,7 @@
 namespace Jitamin\Helper;
 
 use Closure;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Template Hook helpers.

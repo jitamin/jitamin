@@ -11,9 +11,9 @@
 
 namespace Jitamin\Auth;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Security\PasswordAuthenticationProviderInterface;
-use Jitamin\Core\Security\SessionCheckProviderInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Security\PasswordAuthenticationProviderInterface;
+use Jitamin\Foundation\Security\SessionCheckProviderInterface;
 use Jitamin\Model\UserModel;
 use Jitamin\Services\Identity\DatabaseUserProvider;
 

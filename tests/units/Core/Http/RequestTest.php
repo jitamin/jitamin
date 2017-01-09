@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Http\Request;
+use Jitamin\Foundation\Http\Request;
 
 class RequestTest extends Base
 {

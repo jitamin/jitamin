@@ -12,7 +12,7 @@
 namespace Jitamin\Helper;
 
 use DateTime;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * DateTime helpers.

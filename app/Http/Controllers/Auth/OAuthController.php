@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Auth;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Security\OAuthAuthenticationProviderInterface;
+use Jitamin\Foundation\Security\OAuthAuthenticationProviderInterface;
 
 /**
  * OAuth Controller.

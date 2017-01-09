@@ -11,8 +11,8 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Filter\QueryBuilder;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Filter\TaskDueDateRangeFilter;
 use Jitamin\Formatter\SubtaskTimeTrackingCalendarFormatter;
 use Jitamin\Formatter\TaskCalendarFormatter;

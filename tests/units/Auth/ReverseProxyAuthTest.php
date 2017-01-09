@@ -10,7 +10,7 @@
  */
 
 use Jitamin\Auth\ReverseProxyAuth;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\UserModel;
 
 require_once __DIR__.'/../Base.php';
@@ -22,7 +22,7 @@ class ReverseProxyAuthTest extends Base
         parent::setUp();
 
         $this->container['request'] = $this
-            ->getMockBuilder('\Jitamin\Core\Http\Request')
+            ->getMockBuilder('\Jitamin\Foundation\Http\Request')
             ->setConstructorArgs([$this->container])
             ->setMethods(['getRemoteUser'])
             ->getMock();

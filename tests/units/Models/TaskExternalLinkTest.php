@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\ExternalLink\ExternalLinkManager;
+use Jitamin\Foundation\ExternalLink\ExternalLinkManager;
 use Jitamin\ExternalLink\WebLinkProvider;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\TaskExternalLinkModel;

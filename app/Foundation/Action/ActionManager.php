@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Action;
+namespace Jitamin\Foundation\Action;
 
 use Jitamin\Action\Base as ActionBase;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use RuntimeException;
 
 /**

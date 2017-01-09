@@ -11,9 +11,9 @@
 
 namespace Jitamin\Auth;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Security\PreAuthenticationProviderInterface;
-use Jitamin\Core\Security\SessionCheckProviderInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Security\PreAuthenticationProviderInterface;
+use Jitamin\Foundation\Security\SessionCheckProviderInterface;
 use Jitamin\Services\Identity\ReverseProxyUserProvider;
 
 /**

@@ -11,7 +11,7 @@
 
 namespace Jitamin\Formatter;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use PicoDb\Table;
 use Pimple\Container;
 

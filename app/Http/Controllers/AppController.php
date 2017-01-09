@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Class AppController.

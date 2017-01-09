@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Admin;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Notification\MailNotification;
 
 /**
@@ -94,8 +94,8 @@ class UserController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function changeAuthentication(array $values = [], array $errors = [])
     {
@@ -116,8 +116,8 @@ class UserController extends Controller
     /**
      * Save authentication.
      *
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function saveAuthentication()
     {

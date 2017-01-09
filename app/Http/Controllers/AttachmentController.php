@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller;
 
-use Jitamin\Core\ObjectStorage\ObjectStorageException;
+use Jitamin\Foundation\ObjectStorage\ObjectStorageException;
 
 /**
  * Attachment Controller.

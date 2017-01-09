@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Cache;
+namespace Jitamin\Foundation\Cache;
 
-use Jitamin\Core\Tool;
+use Jitamin\Foundation\Tool;
 use LogicException;
 
 /**

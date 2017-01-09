@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Plugin\Directory;
+use Jitamin\Foundation\Plugin\Directory;
 
 require_once __DIR__.'/../../Base.php';
 

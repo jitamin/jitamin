@@ -12,9 +12,9 @@
 namespace Jitamin\Model;
 
 use Exception;
-use Jitamin\Core\Database\Model;
-use Jitamin\Core\ObjectStorage\ObjectStorageException;
-use Jitamin\Core\Thumbnail;
+use Jitamin\Foundation\Database\Model;
+use Jitamin\Foundation\ObjectStorage\ObjectStorageException;
+use Jitamin\Foundation\Thumbnail;
 
 /**
  * Base File Model.

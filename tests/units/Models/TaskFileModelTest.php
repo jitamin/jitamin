@@ -271,7 +271,7 @@ class TaskFileModelTest extends Base
             ->expects($this->at(0))
             ->method('moveUploadedFile')
             ->with($this->equalTo('/tmp/phpYzdqkD'), $this->anything())
-            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Foundation\ObjectStorage\ObjectStorageException('test')));
 
         $fileModel = new TaskFileModel($this->container);
         $this->assertFalse($fileModel->uploadFiles(1, $files));
@@ -330,7 +330,7 @@ class TaskFileModelTest extends Base
             ->expects($this->once())
             ->method('put')
             ->with($this->anything(), $this->equalTo($data))
-            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Foundation\ObjectStorage\ObjectStorageException('test')));
 
         $this->assertFalse($fileModel->uploadContent(1, 'test.doc', base64_encode($data)));
     }
@@ -405,7 +405,7 @@ class TaskFileModelTest extends Base
             ->expects($this->once())
             ->method('remove')
             ->with('tmp/foo')
-            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Foundation\ObjectStorage\ObjectStorageException('test')));
 
         $this->assertFalse($fileModel->remove(1));
     }

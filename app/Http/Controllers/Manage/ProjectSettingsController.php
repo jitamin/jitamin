@@ -98,8 +98,8 @@ class ProjectSettingsController extends Controller
     /**
      * Change project sharing.
      *
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function updateSharing()
     {
@@ -134,7 +134,7 @@ class ProjectSettingsController extends Controller
     /**
      * Update integrations.
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function updateIntegrations()
     {
@@ -163,7 +163,7 @@ class ProjectSettingsController extends Controller
     /**
      * Update notifications.
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function updateNotifications()
     {

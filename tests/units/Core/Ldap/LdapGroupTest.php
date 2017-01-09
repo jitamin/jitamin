@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Ldap\Entries;
-use Jitamin\Core\Ldap\Group;
+use Jitamin\Foundation\Ldap\Entries;
+use Jitamin\Foundation\Ldap\Group;
 
 class LdapGroupTest extends Base
 {
@@ -25,14 +25,14 @@ class LdapGroupTest extends Base
         parent::setUp();
 
         $this->client = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Client')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Client')
             ->setMethods([
                 'getConnection',
             ])
             ->getMock();
 
         $this->query = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Query')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Query')
             ->setConstructorArgs([$this->client])
             ->setMethods([
                 'execute',
@@ -42,7 +42,7 @@ class LdapGroupTest extends Base
             ->getMock();
 
         $this->group = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Group')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Group')
             ->setConstructorArgs([$this->query])
             ->setMethods([
                 'getAttributeName',

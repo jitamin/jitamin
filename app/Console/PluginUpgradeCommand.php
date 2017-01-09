@@ -11,9 +11,9 @@
 
 namespace Jitamin\Console;
 
-use Jitamin\Core\Plugin\Base as BasePlugin;
-use Jitamin\Core\Plugin\Directory;
-use Jitamin\Core\Plugin\Installer;
+use Jitamin\Foundation\Plugin\Base as BasePlugin;
+use Jitamin\Foundation\Plugin\Directory;
+use Jitamin\Foundation\Plugin\Installer;
 use LogicException;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

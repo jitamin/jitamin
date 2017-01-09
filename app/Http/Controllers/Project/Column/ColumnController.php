@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Project\Column;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 
 /**
  * Column Controller.
@@ -40,7 +40,7 @@ class ColumnController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function create(array $values = [], array $errors = [])
     {

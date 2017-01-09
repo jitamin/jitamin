@@ -11,7 +11,7 @@
 
 namespace Jitamin\Services\Update;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * A class to get the latest release tag for Github.

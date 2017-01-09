@@ -11,7 +11,7 @@
 
 namespace Jitamin\Middleware;
 
-use Jitamin\Core\Controller\BaseMiddleware;
+use Jitamin\Foundation\Controller\BaseMiddleware;
 
 /**
  * Class PostAuthenticationMiddleware.

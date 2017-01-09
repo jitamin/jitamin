@@ -11,7 +11,7 @@
 
 namespace Jitamin\ExternalLink;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Base Link.

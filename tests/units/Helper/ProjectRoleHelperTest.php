@@ -9,8 +9,8 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Identity\UserSession;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Identity\UserSession;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Helper\ProjectRoleHelper;
 use Jitamin\Model\ColumnMoveRestrictionModel;
 use Jitamin\Model\ColumnRestrictionModel;

@@ -15,8 +15,8 @@ $config = require_once __DIR__.'/../../config/config.php';
 require_once __DIR__.'/../../bootstrap/bootstrap.php';
 
 use Composer\Autoload\ClassLoader;
-use Jitamin\Core\Session\FlashMessage;
-use Jitamin\Core\Session\SessionStorage;
+use Jitamin\Foundation\Session\FlashMessage;
+use Jitamin\Foundation\Session\SessionStorage;
 use Jitamin\Providers\ActionProvider;
 use SimpleLogger\Logger;
 use Symfony\Component\EventDispatcher\Debug\TraceableEventDispatcher;
@@ -85,13 +85,13 @@ abstract class Base extends PHPUnit_Framework_TestCase
         $this->container['logger'] = new Logger();
 
         $this->container['httpClient'] = $this
-            ->getMockBuilder('\Jitamin\Core\Http\Client')
+            ->getMockBuilder('\Jitamin\Foundation\Http\Client')
             ->setConstructorArgs([$this->container])
             ->setMethods(['get', 'getJson', 'postJson', 'postJsonAsync', 'postForm', 'postFormAsync'])
             ->getMock();
 
         $this->container['emailClient'] = $this
-            ->getMockBuilder('\Jitamin\Core\Mail\Client')
+            ->getMockBuilder('\Jitamin\Foundation\Mail\Client')
             ->setConstructorArgs([$this->container])
             ->setMethods(['send'])
             ->getMock();
@@ -103,7 +103,7 @@ abstract class Base extends PHPUnit_Framework_TestCase
             ->getMock();
 
         $this->container['objectStorage'] = $this
-            ->getMockBuilder('\Jitamin\Core\ObjectStorage\FileStorage')
+            ->getMockBuilder('\Jitamin\Foundation\ObjectStorage\FileStorage')
             ->setConstructorArgs([$this->container])
             ->setMethods(['put', 'moveFile', 'remove', 'moveUploadedFile'])
             ->getMock();

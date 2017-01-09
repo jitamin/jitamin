@@ -11,7 +11,7 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use Jitamin\Filter\ProjectActivityProjectIdFilter;
 use Jitamin\Filter\ProjectActivityProjectIdsFilter;
 use Jitamin\Filter\ProjectActivityTaskIdFilter;

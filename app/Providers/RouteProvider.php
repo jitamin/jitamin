@@ -11,8 +11,8 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Http\Route;
-use Jitamin\Core\Http\Router;
+use Jitamin\Foundation\Http\Route;
+use Jitamin\Foundation\Http\Router;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

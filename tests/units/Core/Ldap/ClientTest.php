@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Ldap;
+namespace Jitamin\Foundation\Ldap;
 
 require_once __DIR__.'/../../Base.php';
 
@@ -92,7 +92,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Foundation\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->open('my_ldap_server');
@@ -142,7 +142,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Foundation\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->open('my_ldap_server', 389, true);
@@ -167,7 +167,7 @@ class ClientTest extends \Base
             ->method('ldap_bind')
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Foundation\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->useAnonymousAuthentication();
@@ -220,7 +220,7 @@ class ClientTest extends \Base
             )
             ->will($this->returnValue(false));
 
-        $this->setExpectedException('\Jitamin\Core\Ldap\ClientException');
+        $this->setExpectedException('\Jitamin\Foundation\Ldap\ClientException');
 
         $ldap = new Client();
         $ldap->open('my_ldap_server');

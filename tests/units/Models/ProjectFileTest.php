@@ -244,7 +244,7 @@ class ProjectFileTest extends Base
             ->expects($this->at(0))
             ->method('moveUploadedFile')
             ->with($this->equalTo('/tmp/phpYzdqkD'), $this->anything())
-            ->will($this->throwException(new \Jitamin\Core\ObjectStorage\ObjectStorageException('test')));
+            ->will($this->throwException(new \Jitamin\Foundation\ObjectStorage\ObjectStorageException('test')));
 
         $fileModel = new ProjectFileModel($this->container);
         $this->assertFalse($fileModel->uploadFiles(1, $files));

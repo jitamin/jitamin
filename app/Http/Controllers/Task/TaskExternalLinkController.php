@@ -12,8 +12,8 @@
 namespace Jitamin\Controller\Task;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\PageNotFoundException;
-use Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound;
+use Jitamin\Foundation\Controller\PageNotFoundException;
+use Jitamin\Foundation\ExternalLink\ExternalLinkProviderNotFound;
 
 /**
  * Task External Link Controller.
@@ -27,7 +27,7 @@ class TaskExternalLinkController extends Controller
      * @param array $errors
      *
      * @throws PageNotFoundException
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function find(array $values = [], array $errors = [])
     {
@@ -95,7 +95,7 @@ class TaskExternalLinkController extends Controller
      *
      * @throws ExternalLinkProviderNotFound
      * @throws PageNotFoundException
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function edit(array $values = [], array $errors = [])
     {

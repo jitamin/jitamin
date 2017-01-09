@@ -11,8 +11,8 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Markdown;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Markdown;
 
 /**
  * Text Helpers.

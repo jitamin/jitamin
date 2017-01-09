@@ -11,7 +11,7 @@
 
 namespace Jitamin\ExternalLink;
 
-use Jitamin\Core\ExternalLink\ExternalLinkInterface;
+use Jitamin\Foundation\ExternalLink\ExternalLinkInterface;
 
 /**
  * File Link.

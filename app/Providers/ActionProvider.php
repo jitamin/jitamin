@@ -45,7 +45,7 @@ use Jitamin\Action\TaskMoveColumnNotMovedPeriod;
 use Jitamin\Action\TaskMoveColumnUnAssigned;
 use Jitamin\Action\TaskOpen;
 use Jitamin\Action\TaskUpdateStartDate;
-use Jitamin\Core\Action\ActionManager;
+use Jitamin\Foundation\Action\ActionManager;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

@@ -12,7 +12,7 @@
 namespace Jitamin\Model;
 
 use Exception;
-use Jitamin\Core\Database\Model;
+use Jitamin\Foundation\Database\Model;
 
 /**
  * Avatar File.

@@ -11,7 +11,7 @@
 
 namespace Jitamin\ExternalLink;
 
-use Jitamin\Core\ExternalLink\ExternalLinkProviderInterface;
+use Jitamin\Foundation\ExternalLink\ExternalLinkProviderInterface;
 
 /**
  * Web Link Provider.
@@ -66,7 +66,7 @@ class WebLinkProvider extends BaseLinkProvider implements ExternalLinkProviderIn
     /**
      * Get the link found with the properties.
      *
-     * @return \Jitamin\Core\ExternalLink\ExternalLinkInterface
+     * @return \Jitamin\Foundation\ExternalLink\ExternalLinkInterface
      */
     public function getLink()
     {

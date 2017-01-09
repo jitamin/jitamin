@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Queue;
+namespace Jitamin\Foundation\Queue;
 
 use Exception;
 use Jitamin\Bus\Job\BaseJob;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use SimpleQueue\Job;
 
 /**

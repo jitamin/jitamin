@@ -59,7 +59,7 @@ class ExportController extends Controller
      * @param string $action
      * @param string $page_title
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     protected function common($model, $method, $filename, $action, $page_title)
     {

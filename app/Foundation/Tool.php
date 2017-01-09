@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core;
+namespace Jitamin\Foundation;
 
 use Pimple\Container;
 use RecursiveDirectoryIterator;

@@ -54,7 +54,7 @@ class ApplicationAuthorizationMiddlewareMiddlewareTest extends Base
             ->expects($this->never())
             ->method('execute');
 
-        $this->setExpectedException('Jitamin\Core\Controller\AccessForbiddenException');
+        $this->setExpectedException('Jitamin\Foundation\Controller\AccessForbiddenException');
         $this->middleware->execute();
     }
 

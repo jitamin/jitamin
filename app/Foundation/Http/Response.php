@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Http;
+namespace Jitamin\Foundation\Http;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Csv;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Csv;
 
 /**
  * Response class.

@@ -11,7 +11,7 @@
 
 namespace Jitamin\Decorator;
 
-use Jitamin\Core\Cache\CacheInterface;
+use Jitamin\Foundation\Cache\CacheInterface;
 use Jitamin\Model\MetadataModel;
 
 /**

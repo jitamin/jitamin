@@ -17,10 +17,10 @@ use Jitamin\Auth\LdapAuth;
 use Jitamin\Auth\RememberMeAuth;
 use Jitamin\Auth\ReverseProxyAuth;
 use Jitamin\Auth\TotpAuth;
-use Jitamin\Core\Security\AccessMap;
-use Jitamin\Core\Security\AuthenticationManager;
-use Jitamin\Core\Security\Authorization;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\AccessMap;
+use Jitamin\Foundation\Security\AuthenticationManager;
+use Jitamin\Foundation\Security\Authorization;
+use Jitamin\Foundation\Security\Role;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

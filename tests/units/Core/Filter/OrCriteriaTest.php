@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Filter\OrCriteria;
+use Jitamin\Foundation\Filter\OrCriteria;
 use Jitamin\Filter\TaskAssigneeFilter;
 use Jitamin\Filter\TaskTitleFilter;
 use Jitamin\Model\ProjectModel;

@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Task;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 
 /**
  * Class TaskSuppressionController.

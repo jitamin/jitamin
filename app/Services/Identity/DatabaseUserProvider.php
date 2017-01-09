@@ -11,7 +11,7 @@
 
 namespace Jitamin\Services\Identity;
 
-use Jitamin\Core\Identity\UserProviderInterface;
+use Jitamin\Foundation\Identity\UserProviderInterface;
 
 /**
  * Database User Provider.

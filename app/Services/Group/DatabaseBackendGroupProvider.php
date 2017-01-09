@@ -11,8 +11,8 @@
 
 namespace Jitamin\Group;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Group\GroupBackendProviderInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Group\GroupBackendProviderInterface;
 
 /**
  * Database Backend Group Provider.

@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\Template;
+use Jitamin\Foundation\Template;
 
 class TemplateTest extends Base
 {

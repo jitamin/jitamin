@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Plugin;
+namespace Jitamin\Foundation\Plugin;
 
-use Jitamin\Core\Base as BaseCore;
+use Jitamin\Foundation\Base as BaseFoundation;
 
 /**
  * Class Directory.
  */
-class Directory extends BaseCore
+class Directory extends BaseFoundation
 {
     /**
      * Get all plugins available.

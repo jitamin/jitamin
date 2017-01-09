@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\GroupMemberModel;
 use Jitamin\Model\GroupModel;
 use Jitamin\Model\ProjectGroupRoleModel;

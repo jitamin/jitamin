@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Identity;
+namespace Jitamin\Foundation\Identity;
 
 use Jitamin\Bus\Event\UserProfileSyncEvent;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * User Profile.

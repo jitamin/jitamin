@@ -11,9 +11,9 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Cache\FileCache;
-use Jitamin\Core\Cache\MemcachedCache;
-use Jitamin\Core\Cache\MemoryCache;
+use Jitamin\Foundation\Cache\FileCache;
+use Jitamin\Foundation\Cache\MemcachedCache;
+use Jitamin\Foundation\Cache\MemoryCache;
 use Jitamin\Decorator\ColumnMoveRestrictionCacheDecorator;
 use Jitamin\Decorator\ColumnRestrictionCacheDecorator;
 use Jitamin\Decorator\MetadataCacheDecorator;

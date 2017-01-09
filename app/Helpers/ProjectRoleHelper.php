@@ -11,8 +11,8 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\ColumnRestrictionModel;
 use Jitamin\Model\ProjectRoleRestrictionModel;
 

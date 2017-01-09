@@ -11,7 +11,7 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Group\GroupManager;
+use Jitamin\Foundation\Group\GroupManager;
 use Jitamin\Group\DatabaseBackendGroupProvider;
 use Jitamin\Group\LdapBackendGroupProvider;
 use Pimple\Container;

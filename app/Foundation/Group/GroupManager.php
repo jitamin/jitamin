@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Group;
+namespace Jitamin\Foundation\Group;
 
 /**
  * Group Manager.

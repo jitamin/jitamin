@@ -13,8 +13,8 @@ namespace Jitamin\Bus\Subscriber;
 
 use Jitamin\Bus\Event\AuthFailureEvent;
 use Jitamin\Bus\Event\AuthSuccessEvent;
-use Jitamin\Core\Security\AuthenticationManager;
-use Jitamin\Core\Session\SessionManager;
+use Jitamin\Foundation\Security\AuthenticationManager;
+use Jitamin\Foundation\Session\SessionManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

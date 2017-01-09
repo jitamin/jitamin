@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Mail\Transport;
+namespace Jitamin\Foundation\Mail\Transport;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Mail\ClientInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Mail\ClientInterface;
 use Swift_Mailer;
 use Swift_MailTransport;
 use Swift_Message;

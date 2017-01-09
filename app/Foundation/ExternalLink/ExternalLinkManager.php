@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\ExternalLink;
+namespace Jitamin\Foundation\ExternalLink;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * External Link Manager.

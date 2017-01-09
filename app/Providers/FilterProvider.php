@@ -11,8 +11,8 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Filter\LexerBuilder;
-use Jitamin\Core\Filter\QueryBuilder;
+use Jitamin\Foundation\Filter\LexerBuilder;
+use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Filter\ProjectActivityCreationDateFilter;
 use Jitamin\Filter\ProjectActivityCreatorFilter;
 use Jitamin\Filter\ProjectActivityProjectNameFilter;

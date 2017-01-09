@@ -11,8 +11,8 @@
 
 namespace Jitamin\Pagination;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Paginator;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Paginator;
 use Jitamin\Model\TaskModel;
 
 /**

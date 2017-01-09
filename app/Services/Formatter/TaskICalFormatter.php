@@ -16,7 +16,7 @@ use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;
 use Eluceo\iCal\Property\Event\Attendees;
 use Eluceo\iCal\Property\Event\Organizer;
-use Jitamin\Core\Filter\FormatterInterface;
+use Jitamin\Foundation\Filter\FormatterInterface;
 
 /**
  * iCal event formatter for tasks.

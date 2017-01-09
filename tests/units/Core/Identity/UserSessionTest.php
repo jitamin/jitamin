@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Identity\UserSession;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Identity\UserSession;
+use Jitamin\Foundation\Security\Role;
 
 class UserSessionTest extends Base
 {

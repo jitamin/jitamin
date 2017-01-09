@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\ActionModel;
 use Jitamin\Model\CategoryModel;
 use Jitamin\Model\ColumnModel;

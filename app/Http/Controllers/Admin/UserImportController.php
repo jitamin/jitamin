@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Admin;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Csv;
+use Jitamin\Foundation\Csv;
 
 /**
  * User Import controller.

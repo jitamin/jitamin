@@ -11,7 +11,7 @@
 
 namespace Jitamin\Validator;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use SimpleValidator\Validators;
 
 /**

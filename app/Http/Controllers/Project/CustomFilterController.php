@@ -12,8 +12,8 @@
 namespace Jitamin\Controller\Project;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Security\Role;
 
 /**
  * Custom Filter Controller.
@@ -26,7 +26,7 @@ class CustomFilterController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function index(array $values = [], array $errors = [])
     {
@@ -101,7 +101,7 @@ class CustomFilterController extends Controller
      * @param array $errors
      *
      * @throws AccessForbiddenException
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {

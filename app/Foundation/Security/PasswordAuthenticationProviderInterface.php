@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Security;
+namespace Jitamin\Foundation\Security;
 
 /**
  * Password Authentication Provider Interface.
@@ -19,7 +19,7 @@ interface PasswordAuthenticationProviderInterface extends AuthenticationProvider
     /**
      * Get user object.
      *
-     * @return \Jitamin\Core\User\UserProviderInterface
+     * @return \Jitamin\Foundation\User\UserProviderInterface
      */
     public function getUser();
 

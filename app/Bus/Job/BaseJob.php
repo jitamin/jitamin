@@ -11,7 +11,7 @@
 
 namespace Jitamin\Bus\Job;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Class BaseJob.

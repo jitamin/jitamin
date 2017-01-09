@@ -11,7 +11,7 @@
 
 namespace Jitamin\Console;
 
-use Jitamin\Core\Csv;
+use Jitamin\Foundation\Csv;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;

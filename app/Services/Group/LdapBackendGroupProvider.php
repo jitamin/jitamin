@@ -11,11 +11,11 @@
 
 namespace Jitamin\Group;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Group\GroupBackendProviderInterface;
-use Jitamin\Core\Ldap\Client as LdapClient;
-use Jitamin\Core\Ldap\ClientException as LdapException;
-use Jitamin\Core\Ldap\Group as LdapGroup;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Group\GroupBackendProviderInterface;
+use Jitamin\Foundation\Ldap\Client as LdapClient;
+use Jitamin\Foundation\Ldap\ClientException as LdapException;
+use Jitamin\Foundation\Ldap\Group as LdapGroup;
 use LogicException;
 
 /**

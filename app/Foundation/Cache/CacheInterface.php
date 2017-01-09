@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Cache;
+namespace Jitamin\Foundation\Cache;
 
 /**
  * Interface CacheInterface.
