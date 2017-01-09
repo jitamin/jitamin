@@ -12,12 +12,12 @@
 namespace Jitamin\Controller;
 
 use Eluceo\iCal\Component\Calendar as iCalendar;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
-use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Filter\TaskAssigneeFilter;
 use Jitamin\Filter\TaskProjectFilter;
 use Jitamin\Filter\TaskStatusFilter;
 use Jitamin\Formatter\TaskICalFormatter;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Model\TaskModel;
 
 /**
