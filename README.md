@@ -79,6 +79,12 @@ vendor/bin/phinx seed:run
 $ chmod -R 0777 bootstrap/cache
 $ chmod -R 0777 storage
 ```
+> 可选步骤
+
+```shell
+$ php artisan config:cache
+$ php artisan route:cache
+```
 
 六. 通过浏览器访问
 
@@ -110,6 +116,13 @@ $ composer install -o --no-dev
 vendor/bin/phinx migrate
 ```
 > Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
+
+> 可选步骤
+
+```shell
+$ php artisan config:cache
+$ php artisan route:cache
+```
 
 ## 系统演示
 
