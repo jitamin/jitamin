@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Mail;
+namespace Jitamin\Foundation\Mail;
 
 /**
  * Mail Client Interface.

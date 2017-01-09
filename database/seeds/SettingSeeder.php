@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Security\Token;
+use Jitamin\Foundation\Security\Token;
 use Phinx\Seed\AbstractSeed;
 
 class SettingSeeder extends AbstractSeed

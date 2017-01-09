@@ -11,7 +11,7 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Identity\Avatar\AvatarManager;
+use Jitamin\Foundation\Identity\Avatar\AvatarManager;
 use Jitamin\Services\Identity\Avatar\GravatarProvider;
 use Jitamin\Services\Identity\Avatar\ImageAvatarProvider;
 use Jitamin\Services\Identity\Avatar\LetterAvatarProvider;

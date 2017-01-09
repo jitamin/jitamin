@@ -12,7 +12,7 @@
 namespace Jitamin\Model;
 
 use Jitamin\Bus\Event\GenericEvent;
-use Jitamin\Core\Database\Model;
+use Jitamin\Foundation\Database\Model;
 
 /**
  * User Mention.

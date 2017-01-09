@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Manage;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\TaskModel;
 use Jitamin\Model\UserModel;
 

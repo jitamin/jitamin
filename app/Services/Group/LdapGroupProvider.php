@@ -11,7 +11,7 @@
 
 namespace Jitamin\Group;
 
-use Jitamin\Core\Group\GroupProviderInterface;
+use Jitamin\Foundation\Group\GroupProviderInterface;
 
 /**
  * LDAP Group Provider.

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Identity\Avatar;
+namespace Jitamin\Foundation\Identity\Avatar;
 
 /**
  * Avatar Provider Interface.

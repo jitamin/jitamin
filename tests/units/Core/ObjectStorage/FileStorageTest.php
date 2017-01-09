@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\ObjectStorage;
+namespace Jitamin\Foundation\ObjectStorage;
 
 require_once __DIR__.'/../../Base.php';
 
@@ -155,7 +155,7 @@ class FileStorageTest extends \Base
     }
 
     /**
-     * @expectedException \Jitamin\Core\ObjectStorage\ObjectStorageException
+     * @expectedException \Jitamin\Foundation\ObjectStorage\ObjectStorageException
      */
     public function testPutWhenNotAbleToCreateFolder()
     {
@@ -205,7 +205,7 @@ class FileStorageTest extends \Base
     }
 
     /**
-     * @expectedException \Jitamin\Core\ObjectStorage\ObjectStorageException
+     * @expectedException \Jitamin\Foundation\ObjectStorage\ObjectStorageException
      */
     public function testGetWithFileNotFound()
     {

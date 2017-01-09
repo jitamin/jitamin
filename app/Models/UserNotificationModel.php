@@ -11,8 +11,8 @@
 
 namespace Jitamin\Model;
 
-use Jitamin\Core\Database\Model;
-use Jitamin\Core\Translator;
+use Jitamin\Foundation\Database\Model;
+use Jitamin\Foundation\Translator;
 
 /**
  * User Notification.

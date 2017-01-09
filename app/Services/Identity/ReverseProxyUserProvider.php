@@ -11,8 +11,8 @@
 
 namespace Jitamin\Services\Identity;
 
-use Jitamin\Core\Identity\UserProviderInterface;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Identity\UserProviderInterface;
+use Jitamin\Foundation\Security\Role;
 
 /**
  * Reverse Proxy User Provider.

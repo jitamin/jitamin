@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Admin;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Foundation\Controller\PageNotFoundException;
 
 /**
  * Link Controller.

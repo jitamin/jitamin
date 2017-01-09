@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Controller;
+namespace Jitamin\Foundation\Controller;
 
 use Exception;
 

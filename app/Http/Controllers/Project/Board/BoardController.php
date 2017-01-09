@@ -12,8 +12,8 @@
 namespace Jitamin\Controller\Project\Board;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
 use Jitamin\Formatter\BoardFormatter;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 use Jitamin\Model\TaskModel;
 
 /**

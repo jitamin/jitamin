@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Auth;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 use Jitamin\Model\UserModel;
 
 /**
@@ -26,7 +26,7 @@ class PasswordResetController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\BaseException
+     * @throws \Jitamin\Foundation\Controller\BaseException
      */
     public function create(array $values = [], array $errors = [])
     {
@@ -63,7 +63,7 @@ class PasswordResetController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\BaseException
+     * @throws \Jitamin\Foundation\Controller\BaseException
      */
     public function change(array $values = [], array $errors = [])
     {

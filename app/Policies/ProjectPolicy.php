@@ -11,7 +11,7 @@
 
 namespace Jitamin\Policy;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use JsonRPC\Exception\AccessDeniedException;
 
 /**

@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Filter\OrCriteria;
 use Jitamin\Filter\TaskAssigneeFilter;
 use Jitamin\Filter\TaskTitleFilter;
+use Jitamin\Foundation\Filter\OrCriteria;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\TaskFinderModel;
 use Jitamin\Model\TaskModel;

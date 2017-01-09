@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Database;
+namespace Jitamin\Foundation\Database;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Model Class.

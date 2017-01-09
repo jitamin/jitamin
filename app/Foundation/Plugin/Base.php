@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Plugin;
+namespace Jitamin\Foundation\Plugin;
 
 /**
  * Plugin Base class.
  */
-abstract class Base extends \Jitamin\Core\Base
+abstract class Base extends \Jitamin\Foundation\Base
 {
     /**
      * Method called for each request.

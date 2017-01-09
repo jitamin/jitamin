@@ -125,7 +125,7 @@ function bcrypt($value, array $options = [])
  */
 function t()
 {
-    return call_user_func_array([\Jitamin\Core\Translator::getInstance(), 'translate'], func_get_args());
+    return call_user_func_array([\Jitamin\Foundation\Translator::getInstance(), 'translate'], func_get_args());
 }
 
 /**
@@ -135,7 +135,7 @@ function t()
  */
 function e()
 {
-    return call_user_func_array([\Jitamin\Core\Translator::getInstance(), 'translateNoEscaping'], func_get_args());
+    return call_user_func_array([\Jitamin\Foundation\Translator::getInstance(), 'translateNoEscaping'], func_get_args());
 }
 
 /**
@@ -147,5 +147,5 @@ function e()
  */
 function n($value)
 {
-    return \Jitamin\Core\Translator::getInstance()->number($value);
+    return \Jitamin\Foundation\Translator::getInstance()->number($value);
 }

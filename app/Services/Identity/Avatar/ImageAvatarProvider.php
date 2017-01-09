@@ -11,8 +11,8 @@
 
 namespace Jitamin\Services\Identity\Avatar;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Identity\Avatar\AvatarProviderInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Identity\Avatar\AvatarProviderInterface;
 
 /**
  * Avatar Local Image File Provider.

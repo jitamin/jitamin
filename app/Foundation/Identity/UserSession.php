@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Identity;
+namespace Jitamin\Foundation\Identity;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Security\Role;
 
 /**
  * User Session.

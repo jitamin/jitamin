@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Security;
+namespace Jitamin\Foundation\Security;
 
 /**
  * OAuth2 Authentication Provider Interface.
@@ -19,7 +19,7 @@ interface OAuthAuthenticationProviderInterface extends AuthenticationProviderInt
     /**
      * Get user object.
      *
-     * @return \Jitamin\Core\User\UserProviderInterface
+     * @return \Jitamin\Foundation\User\UserProviderInterface
      */
     public function getUser();
 
@@ -35,7 +35,7 @@ interface OAuthAuthenticationProviderInterface extends AuthenticationProviderInt
     /**
      * Get configured OAuth2 service.
      *
-     * @return \Jitamin\Core\Http\OAuth2
+     * @return \Jitamin\Foundation\Http\OAuth2
      */
     public function getService();
 

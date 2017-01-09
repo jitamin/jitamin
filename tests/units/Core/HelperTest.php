@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\Helper;
+use Jitamin\Foundation\Helper;
 
 class HelperTest extends Base
 {

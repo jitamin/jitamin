@@ -16,7 +16,7 @@ use Jitamin\Bus\Event\GenericEvent;
 /**
  * Base class for automatic actions.
  */
-abstract class Base extends \Jitamin\Core\Base
+abstract class Base extends \Jitamin\Foundation\Base
 {
     /**
      * Extended events.

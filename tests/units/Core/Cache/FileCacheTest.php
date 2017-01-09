@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Cache;
+namespace Jitamin\Foundation\Cache;
 
 require_once __DIR__.'/../../Base.php';
 

@@ -11,11 +11,11 @@
 
 namespace Jitamin\Helper;
 
-use Jitamin\Core\Base;
 use Jitamin\Filter\ProjectActivityProjectIdFilter;
 use Jitamin\Filter\ProjectActivityProjectIdsFilter;
 use Jitamin\Filter\ProjectActivityTaskIdFilter;
 use Jitamin\Formatter\ProjectActivityEventFormatter;
+use Jitamin\Foundation\Base;
 use Jitamin\Model\ProjectActivityModel;
 
 /**

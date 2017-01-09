@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Ldap;
+namespace Jitamin\Foundation\Ldap;
 
 require_once __DIR__.'/../../Base.php';
 
@@ -41,7 +41,7 @@ class QueryTest extends \Base
             ->getMock();
 
         $this->client = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Client')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Client')
             ->setMethods([
                 'getConnection',
             ])

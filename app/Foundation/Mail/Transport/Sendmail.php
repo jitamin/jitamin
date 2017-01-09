@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Mail\Transport;
+namespace Jitamin\Foundation\Mail\Transport;
 
 use Swift_SendmailTransport;
 

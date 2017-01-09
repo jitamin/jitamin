@@ -11,7 +11,7 @@
 
 namespace Jitamin\Export;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use Jitamin\Model\CategoryModel;
 use Jitamin\Model\ColumnModel;
 use Jitamin\Model\ProjectModel;

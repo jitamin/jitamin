@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Mail;
+namespace Jitamin\Foundation\Mail;
 
 use Jitamin\Bus\Job\EmailJob;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use Pimple\Container;
 
 /**

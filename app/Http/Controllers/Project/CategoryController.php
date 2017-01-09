@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Project;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Foundation\Controller\PageNotFoundException;
 
 /**
  * Category Controller.

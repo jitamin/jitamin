@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\ExternalLink\ExternalLinkManager;
 use Jitamin\ExternalLink\AttachmentLinkProvider;
 use Jitamin\ExternalLink\WebLinkProvider;
+use Jitamin\Foundation\ExternalLink\ExternalLinkManager;
 
 class ExternalLinkManagerTest extends Base
 {
@@ -34,7 +34,7 @@ class ExternalLinkManagerTest extends Base
     {
         $externalLinkManager = new ExternalLinkManager($this->container);
 
-        $this->setExpectedException('\Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound');
+        $this->setExpectedException('\Jitamin\Foundation\ExternalLink\ExternalLinkProviderNotFound');
         $externalLinkManager->getProvider('not found');
     }
 
@@ -77,7 +77,7 @@ class ExternalLinkManagerTest extends Base
         $externalLinkManager->register($webLinkProvider);
         $externalLinkManager->register($attachmentLinkProvider);
 
-        $this->setExpectedException('\Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound');
+        $this->setExpectedException('\Jitamin\Foundation\ExternalLink\ExternalLinkProviderNotFound');
         $externalLinkManager->find();
     }
 
@@ -122,7 +122,7 @@ class ExternalLinkManagerTest extends Base
         $externalLinkManager->register($webLinkProvider);
         $externalLinkManager->register($attachmentLinkProvider);
 
-        $this->setExpectedException('\Jitamin\Core\ExternalLink\ExternalLinkProviderNotFound');
+        $this->setExpectedException('\Jitamin\Foundation\ExternalLink\ExternalLinkProviderNotFound');
         $externalLinkManager->setUserInput(['text' => 'https://google.com/', 'type' => 'not found']);
         $externalLinkManager->find();
     }

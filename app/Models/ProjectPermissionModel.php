@@ -11,12 +11,12 @@
 
 namespace Jitamin\Model;
 
-use Jitamin\Core\Database\Model;
-use Jitamin\Core\Security\Role;
 use Jitamin\Filter\ProjectGroupRoleProjectFilter;
 use Jitamin\Filter\ProjectGroupRoleUsernameFilter;
 use Jitamin\Filter\ProjectUserRoleProjectFilter;
 use Jitamin\Filter\ProjectUserRoleUsernameFilter;
+use Jitamin\Foundation\Database\Model;
+use Jitamin\Foundation\Security\Role;
 
 /**
  * Project Permission.

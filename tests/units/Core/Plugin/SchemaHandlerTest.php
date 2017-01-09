@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Plugin\SchemaHandler;
+use Jitamin\Foundation\Plugin\SchemaHandler;
 
 class SchemaHandlerTest extends Base
 {

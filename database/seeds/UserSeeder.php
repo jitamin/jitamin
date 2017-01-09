@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Phinx\Seed\AbstractSeed;
 
 class UserSeeder extends AbstractSeed

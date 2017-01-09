@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Event\EventManager;
+use Jitamin\Foundation\Event\EventManager;
 
 class EventManagerTest extends Base
 {

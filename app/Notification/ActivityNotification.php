@@ -11,8 +11,8 @@
 
 namespace Jitamin\Notification;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Notification\NotificationInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Notification\NotificationInterface;
 
 /**
  * Activity Notification.

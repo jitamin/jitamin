@@ -11,7 +11,7 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Plugin\Loader;
+use Jitamin\Foundation\Plugin\Loader;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

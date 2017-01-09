@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Plugin;
+namespace Jitamin\Foundation\Plugin;
 
-use Jitamin\Core\Tool;
+use Jitamin\Foundation\Tool;
 use ZipArchive;
 
 /**
  * Class Installer.
  */
-class Installer extends \Jitamin\Core\Base
+class Installer extends \Jitamin\Foundation\Base
 {
     /**
      * Return true if Jitamin is configured to install plugins.

@@ -14,8 +14,8 @@ require_once __DIR__.'/../../Base.php';
 use Jitamin\Auth\DatabaseAuth;
 use Jitamin\Auth\ReverseProxyAuth;
 use Jitamin\Auth\TotpAuth;
-use Jitamin\Core\Http\Request;
-use Jitamin\Core\Security\AuthenticationManager;
+use Jitamin\Foundation\Http\Request;
+use Jitamin\Foundation\Security\AuthenticationManager;
 
 class AuthenticationManagerTest extends Base
 {
@@ -25,7 +25,7 @@ class AuthenticationManagerTest extends Base
         $authManager->register(new DatabaseAuth($this->container));
         $provider = $authManager->getProvider('Database');
 
-        $this->assertInstanceOf('Jitamin\Core\Security\AuthenticationProviderInterface', $provider);
+        $this->assertInstanceOf('Jitamin\Foundation\Security\AuthenticationProviderInterface', $provider);
     }
 
     public function testGetProviderNotFound()
@@ -48,7 +48,7 @@ class AuthenticationManagerTest extends Base
         $authManager->register(new TotpAuth($this->container));
         $provider = $authManager->getPostAuthenticationProvider();
 
-        $this->assertInstanceOf('Jitamin\Core\Security\PostAuthenticationProviderInterface', $provider);
+        $this->assertInstanceOf('Jitamin\Foundation\Security\PostAuthenticationProviderInterface', $provider);
     }
 
     public function testCheckSessionWhenNobodyIsLogged()

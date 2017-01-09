@@ -11,9 +11,9 @@
 
 namespace Jitamin\Import;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Csv;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Csv;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\UserModel;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;

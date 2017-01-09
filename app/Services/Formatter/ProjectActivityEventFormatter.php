@@ -11,7 +11,7 @@
 
 namespace Jitamin\Formatter;
 
-use Jitamin\Core\Filter\FormatterInterface;
+use Jitamin\Foundation\Filter\FormatterInterface;
 
 /**
  * Project activity event formatter.

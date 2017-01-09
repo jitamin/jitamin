@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\ProjectUserRoleModel;
 use Jitamin\Model\UserModel;

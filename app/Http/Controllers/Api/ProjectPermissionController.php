@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Policy\ProjectPolicy;
 
 /**

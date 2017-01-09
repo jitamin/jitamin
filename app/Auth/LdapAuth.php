@@ -11,11 +11,11 @@
 
 namespace Jitamin\Auth;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Ldap\Client as LdapClient;
-use Jitamin\Core\Ldap\ClientException as LdapException;
-use Jitamin\Core\Ldap\User as LdapUser;
-use Jitamin\Core\Security\PasswordAuthenticationProviderInterface;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Ldap\Client as LdapClient;
+use Jitamin\Foundation\Ldap\ClientException as LdapException;
+use Jitamin\Foundation\Ldap\User as LdapUser;
+use Jitamin\Foundation\Security\PasswordAuthenticationProviderInterface;
 use LogicException;
 
 /**

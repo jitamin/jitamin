@@ -11,9 +11,9 @@
 
 namespace Jitamin\Controller;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Controller\AccessForbiddenException;
-use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\PageNotFoundException;
 
 /**
  * Base Controller.

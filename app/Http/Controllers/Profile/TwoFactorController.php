@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Profile;
 
-use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 
 /**
  * Two Factor Auth controller.

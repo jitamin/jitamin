@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\ExternalLink;
+namespace Jitamin\Foundation\ExternalLink;
 
 /**
  * External Link Provider Interface.

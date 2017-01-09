@@ -86,7 +86,7 @@ class MailNotificationTest extends Base
         $this->assertTrue($userModel->update(['id' => 1, 'email' => 'test@localhost']));
 
         $this->container['emailClient'] = $this
-            ->getMockBuilder('\Jitamin\Core\Mail\Client')
+            ->getMockBuilder('\Jitamin\Foundation\Mail\Client')
             ->setConstructorArgs([$this->container])
             ->setMethods(['send'])
             ->getMock();

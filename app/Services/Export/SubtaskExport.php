@@ -11,7 +11,7 @@
 
 namespace Jitamin\Export;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use Jitamin\Model\SubtaskModel;
 use Jitamin\Model\TaskModel;
 use Jitamin\Model\UserModel;

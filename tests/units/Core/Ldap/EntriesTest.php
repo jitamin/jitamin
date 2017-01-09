@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Ldap\Entries;
+use Jitamin\Foundation\Ldap\Entries;
 
 class EntriesTest extends Base
 {
@@ -45,7 +45,7 @@ class EntriesTest extends Base
         $entries = new Entries($this->entries);
         $result = $entries->getAll();
         $this->assertCount(2, $result);
-        $this->assertInstanceOf('Jitamin\Core\Ldap\Entry', $result[0]);
+        $this->assertInstanceOf('Jitamin\Foundation\Ldap\Entry', $result[0]);
         $this->assertEquals('CN=Jitamin Users,CN=Users,DC=jitamin,DC=local', $result[1]->getDn());
         $this->assertEquals('Jitamin Users', $result[1]->getFirstValue('cn'));
     }
@@ -57,7 +57,7 @@ class EntriesTest extends Base
 
         $entries = new Entries($this->entries);
         $result = $entries->getFirstEntry();
-        $this->assertInstanceOf('Jitamin\Core\Ldap\Entry', $result);
+        $this->assertInstanceOf('Jitamin\Foundation\Ldap\Entry', $result);
         $this->assertEquals('CN=Jitamin Other Group,CN=Users,DC=jitamin,DC=local', $result->getDn());
         $this->assertEquals('Jitamin Other Group', $result->getFirstValue('cn'));
     }

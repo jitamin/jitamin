@@ -11,7 +11,7 @@
 
 namespace Jitamin\Filter;
 
-use Jitamin\Core\Filter\FilterInterface;
+use Jitamin\Foundation\Filter\FilterInterface;
 use Jitamin\Model\ColumnModel;
 use Jitamin\Model\TaskModel;
 

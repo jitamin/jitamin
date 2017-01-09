@@ -11,8 +11,8 @@
 
 namespace Jitamin\Formatter;
 
-use Jitamin\Core\Filter\FormatterInterface;
-use Jitamin\Core\Group\GroupProviderInterface;
+use Jitamin\Foundation\Filter\FormatterInterface;
+use Jitamin\Foundation\Group\GroupProviderInterface;
 use PicoDb\Table;
 
 /**

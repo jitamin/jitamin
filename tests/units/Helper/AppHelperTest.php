@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\Session\FlashMessage;
+use Jitamin\Foundation\Session\FlashMessage;
 use Jitamin\Helper\AppHelper;
 
 class AppHelperTest extends Base

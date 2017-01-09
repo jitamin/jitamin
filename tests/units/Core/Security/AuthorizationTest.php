@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Security\AccessMap;
-use Jitamin\Core\Security\Authorization;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\AccessMap;
+use Jitamin\Foundation\Security\Authorization;
+use Jitamin\Foundation\Security\Role;
 
 class AuthorizationTest extends Base
 {

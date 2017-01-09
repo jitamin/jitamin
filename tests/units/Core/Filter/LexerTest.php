@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Filter\Lexer;
+use Jitamin\Foundation\Filter\Lexer;
 
 class LexerTest extends Base
 {

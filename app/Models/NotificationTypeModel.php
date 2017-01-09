@@ -11,7 +11,7 @@
 
 namespace Jitamin\Model;
 
-use Jitamin\Core\Database\Model;
+use Jitamin\Foundation\Database\Model;
 use Pimple\Container;
 
 /**
@@ -83,7 +83,7 @@ abstract class NotificationTypeModel extends Model
      *
      * @param string $type
      *
-     * @return \Jitamin\Core\Notification\NotificationInterface
+     * @return \Jitamin\Foundation\Notification\NotificationInterface
      */
     public function getType($type)
     {

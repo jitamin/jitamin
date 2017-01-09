@@ -11,9 +11,9 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Session\FlashMessage;
-use Jitamin\Core\Session\SessionManager;
-use Jitamin\Core\Session\SessionStorage;
+use Jitamin\Foundation\Session\FlashMessage;
+use Jitamin\Foundation\Session\SessionManager;
+use Jitamin\Foundation\Session\SessionStorage;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

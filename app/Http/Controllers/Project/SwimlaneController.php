@@ -12,8 +12,8 @@
 namespace Jitamin\Controller\Project;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
-use Jitamin\Core\Controller\PageNotFoundException;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\PageNotFoundException;
 use Jitamin\Model\SwimlaneModel;
 
 /**
@@ -43,7 +43,7 @@ class SwimlaneController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function create(array $values = [], array $errors = [])
     {
@@ -84,7 +84,7 @@ class SwimlaneController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function editDefault(array $values = [], array $errors = [])
     {
@@ -127,7 +127,7 @@ class SwimlaneController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Core\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {

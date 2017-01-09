@@ -26,24 +26,24 @@ class AuthenticationMiddlewareTest extends Base
         parent::setUp();
 
         $this->container['authenticationManager'] = $this
-            ->getMockBuilder('Jitamin\Core\Security\AuthenticationManager')
+            ->getMockBuilder('Jitamin\Foundation\Security\AuthenticationManager')
             ->setConstructorArgs([$this->container])
             ->setMethods(['checkCurrentSession'])
             ->getMock();
 
         $this->container['applicationAuthorization'] = $this
-            ->getMockBuilder('Jitamin\Core\Security\AccessMap')
+            ->getMockBuilder('Jitamin\Foundation\Security\AccessMap')
             ->setMethods(['isAllowed'])
             ->getMock();
 
         $this->container['response'] = $this
-            ->getMockBuilder('Jitamin\Core\Http\Response')
+            ->getMockBuilder('Jitamin\Foundation\Http\Response')
             ->setConstructorArgs([$this->container])
             ->setMethods(['redirect'])
             ->getMock();
 
         $this->container['userSession'] = $this
-            ->getMockBuilder('Jitamin\Core\Identity\UserSession')
+            ->getMockBuilder('Jitamin\Foundation\Identity\UserSession')
             ->setConstructorArgs([$this->container])
             ->setMethods(['isLogged'])
             ->getMock();
@@ -69,7 +69,7 @@ class AuthenticationMiddlewareTest extends Base
             ->expects($this->never())
             ->method('execute');
 
-        $this->setExpectedException('Jitamin\Core\Controller\AccessForbiddenException');
+        $this->setExpectedException('Jitamin\Foundation\Controller\AccessForbiddenException');
         $this->middleware->execute();
     }
 

@@ -12,7 +12,7 @@
 namespace Jitamin\Controller\Manage;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 
 /**
  * Class ProjectTagController.

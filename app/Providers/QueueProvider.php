@@ -11,7 +11,7 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Queue\QueueManager;
+use Jitamin\Foundation\Queue\QueueManager;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

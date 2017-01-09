@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core;
+namespace Jitamin\Foundation;
 
 use Jitamin\Controller\AppController;
 use Jitamin\Middleware\ApplicationAuthorizationMiddleware;

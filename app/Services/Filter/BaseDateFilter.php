@@ -11,7 +11,7 @@
 
 namespace Jitamin\Filter;
 
-use Jitamin\Core\DateParser;
+use Jitamin\Foundation\DateParser;
 
 /**
  * Base date filter class.

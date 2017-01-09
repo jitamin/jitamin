@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\ObjectStorage;
+namespace Jitamin\Foundation\ObjectStorage;
 
 /**
  * Object Storage Interface.

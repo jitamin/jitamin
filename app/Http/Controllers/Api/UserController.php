@@ -11,10 +11,10 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Core\Ldap\Client as LdapClient;
-use Jitamin\Core\Ldap\ClientException as LdapException;
-use Jitamin\Core\Ldap\User as LdapUser;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Ldap\Client as LdapClient;
+use Jitamin\Foundation\Ldap\ClientException as LdapException;
+use Jitamin\Foundation\Ldap\User as LdapUser;
+use Jitamin\Foundation\Security\Role;
 use LogicException;
 
 /**

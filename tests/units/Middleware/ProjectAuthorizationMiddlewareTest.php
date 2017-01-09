@@ -34,7 +34,7 @@ class ProjectAuthorizationMiddlewareMiddlewareTest extends Base
             ->getMock();
 
         $this->container['request'] = $this
-            ->getMockBuilder('Jitamin\Core\Http\Request')
+            ->getMockBuilder('Jitamin\Foundation\Http\Request')
             ->setConstructorArgs([$this->container])
             ->setMethods(['getIntegerParam'])
             ->getMock();
@@ -65,7 +65,7 @@ class ProjectAuthorizationMiddlewareMiddlewareTest extends Base
             ->expects($this->never())
             ->method('execute');
 
-        $this->setExpectedException('Jitamin\Core\Controller\AccessForbiddenException');
+        $this->setExpectedException('Jitamin\Foundation\Controller\AccessForbiddenException');
         $this->middleware->execute();
     }
 

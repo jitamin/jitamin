@@ -11,7 +11,7 @@
 
 namespace Jitamin\Analytic;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Task Distribution.

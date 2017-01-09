@@ -12,7 +12,7 @@
 require_once __DIR__.'/../Base.php';
 
 use Jitamin\Bus\Subscriber\ProjectModificationDateSubscriber;
-use Jitamin\Core\Translator;
+use Jitamin\Foundation\Translator;
 use Jitamin\Model\CategoryModel;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\SettingModel;

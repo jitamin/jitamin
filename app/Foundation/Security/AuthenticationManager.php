@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Security;
+namespace Jitamin\Foundation\Security;
 
 use Jitamin\Bus\Event\AuthFailureEvent;
 use Jitamin\Bus\Event\AuthSuccessEvent;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 use LogicException;
 
 /**
@@ -184,7 +184,7 @@ class AuthenticationManager extends Base
      */
     private function filterProviders($interface)
     {
-        $interface = '\Jitamin\Core\Security\\'.$interface;
+        $interface = '\Jitamin\Foundation\Security\\'.$interface;
 
         return array_filter($this->providers, function (AuthenticationProviderInterface $provider) use ($interface) {
             return is_a($provider, $interface);

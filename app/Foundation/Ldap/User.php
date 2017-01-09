@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Ldap;
+namespace Jitamin\Foundation\Ldap;
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Services\Identity\LdapUserProvider;
 use LogicException;
 

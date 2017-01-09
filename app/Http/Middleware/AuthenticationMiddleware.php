@@ -11,9 +11,9 @@
 
 namespace Jitamin\Middleware;
 
-use Jitamin\Core\Controller\AccessForbiddenException;
-use Jitamin\Core\Controller\BaseMiddleware;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\BaseMiddleware;
+use Jitamin\Foundation\Security\Role;
 
 /**
  * Class AuthenticationMiddleware.

@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Group\GroupManager;
+use Jitamin\Foundation\Group\GroupManager;
 use Jitamin\Group\DatabaseBackendGroupProvider;
 use Jitamin\Model\GroupModel;
 

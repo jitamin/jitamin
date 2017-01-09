@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Identity\UserProfile;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Identity\UserProfile;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Services\Identity\DatabaseUserProvider;
 use Jitamin\Services\Identity\LdapUserProvider;
 

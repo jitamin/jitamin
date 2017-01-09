@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Security\AccessMap;
+use Jitamin\Foundation\Security\AccessMap;
 
 class AccessMapTest extends Base
 {

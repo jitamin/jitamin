@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Helper\UserHelper;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\ProjectRoleModel;

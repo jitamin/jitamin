@@ -12,7 +12,7 @@
 namespace Jitamin\Bus\EventBuilder;
 
 use Jitamin\Bus\Event\GenericEvent;
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Class BaseEventBuilder.

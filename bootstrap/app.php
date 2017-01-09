@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Core\Application;
+use Jitamin\Foundation\Application;
 
 $container = new Pimple\Container();
 

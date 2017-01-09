@@ -11,7 +11,7 @@
 
 namespace Jitamin\Bus\Subscriber;
 
-use Jitamin\Core\Base;
+use Jitamin\Foundation\Base;
 
 /**
  * Base class for subscribers.

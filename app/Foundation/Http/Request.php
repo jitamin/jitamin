@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Http;
+namespace Jitamin\Foundation\Http;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
 use Pimple\Container;
 
 /**

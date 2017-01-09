@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Http\OAuth2;
+use Jitamin\Foundation\Http\OAuth2;
 
 class OAuth2Test extends Base
 {

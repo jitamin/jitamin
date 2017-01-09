@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Plugin;
+namespace Jitamin\Foundation\Plugin;
 
 use PDOException;
 use RuntimeException;
@@ -17,7 +17,7 @@ use RuntimeException;
 /**
  * Class SchemaHandler.
  */
-class SchemaHandler extends \Jitamin\Core\Base
+class SchemaHandler extends \Jitamin\Foundation\Base
 {
     /**
      * Schema version table for plugins.

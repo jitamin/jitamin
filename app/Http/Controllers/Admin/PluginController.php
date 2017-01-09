@@ -12,9 +12,9 @@
 namespace Jitamin\Controller\Admin;
 
 use Jitamin\Controller\Controller;
-use Jitamin\Core\Plugin\Directory;
-use Jitamin\Core\Plugin\Installer;
-use Jitamin\Core\Plugin\PluginInstallerException;
+use Jitamin\Foundation\Plugin\Directory;
+use Jitamin\Foundation\Plugin\Installer;
+use Jitamin\Foundation\Plugin\PluginInstallerException;
 
 /**
  * Class PluginController.
@@ -55,7 +55,7 @@ class PluginController extends Controller
     /**
      * Install plugin from URL.
      *
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function install()
     {
@@ -75,7 +75,7 @@ class PluginController extends Controller
     /**
      * Update plugin from URL.
      *
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function update()
     {
@@ -95,7 +95,7 @@ class PluginController extends Controller
     /**
      * Remove a plugin.
      *
-     * @throws \Jitamin\Core\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
      */
     public function uninstall()
     {

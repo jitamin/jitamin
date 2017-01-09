@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Ldap;
+namespace Jitamin\Foundation\Ldap;
 
 use Exception;
 

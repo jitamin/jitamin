@@ -11,7 +11,7 @@
 
 namespace Jitamin\ExternalLink;
 
-use Jitamin\Core\ExternalLink\ExternalLinkProviderInterface;
+use Jitamin\Foundation\ExternalLink\ExternalLinkProviderInterface;
 
 /**
  * Attachment Link Provider.
@@ -85,7 +85,7 @@ class AttachmentLinkProvider extends BaseLinkProvider implements ExternalLinkPro
     /**
      * Get the link found with the properties.
      *
-     * @return \Jitamin\Core\ExternalLink\ExternalLinkInterface
+     * @return \Jitamin\Foundation\ExternalLink\ExternalLinkInterface
      */
     public function getLink()
     {

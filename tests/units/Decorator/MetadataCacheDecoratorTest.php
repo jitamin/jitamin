@@ -38,7 +38,7 @@ class MetadataCacheDecoratorTest extends Base
         parent::setUp();
 
         $this->cacheMock = $this
-            ->getMockBuilder('\Jitamin\Core\Cache\MemoryCache')
+            ->getMockBuilder('\Jitamin\Foundation\Cache\MemoryCache')
             ->setMethods([
                 'set',
                 'get',

@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../Base.php';
 
-use Jitamin\Core\DateParser;
+use Jitamin\Foundation\DateParser;
 
 class DateParserTest extends Base
 {

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core\Event;
+namespace Jitamin\Foundation\Event;
 
 use Jitamin\Model\TaskLinkModel;
 use Jitamin\Model\TaskModel;

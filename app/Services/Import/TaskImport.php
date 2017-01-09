@@ -11,8 +11,8 @@
 
 namespace Jitamin\Import;
 
-use Jitamin\Core\Base;
-use Jitamin\Core\Csv;
+use Jitamin\Foundation\Base;
+use Jitamin\Foundation\Csv;
 use SimpleValidator\Validator;
 use SimpleValidator\Validators;
 

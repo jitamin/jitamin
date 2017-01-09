@@ -11,7 +11,7 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Identity\GroupSync;
+use Jitamin\Foundation\Identity\GroupSync;
 use Jitamin\Model\GroupMemberModel;
 use Jitamin\Model\GroupModel;
 

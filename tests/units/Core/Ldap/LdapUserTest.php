@@ -11,10 +11,10 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Ldap\Entries;
-use Jitamin\Core\Ldap\Query;
-use Jitamin\Core\Ldap\User;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Ldap\Entries;
+use Jitamin\Foundation\Ldap\Query;
+use Jitamin\Foundation\Ldap\User;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Group\LdapGroupProvider;
 
 class LdapUserTest extends Base
@@ -29,14 +29,14 @@ class LdapUserTest extends Base
         parent::setUp();
 
         $this->client = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Client')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Client')
             ->setMethods([
                 'getConnection',
             ])
             ->getMock();
 
         $this->query = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Query')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Query')
             ->setConstructorArgs([$this->client])
             ->setMethods([
                 'execute',
@@ -46,7 +46,7 @@ class LdapUserTest extends Base
             ->getMock();
 
         $this->group = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\Group')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\Group')
             ->setConstructorArgs([new Query($this->client)])
             ->setMethods([
                 'find',
@@ -54,7 +54,7 @@ class LdapUserTest extends Base
             ->getMock();
 
         $this->user = $this
-            ->getMockBuilder('\Jitamin\Core\Ldap\User')
+            ->getMockBuilder('\Jitamin\Foundation\Ldap\User')
             ->setConstructorArgs([$this->query, $this->group])
             ->setMethods([
                 'getAttributeUsername',

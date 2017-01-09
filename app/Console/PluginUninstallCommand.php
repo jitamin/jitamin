@@ -11,8 +11,8 @@
 
 namespace Jitamin\Console;
 
-use Jitamin\Core\Plugin\Installer;
-use Jitamin\Core\Plugin\PluginInstallerException;
+use Jitamin\Foundation\Plugin\Installer;
+use Jitamin\Foundation\Plugin\PluginInstallerException;
 use LogicException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;

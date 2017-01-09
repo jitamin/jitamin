@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Core;
+namespace Jitamin\Foundation;
 
 /**
  * Template.
@@ -87,7 +87,7 @@ class Template
     /**
      * Find template filename.
      *
-     * Core template: 'task/show' or 'jitamin:task/show'
+     * Foundation template: 'task/show' or 'jitamin:task/show'
      * Plugin template: 'myplugin:task/show'
      *
      * @param string $template

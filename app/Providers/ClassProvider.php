@@ -11,11 +11,11 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Http\Client as HttpClient;
-use Jitamin\Core\Http\OAuth2;
-use Jitamin\Core\ObjectStorage\FileStorage;
-use Jitamin\Core\Paginator;
-use Jitamin\Core\Tool;
+use Jitamin\Foundation\Http\Client as HttpClient;
+use Jitamin\Foundation\Http\OAuth2;
+use Jitamin\Foundation\ObjectStorage\FileStorage;
+use Jitamin\Foundation\Paginator;
+use Jitamin\Foundation\Tool;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
@@ -140,26 +140,26 @@ class ClassProvider implements ServiceProviderInterface
             'ProjectPagination',
             'UserPagination',
         ],
-        'Core' => [
+        'Foundation' => [
             'DateParser',
             'Lexer',
         ],
-        'Core\Event' => [
+        'Foundation\Event' => [
             'EventManager',
         ],
-        'Core\Http' => [
+        'Foundation\Http' => [
             'Request',
             'Response',
             'RememberMeCookie',
         ],
-        'Core\Plugin' => [
+        'Foundation\Plugin' => [
             'Hook',
         ],
-        'Core\Security' => [
+        'Foundation\Security' => [
             'Token',
             'Role',
         ],
-        'Core\Identity' => [
+        'Foundation\Identity' => [
             'GroupSync',
             'UserSync',
             'UserSession',

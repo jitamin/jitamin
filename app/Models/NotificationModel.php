@@ -17,7 +17,7 @@ use Jitamin\Bus\EventBuilder\SubtaskEventBuilder;
 use Jitamin\Bus\EventBuilder\TaskEventBuilder;
 use Jitamin\Bus\EventBuilder\TaskFileEventBuilder;
 use Jitamin\Bus\EventBuilder\TaskLinkEventBuilder;
-use Jitamin\Core\Database\Model;
+use Jitamin\Foundation\Database\Model;
 
 /**
  * Notification Model.

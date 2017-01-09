@@ -11,9 +11,9 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Filter\LexerBuilder;
 use Jitamin\Filter\TaskAssigneeFilter;
 use Jitamin\Filter\TaskTitleFilter;
+use Jitamin\Foundation\Filter\LexerBuilder;
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\TaskFinderModel;
 use Jitamin\Model\TaskModel;

@@ -11,8 +11,8 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Core\Helper;
-use Jitamin\Core\Template;
+use Jitamin\Foundation\Helper;
+use Jitamin\Foundation\Template;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 

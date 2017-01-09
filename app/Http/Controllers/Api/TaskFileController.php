@@ -11,7 +11,7 @@
 
 namespace Jitamin\Controller\Api;
 
-use Jitamin\Core\ObjectStorage\ObjectStorageException;
+use Jitamin\Foundation\ObjectStorage\ObjectStorageException;
 use Jitamin\Policy\ProjectPolicy;
 use Jitamin\Policy\TaskFilePolicy;
 use Jitamin\Policy\TaskPolicy;

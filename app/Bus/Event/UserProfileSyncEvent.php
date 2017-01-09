@@ -11,7 +11,7 @@
 
 namespace Jitamin\Bus\Event;
 
-use Jitamin\Core\Identity\UserProviderInterface;
+use Jitamin\Foundation\Identity\UserProviderInterface;
 use Jitamin\Services\Identity\LdapUserProvider;
 use Symfony\Component\EventDispatcher\Event;
 

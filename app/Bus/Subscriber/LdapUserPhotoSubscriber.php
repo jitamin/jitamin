@@ -12,7 +12,7 @@
 namespace Jitamin\Bus\Subscriber;
 
 use Jitamin\Bus\Event\UserProfileSyncEvent;
-use Jitamin\Core\Identity\UserProfile;
+use Jitamin\Foundation\Identity\UserProfile;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**

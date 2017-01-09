@@ -11,8 +11,8 @@
 
 require_once __DIR__.'/../../Base.php';
 
-use Jitamin\Core\Identity\UserSync;
-use Jitamin\Core\Security\Role;
+use Jitamin\Foundation\Identity\UserSync;
+use Jitamin\Foundation\Security\Role;
 use Jitamin\Services\Identity\LdapUserProvider;
 
 class UserSyncTest extends Base
