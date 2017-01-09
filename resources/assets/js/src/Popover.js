@@ -57,7 +57,7 @@ Jitamin.Popover.prototype.open = function(link, size) {
     if (!self.isOpen()) {
         $.get(link, function(content) {
             $("body").css('overflow', 'hidden').prepend('<div id="popover-container"><div id="popover-content" class="'+size+'">' + content + '</div></div>');
-            $('#popover-content h2').eq(0).append('<a href="#" class="text-right close-popover"><i class="fa fa-close"></i></a>');
+            $('#popover-content h2').eq(0).append('<a href="#" class="pull-right close-popover"><i class="fa fa-close"></i></a>');
             self.executeOnOpenedListeners();
         });
     }
