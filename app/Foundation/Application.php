@@ -18,6 +18,7 @@ use Jitamin\Middleware\BootstrapMiddleware;
 use Jitamin\Middleware\PostAuthenticationMiddleware;
 use Jitamin\Middleware\ProjectAuthorizationMiddleware;
 use RuntimeException;
+use Symfony\Component\EventDispatcher\Event;
 
 /**
  * Class Application.
@@ -29,6 +30,13 @@ class Application extends Base
      */
     public function execute()
     {
+        if ($this->runningInConsole()) {
+            $this->container['dispatcher']->dispatch('app.bootstrap', new Event);
+            $this->container['cli']->run();
+
+            return;
+        }
+
         $this->container['router']->dispatch();
 
         if ($this->container['router']->getController() === 'Api') {
@@ -50,6 +58,16 @@ class Application extends Base
             $controllerObject = new AppController($this->container);
             $controllerObject->accessForbidden($e->hasLayout(), $e->getMessage());
         }
+    }
+
+    /**
+     * Determine if we are running in the console.
+     *
+     * @return bool
+     */
+    public function runningInConsole()
+    {
+        return php_sapi_name() == 'cli';
     }
 
     /**
