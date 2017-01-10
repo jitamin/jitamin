@@ -99,19 +99,8 @@ abstract class Controller extends Base
      */
     protected function getProject($project_id = 0)
     {
-        $project_id = $this->request->getStringParam('project_id', $project_id);
-        if (!is_numeric($project_id)) {
-            $identifier_project = $this->projectModel->getByIdentifier($project_id);
-
-            if (empty($identifier_project)) {
-                throw new PageNotFoundException();
-            }
-
-            $project_id = $identifier_project['id'];
-        }
-
+        $project_id = $this->request->getIntegerParam('project_id', $project_id);
         $project = $this->projectModel->getByIdWithOwner($project_id);
-
         if (empty($project)) {
             throw new PageNotFoundException();
         }
