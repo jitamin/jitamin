@@ -104,6 +104,7 @@ abstract class Controller extends Base
         if (empty($project)) {
             throw new PageNotFoundException();
         }
+
         return $project;
     }
 
