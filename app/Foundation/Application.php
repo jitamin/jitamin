@@ -12,6 +12,8 @@
 namespace Jitamin\Foundation;
 
 use Jitamin\Controller\AppController;
+use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Controller\PageNotFoundException;
 use Jitamin\Middleware\ApplicationAuthorizationMiddleware;
 use Jitamin\Middleware\AuthenticationMiddleware;
 use Jitamin\Middleware\BootstrapMiddleware;
