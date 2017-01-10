@@ -100,7 +100,7 @@ abstract class Controller extends Base
     protected function getProject($project_id = 0)
     {
         $project_id = $this->request->getStringParam('project_id', $project_id);
-        if(!is_numeric($project_id)) {
+        if (!is_numeric($project_id)) {
             $identifier_project = $this->projectModel->getByIdentifier($project_id);
 
             if (empty($identifier_project)) {
