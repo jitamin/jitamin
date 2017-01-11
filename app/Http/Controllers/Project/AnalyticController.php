@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Project;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Filter\TaskProjectFilter;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\TaskModel;
 
 /**

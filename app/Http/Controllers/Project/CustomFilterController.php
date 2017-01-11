@@ -11,9 +11,9 @@
 
 namespace Jitamin\Http\Controllers\Project;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use Jitamin\Foundation\Security\Role;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Custom Filter Controller.

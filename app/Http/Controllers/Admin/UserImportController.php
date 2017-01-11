@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Admin;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Csv;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * User Import controller.

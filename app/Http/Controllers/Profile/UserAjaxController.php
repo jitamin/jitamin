@@ -11,9 +11,9 @@
 
 namespace Jitamin\Http\Controllers\Profile;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Filter\UserNameFilter;
 use Jitamin\Formatter\UserAutoCompleteFormatter;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\UserModel;
 
 /**

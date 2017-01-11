@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Manage;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Security\Role;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\TaskModel;
 use Jitamin\Model\UserModel;
 

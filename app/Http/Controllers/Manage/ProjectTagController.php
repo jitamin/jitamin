@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Manage;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Class ProjectTagController.

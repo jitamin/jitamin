@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Exceptions\PageNotFoundException;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * TaskInternalLink Controller.

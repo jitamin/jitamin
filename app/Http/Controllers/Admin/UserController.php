@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Admin;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Security\Role;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Notification\MailNotification;
 
 /**

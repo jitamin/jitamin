@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Auth;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\UserModel;
 
 /**

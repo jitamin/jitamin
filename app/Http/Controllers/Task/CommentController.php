@@ -11,9 +11,9 @@
 
 namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use Jitamin\Foundation\Exceptions\PageNotFoundException;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\UserMetadataModel;
 
 /**
