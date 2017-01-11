@@ -11,9 +11,9 @@
 
 namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Exceptions\PageNotFoundException;
 use Jitamin\Foundation\ExternalLink\ExternalLinkProviderNotFound;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Task External Link Controller.

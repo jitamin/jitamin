@@ -11,9 +11,9 @@
 
 namespace Jitamin\Http\Controllers\Project\Board;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Formatter\BoardFormatter;
 use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\UserMetadataModel;
 
 /**

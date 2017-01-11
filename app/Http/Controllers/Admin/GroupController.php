@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Admin;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Formatter\GroupAutoCompleteFormatter;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Group Controller.

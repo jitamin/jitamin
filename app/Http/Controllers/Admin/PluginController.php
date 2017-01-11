@@ -11,10 +11,10 @@
 
 namespace Jitamin\Http\Controllers\Admin;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Plugin\Directory;
 use Jitamin\Foundation\Plugin\Installer;
 use Jitamin\Foundation\Plugin\PluginInstallerException;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Class PluginController.

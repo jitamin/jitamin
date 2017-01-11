@@ -11,8 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Project\Column;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Exceptions\AccessForbiddenException;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Column Controller.

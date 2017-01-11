@@ -11,9 +11,9 @@
 
 namespace Jitamin\Http\Controllers\Profile;
 
-use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\ObjectStorage\ObjectStorageException;
 use Jitamin\Foundation\Thumbnail;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Avatar Controller.
