@@ -21,7 +21,7 @@ return [
 'public/task/{task_id}/{token}'       => 'Task/TaskController@readonly',
 
 'task/{project_id}/create'                            => 'Task/TaskController@create',
-'task/{project_id}/{column_id}/{swimlane_id}/create'  => 'Task/TaskController@create',
+'task/{project_id}/{column_id}/{swimlane_id}/create'  => 'Task/TaskSimpleController@create',
 'task/{project_id}/store'                             => 'Task/TaskController@store',
 'project/{project_id}/task/{task_id}/start'           => 'Task/TaskController@start',
 'project/{project_id}/task/{task_id}/edit'            => 'Task/TaskController@edit',
