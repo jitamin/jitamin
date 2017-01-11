@@ -7,8 +7,8 @@
     <table class="table-striped table-scrolling">
         <tr>
             <th class="column-8"><?= $paginator->order(t('Id'), 'id') ?></th>
-            <th class="column-8"><?= $paginator->order(t('Status'), 'is_active') ?></th>
             <th class="column-20"><?= $paginator->order(t('Project'), 'name') ?></th>
+            <th class="column-8"><?= $paginator->order(t('Status'), 'is_active') ?></th>
             <th class="column-10"><?= $paginator->order(t('Start date'), 'start_date') ?></th>
             <th class="column-10"><?= $paginator->order(t('End date'), 'end_date') ?></th>
             <th class="column-10"><?= $paginator->order(t('Owner'), 'owner_id') ?></th>
@@ -23,13 +23,6 @@
                 <?= $this->render('project/dropdown', ['project' => $project]) ?>
             </td>
             <td>
-                <?php if ($project['is_active']): ?>
-                    <?= t('Active') ?>
-                <?php else: ?>
-                    <?= t('Inactive') ?>
-                <?php endif ?>
-            </td>
-            <td>
                 <?= $this->url->link($this->text->e($project['name']), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
                 <?php if ($project['is_public']): ?>
                     <i class="fa fa-share-alt" title="<?= t('Shared project') ?>"></i>
@@ -41,6 +34,13 @@
                     <span class="tooltip" title="<?= $this->text->markdownAttribute($project['description']) ?>">
                         <i class="fa fa-info-circle"></i>
                     </span>
+                <?php endif ?>
+            </td>
+            <td>
+                <?php if ($project['is_active']): ?>
+                    <?= t('Active') ?>
+                <?php else: ?>
+                    <?= t('Inactive') ?>
                 <?php endif ?>
             </td>
             <td>
