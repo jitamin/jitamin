@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Middleware;
+namespace Jitamin\Http\Middleware;
 
 use Jitamin\Foundation\Base;
 use JsonRPC\Exception\AccessDeniedException;

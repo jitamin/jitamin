@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Admin;
+namespace Jitamin\Http\Controllers\Admin;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Foundation\Csv;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * User Import controller.

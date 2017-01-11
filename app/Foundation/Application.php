@@ -11,14 +11,14 @@
 
 namespace Jitamin\Foundation;
 
-use Jitamin\Controller\AppController;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
-use Jitamin\Foundation\Controller\PageNotFoundException;
-use Jitamin\Middleware\ApplicationAuthorizationMiddleware;
-use Jitamin\Middleware\AuthenticationMiddleware;
-use Jitamin\Middleware\BootstrapMiddleware;
-use Jitamin\Middleware\PostAuthenticationMiddleware;
-use Jitamin\Middleware\ProjectAuthorizationMiddleware;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\PageNotFoundException;
+use Jitamin\Http\Controllers\AppController;
+use Jitamin\Http\Middleware\ApplicationAuthorizationMiddleware;
+use Jitamin\Http\Middleware\AuthenticationMiddleware;
+use Jitamin\Http\Middleware\BootstrapMiddleware;
+use Jitamin\Http\Middleware\PostAuthenticationMiddleware;
+use Jitamin\Http\Middleware\ProjectAuthorizationMiddleware;
 use RuntimeException;
 use Symfony\Component\EventDispatcher\Event;
 
@@ -122,7 +122,7 @@ class Application extends Base
         if ($this->router->getPlugin() !== '') {
             $className = '\Jitamin\Plugin\\'.$this->router->getPlugin().'\Controller\\'.$this->router->getController();
         } else {
-            $className = '\Jitamin\Controller\\'.str_replace('/', '\\', $this->router->getController());
+            $className = '\Jitamin\Http\Controllers\\'.str_replace('/', '\\', $this->router->getController());
         }
 
         if (!class_exists($className)) {

@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Admin;
+namespace Jitamin\Http\Controllers\Admin;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Foundation\Plugin\Directory;
 use Jitamin\Foundation\Plugin\Installer;
 use Jitamin\Foundation\Plugin\PluginInstallerException;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Class PluginController.
@@ -55,7 +55,7 @@ class PluginController extends Controller
     /**
      * Install plugin from URL.
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
      */
     public function install()
     {
@@ -75,7 +75,7 @@ class PluginController extends Controller
     /**
      * Update plugin from URL.
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
      */
     public function update()
     {
@@ -95,7 +95,7 @@ class PluginController extends Controller
     /**
      * Remove a plugin.
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
      */
     public function uninstall()
     {

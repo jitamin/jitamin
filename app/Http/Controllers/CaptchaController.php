@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Http\Controllers;
 
 use Gregwar\Captcha\CaptchaBuilder;
 

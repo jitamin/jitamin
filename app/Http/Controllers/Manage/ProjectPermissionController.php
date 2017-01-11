@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Manage;
+namespace Jitamin\Http\Controllers\Manage;
 
-use Jitamin\Controller\Controller;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use Jitamin\Foundation\Security\Role;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Project Permission Controller.

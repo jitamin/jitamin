@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Task;
+namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Controller\Controller;
-use Jitamin\Foundation\Controller\PageNotFoundException;
+use Jitamin\Foundation\Exceptions\PageNotFoundException;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * TaskInternalLink Controller.
@@ -25,8 +25,8 @@ class TaskInternalLinkController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws PageNotFoundException
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
      */
     public function create(array $values = [], array $errors = [])
     {
@@ -70,8 +70,8 @@ class TaskInternalLinkController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws PageNotFoundException
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
      */
     public function edit(array $values = [], array $errors = [])
     {

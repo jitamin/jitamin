@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Http\Controllers;
 
 use Eluceo\iCal\Component\Calendar as iCalendar;
 use Jitamin\Filter\TaskAssigneeFilter;
 use Jitamin\Filter\TaskProjectFilter;
 use Jitamin\Filter\TaskStatusFilter;
 use Jitamin\Formatter\TaskICalFormatter;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use Jitamin\Foundation\Filter\QueryBuilder;
 use Jitamin\Model\TaskModel;
 

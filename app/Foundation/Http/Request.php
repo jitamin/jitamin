@@ -12,7 +12,7 @@
 namespace Jitamin\Foundation\Http;
 
 use Jitamin\Foundation\Base;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use Pimple\Container;
 
 /**

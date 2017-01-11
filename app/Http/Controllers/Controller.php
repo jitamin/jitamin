@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Http\Controllers;
 
 use Jitamin\Foundation\Base;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
-use Jitamin\Foundation\Controller\PageNotFoundException;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\PageNotFoundException;
 
 /**
  * Base Controller.

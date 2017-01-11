@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Project;
+namespace Jitamin\Http\Controllers\Project;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Foundation\Csv;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Import controller.
@@ -25,7 +25,7 @@ class ImportController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function show(array $values = [], array $errors = [])
     {

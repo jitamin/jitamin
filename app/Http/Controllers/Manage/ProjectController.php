@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Manage;
+namespace Jitamin\Http\Controllers\Manage;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Filter\ProjectIdsFilter;
 use Jitamin\Filter\ProjectStatusFilter;
 use Jitamin\Filter\ProjectTypeFilter;
 use Jitamin\Formatter\ProjectGanttFormatter;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\ProjectModel;
 
 /**

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Foundation\Controller;
+namespace Jitamin\Foundation\Exceptions;
 
 /**
  * Class PageNotFoundException.

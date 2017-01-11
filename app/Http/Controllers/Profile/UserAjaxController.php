@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Profile;
+namespace Jitamin\Http\Controllers\Profile;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Filter\UserNameFilter;
 use Jitamin\Formatter\UserAutoCompleteFormatter;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\UserModel;
 
 /**

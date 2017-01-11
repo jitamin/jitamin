@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Jitamin\Middleware\AuthenticationMiddleware;
+use Jitamin\Http\Middleware\AuthenticationMiddleware;
 
 require_once __DIR__.'/../Base.php';
 
@@ -49,7 +49,7 @@ class AuthenticationMiddlewareTest extends Base
             ->getMock();
 
         $this->nextMiddleware = $this
-            ->getMockBuilder('Jitamin\Middleware\AuthenticationMiddleware')
+            ->getMockBuilder('Jitamin\Http\Middleware\AuthenticationMiddleware')
             ->setConstructorArgs([$this->container])
             ->setMethods(['execute'])
             ->getMock();
@@ -69,7 +69,7 @@ class AuthenticationMiddlewareTest extends Base
             ->expects($this->never())
             ->method('execute');
 
-        $this->setExpectedException('Jitamin\Foundation\Controller\AccessForbiddenException');
+        $this->setExpectedException('Jitamin\Foundation\Exceptions\AccessForbiddenException');
         $this->middleware->execute();
     }
 

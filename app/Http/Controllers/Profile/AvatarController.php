@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Profile;
+namespace Jitamin\Http\Controllers\Profile;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Foundation\ObjectStorage\ObjectStorageException;
 use Jitamin\Foundation\Thumbnail;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Avatar Controller.

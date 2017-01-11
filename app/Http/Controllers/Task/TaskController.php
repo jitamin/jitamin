@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Task;
+namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Controller\Controller;
 use Jitamin\Filter\TaskIdExclusionFilter;
 use Jitamin\Filter\TaskIdFilter;
 use Jitamin\Filter\TaskProjectFilter;
@@ -19,8 +18,9 @@ use Jitamin\Filter\TaskProjectsFilter;
 use Jitamin\Filter\TaskTitleFilter;
 use Jitamin\Formatter\TaskAutoCompleteFormatter;
 use Jitamin\Formatter\TaskGanttFormatter;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
-use Jitamin\Foundation\Controller\PageNotFoundException;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\PageNotFoundException;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Model\TaskModel;
 use Jitamin\Model\UserMetadataModel;
 
@@ -288,8 +288,8 @@ class TaskController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {

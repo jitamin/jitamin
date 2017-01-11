@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Middleware;
+namespace Jitamin\Http\Middleware;
 
-use Jitamin\Foundation\Controller\AccessForbiddenException;
-use Jitamin\Foundation\Controller\BaseMiddleware;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
+use Jitamin\Foundation\Middleware\BaseMiddleware;
 use Jitamin\Foundation\Security\Role;
 
 /**

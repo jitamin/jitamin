@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Manage;
+namespace Jitamin\Http\Controllers\Manage;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Class ProjectSettingsController.
@@ -98,8 +98,8 @@ class ProjectSettingsController extends Controller
     /**
      * Change project sharing.
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function updateSharing()
     {
@@ -134,7 +134,7 @@ class ProjectSettingsController extends Controller
     /**
      * Update integrations.
      *
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function updateIntegrations()
     {
@@ -163,7 +163,7 @@ class ProjectSettingsController extends Controller
     /**
      * Update notifications.
      *
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function updateNotifications()
     {

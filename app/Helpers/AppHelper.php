@@ -191,7 +191,7 @@ class AppHelper extends Base
                 $controller = 'Project/ProjectController';
                 $action = 'overview';
         }
-        $controller = $forController ? 'Jitamin\\Controller\\'.str_replace('/', '\\', $controller) : $controller;
+        $controller = $forController ? 'Jitamin\\Http\\Controllers\\'.str_replace('/', '\\', $controller) : $controller;
 
         return [$controller, $action];
     }
@@ -230,7 +230,7 @@ class AppHelper extends Base
                 $action = 'index';
         }
 
-        $controller = $forController ? 'Jitamin\\Controller\\'.str_replace('/', '\\', $controller) : $controller;
+        $controller = $forController ? 'Jitamin\\Http\\Controllers\\'.str_replace('/', '\\', $controller) : $controller;
 
         return [$controller, $action];
     }

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Http\Controllers;
 
 use DateTime;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use PicoFeed\Syndication\AtomFeedBuilder;
 use PicoFeed\Syndication\AtomItemBuilder;
 use PicoFeed\Syndication\FeedBuilder;
