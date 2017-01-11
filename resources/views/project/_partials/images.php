@@ -2,7 +2,7 @@
     <div class="file-thumbnails">
         <?php foreach ($images as $file): ?>
             <div class="file-thumbnail">
-                <a href="<?= $this->url->href('AttachmentController', 'show', ['project_id' => $project['id'], 'file_id' => $file['id']]) ?>" class="popover"><img src="<?= $this->url->href('FileViewerController', 'thumbnail', ['file_id' => $file['id'], 'project_id' => $project['id']]) ?>" title="<?= $this->text->e($file['name']) ?>" alt="<?= $this->text->e($file['name']) ?>"></a>
+                <a href="<?= $this->url->href('AttachmentController', 'show', ['project_id' => $project['id'], 'file_id' => $file['id']]) ?>" class="popover"><img src="<?= $this->url->href('AttachmentController', 'thumbnail', ['file_id' => $file['id'], 'project_id' => $project['id']]) ?>" title="<?= $this->text->e($file['name']) ?>" alt="<?= $this->text->e($file['name']) ?>"></a>
                 <div class="file-thumbnail-content">
                     <div class="file-thumbnail-title">
                         <div class="dropdown">
