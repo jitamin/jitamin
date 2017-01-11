@@ -17,9 +17,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class DatabaseProvider.
+ * Class of Database Service Provider.
  */
-class DatabaseProvider implements ServiceProviderInterface
+class DatabaseServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register provider.

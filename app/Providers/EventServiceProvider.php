@@ -24,9 +24,9 @@ use Pimple\ServiceProviderInterface;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
 /**
- * Class EventDispatcherProvider.
+ * Class of Event Service Provider.
  */
-class EventDispatcherProvider implements ServiceProviderInterface
+class EventServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

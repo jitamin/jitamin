@@ -17,9 +17,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Route Provider.
+ * Class of Route Service Provider.
  */
-class RouteProvider implements ServiceProviderInterface
+class RouteServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

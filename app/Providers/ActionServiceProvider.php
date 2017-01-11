@@ -50,9 +50,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Action Provider.
+ * Class of Action Service Provider.
  */
-class ActionProvider implements ServiceProviderInterface
+class ActionServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

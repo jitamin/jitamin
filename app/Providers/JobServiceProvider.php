@@ -23,9 +23,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class JobProvider.
+ * Class of Job Service Provider.
  */
-class JobProvider implements ServiceProviderInterface
+class JobServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

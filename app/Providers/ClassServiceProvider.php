@@ -22,7 +22,7 @@ use Pimple\ServiceProviderInterface;
 /**
  * Class ClassProvider.
  */
-class ClassProvider implements ServiceProviderInterface
+class ClassServiceProvider implements ServiceProviderInterface
 {
     private $classes = [
         'Analytic' => [

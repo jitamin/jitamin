@@ -11,14 +11,14 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Services\Update\LatestRelease;
+use Jitamin\Foundation\Queue\QueueManager;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class UpdateProvider.
+ * Class of Queue Service Provider.
  */
-class UpdateProvider implements ServiceProviderInterface
+class QueueServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.
@@ -29,7 +29,7 @@ class UpdateProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container['updateManager'] = new LatestRelease($container);
+        $container['queueManager'] = new QueueManager($container);
 
         return $container;
     }

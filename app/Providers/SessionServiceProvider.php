@@ -18,9 +18,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Session Provider.
+ * Class of Session Service Provider.
  */
-class SessionProvider implements ServiceProviderInterface
+class SessionServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

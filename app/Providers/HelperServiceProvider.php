@@ -17,9 +17,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class HelperProvider.
+ * Class of Helper Service Provider.
  */
-class HelperProvider implements ServiceProviderInterface
+class HelperServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

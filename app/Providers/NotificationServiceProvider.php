@@ -19,9 +19,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Notification Provider.
+ * Class of Notification Service Provider.
  */
-class NotificationProvider implements ServiceProviderInterface
+class NotificationServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

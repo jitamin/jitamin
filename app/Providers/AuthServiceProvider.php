@@ -25,9 +25,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Authentication Provider.
+ * Class of Authentication Service Provider.
  */
-class AuthenticationProvider implements ServiceProviderInterface
+class AuthServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

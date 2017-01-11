@@ -16,9 +16,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Mail Provider.
+ * Class of Mail Service Provider.
  */
-class MailProvider implements ServiceProviderInterface
+class MailServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

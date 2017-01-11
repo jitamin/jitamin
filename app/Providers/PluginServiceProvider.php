@@ -11,14 +11,14 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Foundation\Queue\QueueManager;
+use Jitamin\Foundation\Plugin\Loader;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class QueueProvider.
+ * Class of Plugin Service Provider.
  */
-class QueueProvider implements ServiceProviderInterface
+class PluginServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.
@@ -29,7 +29,8 @@ class QueueProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container['queueManager'] = new QueueManager($container);
+        $container['pluginLoader'] = new Loader($container);
+        $container['pluginLoader']->scan();
 
         return $container;
     }

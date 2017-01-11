@@ -11,14 +11,14 @@
 
 namespace Jitamin\Providers;
 
-use Jitamin\Foundation\Plugin\Loader;
+use Jitamin\Services\Update\LatestRelease;
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Plugin Provider.
+ * Class of Update Service Provider.
  */
-class PluginProvider implements ServiceProviderInterface
+class UpdateServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.
@@ -29,8 +29,7 @@ class PluginProvider implements ServiceProviderInterface
      */
     public function register(Container $container)
     {
-        $container['pluginLoader'] = new Loader($container);
-        $container['pluginLoader']->scan();
+        $container['updateManager'] = new LatestRelease($container);
 
         return $container;
     }

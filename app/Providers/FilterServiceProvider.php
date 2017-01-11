@@ -48,9 +48,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Filter Provider.
+ * Class of Filter Service Provider.
  */
-class FilterProvider implements ServiceProviderInterface
+class FilterServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

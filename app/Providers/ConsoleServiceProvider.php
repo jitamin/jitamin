@@ -32,9 +32,9 @@ use Pimple\ServiceProviderInterface;
 use Symfony\Component\Console\Application;
 
 /**
- * Class CommandProvider.
+ * Class of Console Service Provider.
  */
-class CommandProvider implements ServiceProviderInterface
+class ConsoleServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

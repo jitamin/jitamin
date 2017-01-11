@@ -19,9 +19,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Avatar Provider.
+ * Class of Avatar Service Provider.
  */
-class AvatarProvider implements ServiceProviderInterface
+class AvatarServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

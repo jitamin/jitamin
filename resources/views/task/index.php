@@ -6,10 +6,10 @@
     <table class="table-striped table-scrolling table-small">
         <tr>
             <th class="column-8"><?= $paginator->order(t('Id'), 'tasks.id') ?></th>
+            <th><?= $paginator->order(t('Title'), 'tasks.title') ?></th>
             <th class="column-10"><?= $paginator->order(t('Swimlane'), 'tasks.swimlane_id') ?></th>
             <th class="column-10"><?= $paginator->order(t('Column'), 'tasks.column_id') ?></th>
             <th class="column-10"><?= $paginator->order(t('Category'), 'tasks.category_id') ?></th>
-            <th><?= $paginator->order(t('Title'), 'tasks.title') ?></th>
             <th class="column-10"><?= $paginator->order(t('Assignee'), 'users.username') ?></th>
             <th class="column-10"><?= $paginator->order(t('Due date'), 'tasks.date_due') ?></th>
             <th class="column-8"><?= $paginator->order(t('Status'), 'tasks.is_active') ?></th>
@@ -24,6 +24,9 @@
                 <?php endif ?>
             </td>
             <td>
+                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
+            </td>
+            <td>
                 <?= $this->text->e($task['swimlane_name'] ?: t($task['default_swimlane'])) ?>
             </td>
             <td>
@@ -31,9 +34,6 @@
             </td>
             <td>
                 <?= $this->text->e($task['category_name']) ?>
-            </td>
-            <td>
-                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, '', t('View this task')) ?>
             </td>
             <td>
                 <?php if ($task['assignee_username']): ?>

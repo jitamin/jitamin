@@ -39,9 +39,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Class ApiProvider.
+ * Class of Api Service Provider.
  */
-class ApiProvider implements ServiceProviderInterface
+class ApiServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

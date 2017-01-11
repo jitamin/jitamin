@@ -21,9 +21,9 @@ use SimpleLogger\Stdout;
 use SimpleLogger\Syslog;
 
 /**
- * Class LoggingProvider.
+ * Class of Logging Service Provider.
  */
-class LoggingProvider implements ServiceProviderInterface
+class LoggingServiceProvider implements ServiceProviderInterface
 {
     /**
      * Registers services on the given container.

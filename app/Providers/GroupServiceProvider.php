@@ -18,9 +18,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Group Provider.
+ * Class of Group Service Provider.
  */
-class GroupProvider implements ServiceProviderInterface
+class GroupServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

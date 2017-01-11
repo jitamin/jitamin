@@ -19,9 +19,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * External Link Provider.
+ * Class of External Link Service Provider.
  */
-class ExternalLinkProvider implements ServiceProviderInterface
+class ExternalLinkServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.

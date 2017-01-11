@@ -22,9 +22,9 @@ use Pimple\Container;
 use Pimple\ServiceProviderInterface;
 
 /**
- * Cache Provider.
+ * Class of Cache Service Provider.
  */
-class CacheProvider implements ServiceProviderInterface
+class CacheServiceProvider implements ServiceProviderInterface
 {
     /**
      * Register providers.
