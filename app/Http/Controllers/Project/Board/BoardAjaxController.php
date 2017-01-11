@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Project\Board;
+namespace Jitamin\Http\Controllers\Project\Board;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Formatter\BoardFormatter;
 use Jitamin\Foundation\Controller\AccessForbiddenException;
 use Jitamin\Model\UserMetadataModel;

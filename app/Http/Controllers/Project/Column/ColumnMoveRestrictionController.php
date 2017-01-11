@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Project\Column;
+namespace Jitamin\Http\Controllers\Project\Column;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 use Jitamin\Foundation\Controller\AccessForbiddenException;
 
 /**

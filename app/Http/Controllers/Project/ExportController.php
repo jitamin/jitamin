@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Project;
+namespace Jitamin\Http\Controllers\Project;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Export Controller.
@@ -59,7 +59,7 @@ class ExportController extends Controller
      * @param string $action
      * @param string $page_title
      *
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     protected function common($model, $method, $filename, $action, $page_title)
     {

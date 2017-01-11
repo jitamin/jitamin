@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Dashboard;
+namespace Jitamin\Http\Controllers\Dashboard;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Project Controller.

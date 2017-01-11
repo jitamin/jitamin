@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Api;
+namespace Jitamin\Http\Controllers\Api;
 
 use Jitamin\Foundation\Ldap\Client as LdapClient;
 use Jitamin\Foundation\Ldap\ClientException as LdapException;

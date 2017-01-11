@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Task;
+namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Task File Controller.

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Profile;
+namespace Jitamin\Http\Controllers\Profile;
 
-use Jitamin\Controller\Controller;
-use Jitamin\Foundation\Controller\PageNotFoundException;
+use Jitamin\Http\Controllers\Controller;
+use Jitamin\Foundation\Exceptions\PageNotFoundException;
 use Jitamin\Foundation\Security\Token;
 use Jitamin\Model\ProjectModel;
 
@@ -249,8 +249,8 @@ class ProfileController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {
@@ -275,8 +275,8 @@ class ProfileController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function preferences(array $values = [], array $errors = [])
     {
@@ -335,8 +335,8 @@ class ProfileController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function changePassword(array $values = [], array $errors = [])
     {
@@ -352,8 +352,8 @@ class ProfileController extends Controller
     /**
      * Save new password.
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function savePassword()
     {

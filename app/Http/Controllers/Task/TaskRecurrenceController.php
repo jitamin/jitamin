@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Task;
+namespace Jitamin\Http\Controllers\Task;
 
-use Jitamin\Controller\Controller;
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Task Recurrence controller.
@@ -24,8 +24,8 @@ class TaskRecurrenceController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {

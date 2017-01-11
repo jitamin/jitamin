@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller;
+namespace Jitamin\Http\Controllers;
 
 use Eluceo\iCal\Component\Calendar as iCalendar;
 use Jitamin\Filter\TaskAssigneeFilter;

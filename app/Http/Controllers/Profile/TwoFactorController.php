@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Profile;
+namespace Jitamin\Http\Controllers\Profile;
 
 use Jitamin\Foundation\Controller\AccessForbiddenException;
 

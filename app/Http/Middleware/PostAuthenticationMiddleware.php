@@ -9,9 +9,9 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Middleware;
+namespace Jitamin\Http\Middleware;
 
-use Jitamin\Foundation\Controller\BaseMiddleware;
+use Jitamin\Foundation\Middleware\BaseMiddleware;
 
 /**
  * Class PostAuthenticationMiddleware.

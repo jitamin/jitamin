@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Controller\Project;
+namespace Jitamin\Http\Controllers\Project;
 
-use Jitamin\Controller\Controller;
-use Jitamin\Foundation\Controller\AccessForbiddenException;
+use Jitamin\Http\Controllers\Controller;
+use Jitamin\Foundation\Exceptions\AccessForbiddenException;
 use Jitamin\Foundation\Security\Role;
 
 /**
@@ -26,7 +26,7 @@ class CustomFilterController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function index(array $values = [], array $errors = [])
     {
@@ -100,8 +100,8 @@ class CustomFilterController extends Controller
      * @param array $values
      * @param array $errors
      *
-     * @throws AccessForbiddenException
-     * @throws \Jitamin\Foundation\Controller\PageNotFoundException
+     * @throws \Jitamin\Foundation\Exceptions\AccessForbiddenException
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
      */
     public function edit(array $values = [], array $errors = [])
     {
