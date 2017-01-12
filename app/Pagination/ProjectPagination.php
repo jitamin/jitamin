@@ -34,7 +34,8 @@ class ProjectPagination extends Base
         return $this->paginator
             ->setUrl('Dashboard/DashboardController', $method, ['pagination' => 'projects', 'user_id' => $user_id])
             ->setMax($max)
-            ->setOrder(ProjectModel::TABLE.'.name')
+            ->setOrder(ProjectModel::TABLE.'.id')
+            ->setDirection('DESC')
             ->setQuery($this->projectModel->getQueryColumnStats($this->projectPermissionModel->getActiveProjectIds($user_id)))
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'projects');
     }

@@ -39,6 +39,7 @@ class SubtaskPagination extends Base
             ->setUrl('Dashboard/DashboardController', $method, ['pagination' => 'subtasks', 'user_id' => $user_id])
             ->setMax($max)
             ->setOrder(TaskModel::TABLE.'.id')
+            ->setDirection('DESC')
             ->setQuery($query)
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
     }

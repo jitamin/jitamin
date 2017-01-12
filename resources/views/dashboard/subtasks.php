@@ -4,9 +4,9 @@
     <table class="table-striped table-small table-scrolling">
         <tr>
             <th class="column-8"><?= $paginator->order(t('Id'), \Jitamin\Model\TaskModel::TABLE.'.id') ?></th>
-            <th class="column-20"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <th><?= $paginator->order(t('Task'), 'task_name') ?></th>
             <th><?= $paginator->order(t('Subtask'), \Jitamin\Model\SubtaskModel::TABLE.'.title') ?></th>
+            <th class="column-20"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <?= $this->hook->render('template:dashboard:subtasks:header:before-timetracking', ['paginator' => $paginator]) ?>
             <th class="column-20"><?= t('Time tracking') ?></th>
         </tr>
@@ -16,13 +16,13 @@
                 <?= $this->render('task/dropdown', ['task' => ['id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($subtask['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $subtask['project_id']]) ?>
-            </td>
-            <td>
                 <?= $this->url->link($this->text->e($subtask['task_name']), 'Task/TaskController', 'show', ['task_id' => $subtask['task_id'], 'project_id' => $subtask['project_id']]) ?>
             </td>
             <td>
                 <?= $this->subtask->toggleStatus($subtask, $subtask['project_id']) ?>
+            </td>
+            <td>
+                <?= $this->url->link($this->text->e($subtask['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $subtask['project_id']]) ?>
             </td>
             <?= $this->hook->render('template:dashboard:subtasks:rows', ['subtask' => $subtask]) ?>
             <td>
