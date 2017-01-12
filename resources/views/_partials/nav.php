@@ -29,7 +29,7 @@
                     </li>
                     <li>
                         <i class="fa fa-history"></i>
-                        <?= $this->url->link(t('Histories'), 'Profile/HistoryController', 'timesheet', ['user_id' => $this->user->getId()]) ?>
+                        <?= $this->url->link(t('My history'), 'Profile/HistoryController', 'timesheet', ['user_id' => $this->user->getId()]) ?>
                     </li>
                     <li>
                         <i class="fa fa-life-ring"></i>

@@ -342,7 +342,7 @@ return [
     'Profile' => '用户信息',
     'Edit profile' => '编辑资料',
     'Preferences' => '偏好设置',
-    'Histories' => '历史记录',
+    'My history' => '历史记录',
     'Change password' => '修改密码',
     'Password modification' => '修改密码',
     'External authentications' => '外部认证',
