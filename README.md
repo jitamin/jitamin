@@ -128,12 +128,16 @@ $ php artisan route:cache
 
 体验Jitamin, 请访问 [http://jitamin.com](http://jitamin.com):
 
-一. 普通用户
+一. 使用Github账号
+
+> 请点击登录页下方的 `Login with my Github Account`
+
+二. 普通用户
 
 - **用户名:** `test` or `test@test.com`
 - **密码:** `test123`
 
-二. 管理员用户
+三. 管理员用户
 
 - **用户名:** `jitamin` or `jitamin@jitamin.com`
 - **密码:** `jitamin`
