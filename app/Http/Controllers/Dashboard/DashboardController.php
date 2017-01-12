@@ -94,7 +94,7 @@ class DashboardController extends Controller
         $this->response->html($this->helper->layout->app('dashboard/slider', [
             'title' => t('My slider'),
             'paginator'  => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 5),
-            'user'  => $user,
+            'user'       => $user,
         ]));
     }
 }
