@@ -18,6 +18,20 @@ use Jitamin\Http\Controllers\Controller;
  */
 class NotificationController extends Controller
 {
+
+    /**
+     * My notifications.
+     */
+    public function index()
+    {
+        $user = $this->getUser();
+
+        $this->response->html($this->helper->layout->app('dashboard/notifications', [
+            'title'         => t('My notifications'),
+            'notifications' => $this->userUnreadNotificationModel->getAll($user['id']),
+        ]));
+    }
+
     /**
      * My notifications.
      */

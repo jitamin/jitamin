@@ -4,8 +4,8 @@
     <table class="table-striped table-small table-scrolling">
         <tr>
             <th class="column-8"><?= $paginator->order(t('Id'), \Jitamin\Model\TaskModel::TABLE.'.id') ?></th>
-            <th class="column-10"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <th class="column-22"><?= $paginator->order(t('Title'), \Jitamin\Model\TaskModel::TABLE.'.title') ?></th>
+            <th class="column-10"><?= $paginator->order(t('Project'), 'project_name') ?></th>
             <th class="column-6"><?= $paginator->order(t('Priority'), \Jitamin\Model\TaskModel::TABLE.'.priority') ?></th>
             <th class="column-6"><?= $paginator->order(t('Status'), \Jitamin\Model\TaskModel::TABLE.'.is_active') ?></th>
             <th class="column-25"><?= t('Time tracking') ?></th>
@@ -18,10 +18,10 @@
                 <?= $this->render('task/dropdown', ['task' => $task]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $task['project_id']]) ?>
+                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
             </td>
             <td>
-                <?= $this->url->link($this->text->e($task['title']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>
+                <?= $this->url->link($this->text->e($task['project_name']), 'Project/Board/BoardController', 'show', ['project_id' => $task['project_id']]) ?>
             </td>
             <td>
                 <?php if ($task['priority'] != null): ?>

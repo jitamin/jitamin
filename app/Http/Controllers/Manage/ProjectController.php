@@ -39,7 +39,8 @@ class ProjectController extends Controller
         $paginator = $this->paginator
             ->setUrl('Manage/ProjectController', 'index')
             ->setMax(20)
-            ->setOrder('name')
+            ->setOrder('id')
+            ->setDirection('DESC')
             ->setQuery($this->projectModel->getQueryColumnStats($project_ids))
             ->calculate();
 
