@@ -18,7 +18,6 @@ use Jitamin\Http\Controllers\Controller;
  */
 class NotificationController extends Controller
 {
-
     /**
      * My notifications.
      */
