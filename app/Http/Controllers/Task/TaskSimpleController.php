@@ -40,7 +40,7 @@ class TaskSimpleController extends Controller
     }
 
     /**
-     * Save all tasks in the database.
+     * Validate and store a new simple task.
      */
     public function store()
     {
@@ -60,6 +60,7 @@ class TaskSimpleController extends Controller
                     'project_id'  => $project['id'],
                     'column_id'   => $values['column_id'],
                     'swimlane_id' => $values['swimlane_id'],
+                    'owner_id'    => $this->userSession->getId(),
                 ]);
             $this->flash->success(t('Task created successfully.'));
             $this->response->redirect($this->helper->url->to(
