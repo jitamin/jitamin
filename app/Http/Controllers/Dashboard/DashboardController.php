@@ -92,9 +92,9 @@ class DashboardController extends Controller
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->app('dashboard/slider', [
-            'title' => t('My calendar'),
+            'title'      => t('My calendar'),
             'paginator'  => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 5),
-            'user'  => $user,
+            'user'       => $user,
         ]));
     }
 }
