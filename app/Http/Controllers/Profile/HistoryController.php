@@ -11,10 +11,8 @@
 
 namespace Jitamin\Http\Controllers\Profile;
 
-use Jitamin\Foundation\Exceptions\PageNotFoundException;
 use Jitamin\Foundation\Security\Token;
 use Jitamin\Http\Controllers\Controller;
-use Jitamin\Model\ProjectModel;
 
 /**
  * Class HistoryController.
