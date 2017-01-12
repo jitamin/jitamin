@@ -24,10 +24,11 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $user_id = $this->getUserId();
+        $user = $this->getUser();
+
         $this->response->html($this->helper->layout->app('dashboard/notifications', [
             'title'         => t('My notifications'),
-            'notifications' => $this->userUnreadNotificationModel->getAll($user_id),
+            'notifications' => $this->userUnreadNotificationModel->getAll($user['id']),
         ]));
     }
 
@@ -36,9 +37,9 @@ class NotificationController extends Controller
      */
     public function flush()
     {
-        $user_id = $this->getUserId();
+        $user = $this->getUser();
 
-        $this->userUnreadNotificationModel->markAllAsRead($user_id);
+        $this->userUnreadNotificationModel->markAllAsRead($user['id']);
         $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'index'));
     }
 
@@ -47,10 +48,10 @@ class NotificationController extends Controller
      */
     public function remove()
     {
-        $user_id = $this->getUserId();
+        $user = $this->getUser();
         $notification_id = $this->request->getIntegerParam('notification_id');
 
-        $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
+        $this->userUnreadNotificationModel->markAsRead($user['id'], $notification_id);
         $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'index'));
     }
 
@@ -59,11 +60,11 @@ class NotificationController extends Controller
      */
     public function redirect()
     {
-        $user_id = $this->getUserId();
+        $user = $this->getUser();
         $notification_id = $this->request->getIntegerParam('notification_id');
 
         $notification = $this->userUnreadNotificationModel->getById($notification_id);
-        $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
+        $this->userUnreadNotificationModel->markAsRead($user['id'], $notification_id);
 
         if (empty($notification)) {
             $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'index'));
@@ -81,19 +82,5 @@ class NotificationController extends Controller
                 ['task_id' => $this->notificationModel->getTaskIdFromEvent($notification['event_name'], $notification['event_data'])]
             ));
         }
-    }
-
-    /**
-     * Get user id.
-     */
-    protected function getUserId()
-    {
-        $user_id = $this->request->getIntegerParam('user_id');
-
-        if (!$this->userSession->isAdmin() && $user_id != $this->userSession->getId()) {
-            $user_id = $this->userSession->getId();
-        }
-
-        return $user_id;
     }
 }
