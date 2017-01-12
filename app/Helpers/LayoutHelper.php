@@ -49,7 +49,7 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function profile($template, array $params, $subside = 'profile/subside')
+    public function profile($template, array $params, $subside = 'profile/_partials/subnav')
     {
         if (isset($params['user'])) {
             $params['title'] = '#'.$params['user']['id'].' '.($params['user']['name'] ?: $params['user']['username']);

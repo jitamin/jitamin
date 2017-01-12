@@ -22,11 +22,11 @@ use Jitamin\Model\ProjectModel;
 class ProfileController extends Controller
 {
     /**
-     * Public user profile.
+     * Display user information.
      *
      * @throws PageNotFoundException
      */
-    public function profile()
+    public function show()
     {
         $column = $this->request->getStringParam('user_id');
         $method = is_numeric($column) ? 'getById' : 'getByUsername';
@@ -37,91 +37,11 @@ class ProfileController extends Controller
             throw new PageNotFoundException();
         }
 
-        $this->response->html($this->helper->layout->app('profile/profile', [
+        $this->response->html($this->helper->layout->app('profile/show', [
             'title'  => $user['name'] ?: $user['username'],
             'events' => $this->helper->projectActivity->searchEvents('creator:'.$user['username'], 20),
             'user'   => $user,
         ], ''));
-    }
-
-    /**
-     * Display user information.
-     */
-    public function show()
-    {
-        $user = $this->getUser();
-        $this->response->html($this->helper->layout->profile('profile/show', [
-            'user'      => $user,
-            'timezones' => $this->timezoneModel->getTimezones(true),
-            'languages' => $this->languageModel->getLanguages(true),
-        ], ''));
-    }
-
-    /**
-     * Display timesheet.
-     */
-    public function timesheet()
-    {
-        $user = $this->getUser();
-
-        $subtask_paginator = $this->paginator
-            ->setUrl('Profile/ProfileController', 'timesheet', ['user_id' => $user['id'], 'pagination' => 'subtasks'])
-            ->setMax(20)
-            ->setOrder('start')
-            ->setDirection('DESC')
-            ->setQuery($this->subtaskTimeTrackingModel->getUserQuery($user['id']))
-            ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
-
-        $this->response->html($this->helper->layout->profile('profile/timesheet', [
-            'subtask_paginator' => $subtask_paginator,
-            'user'              => $user,
-        ], ''));
-    }
-
-    /**
-     * Display last password reset.
-     */
-    public function passwordReset()
-    {
-        $user = $this->getUser();
-        $this->response->html($this->helper->layout->profile('profile/password_reset', [
-            'tokens' => $this->passwordResetModel->getAll($user['id']),
-            'user'   => $user,
-        ], ''));
-    }
-
-    /**
-     * Display last connections.
-     */
-    public function lastLogin()
-    {
-        $user = $this->getUser();
-        $this->response->html($this->helper->layout->profile('profile/last', [
-            'last_logins' => $this->lastLoginModel->getAll($user['id']),
-            'user'        => $user,
-        ], ''));
-    }
-
-    /**
-     * Display user sessions.
-     */
-    public function sessions()
-    {
-        $user = $this->getUser();
-        $this->response->html($this->helper->layout->profile('profile/sessions', [
-            'sessions' => $this->rememberMeSessionModel->getAll($user['id']),
-            'user'     => $user,
-        ], ''));
-    }
-
-    /**
-     * Remove a "RememberMe" token.
-     */
-    public function removeSession()
-    {
-        $user = $this->getUser();
-        $this->rememberMeSessionModel->remove($this->request->getIntegerParam('id'));
-        $this->response->redirect($this->helper->url->to('Profile/ProfileController', 'sessions', ['user_id' => $user['id']]));
     }
 
     /**
