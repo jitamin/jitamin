@@ -9,13 +9,28 @@
  * file that was distributed with this source code.
  */
 
-namespace Jitamin\Http\Controllers;
+namespace Jitamin\Http\Controllers\Dashboard;
+
+use Jitamin\Http\Controllers\Controller;
 
 /**
  * Notification controller.
  */
 class NotificationController extends Controller
 {
+
+    /**
+     * My notifications.
+     */
+    public function index()
+    {
+        $user_id = $this->getUserId();
+        $this->response->html($this->helper->layout->app('dashboard/notifications', [
+            'title'         => t('My notifications'),
+            'notifications' => $this->userUnreadNotificationModel->getAll($user_id),
+        ]));
+    }
+
     /**
      * Mark all notifications as read.
      */
@@ -24,7 +39,7 @@ class NotificationController extends Controller
         $user_id = $this->getUserId();
 
         $this->userUnreadNotificationModel->markAllAsRead($user_id);
-        $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'notifications', ['user_id' => $user_id]));
+        $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'index'));
     }
 
     /**
@@ -36,7 +51,7 @@ class NotificationController extends Controller
         $notification_id = $this->request->getIntegerParam('notification_id');
 
         $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
-        $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'notifications', ['user_id' => $user_id]));
+        $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'index'));
     }
 
     /**
@@ -51,7 +66,7 @@ class NotificationController extends Controller
         $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
 
         if (empty($notification)) {
-            $this->response->redirect($this->helper->url->to('Dashboard/DashboardController', 'notifications', ['user_id' => $user_id]));
+            $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'notifications'));
         } elseif ($this->helper->text->contains($notification['event_name'], 'comment')) {
             $this->response->redirect($this->helper->url->to(
                 'Task/TaskController',

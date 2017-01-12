@@ -20,6 +20,7 @@ return [
 'dashboard/subtasks'      => 'Dashboard/DashboardController@subtasks',
 'dashboard/calendar'      => 'Dashboard/DashboardController@calendar',
 'dashboard/activities'    => 'Dashboard/DashboardController@activities',
-'dashboard/notifications' => 'Dashboard/DashboardController@notifications',
+
+'dashboard/notifications' => 'Dashboard/NotificationController@index',
 
 ];

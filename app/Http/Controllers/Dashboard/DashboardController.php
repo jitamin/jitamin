@@ -83,18 +83,4 @@ class DashboardController extends Controller
             'user'  => $user,
         ]));
     }
-
-    /**
-     * My notifications.
-     */
-    public function notifications()
-    {
-        $user = $this->getUser();
-
-        $this->response->html($this->helper->layout->dashboard('dashboard/notifications', [
-            'title'         => t('My notifications'),
-            'notifications' => $this->userUnreadNotificationModel->getAll($user['id']),
-            'user'          => $user,
-        ]));
-    }
 }
