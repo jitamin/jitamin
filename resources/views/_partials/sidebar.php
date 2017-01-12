@@ -28,20 +28,20 @@ $is_private_project_enabled = $this->app->setting('disable_private_project', 0) 
                     <ul>
                         <?php if ($has_project_creation_access): ?>
                             <li><i class="fa fa-cube"></i>
-                                <?= $this->url->link(t('New project'), 'Project/ProjectController', 'create', [], false, 'popover') ?>
+                                <?= $this->url->link(t('New project'), 'Project/ProjectController', 'create', [], false, 'popover small') ?>
                             </li>
                         <?php endif ?>
                         <?php if ($is_private_project_enabled): ?>
                             <li>
                                 <i class="fa fa-lock"></i>
-                                <?= $this->url->link(t('New private project'), 'Project/ProjectController', 'createPrivate', [], false, 'popover') ?>
+                                <?= $this->url->link(t('New private project'), 'Project/ProjectController', 'createPrivate', [], false, 'popover small') ?>
                             </li>
                         <?php endif ?>
                         <?php if ($has_task_creation_access): ?>
                         <div class="divider"></div>
                         <li>
                             <i class="fa fa-tasks"></i>
-                            <?= $this->url->link(t('New task'), 'Task/TaskSimpleController', 'create', [], false, 'popover') ?>
+                            <?= $this->url->link(t('New task'), 'Task/TaskSimpleController', 'create', [], false, 'popover small') ?>
                         </li>
                         <?php endif ?>
                         <?= $this->hook->render('template:sidebar:creation-dropdown') ?>
