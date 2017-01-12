@@ -37,6 +37,7 @@ Jitamin.App.prototype.execute = function() {
     this.datePicker();
     this.autoComplete();
     this.tagAutoComplete();
+    this.sliderToggle();
 
     new Vue({
         el: 'body'
@@ -65,6 +66,7 @@ Jitamin.App.prototype.keyboardShortcuts = function() {
     Mousetrap.bindGlobal("esc", function() {
         self.get("Popover").close();
         self.get("Dropdown").close();
+        self.get("Sidebar").close();
     });
 
     // Show keyboard shortcut
@@ -86,6 +88,7 @@ Jitamin.App.prototype.focus = function() {
 };
 
 Jitamin.App.prototype.sidebarToggle = function() {
+
     $(document).on("click", ".sidebar-toggle", function(e) {
         var wrapper = $(this).parents(".wrapper");
         e.preventDefault();
@@ -96,6 +99,19 @@ Jitamin.App.prototype.sidebarToggle = function() {
         } else {
             wrapper.find(".sidebar").hide("slow");
             wrapper.addClass("wrapper-collapsed");
+        }
+    });
+};
+
+Jitamin.App.prototype.sliderToggle = function() {
+    var self = this;
+    $(document).on("click", ".slider", function(e) {
+        e.preventDefault();
+        var sidecontent = $('.sidecontent');
+        if(sidecontent.width() > 0) {
+            self.get('Slider').close()
+        } else {
+            self.get("Slider").open($(this).attr('href'));
         }
     });
 };

@@ -16,7 +16,7 @@
             <?= $this->url->link(t('My calendar'), 'Dashboard/DashboardController', 'calendar') ?>
         </li>
         <li <?= $this->app->setActive('Dashboard/DashboardController', 'activities', 'dashboard') ?>>
-            <?= $this->url->link(t('My activities'), 'Dashboard/DashboardController', 'activities') ?>
+            <?= $this->url->link(t('Project activities'), 'Dashboard/DashboardController', 'activities') ?>
         </li>
         <?= $this->hook->render('template:dashboard:subside') ?>
     </ul>

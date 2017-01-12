@@ -83,4 +83,18 @@ class DashboardController extends Controller
             'user'  => $user,
         ]));
     }
+
+    /**
+     * My slider.
+     */
+    public function slider()
+    {
+        $user = $this->getUser();
+
+        $this->response->html($this->helper->layout->app('dashboard/slider', [
+            'title'      => t('My slider'),
+            'paginator'  => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 5),
+            'user'       => $user,
+        ]));
+    }
 }
