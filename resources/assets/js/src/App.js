@@ -66,7 +66,7 @@ Jitamin.App.prototype.keyboardShortcuts = function() {
     Mousetrap.bindGlobal("esc", function() {
         self.get("Popover").close();
         self.get("Dropdown").close();
-        self.get("Sidebar").close();
+        self.get("Slider").close();
     });
 
     // Show keyboard shortcut
@@ -105,7 +105,7 @@ Jitamin.App.prototype.sidebarToggle = function() {
 
 Jitamin.App.prototype.sliderToggle = function() {
     var self = this;
-    $(document).on("click", ".slider", function(e) {
+    $(document).on("click", ".slider-menu", function(e) {
         e.preventDefault();
         var sidecontent = $('.sidecontent');
         if(sidecontent.width() > 0) {

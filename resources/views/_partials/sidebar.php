@@ -23,7 +23,7 @@ $is_private_project_enabled = $this->app->setting('disable_private_project', 0) 
                 </li>
                 <hr/>
                 <li>
-                    <?= $this->url->link('<i class="fa fa-inbox"></i><br />'.t('Projects'), 'Dashboard/DashboardController', 'slider', [], false, 'slider') ?>
+                    <?= $this->url->link('<i class="fa fa-inbox"></i><br />'.t('Projects'), 'Dashboard/DashboardController', 'slider', [], false, 'slider-menu') ?>
                 </li>
                 <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled) || $has_task_creation_access): ?>
                 <li class="dropdown">

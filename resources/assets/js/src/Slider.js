@@ -11,9 +11,9 @@ Jitamin.Slider.prototype.open = function(link) {
 
     if (!self.isOpen()) {
         $.get(link, function(content) {
-            var sidecontent = $('.sidecontent');
-            sidecontent.addClass('active').html(content);
+            $('.sidecontent').addClass('active').html(content);
             $('.sidebar .slider').parent().addClass('active');
+
             $('.content-panel').on('click', function(){
                 self.close();
             });
