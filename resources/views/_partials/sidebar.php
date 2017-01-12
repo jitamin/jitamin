@@ -21,8 +21,11 @@ $is_private_project_enabled = $this->app->setting('disable_private_project', 0) 
                         <?= $this->url->link('<i class="fa fa-bell"></i><br />'.t('Notice'), 'Dashboard/NotificationController', 'index', [], false, '', t('You have no unread notifications')) ?>
                     <?php endif ?>
                 </li>
-                <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled) || $has_task_creation_access): ?>
                 <hr/>
+                <li>
+                    <?= $this->url->link('<i class="fa fa-inbox"></i><br />'.t('Projects'), 'Dashboard/DashboardController', 'slider', [], false, 'slider') ?>
+                </li>
+                <?php if ($has_project_creation_access || (!$has_project_creation_access && $is_private_project_enabled) || $has_task_creation_access): ?>
                 <li class="dropdown">
                     <a href="#" class="dropdown-menu"><i class="fa fa-plus-circle"></i><br /><?= t('Create') ?></a>
                     <ul>
@@ -62,5 +65,8 @@ $is_private_project_enabled = $this->app->setting('disable_private_project', 0) 
             </ul>
         </div>
         <div class="menu-bottom"></div>
+    </div>
+    <div class="sidecontent">
+        <span id="app-loading-icon">&nbsp;<i class="fa fa-spinner fa-spin"></i></span>
     </div>
 </div>

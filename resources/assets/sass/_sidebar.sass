@@ -29,13 +29,13 @@
       text-align: center
       position: absolute
       top: 45px
-      bottom: 113px
+      bottom: 50px
       left: 0
       right: 0
       > ul
         a
           text-decoration: none
-          color: #ddd
+          color: #ccc
           display: block;
           margin: 14px 0;
           text-align: center;
@@ -64,3 +64,40 @@
       left: 0
       right: 0
       text-align: center
+
+  .sidecontent
+    transform: translateX(0)
+    transition-duration: .15s
+    transition-timing-function: ease-in
+    transition-property: transform,width
+    position: absolute
+    background-color: #fff
+    left: $sidebar-width
+    top: 0
+    bottom: 0
+    box-shadow: 1px 0 5px rgba(0,0,0,.14)
+    width: 0
+    z-index: 10
+    visibility: hidden
+    &.active
+      visibility: initial
+      width: 240px
+    .slider
+      margin: 10px
+      > ul
+        a
+          text-decoration: none
+          color: #666
+          display: block;
+          margin: 5px;
+          padding: 5px;
+          line-height: 138%;
+          white-space: nowrap;
+          &:hover
+            color: #000
+        li
+          list-style-type: none
+          &:hover
+            a
+              background: #4078C0
+              color: #fff
