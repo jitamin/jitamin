@@ -66,7 +66,7 @@ class NotificationController extends Controller
         $this->userUnreadNotificationModel->markAsRead($user_id, $notification_id);
 
         if (empty($notification)) {
-            $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'notifications'));
+            $this->response->redirect($this->helper->url->to('Dashboard/NotificationController', 'index'));
         } elseif ($this->helper->text->contains($notification['event_name'], 'comment')) {
             $this->response->redirect($this->helper->url->to(
                 'Task/TaskController',
