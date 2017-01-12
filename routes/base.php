@@ -11,11 +11,6 @@
 
 return [
 
-// WebNotification routes
-'notification/{user_id}/{notification_id}'        => 'NotificationController@redirect',
-'notification/{user_id}/{notification_id}/remove' => 'NotificationController@remove',
-'notifications/{user_id}/flush'                   => 'NotificationController@flush',
-
 // Search routes
 'search'          => 'SearchController@index',
 'search/activity' => 'SearchController@activity',
