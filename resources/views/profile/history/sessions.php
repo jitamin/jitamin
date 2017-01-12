@@ -21,7 +21,7 @@
         <td><?= $this->dt->datetime($session['expiration']) ?></td>
         <td><?= $this->text->e($session['ip']) ?></td>
         <td><?= $this->text->e($session['user_agent']) ?></td>
-        <td><?= $this->url->link(t('Remove'), 'Profile/ProfileController', 'removeSession', ['user_id' => $user['id'], 'id' => $session['id']], true) ?></td>
+        <td><?= $this->url->link(t('Remove'), 'Profile/HistoryController', 'removeSession', ['user_id' => $user['id'], 'id' => $session['id']], true) ?></td>
     </tr>
     <?php endforeach ?>
     </table>

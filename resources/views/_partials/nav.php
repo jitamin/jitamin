@@ -28,17 +28,20 @@
                         <?= $this->url->link(t('My profile'), 'Profile/ProfileController', 'show', ['user_id' => $this->user->getId()]) ?>
                     </li>
                     <li>
-                        <i class="fa fa-edit"></i>
-                        <?= $this->url->link(t('Edit profile'), 'Profile/ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
+                        <i class="fa fa-history"></i>
+                        <?= $this->url->link(t('Histories'), 'Profile/HistoryController', 'timesheet', ['user_id' => $this->user->getId()]) ?>
                     </li>
                     <li>
                         <i class="fa fa-life-ring"></i>
                         <?= $this->url->link(t('Documentation'), 'DocumentationController', 'show') ?>
                     </li>
                     <?= $this->hook->render('template:header:dropdown') ?>
-
+                    <div class="divider"></div>
+                    <li>
+                        <i class="fa fa-edit"></i>
+                        <?= $this->url->link(t('Edit profile'), 'Profile/ProfileController', 'edit', ['user_id' => $this->user->getId()]) ?>
+                    </li>
                     <?php if (!DISABLE_LOGOUT): ?>
-                        <div class="divider"></div>
                         <li>
                             <i class="fa fa-sign-out"></i>
                             <?= $this->url->link(t('Logout'), 'Auth/AuthController', 'logout') ?>
