@@ -9,10 +9,7 @@
     <ul>
         <?php foreach ($paginator->getCollection() as $project): ?>
         <li>
-            <?= $this->url->link($this->text->e($project['name']), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
-                <?php if ($project['is_private']): ?>
-                    <i class="fa fa-lock" title="<?= t('Private project') ?>"></i>
-                <?php endif ?>
+            <?= $this->url->link($this->text->e($project['name']).($project['is_private']?'<i class="fa fa-lock pull-right" title="'.t('Private project').'"></i>':null), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
         </li>
         <?php endforeach ?>
     </ul>
@@ -24,10 +21,7 @@
     <ul>
         <?php foreach ($recent_projects as $project): ?>
         <li>
-            <?= $this->url->link($this->text->e($project['name']), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
-                <?php if ($project['is_private']): ?>
-                    <i class="fa fa-lock" title="<?= t('Private project') ?>"></i>
-                <?php endif ?>
+            <?= $this->url->link($this->text->e($project['name']).($project['is_private']?'<i class="fa fa-lock pull-right" title="'.t('Private project').'"></i>':null), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
         </li>
         <?php endforeach ?>
     </ul>
