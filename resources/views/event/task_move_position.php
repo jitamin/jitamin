@@ -1,6 +1,6 @@
 <p class="activity-title">
     <?= e('%s moved the task %s to the column "%s" at the position #%d',
-            $this->url->link($author, 'Profile/ProfileController', 'profile', ['user_id' => $author_username]),
+            $this->url->link($author, 'Profile/ProfileController', 'show', ['user_id' => $author_username]),
             $this->url->link(t('#%d', $task['id']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
             $this->text->e($task['column_title']),
             $task['position']

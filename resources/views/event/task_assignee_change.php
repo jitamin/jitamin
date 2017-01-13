@@ -3,7 +3,7 @@
 
     <?php if (!empty($assignee)): ?>
         <?= e('%s changed the assignee of the task %s to %s',
-                $this->url->link($author, 'Profile/ProfileController', 'profile', ['user_id' => $author_username]),
+                $this->url->link($author, 'Profile/ProfileController', 'show', ['user_id' => $author_username]),
                 $this->url->link(t('#%d', $task['id']), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']]),
                 $this->text->e($assignee)
             ) ?>
