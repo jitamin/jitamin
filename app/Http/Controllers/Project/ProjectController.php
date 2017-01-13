@@ -26,6 +26,8 @@ class ProjectController extends Controller
     {
         $project = $this->getProject();
 
+        $this->userSession->setRecentProject($project['id']);
+
         list($className, $method) = $this->helper->app->getProjectDefaultView($project['default_view'], true);
         $controllerObject = new $className($this->container);
 
