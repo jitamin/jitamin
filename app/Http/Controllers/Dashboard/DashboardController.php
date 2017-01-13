@@ -94,7 +94,31 @@ class DashboardController extends Controller
         $this->response->html($this->helper->layout->app('dashboard/slider', [
             'title'      => t('My slider'),
             'paginator'  => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 5),
+            'recent_projects' => $this->prepareForSlider(),
             'user'       => $user,
         ]));
+    }
+
+    /**
+     * Prepare data for slider.
+     */
+    protected function prepareForSlider()
+    {
+        $projectIds = $this->userSession->getRecentProjects();
+        $projects = $this->projectModel->getAllByIds($projectIds);
+
+        $old = $new = [];
+        foreach ($projects as $item) {
+            $old[$item['id']] = $item;
+        }
+
+        foreach ($projectIds as $id) {
+            if (!isset($old[$id])) {
+                continue;
+            }
+            $new[] = $old[$id];
+        }
+
+        return $new;
     }
 }

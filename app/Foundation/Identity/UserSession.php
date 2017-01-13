@@ -170,4 +170,31 @@ class UserSession extends Base
     {
         $this->sessionStorage->filters[$project_id] = $filters;
     }
+
+    /**
+     * Get recent projects from the session.
+     *
+     * @return array
+     */
+    public function getRecentProjects()
+    {
+        return isset($this->sessionStorage->recentProjectIds) && !empty($this->sessionStorage->recentProjectIds) ? $this->sessionStorage->recentProjectIds : [];
+    }
+
+    /**
+     * Save recent project in the session.
+     *
+     * @param int    $project_id
+     * @param string $filters
+     */
+    public function setRecentProject($project_id)
+    {
+        if (!$this->sessionStorage->recentProjectIds) {
+            $this->sessionStorage->recentProjectIds = [];
+        }
+
+        array_unshift($this->sessionStorage->recentProjectIds, $project_id);
+
+        $this->sessionStorage->recentProjectIds = array_slice(array_unique($this->sessionStorage->recentProjectIds), 0 , 5);
+    }
 }

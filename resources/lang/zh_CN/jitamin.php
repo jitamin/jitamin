@@ -428,6 +428,7 @@ return [
     'Star' => '按赞',
     'Unstar' => '取消按赞',
     'My projects' => '我的项目',
+    'Recent projects' => '最近打开项目',
     'Project activities' => '项目动态',
     'Columns' => '栏目',
     'Task' => '任务',
