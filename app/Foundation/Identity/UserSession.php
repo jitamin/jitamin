@@ -195,6 +195,6 @@ class UserSession extends Base
 
         array_unshift($this->sessionStorage->recentProjectIds, $project_id);
 
-        $this->sessionStorage->recentProjectIds = array_slice(array_unique($this->sessionStorage->recentProjectIds), 0 , 5);
+        $this->sessionStorage->recentProjectIds = array_slice(array_unique($this->sessionStorage->recentProjectIds), 0, 5);
     }
 }
