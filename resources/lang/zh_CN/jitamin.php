@@ -17,6 +17,7 @@ return [
     'Lime' => '绿黄色',
     'Light Green' => '浅绿色',
     'Amber' => '黄褐色',
+    'Black' => '黑色',
     'White' => '白色',
     'Write your text in Markdown' => '支持Markdown语法',
     'Official website:' => '官方网站：',
