@@ -12,11 +12,12 @@ Jitamin.Slider.prototype.open = function(link) {
     if (!self.isOpen()) {
         $.get(link, function(content) {
             $('.sidecontent').addClass('active').html(content);
-            $('.sidebar .slider').parent().addClass('active');
+            $('.sidebar .slider-menu').parent().addClass('active');
 
             $('.content-panel').on('click', function(){
                 self.close();
             });
+            self.executeOnOpenedListeners();
         });
     }
 };
@@ -28,8 +29,18 @@ Jitamin.Slider.prototype.close = function(e) {
         }
 
         $(".sidecontent").removeClass('active').html();
-        $('.sidebar .slider').parent().removeClass('active');
+        $('.sidebar .slider-menu').parent().removeClass('active');
         this.executeOnClosedListeners();
+    }
+};
+
+Jitamin.Slider.prototype.executeOnOpenedListeners = function() {
+    for (var className in this.app.controllers) {
+        var controller = this.app.get(className);
+
+        if (typeof controller.onSliderOpened === "function") {
+            controller.onSliderOpened();
+        }
     }
 };
 
@@ -37,8 +48,8 @@ Jitamin.Slider.prototype.executeOnClosedListeners = function() {
     for (var className in this.app.controllers) {
         var controller = this.app.get(className);
 
-        if (typeof controller.onPopoverClosed === "function") {
-            controller.onPopoverClosed();
+        if (typeof controller.onSliderClosed === "function") {
+            controller.onSliderClosed();
         }
     }
 };
