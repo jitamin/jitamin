@@ -36,15 +36,6 @@
         "gregwar/captcha": "1.1.1",
         "robmorgan/phinx": "^0.6.5"
     },
-    "autoload" : {
-        "classmap" : ["app/"],
-        "psr-4" : {
-            "Jitamin\\" : "app/"
-        },
-        "files" : [
-            "app/helpers.php"
-        ]
-    },
     "require-dev" : {
         "phpdocumentor/reflection-docblock": "2.0.4",
         "block8/php-docblock-checker": "^1.0",
@@ -54,6 +45,15 @@
         "phpunit/phpunit" : "4.8.26",
         "phpunit/phpunit-selenium": "2.0.2",
         "friendsofphp/php-cs-fixer": "^1.11"
+    },
+    "autoload" : {
+        "classmap" : ["app/"],
+        "psr-4" : {
+            "Jitamin\\" : "app/"
+        },
+        "files" : [
+            "app/helpers.php"
+        ]
     },
     "scripts": {
         "pre-install-cmd": [
