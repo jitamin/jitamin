@@ -103,7 +103,7 @@ class ProjectPermissionController extends Controller
         }
 
         return $this->response->html($this->helper->layout->app('manage/project_permission/remove_user', [
-            'user' => $user,
+            'user'    => $user,
             'project' => $project,
         ]));
     }
