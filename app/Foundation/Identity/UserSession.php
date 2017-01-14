@@ -189,7 +189,7 @@ class UserSession extends Base
      */
     public function setRecentProject($project_id)
     {
-        if (!$this->sessionStorage->recentProjectIds) {
+        if (!isset($this->sessionStorage->recentProjectIds)) {
             $this->sessionStorage->recentProjectIds = [];
         }
 
