@@ -7,7 +7,7 @@
     <li <?= $this->app->setActive('Manage/ProjectController', 'gantt') ?>><?= $this->url->link(t('Projects Gantt chart'), 'Manage/ProjectController', 'gantt') ?></li>
             <?php endif ?>
     <?php if ($this->user->hasAccess('Manage/ProjectUserOverviewController', 'managers')): ?>
-    <li <?= $this->app->setActive('Manage/ProjectUserOverviewController', 'managers') ?>><?= $this->url->link(t('Users overview'), 'Manage/ProjectUserOverviewController', 'managers') ?></li>
+    <li <?= $this->app->setActive('Manage/ProjectUserOverviewController', 'managers') ?>><?= $this->url->link(t('Project members'), 'Manage/ProjectUserOverviewController', 'managers') ?></li>
     <?php endif ?>
 </ul>
 </div>
