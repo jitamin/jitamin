@@ -31,7 +31,7 @@
                     ) ?>
                 </td>
                 <td>
-                    <?= $this->url->link(t('Remove'), 'Manage/ProjectPermissionController', 'removeUser', ['project_id' => $project['id'], 'user_id' => $user['id']], true) ?>
+                    <?= $this->url->link(t('Remove'), 'Manage/ProjectPermissionController', 'removeUser', ['project_id' => $project['id'], 'user_id' => $user['id']], false, 'popover') ?>
                 </td>
             </tr>
             <?php endforeach ?>
