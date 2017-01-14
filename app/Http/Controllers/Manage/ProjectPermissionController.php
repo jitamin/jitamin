@@ -89,15 +89,23 @@ class ProjectPermissionController extends Controller
     public function removeUser()
     {
         $project = $this->getProject();
-        $user_id = $this->request->getIntegerParam('user_id');
+        $user = $this->getUser();
 
-        if ($this->projectUserRoleModel->removeUser($project['id'], $user_id)) {
-            $this->flash->success(t('Project updated successfully.'));
-        } else {
-            $this->flash->failure(t('Unable to update this project.'));
+        if ($this->request->isPost()) {
+            $this->request->checkCSRFToken();
+            if ($this->projectUserRoleModel->removeUser($project['id'], $user['id'])) {
+                $this->flash->success(t('Project updated successfully.'));
+            } else {
+                $this->flash->failure(t('Unable to update this project.'));
+            }
+
+            return $this->response->redirect($this->helper->url->to('Manage/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
         }
 
-        $this->response->redirect($this->helper->url->to('Manage/ProjectPermissionController', 'index', ['project_id' => $project['id']]));
+        return $this->response->html($this->helper->layout->app('manage/project_permission/remove_user', [
+            'user'    => $user,
+            'project' => $project,
+        ]));
     }
 
     /**
