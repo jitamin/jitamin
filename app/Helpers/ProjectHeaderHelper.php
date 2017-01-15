@@ -37,27 +37,16 @@ class ProjectHeaderHelper extends Base
      * Render project header (views switcher and search box).
      *
      * @param array  $project
-     * @param string $controller
-     * @param string $action
      * @param bool   $boardView
      *
      * @return string
      */
-    public function render(array $project, $controller, $action, $boardView = false)
+    public function render(array $project, $boardView = false)
     {
-        $filters = [
-            'controller' => $controller,
-            'action'     => $action,
-            'project_id' => $project['id'],
-            'q'          => $this->getSearchQuery($project),
-        ];
 
         return $this->template->render('project/_header/header', [
             'project'             => $project,
-            'filters'             => $filters,
-            'categories_list'     => $this->categoryModel->getList($project['id'], false),
-            'users_list'          => $this->projectUserRoleModel->getAssignableUsersList($project['id'], false),
-            'custom_filters_list' => $this->customFilterModel->getAll($project['id'], $this->userSession->getId()),
+            'q'   => $this->getSearchQuery($project),
             'board_view'          => $boardView,
         ]);
     }

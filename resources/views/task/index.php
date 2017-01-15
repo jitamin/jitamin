@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'Task/TaskController', 'index') ?>
+<?= $this->projectHeader->render($project) ?>
 
 <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('No tasks found.') ?></p>

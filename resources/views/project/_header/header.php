@@ -1,15 +1,11 @@
 <div class="project-header">
     <?= $this->hook->render('template:project:header:before', ['project' => $project]) ?>
     <div class="views-switcher-component">
-        <?= $this->render('project/_header/views', ['project' => $project, 'filters' => $filters]) ?>
+        <?= $this->render('project/_header/views', ['project' => $project, 'q' => $q]) ?>
     </div>
     <div class="filter-box-component">
-        <?= $this->render('project/_header/search', [
+        <?= $this->render('project/_header/actions', [
             'project'             => $project,
-            'filters'             => $filters,
-            'custom_filters_list' => isset($custom_filters_list) ? $custom_filters_list : [],
-            'users_list'          => isset($users_list) ? $users_list : [],
-            'categories_list'     => isset($categories_list) ? $categories_list : [],
         ]) ?>
     </div>
     <div class="dropdown-component text-right">

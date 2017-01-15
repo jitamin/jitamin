@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'ActivityController', $this->app->getRouterAction()) ?>
+<?= $this->projectHeader->render($project) ?>
 
 <?php if ($project['is_public']): ?>
 <div class="menu-inline text-right">

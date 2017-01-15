@@ -50,5 +50,6 @@
                 </ul>
             </li>
         </ul>
+        <?= $this->navbarSearch->render(isset($project) ? $project : []) ?>
     </div>
 </div>

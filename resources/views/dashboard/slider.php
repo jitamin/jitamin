@@ -2,7 +2,7 @@
     <div class="page-header">
     <h2><?= t('Projects') ?></h2>
     </div>
-    <h3><i class="fa fa-star-o fa-fw"></i><?= t('My stars') ?></h3>
+    <h3><i class="fa fa-star-o fa-fw"></i><?= t('Starred projects') ?></h3>
     <?php if ($paginator->isEmpty()): ?>
     <p class="alert"><?= t('No projects to show.') ?></p>
     <?php else: ?>

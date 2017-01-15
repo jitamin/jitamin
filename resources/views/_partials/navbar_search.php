@@ -1,6 +1,5 @@
-<div class="filter-box">
-    <form method="get" action="<?= $this->url->dir() ?>" class="search">
-        <?= $this->form->hidden('controller', $filters) ?>
+<form class="navbar-form navbar-right search" role="search" action="<?= $this->url->dir() ?>" method="get">
+    <?= $this->form->hidden('controller', $filters) ?>
         <?= $this->form->hidden('action', $filters) ?>
         <?= $this->form->hidden('project_id', $filters) ?>
 
@@ -51,6 +50,4 @@
             </div>
             <?php endif ?>
         </div>
-
-    </form>
-</div>
+</form>

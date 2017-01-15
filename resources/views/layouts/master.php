@@ -58,7 +58,7 @@
         <div class="wrapper">
         <?= $this->render('_partials/sidebar', [
         ]) ?>
-        <?= $this->render('_partials/nav', [
+        <?= $this->render('_partials/navbar', [
             'title' => $title,
             'page_title' => isset($page_title) ? $page_title : null,
             'project' => isset($project) ? $project : null,
