@@ -41,6 +41,25 @@ class CategoryController extends Controller
     }
 
     /**
+     * Create a new category.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws \Jitamin\Foundation\Exceptions\PageNotFoundException
+     */
+    public function create(array $values = [], array $errors = [])
+    {
+        $project = $this->getProject();
+
+        $this->response->html($this->template->render('project/category/create', [
+            'values'  => $values + ['project_id' => $project['id']],
+            'errors'  => $errors,
+            'project' => $project,
+        ]));
+    }
+
+    /**
      * Validate and save a new category.
      */
     public function store()

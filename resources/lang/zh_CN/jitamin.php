@@ -1049,6 +1049,7 @@ return [
     'Start date changed: ' => '开始时间已变更：',
     'Disable private projects' => '禁用私有项目',
     'Do you really want to remove this custom filter: "%s"?' => '你确定要删除这个自定义筛选项："%s"？',
+    'Add a custom filter' => '添加自定义筛选项',
     'Remove a custom filter' => '删除自定义筛选项',
     'User activated successfully.' => '用户已激活。',
     'Unable to enable this user.' => '无法启用该用户。',

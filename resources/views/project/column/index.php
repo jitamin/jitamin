@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h2><?= t('Edit the board for "%s"', $project['name']) ?></h2>
+    <h2><?= t('Columns') ?></h2>
     <ul>
         <li>
             <i class="fa fa-plus fa-fw"></i>

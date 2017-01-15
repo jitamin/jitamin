@@ -42,6 +42,25 @@ class CustomFilterController extends Controller
     }
 
     /**
+     * Display a form to create a new custom filter.
+     *
+     * @param array $values
+     * @param array $errors
+     *
+     * @throws PageNotFoundException
+     */
+    public function create(array $values = [], array $errors = [])
+    {
+        $project = $this->getProject();
+
+        $this->response->html($this->template->render('project/custom_filter/create', [
+            'project'           => $project,
+            'values'            => $values + ['project_id' => $project['id']],
+            'errors'            => $errors,
+        ]));
+    }
+
+    /**
      * Save a new custom filter.
      */
     public function store()

@@ -1,7 +1,14 @@
-<?php if (!empty($custom_filters)): ?>
 <div class="page-header">
     <h2><?= t('Custom filters') ?></h2>
+    <ul>
+        <li>
+            <i class="fa fa-plus fa-fw"></i>
+            <?= $this->url->link(t('Add a custom filter'), 'Project/CustomFilterController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
+        </li>
+    </ul>
 </div>
+
+<?php if (!empty($custom_filters)): ?>
 <div>
     <table class="table-striped table-scrolling">
         <tr>
@@ -47,5 +54,3 @@
     </table>
 </div>
 <?php endif ?>
-
-<?= $this->render('project/custom_filter/create', ['project' => $project, 'values' => $values, 'errors' => $errors]) ?>

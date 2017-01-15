@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h2><?= t('Add a new filter') ?></h2>
+    <h2><?= t('Add a custom filter') ?></h2>
 </div>
 <form method="post" action="<?= $this->url->href('Project/CustomFilterController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
 
@@ -20,5 +20,7 @@
 
     <div class="form-actions">
         <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <?= t('or') ?>
+        <?= $this->url->link(t('cancel'), 'Project/CustomFilterController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
 </form>

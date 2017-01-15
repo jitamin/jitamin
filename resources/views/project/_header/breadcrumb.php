@@ -21,7 +21,7 @@
         <?php if ($this->user->hasProjectAccess('Task/TaskController', 'create', $project['id'])): ?>
         <li>
             <i class="fa fa-plus"></i>
-            <?= $this->url->link(t('Create'), 'Task/TaskController', 'create', ['project_id' => $project['id']], false, 'popover large') ?>
+            <?= $this->url->link(t('New task'), 'Task/TaskController', 'create', ['project_id' => $project['id']], false, 'popover large') ?>
         </li>
         <?php endif ?>
         </ul>

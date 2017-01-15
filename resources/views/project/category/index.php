@@ -1,7 +1,15 @@
-<?php if (!empty($categories)): ?>
+
 <div class="page-header">
     <h2><?= t('Categories') ?></h2>
+    <ul>
+        <li>
+            <i class="fa fa-plus fa-fw"></i>
+            <?= $this->url->link(t('Add a new category'), 'Project/CategoryController', 'create', ['project_id' => $project['id']], false, 'popover') ?>
+        </li>
+    </ul>
 </div>
+
+<?php if (!empty($categories)): ?>
 <table  class="categories-table table-striped"
         data-save-position-url="<?= $this->url->href('Project/CategoryController', 'move', ['project_id' => $project['id']]) ?>">
     <thead>
@@ -35,19 +43,3 @@
     </tbody>
 </table>
 <?php endif ?>
-
-<div class="page-header">
-    <h2><?= t('Add a new category') ?></h2>
-</div>
-<form method="post" action="<?= $this->url->href('Project/CategoryController', 'store', ['project_id' => $project['id']]) ?>" autocomplete="off">
-
-    <?= $this->form->csrf() ?>
-    <?= $this->form->hidden('project_id', $values) ?>
-
-    <?= $this->form->label(t('Category Name'), 'name') ?>
-    <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="50"']) ?>
-
-    <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
-    </div>
-</form>
