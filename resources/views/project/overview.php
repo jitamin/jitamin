@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'Project/ProjectController', 'show') ?>
+<?= $this->projectHeader->render($project) ?>
 <?= $this->render('project/_partials/columns', ['project' => $project]) ?>
 <?= $this->render('project/_partials/description', ['project' => $project]) ?>
 <?= $this->render('project/_partials/information', ['project' => $project, 'users' => $users, 'roles' => $roles]) ?>

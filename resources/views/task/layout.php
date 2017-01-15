@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'Task/TaskController', 'index') ?>
+<?= $this->projectHeader->render($project) ?>
 <?= $this->hook->render('template:task:layout:top', ['task' => $task]) ?>
 <section
     class="page-container" id="task-view"

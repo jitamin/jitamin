@@ -48,6 +48,7 @@ class HelperServiceProvider implements ServiceProviderInterface
         $container['helper']->register('url', '\Jitamin\Helper\UrlHelper');
         $container['helper']->register('user', '\Jitamin\Helper\UserHelper');
         $container['helper']->register('avatar', '\Jitamin\Helper\AvatarHelper');
+        $container['helper']->register('navbarSearch', '\Jitamin\Helper\NavbarSearchHelper');
         $container['helper']->register('projectRole', '\Jitamin\Helper\ProjectRoleHelper');
         $container['helper']->register('projectHeader', '\Jitamin\Helper\ProjectHeaderHelper');
         $container['helper']->register('projectActivity', '\Jitamin\Helper\ProjectActivityHelper');

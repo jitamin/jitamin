@@ -33,14 +33,14 @@ class ProjectController extends Controller
     }
 
     /**
-     * My stars.
+     * Starred projects.
      */
     public function starred()
     {
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->dashboard('dashboard/project/starred', [
-            'title'             => t('My stars'),
+            'title'             => t('Starred projects'),
             'paginator'         => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 10),
             'user'              => $user,
         ]));

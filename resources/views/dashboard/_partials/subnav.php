@@ -4,7 +4,7 @@
             <?= $this->url->link(t('My projects'), 'Dashboard/ProjectController', 'index') ?>
         </li>
         <li <?= $this->app->setActive('Dashboard/ProjectController', 'starred', 'dashboard') ?>>
-            <?= $this->url->link(t('My stars'), 'Dashboard/ProjectController', 'starred') ?>
+            <?= $this->url->link(t('Starred projects'), 'Dashboard/ProjectController', 'starred') ?>
         </li>
         <li <?= $this->app->setActive('Dashboard/DashboardController', 'tasks', 'dashboard') ?>>
             <?= $this->url->link(t('My tasks'), 'Dashboard/DashboardController', 'tasks') ?>
