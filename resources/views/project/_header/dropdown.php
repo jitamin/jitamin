@@ -22,29 +22,10 @@
         </li>
         <?php endif ?>
 
-        <?php if ($this->user->hasProjectAccess('Task/TaskController', 'create', $project['id'])): ?>
-            <li>
-                <i class="fa fa-plus"></i>
-                <?= $this->url->link(t('Add a new task'), 'Task/TaskController', 'create', ['project_id' => $project['id']], false, 'popover large') ?>
-            </li>
-        <?php endif ?>
-
         <li>
             <i class="fa fa-history"></i>
             <?= $this->url->link(t('Activity'), 'ActivityController', 'project', ['project_id' => $project['id']]) ?>
         </li>
-
-        <?php if ($this->user->isStargazer($project['id'], $this->user->getId())): ?>
-        <li>
-            <i class="fa fa-star-o"></i>
-            <?= $this->url->link(t('Unstar'), 'Project/ProjectController', 'unstar', ['project_id' => $project['id']], false, 'popover') ?>
-        </li>
-        <?php else: ?>
-        <li>
-            <i class="fa fa-star"></i>
-            <?= $this->url->link(t('Star'), 'Project/ProjectController', 'star', ['project_id' => $project['id']], false, 'popover') ?>
-        </li>
-        <?php endif ?>
 
         <?php if ($this->user->hasProjectAccess('Project/CustomFilterController', 'index', $project['id'])): ?>
             <li>
