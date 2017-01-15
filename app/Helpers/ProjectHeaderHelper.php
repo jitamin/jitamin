@@ -36,13 +36,11 @@ class ProjectHeaderHelper extends Base
     /**
      * Render project header (views switcher and search box).
      *
-<<<<<<< HEAD
-     * @param array  $project
-     * @param bool   $boardView
-=======
+     <<<<<<< HEAD
      * @param array $project
      * @param bool  $boardView
->>>>>>> cf0f4459af2fc6f4fa0aac4c6c4655a0abc33333
+     * @param array $project
+     * @param bool  $boardView
      *
      * @return string
      */
