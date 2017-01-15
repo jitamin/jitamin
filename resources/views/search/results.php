@@ -51,6 +51,6 @@
     <?php endforeach ?>
 </table>
 
-<div class="page-footer text-right">
+<div class="page-footer">
     <?= $paginator ?>
 </div>
