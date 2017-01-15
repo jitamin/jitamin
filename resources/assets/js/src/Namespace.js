@@ -3,15 +3,15 @@
 var Jitamin = {};
 
 
-var HJ = {
+var JM = {
     components: {}
 };
 
-HJ.component = function (name, object) {
+JM.component = function (name, object) {
     this.components[name] = object;
 };
 
-HJ.render = function () {
+JM.render = function () {
     for (var name in this.components) {
         var elementList = document.querySelectorAll('.js-' + name);
 
@@ -24,7 +24,7 @@ HJ.render = function () {
     }
 };
 
-HJ.el = function (tag) {
+JM.el = function (tag) {
 
     function DOMBuilder(tag) {
         var element = typeof tag === 'string' ? document.createElement(tag) : tag;
@@ -84,9 +84,9 @@ HJ.el = function (tag) {
                 var dict = list[i];
 
                 if (typeof dict !== 'object') {
-                    element.appendChild(HJ.el(tag).text(dict).build());
+                    element.appendChild(JM.el(tag).text(dict).build());
                 } else {
-                    var node = HJ.el(tag);
+                    var node = JM.el(tag);
 
                     for (var attribute in dict) {
                         if (attribute in this && typeof this[attribute] === 'function') {

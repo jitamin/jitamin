@@ -1,11 +1,11 @@
-HJ.component('text-editor', function (containerElement, options) {
+JM.component('text-editor', function (containerElement, options) {
     var textarea, viewModeElement, writeModeElement, previewElement, selectionStart, selectionEnd;
 
     this.render = function() {
         writeModeElement = buildWriteMode();
         viewModeElement = buildViewMode();
 
-        containerElement.appendChild(HJ.el('div')
+        containerElement.appendChild(JM.el('div')
             .attr('class', 'text-editor')
             .add(viewModeElement)
             .add(writeModeElement)
@@ -13,18 +13,18 @@ HJ.component('text-editor', function (containerElement, options) {
     };
 
     function buildViewMode() {
-        var toolbarElement = HJ.el('div')
+        var toolbarElement = JM.el('div')
             .attr('class', 'text-editor-toolbar')
             .for('a', [
                 {href: '#', html: '<i class="fa fa-pencil-square-o fa-fw"></i> ' + options.labelWrite, click: function() { toggleViewMode(); }}
             ])
             .build();
 
-        previewElement = HJ.el('div')
+        previewElement = JM.el('div')
             .attr('class', 'text-editor-preview-area markdown')
             .build();
 
-        return HJ.el('div')
+        return JM.el('div')
             .attr('class', 'text-editor-view-mode')
             .add(toolbarElement)
             .add(previewElement)
@@ -33,7 +33,7 @@ HJ.component('text-editor', function (containerElement, options) {
     }
 
     function buildWriteMode() {
-        var toolbarElement = HJ.el('div')
+        var toolbarElement = JM.el('div')
             .attr('class', 'text-editor-toolbar')
             .for('a', [
                 {href: '#', html: '<i class="fa fa-eye fa-fw"></i> ' + options.labelPreview, click: function() { toggleViewMode(); }},
@@ -46,7 +46,7 @@ HJ.component('text-editor', function (containerElement, options) {
             ])
             .build();
 
-        textarea = HJ.el('textarea')
+        textarea = JM.el('textarea')
             .attr('name', options.name)
             .attr('tabindex', options.tabindex || '-1')
             .attr('required', options.required || null)
@@ -55,7 +55,7 @@ HJ.component('text-editor', function (containerElement, options) {
             .attr('placeholder', options.placeholder || null)
             .build();
 
-        return HJ.el('div')
+        return JM.el('div')
             .attr('class', 'text-editor-write-mode')
             .add(toolbarElement)
             .add(textarea)
@@ -63,9 +63,9 @@ HJ.component('text-editor', function (containerElement, options) {
     }
 
     function toggleViewMode() {
-        HJ.el(previewElement).html(marked(textarea.value, {sanitize: true}));
-        HJ.el(viewModeElement).toggle();
-        HJ.el(writeModeElement).toggle();
+        JM.el(previewElement).html(marked(textarea.value, {sanitize: true}));
+        JM.el(viewModeElement).toggle();
+        JM.el(writeModeElement).toggle();
     }
 
     function getSelectedText() {

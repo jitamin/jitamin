@@ -48,7 +48,7 @@ class SessionManager extends Base
             session_destroy();
         }
 
-        session_name('HJ_SID');
+        session_name('JM_SID');
         session_start();
 
         $this->sessionStorage->setStorage($_SESSION);

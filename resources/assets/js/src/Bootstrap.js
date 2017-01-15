@@ -1,8 +1,8 @@
-var _HJ = null;
+var _JM = null;
 
 jQuery(document).ready(function() {
-    _HJ = new Jitamin.App();
-    _HJ.execute();
+    _JM = new Jitamin.App();
+    _JM.execute();
 
-    HJ.render();
+    JM.render();
 });

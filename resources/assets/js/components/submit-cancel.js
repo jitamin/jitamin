@@ -24,7 +24,7 @@ Vue.component('submit-cancel', {
             this.callback();
         },
         onCancel: function () {
-            _HJ.get('Popover').close();
+            _JM.get('Popover').close();
         }
     },
     events: {

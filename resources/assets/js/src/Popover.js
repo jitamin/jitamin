@@ -164,5 +164,5 @@ Jitamin.Popover.prototype.afterOpen = function() {
         el: '#popover-container'
     });
 
-    HJ.render();
+    JM.render();
 };

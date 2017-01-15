@@ -23,7 +23,7 @@ class RememberMeCookie extends Base
      *
      * @var string
      */
-    const COOKIE_NAME = 'HJ_RM';
+    const COOKIE_NAME = 'JM_RM';
 
     /**
      * Encode the cookie.
