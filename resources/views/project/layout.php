@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'Task/TaskController', 'index') ?>
+<?= $this->projectHeader->render($project) ?>
 <section class="page-container">
 
     <div class="page-content">

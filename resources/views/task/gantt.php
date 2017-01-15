@@ -1,4 +1,4 @@
-<?= $this->projectHeader->render($project, 'Task/TaskController', 'gantt') ?>
+<?= $this->projectHeader->render($project) ?>
 <div class="menu-inline">
     <ul>
         <li <?= $sorting === 'board' ? 'class="active"' : '' ?>>

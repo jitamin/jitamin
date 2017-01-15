@@ -108,7 +108,7 @@ class SkinModel extends Model
         // Sorted by value
         $dashboards = [
             'projects'   => t('My projects'),
-            'stars'      => t('My stars'),
+            'stars'      => t('Starred projects'),
             'calendar'   => t('My calendar'),
             'activities' => t('My activities'),
             'tasks'      => t('My tasks'),
