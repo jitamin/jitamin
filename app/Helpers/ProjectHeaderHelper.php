@@ -36,17 +36,28 @@ class ProjectHeaderHelper extends Base
     /**
      * Render project header (views switcher and search box).
      *
+<<<<<<< HEAD
      * @param array  $project
      * @param bool   $boardView
+=======
+     * @param array $project
+     * @param bool  $boardView
+>>>>>>> cf0f4459af2fc6f4fa0aac4c6c4655a0abc33333
      *
      * @return string
      */
     public function render(array $project, $boardView = false)
     {
+<<<<<<< HEAD
 
         return $this->template->render('project/_header/header', [
             'project'             => $project,
             'q'   => $this->getSearchQuery($project),
+=======
+        return $this->template->render('project/_header/header', [
+            'project'             => $project,
+            'q'                   => $this->getSearchQuery($project),
+>>>>>>> cf0f4459af2fc6f4fa0aac4c6c4655a0abc33333
             'board_view'          => $boardView,
         ]);
     }
