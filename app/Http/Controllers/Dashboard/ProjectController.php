@@ -41,7 +41,7 @@ class ProjectController extends Controller
 
         $this->response->html($this->helper->layout->dashboard('dashboard/project/starred', [
             'title'             => t('Starred projects'),
-            'paginator'         => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 10),
+            'paginator'         => $this->starPagination->getDashboardPaginator($user['id'], 'starred', 10),
             'user'              => $user,
         ]));
     }
