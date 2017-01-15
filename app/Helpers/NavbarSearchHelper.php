@@ -37,20 +37,20 @@ class NavbarSearchHelper extends Base
     /**
      * Render project header (views switcher and search box).
      *
-     * @param array  $project
+     * @param array $project
      *
      * @return string
      */
     public function render(array $project)
     {
         if (empty($project)) {
-            return null;
+            return;
         }
         $controller = $this->helper->app->getRouterController();
         $action = $this->helper->app->getRouterAction();
 
         if (!$this->canShowNavbarSearch($controller.'@'.$action)) {
-            return null;
+            return;
         }
 
         $filters = [
