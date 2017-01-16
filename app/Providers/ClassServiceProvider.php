@@ -138,7 +138,6 @@ class ClassServiceProvider implements ServiceProviderInterface
             'StarPagination',
             'SubtaskPagination',
             'ProjectPagination',
-            'UserPagination',
         ],
         'Foundation' => [
             'DateParser',
