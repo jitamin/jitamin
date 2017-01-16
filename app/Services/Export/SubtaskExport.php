@@ -58,14 +58,14 @@ class SubtaskExport extends Base
     public function getColumns()
     {
         return [
-            e('Subtask Id'),
-            e('Title'),
-            e('Status'),
-            e('Assignee'),
-            e('Time estimated'),
-            e('Time spent'),
-            e('Task Id'),
-            e('Task Title'),
+            l('Subtask Id'),
+            l('Title'),
+            l('Status'),
+            l('Assignee'),
+            l('Time estimated'),
+            l('Time spent'),
+            l('Task Id'),
+            l('Task Title'),
         ];
     }
 

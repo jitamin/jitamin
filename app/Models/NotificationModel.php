@@ -43,7 +43,7 @@ class NotificationModel extends Model
             }
         }
 
-        return e('Notification');
+        return l('Notification');
     }
 
     /**
@@ -64,7 +64,7 @@ class NotificationModel extends Model
             }
         }
 
-        return e('Notification');
+        return l('Notification');
     }
 
     /**

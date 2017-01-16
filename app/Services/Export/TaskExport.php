@@ -116,7 +116,7 @@ class TaskExport extends Base
      */
     protected function format(array &$task, $defaultSwimlaneName, array $colors)
     {
-        $task['is_active'] = $task['is_active'] == TaskModel::STATUS_OPEN ? e('Open') : e('Closed');
+        $task['is_active'] = $task['is_active'] == TaskModel::STATUS_OPEN ? l('Open') : l('Closed');
         $task['color_id'] = $colors[$task['color_id']];
         $task['score'] = $task['score'] ?: 0;
         $task['swimlane_name'] = $task['swimlane_name'] ?: $defaultSwimlaneName;
@@ -138,28 +138,28 @@ class TaskExport extends Base
     protected function getColumns()
     {
         return [
-            e('Task Id'),
-            e('Reference'),
-            e('Project'),
-            e('Status'),
-            e('Category'),
-            e('Swimlane'),
-            e('Column'),
-            e('Position'),
-            e('Color'),
-            e('Due date'),
-            e('Creator'),
-            e('Creator Name'),
-            e('Assignee Username'),
-            e('Assignee Name'),
-            e('Complexity'),
-            e('Title'),
-            e('Creation date'),
-            e('Modification date'),
-            e('Completion date'),
-            e('Start date'),
-            e('Time estimated'),
-            e('Time spent'),
+            l('Task Id'),
+            l('Reference'),
+            l('Project'),
+            l('Status'),
+            l('Category'),
+            l('Swimlane'),
+            l('Column'),
+            l('Position'),
+            l('Color'),
+            l('Due date'),
+            l('Creator'),
+            l('Creator Name'),
+            l('Assignee Username'),
+            l('Assignee Name'),
+            l('Complexity'),
+            l('Title'),
+            l('Creation date'),
+            l('Modification date'),
+            l('Completion date'),
+            l('Start date'),
+            l('Time estimated'),
+            l('Time spent'),
         ];
     }
 }

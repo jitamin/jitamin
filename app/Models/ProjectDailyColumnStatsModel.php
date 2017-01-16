@@ -130,7 +130,7 @@ class ProjectDailyColumnStatsModel extends Model
     {
         $column_ids = array_keys($columns);
         $days = array_unique(array_column($metrics, 'day'));
-        $rows = [array_merge([e('Date')], array_values($columns))];
+        $rows = [array_merge([l('Date')], array_values($columns))];
 
         foreach ($days as $day) {
             $rows[] = $this->buildRowAggregate($metrics, $column_ids, $day, $field);

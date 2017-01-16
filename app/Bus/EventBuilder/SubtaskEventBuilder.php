@@ -100,11 +100,11 @@ class SubtaskEventBuilder extends BaseEventBuilder
     {
         switch ($eventName) {
             case SubtaskModel::EVENT_UPDATE:
-                return e('%s updated a subtask for the task #%d', $author, $eventData['task']['id']);
+                return l('%s updated a subtask for the task #%d', $author, $eventData['task']['id']);
             case SubtaskModel::EVENT_CREATE:
-                return e('%s created a subtask for the task #%d', $author, $eventData['task']['id']);
+                return l('%s created a subtask for the task #%d', $author, $eventData['task']['id']);
             case SubtaskModel::EVENT_DELETE:
-                return e('%s removed a subtask for the task #%d', $author, $eventData['task']['id']);
+                return l('%s removed a subtask for the task #%d', $author, $eventData['task']['id']);
             default:
                 return '';
         }
@@ -122,11 +122,11 @@ class SubtaskEventBuilder extends BaseEventBuilder
     {
         switch ($eventName) {
             case SubtaskModel::EVENT_CREATE:
-                return e('New subtask on task #%d', $eventData['subtask']['task_id']);
+                return l('New subtask on task #%d', $eventData['subtask']['task_id']);
             case SubtaskModel::EVENT_UPDATE:
-                return e('Subtask updated on task #%d', $eventData['subtask']['task_id']);
+                return l('Subtask updated on task #%d', $eventData['subtask']['task_id']);
             case SubtaskModel::EVENT_DELETE:
-                return e('Subtask removed on task #%d', $eventData['subtask']['task_id']);
+                return l('Subtask removed on task #%d', $eventData['subtask']['task_id']);
             default:
                 return '';
         }

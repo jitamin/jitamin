@@ -129,11 +129,11 @@ function t()
 }
 
 /**
- * Translate a string with no HTML escaping.
+ * Translate a string with no HTML escaping language (raw data).
  *
  * @return string
  */
-function e()
+function l()
 {
     return call_user_func_array([\Jitamin\Foundation\Translator::getInstance(), 'translateNoEscaping'], func_get_args());
 }

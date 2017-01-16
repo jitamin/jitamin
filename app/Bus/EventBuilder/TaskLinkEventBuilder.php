@@ -68,9 +68,9 @@ class TaskLinkEventBuilder extends BaseEventBuilder
     public function buildTitleWithAuthor($author, $eventName, array $eventData)
     {
         if ($eventName === TaskLinkModel::EVENT_CREATE_UPDATE) {
-            return e('%s set a new internal link for the task #%d', $author, $eventData['task']['id']);
+            return l('%s set a new internal link for the task #%d', $author, $eventData['task']['id']);
         } elseif ($eventName === TaskLinkModel::EVENT_DELETE) {
-            return e('%s removed an internal link for the task #%d', $author, $eventData['task']['id']);
+            return l('%s removed an internal link for the task #%d', $author, $eventData['task']['id']);
         }
 
         return '';
@@ -87,9 +87,9 @@ class TaskLinkEventBuilder extends BaseEventBuilder
     public function buildTitleWithoutAuthor($eventName, array $eventData)
     {
         if ($eventName === TaskLinkModel::EVENT_CREATE_UPDATE) {
-            return e('A new internal link for the task #%d have been defined', $eventData['task']['id']);
+            return l('A new internal link for the task #%d have been defined', $eventData['task']['id']);
         } elseif ($eventName === TaskLinkModel::EVENT_DELETE) {
-            return e('Internal link removed for the task #%d', $eventData['task']['id']);
+            return l('Internal link removed for the task #%d', $eventData['task']['id']);
         }
 
         return '';
