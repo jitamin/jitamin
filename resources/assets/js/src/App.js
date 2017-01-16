@@ -199,11 +199,11 @@ Jitamin.App.prototype.hasId = function(id) {
 };
 
 Jitamin.App.prototype.showLoadingIcon = function() {
-    $("body").append('<span id="app-loading-icon">&nbsp;<i class="fa fa-spinner fa-spin"></i></span>');
+    $("body").append('<span class="app-loading-icon">&nbsp;<i class="fa fa-spinner fa-spin"></i></span>');
 };
 
 Jitamin.App.prototype.hideLoadingIcon = function() {
-    $("#app-loading-icon").remove();
+    $(".app-loading-icon").remove();
 };
 
 Jitamin.App.prototype.formatDuration = function(d) {
