@@ -25,7 +25,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $paginator = $this->userPagination->getListingPaginator();
+        $paginator = $this->paginator
+            ->setUrl('Admin/UserController', 'index')
+            ->setMax(30)
+            ->setOrder(UserModel::TABLE.'.id')
+            ->setDirection('DESC')
+            ->setQuery($this->userModel->getQuery())
+            ->calculate();
 
         $this->response->html($this->helper->layout->admin('admin/user/index', [
             'title'     => t('Users').' ('.$paginator->getTotal().')',
