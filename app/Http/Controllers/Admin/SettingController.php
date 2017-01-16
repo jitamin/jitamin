@@ -82,6 +82,7 @@ class SettingController extends Controller
     {
         $this->response->html($this->helper->layout->admin('admin/setting/project', [
             'colors'          => $this->colorModel->getList(),
+            'project_views'   => $this->projectModel->getViews(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
             'title'           => t('Settings').' &raquo; '.t('Project settings'),
         ]));

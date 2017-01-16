@@ -764,6 +764,7 @@ return [
     'New remote user' => '绑定用户',
     'New local user' => '新加用户',
     'Default task color' => '默认任务颜色',
+    'Default project view' => '默认项目视图',
     'This feature does not work with all browsers.' => '本功能只在部分浏览器下工作正常。',
     'There is no destination project available.' => '当前没有目标项目可用',
     'Trigger automatically subtask time tracking' => '自动跟踪子任务时间',
