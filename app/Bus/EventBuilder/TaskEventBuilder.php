@@ -161,14 +161,14 @@ class TaskEventBuilder extends BaseEventBuilder
             case TaskModel::EVENT_OPEN:
                 return l('%s opened the task #%d', $author, $eventData['task']['id']);
             case TaskModel::EVENT_MOVE_COLUMN:
-                return e(
+                return l(
                     '%s moved the task #%d to the column "%s"',
                     $author,
                     $eventData['task']['id'],
                     $eventData['task']['column_title']
                 );
             case TaskModel::EVENT_MOVE_POSITION:
-                return e(
+                return l(
                     '%s moved the task #%d to the position %d in the column "%s"',
                     $author,
                     $eventData['task']['id'],
@@ -180,7 +180,7 @@ class TaskEventBuilder extends BaseEventBuilder
                     return l('%s moved the task #%d to the first swimlane', $author, $eventData['task']['id']);
                 }
 
-                return e(
+                return l(
                     '%s moved the task #%d to the swimlane "%s"',
                     $author,
                     $eventData['task']['id'],
