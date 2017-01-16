@@ -7,7 +7,7 @@
 </p>
 <div class="activity-description">
     <p class="activity-task-title">
-        <?= e(
+        <?= l(
             'The link with the relation "%s" to the task %s have been removed',
             $this->text->e($task_link['label']),
             $this->url->link(t('#%d', $task_link['opposite_task_id']), 'Task/TaskController', 'show', ['task_id' => $task_link['opposite_task_id']])
