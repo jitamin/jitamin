@@ -31,7 +31,7 @@ class AppController extends Base
         } else {
             $this->response->html($this->template->render('errors/403', [
                 'title'     => t('Access Forbidden'),
-            ]));
+            ]), 403);
         }
     }
 
@@ -44,6 +44,6 @@ class AppController extends Base
     {
         $this->response->html($this->template->render('errors/404', [
             'title'     => t('Page not found'),
-        ]));
+        ]), 404);
     }
 }
