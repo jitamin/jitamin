@@ -170,8 +170,8 @@ class AppHelper extends Base
      */
     public function getProjectDefaultView($slug = '', $forController = false)
     {
-        if ($slug === NULL) {
-            $slug = $this->setting('project_view', NULL);
+        if ($slug === null) {
+            $slug = $this->setting('project_view', null);
         }
 
         switch ($slug) {
