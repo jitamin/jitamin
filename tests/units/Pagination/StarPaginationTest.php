@@ -11,6 +11,7 @@
 
 use Jitamin\Model\ProjectModel;
 use Jitamin\Model\ProjectStarModel;
+use Jitamin\Model\UserModel;
 use Jitamin\Pagination\StarPagination;
 
 require_once __DIR__.'/../Base.php';
