@@ -33,7 +33,7 @@ class StarPagination extends Base
     {
         return $this->paginator
             ->setUrl('Dashboard/ProjectController', $method, ['pagination' => 'starred', 'user_id' => $user_id])
-            ->setMax(30)
+            ->setMax($max)
             ->setOrder(ProjectModel::TABLE.'.name')
             ->setQuery($this->projectModel->getQueryColumnStats($this->projectStarModel->getProjectIds($user_id)))
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'starred');
