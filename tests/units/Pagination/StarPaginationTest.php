@@ -30,6 +30,7 @@ class StarPaginationTest extends Base
         $this->assertEquals(2, $userModel->create(['username' => 'test', 'email' => 'test@test']));
         $this->assertTrue($projectStarModel->addStargazer(1, 2));
 
-        $this->assertCount(1, $starPagination->getDashboardPaginator(1, 'starred', 5)->getCollection());
+        $this->assertCount(1, $starPagination->getDashboardPaginator(2, 'starred', 5)->getCollection());
+        $this->assertCount(0, $starPagination->getDashboardPaginator(1, 'starred', 5)->getCollection());
     }
 }
