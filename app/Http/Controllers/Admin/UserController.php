@@ -13,6 +13,7 @@ namespace Jitamin\Http\Controllers\Admin;
 
 use Jitamin\Foundation\Security\Role;
 use Jitamin\Http\Controllers\Controller;
+use Jitamin\Model\UserModel;
 use Jitamin\Notification\MailNotification;
 
 /**
