@@ -170,6 +170,10 @@ class AppHelper extends Base
      */
     public function getProjectDefaultView($slug = '', $forController = false)
     {
+        if ($slug === NULL) {
+            $slug = $this->setting('project_view', NULL);
+        }
+
         switch ($slug) {
             case 'gantt':
                 $controller = 'Task/TaskController';

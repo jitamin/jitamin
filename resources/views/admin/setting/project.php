@@ -8,6 +8,9 @@
     <?= $this->form->label(t('Default task color'), 'default_color') ?>
     <?= $this->form->select('default_color', $colors, $values, $errors) ?>
 
+    <?= $this->form->label(t('Default project view'), 'project_view') ?>
+    <?= $this->form->select('project_view', $project_views, $values, $errors) ?>
+
     <?= $this->form->label(t('Default columns for new projects (Comma-separated)'), 'board_columns') ?>
     <?= $this->form->text('board_columns', $values, $errors) ?>
     <p class="form-help"><?= t('Default values are "%s"', $default_columns) ?></p>
