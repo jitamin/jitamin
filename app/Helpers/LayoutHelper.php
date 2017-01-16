@@ -153,13 +153,13 @@ class LayoutHelper extends Base
      *
      * @return string
      */
-    public function analytic($template, array $params)
+    public function analytic($template, array $params, $subside = 'project/analytic/_partials/subside')
     {
         if (isset($params['project']['name'])) {
             $params['title'] = $params['project']['name'].' &raquo; '.$params['title'];
         }
 
-        return $this->subLayout('analytic/layout', 'analytic/subside', $template, $params);
+        return $this->subLayout('project/analytic/layout', $subside, $template, $params);
     }
 
     /**

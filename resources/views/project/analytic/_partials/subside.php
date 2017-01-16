@@ -1,5 +1,5 @@
-<div class="page-header">
-    <ul class="nav nav-tabs">
+<div class="subside subside-icons">
+    <ul>
         <li <?= $this->app->setActive('Project/AnalyticController', 'taskDistribution') ?>>
             <?= $this->url->link(t('Task distribution'), 'Project/AnalyticController', 'taskDistribution', ['project_id' => $project['id']]) ?>
         </li>

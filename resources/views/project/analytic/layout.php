@@ -1,3 +1,8 @@
 <?= $this->projectHeader->render($project) ?>
-<?= $this->render('analytic/_partials/subnav', ['project' => $project]) ?>
+<section class="page-container">
+
+    <div class="page-content">
         <?= $content_for_sublayout ?>
+    </div>
+    <?= $this->render($subside_template, ['project' => $project]) ?>
+</section>
