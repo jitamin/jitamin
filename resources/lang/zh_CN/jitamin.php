@@ -89,6 +89,7 @@ return [
     'Open a task' => '打开一个任务',
     'Do you really want to open this task: "%s"?' => '你确定要打开 "%s" 这个任务吗？',
     'Back to the board' => '回到看板',
+    'Back to %s' => '回到项目: %s',
     'There is nobody assigned' => '当前无人被指派',
     'Column on the board:' => '看板上的栏目：',
     'Close this task' => '关闭该任务',

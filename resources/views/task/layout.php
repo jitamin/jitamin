@@ -1,5 +1,7 @@
-<?= $this->projectHeader->render($project) ?>
 <?= $this->hook->render('template:task:layout:top', ['task' => $task]) ?>
+<div class="breadcrumb">
+    <?= $this->url->link('<i class="fa fa-reply fa-fw"></i>'.t('Back to %s', $this->text->e($project['name'])), 'Project/ProjectController', 'show', ['project_id' => $project['id']]) ?>
+</div>
 <section
     class="page-container" id="task-view"
     data-edit-url="<?= $this->url->href('Task/TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>"
