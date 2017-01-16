@@ -16,8 +16,8 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 * 支持多主题
 * 可视化的任务管理
 * 支持列表、看板和甘特图等任务视图
-* 任务可拖拽移动
-* 多语言，默认带英文和简体中文语言包
+* 可拖拽式的任务操作
+* 支持多语言，内置英文和简体中文语言包
 * 过滤搜索
 * 可创建团队项目和个人项目
 * 支持任务、子任务、附件和评论
@@ -101,7 +101,7 @@ $ php artisan route:cache
 
 ```shell
 $ git fetch --all
-$ git checkout {latest_tag} // 请将 {latest_tag} 修改为最新的tag，比如：0.3.0
+$ git checkout latest_tag // 请将 {latest_tag} 修改为最新的tag，比如：0.4.4
 ```
 
 二. 更新依赖
@@ -153,7 +153,7 @@ Jitamin代码里自带编译后的前端静态资源。如果你不想修改前�
 - Gulp
 
 ```shell
-npm install --global gulp
+yarn install || npm install
 bower install
 gulp
 ```
