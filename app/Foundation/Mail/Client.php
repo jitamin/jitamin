@@ -69,7 +69,7 @@ class Client extends Base
         $author = 'Jitamin';
 
         if ($this->userSession->isLogged()) {
-            $author = e('%s via Jitamin', $this->helper->user->getFullname());
+            $author = l('%s via Jitamin', $this->helper->user->getFullname());
         }
 
         return $author;

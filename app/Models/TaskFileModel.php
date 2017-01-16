@@ -92,7 +92,7 @@ class TaskFileModel extends FileModel
      */
     public function uploadScreenshot($task_id, $blob)
     {
-        $original_filename = e('Screenshot taken %s', $this->helper->dt->datetime(time())).'.png';
+        $original_filename = l('Screenshot taken %s', $this->helper->dt->datetime(time())).'.png';
 
         return $this->uploadContent($task_id, $original_filename, $blob);
     }

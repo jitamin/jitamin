@@ -67,13 +67,13 @@ class CommentEventBuilder extends BaseEventBuilder
     {
         switch ($eventName) {
             case CommentModel::EVENT_UPDATE:
-                return e('%s updated a comment on the task #%d', $author, $eventData['task']['id']);
+                return l('%s updated a comment on the task #%d', $author, $eventData['task']['id']);
             case CommentModel::EVENT_CREATE:
-                return e('%s commented on the task #%d', $author, $eventData['task']['id']);
+                return l('%s commented on the task #%d', $author, $eventData['task']['id']);
             case CommentModel::EVENT_DELETE:
-                return e('%s removed a comment on the task #%d', $author, $eventData['task']['id']);
+                return l('%s removed a comment on the task #%d', $author, $eventData['task']['id']);
             case CommentModel::EVENT_USER_MENTION:
-                return e('%s mentioned you in a comment on the task #%d', $author, $eventData['task']['id']);
+                return l('%s mentioned you in a comment on the task #%d', $author, $eventData['task']['id']);
             default:
                 return '';
         }
@@ -91,13 +91,13 @@ class CommentEventBuilder extends BaseEventBuilder
     {
         switch ($eventName) {
             case CommentModel::EVENT_CREATE:
-                return e('New comment on task #%d', $eventData['comment']['task_id']);
+                return l('New comment on task #%d', $eventData['comment']['task_id']);
             case CommentModel::EVENT_UPDATE:
-                return e('Comment updated on task #%d', $eventData['comment']['task_id']);
+                return l('Comment updated on task #%d', $eventData['comment']['task_id']);
             case CommentModel::EVENT_DELETE:
-                return e('Comment removed on task #%d', $eventData['comment']['task_id']);
+                return l('Comment removed on task #%d', $eventData['comment']['task_id']);
             case CommentModel::EVENT_USER_MENTION:
-                return e('You were mentioned in a comment on the task #%d', $eventData['task']['id']);
+                return l('You were mentioned in a comment on the task #%d', $eventData['task']['id']);
             default:
                 return '';
         }

@@ -69,7 +69,7 @@ class TaskFileEventBuilder extends BaseEventBuilder
     public function buildTitleWithAuthor($author, $eventName, array $eventData)
     {
         if ($eventName === TaskFileModel::EVENT_CREATE) {
-            return e('%s attached a file to the task #%d', $author, $eventData['task']['id']);
+            return l('%s attached a file to the task #%d', $author, $eventData['task']['id']);
         }
 
         return '';
@@ -86,7 +86,7 @@ class TaskFileEventBuilder extends BaseEventBuilder
     public function buildTitleWithoutAuthor($eventName, array $eventData)
     {
         if ($eventName === TaskFileModel::EVENT_CREATE) {
-            return e('New attachment on task #%d: %s', $eventData['file']['task_id'], $eventData['file']['name']);
+            return l('New attachment on task #%d: %s', $eventData['file']['task_id'], $eventData['file']['name']);
         }
 
         return '';

@@ -148,27 +148,27 @@ class TaskEventBuilder extends BaseEventBuilder
                 $assignee = $eventData['task']['assignee_name'] ?: $eventData['task']['assignee_username'];
 
                 if (!empty($assignee)) {
-                    return e('%s changed the assignee of the task #%d to %s', $author, $eventData['task']['id'], $assignee);
+                    return l('%s changed the assignee of the task #%d to %s', $author, $eventData['task']['id'], $assignee);
                 }
 
-                return e('%s removed the assignee of the task %s', $author, e('#%d', $eventData['task']['id']));
+                return l('%s removed the assignee of the task %s', $author, l('#%d', $eventData['task']['id']));
             case TaskModel::EVENT_UPDATE:
-                return e('%s updated the task #%d', $author, $eventData['task']['id']);
+                return l('%s updated the task #%d', $author, $eventData['task']['id']);
             case TaskModel::EVENT_CREATE:
-                return e('%s created the task #%d', $author, $eventData['task']['id']);
+                return l('%s created the task #%d', $author, $eventData['task']['id']);
             case TaskModel::EVENT_CLOSE:
-                return e('%s closed the task #%d', $author, $eventData['task']['id']);
+                return l('%s closed the task #%d', $author, $eventData['task']['id']);
             case TaskModel::EVENT_OPEN:
-                return e('%s opened the task #%d', $author, $eventData['task']['id']);
+                return l('%s opened the task #%d', $author, $eventData['task']['id']);
             case TaskModel::EVENT_MOVE_COLUMN:
-                return e(
+                return l(
                     '%s moved the task #%d to the column "%s"',
                     $author,
                     $eventData['task']['id'],
                     $eventData['task']['column_title']
                 );
             case TaskModel::EVENT_MOVE_POSITION:
-                return e(
+                return l(
                     '%s moved the task #%d to the position %d in the column "%s"',
                     $author,
                     $eventData['task']['id'],
@@ -177,10 +177,10 @@ class TaskEventBuilder extends BaseEventBuilder
                 );
             case TaskModel::EVENT_MOVE_SWIMLANE:
                 if ($eventData['task']['swimlane_id'] == 0) {
-                    return e('%s moved the task #%d to the first swimlane', $author, $eventData['task']['id']);
+                    return l('%s moved the task #%d to the first swimlane', $author, $eventData['task']['id']);
                 }
 
-                return e(
+                return l(
                     '%s moved the task #%d to the swimlane "%s"',
                     $author,
                     $eventData['task']['id'],
@@ -188,7 +188,7 @@ class TaskEventBuilder extends BaseEventBuilder
                 );
 
             case TaskModel::EVENT_USER_MENTION:
-                return e('%s mentioned you in the task #%d', $author, $eventData['task']['id']);
+                return l('%s mentioned you in the task #%d', $author, $eventData['task']['id']);
             default:
                 return '';
         }
@@ -206,27 +206,27 @@ class TaskEventBuilder extends BaseEventBuilder
     {
         switch ($eventName) {
             case TaskModel::EVENT_CREATE:
-                return e('New task #%d: %s', $eventData['task']['id'], $eventData['task']['title']);
+                return l('New task #%d: %s', $eventData['task']['id'], $eventData['task']['title']);
             case TaskModel::EVENT_UPDATE:
-                return e('Task updated #%d', $eventData['task']['id']);
+                return l('Task updated #%d', $eventData['task']['id']);
             case TaskModel::EVENT_CLOSE:
-                return e('Task #%d closed', $eventData['task']['id']);
+                return l('Task #%d closed', $eventData['task']['id']);
             case TaskModel::EVENT_OPEN:
-                return e('Task #%d opened', $eventData['task']['id']);
+                return l('Task #%d opened', $eventData['task']['id']);
             case TaskModel::EVENT_MOVE_COLUMN:
-                return e('Column changed for task #%d', $eventData['task']['id']);
+                return l('Column changed for task #%d', $eventData['task']['id']);
             case TaskModel::EVENT_MOVE_POSITION:
-                return e('New position for task #%d', $eventData['task']['id']);
+                return l('New position for task #%d', $eventData['task']['id']);
             case TaskModel::EVENT_MOVE_SWIMLANE:
-                return e('Swimlane changed for task #%d', $eventData['task']['id']);
+                return l('Swimlane changed for task #%d', $eventData['task']['id']);
             case TaskModel::EVENT_ASSIGNEE_CHANGE:
-                return e('Assignee changed on task #%d', $eventData['task']['id']);
+                return l('Assignee changed on task #%d', $eventData['task']['id']);
             case TaskModel::EVENT_OVERDUE:
                 $nb = count($eventData['tasks']);
 
-                return $nb > 1 ? e('%d overdue tasks', $nb) : e('Task #%d is overdue', $eventData['tasks'][0]['id']);
+                return $nb > 1 ? l('%d overdue tasks', $nb) : l('Task #%d is overdue', $eventData['tasks'][0]['id']);
             case TaskModel::EVENT_USER_MENTION:
-                return e('You were mentioned in the task #%d', $eventData['task']['id']);
+                return l('You were mentioned in the task #%d', $eventData['task']['id']);
             default:
                 return '';
         }

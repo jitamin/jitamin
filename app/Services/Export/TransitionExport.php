@@ -47,13 +47,13 @@ class TransitionExport extends Base
     protected function getColumns()
     {
         return [
-            e('Id'),
-            e('Task Title'),
-            e('Source column'),
-            e('Destination column'),
-            e('Executer'),
-            e('Date'),
-            e('Time spent'),
+            l('Id'),
+            l('Task Title'),
+            l('Source column'),
+            l('Destination column'),
+            l('Executer'),
+            l('Date'),
+            l('Time spent'),
         ];
     }
 
