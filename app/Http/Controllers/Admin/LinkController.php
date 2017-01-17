@@ -31,7 +31,7 @@ class LinkController extends Controller
             'links'  => $this->linkModel->getMergedList(),
             'values' => $values,
             'errors' => $errors,
-            'title'  => t('Task\'s links'),
+            'title'  => t('Admin').' &raquo; '.t('Link settings'),
         ], 'admin/link/subside'));
     }
 

@@ -28,7 +28,7 @@ class PluginController extends Controller
     {
         $this->response->html($this->helper->layout->admin('admin/plugin/show', [
             'plugins'       => $this->pluginLoader->getPlugins(),
-            'title'         => t('Installed Plugins'),
+            'title'         => t('Admin').' &raquo; '.t('Plugins management'),
             'is_configured' => Installer::isConfigured(),
         ], 'admin/plugin/subside'));
     }

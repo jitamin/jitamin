@@ -26,7 +26,7 @@ class TagController extends Controller
     {
         $this->response->html($this->helper->layout->admin('admin/tag/index', [
             'tags'  => $this->tagModel->getAllByProject(0),
-            'title' => t('Global tags management'),
+            'title' => t('Admin').' &raquo; '.t('Global tags management'),
         ], 'admin/tag/subside'));
     }
 

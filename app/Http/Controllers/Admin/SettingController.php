@@ -25,7 +25,7 @@ class SettingController extends Controller
     {
         $this->response->html($this->helper->layout->admin('admin/setting/application', [
             'mail_transports'  => $this->emailClient->getAvailableTransports(),
-            'title'            => t('Settings').' &raquo; '.t('Application settings'),
+            'title'            => t('Admin').' &raquo; '.t('Application settings'),
         ]));
     }
 
@@ -38,7 +38,7 @@ class SettingController extends Controller
             'skins'            => $this->skinModel->getSkins(),
             'layouts'          => $this->skinModel->getLayouts(),
             'dashboards'       => $this->skinModel->getDashboards(),
-            'title'            => t('Settings').' &raquo; '.t('Theme settings'),
+            'title'            => t('Admin').' &raquo; '.t('Theme settings'),
         ]));
     }
 
@@ -53,7 +53,7 @@ class SettingController extends Controller
             'date_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getDateFormats()),
             'datetime_formats' => $this->dateParser->getAvailableFormats($this->dateParser->getDateTimeFormats()),
             'time_formats'     => $this->dateParser->getAvailableFormats($this->dateParser->getTimeFormats()),
-            'title'            => t('Settings').' &raquo; '.t('Localization settings'),
+            'title'            => t('Admin').' &raquo; '.t('Localization settings'),
         ]));
     }
 
@@ -71,7 +71,7 @@ class SettingController extends Controller
         $this->response->html($this->helper->layout->admin('admin/setting/email', [
             'values'          => $values,
             'mail_transports' => $this->emailClient->getAvailableTransports(),
-            'title'           => t('Settings').' &raquo; '.t('Email settings'),
+            'title'           => t('Admin').' &raquo; '.t('Email settings'),
         ]));
     }
 
@@ -84,7 +84,7 @@ class SettingController extends Controller
             'colors'          => $this->colorModel->getList(),
             'project_views'   => $this->projectModel->getViews(),
             'default_columns' => implode(', ', $this->boardModel->getDefaultColumns()),
-            'title'           => t('Settings').' &raquo; '.t('Project settings'),
+            'title'           => t('Admin').' &raquo; '.t('Project settings'),
         ]));
     }
 
@@ -94,7 +94,7 @@ class SettingController extends Controller
     public function board()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/board', [
-            'title' => t('Settings').' &raquo; '.t('Board settings'),
+            'title' => t('Admin').' &raquo; '.t('Board settings'),
         ]));
     }
 
@@ -104,7 +104,7 @@ class SettingController extends Controller
     public function calendar()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/calendar', [
-            'title' => t('Settings').' &raquo; '.t('Calendar settings'),
+            'title' => t('Admin').' &raquo; '.t('Calendar settings'),
         ]));
     }
 
@@ -114,7 +114,7 @@ class SettingController extends Controller
     public function integrations()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/integrations', [
-            'title' => t('Settings').' &raquo; '.t('Integrations'),
+            'title' => t('Admin').' &raquo; '.t('Integrations'),
         ]));
     }
 
@@ -124,7 +124,7 @@ class SettingController extends Controller
     public function webhook()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/webhook', [
-            'title' => t('Settings').' &raquo; '.t('Webhook settings'),
+            'title' => t('Admin').' &raquo; '.t('Webhook settings'),
         ]));
     }
 
@@ -134,7 +134,7 @@ class SettingController extends Controller
     public function api()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/api', [
-            'title' => t('Settings').' &raquo; '.t('API'),
+            'title' => t('Admin').' &raquo; '.t('API'),
         ]));
     }
 

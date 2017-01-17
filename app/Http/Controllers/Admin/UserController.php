@@ -35,7 +35,7 @@ class UserController extends Controller
             ->calculate();
 
         $this->response->html($this->helper->layout->admin('admin/user/index', [
-            'title'     => t('Users').' ('.$paginator->getTotal().')',
+            'title'     => t('Admin').' &raquo; '.t('Users management'),
             'paginator' => $paginator,
         ], 'admin/user/subside'));
     }

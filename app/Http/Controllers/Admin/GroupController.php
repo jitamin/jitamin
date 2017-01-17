@@ -32,7 +32,7 @@ class GroupController extends Controller
             ->calculate();
 
         $this->response->html($this->helper->layout->admin('admin/group/index', [
-            'title'     => t('Groups').' ('.$paginator->getTotal().')',
+            'title'     => t('Admin').' &raquo; '.t('Groups management'),
             'paginator' => $paginator,
         ], 'admin/group/subside'));
     }

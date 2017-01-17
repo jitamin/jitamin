@@ -47,7 +47,7 @@ class ProjectController extends Controller
         $this->response->html($this->helper->layout->app('manage/projects', [
             'paginator'   => $paginator,
             'nb_projects' => $nb_projects,
-            'title'       => t('Projects list'),
+            'title'       => t('Manage').' &raquo; '.t('Projects list'),
         ]));
     }
 
@@ -66,7 +66,7 @@ class ProjectController extends Controller
 
         $this->response->html($this->helper->layout->app('manage/gantt', [
             'projects' => $filter->format(new ProjectGanttFormatter($this->container)),
-            'title'    => t('Projects Gantt chart'),
+            'title'    => t('Manage').' &raquo; '.t('Projects Gantt chart'),
         ]));
     }
 }
