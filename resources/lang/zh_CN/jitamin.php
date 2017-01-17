@@ -729,6 +729,7 @@ return [
     'No tasks found.' => '没有找到任务.',
     'Keyboard shortcut: "%s"' => '快捷键: "%s"',
     'List' => '列表',
+    'This project' => '本项目',
     'Filter' => '筛选项',
     'Advanced search' => '高级搜索',
     'Example of query: ' => '查询示例：',

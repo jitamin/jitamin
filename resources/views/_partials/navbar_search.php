@@ -4,6 +4,7 @@
         <?= $this->form->hidden('project_id', $filters) ?>
 
         <div class="input-addon">
+            <span class="input-addon-item"><?= t('This project') ?></span>
             <?= $this->form->text('q', $filters, [], ['placeholder="'.t('Filter').'"'], 'input-addon-field') ?>
             <div class="input-addon-item">
                 <?= $this->render('_partials/filters_helper', ['reset' => 'status:open', 'project' => $project]) ?>
