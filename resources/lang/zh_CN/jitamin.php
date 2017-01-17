@@ -1168,7 +1168,7 @@ return [
     'Email settings' => '邮箱设置',
     'Email sender address' => '发件人邮箱',
     'Email transport' => '邮件发送方式',
-    'Webhook token' => '',
+    'Webhook token' => 'Webhook token',
     'Imports' => '导入',
     'Project tags management' => '项目标签管理',
     'Tag created successfully.' => '标签创建成功',

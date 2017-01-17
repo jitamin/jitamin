@@ -56,7 +56,7 @@
                     <?php endif ?>
                 </ul>
             </td>
-            <?php if ($editable): ?>
+            <?php if ($editable && $this->user->hasProjectAccess('Task/Subtask/SubtaskController', 'edit', $task['project_id'])): ?>
                 <td>
                     <?= $this->render('task/subtask/menu', [
                         'task'    => $task,
