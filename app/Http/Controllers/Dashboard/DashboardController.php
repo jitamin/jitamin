@@ -12,6 +12,8 @@
 namespace Jitamin\Http\Controllers\Dashboard;
 
 use Jitamin\Http\Controllers\Controller;
+use Jitamin\Model\SubtaskModel;
+use Jitamin\Model\TaskModel;
 
 /**
  * Dashboard Controller.
@@ -36,9 +38,20 @@ class DashboardController extends Controller
     {
         $user = $this->getUser();
 
+        $query = $this->taskFinderModel->getUserQuery($user['id']);
+        $this->hook->reference('pagination:dashboard:task:query', $query);
+
+        $paginator = $this->paginator
+            ->setUrl('Dashboard/DashboardController', 'tasks', ['pagination' => 'tasks', 'user_id' => $user['id']])
+            ->setMax(20)
+            ->setOrder(TaskModel::TABLE.'.id')
+            ->setDirection('DESC')
+            ->setQuery($query)
+            ->calculateOnlyIf($this->request->getStringParam('pagination') === 'tasks');
+
         $this->response->html($this->helper->layout->dashboard('dashboard/tasks', [
             'title'     => t('My tasks'),
-            'paginator' => $this->taskPagination->getDashboardPaginator($user['id'], 'tasks', 50),
+            'paginator' => $paginator,
             'user'      => $user,
         ]));
     }
@@ -50,9 +63,20 @@ class DashboardController extends Controller
     {
         $user = $this->getUser();
 
+        $query = $this->subtaskModel->getUserQuery($user['id'], [SubtaskModel::STATUS_TODO, SubtaskModel::STATUS_INPROGRESS]);
+        $this->hook->reference('pagination:dashboard:subtask:query', $query);
+
+        $paginator = $this->paginator
+            ->setUrl('Dashboard/DashboardController', 'subtasks', ['pagination' => 'subtasks', 'user_id' => $user['id']])
+            ->setMax(20)
+            ->setOrder(TaskModel::TABLE.'.id')
+            ->setDirection('DESC')
+            ->setQuery($query)
+            ->calculateOnlyIf($this->request->getStringParam('pagination') === 'subtasks');
+
         $this->response->html($this->helper->layout->dashboard('dashboard/subtasks', [
             'title'     => t('My subtasks'),
-            'paginator' => $this->subtaskPagination->getDashboardPaginator($user['id'], 'subtasks', 50),
+            'paginator' => $paginator,
             'user'      => $user,
         ]));
     }
@@ -92,19 +116,18 @@ class DashboardController extends Controller
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->app('dashboard/slider', [
-            'title'           => t('My slider'),
-            'paginator'       => $this->starPagination->getDashboardPaginator($user['id'], 'stars', 5),
-            'recent_projects' => $this->prepareForSlider(),
-            'user'            => $user,
+            'title'            => t('My slider'),
+            'starred_projects' => $this->prepareForSlider($this->projectStarModel->getProjectIds($user['id'])),
+            'recent_projects'  => $this->prepareForSlider($this->userSession->getRecentProjects()),
+            'user'             => $user,
         ]));
     }
 
     /**
      * Prepare data for slider.
      */
-    protected function prepareForSlider()
+    protected function prepareForSlider(array $projectIds)
     {
-        $projectIds = $this->userSession->getRecentProjects();
         $projects = $this->projectModel->getAllByIds($projectIds);
 
         $old = $new = [];

@@ -133,12 +133,6 @@ class ClassServiceProvider implements ServiceProviderInterface
             'TaskExport',
             'TransitionExport',
         ],
-        'Pagination' => [
-            'TaskPagination',
-            'StarPagination',
-            'SubtaskPagination',
-            'ProjectPagination',
-        ],
         'Foundation' => [
             'DateParser',
             'Lexer',

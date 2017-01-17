@@ -1,8 +1,5 @@
 <div class="subside subside-icons">
     <?php if ($this->user->hasProjectAccess('Task/TaskController', 'edit', $task['project_id'])): ?>
-    <div class="subside-title">
-        <h2><?= t('Task #%d', $task['id']) ?> <?= t('Actions') ?></h2>
-    </div>
     <ul>
         <li>
             <i class="fa fa-pencil-square-o fa-fw"></i>
