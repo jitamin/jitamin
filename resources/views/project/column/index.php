@@ -16,9 +16,10 @@
         data-save-position-url="<?= $this->url->href('Project/Column/ColumnController', 'move', ['project_id' => $project['id']]) ?>">
         <thead>
         <tr>
-            <th class="column-70"><?= t('Column title') ?></th>
-            <th class="column-25"><?= t('Task limit') ?></th>
-            <th class="column-5"><?= t('Actions') ?></th>
+            <th class="column-60"><?= t('Column title') ?></th>
+            <th class="column-15"><?= t('Task limit') ?></th>
+            <th class="column-15"><?= t('Visible on dashboard') ?></th>
+            <th class="column-10"><?= t('Actions') ?></th>
         </tr>
         </thead>
         <tbody>
@@ -36,6 +37,9 @@
             <td>
                 <?= $this->text->e($column['task_limit']) ?>
             </td>
+            <td>
+                 <?= $column['hide_in_dashboard'] == 1 ? t('No') : t('Yes') ?>
+             </td>
             <td>
                 <div class="dropdown">
                 <a href="#" class="dropdown-menu dropdown-menu-link-icon"><i class="fa fa-cog fa-fw"></i><i class="fa fa-caret-down"></i></a>
