@@ -31,20 +31,23 @@ Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free, open source project management 
 
 [Change Logs](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
 
-## Features in our TODO list
+## TODO
 
 - [ ] integrate Fixhub through plugin
 - [ ] integrate twig template engine
 
-## Installation Prerequisites
+## Requirements
 
-- [PHP](http://www.php.net) 5.6 or later(PHP7 is recommended)
-- database, [MySQL](https://www.mysql.com) is recommended, also you can choose [PostgreSQL](http://www.postgresql.org) or[SQLite](https://www.sqlite.org)
-- Dependency Manager for PHP [Composer](https://getcomposer.org) 
+There are a few things that you will need to have set up in order to run Jitamin:
 
-## Installation Manual
+- A web server: **Nginx**, **Apache** (with mod_rewrite), or **Lighttpd**
+- [PHP](http://www.php.net) 5.6+ (PHP7 is recommended)
+- Database, [MySQL](https://www.mysql.com) is recommended, also you can choose [PostgreSQL](http://www.postgresql.org) or[SQLite](https://www.sqlite.org)
+- [Composer](https://getcomposer.org) 
 
-### Get the jitman source code
+## Installation
+
+### Get the jitamin source code
 
 ```shell
 $ git clone https://github.com/jitamin/jitamin.git
