@@ -6,7 +6,9 @@ Jitamin
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jitamin/jitamin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jitamin/jitamin/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free software written in PHP, intended to handle the project management over the web.
+Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free software written in PHP, intended to handle the project management over the web. 
+
+**Jitamin** is inspired by vitamin. It also stands for JIT(Just In Time) and `Min`(The pinyin of `敏`).
 
 [简体中文](https://github.com/jitamin/jitamin/blob/master/README-zh_CN.md)
 
