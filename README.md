@@ -6,51 +6,35 @@ Jitamin
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/jitamin/jitamin/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/jitamin/jitamin/?branch=master)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理的维他命。
+Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free, open source project management system written in PHP.
 
-Jitamin (pronounce as/ˈdʒɪtəmɪn/) is a free, open source project management system developed in PHP language.
+[简体中文](https://github.com/jitamin/jitamin/blob/master/README-zh_CN.md)
 
 
 ![jitamin](https://cloud.githubusercontent.com/assets/15666864/21678087/312aab60-d378-11e6-8244-56882545970c.jpeg)
 
-## 功能特性 (Features listed in Chinese language)
-
-* 简洁、美观的界面
-* 支持多主题
-* 可视化的任务管理
-* 支持列表、看板和甘特图等任务视图
-* 可拖拽式的任务操作
-* 支持多语言，内置英文和简体中文语言包
-* 过滤搜索
-* 可创建团队项目和个人项目
-* 支持任务、子任务、附件和评论
-* 动作自动触发
-* 可视化的统计
-* 第三方集成
-* 支持插件
-
 ## Features
 
-* simple interface
-* support multiply styles
-* project/task management
-* support list, billboard Gantt chart views
-* drag and drop operations
-* multiple language support, build-in English and Chinese language supports
-* filter on search results
-* can manage personal projects and team projects
-* support tasks, sub-tasks, attachment, comments
-* auto-triger actions
-* visualized statistics result
-* support third part integration
-* support plugins
+* Get a clear visual overview of your project
+* Multiple themes
+* Project/task management
+* Support task list, kanban and Gantt views
+* Drag and drop tasks
+* Multiple language support, build-in English and Chinese language supports
+* Filter on search results
+* Support personal projects and team projects
+* Support tasks, sub-tasks, attachment, comments
+* Auto-triger actions
+* Visualized statistics result
+* Support third part integration
+* Support plugins
 
 [Change Logs](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
 
 ## Features in our TODO list
 
-- [ ] integrate Fixhub through plugins (通过插件与Fixhub集成)
-- [ ] integrate twig template engion (集成twig模板引擎)
+- [ ] integrate Fixhub through plugin
+- [ ] integrate twig template engine
 
 ## Installation Prerequisites
 
@@ -147,16 +131,16 @@ $ php artisan route:cache
 
 We have a site to demostrate how Jitamin works, please visit [http://jitamin.com](http://jitamin.com):
 
-1. You can login by Github account
+1. Github account
 
 > Press the button `Login with my Github Account`
 
-2. You can either login by a local test user
+2. Test user
 
 - **username:** `test` or `test@test.com`
 - **password:** `test123`
 
-3. Administrator login
+3. Manager
 
 - **username:** `jitamin` or `jitamin@jitamin.com`
 - **password:** `jitamin`
