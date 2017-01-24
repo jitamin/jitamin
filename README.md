@@ -42,7 +42,7 @@ There are a few things that you will need to have set up in order to run Jitamin
 
 - A web server: **Nginx**, **Apache** (with mod_rewrite), or **Lighttpd**
 - [PHP](http://www.php.net) 5.6+ (PHP7 is recommended)
-- Database, [MySQL](https://www.mysql.com) is recommended, also you can choose [PostgreSQL](http://www.postgresql.org) or[SQLite](https://www.sqlite.org)
+- Database: [MySQL](https://www.mysql.com) is recommended, also you can choose [PostgreSQL](http://www.postgresql.org) or[SQLite](https://www.sqlite.org)
 - [Composer](https://getcomposer.org) 
 
 ## Installation
@@ -53,20 +53,20 @@ There are a few things that you will need to have set up in order to run Jitamin
 $ git clone https://github.com/jitamin/jitamin.git
 ```
 
-### Setting the config file
+### Adjust the config file
 
 ```shell
 $ cp config/config{.default,}.php
 ```
 > Adjust the `config/config.php` according to your environment, especially the database setting.
 
-### install the PHP dependency packages
+### Install the PHP dependency packages
 
 ```shell
 $ composer install -o --no-dev
 ```
 
-### migrate the database and initialize the database
+### Migrate the database and initialize the database
 
 - create database tables
 ```shell
@@ -79,7 +79,7 @@ vendor/bin/phinx seed:run
 ```
 > For installation under Windows, you should replace the command `vendor/bin/phinx` with `vendor\robmorgan\phinx\bin\phinx.bat`.
 
-### Confirm that the directory bootstrap/cache and storage have write permission.
+### Confirm that the directory `bootstrap/cache` and `storage` have write permission
 
 ```shell
 $ chmod -R 0777 bootstrap/cache
@@ -94,8 +94,7 @@ $ php artisan route:cache
 
 ### Access the service through web browser
 
-Open your web browser, enter the address such as http://jitamin.dev to  access the web service ：
-
+Open your web browser, enter the address such as http://jitamin.dev to  access the web service.
 The initial Super Administrator's user name and password are listed below:
 
 - **username:** `admin` or `admin@admin.com`
@@ -132,7 +131,7 @@ $ php artisan route:cache
 
 ## Demo
 
-We have a site to demostrate how Jitamin works, please visit [http://jitamin.com](http://jitamin.com):
+We have a site to demostrate how Jitamin works, please visit [http://jitamin.com](http://jitamin.com). You can login by either of three kinds of account below.
 
 ### Github account
 
@@ -168,5 +167,5 @@ gulp
 
 Jitamin is licensed under the license of MIT.  See the LICENSE for more details.
 
-Jitamin is a fork based on Kanboard. Kanboard is Copyright Frédéric Guillot and others.
+Jitamin is a fork based on [Kanboard](https://kanboard.net/). Kanboard is Copyright Frédéric Guillot and others.
 
