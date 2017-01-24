@@ -246,7 +246,7 @@ class ProfileController extends Controller
             return $this->response->redirect($this->helper->url->to('Profile/ProfileController', $redirect, ['user_id' => $user['id']]));
         }
 
-        return $this->show($values, $errors);
+        return $this->edit($values, $errors);
     }
 
     /**
