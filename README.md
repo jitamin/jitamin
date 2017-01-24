@@ -8,9 +8,12 @@ Jitamin
 
 Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开发的项目管理系统。Jitamin灵感来自于Vitamin，并结合了Just In Time(准时)和`敏`的拼音`min`，意指`效率`与`敏捷`是项目管理的维他命。
 
+Jitamin (pronounce as/ˈdʒɪtəmɪn/) is a free, open source project management system developed in PHP language.
+
+
 ![jitamin](https://cloud.githubusercontent.com/assets/15666864/21678087/312aab60-d378-11e6-8244-56882545970c.jpeg)
 
-## 功能特性
+## 功能特性 (Features listed in Chinese language)
 
 * 简洁、美观的界面
 * 支持多主题
@@ -26,127 +29,143 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 * 第三方集成
 * 支持插件
 
-[版本更新说明](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
+## Features
 
-## 下一阶段要实现的功能
+* simple interface
+* support multiply styles
+* project/task management
+* support list, billboard Gantt chart views
+* drag and drop operations
+* multiple language support, build-in English and Chinese language supports
+* filter on search results
+* can manage personal projects and team projects
+* support tasks, sub-tasks, attachment, comments
+* auto-triger actions
+* visualized statistics result
+* support third part integration
+* support plugins
 
-- [ ] 通过插件与Fixhub集成
-- [ ] 集成twig模板引擎
+[Change Logs](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
 
-## 安装环境要求
+## Features in our TODO list
 
-- [PHP](http://www.php.net) 5.6或更高(推荐使用PHP7)
-- 数据库, 推荐使用[MySQL](https://www.mysql.com) 或 [PostgreSQL](http://www.postgresql.org)。 当然[SQLite](https://www.sqlite.org)也可以运行。
-- [Composer](https://getcomposer.org)
+- [ ] integrate Fixhub through plugins (通过插件与Fixhub集成)
+- [ ] integrate twig template engion (集成twig模板引擎)
 
-## 安装手册
+## Installation Prerequisites
 
-一. 克隆代码
+- [PHP](http://www.php.net) 5.6 or later(PHP7 is recommended)
+- database, [MySQL](https://www.mysql.com) is recommended, also you can choose [PostgreSQL](http://www.postgresql.org) or[SQLite](https://www.sqlite.org)
+- Dependency Manager for PHP [Composer](https://getcomposer.org) 
+
+## Installation Manual
+
+1. Get the jitman source code
 
 ```shell
 $ git clone https://github.com/jitamin/jitamin.git
 ```
 
-二. 设置配置文件
+2. Setting the config file
 
 ```shell
 $ cp config/config{.default,}.php
 ```
-> 根据实际情况修改 `config/config.php` 相关配置文件。
+> Adjust the `config/config.php` according to your environment, especially the database setting.
 
-三. 安装依赖包
+3. install the PHP dependency packages
 
 ```shell
 $ composer install -o --no-dev
 ```
 
-四. 安装数据库迁移和初始数据
+4. migrate the database and initialize the database
 
-- 创建数据表
+- create database tables
 ```shell
 vendor/bin/phinx migrate
 ```
 
-- 安装初始数据
+- initialize database
 ```shell
 vendor/bin/phinx seed:run
 ```
-> Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
+> For installation under Windows, you should replace the command `vendor/bin/phinx` with `vendor\robmorgan\phinx\bin\phinx.bat`.
 
-五. 确保bootstrap/cache和storage目录可写。
+5. Confirm that the directory bootstrap/cache and storage have write permission.
 
 ```shell
 $ chmod -R 0777 bootstrap/cache
 $ chmod -R 0777 storage
 ```
-> 可选步骤
+> Optional steps
 
 ```shell
 $ php artisan config:cache
 $ php artisan route:cache
 ```
 
-六. 通过浏览器访问
+6. Access the service through web browser
 
-安装完成后，请通过浏览器访问你的Jitamin网址，如：http://jitamin.dev
+Open your web browser, enter the address such as http://jitamin.dev to  access the web service ：
 
-初始管理员的用户名和密码：
+The initial Super Administrator's user name and password are listed below:
 
-- **用户名:** `admin` or `admin@admin.com`
-- **密码:** `admin`
+- **username:** `admin` or `admin@admin.com`
+- **password:** `admin`
 
-## 升级步骤
+## Upgrade steps
 
-一. 获取最新代码
+1. Fetch the latest source code
 
 ```shell
 $ git fetch --all
-$ git checkout latest_tag // 请将 latest_tag 修改为最新的tag，比如：0.4.4
+$ git checkout latest_tag // Change the  latest_tag to the latested release git tag, such as 0.4.4
 ```
 
-二. 更新依赖
+2. Update the dependencies
 
 ```shell
 $ composer install -o --no-dev
 ```
 
-三. 更新数据表
+3. Update the database
 
 ```shell
 vendor/bin/phinx migrate
 ```
-> Windows环境请将上述命令中的 `vendor/bin/phinx` 替换为 `vendor\robmorgan\phinx\bin\phinx.bat`
+> For updating under Windows, you should replace the command `vendor/bin/phinx` with `vendor\robmorgan\phinx\bin\phinx.bat`.
 
-> 可选步骤
+> Optional steps
 
 ```shell
 $ php artisan config:cache
 $ php artisan route:cache
 ```
 
-## 系统演示
+## Demo
 
-体验Jitamin, 请访问 [http://jitamin.com](http://jitamin.com):
+We have a site to demostrate how Jitamin works, please visit [http://jitamin.com](http://jitamin.com):
 
-一. 使用Github账号
+1. You can login by Github account
 
-> 请点击登录页下方的 `Login with my Github Account`
+> Press the button `Login with my Github Account`
 
-二. 普通用户
+2. You can either login by a local test user
 
-- **用户名:** `test` or `test@test.com`
-- **密码:** `test123`
+- **username:** `test` or `test@test.com`
+- **password:** `test123`
 
-三. 管理员用户
+3. Administrator login
 
-- **用户名:** `jitamin` or `jitamin@jitamin.com`
-- **密码:** `jitamin`
+- **username:** `jitamin` or `jitamin@jitamin.com`
+- **password:** `jitamin`
 
-## 开发相关
+## Development
 
-Jitamin代码里自带编译后的前端静态资源。如果你不想修改前端样式，请直接忽略本环节。
+Jitamin has its own pre-compiled static resources, if you don't want to change the web frontend styles, just skip this section.
 
-工具集：
+Tools：
 
 - Node.js
 - Bower
