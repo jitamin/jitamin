@@ -44,26 +44,26 @@ Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free, open source project management 
 
 ## Installation Manual
 
-1. Get the jitman source code
+### Get the jitman source code
 
 ```shell
 $ git clone https://github.com/jitamin/jitamin.git
 ```
 
-2. Setting the config file
+### Setting the config file
 
 ```shell
 $ cp config/config{.default,}.php
 ```
 > Adjust the `config/config.php` according to your environment, especially the database setting.
 
-3. install the PHP dependency packages
+### install the PHP dependency packages
 
 ```shell
 $ composer install -o --no-dev
 ```
 
-4. migrate the database and initialize the database
+### migrate the database and initialize the database
 
 - create database tables
 ```shell
@@ -76,7 +76,7 @@ vendor/bin/phinx seed:run
 ```
 > For installation under Windows, you should replace the command `vendor/bin/phinx` with `vendor\robmorgan\phinx\bin\phinx.bat`.
 
-5. Confirm that the directory bootstrap/cache and storage have write permission.
+### Confirm that the directory bootstrap/cache and storage have write permission.
 
 ```shell
 $ chmod -R 0777 bootstrap/cache
@@ -89,7 +89,7 @@ $ php artisan config:cache
 $ php artisan route:cache
 ```
 
-6. Access the service through web browser
+### Access the service through web browser
 
 Open your web browser, enter the address such as http://jitamin.dev to  access the web service ：
 
@@ -100,20 +100,20 @@ The initial Super Administrator's user name and password are listed below:
 
 ## Upgrade steps
 
-1. Fetch the latest source code
+### Fetch the latest source code
 
 ```shell
 $ git fetch --all
 $ git checkout latest_tag // Change the  latest_tag to the latested release git tag, such as 0.4.4
 ```
 
-2. Update the dependencies
+### Update the dependencies
 
 ```shell
 $ composer install -o --no-dev
 ```
 
-3. Update the database
+### Update the database
 
 ```shell
 vendor/bin/phinx migrate
@@ -131,16 +131,16 @@ $ php artisan route:cache
 
 We have a site to demostrate how Jitamin works, please visit [http://jitamin.com](http://jitamin.com):
 
-1. Github account
+### Github account
 
 > Press the button `Login with my Github Account`
 
-2. Test user
+### Test user
 
 - **username:** `test` or `test@test.com`
 - **password:** `test123`
 
-3. Manager
+### Manager
 
 - **username:** `jitamin` or `jitamin@jitamin.com`
 - **password:** `jitamin`
