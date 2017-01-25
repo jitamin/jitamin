@@ -328,7 +328,7 @@ Jitamin.Gantt.prototype.updateDataAndPosition = function(block, startDate) {
     this.setBarColor(block, record);
 
     // Set new start date
-    var daysFromStart = Math.round(offset / this.options.cellWidth);
+    var daysFromStart = Math.round(offset / this.options.cellWidth) + 1;
     var newStart = this.addDays(this.cloneDate(startDate), daysFromStart);
     record.start = newStart;
 
