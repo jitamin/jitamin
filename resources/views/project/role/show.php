@@ -24,11 +24,11 @@
                         </li>
                         <li>
                             <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-                            <?= $this->url->link(t('Add a new drag and drop restriction'), 'ColumnMoveRestrictionController', 'create', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
+                            <?= $this->url->link(t('Add a new drag and drop restriction'), 'Project/Column/ColumnMoveRestrictionController', 'create', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
                         </li>
                         <li>
                             <i class="fa fa-plus fa-fw" aria-hidden="true"></i>
-                            <?= $this->url->link(t('Add a new column restriction'), 'ColumnRestrictionController', 'create', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
+                            <?= $this->url->link(t('Add a new column restriction'), 'Project/Column/ColumnRestrictionController', 'create', ['project_id' => $project['id'], 'role_id' => $role['role_id']], false, 'popover') ?>
                         </li>
                         <li>
                             <i class="fa fa-pencil fa-fw" aria-hidden="true"></i>
@@ -78,7 +78,7 @@
                     </td>
                     <td>
                         <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                        <?= $this->url->link(t('Remove'), 'ColumnRestrictionController', 'remove', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], false, 'popover') ?>
+                        <?= $this->url->link(t('Remove'), 'Project/Column/ColumnRestrictionController', 'remove', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], false, 'popover') ?>
                     </td>
                 </tr>
             <?php endforeach ?>
@@ -92,7 +92,7 @@
                     </td>
                     <td>
                         <i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>
-                        <?= $this->url->link(t('Remove'), 'ColumnMoveRestrictionController', 'remove', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], false, 'popover') ?>
+                        <?= $this->url->link(t('Remove'), 'Project/Column/ColumnMoveRestrictionController', 'remove', ['project_id' => $project['id'], 'restriction_id' => $restriction['restriction_id']], false, 'popover') ?>
                     </td>
                 </tr>
             <?php endforeach ?>
