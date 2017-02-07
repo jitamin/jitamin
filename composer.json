@@ -43,7 +43,6 @@
         "symfony/yaml": "2.8.7",
         "symfony/stopwatch" : "2.6.13",
         "phpunit/phpunit" : "4.8.26",
-        "phpunit/phpunit-selenium": "2.0.2",
         "friendsofphp/php-cs-fixer": "^1.11"
     },
     "autoload" : {

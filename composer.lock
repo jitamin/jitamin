@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a9e67fcde6f2a97de90387c9fd2e3dec",
-    "content-hash": "29d539d2f4868bf02b5428053cc69ce1",
+    "hash": "23bff31c5c935e46ad6156b086309cc8",
+    "content-hash": "920b51aba46820ae1d96b92ad0e67b1a",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -511,16 +511,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.22.0",
+            "version": "1.22.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "3b114ab800c6432ad42387ccf6bc8d4388a2885a"
+                "reference": "7cdf42c0b1cc763ab7e4c33c47a24e27c66bfccc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/briannesbitt/Carbon/3b114ab800c6432ad42387ccf6bc8d4388a2885a.zip",
-                "reference": "3b114ab800c6432ad42387ccf6bc8d4388a2885a",
+                "url": "https://packagist.phpcomposer.com/files/briannesbitt/Carbon/7cdf42c0b1cc763ab7e4c33c47a24e27c66bfccc.zip",
+                "reference": "7cdf42c0b1cc763ab7e4c33c47a24e27c66bfccc",
                 "shasum": ""
             },
             "require": {
@@ -560,7 +560,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-15 14:47:48"
+            "time": "2017-01-16 07:55:07"
         },
         {
             "name": "paragonie/random_compat",
@@ -620,7 +620,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/a30f7d6e57565a2e1a316e1baf2a483f788b258a",
+                "url": "https://packagist.phpcomposer.com/files/silexphp/Pimple/a30f7d6e57565a2e1a316e1baf2a483f788b258a.zip",
                 "reference": "a30f7d6e57565a2e1a316e1baf2a483f788b258a",
                 "shasum": ""
             },
@@ -705,16 +705,16 @@
         },
         {
             "name": "robmorgan/phinx",
-            "version": "v0.6.5",
+            "version": "v0.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/robmorgan/phinx.git",
-                "reference": "6943cb4bb78bf9d3964967a032220b7c793b97b7"
+                "reference": "cc97b79f62c2180caba0be1d3744a335a296a678"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/robmorgan/phinx/zipball/6943cb4bb78bf9d3964967a032220b7c793b97b7",
-                "reference": "6943cb4bb78bf9d3964967a032220b7c793b97b7",
+                "url": "https://packagist.phpcomposer.com/files/robmorgan/phinx/cc97b79f62c2180caba0be1d3744a335a296a678.zip",
+                "reference": "cc97b79f62c2180caba0be1d3744a335a296a678",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
                 "migrations",
                 "phinx"
             ],
-            "time": "2016-10-27 10:16:12"
+            "time": "2017-01-23 08:53:20"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -825,16 +825,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "c5ea878b5a7f6a01b9a2f182f905831711b9ff3f"
+                "reference": "2ffa7b84d647b8be1788d46b44e438cb3d62056c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/config/c5ea878b5a7f6a01b9a2f182f905831711b9ff3f.zip",
-                "reference": "c5ea878b5a7f6a01b9a2f182f905831711b9ff3f",
+                "url": "https://packagist.phpcomposer.com/files/symfony/config/2ffa7b84d647b8be1788d46b44e438cb3d62056c.zip",
+                "reference": "2ffa7b84d647b8be1788d46b44e438cb3d62056c",
                 "shasum": ""
             },
             "require": {
@@ -877,20 +877,20 @@
             ],
             "description": "Symfony Config Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-02-06 12:04:21"
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd"
+                "reference": "7a8405a9fc175f87fed8a3c40856b0d866d61936"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/console/4f9e449e76996adf310498a8ca955c6deebe29dd.zip",
-                "reference": "4f9e449e76996adf310498a8ca955c6deebe29dd",
+                "url": "https://packagist.phpcomposer.com/files/symfony/console/7a8405a9fc175f87fed8a3c40856b0d866d61936.zip",
+                "reference": "7a8405a9fc175f87fed8a3c40856b0d866d61936",
                 "shasum": ""
             },
             "require": {
@@ -940,20 +940,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-08 20:47:33"
+            "time": "2017-02-06 12:04:21"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05"
+                "reference": "b4d9818f127c60ce21ed62c395da7df868dc8477"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/debug/810ba5c1c5352a4ddb15d4719e8936751dff0b05.zip",
-                "reference": "810ba5c1c5352a4ddb15d4719e8936751dff0b05",
+                "url": "https://packagist.phpcomposer.com/files/symfony/debug/b4d9818f127c60ce21ed62c395da7df868dc8477.zip",
+                "reference": "b4d9818f127c60ce21ed62c395da7df868dc8477",
                 "shasum": ""
             },
             "require": {
@@ -997,11 +997,11 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-01-28 02:37:08"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -1061,7 +1061,7 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
@@ -1169,16 +1169,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "6520f3d4cce604d9dd1e86cac7af954984dd9bda"
+                "reference": "ca032cc56976d88b85e7386b17020bc6dc95dbc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/translation/6520f3d4cce604d9dd1e86cac7af954984dd9bda.zip",
-                "reference": "6520f3d4cce604d9dd1e86cac7af954984dd9bda",
+                "url": "https://packagist.phpcomposer.com/files/symfony/translation/ca032cc56976d88b85e7386b17020bc6dc95dbc5.zip",
+                "reference": "ca032cc56976d88b85e7386b17020bc6dc95dbc5",
                 "shasum": ""
             },
             "require": {
@@ -1229,7 +1229,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-01-21 17:06:35"
         },
         {
             "name": "symfony/yaml",
@@ -1976,81 +1976,17 @@
             "time": "2015-10-02 06:51:40"
         },
         {
-            "name": "phpunit/phpunit-selenium",
-            "version": "2.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/giorgiosironi/phpunit-selenium.git",
-                "reference": "2bad798ec0daf20d2854400e3bc5329ee0a7b2d1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/giorgiosironi/phpunit-selenium/2bad798ec0daf20d2854400e3bc5329ee0a7b2d1.zip",
-                "reference": "2bad798ec0daf20d2854400e3bc5329ee0a7b2d1",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-dom": "*",
-                "php": ">=5.3.3",
-                "phpunit/phpunit": "~4.8",
-                "sebastian/comparator": "~1.0"
-            },
-            "require-dev": {
-                "phing/phing": "2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "PHPUnit/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "include-path": [
-                ""
-            ],
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Giorgio Sironi",
-                    "email": "info@giorgiosironi.com",
-                    "role": "developer"
-                },
-                {
-                    "name": "Ivan Kurnosov",
-                    "email": "zerkms@zerkms.com",
-                    "role": "developer"
-                },
-                {
-                    "name": "Sebastian Bergmann",
-                    "email": "sb@sebastian-bergmann.de",
-                    "role": "original developer"
-                }
-            ],
-            "description": "Selenium Server integration for PHPUnit",
-            "homepage": "http://www.phpunit.de/",
-            "keywords": [
-                "phpunit",
-                "selenium",
-                "testing",
-                "xunit"
-            ],
-            "time": "2016-03-01 10:33:56"
-        },
-        {
             "name": "sebastian/comparator",
-            "version": "1.2.2",
+            "version": "1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f"
+                "reference": "2b7424b55f5047b47ac6e5ccb20b2aea4011d9be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
-                "reference": "6a1ed12e8b2409076ab22e3897126211ff8b1f7f",
+                "url": "https://packagist.phpcomposer.com/files/sebastianbergmann/comparator/2b7424b55f5047b47ac6e5ccb20b2aea4011d9be.zip",
+                "reference": "2b7424b55f5047b47ac6e5ccb20b2aea4011d9be",
                 "shasum": ""
             },
             "require": {
@@ -2101,7 +2037,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2016-11-19 09:18:40"
+            "time": "2017-01-29 09:50:25"
         },
         {
             "name": "sebastian/diff",
@@ -2413,16 +2349,16 @@
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "2.7.1",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "9b324f3a1132459a7274a0ace2e1b766ba80930f"
+                "reference": "86dd55a522238211f9f3631e3361703578941d9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/squizlabs/PHP_CodeSniffer/9b324f3a1132459a7274a0ace2e1b766ba80930f.zip",
-                "reference": "9b324f3a1132459a7274a0ace2e1b766ba80930f",
+                "url": "https://packagist.phpcomposer.com/files/squizlabs/PHP_CodeSniffer/86dd55a522238211f9f3631e3361703578941d9a.zip",
+                "reference": "86dd55a522238211f9f3631e3361703578941d9a",
                 "shasum": ""
             },
             "require": {
@@ -2487,11 +2423,11 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2016-11-30 04:02:31"
+            "time": "2017-02-02 03:30:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -2540,16 +2476,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.2.2",
+            "version": "v3.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "350e810019fc52dd06ae844b6a6d382f8a0e8893"
+                "reference": "32646a7cf53f3956c76dcb5c82555224ae321858"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/symfony/process/350e810019fc52dd06ae844b6a6d382f8a0e8893.zip",
-                "reference": "350e810019fc52dd06ae844b6a6d382f8a0e8893",
+                "url": "https://packagist.phpcomposer.com/files/symfony/process/32646a7cf53f3956c76dcb5c82555224ae321858.zip",
+                "reference": "32646a7cf53f3956c76dcb5c82555224ae321858",
                 "shasum": ""
             },
             "require": {
@@ -2585,7 +2521,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-02 20:32:22"
+            "time": "2017-02-03 12:11:38"
         },
         {
             "name": "symfony/stopwatch",
