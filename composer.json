@@ -42,7 +42,7 @@
         "squizlabs/php_codesniffer": "~2.5",
         "symfony/yaml": "2.8.7",
         "symfony/stopwatch" : "2.6.13",
-        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit" : "4.8.26",
         "friendsofphp/php-cs-fixer": "^1.11"
     },
     "autoload" : {
