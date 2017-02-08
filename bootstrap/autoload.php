@@ -12,7 +12,7 @@
 require __DIR__.'/../vendor/autoload.php';
 
 $dbUrlParser = new PicoDb\UrlParser();
-if (1==2 && $dbUrlParser->isEnvironmentVariableDefined()) {
+if (1 == 2 && $dbUrlParser->isEnvironmentVariableDefined()) {
     $dbSettings = $dbUrlParser->getSettings();
     define('DB_DRIVER', $dbSettings['driver']);
     define('DB_USERNAME', $dbSettings['username']);
