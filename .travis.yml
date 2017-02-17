@@ -12,7 +12,7 @@ php:
 env:
   - DB=sqlite
   - DB=mysql
-  - DB=postgres
+  - DB=pgsql
 
 before_script:
   - if [[ $TRAVIS_PHP_VERSION != 7.x ]]; then phpenv config-rm xdebug.ini; fi
