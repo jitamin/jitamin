@@ -26,7 +26,7 @@ return [
     // Enable/disable url rewrite
     'enable_url_rewrite' => false,
 
-    // Available db drivers are "mysql", "sqlite" and "postgres"
+    // Available db drivers are "mysql", "sqlite" and "pgsql"
     'db_driver' => 'sqlite',
 
     'db_connections' => [
