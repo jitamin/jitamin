@@ -5,7 +5,7 @@
         </testsuite>
     </testsuites>
     <php>
-        <const name="DB_DRIVER" value="postgres" />
+        <const name="DB_DRIVER" value="pgsql" />
         <const name="DB_HOSTNAME" value="127.0.0.1" />
         <const name="DB_USERNAME" value="postgres" />
         <const name="DB_PASSWORD" value="" />

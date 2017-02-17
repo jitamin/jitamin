@@ -64,7 +64,7 @@ define('MAIL_SENDMAIL_COMMAND', '/usr/sbin/sendmail -bs');
 // Application version
 defined('APP_VERSION') or define('APP_VERSION', trim(file_get_contents(__DIR__.'/../VERSION')));
 
-// Database driver: sqlite, mysql or postgres (sqlite by default)
+// Database driver: sqlite, mysql or pgsql (sqlite by default)
 defined('DB_DRIVER') or define('DB_DRIVER', $config['db_driver']);
 
 if (DB_DRIVER !== 'sqlite') {
