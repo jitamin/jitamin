@@ -12,7 +12,6 @@
 namespace Jitamin\Http\Controllers\Project;
 
 use Jitamin\Http\Controllers\Controller;
-use Jitamin\Model\ProjectModel;
 
 /**
  * Class ProjectController.
