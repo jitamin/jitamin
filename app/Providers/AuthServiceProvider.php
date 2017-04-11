@@ -131,18 +131,22 @@ class AuthServiceProvider implements ServiceProviderInterface
         $acl->setRoleHierarchy(Role::APP_MANAGER, [Role::APP_USER, Role::APP_PUBLIC]);
         $acl->setRoleHierarchy(Role::APP_USER, [Role::APP_PUBLIC]);
 
-        $acl->add('Auth/AuthController', ['login', 'check'], Role::APP_PUBLIC);
         $acl->add('CaptchaController', '*', Role::APP_PUBLIC);
-        $acl->add('Auth/PasswordResetController', '*', Role::APP_PUBLIC);
-        $acl->add('Task/TaskController', 'readonly', Role::APP_PUBLIC);
-        $acl->add('Project/Board/BoardController', 'readonly', Role::APP_PUBLIC);
         $acl->add('ICalendarController', '*', Role::APP_PUBLIC);
         $acl->add('FeedController', '*', Role::APP_PUBLIC);
 
+        $acl->add('Auth/AuthController', ['login', 'check'], Role::APP_PUBLIC);
+        $acl->add('Auth/PasswordResetController', '*', Role::APP_PUBLIC);
+
         $acl->add('Profile/AvatarController', ['show', 'image'], Role::APP_PUBLIC);
-        $acl->add('Project/ProjectController', ['create', 'gantt', 'updateDate'], Role::APP_MANAGER);
-        $acl->add('Project/ProjectUserOverviewController', '*', Role::APP_MANAGER);
         $acl->add('Profile/TwoFactorController', 'disable', Role::APP_ADMIN);
+
+        $acl->add('Project/ProjectController', ['create', 'gantt', 'updateDate'], Role::APP_MANAGER);
+        $acl->add('Project/Board/BoardController', 'readonly', Role::APP_PUBLIC);
+
+        $acl->add('Task/TaskController', 'readonly', Role::APP_PUBLIC);
+
+        $acl->add('Manage/ProjectUserOverviewController', '*', Role::APP_MANAGER);
 
         $acl->add('Admin/AdminController', '*', Role::APP_ADMIN);
         $acl->add('Admin/SettingController', '*', Role::APP_ADMIN);
