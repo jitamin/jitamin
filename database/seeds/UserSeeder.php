@@ -21,10 +21,10 @@ class UserSeeder extends AbstractSeed
     {
         $data = [
           [
-              'username'    => 'admin',
-              'password'    => bcrypt('admin'),
-              'email'       => 'admin@admin.com',
-              'role'        => Role::APP_ADMIN,
+              'username' => 'admin',
+              'password' => bcrypt('admin'),
+              'email'    => 'admin@admin.com',
+              'role'     => Role::APP_ADMIN,
           ],
         ];
 

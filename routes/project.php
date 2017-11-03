@@ -12,9 +12,9 @@
 return [
 
 // Project routes
-'project/create'                       => 'Project/ProjectController@create',
-'project/create/private'               => 'Project/ProjectController@createPrivate',
-'project/store'                        => 'Project/ProjectController@store',
+'project/create'         => 'Project/ProjectController@create',
+'project/create/private' => 'Project/ProjectController@createPrivate',
+'project/store'          => 'Project/ProjectController@store',
 
 'project/{project_id}'                  => 'Project/ProjectController@show',
 'p/{project_id}'                        => 'Project/ProjectController@show',
@@ -52,7 +52,7 @@ return [
 'board/{project_id}/expand'   => 'Project/Board/BoardAjaxController@expand',
 
 // Overview routes
-'overview/{project_id}'          => 'Project/ProjectController@overview',
+'overview/{project_id}' => 'Project/ProjectController@overview',
 
 // Gantt routes
 'gantt/{project_id}'                => 'Task/TaskController@gantt',

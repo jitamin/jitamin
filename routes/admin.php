@@ -58,6 +58,6 @@ return [
 'admin/plugins/market' => 'Admin/PluginController@directory',
 
 // Admin routes
-'admin'       => 'Admin/AdminController@index',
+'admin' => 'Admin/AdminController@index',
 
 ];

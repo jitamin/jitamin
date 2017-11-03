@@ -37,9 +37,9 @@ class ProjectRoleRestrictionModel extends Model
     public function getRules()
     {
         return [
-            self::RULE_TASK_CREATION    => t('Task creation is not permitted'),
-            self::RULE_TASK_OPEN_CLOSE  => t('Closing or opening a task is not permitted'),
-            self::RULE_TASK_MOVE        => t('Moving a task is not permitted'),
+            self::RULE_TASK_CREATION   => t('Task creation is not permitted'),
+            self::RULE_TASK_OPEN_CLOSE => t('Closing or opening a task is not permitted'),
+            self::RULE_TASK_MOVE       => t('Moving a task is not permitted'),
         ];
     }
 

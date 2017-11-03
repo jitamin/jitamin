@@ -54,9 +54,9 @@ class CustomFilterController extends Controller
         $project = $this->getProject();
 
         $this->response->html($this->template->render('project/custom_filter/create', [
-            'project'           => $project,
-            'values'            => $values + ['project_id' => $project['id']],
-            'errors'            => $errors,
+            'project' => $project,
+            'values'  => $values + ['project_id' => $project['id']],
+            'errors'  => $errors,
         ]));
     }
 

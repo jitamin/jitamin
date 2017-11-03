@@ -38,10 +38,10 @@ class ColumnRestrictionModel extends Model
     public function getRules()
     {
         return [
-            self::RULE_ALLOW_TASK_CREATION    => t('Task creation is permitted for this column'),
-            self::RULE_ALLOW_TASK_OPEN_CLOSE  => t('Closing or opening a task is permitted for this column'),
-            self::RULE_BLOCK_TASK_CREATION    => t('Task creation is blocked for this column'),
-            self::RULE_BLOCK_TASK_OPEN_CLOSE  => t('Closing or opening a task is blocked for this column'),
+            self::RULE_ALLOW_TASK_CREATION   => t('Task creation is permitted for this column'),
+            self::RULE_ALLOW_TASK_OPEN_CLOSE => t('Closing or opening a task is permitted for this column'),
+            self::RULE_BLOCK_TASK_CREATION   => t('Task creation is blocked for this column'),
+            self::RULE_BLOCK_TASK_OPEN_CLOSE => t('Closing or opening a task is blocked for this column'),
         ];
     }
 

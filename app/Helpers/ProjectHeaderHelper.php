@@ -44,9 +44,9 @@ class ProjectHeaderHelper extends Base
     public function render(array $project, $boardView = false)
     {
         return $this->template->render('project/_header/header', [
-            'project'             => $project,
-            'q'                   => $this->getSearchQuery($project),
-            'board_view'          => $boardView,
+            'project'    => $project,
+            'q'          => $this->getSearchQuery($project),
+            'board_view' => $boardView,
         ]);
     }
 

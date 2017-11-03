@@ -182,10 +182,10 @@ class ProfileController extends Controller
         }
 
         return $this->response->html($this->helper->layout->profile('profile/edit', [
-            'values'     => $values,
-            'errors'     => $errors,
-            'user'       => $user,
-            'roles'      => $this->role->getApplicationRoles(),
+            'values' => $values,
+            'errors' => $errors,
+            'user'   => $user,
+            'roles'  => $this->role->getApplicationRoles(),
         ]));
     }
 

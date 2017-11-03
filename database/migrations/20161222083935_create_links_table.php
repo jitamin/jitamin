@@ -20,7 +20,7 @@ class CreateLinksTable extends AbstractMigration
     {
         $table = $this->table('links');
         $table->addColumn('label', 'string')
-              ->addColumn('opposite_id', 'integer', ['null'=>true, 'default' => 0])
+              ->addColumn('opposite_id', 'integer', ['null' => true, 'default' => 0])
               ->addIndex(['label'], ['unique' => true])
               ->create();
     }

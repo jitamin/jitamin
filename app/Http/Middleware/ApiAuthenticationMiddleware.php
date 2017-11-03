@@ -40,6 +40,7 @@ class ApiAuthenticationMiddleware extends Base implements MiddlewareInterface
             $this->userSession->initialize($this->userModel->getByUsername($username));
         } elseif (!$this->isAppAuthenticated($username, $password)) {
             $this->logger->error('API authentication failure for '.$username);
+
             throw new AuthenticationFailureException('Wrong credentials');
         }
     }
