@@ -93,6 +93,7 @@ class SchemaHandler extends \Jitamin\Foundation\Base
         } catch (PDOException $e) {
             $this->db->cancelTransaction();
             $this->db->getDriver()->enableForeignKeys();
+
             throw new RuntimeException('Unable to migrate schema for the plugin: '.$pluginName.' => '.$e->getMessage());
         }
     }

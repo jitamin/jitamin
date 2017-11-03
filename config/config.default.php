@@ -36,13 +36,13 @@ return [
         ],
 
         'mysql' => [
-            'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => 'jitamin',
-            'username'  => 'root',
-            'password'  => '',
-            'port'      => '3306',
-            'charset'   => 'utf8',
+            'driver'   => 'mysql',
+            'host'     => 'localhost',
+            'database' => 'jitamin',
+            'username' => 'root',
+            'password' => '',
+            'port'     => '3306',
+            'charset'  => 'utf8',
         ],
 
         'pgsql' => [

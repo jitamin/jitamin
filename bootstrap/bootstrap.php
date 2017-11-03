@@ -69,19 +69,19 @@ defined('DB_DRIVER') or define('DB_DRIVER', $config['db_driver']);
 
 if (DB_DRIVER !== 'sqlite') {
     // Mysql/Postgres username
-defined('DB_USERNAME') or define('DB_USERNAME', $config['db_connections'][$config['db_driver']]['username']);
+    defined('DB_USERNAME') or define('DB_USERNAME', $config['db_connections'][$config['db_driver']]['username']);
 
-// Mysql/Postgres password
-defined('DB_PASSWORD') or define('DB_PASSWORD', $config['db_connections'][$config['db_driver']]['password']);
+    // Mysql/Postgres password
+    defined('DB_PASSWORD') or define('DB_PASSWORD', $config['db_connections'][$config['db_driver']]['password']);
 
-// Mysql/Postgres hostname
-defined('DB_HOSTNAME') or define('DB_HOSTNAME', $config['db_connections'][$config['db_driver']]['host']);
+    // Mysql/Postgres hostname
+    defined('DB_HOSTNAME') or define('DB_HOSTNAME', $config['db_connections'][$config['db_driver']]['host']);
 
-// Mysql/Postgres database name
-defined('DB_NAME') or define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
+    // Mysql/Postgres database name
+    defined('DB_NAME') or define('DB_NAME', $config['db_connections'][$config['db_driver']]['database']);
 
-// Mysql/Postgres custom port (null = default port)
-defined('DB_PORT') or define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
+    // Mysql/Postgres custom port (null = default port)
+    defined('DB_PORT') or define('DB_PORT', $config['db_connections'][$config['db_driver']]['port']);
 } else {
     // Sqlite configuration
     defined('DB_FILENAME') or define('DB_FILENAME', DATA_DIR.DIRECTORY_SEPARATOR.$config['db_connections'][$config['db_driver']]['database'].'.sqlite');

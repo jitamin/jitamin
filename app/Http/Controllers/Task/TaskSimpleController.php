@@ -33,9 +33,9 @@ class TaskSimpleController extends Controller
         $projects = $this->projectUserRoleModel->getActiveProjectsByUser($this->userSession->getId());
 
         $this->response->html($this->template->render('task/create_simple', [
-            'values'          => $values,
-            'errors'          => $errors,
-            'projects'        => $projects,
+            'values'   => $values,
+            'errors'   => $errors,
+            'projects' => $projects,
         ]));
     }
 

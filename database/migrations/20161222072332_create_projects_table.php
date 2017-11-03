@@ -21,7 +21,7 @@ class CreateProjectsTable extends AbstractMigration
         $table = $this->table('projects');
         $table->addColumn('name', 'string')
               ->addColumn('is_active', 'boolean', ['null' => true, 'default' => true])
-              ->addColumn('token', 'string', ['null'=> true])
+              ->addColumn('token', 'string', ['null' => true])
               ->addColumn('last_modified', 'biginteger', ['null' => true])
               ->addColumn('is_public', 'boolean', ['null' => true, 'default' => false])
               ->addColumn('is_private', 'boolean', ['null' => true, 'default' => false])

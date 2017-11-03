@@ -21,8 +21,8 @@ class SettingSeeder extends AbstractSeed
     {
         $data = [
           [
-              'option'    => 'application_language',
-              'value'     => 'en_US',
+              'option' => 'application_language',
+              'value'  => 'en_US',
           ],
           [
             'option' => 'application_date_format',
@@ -38,68 +38,68 @@ class SettingSeeder extends AbstractSeed
             'value'  => 'default',
           ],
           [
-              'option'    => 'password_reset',
-              'value'     => 1,
+              'option' => 'password_reset',
+              'value'  => 1,
           ],
           [
-              'option'    => 'cfd_include_closed_tasks',
-              'value'     => 1,
+              'option' => 'cfd_include_closed_tasks',
+              'value'  => 1,
           ],
           [
-              'option'    => 'default_color',
-              'value'     => 'yellow',
+              'option' => 'default_color',
+              'value'  => 'yellow',
           ],
           [
-              'option'    => 'subtask_restriction',
-              'value'     => 0,
+              'option' => 'subtask_restriction',
+              'value'  => 0,
           ],
           [
-              'option'    => 'subtask_time_tracking',
-              'value'     => 1,
+              'option' => 'subtask_time_tracking',
+              'value'  => 1,
           ],
           [
               'option' => 'board_highlight_period',
               'value'  => defined('RECENT_TASK_PERIOD') ? RECENT_TASK_PERIOD : 48 * 60 * 60,
           ],
           [
-              'option'    => 'board_public_refresh_interval',
-              'value'     => defined('BOARD_PUBLIC_CHECK_INTERVAL') ? BOARD_PUBLIC_CHECK_INTERVAL : 60,
+              'option' => 'board_public_refresh_interval',
+              'value'  => defined('BOARD_PUBLIC_CHECK_INTERVAL') ? BOARD_PUBLIC_CHECK_INTERVAL : 60,
           ],
           [
-              'option'    => 'board_private_refresh_interval',
-              'value'     => defined('BOARD_CHECK_INTERVAL') ? BOARD_CHECK_INTERVAL : 10,
+              'option' => 'board_private_refresh_interval',
+              'value'  => defined('BOARD_CHECK_INTERVAL') ? BOARD_CHECK_INTERVAL : 10,
           ],
           [
-              'option'    => 'board_columns',
-              'value'     => '',
+              'option' => 'board_columns',
+              'value'  => '',
           ],
           [
-              'option'    => 'webhook_token',
-              'value'     => Token::getToken(),
+              'option' => 'webhook_token',
+              'value'  => Token::getToken(),
           ],
           [
-              'option'    => 'webhook_url',
-              'value'     => '',
+              'option' => 'webhook_url',
+              'value'  => '',
           ],
           [
-              'option'    => 'integration_gravatar',
-              'value'     => 0,
+              'option' => 'integration_gravatar',
+              'value'  => 0,
           ],
           [
-              'option'    => 'api_token',
-              'value'     => Token::getToken(),
+              'option' => 'api_token',
+              'value'  => Token::getToken(),
           ],
           [
-              'option'    => 'calendar_user_subtasks_time_tracking',
-              'value'     => 0,
+              'option' => 'calendar_user_subtasks_time_tracking',
+              'value'  => 0,
           ],
           [
-              'option'    => 'calendar_project_tasks',
-              'value'     => 'date_started',
+              'option' => 'calendar_project_tasks',
+              'value'  => 'date_started',
           ],
           [
-              'option'    => 'calendar_user_tasks',
-              'value'     => 'date_started',
+              'option' => 'calendar_user_tasks',
+              'value'  => 'date_started',
           ],
         ];
 

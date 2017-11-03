@@ -43,20 +43,20 @@ class TaskImport extends Base
     public function getColumnMapping()
     {
         return [
-            'reference'         => 'Reference',
-            'title'             => 'Title',
-            'description'       => 'Description',
-            'assignee'          => 'Assignee Username',
-            'creator'           => 'Creator Username',
-            'color'             => 'Color Name',
-            'column'            => 'Column Name',
-            'category'          => 'Category Name',
-            'swimlane'          => 'Swimlane Name',
-            'score'             => 'Complexity',
-            'time_estimated'    => 'Time Estimated',
-            'time_spent'        => 'Time Spent',
-            'date_due'          => 'Due Date',
-            'is_active'         => 'Closed',
+            'reference'      => 'Reference',
+            'title'          => 'Title',
+            'description'    => 'Description',
+            'assignee'       => 'Assignee Username',
+            'creator'        => 'Creator Username',
+            'color'          => 'Color Name',
+            'column'         => 'Column Name',
+            'category'       => 'Category Name',
+            'swimlane'       => 'Swimlane Name',
+            'score'          => 'Complexity',
+            'time_estimated' => 'Time Estimated',
+            'time_spent'     => 'Time Spent',
+            'date_due'       => 'Due Date',
+            'is_active'      => 'Closed',
         ];
     }
 

@@ -24,8 +24,8 @@ class SettingController extends Controller
     public function index()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/application', [
-            'mail_transports'  => $this->emailClient->getAvailableTransports(),
-            'title'            => t('Admin').' &raquo; '.t('Application settings'),
+            'mail_transports' => $this->emailClient->getAvailableTransports(),
+            'title'           => t('Admin').' &raquo; '.t('Application settings'),
         ]));
     }
 
@@ -35,10 +35,10 @@ class SettingController extends Controller
     public function theme()
     {
         $this->response->html($this->helper->layout->admin('admin/setting/theme', [
-            'skins'            => $this->skinModel->getSkins(),
-            'layouts'          => $this->skinModel->getLayouts(),
-            'dashboards'       => $this->skinModel->getDashboards(),
-            'title'            => t('Admin').' &raquo; '.t('Theme settings'),
+            'skins'      => $this->skinModel->getSkins(),
+            'layouts'    => $this->skinModel->getLayouts(),
+            'dashboards' => $this->skinModel->getDashboards(),
+            'title'      => t('Admin').' &raquo; '.t('Theme settings'),
         ]));
     }
 

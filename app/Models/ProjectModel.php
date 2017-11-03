@@ -537,11 +537,11 @@ class ProjectModel extends Model
     {
         // Sorted by value
         $views = [
-            'overview'   => t('Overview'),
-            'board'      => t('Board'),
-            'calendar'   => t('Calendar'),
-            'list'       => t('List'),
-            'gantt'      => t('Gantt'),
+            'overview' => t('Overview'),
+            'board'    => t('Board'),
+            'calendar' => t('Calendar'),
+            'list'     => t('List'),
+            'gantt'    => t('Gantt'),
         ];
 
         if ($prepend) {

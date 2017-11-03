@@ -34,13 +34,13 @@ class AdminController extends Controller
         }
 
         $this->response->html($this->helper->layout->admin('admin/index', [
-            'is_outdated'      => $is_outdated,
-            'current_version'  => $current_version,
-            'latest_version'   => $latest_version,
-            'db_size'          => $this->settingModel->getDatabaseSize(),
-            'db_version'       => $this->db->getDriver()->getDatabaseVersion(),
-            'user_agent'       => $this->request->getServerVariable('HTTP_USER_AGENT'),
-            'title'            => t('Admin').' &raquo; '.t('Overview'),
+            'is_outdated'     => $is_outdated,
+            'current_version' => $current_version,
+            'latest_version'  => $latest_version,
+            'db_size'         => $this->settingModel->getDatabaseSize(),
+            'db_version'      => $this->db->getDriver()->getDatabaseVersion(),
+            'user_agent'      => $this->request->getServerVariable('HTTP_USER_AGENT'),
+            'title'           => t('Admin').' &raquo; '.t('Overview'),
         ], ''));
     }
 }

@@ -12,15 +12,15 @@
 return [
 
 // Dashboard routes
-'dashboard'               => 'Dashboard/DashboardController@index',
-'dashboard/projects'      => 'Dashboard/ProjectController@index',
-'dashboard/starred'       => 'Dashboard/ProjectController@starred',
+'dashboard'          => 'Dashboard/DashboardController@index',
+'dashboard/projects' => 'Dashboard/ProjectController@index',
+'dashboard/starred'  => 'Dashboard/ProjectController@starred',
 
-'dashboard/tasks'         => 'Dashboard/DashboardController@tasks',
-'dashboard/subtasks'      => 'Dashboard/DashboardController@subtasks',
-'dashboard/calendar'      => 'Dashboard/DashboardController@calendar',
-'dashboard/activities'    => 'Dashboard/DashboardController@activities',
-'dashboard/slider'        => 'Dashboard/DashboardController@slider',
+'dashboard/tasks'      => 'Dashboard/DashboardController@tasks',
+'dashboard/subtasks'   => 'Dashboard/DashboardController@subtasks',
+'dashboard/calendar'   => 'Dashboard/DashboardController@calendar',
+'dashboard/activities' => 'Dashboard/DashboardController@activities',
+'dashboard/slider'     => 'Dashboard/DashboardController@slider',
 
 // Notification routes
 'dashboard/notifications'                         => 'Dashboard/NotificationController@index',

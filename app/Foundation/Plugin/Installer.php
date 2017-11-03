@@ -44,6 +44,7 @@ class Installer extends \Jitamin\Foundation\Base
 
         if (!$zip->extractTo(PLUGINS_DIR)) {
             $this->cleanupArchive($zip);
+
             throw new PluginInstallerException(t('Unable to extract plugin archive.'));
         }
 
@@ -88,6 +89,7 @@ class Installer extends \Jitamin\Foundation\Base
 
         if (!$zip->extractTo(PLUGINS_DIR)) {
             $this->cleanupArchive($zip);
+
             throw new PluginInstallerException(t('Unable to extract plugin archive.'));
         }
 
@@ -111,21 +113,25 @@ class Installer extends \Jitamin\Foundation\Base
 
         if (empty($archiveData)) {
             unlink($archiveFile);
+
             throw new PluginInstallerException(t('Unable to download plugin archive.'));
         }
 
         if (file_put_contents($archiveFile, $archiveData) === false) {
             unlink($archiveFile);
+
             throw new PluginInstallerException(t('Unable to write temporary file for plugin.'));
         }
 
         if ($zip->open($archiveFile) !== true) {
             unlink($archiveFile);
+
             throw new PluginInstallerException(t('Unable to open plugin archive.'));
         }
 
         if ($zip->numFiles === 0) {
             unlink($archiveFile);
+
             throw new PluginInstallerException(t('There is no file in the plugin archive.'));
         }
 

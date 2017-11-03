@@ -71,8 +71,8 @@ class SkinModel extends Model
     {
         // Sorted by value
         $layouts = [
-            'fluid'   => t('Fluid'),
-            'fixed'   => t('Fixed'),
+            'fluid' => t('Fluid'),
+            'fixed' => t('Fixed'),
         ];
 
         if ($prepend) {

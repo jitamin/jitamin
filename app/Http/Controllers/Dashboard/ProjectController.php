@@ -35,9 +35,9 @@ class ProjectController extends Controller
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'projects');
 
         $this->response->html($this->helper->layout->dashboard('dashboard/project/index', [
-            'title'             => t('Dashboard'),
-            'paginator'         => $paginator,
-            'user'              => $user,
+            'title'     => t('Dashboard'),
+            'paginator' => $paginator,
+            'user'      => $user,
         ]));
     }
 
@@ -56,9 +56,9 @@ class ProjectController extends Controller
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'starred');
 
         $this->response->html($this->helper->layout->dashboard('dashboard/project/starred', [
-            'title'             => t('Starred projects'),
-            'paginator'         => $paginator,
-            'user'              => $user,
+            'title'     => t('Starred projects'),
+            'paginator' => $paginator,
+            'user'      => $user,
         ]));
     }
 }

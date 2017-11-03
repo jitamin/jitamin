@@ -38,13 +38,13 @@ class UserImport extends Base
     public function getColumnMapping()
     {
         return [
-            'username'         => 'Username',
-            'password'         => 'Password',
-            'email'            => 'Email',
-            'name'             => 'Full Name',
-            'is_admin'         => 'Administrator',
-            'is_manager'       => 'Manager',
-            'is_ldap_user'     => 'Remote User',
+            'username'     => 'Username',
+            'password'     => 'Password',
+            'email'        => 'Email',
+            'name'         => 'Full Name',
+            'is_admin'     => 'Administrator',
+            'is_manager'   => 'Manager',
+            'is_ldap_user' => 'Remote User',
         ];
     }
 
