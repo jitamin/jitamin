@@ -26,7 +26,7 @@ Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free software written in PHP, intende
 * Filter on search results
 * Support personal projects and team projects
 * Support tasks, sub-tasks, attachment, comments
-* Auto-triger actions
+* Auto-trigger actions
 * Visualized statistics result
 * Support third part integration
 * Support plugins
