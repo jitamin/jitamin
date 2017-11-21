@@ -3,6 +3,7 @@
 </div>
 
 <form action="<?= $this->url->href('Admin/UserStatusController', 'disable', ['user_id' => $user['id']]) ?>" method="post" autocomplete="off">
+    <?= $this->form->csrf() ?>
     <div class="confirm">
         <p class="alert alert-info"><?= t('Do you really want to disable this user: "%s"?', $user['name'] ?: $user['username']) ?></p>
 
