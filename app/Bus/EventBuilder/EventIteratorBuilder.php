@@ -66,7 +66,7 @@ class EventIteratorBuilder implements Iterator
      */
     public function next()
     {
-        ++$this->position;
+        $this->position++;
     }
 
     /**
