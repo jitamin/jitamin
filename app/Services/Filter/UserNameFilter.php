@@ -36,8 +36,8 @@ class UserNameFilter extends BaseFilter implements FilterInterface
     public function apply()
     {
         $this->query
-        	->eq('is_active', 1)
-        	->beginOr()
+            ->eq('is_active', 1)
+            ->beginOr()
             ->ilike('username', '%'.$this->value.'%')
             ->ilike('name', '%'.$this->value.'%')
             ->closeOr();
