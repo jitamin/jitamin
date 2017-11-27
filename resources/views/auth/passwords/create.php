@@ -7,7 +7,7 @@
         <?= $this->form->text('username', $values, $errors, ['autofocus']) ?>
 
         <?= $this->form->label(t('Enter the text below'), 'captcha') ?>
-        <img src="<?= $this->url->href('CaptchaController', 'image') ?>" alt="Captcha">
+        <img src="<?= $this->url->href('CaptchaController', 'image') ?>" alt="Captcha" class="captcha-img">
         <?= $this->form->text('captcha', [], $errors) ?>
 
         <div class="form-actions">
