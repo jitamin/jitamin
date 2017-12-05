@@ -89,7 +89,7 @@ class ProjectPermissionController extends Controller
     public function removeUser()
     {
         $project = $this->getProject();
-        $user = $this->getUser();
+        $user = $this->projectUserRoleModel->getRemoveUser();
 
         if ($this->request->isPost()) {
             $this->request->checkCSRFToken();

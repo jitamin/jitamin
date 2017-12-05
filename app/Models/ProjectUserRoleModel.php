@@ -228,6 +228,25 @@ class ProjectUserRoleModel extends Model
         ]);
     }
 
+
+    public function getRemoveUser() 
+    {
+        $user = $this->userModel->getById($this->request->getIntegerParam('user_id'));
+        
+        if (empty($user)) {
+            throw new PageNotFoundException();
+        }
+        
+        $role = $this->getUserRole($this->request->getIntegerParam('project_id', 0), $this->userSession->getId());
+        
+        if (!$this->userSession->isAdmin() && $role != Role::PROJECT_MANAGER) {
+            throw new AccessForbiddenException();
+        }
+        
+        return $user;
+    }
+
+
     /**
      * Remove a user from the project.
      *
