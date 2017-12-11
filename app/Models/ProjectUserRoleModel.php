@@ -228,15 +228,23 @@ class ProjectUserRoleModel extends Model
         ]);
     }
 
-    public function getRemoveUser()
+    /**
+     * Remove a user.
+     *
+     * @param int    $project_id
+     * @param int    $user_id
+     *
+     * @return array
+     */
+    public function getRemoveUser($project_id, $user_id)
     {
-        $user = $this->userModel->getById($this->request->getIntegerParam('user_id'));
+        $user = $this->userModel->getById($user_id);
 
         if (empty($user)) {
             throw new PageNotFoundException();
         }
 
-        $role = $this->getUserRole($this->request->getIntegerParam('project_id', 0), $this->userSession->getId());
+        $role = $this->getUserRole($project_id, $this->userSession->getId());
 
         if (!$this->userSession->isAdmin() && $role != Role::PROJECT_MANAGER) {
             throw new AccessForbiddenException();
