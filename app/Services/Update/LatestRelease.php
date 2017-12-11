@@ -39,7 +39,7 @@ class LatestRelease extends Base
         } else {
             $body = $this->container['httpClient']->getJson($this->github_url, ['Accept: application/vnd.github.v3+json']);
 
-            if (is_array($body)) {
+            if (is_array($body) && isset($body['tag_name'])) {
                 $release = $body['tag_name'];
                 $this->container['cacheDriver']->set('jitamin_latest_version', $release, $cache_for);
 
