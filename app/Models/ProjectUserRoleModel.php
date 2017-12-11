@@ -231,8 +231,8 @@ class ProjectUserRoleModel extends Model
     /**
      * Remove a user.
      *
-     * @param int    $project_id
-     * @param int    $user_id
+     * @param int $project_id
+     * @param int $user_id
      *
      * @return array
      */
