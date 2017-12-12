@@ -13,7 +13,7 @@ Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free software written in PHP, intende
 [简体中文](https://github.com/jitamin/jitamin/blob/master/README-zh_CN.md)
 
 
-![jitamin](https://cloud.githubusercontent.com/assets/15666864/21678087/312aab60-d378-11e6-8244-56882545970c.jpeg)
+![jitamin](http://jitamin.com/img/screenshot.png)
 
 ## Features
 
