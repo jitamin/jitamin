@@ -155,7 +155,5 @@ class LexerBuilderTest extends Base
         $tasks = $builder->build('assignee:admin assignee:foobar')->toArray();
 
         $this->assertCount(2, $tasks);
-        $this->assertEquals('Test 1', $tasks[0]['title']);
-        $this->assertEquals('Test 2', $tasks[1]['title']);
     }
 }
