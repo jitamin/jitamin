@@ -30,6 +30,7 @@ Jitamin.App.prototype.execute = function() {
         }
     }
 
+    this.init();
     this.focus();
     this.sidebarToggle();
     this.chosen();
@@ -75,6 +76,17 @@ Jitamin.App.prototype.keyboardShortcuts = function() {
     });
 };
 
+Jitamin.App.prototype.init = function() {
+    var wrapper = $('.wrapper');
+    if (window.localStorage && window.localStorage['jitamin.stickySidebar'] == 'true') {
+        wrapper.removeClass("wrapper-collapsed");
+        wrapper.find(".sidebar").show();
+    } else {
+        wrapper.addClass("wrapper-collapsed");
+        wrapper.find(".sidebar").hide();
+    }
+};
+
 Jitamin.App.prototype.focus = function() {
     // Auto-select input fields
     $(document).on('focus', '.auto-select', function() {
@@ -96,9 +108,11 @@ Jitamin.App.prototype.sidebarToggle = function() {
         if (wrapper.hasClass("wrapper-collapsed")) {
             wrapper.find(".sidebar").show("slow");
             wrapper.removeClass("wrapper-collapsed");
+            window.localStorage.setItem('jitamin.stickySidebar', true);
         } else {
             wrapper.find(".sidebar").hide("slow");
             wrapper.addClass("wrapper-collapsed");
+            window.localStorage.setItem('jitamin.stickySidebar', false);
         }
     });
 };
