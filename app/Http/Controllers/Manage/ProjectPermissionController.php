@@ -137,7 +137,7 @@ class ProjectPermissionController extends Controller
             $values['group_id'] = $this->groupModel->getOrCreateExternalGroupId($values['name'], $values['external_id']);
         }
 
-        if ($this->projectGroupRoleModel->addGroup($project['id'], $values['group_id'], $values['role'])) {
+        if (!empty($values['group_id']) && $this->projectGroupRoleModel->addGroup($project['id'], $values['group_id'], $values['role'])) {
             $this->flash->success(t('Project updated successfully.'));
         } else {
             $this->flash->failure(t('Unable to update this project.'));
