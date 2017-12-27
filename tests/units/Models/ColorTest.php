@@ -97,6 +97,6 @@ class ColorTest extends Base
         $css = $colorModel->getCss();
 
         $this->assertStringStartsWith('div.color-white {', $css);
-        $this->assertStringEndsWith('td.color-amber { background-color: #FFE082}', $css);
+        $this->assertStringEndsWith('td.color-amber { background-color: #CCCCCC}', $css);
     }
 }
