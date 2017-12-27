@@ -29,17 +29,17 @@ class ColorTest extends Base
     {
         $colorModel = new ColorModel($this->container);
         $expected = [
-            'name'       => 'Light Green',
-            'background' => '#DCEDC8',
-            'border'     => '#689F38',
+            'name'              => 'Light Green',
+            'border-left-color' => '#DCEDC8',
+            'border-width'      => '3px',
         ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('light_green'));
 
         $expected = [
-            'name'       => 'Yellow',
-            'background' => '#F5F7C4',
-            'border'     => '#DFE32D',
+            'name'              => 'Yellow',
+            'border-left-color' => '#F5F7C4',
+            'border-width'      => '3px',
         ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('foobar'));
@@ -79,16 +79,16 @@ class ColorTest extends Base
         $this->assertCount(17, $colors);
     }
 
-    public function testGetBorderColor()
+    public function testGetBorderWidth()
     {
         $colorModel = new ColorModel($this->container);
-        $this->assertEquals('#4AE371', $colorModel->getBorderColor('green'));
+        $this->assertEquals('3px', $colorModel->getBorderWidth('green'));
     }
 
-    public function testGetBackgroundColor()
+    public function testGetBorderLeftColor()
     {
         $colorModel = new ColorModel($this->container);
-        $this->assertEquals('#BDF4CB', $colorModel->getBackgroundColor('green'));
+        $this->assertEquals('#BDF4CB', $colorModel->getBorderLeftColor('green'));
     }
 
     public function testGetCss()

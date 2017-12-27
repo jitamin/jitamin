@@ -35,7 +35,7 @@ class ProjectController extends Controller
             ->calculateOnlyIf($this->request->getStringParam('pagination') === 'projects');
 
         $this->response->html($this->helper->layout->dashboard('dashboard/project/index', [
-            'title'     => t('Dashboard'),
+            'title'     => t('My projects'),
             'paginator' => $paginator,
             'user'      => $user,
         ]));
