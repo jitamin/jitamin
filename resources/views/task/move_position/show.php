@@ -41,6 +41,6 @@
 </script>
 
 <task-move-position
-    store-url="<?= $this->url->href('Task/TaskMovePositionController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>"
+    save-url="<?= $this->url->href('Task/TaskMovePositionController', 'store', ['task_id' => $task['id'], 'project_id' => $task['project_id']]) ?>"
     :board='<?= json_encode($board, JSON_HEX_APOS) ?>'
 ></task-move-position>
