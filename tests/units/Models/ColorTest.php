@@ -29,17 +29,17 @@ class ColorTest extends Base
     {
         $colorModel = new ColorModel($this->container);
         $expected = [
-            'name'       => 'Light Green',
-            'background' => '#DCEDC8',
-            'border'     => '#689F38',
+            'name'              => 'Light Green',
+            'border-left-color' => '#DCEDC8',
+            'border-width'      => '3px',
         ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('light_green'));
 
         $expected = [
-            'name'       => 'Yellow',
-            'background' => '#F5F7C4',
-            'border'     => '#DFE32D',
+            'name'              => 'Yellow',
+            'border-left-color' => '#F5F7C4',
+            'border-width'      => '3px',
         ];
 
         $this->assertEquals($expected, $colorModel->getColorProperties('foobar'));
