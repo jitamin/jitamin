@@ -26,88 +26,88 @@ class ColorModel extends Model
     private $default_colors = [
         'white' => [
             'name'       => 'White',
-            'background' => '#FFFFFF',
-            'border'     => '#CCCCCC',
+            'border-left-color' => '#FFFFFF',
+            'border-width'     => '4px',
         ],
         'yellow' => [
             'name'       => 'Yellow',
-            'background' => '#F5F7C4',
-            'border'     => '#DFE32D',
+            'border-left-color' => '#F5F7C4',
+            'border-width'     => '4px',
         ],
         'blue' => [
             'name'       => 'Blue',
-            'background' => '#DBEBFF',
-            'border'     => '#A8CFFF',
+            'border-left-color' => '#DBEBFF',
+            'border-width'     => '4px',
         ],
         'green' => [
             'name'       => 'Green',
-            'background' => '#BDF4CB',
-            'border'     => '#4AE371',
+            'border-left-color' => '#BDF4CB',
+            'border-width'     => '4px',
         ],
         'purple' => [
             'name'       => 'Purple',
-            'background' => '#DFB0FF',
-            'border'     => '#CD85FE',
+            'border-left-color' => '#DFB0FF',
+            'border-width'     => '4px',
         ],
         'red' => [
             'name'       => 'Red',
-            'background' => '#FFBBBB',
-            'border'     => '#FF9797',
+            'border-left-color' => '#FFBBBB',
+            'border-width'     => '4px',
         ],
         'orange' => [
             'name'       => 'Orange',
-            'background' => '#FFD7B3',
-            'border'     => '#FFAC62',
+            'border-left-color' => '#FFD7B3',
+            'border-width'     => '4px',
         ],
         'grey' => [
             'name'       => 'Grey',
-            'background' => '#EEEEEE',
-            'border'     => '#BBBBBB',
+            'border-left-color' => '#EEEEEE',
+            'border-width'     => '4px',
         ],
         'brown' => [
             'name'       => 'Brown',
-            'background' => '#D7CCC8',
-            'border'     => '#4E342E',
+            'border-left-color' => '#D7CCC8',
+            'border-width'     => '4px',
         ],
         'deep_orange' => [
             'name'       => 'Deep Orange',
-            'background' => '#FFAB91',
-            'border'     => '#E64A19',
+            'border-left-color' => '#FFAB91',
+            'border-width'     => '4px',
         ],
         'dark_grey' => [
             'name'       => 'Dark Grey',
-            'background' => '#CFD8DC',
-            'border'     => '#455A64',
+            'border-left-color' => '#CFD8DC',
+            'border-width'     => '4px',
         ],
         'pink' => [
             'name'       => 'Pink',
-            'background' => '#F48FB1',
-            'border'     => '#D81B60',
+            'border-left-color' => '#F48FB1',
+            'border-width'     => '4px',
         ],
         'teal' => [
             'name'       => 'Teal',
-            'background' => '#80CBC4',
-            'border'     => '#00695C',
+            'border-left-color' => '#80CBC4',
+            'border-width'     => '4px',
         ],
         'cyan' => [
             'name'       => 'Cyan',
-            'background' => '#B2EBF2',
-            'border'     => '#00BCD4',
+            'border-left-color' => '#B2EBF2',
+            'border-width'     => '4px',
         ],
         'lime' => [
             'name'       => 'Lime',
-            'background' => '#E6EE9C',
-            'border'     => '#AFB42B',
+            'border-left-color' => '#E6EE9C',
+            'border-width'     => '4px',
         ],
         'light_green' => [
             'name'       => 'Light Green',
-            'background' => '#DCEDC8',
-            'border'     => '#689F38',
+            'border-left-color' => '#DCEDC8',
+            'border-width'     => '4px',
         ],
         'amber' => [
             'name'       => 'Amber',
-            'background' => '#FFE082',
-            'border'     => '#FFA000',
+            'border-left-color' => '#FFE082',
+            'border-width'     => '4px',
         ],
     ];
 
@@ -228,10 +228,10 @@ class ColorModel extends Model
 
         foreach ($this->default_colors as $color => $values) {
             $buffer .= 'div.color-'.$color.' {';
-            $buffer .= 'background-color: '.$values['background'].';';
-            $buffer .= 'border-color: '.$values['border'];
+            $buffer .= 'border-left-width: '.$values['border-width'].';';
+            $buffer .= 'border-left-color: '.$values['border-left-color'];
             $buffer .= '}';
-            $buffer .= 'td.color-'.$color.' { background-color: '.$values['background'].'}';
+            $buffer .= 'td.color-'.$color.' { background-color: '.$values['border-left-color'].'}';
         }
 
         return $buffer;
