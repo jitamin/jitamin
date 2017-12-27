@@ -79,16 +79,16 @@ class ColorTest extends Base
         $this->assertCount(17, $colors);
     }
 
-    public function testGetBorderColor()
+    public function testGetBorderWidth()
     {
         $colorModel = new ColorModel($this->container);
-        $this->assertEquals('#4AE371', $colorModel->getBorderColor('green'));
+        $this->assertEquals('3px', $colorModel->getBorderWidth('green'));
     }
 
-    public function testGetBackgroundColor()
+    public function testGetBorderLeftColor()
     {
         $colorModel = new ColorModel($this->container);
-        $this->assertEquals('#BDF4CB', $colorModel->getBackgroundColor('green'));
+        $this->assertEquals('#BDF4CB', $colorModel->getBorderLeftColor('green'));
     }
 
     public function testGetCss()

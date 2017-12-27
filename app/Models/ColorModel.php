@@ -190,31 +190,31 @@ class ColorModel extends Model
     }
 
     /**
-     * Get border color from string.
+     * Get border width from string.
      *
      * @param string $color_id Color id
      *
      * @return string
      */
-    public function getBorderColor($color_id)
+    public function getBorderWidth($color_id)
     {
         $color = $this->getColorProperties($color_id);
 
-        return $color['border'];
+        return $color['border-width'];
     }
 
     /**
-     * Get background color from the color_id.
+     * Get border left color from the color_id.
      *
      * @param string $color_id Color id
      *
      * @return string
      */
-    public function getBackgroundColor($color_id)
+    public function getBorderLeftColor($color_id)
     {
         $color = $this->getColorProperties($color_id);
 
-        return $color['background'];
+        return $color['border-left-color'];
     }
 
     /**
