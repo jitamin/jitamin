@@ -26,7 +26,7 @@ class ColorModel extends Model
     private $default_colors = [
         'white' => [
             'name'              => 'White',
-            'border-left-color' => '#FFFFFF',
+            'border-left-color' => '#cccccc',
             'border-width'      => '3px',
         ],
         'yellow' => [
