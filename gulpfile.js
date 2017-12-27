@@ -45,11 +45,11 @@ var vendor = {
     base: [
         'vendor/bower_components/moment/min/moment.min.js',
         'vendor/bower_components/fullcalendar/dist/fullcalendar.min.js',
+        'vendor/bower_components/fullcalendar/dist/locale-all.js'
     ],
     extra: [
         'vendor/bower_components/chosen/chosen.jquery.js',
         'vendor/bower_components/select2/dist/js/select2.min.js',
-        'vendor/bower_components/fullcalendar/dist/lang-all.js',
         'vendor/bower_components/mousetrap/mousetrap.min.js',
         'vendor/bower_components/mousetrap/plugins/global-bind/mousetrap-global-bind.min.js',
         'vendor/bower_components/d3/d3.min.js',
