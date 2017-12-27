@@ -86,7 +86,7 @@ class ApiTokenAuth extends Base implements PasswordAuthenticationProviderInterfa
     /**
      * Get user object.
      *
-     * @return \Kanboard\User\DatabaseUserProvider
+     * @return Jitamin\Services\Identity\DatabaseUserProvider
      */
     public function getUser()
     {

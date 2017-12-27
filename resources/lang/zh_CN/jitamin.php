@@ -601,7 +601,7 @@ return [
     'Secret key: ' => '密码：',
     'Test your device' => '测试设备（使用双重认证客户端扫描二维码，如2STP）',
     'Assign a color when the task is moved to a specific column' => '任务移动到指定栏目，设置颜色',
-    '%s via Jitamin' => '%s 通过KanBoard',
+    '%s via Jitamin' => '%s 来自 Jitamin',
     'Burndown chart' => '燃尽图',
     'This chart show the task complexity over the time (Work Remaining).' => '图表显示任务随时间(剩余时间)的复杂度',
     'Screenshot taken %s' => '已截图 %s',
