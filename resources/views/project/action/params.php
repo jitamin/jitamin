@@ -20,6 +20,9 @@
         <?php if ($this->text->contains($param_name, 'column_id')): ?>
             <?= $this->form->label($param_desc, $param_name) ?>
             <?= $this->form->select('params['.$param_name.']', $columns_list, $values) ?>
+        <?php elseif ($this->text->contains($param_name, 'comparison')): ?>
+            <?= $this->form->label($param_desc, $param_name) ?>
+            <?= $this->form->select('params['.$param_name.']', $comparisons_list, $values) ?>
         <?php elseif ($this->text->contains($param_name, 'user_id')): ?>
             <?= $this->form->label($param_desc, $param_name) ?>
             <?= $this->form->select('params['.$param_name.']', $users_list, $values) ?>

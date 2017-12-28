@@ -15,18 +15,26 @@
 <?php if (empty($actions)): ?>
     <p class="alert"><?= t('There is no action at the moment.') ?></p>
 <?php else: ?>
-    <table class="table-scrolling">
+<table  class="actions-table table-striped"
+        data-save-position-url="<?= $this->url->href('Project/ActionController', 'move', ['project_id' => $project['id']]) ?>">
+        <thead>
         <tr>
+            <th><?= t('ID') ?></th>
             <th><?= t('Automatic actions') ?></th>
             <th><?= t('Action parameters') ?></th>
             <th><?= t('Action') ?></th>
         </tr>
-
+        </thead>
+        <tbody>
         <?php foreach ($actions as $action): ?>
-        <tr>
+        <tr data-action-id="<?= $action['id'] ?>">
+            <td>
+                <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change category position') ?>"></i> <?= $action['id'] ?>
+            </td>
             <td>
                 <ul>
                     <li>
+
                         <?= t('Event name') ?> =
                         <strong><?= $this->text->in($action['event_name'], $available_events) ?></strong>
                     </li>
@@ -69,5 +77,6 @@
             </td>
         </tr>
         <?php endforeach ?>
+        </tbody>
     </table>
 <?php endif ?>

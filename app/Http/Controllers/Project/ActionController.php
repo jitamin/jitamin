@@ -59,6 +59,22 @@ class ActionController extends Controller
     }
 
     /**
+     * Move action position.
+     */
+    public function move()
+    {
+        $project = $this->getProject();
+        $values = $this->request->getJson();
+
+        if (!empty($values) && isset($values['action_id']) && isset($values['position'])) {
+            $result = $this->actionModel->changePosition($project['id'], $values['action_id'], $values['position']);
+            $this->response->json(['result' => $result]);
+        } else {
+            throw new AccessForbiddenException();
+        }
+    }
+
+    /**
      * Choose the event according to the action (step 2).
      */
     public function event()
@@ -106,6 +122,20 @@ class ActionController extends Controller
             'columns_list'      => $this->columnModel->getList($project['id']),
             'users_list'        => $this->projectUserRoleModel->getAssignableUsersList($project['id']),
             'projects_list'     => $projects_list,
+            'comparisons_list'  => [
+                '==' => t('is equal to'),
+                '!=' => t('is different from'),
+                '<'  => t('is less than'),
+                '>'  => t('is greater than'),
+                '<=' => t('is less than or equal to'),
+                '>=' => t('is greater than or equal to'),
+                /*
+                '=~' => t('contains'),
+                '!~' => t('does not contain'),
+                '=x' => t('regex match'),
+                '!x' => t('regex does not match'),
+                */
+            ],
             'colors_list'       => $this->colorModel->getList(),
             'categories_list'   => $this->categoryModel->getList($project['id']),
             'links_list'        => $this->linkModel->getList(0, false),

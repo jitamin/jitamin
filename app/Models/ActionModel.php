@@ -38,7 +38,7 @@ class ActionModel extends Model
         $actions = [];
 
         if (!empty($project_ids)) {
-            $actions = $this->db->table(self::TABLE)->in('project_id', $project_ids)->findAll();
+            $actions = $this->db->table(self::TABLE)->in('project_id', $project_ids)->asc('position')->findAll();
             $params = $this->actionParameterModel->getAllByActions(array_column($actions, 'id'));
             $this->attachParamsToActions($actions, $params);
         }
@@ -55,7 +55,7 @@ class ActionModel extends Model
      */
     public function getAllByProject($project_id)
     {
-        $actions = $this->db->table(self::TABLE)->eq('project_id', $project_id)->findAll();
+        $actions = $this->db->table(self::TABLE)->eq('project_id', $project_id)->asc('position')->findAll();
         $params = $this->actionParameterModel->getAllByActions(array_column($actions, 'id'));
 
         return $this->attachParamsToActions($actions, $params);
@@ -68,7 +68,7 @@ class ActionModel extends Model
      */
     public function getAll()
     {
-        $actions = $this->db->table(self::TABLE)->findAll();
+        $actions = $this->db->table(self::TABLE)->asc('position')->findAll();
         $params = $this->actionParameterModel->getAll();
 
         return $this->attachParamsToActions($actions, $params);
@@ -209,5 +209,38 @@ class ActionModel extends Model
         }
 
         return true;
+    }
+
+    /**
+     * Change action position.
+     *
+     * @param int $project_id
+     * @param int $action_id
+     * @param int $position
+     *
+     * @return bool
+     */
+    public function changePosition($project_id, $action_id, $position)
+    {
+        if ($position < 1 || $position > $this->db->table(self::TABLE)->eq('project_id', $project_id)->count()) {
+            return false;
+        }
+
+        $action_ids = $this->db->table(self::TABLE)->eq('project_id', $project_id)->neq('id', $action_id)->asc('position')->findAllByColumn('id');
+        $offset = 1;
+        $results = [];
+
+        foreach ($action_ids as $current_action_id) {
+            if ($offset == $position) {
+                $offset++;
+            }
+
+            $results[] = $this->db->table(self::TABLE)->eq('id', $current_action_id)->update(['position' => $offset]);
+            $offset++;
+        }
+
+        $results[] = $this->db->table(self::TABLE)->eq('id', $action_id)->update(['position' => $position]);
+
+        return !in_array(false, $results, true);
     }
 }

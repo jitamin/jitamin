@@ -50,6 +50,7 @@ class TaskMoveColumnProgressChange extends Base
         return [
             'dest_column_id' => t('Destination column'),
             'progress'       => t('Progress'),
+            'comparison'     => t('Comparison'),
         ];
     }
 
@@ -100,6 +101,8 @@ class TaskMoveColumnProgressChange extends Base
      */
     public function hasRequiredCondition(array $data)
     {
-        return $data['task']['column_id'] != $this->getParam('dest_column_id') && $data['task']['progress'] == $this->getParam('progress');
+        $operator = $this->getParam('comparison') ?: '==';
+
+        return $data['task']['column_id'] != $this->getParam('dest_column_id') && eval("return {$data['task']['progress']}{$operator}{$this->getParam('progress')};");
     }
 }
