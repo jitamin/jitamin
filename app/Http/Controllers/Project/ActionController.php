@@ -130,10 +130,10 @@ class ActionController extends Controller
                 '<=' => t('is less than or equal to'),
                 '>=' => t('is greater than or equal to'),
                 /*
-                '=~' => 'Contains',
-                '!~' => 'Does not contain',
-                '=x' => 'Regex match',
-                '!x' => 'Regex does not match',
+                '=~' => t('contains'),
+                '!~' => t('does not contain'),
+                '=x' => t('regex match'),
+                '!x' => t('regex does not match'),
                 */
             ],
             'colors_list'       => $this->colorModel->getList(),
