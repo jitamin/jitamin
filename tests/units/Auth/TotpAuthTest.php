@@ -64,11 +64,10 @@ class TotpAuthTest extends Base
         $this->assertNotEmpty($secret);
         $provider->setCode('1234');
         $this->assertFalse($provider->authenticate());
-        if (!!`which oathtool`) {
+        if ((bool) `which oathtool`) {
             $code = shell_exec('oathtool --totp -b '.$secret);
             $provider->setCode(trim($code));
             $this->assertTrue($provider->authenticate());
         }
     }
-
 }
