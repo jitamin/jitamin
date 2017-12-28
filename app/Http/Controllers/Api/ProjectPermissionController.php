@@ -36,7 +36,7 @@ class ProjectPermissionController extends Controller
     /**
      * Get list of users that can be assigned to a task (only Manager and Member).
      *
-     * @param int  $project_id Project id
+     * @param int  $project_id         Project id
      * @param bool $prepend_unassigned Prepend the 'Unassigned' value
      *
      * @return array
