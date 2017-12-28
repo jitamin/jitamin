@@ -35,7 +35,7 @@ abstract class BaseMiddleware extends Base
      *
      * @return BaseMiddleware
      */
-    public function setNextMiddleware(BaseMiddleware $nextMiddleware)
+    public function setNextMiddleware(self $nextMiddleware)
     {
         $this->nextMiddleware = $nextMiddleware;
 
