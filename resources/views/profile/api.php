@@ -14,4 +14,4 @@
     <?= $this->url->link(t('Remove your token'), 'Profile/ProfileController', 'removeApiToken', ['user_id' => $user['id']], true, 'btn btn-red') ?>
 <?php endif ?>
 
-<?= $this->url->link(t('Generate a new token'), 'Profile/ProfileController', 'generateApiToken', ['user_id' => $user['id']], true, 'btn btn-blue') ?>
+<?= $this->url->link(t('Generate a new token'), 'Profile/ProfileController', 'generateApiToken', ['user_id' => $user['id']], true, 'btn btn-success') ?>

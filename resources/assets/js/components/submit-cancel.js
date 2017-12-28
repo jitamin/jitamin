@@ -1,7 +1,7 @@
 Vue.component('submit-cancel', {
     props: ['labelButton', 'labelOr', 'labelCancel', 'callback'],
     template: '<div class="form-actions">' +
-              '<button type="button" class="btn btn-blue" @click="onSubmit" :disabled="isLoading">' +
+              '<button type="button" class="btn btn-success" @click="onSubmit" :disabled="isLoading">' +
               '<span v-show="isLoading"><i class="fa fa-spinner fa-pulse"></i> </span>' +
               '{{ labelButton }}' +
               '</button> ' +
