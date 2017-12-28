@@ -32,4 +32,5 @@ return [
     'open' => '打开',
     'closed' => '已关闭',
     'Add' => '添加',
+    'Finish' => '已完成',
 ];

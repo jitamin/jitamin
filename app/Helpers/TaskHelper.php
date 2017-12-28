@@ -405,8 +405,9 @@ class TaskHelper extends Base
         $html = $this->helper->form->label(t('Progress'), 'progress');
         $html .= $this->helper->form->number('progress', $values, $errors, $attributes);
 
-        $html .= '&nbsp;';
-        $html .= '<small>%</small>';
+        $html .= '&nbsp;<small>% ';
+        $html .= '<a href="#" class="progress-assign" data-progress-value="100" title="'.t('Finish this task').'"><i class="fa fa-check"></i> '.t('Finish').'</a>';
+        $html .= '</small>';
 
         return $html;
     }
