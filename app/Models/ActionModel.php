@@ -38,7 +38,7 @@ class ActionModel extends Model
         $actions = [];
 
         if (!empty($project_ids)) {
-            $actions = $this->db->table(self::TABLE)->in('project_id', $project_ids)->findAll();
+            $actions = $this->db->table(self::TABLE)->in('project_id', $project_ids)->orderBy('position', 'asc')->findAll();
             $params = $this->actionParameterModel->getAllByActions(array_column($actions, 'id'));
             $this->attachParamsToActions($actions, $params);
         }
@@ -55,7 +55,7 @@ class ActionModel extends Model
      */
     public function getAllByProject($project_id)
     {
-        $actions = $this->db->table(self::TABLE)->eq('project_id', $project_id)->findAll();
+        $actions = $this->db->table(self::TABLE)->eq('project_id', $project_id)->orderBy('position', 'asc')->findAll();
         $params = $this->actionParameterModel->getAllByActions(array_column($actions, 'id'));
 
         return $this->attachParamsToActions($actions, $params);
@@ -68,7 +68,7 @@ class ActionModel extends Model
      */
     public function getAll()
     {
-        $actions = $this->db->table(self::TABLE)->findAll();
+        $actions = $this->db->table(self::TABLE)->orderBy('position', 'asc')->findAll();
         $params = $this->actionParameterModel->getAll();
 
         return $this->attachParamsToActions($actions, $params);
