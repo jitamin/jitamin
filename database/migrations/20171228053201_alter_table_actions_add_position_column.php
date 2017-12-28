@@ -19,7 +19,7 @@ class AlterTableActionsAddPositionColumn extends AbstractMigration
     public function change()
     {
         $table = $this->table('actions');
-        $table->addColumn('position', 'integer', ['null' => true, 'default' => 0, 'after' => 'action_name'])
+        $table->addColumn('position', 'integer', ['null' => true, 'default' => 1, 'after' => 'action_name'])
               ->update();
     }
 }

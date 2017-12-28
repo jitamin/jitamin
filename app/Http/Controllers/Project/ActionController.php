@@ -59,6 +59,22 @@ class ActionController extends Controller
     }
 
     /**
+     * Move category position.
+     */
+    public function move()
+    {
+        $project = $this->getProject();
+        $values = $this->request->getJson();
+
+        if (!empty($values) && isset($values['action_id']) && isset($values['position'])) {
+            $result = $this->actionModel->changePosition($project['id'], $values['action_id'], $values['position']);
+            $this->response->json(['result' => $result]);
+        } else {
+            throw new AccessForbiddenException();
+        }
+    }
+
+    /**
      * Choose the event according to the action (step 2).
      */
     public function event()
