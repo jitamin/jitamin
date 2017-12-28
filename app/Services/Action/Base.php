@@ -226,7 +226,7 @@ abstract class Base extends \Jitamin\Foundation\Base
     /**
      * Check if the event data has required parameters to execute the action.
      *
-     * @param array $data Event data dictionary
+     * @param array $data       Event data dictionary
      * @param array $parameters
      *
      * @return bool True if all keys are there
