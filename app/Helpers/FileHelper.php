@@ -68,7 +68,7 @@ class FileHelper extends Base
     /**
      * Return the image mimetype based on the file extension.
      *
-     * @param  $filename
+     * @param string $filename
      *
      * @return string
      */
@@ -90,7 +90,7 @@ class FileHelper extends Base
     /**
      * Return the browser view mimetype based on the file extension.
      *
-     * @param  $filename
+     * @param string $filename
      *
      * @return string
      */
@@ -128,7 +128,7 @@ class FileHelper extends Base
     /**
      * Get file extension.
      *
-     * @param  $filename
+     * @param string $filename
      *
      * @return string
      */

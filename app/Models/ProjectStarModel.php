@@ -56,7 +56,7 @@ class ProjectStarModel extends Model
     /**
      * Get query to fetch all project ids.
      *
-     * @param int $project_id
+     * @param int $user_id
      *
      * @return \PicoDb\Table
      */
@@ -70,7 +70,7 @@ class ProjectStarModel extends Model
     /**
      * Get all stargazers.
      *
-     * @param int $group_id
+     * @param int $project_id
      *
      * @return array
      */
@@ -82,7 +82,7 @@ class ProjectStarModel extends Model
     /**
      * Add stargazer to a project.
      *
-     * @param int $group_id
+     * @param int $project_id
      * @param int $user_id
      *
      * @return bool

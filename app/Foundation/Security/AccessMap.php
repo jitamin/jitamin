@@ -116,6 +116,7 @@ class AccessMap
      * @param string $controller Controller class name
      * @param mixed  $methods    List of method name or just one method
      * @param string $role       Lowest role required
+     * @param string $plugin
      *
      * @return AccessMap
      */
@@ -138,6 +139,7 @@ class AccessMap
      * @param string $controller
      * @param string $method
      * @param string $role
+     * @param string $plugin
      *
      * @return AccessMap
      */
@@ -161,6 +163,7 @@ class AccessMap
      *
      * @param string $controller
      * @param string $method
+     * @param string $plugin
      *
      * @return array
      */

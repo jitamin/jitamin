@@ -166,6 +166,9 @@ class AppHelper extends Base
     /**
      * Get default view of project.
      *
+     * @param string $slug
+     * @param bool   $forController
+     *
      * @return array
      */
     public function getProjectDefaultView($slug = '', $forController = false)
@@ -202,6 +205,8 @@ class AppHelper extends Base
 
     /**
      * Get current dashboard.
+     *
+     * @param bool $forController
      *
      * @return array
      */

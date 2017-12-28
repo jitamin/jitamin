@@ -37,7 +37,7 @@ class ResetPasswordCommand extends BaseCommand
     /**
      * Execute the console command.
      *
-     * @param InputInterface  $output
+     * @param InputInterface  $input
      * @param OutputInterface $output
      *
      * @return void

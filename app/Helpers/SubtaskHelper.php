@@ -86,6 +86,7 @@ class SubtaskHelper extends Base
     /**
      * Display a select field of assignee.
      *
+     * @param array $users
      * @param array $values     Form values
      * @param array $errors     Form errors
      * @param array $attributes

@@ -36,8 +36,8 @@ class RememberMeSessionModel extends Model
     /**
      * Get a remember me record.
      *
-     * @param $token
-     * @param $sequence
+     * @param string $token
+     * @param string $sequence
      *
      * @return mixed
      */

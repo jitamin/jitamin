@@ -24,7 +24,7 @@ abstract class Controller extends Base
     /**
      * Before action.
      *
-     * @param string $role
+     * @param string $method
      *
      * @return void
      */
