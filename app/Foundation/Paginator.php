@@ -116,7 +116,7 @@ class Paginator
     /**
      * Set a PicoDb query.
      *
-     * @param  \PicoDb\Table
+     * @param \PicoDb\Table $query
      *
      * @return Paginator
      */

@@ -194,7 +194,7 @@ class Route extends Base
     /**
      * Find url params.
      *
-     * @param array $items
+     * @param array $path
      *
      * @return array
      */

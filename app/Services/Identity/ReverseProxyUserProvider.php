@@ -37,6 +37,7 @@ class ReverseProxyUserProvider implements UserProviderInterface
      * Constructor.
      *
      * @param string $username
+     * @param array  $userProfile
      */
     public function __construct($username, array $userProfile = [])
     {

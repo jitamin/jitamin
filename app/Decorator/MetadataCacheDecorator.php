@@ -78,8 +78,8 @@ class MetadataCacheDecorator
     /**
      * Set new metadata value.
      *
-     * @param $key
-     * @param $value
+     * @param string $key
+     * @param mixed  $value
      */
     public function set($key, $value)
     {

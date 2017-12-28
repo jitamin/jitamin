@@ -65,8 +65,8 @@ class UserImportController extends Controller
     /**
      * Process file.
      *
-     * @param array $values
-     * @param       $filename
+     * @param array  $values
+     * @param string $filename
      */
     protected function importFile(array $values, $filename)
     {
