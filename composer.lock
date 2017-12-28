@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8d852bef7b757411a39d9881f46091e0",
+    "content-hash": "90ffce3b4bf206af2410dc9bd54b52d8",
     "packages": [
         {
             "name": "christian-riesen/otp",
@@ -3344,7 +3344,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.9",
+        "php": ">=5.6.0",
         "ext-gd": "*",
         "ext-mbstring": "*",
         "ext-hash": "*",
