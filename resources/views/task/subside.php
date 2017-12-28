@@ -6,12 +6,8 @@
             <?= $this->url->link(t('Edit the task'), 'Task/TaskController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover large') ?>
         </li>
         <li>
-            <i class="fa fa-refresh fa-rotate-90 fa-fw"></i>
-            <?= $this->url->link(t('Edit recurrence'), 'Task/TaskRecurrenceController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
-        </li>
-        <li>
             <i class="fa fa-plus fa-fw"></i>
-            <?= $this->url->link(t('Add a sub-task'), 'Task/Subtask/SubtaskController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+            <?= $this->url->link(t('Add a sub-task'), 'Task/Subtask/SubtaskController', 'create', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover small') ?>
         </li>
         <li>
             <i class="fa fa-code-fork fa-fw"></i>
@@ -44,6 +40,10 @@
         <li>
             <i class="fa fa-clone fa-fw"></i>
             <?= $this->url->link(t('Move to another project'), 'Task/TaskDuplicationController', 'move', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
+        </li>
+        <li>
+            <i class="fa fa-refresh fa-rotate-90 fa-fw"></i>
+            <?= $this->url->link(t('Edit recurrence'), 'Task/TaskRecurrenceController', 'edit', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'popover') ?>
         </li>
         <?php if ($task['is_active'] == 1 && $this->projectRole->isSortableColumn($task['project_id'], $task['column_id'])): ?>
             <li>

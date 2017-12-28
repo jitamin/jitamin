@@ -141,12 +141,14 @@
                         <span><?= $this->dt->datetime($task['date_started']) ?></span>
                     </li>
                     <?php endif ?>
+                    <!--
                     <?php if ($task['date_moved']): ?>
                     <li>
                         <?= t('Moved:') ?>
                         <span><?= $this->dt->datetime($task['date_moved']) ?></span>
                     </li>
                     <?php endif ?>
+                    -->
 
                     <?= $this->hook->render('template:task:details:fourth-column', ['task' => $task]) ?>
                 </ul>
@@ -164,7 +166,7 @@
     </div>
 
     <?php if ($editable && empty($task['date_started'])): ?>
-        <?= $this->url->button('fa-play', t('Set start date'), 'Task/TaskController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-default btn-header') ?>
+        <?= $this->url->button('fa-play', t('Set start date'), 'Task/TaskController', 'start', ['task_id' => $task['id'], 'project_id' => $task['project_id']], 'btn-success btn-header') ?>
     <?php endif ?>
 
     <?= $this->hook->render('template:task:details:bottom', ['task' => $task]) ?>
