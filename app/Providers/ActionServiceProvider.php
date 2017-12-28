@@ -42,6 +42,7 @@ use Jitamin\Action\TaskMoveColumnAssigned;
 use Jitamin\Action\TaskMoveColumnCategoryChange;
 use Jitamin\Action\TaskMoveColumnClosed;
 use Jitamin\Action\TaskMoveColumnNotMovedPeriod;
+use Jitamin\Action\TaskMoveColumnProgressChange;
 use Jitamin\Action\TaskMoveColumnUnAssigned;
 use Jitamin\Action\TaskOpen;
 use Jitamin\Action\TaskUpdateStartDate;
@@ -90,6 +91,7 @@ class ActionServiceProvider implements ServiceProviderInterface
         $container['actionManager']->register(new TaskMoveAnotherProject($container));
         $container['actionManager']->register(new TaskMoveColumnAssigned($container));
         $container['actionManager']->register(new TaskMoveColumnCategoryChange($container));
+        $container['actionManager']->register(new TaskMoveColumnProgressChange($container));
         $container['actionManager']->register(new TaskMoveColumnClosed($container));
         $container['actionManager']->register(new TaskMoveColumnNotMovedPeriod($container));
         $container['actionManager']->register(new TaskMoveColumnUnAssigned($container));

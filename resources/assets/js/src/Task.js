@@ -43,6 +43,15 @@ Jitamin.Task.prototype.onPopoverOpened = function() {
         }
     });
 
+    // Finish
+    $(document).on("click", ".progress-assign", function(e) {
+        var progressValue = $(this).data("progress-value");
+
+        e.preventDefault();
+
+        $('#form-progress').val(progressValue);
+    });
+
     // Reload page when a destination project is changed
     $(document).on("change", "select.task-reload-project-destination", function() {
         if (reloadingProjectId > 0) {
