@@ -59,7 +59,7 @@ class ActionController extends Controller
     }
 
     /**
-     * Move category position.
+     * Move action position.
      */
     public function move()
     {
