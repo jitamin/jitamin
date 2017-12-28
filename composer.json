@@ -28,7 +28,7 @@
         "fguillot/simple-validator" : "1.0.1",
         "fguillot/simple-queue" : "1.0.1",
         "nesbot/carbon": "~1.21",
-        "paragonie/random_compat": "2.0.2",
+        "paragonie/random_compat": "^2.0",
         "christian-riesen/otp" : "^2.0",
         "swiftmailer/swiftmailer" : "5.4.5",
         "symfony/console" : "~3.1",
