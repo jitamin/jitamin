@@ -128,8 +128,8 @@ class AttachmentController extends Controller
     /**
      * Output file with cache.
      *
-     * @param array $file
-     * @param $mimetype
+     * @param array  $file
+     * @param string $mimetype
      */
     protected function renderFileWithCache(array $file, $mimetype)
     {

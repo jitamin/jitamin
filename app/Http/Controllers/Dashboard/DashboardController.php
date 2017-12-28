@@ -125,6 +125,8 @@ class DashboardController extends Controller
 
     /**
      * Prepare data for slider.
+     *
+     * @param array $projectIds
      */
     protected function prepareForSlider(array $projectIds)
     {

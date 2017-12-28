@@ -118,6 +118,7 @@ class Router extends Base
      *
      * @param string $value
      * @param string $default
+     * @param bool   $is_controller
      *
      * @return string
      */

@@ -100,8 +100,8 @@ class TaskHelper extends Base
     /**
      * Display a select field of tags.
      *
-     * @param array $values Form values
-     * @param array $targs  Form tags
+     * @param array $project Form values
+     * @param array $tags    Form tags
      *
      * @return string
      */
@@ -191,10 +191,10 @@ class TaskHelper extends Base
      * Display a select field of category.
      *
      * @param array $categories
-     * @param array $values     Form values
-     * @param array $errors     Form errors
+     * @param array $values         Form values
+     * @param array $errors         Form errors
      * @param array $attributes
-     * @param bool allow_one_item
+     * @param bool  $allow_one_item
      *
      * @return string
      */

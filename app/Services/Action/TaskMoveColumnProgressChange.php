@@ -100,9 +100,6 @@ class TaskMoveColumnProgressChange extends Base
      */
     public function hasRequiredCondition(array $data)
     {
-        error_log(var_export($data['task']['progress'], true), 3, '/tmp/gsl.log');
-        error_log(var_export($this->getParam('progress'), true), 3, '/tmp/gsl.log');
-
         return $data['task']['column_id'] != $this->getParam('dest_column_id') && $data['task']['progress'] == $this->getParam('progress');
     }
 }

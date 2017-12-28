@@ -109,6 +109,7 @@ class UserHelper extends Base
      *
      * @param string $controller
      * @param string $action
+     * @param string $plugin
      *
      * @return bool
      */

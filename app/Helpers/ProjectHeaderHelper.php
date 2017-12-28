@@ -53,7 +53,7 @@ class ProjectHeaderHelper extends Base
     /**
      * Get project description.
      *
-     * @param array &$project
+     * @param array $project
      *
      * @return string
      */

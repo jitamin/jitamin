@@ -53,7 +53,7 @@ class AverageLeadCycleTimeAnalytic extends Base
     /**
      * Calculate average.
      *
-     * @param array  &$stats
+     * @param array  $stats
      * @param string $field
      *
      * @return float
@@ -70,7 +70,7 @@ class AverageLeadCycleTimeAnalytic extends Base
     /**
      * Calculate lead time.
      *
-     * @param array &$task
+     * @param array $task
      *
      * @return int
      */
@@ -85,7 +85,7 @@ class AverageLeadCycleTimeAnalytic extends Base
     /**
      * Calculate cycle time.
      *
-     * @param array &$task
+     * @param array $task
      *
      * @return int
      */

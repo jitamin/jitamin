@@ -101,7 +101,7 @@ class MemcachedCache extends BaseCache
     /**
      * Get the UNIX timestamp for the given number of minutes.
      *
-     * @parma  int  $minutes
+     * @param int $minutes
      *
      * @return int
      */

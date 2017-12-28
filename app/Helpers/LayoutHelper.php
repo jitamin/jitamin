@@ -150,6 +150,7 @@ class LayoutHelper extends Base
      *
      * @param string $template
      * @param array  $params
+     * @param string $subside
      *
      * @return string
      */

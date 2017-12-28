@@ -33,6 +33,8 @@ class TaskExternalLinkController extends Controller
     /**
      * Get a dictionary of supported dependency types by the provider.
      *
+     * @param string $providerName
+     *
      * @return array
      */
     public function getExternalTaskLinkProviderDependencies($providerName)

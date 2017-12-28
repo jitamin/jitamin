@@ -107,8 +107,8 @@ class ActionModel extends Model
     /**
      * Attach parameters to actions.
      *
-     * @param array &$actions
-     * @param array &$params
+     * @param array $actions
+     * @param array $params
      *
      * @return array
      */

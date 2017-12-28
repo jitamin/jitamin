@@ -42,7 +42,7 @@ class ActionController extends Controller
     /**
      * Get list of compatible events for a given action.
      *
-     * @param string $name
+     * @param string $action_name
      *
      * @return array
      */

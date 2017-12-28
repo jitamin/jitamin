@@ -39,6 +39,7 @@ class Authorization
      * @param string $controller
      * @param string $method
      * @param string $role
+     * @param string $plugin
      *
      * @return bool
      */
