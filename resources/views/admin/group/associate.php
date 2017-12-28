@@ -12,7 +12,7 @@
         <?= $this->form->select('user_id', $users, $values, $errors, ['required'], 'chosen-select') ?>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+            <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
             <?= t('or') ?>
             <?= $this->url->link(t('cancel'), 'Admin/GroupController', 'index', [], false, 'close-popover') ?>
         </div>

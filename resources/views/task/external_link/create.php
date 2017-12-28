@@ -6,7 +6,7 @@
     <?= $this->render('task/external_link/form', ['task' => $task, 'dependencies' => $dependencies, 'values' => $values, 'errors' => $errors]) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Task/TaskExternalLinkController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>

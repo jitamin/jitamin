@@ -9,7 +9,7 @@
     <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="255"']) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Admin/TagController', 'index', [], false, 'close-popover') ?>
     </div>

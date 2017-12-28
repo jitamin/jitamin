@@ -14,5 +14,5 @@
 
     <?= $this->url->link(t('Disable public access'), 'Manage/ProjectSettingsController', 'updateSharing', ['project_id' => $project['id'], 'switch' => 'disable'], true, 'btn btn-danger') ?>
 <?php else: ?>
-    <?= $this->url->link(t('Enable public access'), 'Manage/ProjectSettingsController', 'updateSharing', ['project_id' => $project['id'], 'switch' => 'enable'], true, 'btn btn-info') ?>
+    <?= $this->url->link(t('Enable public access'), 'Manage/ProjectSettingsController', 'updateSharing', ['project_id' => $project['id'], 'switch' => 'enable'], true, 'btn btn-success') ?>
 <?php endif ?>

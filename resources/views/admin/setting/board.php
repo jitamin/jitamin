@@ -18,6 +18,6 @@
     <p class="form-help"><?= t('Frequency in second (0 to disable this feature, 10 seconds by default)') ?></p>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
     </div>
 </form>

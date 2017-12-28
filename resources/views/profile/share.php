@@ -11,5 +11,5 @@
     </div>
     <?= $this->url->link(t('Disable public access'), 'Profile/ProfileController', 'share', ['user_id' => $user['id'], 'switch' => 'disable'], true, 'btn btn-danger') ?>
 <?php else: ?>
-    <?= $this->url->link(t('Enable public access'), 'Profile/ProfileController', 'share', ['user_id' => $user['id'], 'switch' => 'enable'], true, 'btn btn-info') ?>
+    <?= $this->url->link(t('Enable public access'), 'Profile/ProfileController', 'share', ['user_id' => $user['id'], 'switch' => 'enable'], true, 'btn btn-success') ?>
 <?php endif ?>

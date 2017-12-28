@@ -10,7 +10,7 @@
         <?= $this->form->password('confirmation', $values, $errors) ?>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-info"><?= t('Change Password') ?></button>
+            <button type="submit" class="btn btn-success"><?= t('Change Password') ?></button>
         </div>
     </form>
 </div>

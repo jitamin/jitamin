@@ -21,7 +21,7 @@
     <?= $this->form->textEditor('description', $values, $errors) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Project/Column/ColumnController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>

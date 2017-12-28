@@ -13,6 +13,6 @@
     <?= $this->hook->render('template:config:email', ['values' => $values, 'errors' => $errors]) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
     </div>
 </form>

@@ -46,7 +46,7 @@
     </div>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info" tabindex="15"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success" tabindex="15"><?= t('Save') ?></button>
         <?= t('or') ?> <?= $this->url->link(t('cancel'), 'Project/Board/BoardController', 'show', ['project_id' => $values['project_id']], false, 'close-popover') ?>
     </div>
 </form>

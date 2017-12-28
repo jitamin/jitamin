@@ -11,7 +11,7 @@
     <?= $this->form->text('name', $values, $errors, ['autofocus', 'required', 'maxlength="100"']) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Admin/GroupController', 'index', [], false, 'close-popover') ?>
     </div>

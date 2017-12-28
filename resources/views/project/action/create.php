@@ -9,7 +9,7 @@
     <?= $this->form->select('action_name', $available_actions, $values) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Next step') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Next step') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Project/ActionController', 'index', [], false, 'close-popover') ?>
     </div>

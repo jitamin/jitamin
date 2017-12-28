@@ -9,7 +9,7 @@
         <?php if ($user['twofactor_activated'] == 1): ?>
             <button type="submit" class="btn btn-danger"><?= t('Disable two-factor authentication') ?></button>
         <?php else: ?>
-            <button type="submit" class="btn btn-info"><?= t('Enable two-factor authentication') ?></button>
+            <button type="submit" class="btn btn-success"><?= t('Enable two-factor authentication') ?></button>
         <?php endif ?>
     </div>
 </form>

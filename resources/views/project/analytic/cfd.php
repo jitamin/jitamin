@@ -25,6 +25,6 @@
     </div>
 
     <div class="form-inline-group">
-        <button type="submit" class="btn btn-info"><?= t('Execute') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Execute') ?></button>
     </div>
 </form>

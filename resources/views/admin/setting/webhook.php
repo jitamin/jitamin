@@ -10,7 +10,7 @@
     <?= $this->form->text('webhook_url', $values, $errors) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
     </div>
 </form>
 </section>

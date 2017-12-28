@@ -18,6 +18,6 @@
     <?= $this->form->file('avatar') ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Upload my avatar image') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Upload my avatar image') ?></button>
     </div>
 </form>

@@ -21,7 +21,7 @@
     <?= $this->form->select('type', $types, $values) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Next') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Next') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Task/TaskController', 'show', ['task_id' => $task['id'], 'project_id' => $task['project_id']], false, 'close-popover') ?>
     </div>

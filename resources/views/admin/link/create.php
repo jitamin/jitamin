@@ -13,6 +13,6 @@
     <?= $this->form->text('opposite_label', $values, $errors) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
     </div>
 </form>

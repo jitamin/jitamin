@@ -26,6 +26,6 @@
     <?= $this->form->text('code', [], [], ['placeholder="123456"', 'autofocus'], 'form-numeric') ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Check my code') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Check my code') ?></button>
     </div>
 </form>

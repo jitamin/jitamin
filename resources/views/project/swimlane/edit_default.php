@@ -11,7 +11,7 @@
     <?= $this->form->checkbox('show_default_swimlane', t('Show default swimlane'), 1, $values['show_default_swimlane'] == 1) ?>
 
     <div class="form-actions">
-        <button type="submit" class="btn btn-info"><?= t('Save') ?></button>
+        <button type="submit" class="btn btn-success"><?= t('Save') ?></button>
         <?= t('or') ?>
         <?= $this->url->link(t('cancel'), 'Project/SwimlaneController', 'index', ['project_id' => $project['id']], false, 'close-popover') ?>
     </div>
