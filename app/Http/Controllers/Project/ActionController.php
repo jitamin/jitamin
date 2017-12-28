@@ -106,6 +106,20 @@ class ActionController extends Controller
             'columns_list'      => $this->columnModel->getList($project['id']),
             'users_list'        => $this->projectUserRoleModel->getAssignableUsersList($project['id']),
             'projects_list'     => $projects_list,
+            'comparisons_list'  => [
+                '==' => t('is equal to'),
+                '!=' => t('is different from'),
+                '<'  => t('is less than'),
+                '>'  => t('is greater than'),
+                '<=' => t('is less than or equal to'),
+                '>=' => t('is greater than or equal to'),
+                /*
+                '=~' => 'Contains',
+                '!~' => 'Does not contain',
+                '=x' => 'Regex match',
+                '!x' => 'Regex does not match',
+                */
+            ],
             'colors_list'       => $this->colorModel->getList(),
             'categories_list'   => $this->categoryModel->getList($project['id']),
             'links_list'        => $this->linkModel->getList(0, false),
