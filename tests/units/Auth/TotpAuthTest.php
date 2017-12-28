@@ -56,4 +56,19 @@ class TotpAuthTest extends Base
 
         $this->assertEquals('otpauth://totp/me?secret=mySecret&issuer=Jitamin', $provider->getKeyUrl('me'));
     }
+
+    public function testAuthentication()
+    {
+        $provider = new TotpAuth($this->container);
+        $secret = $provider->generateSecret();
+        $this->assertNotEmpty($secret);
+        $provider->setCode('1234');
+        $this->assertFalse($provider->authenticate());
+        if (!!`which oathtool`) {
+            $code = shell_exec('oathtool --totp -b '.$secret);
+            $provider->setCode(trim($code));
+            $this->assertTrue($provider->authenticate());
+        }
+    }
+
 }
