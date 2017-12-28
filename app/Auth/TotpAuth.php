@@ -11,7 +11,7 @@
 
 namespace Jitamin\Auth;
 
-use Base32\Base32;
+use ParagonIE\ConstantTime\Base32;
 use Jitamin\Foundation\Base;
 use Jitamin\Foundation\Security\PostAuthenticationProviderInterface;
 use Otp\GoogleAuthenticator;
