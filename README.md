@@ -53,14 +53,15 @@ There are a few things that you will need to have set up in order to run Jitamin
 
 ```shell
 $ git clone https://github.com/jitamin/jitamin.git
+$ cd jitamin
 ```
 
-### Adjust the config file
+### Setting the config file
 
 ```shell
 $ cp config/config{.default,}.php
 ```
-> Adjust the `config/config.php` according to your environment, especially the database setting.
+> Adjust the `config/config.php` according to your environment, especially the database settings.
 
 ### Install the PHP dependency packages
 

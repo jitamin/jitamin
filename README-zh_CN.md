@@ -45,6 +45,7 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 
 ```shell
 $ git clone https://github.com/jitamin/jitamin.git
+$ cd jitamin
 ```
 
 二. 设置配置文件
