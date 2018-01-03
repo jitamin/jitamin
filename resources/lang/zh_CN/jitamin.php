@@ -890,7 +890,7 @@ return [
     'Replace' => '替换',
     'Import' => '导入',
     'change sorting' => '切换排序',
-    'Tasks Importation' => '任务重要性',
+    'Tasks Importation' => '任务导入',
     'Delimiter' => '分隔符',
     'Enclosure' => '附件',
     'CSV File' => 'CSV文件',
