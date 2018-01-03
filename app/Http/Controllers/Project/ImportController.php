@@ -31,7 +31,7 @@ class ImportController extends Controller
     {
         $project = $this->getProject();
 
-        $this->response->html($this->helper->layout->project('task_import/show', [
+        $this->response->html($this->helper->layout->project('task/import/show', [
             'project'    => $project,
             'values'     => $values,
             'errors'     => $errors,
@@ -39,7 +39,7 @@ class ImportController extends Controller
             'delimiters' => Csv::getDelimiters(),
             'enclosures' => Csv::getEnclosures(),
             'title'      => t('Import tasks from CSV file'),
-        ], 'task_import/subside'));
+        ], 'task/import/subside'));
     }
 
     /**
