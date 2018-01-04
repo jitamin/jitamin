@@ -24,7 +24,7 @@ return [
     'hide_login_form' => false,
 
     // Enable/disable url rewrite
-    'enable_url_rewrite' => false,
+    'enable_url_rewrite' => true,
 
     // Available db drivers are "mysql", "sqlite" and "pgsql"
     'db_driver' => 'sqlite',
