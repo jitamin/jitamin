@@ -28,11 +28,6 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 
 [版本更新说明](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
 
-## 下一阶段要实现的功能
-
-- [ ] 通过插件与Fixhub集成
-- [ ] 集成twig模板引擎
-
 ## 安装环境要求
 
 - [PHP](http://www.php.net) 5.6或更高(推荐使用PHP7)
@@ -43,8 +38,11 @@ Jitamin (读作/ˈdʒɪtəmɪn/) 是一款免费、开源，使用PHP语言开�
 
 一. 克隆代码
 
+假设我们把jitamin部署在 /var/www
+
 ```shell
-$ git clone https://github.com/jitamin/jitamin.git
+$ cd /var/www
+$ git clone https://github.com/jitamin/jitamin.git jitamin
 $ cd jitamin
 ```
 
@@ -87,9 +85,15 @@ $ php artisan config:cache
 $ php artisan route:cache
 ```
 
-六. 通过浏览器访问
+六. 配置Web服务器
 
-安装完成后，请通过浏览器访问你的Jitamin网址，如：http://jitamin.dev
+请将Web服务器的根目录指向 `public/`, 请参考 [examples/](/examples) 下的相关配置文件，里面包含 Apache和Nginx的配置范例。
+
+> 注意: `examples/` 提供的仅仅是范例，并不能保证直接拷贝就能使用，需要根据实际情况进行相关配置调整。
+
+七. 通过浏览器访问
+
+安装完成后，请通过浏览器访问你的Jitamin网址，如：http://jitamin.yourdomain.com
 
 初始管理员的用户名和密码：
 

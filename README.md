@@ -33,11 +33,6 @@ Jitamin (pronounced /ˈdʒɪtəmɪn/) is a free software written in PHP, intende
 
 [Change Logs](https://github.com/jitamin/jitamin/blob/master/ChangeLog.md)
 
-## TODO
-
-- [ ] integrate Fixhub through plugin
-- [ ] integrate twig template engine
-
 ## Requirements
 
 There are a few things that you will need to have set up in order to run Jitamin:
@@ -52,6 +47,7 @@ There are a few things that you will need to have set up in order to run Jitamin
 ### Get the jitamin source code
 
 ```shell
+$ cd /var/www
 $ git clone https://github.com/jitamin/jitamin.git
 $ cd jitamin
 ```
@@ -97,7 +93,7 @@ $ php artisan route:cache
 
 ### Access the service through web browser
 
-Open your web browser, enter the address such as http://jitamin.dev to  access the web service.
+Open your web browser, enter the address such as http://jitamin.yourdomain.com to  access the web service.
 The initial Super Administrator's user name and password are listed below:
 
 - **username:** `admin` or `admin@admin.com`
