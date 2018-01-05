@@ -41,7 +41,7 @@ class TextHelperTest extends Base
         );
 
         $this->assertEquals(
-            '<p>Task <a href="?controller=Task/TaskController&amp;action=readonly&amp;token='.$project['token'].'&amp;task_id=1">#1</a></p>',
+            '<p>Task <a href="public/task/1/'.$project['token'].'">#1</a></p>',
             $helper->markdown('Task #1', true)
         );
 
