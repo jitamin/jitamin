@@ -30,6 +30,8 @@ Jitamin.Dropdown.prototype.listen = function() {
         if (offset.top + submenuHeight - $(window).scrollTop() < $(window).height() || $(window).scrollTop() + offset.top < submenuHeight) {
             if ($(this).parents('.sidebar').length) {
                 clone.css('top', offset.top - 5);
+            } else if($(this).parents('.navbar').length) {
+                clone.css('top', offset.top + 15 + $(this).height());
             } else {
                 clone.css('top', offset.top + $(this).height());
             }
@@ -39,7 +41,11 @@ Jitamin.Dropdown.prototype.listen = function() {
         }
 
         if (offset.left + submenuWidth > $(window).width()) {
-            clone.css('left', offset.left - submenuWidth + $(this).outerWidth());
+            if($(this).parents('.navbar').length) {
+                clone.css('left', offset.left - submenuWidth - 15 + $(this).outerWidth());
+            } else {
+                clone.css('left', offset.left - submenuWidth + $(this).outerWidth());
+            }
         }
         else {
             if ($(this).parents('.sidebar').length) {
