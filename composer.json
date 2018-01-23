@@ -34,7 +34,8 @@
         "symfony/console" : "~3.1",
         "symfony/event-dispatcher" : "~3.1",
         "gregwar/captcha": "1.1.1",
-        "robmorgan/phinx": "^0.6.5"
+        "robmorgan/phinx": "^0.6.5",
+        "vlucas/phpdotenv": "^2.4"
     },
     "require-dev" : {
         "phpdocumentor/reflection-docblock": "2.0.4",

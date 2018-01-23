@@ -55,9 +55,9 @@ $ cd jitamin
 ### Setting the config file
 
 ```shell
-$ cp config/config{.default,}.php
+$ cp .env.example .env
 ```
-> Adjust the `config/config.php` according to your environment, especially the database settings.
+> Adjust the `.env` according to your environment, especially the database settings.
 
 ### Install the PHP dependency packages
 

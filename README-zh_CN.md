@@ -49,9 +49,9 @@ $ cd jitamin
 二. 设置配置文件
 
 ```shell
-$ cp config/config{.default,}.php
+$ cp .env.example .env
 ```
-> 根据实际情况修改 `config/config.php` 相关配置文件。
+> 根据实际情况修改 `.env` 相关配置文件，重点关注数据库相关的设置。
 
 三. 安装依赖包
 
