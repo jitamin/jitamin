@@ -57,7 +57,7 @@
     },
     "scripts": {
         "pre-install-cmd": [
-            "php -r \"file_exists('config/config.php') || copy('config/config.default.php', 'config/config.php');\""
+            "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
         ],
         "post-install-cmd": [
         ],
