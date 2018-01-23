@@ -165,12 +165,13 @@ if (!function_exists('n')) {
         return \Jitamin\Foundation\Translator::getInstance()->number($value);
     }
 }
-if (! function_exists('env')) {
+if (!function_exists('env')) {
     /**
      * Gets the value of an environment variable.
      *
-     * @param  string  $key
-     * @param  mixed   $default
+     * @param string $key
+     * @param mixed  $default
+     *
      * @return mixed
      */
     function env($key, $default = null)
@@ -196,7 +197,7 @@ if (! function_exists('env')) {
                 return;
         }
 
-        if (strlen($value) > 1 && strpos($value, '"') === 0 && strrpos($value, '"') == strlen($value) -1) {
+        if (strlen($value) > 1 && strpos($value, '"') === 0 && strrpos($value, '"') == strlen($value) - 1) {
             return substr($value, 1, -1);
         }
 
