@@ -11,6 +11,9 @@
 
 require __DIR__.'/../vendor/autoload.php';
 
+$dotenv = new \Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
+
 $dbUrlParser = new PicoDb\UrlParser();
 if ($dbUrlParser->isEnvironmentVariableDefined()) {
     $dbSettings = $dbUrlParser->getSettings();
@@ -33,5 +36,3 @@ if (file_exists(__DIR__.'/cache/config.php')) {
 
 require __DIR__.'/bootstrap.php';
 
-$dotenv = new \Dotenv\Dotenv(JITAMIN_DIR);
-$dotenv->load();

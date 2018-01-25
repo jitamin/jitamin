@@ -14,6 +14,8 @@
 | Please DO NOT modify me.
 |--------------------------------------------------------------------------
 */
+// Register The Auto Loader
+require __DIR__.'/bootstrap/autoload.php';
 
 $db = require __DIR__.'/config/config.php';
 
