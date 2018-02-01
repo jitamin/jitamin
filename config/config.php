@@ -18,7 +18,7 @@ return [
     'log_driver' => env('APP_LOG', 'file'),
 
     // Available cache drivers are "file", "memory" and "memcached"
-    'cache_driver' => 'memcached',
+    'cache_driver' => 'memory',
 
     // Hide login form, useful if all your users use Google/Github/ReverseProxy authentication
     'hide_login_form' => false,
