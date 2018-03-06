@@ -71,6 +71,7 @@ CREATE USER 'jitamin'@'localhost' IDENTIFIED BY 'jitamin';
 GRANT ALL PRIVILEGES ON jitamin.* TO 'jitamin'@'localhost' IDENTIFIED BY 'jitamin' WITH GRANT OPTION;
 ```
 then, edit .env file, change databases,username and password.
+and edit config/config.php file.
 
 ### Migrate the database and initialize the database
 
