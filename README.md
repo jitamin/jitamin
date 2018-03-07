@@ -84,11 +84,39 @@ vendor/bin/phinx seed:run
 $ chmod -R 0777 bootstrap/cache
 $ chmod -R 0777 storage
 ```
-> Optional steps
+
+### Add email STMP support
+edit bootstrap/bootstrap.php, change mail setting
+as:
+```shell
+define('MAIL_SMTP_HOSTNAME', 'your mail host');
+define('MAIL_SMTP_PORT', '25');
+define('MAIL_SMTP_USERNAME','your email user name');
+define('MAIL_SMTP_PASSWORD', 'your email user passwd');
+define('MAIL_SMTP_ENCRYPTION', 'tls'); // Valid values are "null", "ssl" or "tls"
+```
+### Add LDAP authority support
+install php-ldap or compile php with --with-ldap[=DIR]
+then, change bootstrap/bootstrap.php
+```shell
+define('LDAP_AUTH', true);
+define('LDAP_SERVER', 'my ldap server host');
+define('LDAP_PORT', 389);
+define('LDAP_SSL_VERIFY', false);
+define('LDAP_START_TLS', false);
+define('LDAP_USERNAME_CASE_SENSITIVE', false);
+define('LDAP_BIND_TYPE', 'user');
+define('LDAP_USERNAME', 'ldap user');
+define('LDAP_PASSWORD', 'ldap passwd');
+define('LDAP_USER_BASE_DN', 'ou=users,o=mydomain,dc=cn');
+define('LDAP_USER_FILTER', 'uid=%s');
+```
+### Optional steps
 
 ```shell
 $ php artisan config:cache
 $ php artisan route:cache
+service httpd restart 
 ```
 
 ### Access the service through web browser
@@ -98,6 +126,7 @@ The initial Super Administrator's user name and password are listed below:
 
 - **username:** `admin` or `admin@admin.com`
 - **password:** `admin`
+
 
 ## Upgrade steps
 
