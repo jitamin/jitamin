@@ -105,8 +105,8 @@ define('LDAP_SERVER', 'my ldap server host');
 define('LDAP_PORT', 389);
 define('LDAP_SSL_VERIFY', false);
 define('LDAP_START_TLS', false);
-define('LDAP_USERNAME_CASE_SENSITIVE', false);
-define('LDAP_BIND_TYPE', 'user');
+define('LDAP_USERNAME_CASE_SENSITIVE', true);
+define('LDAP_BIND_TYPE', 'proxy'); // use proxy mode for user and passwd authority login
 define('LDAP_USERNAME', 'ldap user');
 define('LDAP_PASSWORD', 'ldap passwd');
 define('LDAP_USER_BASE_DN', 'ou=users,o=mydomain,dc=cn');
