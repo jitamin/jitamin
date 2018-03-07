@@ -110,7 +110,7 @@ define('LDAP_BIND_TYPE', 'proxy'); // use proxy mode for user and passwd authori
 define('LDAP_USERNAME', 'ldap user');
 define('LDAP_PASSWORD', 'ldap passwd');
 define('LDAP_USER_BASE_DN', 'ou=users,o=mydomain,dc=cn');
-define('LDAP_USER_FILTER', 'uid=%s');
+define('LDAP_USER_FILTER', 'uid=%s'); // or use 'cn=%s' depend on your ldap server setting
 ```
 ### Optional steps
 
