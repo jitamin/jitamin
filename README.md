@@ -85,10 +85,11 @@ $ chmod -R 0777 bootstrap/cache
 $ chmod -R 0777 storage
 ```
 
-### Add email STMP support
+### Add email SMTP support
 edit bootstrap/bootstrap.php, change mail setting
 as:
 ```shell
+define('MAIL_TRANSPORT', 'smtp');// use smtp 
 define('MAIL_SMTP_HOSTNAME', 'your mail host');
 define('MAIL_SMTP_PORT', '25');
 define('MAIL_SMTP_USERNAME','your email user name');
