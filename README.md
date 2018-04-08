@@ -64,6 +64,14 @@ $ cp .env.example .env
 ```shell
 $ composer install -o --no-dev
 ```
+### Create database,and setting env 
+```shell
+CREATE DATABASE jitamin;
+CREATE USER 'jitamin'@'localhost' IDENTIFIED BY 'jitamin';
+GRANT ALL PRIVILEGES ON jitamin.* TO 'jitamin'@'localhost' IDENTIFIED BY 'jitamin' WITH GRANT OPTION;
+```
+then, edit .env file, change databases,username and password.
+and edit config/config.php file.
 
 ### Migrate the database and initialize the database
 
