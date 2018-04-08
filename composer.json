@@ -23,10 +23,10 @@
         "erusev/parsedown" : "1.6.0",
         "fguillot/json-rpc" : "1.2.1",
         "fguillot/picodb" : "1.0.14",
-        "fguillot/picofeed": "0.1.24",
-        "fguillot/simpleLogger" : "1.0.1",
-        "fguillot/simple-validator" : "1.0.1",
-        "fguillot/simple-queue" : "1.0.1",
+        "jitamin/picofeed": "0.1.24",
+        "jitamin/simple-logger" : "1.0.1",
+        "jitamin/simple-validator" : "1.0.1",
+        "jitamin/simple-queue" : "1.0.1",
         "nesbot/carbon": "~1.21",
         "paragonie/random_compat": "2.0.11",
         "christian-riesen/otp" : "1.4.3",
@@ -63,11 +63,5 @@
         ],
         "post-update-cmd": [
         ]
-    },
-    "repositories": {
-        "packagist": {
-            "type": "composer",
-            "url": "https://packagist.phpcomposer.com"
-        }
     }
 }
