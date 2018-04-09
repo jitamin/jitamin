@@ -269,7 +269,10 @@ class TaskHelper extends Base
         if ($project['priority_end'] != $project['priority_start']) {
             $range = range($project['priority_end'], $project['priority_start']);
             $options = array_combine($range, $range);
-            array_walk($options, create_function('&$val', '$val = t(\'P\'.$val);'));
+            array_walk($options, function(&$val){
+                        $val = 'P' . $val;
+                        return $val;
+            });
             $values += ['priority' => $project['priority_default']];
 
             $html .= $this->helper->form->label(t('Priority'), 'priority');
