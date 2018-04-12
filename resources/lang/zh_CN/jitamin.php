@@ -796,6 +796,7 @@ return [
     'Enter the text below' => '请您填写验证码',
     'Sort by position' => '按位置排序',
     'Sort by date' => '按日期排序',
+    'Sort by namedate' => '按名称日期排序',
     'Add task' => '添加任务',
     'Start date:' => '开始日期：',
     'Due date:' => '结束日期：',
