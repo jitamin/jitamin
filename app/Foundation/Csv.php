@@ -173,6 +173,9 @@ class Csv
     {
         $fp = fopen($filename, 'w');
 
+        //写入BOM头，解决utf8中文字出现乱码问题
+        fwrite ( $fp , chr ( 0xEF ) . chr ( 0xBB ) . chr ( 0xBF ) ); //这行是新加的
+        
         if (is_resource($fp)) {
             foreach ($rows as $row) {
                 fputcsv($fp, $row, $this->delimiter, $this->enclosure);
@@ -182,7 +185,7 @@ class Csv
         }
 
         return $this;
-    }
+    }    
 
     /**
      * Associate columns header with row values.
