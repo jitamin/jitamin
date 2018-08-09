@@ -174,6 +174,8 @@ class Csv
         $fp = fopen($filename, 'w');
 
         if (is_resource($fp)) {
+            // wirte BOM header,Solve utf8 chinese grabled problem.
+            fwrite($fp, chr(0xEF).chr(0xBB).chr(0xBF));
             foreach ($rows as $row) {
                 fputcsv($fp, $row, $this->delimiter, $this->enclosure);
             }
