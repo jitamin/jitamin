@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e6bf5dc12fe456dc40efa94997db9261",
+    "content-hash": "dbaa2b0df50df6984912322484066023",
     "packages": [
         {
             "name": "christian-riesen/base32",
@@ -253,16 +253,16 @@
         },
         {
             "name": "jitamin/json-rpc",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jitamin/json-rpc.git",
-                "reference": "8636ae4e7792296bae903ef2c89be9a0373a685c"
+                "reference": "0f6f81c9371f28966fd67ad6f2fd20d6bb14c4c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jitamin/json-rpc/zipball/8636ae4e7792296bae903ef2c89be9a0373a685c",
-                "reference": "8636ae4e7792296bae903ef2c89be9a0373a685c",
+                "url": "https://api.github.com/repos/jitamin/json-rpc/zipball/0f6f81c9371f28966fd67ad6f2fd20d6bb14c4c8",
+                "reference": "0f6f81c9371f28966fd67ad6f2fd20d6bb14c4c8",
                 "shasum": ""
             },
             "require": {
@@ -274,7 +274,7 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "json-rpc": "src/"
+                    "JsonRPC": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -288,20 +288,20 @@
             ],
             "description": "json-rpc",
             "homepage": "https://github.com/jitamin/json-rpc",
-            "time": "2018-08-09T02:08:43+00:00"
+            "time": "2018-08-09T06:05:53+00:00"
         },
         {
             "name": "jitamin/picodb",
-            "version": "v1.0.14",
+            "version": "v1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jitamin/picodb.git",
-                "reference": "e15e503523f702dd920bbce49ef070e5c5d3c7cd"
+                "reference": "1c52248bfa2c0ba4d3bd9b8df0e96c33abc06735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jitamin/picodb/zipball/e15e503523f702dd920bbce49ef070e5c5d3c7cd",
-                "reference": "e15e503523f702dd920bbce49ef070e5c5d3c7cd",
+                "url": "https://api.github.com/repos/jitamin/picodb/zipball/1c52248bfa2c0ba4d3bd9b8df0e96c33abc06735",
+                "reference": "1c52248bfa2c0ba4d3bd9b8df0e96c33abc06735",
                 "shasum": ""
             },
             "require": {
@@ -313,7 +313,7 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "picodb": "src/"
+                    "PicoDb": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -327,20 +327,20 @@
             ],
             "description": "picodb",
             "homepage": "https://github.com/jitamin/picodb",
-            "time": "2018-08-09T02:03:50+00:00"
+            "time": "2018-08-09T05:52:28+00:00"
         },
         {
             "name": "jitamin/picofeed",
-            "version": "v0.1.24",
+            "version": "v0.1.25",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jitamin/picofeed.git",
-                "reference": "3aa6ede9f839256a52e2272dc0567d17c9248995"
+                "reference": "508ca7bbeda7e8fc1fec78bf8f493a87acf40de7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jitamin/picofeed/zipball/3aa6ede9f839256a52e2272dc0567d17c9248995",
-                "reference": "3aa6ede9f839256a52e2272dc0567d17c9248995",
+                "url": "https://api.github.com/repos/jitamin/picofeed/zipball/508ca7bbeda7e8fc1fec78bf8f493a87acf40de7",
+                "reference": "508ca7bbeda7e8fc1fec78bf8f493a87acf40de7",
                 "shasum": ""
             },
             "require": {
@@ -352,7 +352,7 @@
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "picofeed": "src/"
+                    "PicoFeed": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -366,7 +366,7 @@
             ],
             "description": "picofeed",
             "homepage": "https://github.com/jitamin/picofeed",
-            "time": "2018-04-08T09:27:23+00:00"
+            "time": "2018-08-09T06:09:36+00:00"
         },
         {
             "name": "jitamin/simple-logger",
