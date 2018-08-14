@@ -16,7 +16,6 @@ return [
     'Confirm' => '确定',
     'cancel' => '取消',
     'or' => '或者',
-    'None' => '无',
     'Preview' => '预览',
     'Write' => '编辑',
     'Save' => '保存',
