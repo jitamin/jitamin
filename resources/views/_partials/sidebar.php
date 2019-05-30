@@ -5,7 +5,7 @@ $is_private_project_enabled = $this->app->setting('disable_private_project', 0) 
 ?>
 <div class="sidebar">
     <div class="sidememu">
-        <a href="/"><div class="menu-top"></div></a>
+        <a href="<?= $application_url ?>"><div class="menu-top"></div></a>
         <div class="menu-tab">
             <ul class="sidebar-menu">
                 <li <?= $this->app->setActive('Dashboard/DashboardController', 'index') ?>>

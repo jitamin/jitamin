@@ -116,7 +116,7 @@
             </p>
 
             <p>
-                Perhaps you would like to go to our <a href="/">home page</a>?
+                Perhaps you would like to go to our <a href="<?= $application_url ?>">home page</a>?
             </p>
         </div>
     </div>
