@@ -32,7 +32,8 @@ class TaskMovePositionController extends Controller
             'task'  => $task,
             'board' => BoardFormatter::getInstance($this->container)
                 ->withProjectId($task['project_id'])
-                ->withQuery($this->taskFinderModel->getExtendedQuery()
+                ->withQuery(
+                    $this->taskFinderModel->getExtendedQuery()
                     ->eq(TaskModel::TABLE.'.is_active', TaskModel::STATUS_OPEN)
                     ->neq(TaskModel::TABLE.'.id', $task['id'])
                 )

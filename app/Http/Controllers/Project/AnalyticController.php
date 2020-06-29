@@ -51,7 +51,8 @@ class AnalyticController extends Controller
             ->setUrl('Project/AnalyticController', 'timeComparison', ['project_id' => $project['id']])
             ->setMax(30)
             ->setOrder(TaskModel::TABLE.'.id')
-            ->setQuery($this->taskQuery
+            ->setQuery(
+                $this->taskQuery
                 ->withFilter(new TaskProjectFilter($project['id']))
                 ->getQuery()
             )

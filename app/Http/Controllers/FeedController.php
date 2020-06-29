@@ -86,7 +86,8 @@ class FeedController extends Controller
             $itemUrl = $this->helper->url->to('Task/TaskController', 'show', ['task_id' => $event['task_id']], '', true);
 
             $feedBuilder
-                ->withItem(AtomItemBuilder::create($feedBuilder)
+                ->withItem(
+                    AtomItemBuilder::create($feedBuilder)
                     ->withTitle($event['event_title'])
                     ->withUrl($itemUrl.'#event-'.$event['id'])
                     ->withAuthor($event['author'])

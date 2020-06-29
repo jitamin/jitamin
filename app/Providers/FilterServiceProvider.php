@@ -124,10 +124,12 @@ class FilterServiceProvider implements ServiceProviderInterface
                 ->withFilter(new ProjectActivityTaskTitleFilter(), true)
                 ->withFilter(new ProjectActivityTaskStatusFilter())
                 ->withFilter(new ProjectActivityProjectNameFilter())
-                ->withFilter(ProjectActivityCreationDateFilter::getInstance()
+                ->withFilter(
+                    ProjectActivityCreationDateFilter::getInstance()
                     ->setDateParser($c['dateParser'])
                 )
-                ->withFilter(ProjectActivityCreatorFilter::getInstance()
+                ->withFilter(
+                    ProjectActivityCreatorFilter::getInstance()
                     ->setCurrentUserId($c['userSession']->getId())
                 );
 
@@ -165,48 +167,59 @@ class FilterServiceProvider implements ServiceProviderInterface
 
             $builder
                 ->withQuery($c['taskFinderModel']->getExtendedQuery())
-                ->withFilter(TaskAssigneeFilter::getInstance()
+                ->withFilter(
+                    TaskAssigneeFilter::getInstance()
                     ->setCurrentUserId($c['userSession']->getId())
                 )
                 ->withFilter(new TaskCategoryFilter())
-                ->withFilter(TaskColorFilter::getInstance()
+                ->withFilter(
+                    TaskColorFilter::getInstance()
                     ->setColorModel($c['colorModel'])
                 )
                 ->withFilter(new TaskPriorityFilter())
                 ->withFilter(new TaskColumnFilter())
                 ->withFilter(new TaskCommentFilter())
-                ->withFilter(TaskCreationDateFilter::getInstance()
+                ->withFilter(
+                    TaskCreationDateFilter::getInstance()
                     ->setDateParser($c['dateParser'])
                 )
-                ->withFilter(TaskCreatorFilter::getInstance()
+                ->withFilter(
+                    TaskCreatorFilter::getInstance()
                     ->setCurrentUserId($c['userSession']->getId())
                 )
                 ->withFilter(new TaskDescriptionFilter())
-                ->withFilter(TaskDueDateFilter::getInstance()
+                ->withFilter(
+                    TaskDueDateFilter::getInstance()
                     ->setDateParser($c['dateParser'])
                 )
-                ->withFilter(TaskStartDateFilter::getInstance()
+                ->withFilter(
+                    TaskStartDateFilter::getInstance()
                     ->setDateParser($c['dateParser'])
                 )
                 ->withFilter(new TaskIdFilter())
-                ->withFilter(TaskLinkFilter::getInstance()
+                ->withFilter(
+                    TaskLinkFilter::getInstance()
                     ->setDatabase($c['db'])
                 )
-                ->withFilter(TaskModificationDateFilter::getInstance()
+                ->withFilter(
+                    TaskModificationDateFilter::getInstance()
                     ->setDateParser($c['dateParser'])
                 )
-                ->withFilter(TaskMovedDateFilter::getInstance()
+                ->withFilter(
+                    TaskMovedDateFilter::getInstance()
                     ->setDateParser($c['dateParser'])
                 )
                 ->withFilter(new TaskProjectFilter())
                 ->withFilter(new TaskReferenceFilter())
                 ->withFilter(new TaskStatusFilter())
-                ->withFilter(TaskSubtaskAssigneeFilter::getInstance()
+                ->withFilter(
+                    TaskSubtaskAssigneeFilter::getInstance()
                     ->setCurrentUserId($c['userSession']->getId())
                     ->setDatabase($c['db'])
                 )
                 ->withFilter(new TaskSwimlaneFilter())
-                ->withFilter(TaskTagFilter::getInstance()
+                ->withFilter(
+                    TaskTagFilter::getInstance()
                     ->setDatabase($c['db'])
                 )
                 ->withFilter(new TaskTitleFilter(), true);

@@ -345,7 +345,7 @@ class UserModel extends Model
             }
 
             // Finally remove the user
-            if (!$db->table(UserModel::TABLE)->eq('id', $user_id)->remove()) {
+            if (!$db->table(self::TABLE)->eq('id', $user_id)->remove()) {
                 return false;
             }
         });

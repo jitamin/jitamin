@@ -228,10 +228,26 @@ class TaskController extends Controller
      *
      * @return int
      */
-    public function createTask($title, $project_id, $color_id = '', $column_id = 0, $owner_id = 0, $creator_id = 0,
-                                $date_due = '', $description = '', $category_id = 0, $score = 0, $swimlane_id = 0, $priority = 0,
-                                $recurrence_status = 0, $recurrence_trigger = 0, $recurrence_factor = 0, $recurrence_timeframe = 0,
-                                $recurrence_basedate = 0, $reference = '')
+    public function createTask(
+        $title,
+        $project_id,
+        $color_id = '',
+        $column_id = 0,
+        $owner_id = 0,
+        $creator_id = 0,
+        $date_due = '',
+        $description = '',
+        $category_id = 0,
+        $score = 0,
+        $swimlane_id = 0,
+        $priority = 0,
+        $recurrence_status = 0,
+        $recurrence_trigger = 0,
+        $recurrence_factor = 0,
+        $recurrence_timeframe = 0,
+        $recurrence_basedate = 0,
+        $reference = ''
+    )
     {
         ProjectPolicy::getInstance($this->container)->check($this->getClassName(), 'createTask', $project_id);
 
@@ -294,10 +310,23 @@ class TaskController extends Controller
      *
      * @return int
      */
-    public function updateTask($id, $title = null, $color_id = null, $owner_id = null,
-                                $date_due = null, $description = null, $category_id = null, $score = null, $priority = null,
-                                $recurrence_status = null, $recurrence_trigger = null, $recurrence_factor = null,
-                                $recurrence_timeframe = null, $recurrence_basedate = null, $reference = null)
+    public function updateTask(
+        $id,
+        $title = null,
+        $color_id = null,
+        $owner_id = null,
+        $date_due = null,
+        $description = null,
+        $category_id = null,
+        $score = null,
+        $priority = null,
+        $recurrence_status = null,
+        $recurrence_trigger = null,
+        $recurrence_factor = null,
+        $recurrence_timeframe = null,
+        $recurrence_basedate = null,
+        $reference = null
+    )
     {
         TaskPolicy::getInstance($this->container)->check($this->getClassName(), 'updateTask', $id);
         $project_id = $this->taskFinderModel->getProjectId($id);

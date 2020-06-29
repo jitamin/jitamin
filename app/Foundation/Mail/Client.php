@@ -51,7 +51,8 @@ class Client extends Base
     public function send($email, $name, $subject, $html)
     {
         if (!empty($email)) {
-            $this->queueManager->push(EmailJob::getInstance($this->container)
+            $this->queueManager->push(
+                EmailJob::getInstance($this->container)
                 ->withParams($email, $name, $subject, $html, $this->getAuthor())
             );
         }

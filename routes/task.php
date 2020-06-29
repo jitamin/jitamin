@@ -11,35 +11,35 @@
 
 return [
 
-// Listing routes
-'list/{project_id}' => 'Task/TaskController@index',
-'l/{project_id}'    => 'Task/TaskListController@show',
+    // Listing routes
+    'list/{project_id}' => 'Task/TaskController@index',
+    'l/{project_id}'    => 'Task/TaskListController@show',
 
-// Task routes
-'project/{project_id}/task/{task_id}' => 'Task/TaskController@show',
-'t/{task_id}'                         => 'Task/TaskController@show',
-'public/task/{task_id}/{token}'       => 'Task/TaskController@readonly',
+    // Task routes
+    'project/{project_id}/task/{task_id}' => 'Task/TaskController@show',
+    't/{task_id}'                         => 'Task/TaskController@show',
+    'public/task/{task_id}/{token}'       => 'Task/TaskController@readonly',
 
-'task/{project_id}/create'                           => 'Task/TaskController@create',
-'task/{project_id}/{column_id}/{swimlane_id}/create' => 'Task/TaskSimpleController@create',
-'task/{project_id}/store'                            => 'Task/TaskController@store',
-'project/{project_id}/task/{task_id}/start'          => 'Task/TaskController@start',
-'project/{project_id}/task/{task_id}/edit'           => 'Task/TaskController@edit',
-'project/{project_id}/task/{task_id}/update'         => 'Task/TaskController@update',
-'project/{project_id}/task/{task_id}/remove'         => 'Task/TaskSuppressionController@remove',
-'project/{project_id}/task/{task_id}/close'          => 'Task/TaskStatusController@close',
-'project/{project_id}/task/{task_id}/screenshot'     => 'Task/TaskPopoverController@screenshot',
+    'task/{project_id}/create'                           => 'Task/TaskController@create',
+    'task/{project_id}/{column_id}/{swimlane_id}/create' => 'Task/TaskSimpleController@create',
+    'task/{project_id}/store'                            => 'Task/TaskController@store',
+    'project/{project_id}/task/{task_id}/start'          => 'Task/TaskController@start',
+    'project/{project_id}/task/{task_id}/edit'           => 'Task/TaskController@edit',
+    'project/{project_id}/task/{task_id}/update'         => 'Task/TaskController@update',
+    'project/{project_id}/task/{task_id}/remove'         => 'Task/TaskSuppressionController@remove',
+    'project/{project_id}/task/{task_id}/close'          => 'Task/TaskStatusController@close',
+    'project/{project_id}/task/{task_id}/screenshot'     => 'Task/TaskPopoverController@screenshot',
 
-'project/{project_id}/task/{task_id}/transitions'    => 'Task/TaskController@transitions',
-'project/{project_id}/task/{task_id}/analytics'      => 'Task/TaskController@analytics',
-'project/{project_id}/task/{task_id}/time-tracking'  => 'Task/TaskController@timetracking',
-'project/{project_id}/task/{task_id}/subtask/create' => 'Task/SubtaskController@create',
-'project/{project_id}/task/{task_id}/link/create'    => 'Task/TaskInternalLinkController@create',
+    'project/{project_id}/task/{task_id}/transitions'    => 'Task/TaskController@transitions',
+    'project/{project_id}/task/{task_id}/analytics'      => 'Task/TaskController@analytics',
+    'project/{project_id}/task/{task_id}/time-tracking'  => 'Task/TaskController@timetracking',
+    'project/{project_id}/task/{task_id}/subtask/create' => 'Task/SubtaskController@create',
+    'project/{project_id}/task/{task_id}/link/create'    => 'Task/TaskInternalLinkController@create',
 
-'project/{project_id}/task/{task_id}/activities'     => 'ActivityController@task',
-'project/{project_id}/task/{task_id}/comment/create' => 'Task/CommentController@create',
+    'project/{project_id}/task/{task_id}/activities'     => 'ActivityController@task',
+    'project/{project_id}/task/{task_id}/comment/create' => 'Task/CommentController@create',
 
-'task/create' => 'Task/TaskSimpleController@create',
-'task/store'  => 'Task/TaskSimpleController@store',
+    'task/create' => 'Task/TaskSimpleController@create',
+    'task/store'  => 'Task/TaskSimpleController@store',
 
 ];

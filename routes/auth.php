@@ -11,17 +11,17 @@
 
 return [
 
-// Auth routes
-'login'  => 'Auth/AuthController@login',
-'logout' => 'Auth/AuthController@logout',
-'check'  => 'Auth/AuthController@check',
+    // Auth routes
+    'login'  => 'Auth/AuthController@login',
+    'logout' => 'Auth/AuthController@logout',
+    'check'  => 'Auth/AuthController@check',
 
-// Captcha routes
-'captcha' => 'CaptchaController@image',
+    // Captcha routes
+    'captcha' => 'CaptchaController@image',
 
-// PasswordReset
-'forgot-password'                => 'Auth/PasswordResetController@create',
-'forgot-password/change/{token}' => 'Auth/PasswordResetController@change',
-'forgot-password/store'          => 'Auth/PasswordResetController@store',
+    // PasswordReset
+    'forgot-password'                => 'Auth/PasswordResetController@create',
+    'forgot-password/change/{token}' => 'Auth/PasswordResetController@change',
+    'forgot-password/store'          => 'Auth/PasswordResetController@store',
 
 ];

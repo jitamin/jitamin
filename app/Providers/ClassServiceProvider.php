@@ -191,7 +191,9 @@ class ClassServiceProvider implements ServiceProviderInterface
 
                 foreach ($config['servers'] as $server) {
                     $memcached->addServer(
-                        $server['host'], $server['port'], $server['weight']
+                        $server['host'],
+                        $server['port'],
+                        $server['weight']
                     );
                 }
 

@@ -11,7 +11,7 @@
 
 return [
 
-// Api routes
-'api' => 'Api@any',
+    // Api routes
+    'api' => 'Api@any',
 
 ];

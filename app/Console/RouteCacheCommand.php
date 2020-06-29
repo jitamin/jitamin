@@ -51,7 +51,8 @@ class RouteCacheCommand extends BaseCommand
         }
 
         file_put_contents(
-            $this->getCachedRoutesPath(), '<?php return '.var_export($this->container['route']->getRouteData(), true).';'.PHP_EOL
+            $this->getCachedRoutesPath(),
+            '<?php return '.var_export($this->container['route']->getRouteData(), true).';'.PHP_EOL
         );
 
         $output->writeln('Routes cached successfully!');

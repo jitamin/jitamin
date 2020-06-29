@@ -44,7 +44,8 @@ class ConfigCacheCommand extends BaseCommand
         $config = $this->getFreshConfiguration();
 
         file_put_contents(
-            $this->getCachedConfigPath(), '<?php return '.var_export($config, true).';'.PHP_EOL
+            $this->getCachedConfigPath(),
+            '<?php return '.var_export($config, true).';'.PHP_EOL
         );
 
         $output->writeln('Configuration cached successfully!');
