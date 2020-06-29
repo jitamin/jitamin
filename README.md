@@ -68,7 +68,10 @@ $ composer install -o --no-dev
 ```shell
 CREATE DATABASE jitamin;
 CREATE USER 'jitamin'@'localhost' IDENTIFIED BY 'jitamin';
-GRANT ALL PRIVILEGES ON jitamin.* TO 'jitamin'@'localhost' IDENTIFIED BY 'jitamin' WITH GRANT OPTION;
+# MySQL 8.0+ unsupported
+# GRANT ALL PRIVILEGES ON jitamin.* TO 'jitamin'@'localhost' IDENTIFIED BY 'jitamin' WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON jitamin.* TO 'jitamin'@'localhost';
+FLUSH PRIVILEGES;
 ```
 then, edit .env file, change databases,username and password.
 and edit config/config.php file.
