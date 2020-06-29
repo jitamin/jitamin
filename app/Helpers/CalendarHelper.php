@@ -82,7 +82,8 @@ class CalendarHelper extends Base
         $formatter = new SubtaskTimeTrackingCalendarFormatter($this->container);
 
         return $formatter
-            ->withQuery($this->subtaskTimeTrackingModel->getUserQuery($user_id)
+            ->withQuery(
+                $this->subtaskTimeTrackingModel->getUserQuery($user_id)
                 ->addCondition($this->getCalendarCondition(
                     $this->dateParser->getTimestampFromIsoFormat($start),
                     $this->dateParser->getTimestampFromIsoFormat($end),

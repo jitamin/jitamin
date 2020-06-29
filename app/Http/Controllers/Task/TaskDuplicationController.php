@@ -55,12 +55,14 @@ class TaskDuplicationController extends Controller
             $values = $this->request->getValues();
             list($valid) = $this->taskValidator->validateProjectModification($values);
 
-            if ($valid && $this->taskProjectMoveModel->moveToProject($task['id'],
-                                                                $values['project_id'],
-                                                                $values['swimlane_id'],
-                                                                $values['column_id'],
-                                                                $values['category_id'],
-                                                                $values['owner_id'])) {
+            if ($valid && $this->taskProjectMoveModel->moveToProject(
+                $task['id'],
+                $values['project_id'],
+                $values['swimlane_id'],
+                $values['column_id'],
+                $values['category_id'],
+                $values['owner_id']
+            )) {
                 $this->flash->success(t('Task updated successfully.'));
 
                 return $this->response->redirect($this->helper->url->to('Task/TaskController', 'show', ['project_id' => $values['project_id'], 'task_id' => $task['id']]));
@@ -85,8 +87,12 @@ class TaskDuplicationController extends Controller
 
             if ($valid) {
                 $task_id = $this->taskProjectDuplicationModel->duplicateToProject(
-                    $task['id'], $values['project_id'], $values['swimlane_id'],
-                    $values['column_id'], $values['category_id'], $values['owner_id']
+                    $task['id'],
+                    $values['project_id'],
+                    $values['swimlane_id'],
+                    $values['column_id'],
+                    $values['category_id'],
+                    $values['owner_id']
                 );
 
                 if ($task_id > 0) {

@@ -40,7 +40,9 @@ class RouterTest extends Base
 
     public function testDispatcherWithNoUrlRewrite()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/jitamin/index.php',
                 'REQUEST_URI'    => '/jitamin/?controller=FakeController&action=myAction&myvar=value1',
                 'QUERY_STRING'   => 'controller=FakeController&action=myAction&myvar=value1',
@@ -64,7 +66,9 @@ class RouterTest extends Base
 
     public function testDispatcherWithNoUrlRewriteAndPlugin()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/jitamin/index.php',
                 'REQUEST_URI'    => '/jitamin/?controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
                 'QUERY_STRING'   => 'controller=FakeController&action=myAction&myvar=value1&plugin=myplugin',
@@ -89,7 +93,9 @@ class RouterTest extends Base
 
     public function testDispatcherWithUrlRewrite()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/jitamin/index.php',
                 'REQUEST_URI'    => '/jitamin/my/route/123?myvar=value1',
                 'QUERY_STRING'   => 'myvar=value1',
@@ -116,7 +122,9 @@ class RouterTest extends Base
 
     public function testDispatcherWithUrlRewriteWithPlugin()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/jitamin/index.php',
                 'REQUEST_URI'    => '/jitamin/my/plugin/route/123?myvar=value1',
                 'QUERY_STRING'   => 'myvar=value1',

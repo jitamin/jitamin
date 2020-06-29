@@ -42,7 +42,8 @@ class TaskController extends Controller
             ->setMax(30)
             ->setOrder(TaskModel::TABLE.'.id')
             ->setDirection('DESC')
-            ->setQuery($this->taskLexer
+            ->setQuery(
+                $this->taskLexer
                 ->build($search)
                 ->withFilter(new TaskProjectFilter($project['id']))
                 ->getQuery()

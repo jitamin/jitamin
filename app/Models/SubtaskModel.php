@@ -234,7 +234,7 @@ class SubtaskModel extends Model
     public function duplicate($src_task_id, $dst_task_id)
     {
         return $this->db->transaction(function (Database $db) use ($src_task_id, $dst_task_id) {
-            $subtasks = $db->table(SubtaskModel::TABLE)
+            $subtasks = $db->table(self::TABLE)
                 ->columns('title', 'time_estimated', 'position')
                 ->eq('task_id', $src_task_id)
                 ->asc('position')
@@ -243,7 +243,7 @@ class SubtaskModel extends Model
             foreach ($subtasks as &$subtask) {
                 $subtask['task_id'] = $dst_task_id;
 
-                if (!$db->table(SubtaskModel::TABLE)->save($subtask)) {
+                if (!$db->table(self::TABLE)->save($subtask)) {
                     return false;
                 }
             }

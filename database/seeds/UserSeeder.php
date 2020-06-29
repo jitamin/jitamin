@@ -20,12 +20,12 @@ class UserSeeder extends AbstractSeed
     public function run()
     {
         $data = [
-          [
-              'username' => 'admin',
-              'password' => bcrypt('admin'),
-              'email'    => 'admin@admin.com',
-              'role'     => Role::APP_ADMIN,
-          ],
+            [
+                'username' => 'admin',
+                'password' => bcrypt('admin'),
+                'email'    => 'admin@admin.com',
+                'role'     => Role::APP_ADMIN,
+            ],
         ];
 
         $users = $this->table('users');

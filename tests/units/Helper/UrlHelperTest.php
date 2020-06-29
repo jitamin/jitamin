@@ -67,7 +67,9 @@ class UrlHelperTest extends Base
 
     public function testDir()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/jitamin/index.php',
                 'REQUEST_METHOD' => 'GET',
             ]
@@ -76,7 +78,9 @@ class UrlHelperTest extends Base
         $h = new UrlHelper($this->container);
         $this->assertEquals('/jitamin/', $h->dir());
 
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
             ]
@@ -88,7 +92,9 @@ class UrlHelperTest extends Base
 
     public function testServer()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
                 'SERVER_NAME'    => 'localhost',
@@ -99,7 +105,9 @@ class UrlHelperTest extends Base
         $h = new UrlHelper($this->container);
         $this->assertEquals('http://localhost/', $h->server());
 
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
                 'SERVER_NAME'    => 'hj',
@@ -113,7 +121,9 @@ class UrlHelperTest extends Base
 
     public function testBase()
     {
-        $this->container['request'] = new Request($this->container, [
+        $this->container['request'] = new Request(
+            $this->container,
+            [
                 'PHP_SELF'       => '/index.php',
                 'REQUEST_METHOD' => 'GET',
                 'SERVER_NAME'    => 'hj',

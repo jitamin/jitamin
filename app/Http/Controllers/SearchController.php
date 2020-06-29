@@ -35,7 +35,8 @@ class SearchController extends Controller
 
         if ($query !== '' && !empty($projects)) {
             $paginator
-                ->setQuery($this->taskLexer
+                ->setQuery(
+                    $this->taskLexer
                     ->build($query)
                     ->withFilter(new TaskProjectsFilter(array_keys($projects)))
                     ->getQuery()

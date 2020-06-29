@@ -121,10 +121,10 @@ class Route extends Base
         }
 
         return [
-                'controller' => Router::DEFAULT_CONTROLLER,
-                'action'     => Router::DEFAULT_METHOD,
-                'plugin'     => '',
-            ];
+            'controller' => Router::DEFAULT_CONTROLLER,
+            'action'     => Router::DEFAULT_METHOD,
+            'plugin'     => '',
+        ];
     }
 
     /**

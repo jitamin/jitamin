@@ -169,7 +169,8 @@ class TaskModel extends Model
             }
 
             if (!empty($events)) {
-                $this->queueManager->push($this->taskEventJob
+                $this->queueManager->push(
+                    $this->taskEventJob
                     ->withParams($task['id'], $events, $values, [], $task)
                 );
             }
