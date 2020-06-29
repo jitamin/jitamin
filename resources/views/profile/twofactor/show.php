@@ -8,8 +8,8 @@
         <p><?= t('Secret key: ') ?><strong><?= $this->text->e($secret) ?></strong></p>
     <?php endif ?>
 
-    <?php if (!empty($qrcode_url)): ?>
-        <p><br><img src="<?= $qrcode_url ?>"/><br><br></p>
+    <?php if (!empty($key_url)): ?>
+        <p><br><div id="two-qrcode" data-url="<?= $this->text->e($key_url) ?>"></div><br><br></p>
     <?php endif ?>
 
     <?php if (!empty($key_url)): ?>

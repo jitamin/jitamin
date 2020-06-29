@@ -55,7 +55,8 @@ var vendor = {
         'vendor/bower_components/d3/d3.min.js',
         'vendor/bower_components/c3/c3.min.js',
         'vendor/bower_components/isMobile/isMobile.min.js',
-        'vendor/bower_components/marked/marked.min.js'
+        'vendor/bower_components/marked/marked.min.js',
+        'vendor/bower_components/qrcode.js/qrcode.js'
     ]
 };
 
@@ -66,38 +67,33 @@ var dist = {
     img: 'public/assets/img/'
 };
 
-gulp.task('bower', function() {
+gulp.task('bower', function () {
     return bower();
 });
 
-gulp.task('vendor', function() {
+gulp.task('vendor', function () {
 
     gulp.src(vendor.bootstrap)
         .pipe(concat('bootstrap.min.js'))
-        .pipe(gulp.dest(dist.js))
-    ;
+        .pipe(gulp.dest(dist.js));
 
     gulp.src('node_modules/vue/dist/vue.min.js')
         .pipe(strip({trim: true}))
-        .pipe(gulp.dest('node_modules/vue/dist/'))
-    ;
+        .pipe(gulp.dest('node_modules/vue/dist/'));
 
     vendor.base.push('node_modules/vue/dist/vue.min.js');
 
     gulp.src(vendor.base)
         .pipe(concat('base.min.js'))
-        .pipe(gulp.dest(dist.js))
-    ;
+        .pipe(gulp.dest(dist.js));
 
     gulp.src(vendor.extra)
         .pipe(concat('extra.min.js'))
-        .pipe(gulp.dest(dist.js))
-    ;
+        .pipe(gulp.dest(dist.js));
 
     gulp.src(vendor.css)
         .pipe(concat('vendor.min.css'))
-        .pipe(gulp.dest(dist.css))
-    ;
+        .pipe(gulp.dest(dist.css));
 
     gulp.src('vendor/bower_components/font-awesome/fonts/*')
         .pipe(gulp.dest(dist.fonts));
@@ -109,15 +105,14 @@ gulp.task('vendor', function() {
         .pipe(gulp.dest(dist.css + ''));
 });
 
-gulp.task('js', function() {
+gulp.task('js', function () {
     gulp.src(src.js)
         .pipe(concat('app.min.js'))
         .pipe(uglify())
-        .pipe(gulp.dest(dist.js))
-    ;
+        .pipe(gulp.dest(dist.js));
 });
 
-gulp.task('css', function() {
+gulp.task('css', function () {
     gulp.src('resources/assets/sass/*.sass')
         .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
         .pipe(concat('app.min.css'))

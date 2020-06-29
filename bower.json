@@ -21,6 +21,7 @@
     "d3": "~3.5.0",
     "isMobile": "0.4.0",
     "select2": "4.0.2",
-    "marked": "^0.3.6"
+    "marked": "^0.3.6",
+    "qrcode.js": "qrcode-js#*"
   }
 }
