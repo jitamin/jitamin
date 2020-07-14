@@ -48,8 +48,11 @@ define('CACHE_PREFIX', '');
 // E-mail address for the "From" header (notifications)
 define('MAIL_FROM', 'notifications@jitamin.local');
 
-// Mail transport available: "smtp", "sendmail", "mail" (PHP mail function), "postmark", "mailgun", "sendgrid"
+// Mail transport available: "mailproxy", "smtp", "sendmail", "mail" (PHP mail function), "postmark", "mailgun", "sendgrid"
 define('MAIL_TRANSPORT', 'mail');
+
+// Mail proxy url
+define('MAIL_PROXY_URL', 'http://example.com/mailproxy/send');
 
 // SMTP configuration to use when the "smtp" transport is chosen
 define('MAIL_SMTP_HOSTNAME', '');

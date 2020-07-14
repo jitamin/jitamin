@@ -8,7 +8,7 @@
         </button>
         <h3>
             <span class="sidebar-toggle"><i class="fa fa-navicon"></i></span>
-            <a href="/"><?= t('Dashboard') ?></a> &raquo; 
+            <a href="<?= $application_url ?>"><?= t('Dashboard') ?></a> &raquo; 
             <?php if (isset($page_title)): ?>
                 <?= $this->text->e($page_title) ?>
             <?php elseif (isset($title)): ?>
